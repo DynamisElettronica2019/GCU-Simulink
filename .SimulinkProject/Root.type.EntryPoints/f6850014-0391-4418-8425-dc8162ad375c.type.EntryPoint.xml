@@ -1,0 +1,4 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Info Type="StartUp" Visible="0" Icon="" File="Script_matlab/initializeCustomization.m" Name="initializeCustomization">
+    <Extension Value="540be82c-7cd2-464a-99d6-287adc50275d" Name="StartUpPrev" />
+</Info>
