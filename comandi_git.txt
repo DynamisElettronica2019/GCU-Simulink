@@ -4,3 +4,8 @@ git branch -d nomebranchlocale
 
 Eliminare un branch in remoto:
 git push origin --delete nomebranchremoto
+
+Passaggi per caricare su server remoto nuove modifiche:
+git add *
+git commit -m "messaggio"                       (tenere le virgolette)
+git push origin branch_dove_caricare_le_modifiche
