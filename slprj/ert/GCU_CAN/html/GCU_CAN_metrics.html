@@ -1,0 +1,3504 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><link rel="stylesheet" type="text/css" href="rtwreport.css" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><script language="JavaScript" type="text/javascript" src="rtwshrink.js"></script><title>
+Static Code Metrics Report
+</title>
+
+</head>
+<body onload="try {if (top) {if (top.rtwPageOnLoad) top.rtwPageOnLoad('rtwIdCodeMetrics'); else local_onload();}} catch(err) {};">
+<h1>
+Static Code Metrics Report
+</h1>
+<div>
+<p>
+The static code metrics report provides statistics of the generated code. Metrics are estimated from static analysis of the generated code using the C data types specified in the 'Device details' section of the <b>Configuration Parameter > Hardware Implementation</b> pane: <b>char</b> 8, <b>short</b> 16, <b>int</b> 32, <b>long</b> 32, <b>float</b> 32, <b>double</b> 64, <b>pointer</b> 64 bits. If your model contains a Variant block, the Static Code Metrics Report does not contain data for the inactive variant. Actual object code metrics might differ due to target specific compiler and platform settings. Consult the <b>Code Generation Advisor</b><a name="MATLAB_link" style="text-decoration: none" href="matlab:helpview([docroot '/toolbox/ecoder/helptargets.map'], 'code_gen_advisor')">
+<img src="help.png" title="Open Code Generation Advisor help" style="border:none;cursor:pointer">
+
+</img>
+
+</a>
+ for options to improve code efficiency.
+</p>
+
+</div>
+<div>
+<h3>
+Table of Contents
+</h3>
+<ol>
+<li>
+<a href="#sec_File_Information" onclick="rtwTableExpand(window.document, window.document.getElementById('rtwIdCodeMetrics_table_001_control'), 'rtwIdCodeMetrics_table_001')">
+File Information
+</a>
+
+</li>
+<li>
+<a href="#sec_Global_Variables" onclick="rtwTableExpand(window.document, window.document.getElementById('rtwIdCodeMetrics_table_002_control'), 'rtwIdCodeMetrics_table_002')">
+Global Variables
+</a>
+
+</li>
+<li>
+<a href="#sec_Function_Information" onclick="rtwTableExpand(window.document, window.document.getElementById('rtwIdCodeMetrics_table_054_control'), 'rtwIdCodeMetrics_table_054')">
+Function Information
+</a>
+
+</li>
+
+</ol>
+
+</div>
+<h3 name="sec_File_Information" id="sec_File_Information">
+1. File Information <span title="Click to shrink or expand section" style="cursor:pointer;font-weight:normal;" id="rtwIdCodeMetrics_table_001_control" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, 'rtwIdCodeMetrics_table_001', false)"><span class="shrink-button">[<u>hide</u>]</span></span>
+</h3>
+<table width="100%" name="rtwIdCodeMetrics_table_001" id="rtwIdCodeMetrics_table_001" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" border="0">
+<tr>
+<td align="left" valign="top">
+<p>
+<span name="button_fileInfo_summary_table" id="button_fileInfo_summary_table" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, 'fileInfo_summary_table', true)"><span class="shrink-button">[-]</span></span> Summary
+</p>
+<table width="50%" cellpadding="0" name="fileInfo_summary_table" id="fileInfo_summary_table" border="0">
+<tr>
+<td width="4%" align="left" valign="top">
+<span style="white-space:nowrap" title="Number of source files excluding ert_main.c.">Number of .c files</span>
+</td>
+<td width="4%" align="left" valign="top">
+:
+</td>
+<td width="4%" align="right" valign="top">
+2
+</td>
+<td width="86%" align="right" valign="top">
+&#160;
+</td>
+
+</tr>
+<tr>
+<td width="4%" align="left" valign="top">
+<span style="white-space:nowrap" title="Number of header files.">Number of .h files</span>
+</td>
+<td width="4%" align="left" valign="top">
+:
+</td>
+<td width="4%" align="right" valign="top">
+3
+</td>
+<td width="86%" align="right" valign="top">
+&#160;
+</td>
+
+</tr>
+<tr>
+<td width="4%" align="left" valign="top">
+<span title="Lines of code excluding comments and blank lines">Lines of code</span>
+</td>
+<td width="4%" align="left" valign="top">
+:
+</td>
+<td width="4%" align="right" valign="top">
+700
+</td>
+<td width="86%" align="right" valign="top">
+&#160;
+</td>
+
+</tr>
+<tr>
+<td width="4%" align="left" valign="top">
+<span style="white-space:nowrap" title="Lines including source code, comments, and blank lines.">Lines</span>
+</td>
+<td width="4%" align="left" valign="top">
+:
+</td>
+<td width="4%" align="right" valign="top">
+1,071
+</td>
+<td width="86%" align="right" valign="top">
+&#160;
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<p>
+<span name="button_fileInfo_detail_table" id="button_fileInfo_detail_table" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, 'fileInfo_detail_table', true)"><span class="shrink-button">[-]</span></span> File details
+</p>
+<table width="100%" cellpadding="2" name="fileInfo_detail_table" id="fileInfo_detail_table" border="1">
+<tr style="background-color: #eeeeff">
+<td width="33%" align="left" valign="top" style="border-style: none">
+<b>
+<span style="white-space:nowrap" title="Files sorted in descending order by number of lines of code.">File Name</span>
+</b>
+
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+<b>
+<span title="Lines of code excluding comments and blank lines.">Lines of Code</span>
+</b>
+
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+<b>
+<span style="white-space:nowrap" title="Lines including source code, comments, and blank lines.">Lines</span>
+</b>
+
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+<b>
+<span style="white-space:nowrap" title="Timestamp of the file">Generated On</span>
+</b>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="33%" align="left" valign="top" style="border-style: none">
+<a href="GCU_CAN_c.html" class="code2code">
+GCU_CAN.c
+</a>
+
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+575
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+780
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+02/16/2019  3:34 PM
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="33%" align="left" valign="top" style="border-style: none">
+<a href="GCU_CAN_h.html" class="code2code">
+GCU_CAN.h
+</a>
+
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+57
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+121
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+02/16/2019  3:34 PM
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="33%" align="left" valign="top" style="border-style: none">
+<a href="../../_sharedutils/html/rtwtypes_h.html" class="code2code">
+rtwtypes.h
+</a>
+
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+44
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+100
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+02/16/2019  3:33 PM
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="33%" align="left" valign="top" style="border-style: none">
+<a href="../../_sharedutils/html/rt_roundd_c.html" class="code2code">
+rt_roundd.c
+</a>
+
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+19
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+42
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+02/16/2019  3:33 PM
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="33%" align="left" valign="top" style="border-style: none">
+<a href="../../_sharedutils/html/rt_roundd_h.html" class="code2code">
+rt_roundd.h
+</a>
+
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+5
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+28
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+02/16/2019  3:33 PM
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+<h3 name="sec_Global_Variables" id="sec_Global_Variables">
+2. Global Variables <span title="Click to shrink or expand section" style="cursor:pointer;font-weight:normal;" id="rtwIdCodeMetrics_table_002_control" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, 'rtwIdCodeMetrics_table_002', false)"><span class="shrink-button">[<u>hide</u>]</span></span>
+</h3>
+<table width="100%" name="rtwIdCodeMetrics_table_002" id="rtwIdCodeMetrics_table_002" border="0">
+<tr>
+<td align="left" valign="top">
+Global variables defined in the generated code.
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" name="globalvarInfo_table" id="globalvarInfo_table" border="1">
+<tr style="background-color: #ffffff">
+<td width="100%" align="left" valign="top" style="border-style: none">
+<table class="treeTable" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="33%" align="left" valign="top" style="border-style: none">
+<b>
+<span title="Global variables sorted by the maximum size in bytes.">Global Variable</span>
+</b>
+
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+<b>
+<span title="Global variable size in bytes.">Size (bytes)</span>
+</b>
+
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+<b>
+<span title="Total number of potential reads and writes for this global variable">Reads / Writes</span>
+</b>
+
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+<b>
+<span title="Maximum number of potential reads and writes in a function">Reads / Writes in a Function</span>
+</b>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="33%" align="left" valign="top" style="border-style: none">
+<b>
+<b>Total</b>
+</b>
+
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+<b>
+<b>0</b>
+</b>
+
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+<b>
+<b>0<span style="font-family:Courier">&#160;</span></b>
+</b>
+
+</td>
+<td width="22%" align="right" valign="top" style="border-style: none">
+<b>
+ 
+</b>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+<h3 name="sec_Function_Information" id="sec_Function_Information">
+3. Function Information <span title="Click to shrink or expand section" style="cursor:pointer;font-weight:normal;" id="rtwIdCodeMetrics_table_054_control" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, 'rtwIdCodeMetrics_table_054', false)"><span class="shrink-button">[<u>hide</u>]</span></span>
+</h3>
+<table width="100%" name="rtwIdCodeMetrics_table_054" id="rtwIdCodeMetrics_table_054" border="0">
+<tr>
+<td align="left" valign="top">
+View function metrics in a call tree format or table format. Accumulated stack numbers include the estimated stack size of the function plus the maximum of the accumulated stack size of the subroutines that the function calls.
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" name="fcnInfo_calltree" id="fcnInfo_calltree" border="0">
+<tr>
+<td align="left" valign="top">
+View:Call Tree | <a href="javascript:if (rtwSwitchView) rtwSwitchView(window.document,'fcnInfo_calltree', 'fcnInfo_table')" title="List of functions in alphabetical order. The second column includes the callers of the functions.">
+Table
+</a>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" border="1">
+<tr style="background-color: #ffffff">
+<td width="100%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="0" cellspacing="0" class="treeTable" id="fcnTreeView" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<b>
+<span title="Function name sorted by the maximum accumulated stack size.">Function Name</span>
+</b>
+
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<b>
+<span title="Estimated stack size of the function plus the maximum of the accumulated stack size of its subroutines.">Accumulated Stack Size (bytes)</span>
+</b>
+
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<b>
+<span title="Size of local variables in the function.">Self Stack Size (bytes)</span>
+</b>
+
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<b>
+<span title="Lines of code excluding comments and blank lines.">Lines of Code</span>
+</b>
+
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<b>
+<span style="white-space:nowrap" title="Lines including source code, comments, and blank lines.">Lines</span>
+</b>
+
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<b>
+<span style="white-space:nowrap" title="Cyclomatic complexity">Complexity</span>
+</b>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="border-style: none" width="100%" cellpadding="0" cellspacing="0" name="" id="" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap"><span name="button_3" id="button_3" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, '3', true)"><span class="shrink-button">[+]</span></span>&#160;<b><a href="GCU_CAN_c.html#fcn_GCU_CAN" title="GCU_CAN" class="code2code">
+GCU_CAN
+</a>
+</b></span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+18
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+9
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+242
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+327
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+59
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="3" id="3" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;<span name="button_4" id="button_4" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, '4', true)"><span class="shrink-button">[+]</span></span>&#160;<a href="GCU_CAN_c.html#fcn_GCU_CAN_AAC_COM" title="GCU_CAN_AAC_COM is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_AAC_COM
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+9
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+1
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+46
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+67
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+11
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="4" id="4" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span name="button_5" id="button_5" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, '5', true)"><span class="shrink-button">[+]</span></span>&#160;<a href="GCU_CAN_c.html#fcn_GCU_CAN_sendShiftCommand" title="GCU_CAN_sendShiftCommand is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_sendShiftCommand
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+8
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+14
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+20
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="5" id="5" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="GCU_CAN_c.html#fcn_GCU_CAN_sendAacCommand" title="GCU_CAN_sendAacCommand is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_sendAacCommand
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+11
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+16
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+3
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="4" id="4" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span name="button_7" id="button_7" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, '7', true)"><span class="shrink-button">[+]</span></span>&#160;<a href="../../_sharedutils/html/rt_roundd_c.html#fcn_rt_roundd" title="rt_roundd" class="code2code">
+rt_roundd
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+8
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+8
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+13
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+17
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="7" id="7" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<span>
+fabs
+</span>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<i title="Definition of this function is not found.">Not available</i>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="7" id="7" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<span>
+floor
+</span>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<i title="Definition of this function is not found.">Not available</i>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="7" id="7" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<span>
+ceil
+</span>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<i title="Definition of this function is not found.">Not available</i>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="4" id="4" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="GCU_CAN_c.html#fcn_GCU_CAN_sendStartEngCommand" title="GCU_CAN_sendStartEngCommand is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_sendStartEngCommand
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+10
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+14
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+3
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="4" id="4" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="GCU_CAN_c.html#fcn_GCU_CAN_sendAacCommand" title="GCU_CAN_sendAacCommand is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_sendAacCommand
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+11
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+16
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+3
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="4" id="4" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="GCU_CAN_c.html#fcn_GCU_CAN_sendClutchCommand" title="GCU_CAN_sendClutchCommand is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_sendClutchCommand
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+11
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+16
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+3
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="4" id="4" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="GCU_CAN_c.html#fcn_GCU_CAN_AAC_ExternalValues" title="GCU_CAN_AAC_ExternalValues" class="code2code">
+GCU_CAN_AAC_ExternalValues
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+7
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+16
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="4" id="4" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="GCU_CAN_c.html#fcn_GCU_CAN_TractionValue" title="GCU_CAN_TractionValue" class="code2code">
+GCU_CAN_TractionValue
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+3
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+12
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="3" id="3" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;<span name="button_16" id="button_16" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, '16', true)"><span class="shrink-button">[+]</span></span>&#160;<a href="GCU_CAN_c.html#fcn_GCU_CAN_GEAR_RPM_UPDATE" title="GCU_CAN_GEAR_RPM_UPDATE is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_GEAR_RPM_UPDATE
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+9
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+1
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+47
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+68
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+11
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="16" id="16" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span name="button_17" id="button_17" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, '17', true)"><span class="shrink-button">[+]</span></span>&#160;<a href="GCU_CAN_c.html#fcn_GCU_CAN_sendShiftCommand" title="GCU_CAN_sendShiftCommand is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_sendShiftCommand
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+8
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+14
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+20
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="17" id="17" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="GCU_CAN_c.html#fcn_GCU_CAN_sendAacCommand" title="GCU_CAN_sendAacCommand is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_sendAacCommand
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+11
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+16
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+3
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="16" id="16" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span name="button_19" id="button_19" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, '19', true)"><span class="shrink-button">[+]</span></span>&#160;<a href="../../_sharedutils/html/rt_roundd_c.html#fcn_rt_roundd" title="rt_roundd" class="code2code">
+rt_roundd
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+8
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+8
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+13
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+17
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="19" id="19" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<span>
+fabs
+</span>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<i title="Definition of this function is not found.">Not available</i>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="19" id="19" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<span>
+floor
+</span>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<i title="Definition of this function is not found.">Not available</i>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="19" id="19" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<span>
+ceil
+</span>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<i title="Definition of this function is not found.">Not available</i>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="16" id="16" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="GCU_CAN_c.html#fcn_GCU_CAN_sendStartEngCommand" title="GCU_CAN_sendStartEngCommand is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_sendStartEngCommand
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+10
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+14
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+3
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="16" id="16" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="GCU_CAN_c.html#fcn_GCU_CAN_sendAacCommand" title="GCU_CAN_sendAacCommand is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_sendAacCommand
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+11
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+16
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+3
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="16" id="16" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="GCU_CAN_c.html#fcn_GCU_CAN_sendClutchCommand" title="GCU_CAN_sendClutchCommand is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_sendClutchCommand
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+11
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+16
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+3
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="16" id="16" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="GCU_CAN_c.html#fcn_GCU_CAN_AAC_ExternalValues" title="GCU_CAN_AAC_ExternalValues" class="code2code">
+GCU_CAN_AAC_ExternalValues
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+7
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+16
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="16" id="16" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="GCU_CAN_c.html#fcn_GCU_CAN_TractionValue" title="GCU_CAN_TractionValue" class="code2code">
+GCU_CAN_TractionValue
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+3
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+12
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="3" id="3" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;<span name="button_28" id="button_28" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, '28', true)"><span class="shrink-button">[+]</span></span>&#160;<a href="GCU_CAN_c.html#fcn_GCU_CAN_WHEEL_SPEED_UPDATE" title="GCU_CAN_WHEEL_SPEED_UPDATE is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_WHEEL_SPEED_UPDATE
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+9
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+1
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+47
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+68
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+11
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="28" id="28" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span name="button_29" id="button_29" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, '29', true)"><span class="shrink-button">[+]</span></span>&#160;<a href="GCU_CAN_c.html#fcn_GCU_CAN_sendShiftCommand" title="GCU_CAN_sendShiftCommand is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_sendShiftCommand
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+8
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+14
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+20
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="29" id="29" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="GCU_CAN_c.html#fcn_GCU_CAN_sendAacCommand" title="GCU_CAN_sendAacCommand is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_sendAacCommand
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+11
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+16
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+3
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="28" id="28" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span name="button_31" id="button_31" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, '31', true)"><span class="shrink-button">[+]</span></span>&#160;<a href="../../_sharedutils/html/rt_roundd_c.html#fcn_rt_roundd" title="rt_roundd" class="code2code">
+rt_roundd
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+8
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+8
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+13
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+17
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="31" id="31" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<span>
+fabs
+</span>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<i title="Definition of this function is not found.">Not available</i>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="31" id="31" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<span>
+floor
+</span>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<i title="Definition of this function is not found.">Not available</i>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="31" id="31" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<span>
+ceil
+</span>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<i title="Definition of this function is not found.">Not available</i>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="28" id="28" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="GCU_CAN_c.html#fcn_GCU_CAN_sendStartEngCommand" title="GCU_CAN_sendStartEngCommand is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_sendStartEngCommand
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+10
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+14
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+3
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="28" id="28" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="GCU_CAN_c.html#fcn_GCU_CAN_sendAacCommand" title="GCU_CAN_sendAacCommand is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_sendAacCommand
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+11
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+16
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+3
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="28" id="28" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="GCU_CAN_c.html#fcn_GCU_CAN_sendClutchCommand" title="GCU_CAN_sendClutchCommand is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_sendClutchCommand
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+11
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+16
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+3
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="28" id="28" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="GCU_CAN_c.html#fcn_GCU_CAN_AAC_ExternalValues" title="GCU_CAN_AAC_ExternalValues" class="code2code">
+GCU_CAN_AAC_ExternalValues
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+7
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+16
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="28" id="28" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="GCU_CAN_c.html#fcn_GCU_CAN_TractionValue" title="GCU_CAN_TractionValue" class="code2code">
+GCU_CAN_TractionValue
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+3
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+12
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="3" id="3" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;<span name="button_40" id="button_40" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, '40', true)"><span class="shrink-button">[+]</span></span>&#160;<a href="GCU_CAN_c.html#fcn_GCU_CAN_sendShiftCommand" title="GCU_CAN_sendShiftCommand is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_sendShiftCommand
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+8
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+14
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+20
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="40" id="40" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="GCU_CAN_c.html#fcn_GCU_CAN_sendAacCommand" title="GCU_CAN_sendAacCommand is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_sendAacCommand
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+11
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+16
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+3
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="3" id="3" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;<span name="button_42" id="button_42" title="Click to shrink or expand tree" style="cursor:pointer;font-family:monospace;font-weight:normal;" onclick ="if (rtwTableShrink) rtwTableShrink(window.document, this, '42', true)"><span class="shrink-button">[+]</span></span>&#160;<a href="../../_sharedutils/html/rt_roundd_c.html#fcn_rt_roundd" title="rt_roundd" class="code2code">
+rt_roundd
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+8
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+8
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+13
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+17
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="42" id="42" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<span>
+fabs
+</span>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<i title="Definition of this function is not found.">Not available</i>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="42" id="42" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<span>
+floor
+</span>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<i title="Definition of this function is not found.">Not available</i>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="42" id="42" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<span>
+ceil
+</span>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<i title="Definition of this function is not found.">Not available</i>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="3" id="3" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="GCU_CAN_c.html#fcn_GCU_CAN_sendStartEngCommand" title="GCU_CAN_sendStartEngCommand is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_sendStartEngCommand
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+10
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+14
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+3
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="3" id="3" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="GCU_CAN_c.html#fcn_GCU_CAN_sendAacCommand" title="GCU_CAN_sendAacCommand is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_sendAacCommand
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+11
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+16
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+3
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="3" id="3" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="GCU_CAN_c.html#fcn_GCU_CAN_sendClutchCommand" title="GCU_CAN_sendClutchCommand is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_sendClutchCommand
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+11
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+16
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+3
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="3" id="3" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<span>
+UnpackCanUART_Outputs_wrapper
+</span>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+<i title="Definition of this function is not found.">Not available</i>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+-
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="3" id="3" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="GCU_CAN_c.html#fcn_GCU_CAN_AAC_ExternalValues" title="GCU_CAN_AAC_ExternalValues" class="code2code">
+GCU_CAN_AAC_ExternalValues
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+7
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+16
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="display: none; border-style: none" width="100%" cellpadding="0" cellspacing="0" name="3" id="3" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;&#160;&#160;&#160;&#160;&#160;&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<a href="GCU_CAN_c.html#fcn_GCU_CAN_TractionValue" title="GCU_CAN_TractionValue" class="code2code">
+GCU_CAN_TractionValue
+</a>
+</span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+3
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+12
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="border-style: none" width="100%" cellpadding="0" cellspacing="0" name="" id="" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #eeeeff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<b><a href="GCU_CAN_c.html#fcn_GCU_CAN_Init" title="GCU_CAN_Init" class="code2code">
+GCU_CAN_Init
+</a>
+</b></span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+6
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+11
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table style="border-style: none" width="100%" cellpadding="0" cellspacing="0" name="" id="" border="0">
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" border="0">
+<tr style="background-color: #ffffff">
+<td width="37%" align="left" valign="top" style="border-style: none">
+<span style="white-space:nowrap">&#160;<span style="font-family:monospace">&#160;&#160;</span>&#160;&#160;<b><a href="GCU_CAN_c.html#fcn_GCU_CAN_initialize" title="GCU_CAN_initialize" class="code2code">
+GCU_CAN_initialize
+</a>
+</b></span>
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+1
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+8
+</td>
+<td width="12%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="0" cellspacing="0" name="fcnInfo_table" id="fcnInfo_table" style="display: none" border="0">
+<tr>
+<td align="left" valign="top">
+View: <a href="javascript:if (rtwSwitchView) rtwSwitchView(window.document,'fcnInfo_table', 'fcnInfo_calltree')" title="Browse call graph in a call tree format.">
+Call Tree
+</a>
+ | Table
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<table width="100%" cellpadding="2" class="treeTable" id="fcnTableView" border="1">
+<tr style="background-color: #eeeeff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<b>
+<span title="Function name sorted alphabetically">Function Name</span>
+</b>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<b>
+<span title="List of functions calling the function in the corresponding first column. The number of call sites is included in parentheses.">Called By (number of call sites)</span>
+</b>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+<b>
+<span title="Estimated stack size of the function plus the maximum of the accumulated stack size of its subroutines.">Accumulated Stack Size (bytes)</span>
+</b>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+<b>
+<span title="Size of local variables in the function.">Self Stack Size (bytes)</span>
+</b>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+<b>
+<span title="Lines of code excluding comments and blank lines.">Lines of Code</span>
+</b>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+<b>
+<span style="white-space:nowrap" title="Lines including source code, comments, and blank lines.">Lines</span>
+</b>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+<b>
+<span style="white-space:nowrap" title="Cyclomatic complexity">Complexity</span>
+</b>
+
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="GCU_CAN_c.html#fcn_GCU_CAN" title="GCU_CAN" class="code2code">
+GCU_CAN
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+&#160;
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+18
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+9
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+242
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+327
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+59
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="GCU_CAN_c.html#fcn_GCU_CAN_AAC_COM" title="GCU_CAN_AAC_COM is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_AAC_COM
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="GCU_CAN has one call site of GCU_CAN.c:GCU_CAN_AAC_COM."><a href="GCU_CAN_c.html#fcn_GCU_CAN" title="GCU_CAN" class="code2code">
+GCU_CAN
+</a>
+</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+9
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+1
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+46
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+67
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+11
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="GCU_CAN_c.html#fcn_GCU_CAN_GEAR_RPM_UPDATE" title="GCU_CAN_GEAR_RPM_UPDATE is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_GEAR_RPM_UPDATE
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="GCU_CAN has one call site of GCU_CAN.c:GCU_CAN_GEAR_RPM_UPDATE."><a href="GCU_CAN_c.html#fcn_GCU_CAN" title="GCU_CAN" class="code2code">
+GCU_CAN
+</a>
+</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+9
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+1
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+47
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+68
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+11
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="GCU_CAN_c.html#fcn_GCU_CAN_WHEEL_SPEED_UPDATE" title="GCU_CAN_WHEEL_SPEED_UPDATE is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_WHEEL_SPEED_UPDATE
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="GCU_CAN has one call site of GCU_CAN.c:GCU_CAN_WHEEL_SPEED_UPDATE."><a href="GCU_CAN_c.html#fcn_GCU_CAN" title="GCU_CAN" class="code2code">
+GCU_CAN
+</a>
+</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+9
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+1
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+47
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+68
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+11
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="GCU_CAN_c.html#fcn_GCU_CAN_sendAacCommand" title="GCU_CAN_sendAacCommand is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_sendAacCommand
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="GCU_CAN has 10 call sites of GCU_CAN.c:GCU_CAN_sendAacCommand."><a href="GCU_CAN_c.html#fcn_GCU_CAN" title="GCU_CAN" class="code2code">
+GCU_CAN
+</a>
+ (10)</span>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="GCU_CAN.c:GCU_CAN_sendShiftCommand has one call site of GCU_CAN.c:GCU_CAN_sendAacCommand."><a href="GCU_CAN_c.html#fcn_GCU_CAN_sendShiftCommand" title="GCU_CAN_sendShiftCommand is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_sendShiftCommand
+</a>
+</span>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="GCU_CAN.c:GCU_CAN_WHEEL_SPEED_UPDATE has 2 call sites of GCU_CAN.c:GCU_CAN_sendAacCommand."><a href="GCU_CAN_c.html#fcn_GCU_CAN_WHEEL_SPEED_UPDATE" title="GCU_CAN_WHEEL_SPEED_UPDATE is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_WHEEL_SPEED_UPDATE
+</a>
+ (2)</span>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="GCU_CAN.c:GCU_CAN_AAC_COM has 2 call sites of GCU_CAN.c:GCU_CAN_sendAacCommand."><a href="GCU_CAN_c.html#fcn_GCU_CAN_AAC_COM" title="GCU_CAN_AAC_COM is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_AAC_COM
+</a>
+ (2)</span>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="GCU_CAN.c:GCU_CAN_GEAR_RPM_UPDATE has 2 call sites of GCU_CAN.c:GCU_CAN_sendAacCommand."><a href="GCU_CAN_c.html#fcn_GCU_CAN_GEAR_RPM_UPDATE" title="GCU_CAN_GEAR_RPM_UPDATE is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_GEAR_RPM_UPDATE
+</a>
+ (2)</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+11
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+16
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+3
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="GCU_CAN_c.html#fcn_GCU_CAN_sendClutchCommand" title="GCU_CAN_sendClutchCommand is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_sendClutchCommand
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="GCU_CAN has 10 call sites of GCU_CAN.c:GCU_CAN_sendClutchCommand."><a href="GCU_CAN_c.html#fcn_GCU_CAN" title="GCU_CAN" class="code2code">
+GCU_CAN
+</a>
+ (10)</span>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="GCU_CAN.c:GCU_CAN_WHEEL_SPEED_UPDATE has 2 call sites of GCU_CAN.c:GCU_CAN_sendClutchCommand."><a href="GCU_CAN_c.html#fcn_GCU_CAN_WHEEL_SPEED_UPDATE" title="GCU_CAN_WHEEL_SPEED_UPDATE is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_WHEEL_SPEED_UPDATE
+</a>
+ (2)</span>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="GCU_CAN.c:GCU_CAN_AAC_COM has 2 call sites of GCU_CAN.c:GCU_CAN_sendClutchCommand."><a href="GCU_CAN_c.html#fcn_GCU_CAN_AAC_COM" title="GCU_CAN_AAC_COM is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_AAC_COM
+</a>
+ (2)</span>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="GCU_CAN.c:GCU_CAN_GEAR_RPM_UPDATE has 2 call sites of GCU_CAN.c:GCU_CAN_sendClutchCommand."><a href="GCU_CAN_c.html#fcn_GCU_CAN_GEAR_RPM_UPDATE" title="GCU_CAN_GEAR_RPM_UPDATE is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_GEAR_RPM_UPDATE
+</a>
+ (2)</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+11
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+16
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+3
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="GCU_CAN_c.html#fcn_GCU_CAN_sendShiftCommand" title="GCU_CAN_sendShiftCommand is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_sendShiftCommand
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="GCU_CAN has 5 call sites of GCU_CAN.c:GCU_CAN_sendShiftCommand."><a href="GCU_CAN_c.html#fcn_GCU_CAN" title="GCU_CAN" class="code2code">
+GCU_CAN
+</a>
+ (5)</span>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="GCU_CAN.c:GCU_CAN_WHEEL_SPEED_UPDATE has one call site of GCU_CAN.c:GCU_CAN_sendShiftCommand."><a href="GCU_CAN_c.html#fcn_GCU_CAN_WHEEL_SPEED_UPDATE" title="GCU_CAN_WHEEL_SPEED_UPDATE is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_WHEEL_SPEED_UPDATE
+</a>
+</span>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="GCU_CAN.c:GCU_CAN_AAC_COM has one call site of GCU_CAN.c:GCU_CAN_sendShiftCommand."><a href="GCU_CAN_c.html#fcn_GCU_CAN_AAC_COM" title="GCU_CAN_AAC_COM is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_AAC_COM
+</a>
+</span>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="GCU_CAN.c:GCU_CAN_GEAR_RPM_UPDATE has one call site of GCU_CAN.c:GCU_CAN_sendShiftCommand."><a href="GCU_CAN_c.html#fcn_GCU_CAN_GEAR_RPM_UPDATE" title="GCU_CAN_GEAR_RPM_UPDATE is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_GEAR_RPM_UPDATE
+</a>
+</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+8
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+14
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+20
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+4
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="GCU_CAN_c.html#fcn_GCU_CAN_sendStartEngCommand" title="GCU_CAN_sendStartEngCommand is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_sendStartEngCommand
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="GCU_CAN has 5 call sites of GCU_CAN.c:GCU_CAN_sendStartEngCommand."><a href="GCU_CAN_c.html#fcn_GCU_CAN" title="GCU_CAN" class="code2code">
+GCU_CAN
+</a>
+ (5)</span>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="GCU_CAN.c:GCU_CAN_WHEEL_SPEED_UPDATE has one call site of GCU_CAN.c:GCU_CAN_sendStartEngCommand."><a href="GCU_CAN_c.html#fcn_GCU_CAN_WHEEL_SPEED_UPDATE" title="GCU_CAN_WHEEL_SPEED_UPDATE is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_WHEEL_SPEED_UPDATE
+</a>
+</span>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="GCU_CAN.c:GCU_CAN_AAC_COM has one call site of GCU_CAN.c:GCU_CAN_sendStartEngCommand."><a href="GCU_CAN_c.html#fcn_GCU_CAN_AAC_COM" title="GCU_CAN_AAC_COM is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_AAC_COM
+</a>
+</span>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="GCU_CAN.c:GCU_CAN_GEAR_RPM_UPDATE has one call site of GCU_CAN.c:GCU_CAN_sendStartEngCommand."><a href="GCU_CAN_c.html#fcn_GCU_CAN_GEAR_RPM_UPDATE" title="GCU_CAN_GEAR_RPM_UPDATE is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_GEAR_RPM_UPDATE
+</a>
+</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+4
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+10
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+14
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+3
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="GCU_CAN_c.html#fcn_GCU_CAN_AAC_ExternalValues" title="GCU_CAN_AAC_ExternalValues" class="code2code">
+GCU_CAN_AAC_ExternalValues
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="GCU_CAN has 10 call sites of GCU_CAN_AAC_ExternalValues."><a href="GCU_CAN_c.html#fcn_GCU_CAN" title="GCU_CAN" class="code2code">
+GCU_CAN
+</a>
+ (10)</span>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="GCU_CAN.c:GCU_CAN_WHEEL_SPEED_UPDATE has 2 call sites of GCU_CAN_AAC_ExternalValues."><a href="GCU_CAN_c.html#fcn_GCU_CAN_WHEEL_SPEED_UPDATE" title="GCU_CAN_WHEEL_SPEED_UPDATE is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_WHEEL_SPEED_UPDATE
+</a>
+ (2)</span>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="GCU_CAN.c:GCU_CAN_AAC_COM has 2 call sites of GCU_CAN_AAC_ExternalValues."><a href="GCU_CAN_c.html#fcn_GCU_CAN_AAC_COM" title="GCU_CAN_AAC_COM is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_AAC_COM
+</a>
+ (2)</span>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="GCU_CAN.c:GCU_CAN_GEAR_RPM_UPDATE has 2 call sites of GCU_CAN_AAC_ExternalValues."><a href="GCU_CAN_c.html#fcn_GCU_CAN_GEAR_RPM_UPDATE" title="GCU_CAN_GEAR_RPM_UPDATE is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_GEAR_RPM_UPDATE
+</a>
+ (2)</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+7
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+16
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="GCU_CAN_c.html#fcn_GCU_CAN_Init" title="GCU_CAN_Init" class="code2code">
+GCU_CAN_Init
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+&#160;
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+6
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+11
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="GCU_CAN_c.html#fcn_GCU_CAN_TractionValue" title="GCU_CAN_TractionValue" class="code2code">
+GCU_CAN_TractionValue
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="GCU_CAN has 5 call sites of GCU_CAN_TractionValue."><a href="GCU_CAN_c.html#fcn_GCU_CAN" title="GCU_CAN" class="code2code">
+GCU_CAN
+</a>
+ (5)</span>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="GCU_CAN.c:GCU_CAN_WHEEL_SPEED_UPDATE has one call site of GCU_CAN_TractionValue."><a href="GCU_CAN_c.html#fcn_GCU_CAN_WHEEL_SPEED_UPDATE" title="GCU_CAN_WHEEL_SPEED_UPDATE is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_WHEEL_SPEED_UPDATE
+</a>
+</span>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="GCU_CAN.c:GCU_CAN_AAC_COM has one call site of GCU_CAN_TractionValue."><a href="GCU_CAN_c.html#fcn_GCU_CAN_AAC_COM" title="GCU_CAN_AAC_COM is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_AAC_COM
+</a>
+</span>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="GCU_CAN.c:GCU_CAN_GEAR_RPM_UPDATE has one call site of GCU_CAN_TractionValue."><a href="GCU_CAN_c.html#fcn_GCU_CAN_GEAR_RPM_UPDATE" title="GCU_CAN_GEAR_RPM_UPDATE is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_GEAR_RPM_UPDATE
+</a>
+</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+3
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+12
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="GCU_CAN_c.html#fcn_GCU_CAN_initialize" title="GCU_CAN_initialize" class="code2code">
+GCU_CAN_initialize
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+&#160;
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+0
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+1
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+8
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+1
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+UnpackCanUART_Outputs_wrapper
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="GCU_CAN has one call site of UnpackCanUART_Outputs_wrapper."><a href="GCU_CAN_c.html#fcn_GCU_CAN" title="GCU_CAN" class="code2code">
+GCU_CAN
+</a>
+</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+<i title="Definition of this function is not found.">Not available</i>
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+ceil
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="rt_roundd has one call site of ceil."><a href="../../_sharedutils/html/rt_roundd_c.html#fcn_rt_roundd" title="rt_roundd" class="code2code">
+rt_roundd
+</a>
+</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+<i title="Definition of this function is not found.">Not available</i>
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+fabs
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="rt_roundd has one call site of fabs."><a href="../../_sharedutils/html/rt_roundd_c.html#fcn_rt_roundd" title="rt_roundd" class="code2code">
+rt_roundd
+</a>
+</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+<i title="Definition of this function is not found.">Not available</i>
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+
+</tr>
+<tr style="background-color: #eeeeff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+floor
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="rt_roundd has one call site of floor."><a href="../../_sharedutils/html/rt_roundd_c.html#fcn_rt_roundd" title="rt_roundd" class="code2code">
+rt_roundd
+</a>
+</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+<i title="Definition of this function is not found.">Not available</i>
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+-
+</td>
+
+</tr>
+<tr style="background-color: #ffffff">
+<td width="22%" align="left" valign="top" style="border-style: none">
+<a href="../../_sharedutils/html/rt_roundd_c.html#fcn_rt_roundd" title="rt_roundd" class="code2code">
+rt_roundd
+</a>
+
+</td>
+<td width="22%" align="left" valign="top" style="border-style: none">
+<table width="100%" cellpadding="1" cellspacing="0" border="0">
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="GCU_CAN has 5 call sites of rt_roundd."><a href="GCU_CAN_c.html#fcn_GCU_CAN" title="GCU_CAN" class="code2code">
+GCU_CAN
+</a>
+ (5)</span>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="GCU_CAN.c:GCU_CAN_WHEEL_SPEED_UPDATE has one call site of rt_roundd."><a href="GCU_CAN_c.html#fcn_GCU_CAN_WHEEL_SPEED_UPDATE" title="GCU_CAN_WHEEL_SPEED_UPDATE is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_WHEEL_SPEED_UPDATE
+</a>
+</span>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="GCU_CAN.c:GCU_CAN_AAC_COM has one call site of rt_roundd."><a href="GCU_CAN_c.html#fcn_GCU_CAN_AAC_COM" title="GCU_CAN_AAC_COM is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_AAC_COM
+</a>
+</span>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top">
+<span style="white-space:nowrap" title="GCU_CAN.c:GCU_CAN_GEAR_RPM_UPDATE has one call site of rt_roundd."><a href="GCU_CAN_c.html#fcn_GCU_CAN_GEAR_RPM_UPDATE" title="GCU_CAN_GEAR_RPM_UPDATE is a static function in GCU_CAN.c." class="code2code">
+GCU_CAN_GEAR_RPM_UPDATE
+</a>
+</span>
+</td>
+
+</tr>
+
+</table>
+
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+8
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+8
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+13
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+17
+</td>
+<td width="11%" align="right" valign="top" style="border-style: none">
+4
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</body>
+
+</html>

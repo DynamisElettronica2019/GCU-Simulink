@@ -1,0 +1,62 @@
+%implements "chartSource" "C"
+%function ChartConfig(block, system) void
+  %createrecord chartConfiguration { ...
+          executeAtInitialization  1 ...
+  }
+  %return chartConfiguration
+%endfunction
+%function ChartDataMap(block, system) void
+  %createrecord ChartDataElements {\
+    NumChartData   6 \
+    ChartDataDefaults {\
+      RecordType   "ChartData"\
+      Dimensions   []\
+      IsTestPoint  0\
+    }\
+    ChartData {\
+      Name         "is_c3_GCU_Model2"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "lastGearPin"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "lastGearPin"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "message"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "message"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "rpm"\
+      Description  "ChartLocal"\
+      SFName       "rpm"\
+      Path         "rpm"\
+      SrcLocation  ""\
+      IsTestPoint  1\
+    }\
+    ChartData {\
+      Name         "wheelSpeed"\
+      Description  "ChartLocal"\
+      SFName       "wheelSpeed"\
+      Path         "wheelSpeed"\
+      SrcLocation  ""\
+      IsTestPoint  1\
+    }\
+    ChartData {\
+      Name         "currGear"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "currGear"\
+      SrcLocation  ""\
+    }\
+  }
+  %return ChartDataElements
+%endfunction

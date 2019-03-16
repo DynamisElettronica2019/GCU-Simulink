@@ -1,0 +1,237 @@
+%implements "chartSource" "C"
+%function ChartConfig(block, system) void
+  %createrecord chartConfiguration { ...
+          executeAtInitialization  0 ...
+  }
+  %return chartConfiguration
+%endfunction
+%function ChartDataMap(block, system) void
+  %createrecord ChartDataElements {\
+    NumChartData   31 \
+    ChartDataDefaults {\
+      RecordType   "ChartData"\
+      Dimensions   []\
+      IsTestPoint  0\
+    }\
+    ChartData {\
+      Name         "sfEvent"\
+      Description  "ActiveChartEvent"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_active_c2_GCU_Model_genCode"\
+      Description  "StateIsActive"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_MODES"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "MODES"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_active_MODES"\
+      Description  "StateIsActive"\
+      SFName       ""\
+      Path         "MODES"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_AAC"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "MODES.AAC"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_ACTIVE"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "MODES.AAC.ACTIVE"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_NEUTRAL_STATE"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "NEUTRAL_STATE"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_active_NEUTRAL_STATE"\
+      Description  "StateIsActive"\
+      SFName       ""\
+      Path         "NEUTRAL_STATE"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_GEARSHIFT"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "GEARSHIFT"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_active_GEARSHIFT"\
+      Description  "StateIsActive"\
+      SFName       ""\
+      Path         "GEARSHIFT"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_UPSHIFTING"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "GEARSHIFT.UPSHIFTING"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_UP_REBOUND"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "GEARSHIFT.UPSHIFTING.UP_REBOUND"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_UP_PUSH"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "GEARSHIFT.UPSHIFTING.UP_PUSH"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_UP_START"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "GEARSHIFT.UPSHIFTING.UP_START"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_DOWNSHIFTING"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "GEARSHIFT.DOWNSHIFTING"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_DOWN_START"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "GEARSHIFT.DOWNSHIFTING.DOWN_START"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_DOWN_BRAKE"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "GEARSHIFT.DOWNSHIFTING.DOWN_BRAKE"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_START_ENGINE"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "START_ENGINE"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_active_START_ENGINE"\
+      Description  "StateIsActive"\
+      SFName       ""\
+      Path         "START_ENGINE"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "lastShift"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "lastShift"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "lastAacCom"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "MODES.lastAacCom"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "lastShiftCom"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "MODES.lastShiftCom"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "lastClutchCom"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "MODES.lastClutchCom"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "aac_parameters"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "MODES.AAC.aac_parameters"\
+      SrcLocation  ""\
+      Dimensions   [1,11]\
+    }\
+    ChartData {\
+      Name         "aacCounter"\
+      Description  "ChartLocal"\
+      SFName       "aacCounter"\
+      Path         "MODES.AAC.aacCounter"\
+      SrcLocation  ""\
+      IsTestPoint  1\
+    }\
+    ChartData {\
+      Name         "aac_clutchValue"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "MODES.AAC.aac_clutchValue"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "aac_clutchStep"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "MODES.AAC.aac_clutchStep"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "aac_dtRelease"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "MODES.AAC.aac_dtRelease"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "ticksCounter"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "GEARSHIFT.ticksCounter"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "lastCom"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "START_ENGINE.lastCom"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "startCounter"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "START_ENGINE.startCounter"\
+      SrcLocation  ""\
+    }\
+  }
+  %return ChartDataElements
+%endfunction
