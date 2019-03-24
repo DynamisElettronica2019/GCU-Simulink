@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.9
+ * Model version                  : 1.12
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Sun Feb 24 14:02:14 2019
+ * C/C++ source code generated on : Sun Mar 24 17:04:22 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -39,11 +39,13 @@
 void rt_OneStep(void);
 void rt_OneStep(void)
 {
-  static boolean_T OverrunFlags[2] = { 0, 0 };
+  static boolean_T OverrunFlags[3] = { 0, 0, 0 };
 
-  static boolean_T eventFlags[2] = { 0, 0 };/* Model has 2 rates */
+  static boolean_T eventFlags[3] = { 0, 0, 0 };/* Model has 3 rates */
 
-  static int_T taskCounter[2] = { 0, 0 };
+  static int_T taskCounter[3] = { 0, 0, 0 };
+
+  int_T i;
 
   /* Disable interrupts here */
 
@@ -63,22 +65,29 @@ void rt_OneStep(void)
    * following code checks whether any subrate overruns,
    * and also sets the rates that need to run this time step.
    */
-  if (taskCounter[1] == 0) {
-    if (eventFlags[1]) {
-      OverrunFlags[0] = false;
-      OverrunFlags[1] = true;
+  for (i = 1; i < 3; i++) {
+    if (taskCounter[i] == 0) {
+      if (eventFlags[i]) {
+        OverrunFlags[0] = false;
+        OverrunFlags[i] = true;
 
-      /* Sampling too fast */
-      rtmSetErrorStatus(rtM, "Overrun");
-      return;
+        /* Sampling too fast */
+        rtmSetErrorStatus(rtM, "Overrun");
+        return;
+      }
+
+      eventFlags[i] = true;
     }
-
-    eventFlags[1] = true;
   }
 
   taskCounter[1]++;
   if (taskCounter[1] == 10) {
     taskCounter[1]= 0;
+  }
+
+  taskCounter[2]++;
+  if (taskCounter[2] == 1000) {
+    taskCounter[2]= 0;
   }
 
   /* Set model inputs associated with base rate here */
@@ -91,25 +100,40 @@ void rt_OneStep(void)
   /* Indicate task for base rate complete */
   OverrunFlags[0] = false;
 
-  /* If task 1 is running, don't run any lower priority task */
-  if (OverrunFlags[1]) {
-    return;
-  }
+  /* Step the model for any subrate */
+  for (i = 1; i < 3; i++) {
+    /* If task "i" is running, don't run any lower priority task */
+    if (OverrunFlags[i]) {
+      return;
+    }
 
-  /* Step the model for subrate */
-  if (eventFlags[1]) {
-    OverrunFlags[1] = true;
+    if (eventFlags[i]) {
+      OverrunFlags[i] = true;
 
-    /* Set model inputs associated with subrates here */
+      /* Set model inputs associated with subrates here */
 
-    /* Step the model for subrate 1 */
-    GCU_Model_genCode_step1();
+      /* Step the model for subrate "i" */
+      switch (i) {
+       case 1 :
+        GCU_Model_genCode_step1();
 
-    /* Get model outputs here */
+        /* Get model outputs here */
+        break;
 
-    /* Indicate task complete for subrate */
-    OverrunFlags[1] = false;
-    eventFlags[1] = false;
+       case 2 :
+        GCU_Model_genCode_step2();
+
+        /* Get model outputs here */
+        break;
+
+       default :
+        break;
+      }
+
+      /* Indicate task complete for sample time "i" */
+      OverrunFlags[i] = false;
+      eventFlags[i] = false;
+    }
   }
 
   /* Disable interrupts here */

@@ -25,3 +25,5 @@ cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/EngineControl Library/stop
 
 cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/CAN Library/Unpack Builder','Hidden'});
 cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/CAN Library/Pack Builder','Hidden'});
+
+cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/Uart Library/SendUART Builder','Hidden'});
