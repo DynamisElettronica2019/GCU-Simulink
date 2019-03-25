@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.12
+ * Model version                  : 1.25
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Sun Mar 24 17:04:22 2019
+ * C/C++ source code generated on : Mon Mar 25 16:39:13 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -176,20 +176,22 @@ typedef struct {
   real_T aac_clutchValue;              /* '<S4>/GCULogic' */
   real_T aac_clutchStep;               /* '<S4>/GCULogic' */
   real_T message;                      /* '<Root>/AccelerationRoutine' */
+  real_T count;                        /* '<Root>/AccelerationRoutine' */
   int32_T aac_parameters[11];          /* '<S4>/GCULogic' */
   int32_T sfEvent;                     /* '<S4>/GCULogic' */
   int32_T aac_dtRelease;               /* '<S4>/GCULogic' */
   int32_T ticksCounter;                /* '<S4>/GCULogic' */
-  uint32_T TmpRTBAtDebugInport1;       /* '<Root>/GCU_timer' */
-  uint32_T alive;                      /* '<S4>/GCULogic' */
+  uint32_T RateTransition9;            /* '<Root>/Rate Transition9' */
   uint16_T RateTransition1[3];         /* '<Root>/Rate Transition1' */
   uint16_T RateTransition2[2];         /* '<Root>/Rate Transition2' */
   uint16_T RateTransition4[2];         /* '<Root>/Rate Transition4' */
   uint16_T RateTransition8[2];         /* '<Root>/Rate Transition8' */
+  uint16_T RateTransition11[3];        /* '<Root>/Rate Transition11' */
   uint16_T shiftCommand[2];            /* '<S3>/MessageEvaluation' */
   uint16_T aacCommand[2];              /* '<S3>/MessageEvaluation' */
   uint16_T modeCommand[2];             /* '<S3>/MessageEvaluation' */
   uint16_T Assignment[3];              /* '<S7>/Assignment' */
+  uint16_T TmpSignalConversionAtPack_Uart_[10];
   volatile uint16_T RateTransition1_Buffer[6];/* '<Root>/Rate Transition1' */
   volatile uint16_T RateTransition2_Buffer[4];/* '<Root>/Rate Transition2' */
   volatile uint16_T RateTransition4_Buffer[4];/* '<Root>/Rate Transition4' */
@@ -221,10 +223,13 @@ typedef struct {
   uint8_T RateTransition5[2];          /* '<Root>/Rate Transition5' */
   uint8_T PackCanUart[10];             /* '<Root>/PackCanUart' */
   uint8_T clutchCommand[2];            /* '<S3>/MessageEvaluation' */
+  uint8_T Pack_Uart_Message1[20];      /* '<S2>/Pack_Uart_Message1' */
   volatile uint8_T RateTransition5_Buffer[4];/* '<Root>/Rate Transition5' */
+  uint8_T RateTransition;              /* '<Root>/Rate Transition' */
   uint8_T RateTransition3;             /* '<Root>/Rate Transition3' */
   uint8_T RateTransition7;             /* '<Root>/Rate Transition7' */
   uint8_T RateTransition6;             /* '<Root>/Rate Transition6' */
+  uint8_T RateTransition10;            /* '<Root>/Rate Transition10' */
   uint8_T RateTransition_c;            /* '<S6>/Rate Transition' */
   uint8_T Merge2;                      /* '<S16>/Merge2' */
   uint8_T Pin_H;                       /* '<S19>/Pin_H' */
@@ -237,7 +242,6 @@ typedef struct {
   uint8_T GearMotorRelease;            /* '<S31>/GearMotor Release' */
   uint8_T Minus;                       /* '<S21>/Minus' */
   uint8_T startEngCommand;             /* '<S3>/MessageEvaluation' */
-  uint8_T Cast;                        /* '<S2>/Cast' */
   volatile uint8_T RateTransition_Buffer0;/* '<Root>/Rate Transition' */
   volatile uint8_T RateTransition3_Buffer0;/* '<Root>/Rate Transition3' */
   uint8_T RateTransition_Buffer0_g;    /* '<S6>/Rate Transition' */
@@ -288,7 +292,7 @@ typedef struct {
    *   '<S14>/GCU_FEEDBACK_ID'
    *   '<S29>/GCU_FEEDBACK_ID'
    */
-  uint16_T pooled1;
+  uint16_T pooled2;
 
   /* Computed Parameter: TRACTION_CODE_Value
    * Referenced by: '<S10>/TRACTION_CODE'
@@ -298,7 +302,10 @@ typedef struct {
 
 /* External outputs (root outports fed by signals with default storage) */
 typedef struct {
-  uint8_T currGear;                    /* '<Root>/currGear' */
+  uint8_T Outport;                     /* '<Root>/Outport' */
+  uint16_T Outport1;                   /* '<Root>/Outport1' */
+  uint32_T Outport2;                   /* '<Root>/Outport2' */
+  uint16_T debugValues[10];            /* '<Root>/debugValues  ' */
 } ExtY;
 
 /* Real-time Model Data Structure */
@@ -314,6 +321,7 @@ struct tag_RTM {
     struct {
       uint16_T TID0_1;
       uint16_T TID0_2;
+      uint16_T TID1_2;
     } RateInteraction;
   } Timing;
 };
