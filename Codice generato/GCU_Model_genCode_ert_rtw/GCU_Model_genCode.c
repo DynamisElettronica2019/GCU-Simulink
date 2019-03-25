@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.25
+ * Model version                  : 1.33
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Mon Mar 25 16:39:13 2019
+ * C/C++ source code generated on : Mon Mar 25 21:05:41 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -2325,9 +2325,9 @@ void GCU_Model_genCode_step0(void)     /* Sample time: [0.001s, 0.0s] */
   }
 
   /* Update the flag to indicate when data transfers from
-   *  Sample time: [0.001s, 0.0s] to Sample time: [1.0s, 0.0s]  */
+   *  Sample time: [0.001s, 0.0s] to Sample time: [0.02s, 0.0s]  */
   (rtM->Timing.RateInteraction.TID0_2)++;
-  if ((rtM->Timing.RateInteraction.TID0_2) > 999) {
+  if ((rtM->Timing.RateInteraction.TID0_2) > 19) {
     rtM->Timing.RateInteraction.TID0_2 = 0;
   }
 
@@ -2509,9 +2509,9 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.01s, 0.0s] */
   int32_T tmp;
 
   /* Update the flag to indicate when data transfers from
-   *  Sample time: [0.01s, 0.0s] to Sample time: [1.0s, 0.0s]  */
+   *  Sample time: [0.01s, 0.0s] to Sample time: [0.02s, 0.0s]  */
   (rtM->Timing.RateInteraction.TID1_2)++;
-  if ((rtM->Timing.RateInteraction.TID1_2) > 99) {
+  if ((rtM->Timing.RateInteraction.TID1_2) > 1) {
     rtM->Timing.RateInteraction.TID1_2 = 0;
   }
 
@@ -2527,13 +2527,7 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.01s, 0.0s] */
     break;
 
    case IN_DajeDeGas:
-    if (rtDW.currGear_m == 5) {
-      rtDW.is_c3_GCU_Model_genCode = IN_EXIT;
-      rtDW.id = 513U;
-      rtDW.firstInt = 25600U;
-    } else {
-      updateData();
-    }
+    updateData();
     break;
 
    case IN_EXIT:
@@ -2906,26 +2900,38 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.01s, 0.0s] */
   /* End of Chart: '<S3>/MessageEvaluation' */
   /* End of Outputs for SubSystem: '<Root>/GCU_CAN' */
 
-  /* DataTypeConversion: '<Root>/Cast' */
-  clutchSetVal = (uint8_T)rtDW.currGear;
-
-  /* RateTransition: '<Root>/Rate Transition11' incorporates:
-   *  RateTransition: '<Root>/Rate Transition10'
-   */
+  /* RateTransition: '<Root>/Rate Transition11' */
   if (rtM->Timing.RateInteraction.TID1_2 == 1) {
     rtDW.RateTransition11[0] = rtDW.Assignment[0];
     rtDW.RateTransition11[1] = rtDW.Assignment[1];
     rtDW.RateTransition11[2] = rtDW.Assignment[2];
-    rtDW.RateTransition10 = clutchSetVal;
   }
 
   /* End of RateTransition: '<Root>/Rate Transition11' */
+
+  /* Outport: '<Root>/Outport3' */
+  rtY.Outport3[0] = rtDW.Assignment[0];
+  rtY.Outport3[1] = rtDW.Assignment[1];
+  rtY.Outport3[2] = rtDW.Assignment[2];
+
+  /* DataTypeConversion: '<Root>/Cast' */
+  clutchSetVal = (uint8_T)rtDW.currGear;
+
+  /* RateTransition: '<Root>/Rate Transition10' */
+  if (rtM->Timing.RateInteraction.TID1_2 == 1) {
+    rtDW.RateTransition10 = clutchSetVal;
+  }
+
+  /* End of RateTransition: '<Root>/Rate Transition10' */
 
   /* DataTypeConversion: '<Root>/Cast1' */
   rtb_Cast1 = (uint8_T)rtDW.Assignment_e;
 
   /* Outport: '<Root>/Outport1' */
   rtY.Outport1 = rtDW.id;
+
+  /* Outport: '<Root>/Outport4' */
+  rtY.Outport4 = rtDW.firstInt;
 
   /* Update for RateTransition: '<Root>/Rate Transition' */
   rtDW.RateTransition_Buffer0 = clutchSetVal;
@@ -2980,11 +2986,11 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.01s, 0.0s] */
 }
 
 /* Model step function for TID2 */
-void GCU_Model_genCode_step2(void)     /* Sample time: [1.0s, 0.0s] */
+void GCU_Model_genCode_step2(void)     /* Sample time: [0.02s, 0.0s] */
 {
   uint16_T Cast;
 
-  /* S-Function (fcncallgen): '<Root>/Function-Call Generator1' incorporates:
+  /* S-Function (fcncallgen): '<Root>/Function_Call_Generator' incorporates:
    *  SubSystem: '<Root>/Debug '
    */
   /* DataTypeConversion: '<S2>/Cast' */
@@ -3019,7 +3025,7 @@ void GCU_Model_genCode_step2(void)     /* Sample time: [1.0s, 0.0s] */
   /* S-Function (sendUART): '<S2>/SendUART' */
   sendUART_Outputs_wrapper(&rtDW.Pack_Uart_Message1[0]);
 
-  /* End of Outputs for S-Function (fcncallgen): '<Root>/Function-Call Generator1' */
+  /* End of Outputs for S-Function (fcncallgen): '<Root>/Function_Call_Generator' */
 
   /* Outport: '<Root>/debugValues  ' incorporates:
    *  DataTypeConversion: '<S2>/Cast1'
@@ -3034,7 +3040,7 @@ void GCU_Model_genCode_step2(void)     /* Sample time: [1.0s, 0.0s] */
    */
   rtY.debugValues[0] = Cast;
 
-  /* S-Function (fcncallgen): '<Root>/Function-Call Generator1' incorporates:
+  /* S-Function (fcncallgen): '<Root>/Function_Call_Generator' incorporates:
    *  SubSystem: '<Root>/Debug '
    */
   rtY.debugValues[1] = rtDW.RateTransition10;
@@ -3047,7 +3053,15 @@ void GCU_Model_genCode_step2(void)     /* Sample time: [1.0s, 0.0s] */
   rtY.debugValues[8] = 0U;
   rtY.debugValues[9] = 0U;
 
-  /* End of Outputs for S-Function (fcncallgen): '<Root>/Function-Call Generator1' */
+  /* End of Outputs for S-Function (fcncallgen): '<Root>/Function_Call_Generator' */
+
+  /* Outport: '<Root>/Outport5' */
+  rtY.Outport5[0] = rtDW.RateTransition11[0];
+  rtY.Outport5[1] = rtDW.RateTransition11[1];
+  rtY.Outport5[2] = rtDW.RateTransition11[2];
+
+  /* Outport: '<Root>/Outport6' */
+  rtY.Outport6 = rtDW.RateTransition11[1];
 }
 
 /* Model initialize function */

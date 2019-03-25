@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.25
+ * Model version                  : 1.33
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Mon Mar 25 16:39:13 2019
+ * C/C++ source code generated on : Mon Mar 25 21:05:41 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -306,6 +306,10 @@ typedef struct {
   uint16_T Outport1;                   /* '<Root>/Outport1' */
   uint32_T Outport2;                   /* '<Root>/Outport2' */
   uint16_T debugValues[10];            /* '<Root>/debugValues  ' */
+  uint16_T Outport3[3];                /* '<Root>/Outport3' */
+  uint16_T Outport4;                   /* '<Root>/Outport4' */
+  uint16_T Outport5[3];                /* '<Root>/Outport5' */
+  uint16_T Outport6;                   /* '<Root>/Outport6' */
 } ExtY;
 
 /* Real-time Model Data Structure */
@@ -319,9 +323,9 @@ struct tag_RTM {
    */
   struct {
     struct {
-      uint16_T TID0_1;
-      uint16_T TID0_2;
-      uint16_T TID1_2;
+      uint8_T TID0_1;
+      uint8_T TID0_2;
+      uint8_T TID1_2;
     } RateInteraction;
   } Timing;
 };
@@ -350,6 +354,8 @@ extern RT_MODEL *const rtM;
 /*-
  * These blocks were eliminated from the model due to optimizations:
  *
+ * Block '<S2>/Scope1' : Unused code path elimination
+ * Block '<Root>/Scope' : Unused code path elimination
  * Block '<Root>/RT' : Eliminated since input and output rates are identical
  */
 
