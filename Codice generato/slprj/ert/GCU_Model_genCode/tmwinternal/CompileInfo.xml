@@ -1,68 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MF0 version="1.1">
-  <ModelRefInfoRepo.ModelRefInfoRoot type="ModelRefInfoRepo.ModelRefInfoRoot" uuid="c55fb754-708c-4dc1-b458-91d8f767561c">
+  <ModelRefInfoRepo.ModelRefInfoRoot type="ModelRefInfoRepo.ModelRefInfoRoot" uuid="a842a04a-6845-4787-ae6f-50eaa08d547e">
     <dataTransferInfos>AAFJTQAAAAAOAAAAOAAAAAYAAAAIAAAAAgAAAAAAAAAFAAAACAAAAAAAAAABAAAAAQAAAAAAAAAFAAQAAQAAAAEAAAAAAAAA</dataTransferInfos>
     <defaultsCMapping>{&quot;Inports&quot;:&quot;{\&quot;Name\&quot;:\&quot;Default\&quot;,\&quot;Checksum\&quot;:\&quot;Default\&quot;,\&quot;PerInstancePropertiesChecksum\&quot;:\&quot;\&quot;,\&quot;MemorySectionName\&quot;:\&quot;None\&quot;,\&quot;MemorySectionChecksum\&quot;:\&quot;None\&quot;}&quot;,&quot;Outports&quot;:&quot;{\&quot;Name\&quot;:\&quot;Default\&quot;,\&quot;Checksum\&quot;:\&quot;Default\&quot;,\&quot;PerInstancePropertiesChecksum\&quot;:\&quot;\&quot;,\&quot;MemorySectionName\&quot;:\&quot;None\&quot;,\&quot;MemorySectionChecksum\&quot;:\&quot;None\&quot;}&quot;,&quot;GlobalParameters&quot;:&quot;{\&quot;Name\&quot;:\&quot;Default\&quot;,\&quot;Checksum\&quot;:\&quot;Default\&quot;,\&quot;PerInstancePropertiesChecksum\&quot;:\&quot;\&quot;,\&quot;MemorySectionName\&quot;:\&quot;None\&quot;,\&quot;MemorySectionChecksum\&quot;:\&quot;None\&quot;}&quot;,&quot;LocalParameters&quot;:&quot;{\&quot;Name\&quot;:\&quot;Default\&quot;,\&quot;Checksum\&quot;:\&quot;Default\&quot;,\&quot;PerInstancePropertiesChecksum\&quot;:\&quot;\&quot;,\&quot;MemorySectionName\&quot;:\&quot;None\&quot;,\&quot;MemorySectionChecksum\&quot;:\&quot;None\&quot;}&quot;,&quot;ParameterArguments&quot;:&quot;{\&quot;Name\&quot;:\&quot;Default\&quot;,\&quot;Checksum\&quot;:\&quot;Default\&quot;,\&quot;PerInstancePropertiesChecksum\&quot;:\&quot;\&quot;,\&quot;MemorySectionName\&quot;:\&quot;None\&quot;,\&quot;MemorySectionChecksum\&quot;:\&quot;None\&quot;}&quot;,&quot;SharedLocalDataStores&quot;:&quot;{\&quot;Name\&quot;:\&quot;Default\&quot;,\&quot;Checksum\&quot;:\&quot;Default\&quot;,\&quot;PerInstancePropertiesChecksum\&quot;:\&quot;\&quot;,\&quot;MemorySectionName\&quot;:\&quot;None\&quot;,\&quot;MemorySectionChecksum\&quot;:\&quot;None\&quot;}&quot;,&quot;GlobalDataStores&quot;:&quot;{\&quot;Name\&quot;:\&quot;Default\&quot;,\&quot;Checksum\&quot;:\&quot;Default\&quot;,\&quot;PerInstancePropertiesChecksum\&quot;:\&quot;\&quot;,\&quot;MemorySectionName\&quot;:\&quot;None\&quot;,\&quot;MemorySectionChecksum\&quot;:\&quot;None\&quot;}&quot;,&quot;InternalData&quot;:&quot;{\&quot;Name\&quot;:\&quot;Default\&quot;,\&quot;Checksum\&quot;:\&quot;Default\&quot;,\&quot;PerInstancePropertiesChecksum\&quot;:\&quot;\&quot;,\&quot;MemorySectionName\&quot;:\&quot;None\&quot;,\&quot;MemorySectionChecksum\&quot;:\&quot;None\&quot;}&quot;,&quot;Constants&quot;:&quot;{\&quot;Name\&quot;:\&quot;Default\&quot;,\&quot;Checksum\&quot;:\&quot;Default\&quot;,\&quot;PerInstancePropertiesChecksum\&quot;:\&quot;\&quot;,\&quot;MemorySectionName\&quot;:\&quot;None\&quot;,\&quot;MemorySectionChecksum\&quot;:\&quot;None\&quot;}&quot;,&quot;DataTransfers&quot;:&quot;{\&quot;Name\&quot;:\&quot;Default\&quot;,\&quot;Checksum\&quot;:\&quot;Default\&quot;,\&quot;PerInstancePropertiesChecksum\&quot;:\&quot;\&quot;,\&quot;MemorySectionName\&quot;:\&quot;None\&quot;,\&quot;MemorySectionChecksum\&quot;:\&quot;None\&quot;}&quot;,&quot;ModelData&quot;:&quot;{\&quot;Name\&quot;:\&quot;Default\&quot;,\&quot;Checksum\&quot;:\&quot;Default\&quot;,\&quot;PerInstancePropertiesChecksum\&quot;:\&quot;\&quot;,\&quot;MemorySectionName\&quot;:\&quot;None\&quot;,\&quot;MemorySectionChecksum\&quot;:\&quot;None\&quot;}&quot;,&quot;InitializeTerminate&quot;:&quot;{\&quot;Name\&quot;:\&quot;Default\&quot;,\&quot;Checksum\&quot;:\&quot;Default\&quot;,\&quot;PerInstancePropertiesChecksum\&quot;:\&quot;\&quot;,\&quot;MemorySectionName\&quot;:\&quot;None\&quot;,\&quot;MemorySectionChecksum\&quot;:\&quot;None\&quot;}&quot;,&quot;Execution&quot;:&quot;{\&quot;Name\&quot;:\&quot;Default\&quot;,\&quot;Checksum\&quot;:\&quot;Default\&quot;,\&quot;PerInstancePropertiesChecksum\&quot;:\&quot;\&quot;,\&quot;MemorySectionName\&quot;:\&quot;None\&quot;,\&quot;MemorySectionChecksum\&quot;:\&quot;None\&quot;}&quot;,&quot;SharedUtility&quot;:&quot;{\&quot;Name\&quot;:\&quot;Default\&quot;,\&quot;Checksum\&quot;:\&quot;Default\&quot;,\&quot;PerInstancePropertiesChecksum\&quot;:\&quot;\&quot;,\&quot;MemorySectionName\&quot;:\&quot;None\&quot;,\&quot;MemorySectionChecksum\&quot;:\&quot;None\&quot;}&quot;}</defaultsCMapping>
     <hasBwsAccessed>true</hasBwsAccessed>
     <hasBwsAccessedByAnyModel>true</hasBwsAccessedByAnyModel>
     <hasNonVirtualConstantTs>true</hasNonVirtualConstantTs>
-    <inportSignalObjects>AAFJTQAAAAAOAAAAKAAAAAYAAAAIAAAAAQAAAAAAAAAFAAAACAAAAAEAAAAAAAAAAQAAAAAAAAA=</inportSignalObjects>
-    <isInlineParamsOn>true</isInlineParamsOn>
-    <isOrigOutportVirtualBus>false</isOrigOutportVirtualBus>
-    <isOrigOutportVirtualBus>false</isOrigOutportVirtualBus>
-    <isOrigOutportVirtualBus>false</isOrigOutportVirtualBus>
-    <isOrigOutportVirtualBus>false</isOrigOutportVirtualBus>
-    <isOrigOutportVirtualBus>false</isOrigOutportVirtualBus>
-    <isOrigOutportVirtualBus>false</isOrigOutportVirtualBus>
-    <isOrigOutportVirtualBus>false</isOrigOutportVirtualBus>
-    <isOrigOutportVirtualBus>false</isOrigOutportVirtualBus>
-    <outportSignalObjects>AAFJTQAAAAAOAAAAaAAAAAYAAAAIAAAAAQAAAAAAAAAFAAAACAAAAAEAAAAIAAAAAQAAAAAAAAAOAAAAAAAAAA4AAAAAAAAADgAAAAAAAAAOAAAAAAAAAA4AAAAAAAAADgAAAAAAAAAOAAAAAAAAAA4AAAAAAAAA</outportSignalObjects>
-    <outports type="ModelRefInfoRepo.OutportInformation" uuid="9ff077a4-e4de-4421-807c-aa32aa83fc8f">
-      <sigNameToEMVCEMap type="ModelRefInfoRepo.SigNameEMVCEInfo" uuid="a9dee1da-be4a-4d1d-96ba-528734889562"/>
-    </outports>
-    <outports type="ModelRefInfoRepo.OutportInformation" uuid="9b0d0029-8a50-4ff6-9d2e-4c13afd5b8e8">
+    <inportSignalObjects>AAFJTQAAAAAOAAAAOAAAAAYAAAAIAAAAAQAAAAAAAAAFAAAACAAAAAEAAAACAAAAAQAAAAAAAAAOAAAAAAAAAA4AAAAAAAAA</inportSignalObjects>
+    <inports type="ModelRefInfoRepo.InportInformation" uuid="a4863a25-66f2-4481-ba7d-44b797b5b0bc">
+      <sigNameToEMVCEMap type="ModelRefInfoRepo.SigNameEMVCEInfo" uuid="9cad8673-cddd-4d9a-aa3d-c6e2cf05561a"/>
+    </inports>
+    <inports type="ModelRefInfoRepo.InportInformation" uuid="47996ad8-dfb2-45b0-9edf-3fba6ba13c19">
       <originalPortNumber>1</originalPortNumber>
-      <sigNameToEMVCEMap type="ModelRefInfoRepo.SigNameEMVCEInfo" uuid="d650c290-8c5d-45a9-937c-af40ea970f81"/>
-    </outports>
-    <outports type="ModelRefInfoRepo.OutportInformation" uuid="2373844b-9870-482e-8fd0-88b857c4735e">
-      <originalPortNumber>2</originalPortNumber>
-      <sigNameToEMVCEMap type="ModelRefInfoRepo.SigNameEMVCEInfo" uuid="cba33ec6-eaca-4251-82e4-4f9d299df8a8"/>
-    </outports>
-    <outports type="ModelRefInfoRepo.OutportInformation" uuid="4d05a063-7d08-423e-bf45-109cbd5dc059">
-      <originalPortNumber>3</originalPortNumber>
-      <sigNameToEMVCEMap type="ModelRefInfoRepo.SigNameEMVCEInfo" uuid="21f1f8dd-562e-4608-8dde-aae8e503dd89"/>
-    </outports>
-    <outports type="ModelRefInfoRepo.OutportInformation" uuid="33811b23-9107-4371-9676-a2e3c2e55d4b">
-      <originalPortNumber>4</originalPortNumber>
-      <sigNameToEMVCEMap type="ModelRefInfoRepo.SigNameEMVCEInfo" uuid="c7f0f9c2-1463-4e29-bdd0-2c88bf614137"/>
-    </outports>
-    <outports type="ModelRefInfoRepo.OutportInformation" uuid="95e60e38-3303-4e26-87e7-129c58edc469">
-      <originalPortNumber>5</originalPortNumber>
-      <sigNameToEMVCEMap type="ModelRefInfoRepo.SigNameEMVCEInfo" uuid="3630296e-4730-442c-8dab-d47962122356"/>
-    </outports>
-    <outports type="ModelRefInfoRepo.OutportInformation" uuid="4bc2c3dd-9f0d-4470-8415-5be2aa85a8a9">
-      <originalPortNumber>6</originalPortNumber>
-      <sigNameToEMVCEMap type="ModelRefInfoRepo.SigNameEMVCEInfo" uuid="74415382-86e7-49f3-b223-f57e4231cd3a"/>
-    </outports>
-    <outports type="ModelRefInfoRepo.OutportInformation" uuid="9ee32415-e3d1-4de5-a877-52c227fc4497">
-      <originalPortNumber>7</originalPortNumber>
-      <sigNameToEMVCEMap type="ModelRefInfoRepo.SigNameEMVCEInfo" uuid="5b4c6d36-152d-4f43-bccd-5e029ec586c3"/>
+      <sigNameToEMVCEMap type="ModelRefInfoRepo.SigNameEMVCEInfo" uuid="d2c94861-2f7f-4db5-9a73-0170d28941a4"/>
+    </inports>
+    <isInlineParamsOn>true</isInlineParamsOn>
+    <isOrigInportVirtualBus>false</isOrigInportVirtualBus>
+    <isOrigInportVirtualBus>false</isOrigInportVirtualBus>
+    <isOrigOutportVirtualBus>false</isOrigOutportVirtualBus>
+    <outportSignalObjects>AAFJTQAAAAAOAAAAMAAAAAYAAAAIAAAAAQAAAAAAAAAFAAAACAAAAAEAAAABAAAAAQAAAAAAAAAOAAAAAAAAAA==</outportSignalObjects>
+    <outports type="ModelRefInfoRepo.OutportInformation" uuid="1410380e-2cf0-4e90-b689-0d28a82ed3c8">
+      <sigNameToEMVCEMap type="ModelRefInfoRepo.SigNameEMVCEInfo" uuid="4056f895-0130-4266-8079-744c9502191a"/>
     </outports>
     <removeResetFunc>true</removeResetFunc>
     <timingAndTaskingRegistry></timingAndTaskingRegistry>
     <zeroInternalMemoryAtStartupUnchecked>true</zeroInternalMemoryAtStartupUnchecked>
-    <FMUBlockMap type="ModelRefInfoRepo.FMUBlockInfo" uuid="49952744-71f6-4433-b878-b0d1bdd26351"/>
-    <periodicEventPortUnsupportedBlockInfo type="ModelRefInfoRepo.PeriodicEventPortUnsupportedBlockInfo" uuid="323c2760-9ea1-4ad2-b2ed-ec5e6013793c">
+    <FMUBlockMap type="ModelRefInfoRepo.FMUBlockInfo" uuid="3bc92dec-e581-4cd1-a70b-2a2ca8e0c511"/>
+    <periodicEventPortUnsupportedBlockInfo type="ModelRefInfoRepo.PeriodicEventPortUnsupportedBlockInfo" uuid="017f9360-ae4e-4685-b025-b51a789c2c85">
       <deterministicRTBs>GCU_Model_genCode/Rate Transition10</deterministicRTBs>
       <deterministicRTBs>GCU_Model_genCode/Rate Transition11</deterministicRTBs>
+      <deterministicRTBs>GCU_Model_genCode/Rate Transition12</deterministicRTBs>
+      <deterministicRTBs>GCU_Model_genCode/Rate Transition13</deterministicRTBs>
+      <deterministicRTBs>GCU_Model_genCode/Rate Transition14</deterministicRTBs>
+      <deterministicRTBs>GCU_Model_genCode/Rate Transition15</deterministicRTBs>
       <deterministicRTBs>GCU_Model_genCode/Rate Transition9</deterministicRTBs>
       <deterministicRTBs>GCU_Model_genCode/rpmPin_update/Rate Transition</deterministicRTBs>
     </periodicEventPortUnsupportedBlockInfo>
-    <simulinkFunctions type="ModelRefInfoRepo.SimulinkFunctions" uuid="3f708df6-cd63-48c3-901e-508ab4b842f1">
+    <simulinkFunctions type="ModelRefInfoRepo.SimulinkFunctions" uuid="215bf573-f71d-4a50-9618-a14d9ad923ca">
       <compSimulinkFunctionCatalog>AAFJTQAAAAAOAAAA0AAAAAYAAAAIAAAAAgAAAAAAAAAFAAAACAAAAAEAAAABAAAAAQAAAAAAAAAFAAQAEQAAAAEAAAAiAAAAQ29tcEZ1bmN0aW9ucwAAAABDb21wU2VydmljZVBvcnRzAAAAAAAAAA4AAAAwAAAABgAAAAgAAAAGAAAAAAAAAAUAAAAIAAAAAAAAAAAAAAABAAAAAAAAAAkAAAAAAAAADgAAADAAAAAGAAAACAAAAAYAAAAAAAAABQAAAAgAAAAAAAAAAAAAAAEAAAAAAAAACQAAAAAAAAA=</compSimulinkFunctionCatalog>
-      <variantSimulinkFunctions type="ModelRefInfoRepo.VariantSimulinkFunctions" uuid="80330f4f-0b29-44c8-ad20-0dd397abf510"/>
+      <variantSimulinkFunctions type="ModelRefInfoRepo.VariantSimulinkFunctions" uuid="1015851c-2d55-4758-9953-a5165f32338f"/>
     </simulinkFunctions>
-    <stateWriterToOwnerMap type="ModelRefInfoRepo.StateWriterInfo" uuid="b5a74bb3-b997-4dbe-9243-d395afd7d5a8"/>
-    <unionTsContainedTs type="ModelRefInfoRepo.UnionTsContainedTsInfo" uuid="79bbabb7-15e9-42e2-b8ed-d30188be95f0"/>
+    <stateWriterToOwnerMap type="ModelRefInfoRepo.StateWriterInfo" uuid="388b8481-48d8-4c55-8653-1149d715d2cd"/>
+    <unionTsContainedTs type="ModelRefInfoRepo.UnionTsContainedTsInfo" uuid="9ca19a39-2aa2-4651-bff5-db6f30a0a6cc"/>
   </ModelRefInfoRepo.ModelRefInfoRoot>
 </MF0>

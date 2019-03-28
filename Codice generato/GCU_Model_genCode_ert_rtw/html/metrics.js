@@ -3,13 +3,15 @@ function CodeMetrics() {
 	 this.metricsArray.var = new Array();
 	 this.metricsArray.fcn = new Array();
 	 this.metricsArray.var["rtDW"] = {file: "C:\\Users\\SIMONE\\Documents\\Programmi per GCU\\git\\GCU-Simulink\\Codice generato\\GCU_Model_genCode_ert_rtw\\GCU_Model_genCode.c",
-	size: 371};
+	size: 393};
 	 this.metricsArray.var["rtM_"] = {file: "C:\\Users\\SIMONE\\Documents\\Programmi per GCU\\git\\GCU-Simulink\\Codice generato\\GCU_Model_genCode_ert_rtw\\GCU_Model_genCode.c",
 	size: 7};
 	 this.metricsArray.var["rtPrevZCX"] = {file: "C:\\Users\\SIMONE\\Documents\\Programmi per GCU\\git\\GCU-Simulink\\Codice generato\\GCU_Model_genCode_ert_rtw\\GCU_Model_genCode.c",
 	size: 2};
+	 this.metricsArray.var["rtU"] = {file: "C:\\Users\\SIMONE\\Documents\\Programmi per GCU\\git\\GCU-Simulink\\Codice generato\\GCU_Model_genCode_ert_rtw\\GCU_Model_genCode.c",
+	size: 18};
 	 this.metricsArray.var["rtY"] = {file: "C:\\Users\\SIMONE\\Documents\\Programmi per GCU\\git\\GCU-Simulink\\Codice generato\\GCU_Model_genCode_ert_rtw\\GCU_Model_genCode.c",
-	size: 43};
+	size: 20};
 	 this.metricsArray.fcn["ClutchMotor_init_Outputs_wrapper"] = {file: "C:\\Users\\SIMONE\\Documents\\Programmi per GCU\\git\\GCU-Simulink\\Codice generato\\GCU_Model_genCode_ert_rtw\\GCU_Model_genCode.c",
 	stack: 0,
 	stackTotal: 0};
@@ -188,6 +190,6 @@ function CodeMetrics() {
 			 data.type = "var";
 		 }
 	 return data; }; 
-	 this.codeMetricsSummary = '<a href="GCU_Model_genCode_metrics.html">Global Memory: 423(bytes) Maximum Stack: 21(bytes)</a>';
+	 this.codeMetricsSummary = '<a href="GCU_Model_genCode_metrics.html">Global Memory: 440(bytes) Maximum Stack: 21(bytes)</a>';
 	}
 CodeMetrics.instance = new CodeMetrics();

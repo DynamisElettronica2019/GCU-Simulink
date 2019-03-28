@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.33
+ * Model version                  : 1.38
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Mon Mar 25 21:05:41 2019
+ * C/C++ source code generated on : Wed Mar 27 21:36:38 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -102,7 +102,7 @@ typedef enum {
 
 #endif
 
-/* Block signals and states (default storage) for system '<S3>/TractionValue' */
+/* Block signals and states (default storage) for system '<S2>/TractionValue' */
 typedef struct {
   uint16_T Divide;                     /* '<S10>/Divide' */
   uint16_T UnitDelay_DSTATE;           /* '<S10>/Unit Delay' */
@@ -120,7 +120,7 @@ typedef struct {
   uint8_T EfiUnSetRPMLimiter;          /* '<S12>/Efi UnSetRPMLimiter' */
 } DW_Efi_unsetRpmLimiter;
 
-/* Block signals and states (default storage) for system '<S3>/AAC_ExternalValues' */
+/* Block signals and states (default storage) for system '<S2>/AAC_ExternalValues' */
 typedef struct {
   uint16_T UnitDelay_DSTATE[3];        /* '<S7>/Unit Delay' */
 } DW_AAC_ExternalValues;
@@ -169,109 +169,115 @@ typedef struct {
   DW_SetCut SetRPMLimiter_e;           /* '<S16>/SetRPMLimiter' */
   DW_UnsetCut UnsetCut_i;              /* '<S16>/UnsetCut' */
   DW_SetCut SetCut_p;                  /* '<S16>/SetCut' */
-  DW_AAC_ExternalValues AAC_ExternalValues_f;/* '<S3>/AAC_ExternalValues' */
+  DW_AAC_ExternalValues AAC_ExternalValues_f;/* '<S2>/AAC_ExternalValues' */
   DW_Efi_unsetRpmLimiter Efi_unsetRpmLimiter_f;/* '<S8>/Efi_unsetRpmLimiter' */
   DW_Efi_setRpmLimiter Efi_setRpmLimiter_b;/* '<S8>/Efi_setRpmLimiter' */
-  DW_TractionValue TractionValue_h;    /* '<S3>/TractionValue' */
-  real_T aac_clutchValue;              /* '<S4>/GCULogic' */
-  real_T aac_clutchStep;               /* '<S4>/GCULogic' */
-  real_T message;                      /* '<Root>/AccelerationRoutine' */
-  real_T count;                        /* '<Root>/AccelerationRoutine' */
-  int32_T aac_parameters[11];          /* '<S4>/GCULogic' */
-  int32_T sfEvent;                     /* '<S4>/GCULogic' */
-  int32_T aac_dtRelease;               /* '<S4>/GCULogic' */
-  int32_T ticksCounter;                /* '<S4>/GCULogic' */
+  DW_TractionValue TractionValue_h;    /* '<S2>/TractionValue' */
+  real_T message;                      /* '<S5>/AccelerationRoutine' */
+  real_T count;                        /* '<S5>/AccelerationRoutine' */
+  real_T aac_clutchValue;              /* '<S3>/GCULogic' */
+  real_T aac_clutchStep;               /* '<S3>/GCULogic' */
+  int32_T aac_parameters[11];          /* '<S3>/GCULogic' */
+  int32_T sfEvent;                     /* '<S3>/GCULogic' */
+  int32_T aac_dtRelease;               /* '<S3>/GCULogic' */
+  int32_T ticksCounter;                /* '<S3>/GCULogic' */
   uint32_T RateTransition9;            /* '<Root>/Rate Transition9' */
+  uint32_T alive;                      /* '<S3>/GCULogic' */
   uint16_T RateTransition1[3];         /* '<Root>/Rate Transition1' */
   uint16_T RateTransition2[2];         /* '<Root>/Rate Transition2' */
   uint16_T RateTransition4[2];         /* '<Root>/Rate Transition4' */
   uint16_T RateTransition8[2];         /* '<Root>/Rate Transition8' */
   uint16_T RateTransition11[3];        /* '<Root>/Rate Transition11' */
-  uint16_T shiftCommand[2];            /* '<S3>/MessageEvaluation' */
-  uint16_T aacCommand[2];              /* '<S3>/MessageEvaluation' */
-  uint16_T modeCommand[2];             /* '<S3>/MessageEvaluation' */
+  uint16_T RateTransition14[2];        /* '<Root>/Rate Transition14' */
+  uint16_T shiftCommand[2];            /* '<S2>/MessageEvaluation' */
+  uint16_T aacCommand[2];              /* '<S2>/MessageEvaluation' */
+  uint16_T modeCommand[2];             /* '<S2>/MessageEvaluation' */
   uint16_T Assignment[3];              /* '<S7>/Assignment' */
   uint16_T TmpSignalConversionAtPack_Uart_[10];
   volatile uint16_T RateTransition1_Buffer[6];/* '<Root>/Rate Transition1' */
   volatile uint16_T RateTransition2_Buffer[4];/* '<Root>/Rate Transition2' */
   volatile uint16_T RateTransition4_Buffer[4];/* '<Root>/Rate Transition4' */
   volatile uint16_T RateTransition8_Buffer[4];/* '<Root>/Rate Transition8' */
-  uint16_T valCode;                    /* '<S4>/GCULogic' */
-  uint16_T value;                      /* '<S4>/GCULogic' */
-  uint16_T UnpackCanUart_o1;           /* '<S3>/UnpackCanUart' */
-  uint16_T UnpackCanUart_o2;           /* '<S3>/UnpackCanUart' */
-  uint16_T UnpackCanUart_o3;           /* '<S3>/UnpackCanUart' */
-  uint16_T UnpackCanUart_o4;           /* '<S3>/UnpackCanUart' */
-  uint16_T UnpackCanUart_o5;           /* '<S3>/UnpackCanUart' */
-  uint16_T currGear;                   /* '<S3>/MessageEvaluation' */
+  uint16_T id;                         /* '<S5>/AccelerationRoutine' */
+  uint16_T firstInt;                   /* '<S5>/AccelerationRoutine' */
+  uint16_T secondInt;                  /* '<S5>/AccelerationRoutine' */
+  uint16_T valCode;                    /* '<S3>/GCULogic' */
+  uint16_T value;                      /* '<S3>/GCULogic' */
+  uint16_T UnpackCanUart_o1;           /* '<S2>/UnpackCanUart' */
+  uint16_T UnpackCanUart_o2;           /* '<S2>/UnpackCanUart' */
+  uint16_T UnpackCanUart_o3;           /* '<S2>/UnpackCanUart' */
+  uint16_T UnpackCanUart_o4;           /* '<S2>/UnpackCanUart' */
+  uint16_T UnpackCanUart_o5;           /* '<S2>/UnpackCanUart' */
+  uint16_T currGear;                   /* '<S2>/MessageEvaluation' */
   uint16_T Assignment_e;               /* '<S10>/Assignment' */
-  uint16_T id;                         /* '<Root>/AccelerationRoutine' */
-  uint16_T firstInt;                   /* '<Root>/AccelerationRoutine' */
-  uint16_T secondInt;                  /* '<Root>/AccelerationRoutine' */
-  uint16_T lastAacCom;                 /* '<S4>/GCULogic' */
-  uint16_T lastShiftCom;               /* '<S4>/GCULogic' */
-  uint16_T lastModeCom;                /* '<S4>/GCULogic' */
-  uint16_T aacCounter;                 /* '<S4>/GCULogic' */
-  uint16_T rpm;                        /* '<Root>/AccelerationRoutine' */
-  uint16_T wheelSpeed;                 /* '<Root>/AccelerationRoutine' */
-  uint16_T currGear_m;                 /* '<Root>/AccelerationRoutine' */
+  uint16_T rpm;                        /* '<S5>/AccelerationRoutine' */
+  uint16_T wheelSpeed;                 /* '<S5>/AccelerationRoutine' */
+  uint16_T currGear_m;                 /* '<S5>/AccelerationRoutine' */
+  uint16_T lastAacCom;                 /* '<S3>/GCULogic' */
+  uint16_T lastShiftCom;               /* '<S3>/GCULogic' */
+  uint16_T lastModeCom;                /* '<S3>/GCULogic' */
+  uint16_T aacCounter;                 /* '<S3>/GCULogic' */
   volatile int8_T RateTransition1_ActiveBufIdx;/* '<Root>/Rate Transition1' */
   volatile int8_T RateTransition2_ActiveBufIdx;/* '<Root>/Rate Transition2' */
   volatile int8_T RateTransition4_ActiveBufIdx;/* '<Root>/Rate Transition4' */
   volatile int8_T RateTransition5_ActiveBufIdx;/* '<Root>/Rate Transition5' */
   volatile int8_T RateTransition8_ActiveBufIdx;/* '<Root>/Rate Transition8' */
   uint8_T RateTransition5[2];          /* '<Root>/Rate Transition5' */
-  uint8_T PackCanUart[10];             /* '<Root>/PackCanUart' */
-  uint8_T clutchCommand[2];            /* '<S3>/MessageEvaluation' */
-  uint8_T Pack_Uart_Message1[20];      /* '<S2>/Pack_Uart_Message1' */
+  uint8_T MultiportSwitch[10];         /* '<Root>/Multiport Switch' */
+  uint8_T RateTransition15[2];         /* '<Root>/Rate Transition15' */
+  uint8_T PackCanUart[10];             /* '<S5>/PackCanUart' */
+  uint8_T clutchCommand[2];            /* '<S2>/MessageEvaluation' */
+  uint8_T Pack_Uart_Message1[20];      /* '<S1>/Pack_Uart_Message1' */
   volatile uint8_T RateTransition5_Buffer[4];/* '<Root>/Rate Transition5' */
   uint8_T RateTransition;              /* '<Root>/Rate Transition' */
   uint8_T RateTransition3;             /* '<Root>/Rate Transition3' */
   uint8_T RateTransition7;             /* '<Root>/Rate Transition7' */
   uint8_T RateTransition6;             /* '<Root>/Rate Transition6' */
   uint8_T RateTransition10;            /* '<Root>/Rate Transition10' */
+  uint8_T RateTransition12;            /* '<Root>/Rate Transition12' */
+  uint8_T RateTransition13;            /* '<Root>/Rate Transition13' */
   uint8_T RateTransition_c;            /* '<S6>/Rate Transition' */
   uint8_T Merge2;                      /* '<S16>/Merge2' */
   uint8_T Pin_H;                       /* '<S19>/Pin_H' */
   uint8_T Pin_In1;                     /* '<S19>/Pin_In1' */
-  uint8_T clutchCurrVal;               /* '<S4>/GCULogic' */
+  uint8_T clutchCurrVal;               /* '<S3>/GCULogic' */
   uint8_T EngineControlStop;           /* '<S28>/EngineControl Stop' */
   uint8_T GearMotorTurnLeft_o1;        /* '<S32>/GearMotor Turn Left' */
   uint8_T GearMotorTurnLeft_o2;        /* '<S32>/GearMotor Turn Left' */
   uint8_T GearMotorTurnLeft_o3;        /* '<S32>/GearMotor Turn Left' */
   uint8_T GearMotorRelease;            /* '<S31>/GearMotor Release' */
   uint8_T Minus;                       /* '<S21>/Minus' */
-  uint8_T startEngCommand;             /* '<S3>/MessageEvaluation' */
+  uint8_T startEngCommand;             /* '<S2>/MessageEvaluation' */
   volatile uint8_T RateTransition_Buffer0;/* '<Root>/Rate Transition' */
   volatile uint8_T RateTransition3_Buffer0;/* '<Root>/Rate Transition3' */
   uint8_T RateTransition_Buffer0_g;    /* '<S6>/Rate Transition' */
-  uint8_T is_active_c1_GCU_Model_genCode;/* '<S4>/GCULogic' */
-  uint8_T is_MODES;                    /* '<S4>/GCULogic' */
-  uint8_T is_active_MODES;             /* '<S4>/GCULogic' */
-  uint8_T is_ACCELERATION;             /* '<S4>/GCULogic' */
-  uint8_T is_AAC;                      /* '<S4>/GCULogic' */
-  uint8_T is_ACTIVE;                   /* '<S4>/GCULogic' */
-  uint8_T is_NEUTRAL_STATE;            /* '<S4>/GCULogic' */
-  uint8_T is_active_NEUTRAL_STATE;     /* '<S4>/GCULogic' */
-  uint8_T is_GEARSHIFT;                /* '<S4>/GCULogic' */
-  uint8_T is_active_GEARSHIFT;         /* '<S4>/GCULogic' */
-  uint8_T is_UPSHIFTING;               /* '<S4>/GCULogic' */
-  uint8_T is_UP_REBOUND;               /* '<S4>/GCULogic' */
-  uint8_T is_UP_PUSH;                  /* '<S4>/GCULogic' */
-  uint8_T is_UP_START;                 /* '<S4>/GCULogic' */
-  uint8_T is_DOWNSHIFTING;             /* '<S4>/GCULogic' */
-  uint8_T is_DOWN_START;               /* '<S4>/GCULogic' */
-  uint8_T is_DOWN_BRAKE;               /* '<S4>/GCULogic' */
-  uint8_T is_START_ENGINE;             /* '<S4>/GCULogic' */
-  uint8_T is_active_START_ENGINE;      /* '<S4>/GCULogic' */
-  uint8_T lastShift;                   /* '<S4>/GCULogic' */
-  uint8_T lastClutchCom;               /* '<S4>/GCULogic' */
-  uint8_T lastCom;                     /* '<S4>/GCULogic' */
-  uint8_T startCounter;                /* '<S4>/GCULogic' */
-  uint8_T is_active_c2_GCU_Model_genCode;/* '<S3>/MessageEvaluation' */
-  uint8_T is_c2_GCU_Model_genCode;     /* '<S3>/MessageEvaluation' */
-  uint8_T is_c3_GCU_Model_genCode;     /* '<Root>/AccelerationRoutine' */
-  uint8_T lastGearPin;                 /* '<Root>/AccelerationRoutine' */
+  uint8_T is_c3_GCU_Model_genCode;     /* '<S5>/AccelerationRoutine' */
+  uint8_T lastGearPin;                 /* '<S5>/AccelerationRoutine' */
+  uint8_T is_active_c1_GCU_Model_genCode;/* '<S3>/GCULogic' */
+  uint8_T is_MODES;                    /* '<S3>/GCULogic' */
+  uint8_T is_active_MODES;             /* '<S3>/GCULogic' */
+  uint8_T is_ACCELERATION;             /* '<S3>/GCULogic' */
+  uint8_T is_AAC;                      /* '<S3>/GCULogic' */
+  uint8_T is_ACTIVE;                   /* '<S3>/GCULogic' */
+  uint8_T is_NEUTRAL_STATE;            /* '<S3>/GCULogic' */
+  uint8_T is_active_NEUTRAL_STATE;     /* '<S3>/GCULogic' */
+  uint8_T is_GEARSHIFT;                /* '<S3>/GCULogic' */
+  uint8_T is_active_GEARSHIFT;         /* '<S3>/GCULogic' */
+  uint8_T is_UPSHIFTING;               /* '<S3>/GCULogic' */
+  uint8_T is_UP_REBOUND;               /* '<S3>/GCULogic' */
+  uint8_T is_UP_PUSH;                  /* '<S3>/GCULogic' */
+  uint8_T is_UP_START;                 /* '<S3>/GCULogic' */
+  uint8_T is_DOWNSHIFTING;             /* '<S3>/GCULogic' */
+  uint8_T is_DOWN_START;               /* '<S3>/GCULogic' */
+  uint8_T is_DOWN_BRAKE;               /* '<S3>/GCULogic' */
+  uint8_T is_START_ENGINE;             /* '<S3>/GCULogic' */
+  uint8_T is_active_START_ENGINE;      /* '<S3>/GCULogic' */
+  uint8_T lastShift;                   /* '<S3>/GCULogic' */
+  uint8_T lastClutchCom;               /* '<S3>/GCULogic' */
+  uint8_T lastCom;                     /* '<S3>/GCULogic' */
+  uint8_T startCounter;                /* '<S3>/GCULogic' */
+  uint8_T is_active_c2_GCU_Model_genCode;/* '<S2>/MessageEvaluation' */
+  uint8_T is_c2_GCU_Model_genCode;     /* '<S2>/MessageEvaluation' */
 } DW;
 
 /* Zero-crossing (trigger) state */
@@ -300,16 +306,15 @@ typedef struct {
   uint16_T TRACTION_CODE_Value;
 } ConstP;
 
+/* External inputs (root inport signals with default storage) */
+typedef struct {
+  uint8_T UART_debug[10];              /* '<Root>/UART_debug' */
+  real_T SelectMode;                   /* '<Root>/SelectMode' */
+} ExtU;
+
 /* External outputs (root outports fed by signals with default storage) */
 typedef struct {
-  uint8_T Outport;                     /* '<Root>/Outport' */
-  uint16_T Outport1;                   /* '<Root>/Outport1' */
-  uint32_T Outport2;                   /* '<Root>/Outport2' */
   uint16_T debugValues[10];            /* '<Root>/debugValues  ' */
-  uint16_T Outport3[3];                /* '<Root>/Outport3' */
-  uint16_T Outport4;                   /* '<Root>/Outport4' */
-  uint16_T Outport5[3];                /* '<Root>/Outport5' */
-  uint16_T Outport6;                   /* '<Root>/Outport6' */
 } ExtY;
 
 /* Real-time Model Data Structure */
@@ -333,6 +338,9 @@ struct tag_RTM {
 /* Block signals and states (default storage) */
 extern DW rtDW;
 
+/* External inputs (root inport signals with default storage) */
+extern ExtU rtU;
+
 /* External outputs (root outports fed by signals with default storage) */
 extern ExtY rtY;
 
@@ -354,8 +362,7 @@ extern RT_MODEL *const rtM;
 /*-
  * These blocks were eliminated from the model due to optimizations:
  *
- * Block '<S2>/Scope1' : Unused code path elimination
- * Block '<Root>/Scope' : Unused code path elimination
+ * Block '<S1>/Scope1' : Unused code path elimination
  * Block '<Root>/RT' : Eliminated since input and output rates are identical
  */
 
@@ -374,11 +381,11 @@ extern RT_MODEL *const rtM;
  * Here is the system hierarchy for this model
  *
  * '<Root>' : 'GCU_Model_genCode'
- * '<S1>'   : 'GCU_Model_genCode/AccelerationRoutine'
- * '<S2>'   : 'GCU_Model_genCode/Debug '
- * '<S3>'   : 'GCU_Model_genCode/GCU_CAN'
- * '<S4>'   : 'GCU_Model_genCode/GCU_timer'
- * '<S5>'   : 'GCU_Model_genCode/Initialize Function'
+ * '<S1>'   : 'GCU_Model_genCode/Debug '
+ * '<S2>'   : 'GCU_Model_genCode/GCU_CAN'
+ * '<S3>'   : 'GCU_Model_genCode/GCU_timer'
+ * '<S4>'   : 'GCU_Model_genCode/Initialize Function'
+ * '<S5>'   : 'GCU_Model_genCode/Simulink_Debug'
  * '<S6>'   : 'GCU_Model_genCode/rpmPin_update'
  * '<S7>'   : 'GCU_Model_genCode/GCU_CAN/AAC_ExternalValues'
  * '<S8>'   : 'GCU_Model_genCode/GCU_CAN/EfiRPMLimiter'
@@ -407,8 +414,9 @@ extern RT_MODEL *const rtM;
  * '<S31>'  : 'GCU_Model_genCode/GCU_timer/GearMotor1/Gearmotor_release'
  * '<S32>'  : 'GCU_Model_genCode/GCU_timer/GearMotor1/Gearmotor_turnLeft'
  * '<S33>'  : 'GCU_Model_genCode/GCU_timer/GearMotor1/Gearmotor_turnRight'
- * '<S34>'  : 'GCU_Model_genCode/rpmPin_update/Triggered_Subsystem'
- * '<S35>'  : 'GCU_Model_genCode/rpmPin_update/Triggered_Subsystem1'
+ * '<S34>'  : 'GCU_Model_genCode/Simulink_Debug/AccelerationRoutine'
+ * '<S35>'  : 'GCU_Model_genCode/rpmPin_update/Triggered_Subsystem'
+ * '<S36>'  : 'GCU_Model_genCode/rpmPin_update/Triggered_Subsystem1'
  */
 #endif                                 /* RTW_HEADER_GCU_Model_genCode_h_ */
 
