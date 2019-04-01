@@ -29,11 +29,11 @@
 <tr name="9" id="9">
 <td><a id="l9" class='ln'>9</a></td><td><span class="ct"> *</span></td></tr>
 <tr name="10" id="10">
-<td><a id="l10" class='ln'>10</a></td><td><span class="ct"> * Model version                  : 1.38</span></td></tr>
+<td><a id="l10" class='ln'>10</a></td><td><span class="ct"> * Model version                  : 1.44</span></td></tr>
 <tr name="11" id="11">
 <td><a id="l11" class='ln'>11</a></td><td><span class="ct"> * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018</span></td></tr>
 <tr name="12" id="12">
-<td><a id="l12" class='ln'>12</a></td><td><span class="ct"> * C/C++ source code generated on : Wed Mar 27 21:36:38 2019</span></td></tr>
+<td><a id="l12" class='ln'>12</a></td><td><span class="ct"> * C/C++ source code generated on : Mon Apr  1 11:41:47 2019</span></td></tr>
 <tr name="13" id="13">
 <td><a id="l13" class='ln'>13</a></td><td><span class="ct"> *</span></td></tr>
 <tr name="14" id="14">
@@ -93,15 +93,15 @@
 <tr name="41" id="41">
 <td><a id="l41" class='ln'>41</a></td><td><span class="br">{</span></td></tr>
 <tr name="42" id="42">
-<td><a id="l42" class='ln'>42</a></td><td>  <span class="kw">static</span> <a id="42c10" class="tk">boolean_T</a> <a id="42c20" class="tk">OverrunFlags</a>[3] = <span class="br">{</span> 0, 0, 0 <span class="br">}</span>;</td></tr>
+<td><a id="l42" class='ln'>42</a></td><td>  <span class="kw">static</span> <a id="42c10" class="tk">boolean_T</a> <a id="42c20" class="tk">OverrunFlags</a>[4] = <span class="br">{</span> 0, 0, 0, 0 <span class="br">}</span>;</td></tr>
 <tr name="43" id="43">
 <td><a id="l43" class='ln'>43</a></td><td></td></tr>
 <tr name="44" id="44">
-<td><a id="l44" class='ln'>44</a></td><td>  <span class="kw">static</span> <a id="44c10" class="tk">boolean_T</a> <a id="44c20" class="tk">eventFlags</a>[3] = <span class="br">{</span> 0, 0, 0 <span class="br">}</span>;<span class="ct">/* Model has 3 rates */</span></td></tr>
+<td><a id="l44" class='ln'>44</a></td><td>  <span class="kw">static</span> <a id="44c10" class="tk">boolean_T</a> <a id="44c20" class="tk">eventFlags</a>[4] = <span class="br">{</span> 0, 0, 0, 0 <span class="br">}</span>;<span class="ct">/* Model has 4 rates */</span></td></tr>
 <tr name="45" id="45">
 <td><a id="l45" class='ln'>45</a></td><td></td></tr>
 <tr name="46" id="46">
-<td><a id="l46" class='ln'>46</a></td><td>  <span class="kw">static</span> <a id="46c10" class="tk">int_T</a> <a id="46c16" class="tk">taskCounter</a>[3] = <span class="br">{</span> 0, 0, 0 <span class="br">}</span>;</td></tr>
+<td><a id="l46" class='ln'>46</a></td><td>  <span class="kw">static</span> <a id="46c10" class="tk">int_T</a> <a id="46c16" class="tk">taskCounter</a>[4] = <span class="br">{</span> 0, 0, 4, 3 <span class="br">}</span>;</td></tr>
 <tr name="47" id="47">
 <td><a id="l47" class='ln'>47</a></td><td></td></tr>
 <tr name="48" id="48">
@@ -145,7 +145,7 @@
 <tr name="67" id="67">
 <td><a id="l67" class='ln'>67</a></td><td><span class="ct">   */</span></td></tr>
 <tr name="68" id="68">
-<td><a id="l68" class='ln'>68</a></td><td>  <span class="kw">for</span> (<a id="68c8" class="tk">i</a> = 1; <a id="68c15" class="tk">i</a> <a id="68c17" class="tk">&lt;</a> 3; <a id="68c22" class="tk">i</a><a id="68c23" class="tk">++</a>) <span class="br">{</span></td></tr>
+<td><a id="l68" class='ln'>68</a></td><td>  <span class="kw">for</span> (<a id="68c8" class="tk">i</a> = 1; <a id="68c15" class="tk">i</a> <a id="68c17" class="tk">&lt;</a> 4; <a id="68c22" class="tk">i</a><a id="68c23" class="tk">++</a>) <span class="br">{</span></td></tr>
 <tr name="69" id="69">
 <td><a id="l69" class='ln'>69</a></td><td>    <span class="kw">if</span> (<a id="69c9" class="tk">taskCounter</a>[<a id="69c21" class="tk">i</a>] <a id="69c24" class="tk">==</a> 0) <span class="br">{</span></td></tr>
 <tr name="70" id="70">
@@ -177,7 +177,7 @@
 <tr name="83" id="83">
 <td><a id="l83" class='ln'>83</a></td><td>  <a id="83c3" class="tk">taskCounter</a>[1]<a id="83c17" class="tk">++</a>;</td></tr>
 <tr name="84" id="84">
-<td><a id="l84" class='ln'>84</a></td><td>  <span class="kw">if</span> (<a id="84c7" class="tk">taskCounter</a>[1] <a id="84c22" class="tk">==</a> 10) <span class="br">{</span></td></tr>
+<td><a id="l84" class='ln'>84</a></td><td>  <span class="kw">if</span> (<a id="84c7" class="tk">taskCounter</a>[1] <a id="84c22" class="tk">==</a> 5) <span class="br">{</span></td></tr>
 <tr name="85" id="85">
 <td><a id="l85" class='ln'>85</a></td><td>    <a id="85c5" class="tk">taskCounter</a>[1]= 0;</td></tr>
 <tr name="86" id="86">
@@ -187,7 +187,7 @@
 <tr name="88" id="88">
 <td><a id="l88" class='ln'>88</a></td><td>  <a id="88c3" class="tk">taskCounter</a>[2]<a id="88c17" class="tk">++</a>;</td></tr>
 <tr name="89" id="89">
-<td><a id="l89" class='ln'>89</a></td><td>  <span class="kw">if</span> (<a id="89c7" class="tk">taskCounter</a>[2] <a id="89c22" class="tk">==</a> 20) <span class="br">{</span></td></tr>
+<td><a id="l89" class='ln'>89</a></td><td>  <span class="kw">if</span> (<a id="89c7" class="tk">taskCounter</a>[2] <a id="89c22" class="tk">==</a> 5) <span class="br">{</span></td></tr>
 <tr name="90" id="90">
 <td><a id="l90" class='ln'>90</a></td><td>    <a id="90c5" class="tk">taskCounter</a>[2]= 0;</td></tr>
 <tr name="91" id="91">
@@ -195,185 +195,207 @@
 <tr name="92" id="92">
 <td><a id="l92" class='ln'>92</a></td><td></td></tr>
 <tr name="93" id="93">
-<td><a id="l93" class='ln'>93</a></td><td>  <span class="ct">/* Set model inputs associated with base rate here */</span></td></tr>
+<td><a id="l93" class='ln'>93</a></td><td>  <a id="93c3" class="tk">taskCounter</a>[3]<a id="93c17" class="tk">++</a>;</td></tr>
 <tr name="94" id="94">
-<td><a id="l94" class='ln'>94</a></td><td></td></tr>
+<td><a id="l94" class='ln'>94</a></td><td>  <span class="kw">if</span> (<a id="94c7" class="tk">taskCounter</a>[3] <a id="94c22" class="tk">==</a> 5) <span class="br">{</span></td></tr>
 <tr name="95" id="95">
-<td><a id="l95" class='ln'>95</a></td><td>  <span class="ct">/* Step the model for base rate */</span></td></tr>
+<td><a id="l95" class='ln'>95</a></td><td>    <a id="95c5" class="tk">taskCounter</a>[3]= 0;</td></tr>
 <tr name="96" id="96">
-<td><a id="l96" class='ln'>96</a></td><td>  <a id="96c3" class="tk">GCU_Model_genCode_step0</a>();</td></tr>
+<td><a id="l96" class='ln'>96</a></td><td>  <span class="br">}</span></td></tr>
 <tr name="97" id="97">
 <td><a id="l97" class='ln'>97</a></td><td></td></tr>
 <tr name="98" id="98">
-<td><a id="l98" class='ln'>98</a></td><td>  <span class="ct">/* Get model outputs here */</span></td></tr>
+<td><a id="l98" class='ln'>98</a></td><td>  <span class="ct">/* Set model inputs associated with base rate here */</span></td></tr>
 <tr name="99" id="99">
 <td><a id="l99" class='ln'>99</a></td><td></td></tr>
 <tr name="100" id="100">
-<td><a id="l100" class='ln'>100</a></td><td>  <span class="ct">/* Indicate task for base rate complete */</span></td></tr>
+<td><a id="l100" class='ln'>100</a></td><td>  <span class="ct">/* Step the model for base rate */</span></td></tr>
 <tr name="101" id="101">
-<td><a id="l101" class='ln'>101</a></td><td>  <a id="101c3" class="tk">OverrunFlags</a>[0] = false;</td></tr>
+<td><a id="l101" class='ln'>101</a></td><td>  <a id="101c3" class="tk">GCU_Model_genCode_step0</a>();</td></tr>
 <tr name="102" id="102">
 <td><a id="l102" class='ln'>102</a></td><td></td></tr>
 <tr name="103" id="103">
-<td><a id="l103" class='ln'>103</a></td><td>  <span class="ct">/* Step the model for any subrate */</span></td></tr>
+<td><a id="l103" class='ln'>103</a></td><td>  <span class="ct">/* Get model outputs here */</span></td></tr>
 <tr name="104" id="104">
-<td><a id="l104" class='ln'>104</a></td><td>  <span class="kw">for</span> (<a id="104c8" class="tk">i</a> = 1; <a id="104c15" class="tk">i</a> <a id="104c17" class="tk">&lt;</a> 3; <a id="104c22" class="tk">i</a><a id="104c23" class="tk">++</a>) <span class="br">{</span></td></tr>
+<td><a id="l104" class='ln'>104</a></td><td></td></tr>
 <tr name="105" id="105">
-<td><a id="l105" class='ln'>105</a></td><td>    <span class="ct">/* If task "i" is running, don't run any lower priority task */</span></td></tr>
+<td><a id="l105" class='ln'>105</a></td><td>  <span class="ct">/* Indicate task for base rate complete */</span></td></tr>
 <tr name="106" id="106">
-<td><a id="l106" class='ln'>106</a></td><td>    <span class="kw">if</span> (<a id="106c9" class="tk">OverrunFlags</a>[<a id="106c22" class="tk">i</a>]) <span class="br">{</span></td></tr>
+<td><a id="l106" class='ln'>106</a></td><td>  <a id="106c3" class="tk">OverrunFlags</a>[0] = false;</td></tr>
 <tr name="107" id="107">
-<td><a id="l107" class='ln'>107</a></td><td>      <span class="kw">return</span>;</td></tr>
+<td><a id="l107" class='ln'>107</a></td><td></td></tr>
 <tr name="108" id="108">
-<td><a id="l108" class='ln'>108</a></td><td>    <span class="br">}</span></td></tr>
+<td><a id="l108" class='ln'>108</a></td><td>  <span class="ct">/* Step the model for any subrate */</span></td></tr>
 <tr name="109" id="109">
-<td><a id="l109" class='ln'>109</a></td><td></td></tr>
+<td><a id="l109" class='ln'>109</a></td><td>  <span class="kw">for</span> (<a id="109c8" class="tk">i</a> = 1; <a id="109c15" class="tk">i</a> <a id="109c17" class="tk">&lt;</a> 4; <a id="109c22" class="tk">i</a><a id="109c23" class="tk">++</a>) <span class="br">{</span></td></tr>
 <tr name="110" id="110">
-<td><a id="l110" class='ln'>110</a></td><td>    <span class="kw">if</span> (<a id="110c9" class="tk">eventFlags</a>[<a id="110c20" class="tk">i</a>]) <span class="br">{</span></td></tr>
+<td><a id="l110" class='ln'>110</a></td><td>    <span class="ct">/* If task "i" is running, don't run any lower priority task */</span></td></tr>
 <tr name="111" id="111">
-<td><a id="l111" class='ln'>111</a></td><td>      <a id="111c7" class="tk">OverrunFlags</a>[<a id="111c20" class="tk">i</a>] = true;</td></tr>
+<td><a id="l111" class='ln'>111</a></td><td>    <span class="kw">if</span> (<a id="111c9" class="tk">OverrunFlags</a>[<a id="111c22" class="tk">i</a>]) <span class="br">{</span></td></tr>
 <tr name="112" id="112">
-<td><a id="l112" class='ln'>112</a></td><td></td></tr>
+<td><a id="l112" class='ln'>112</a></td><td>      <span class="kw">return</span>;</td></tr>
 <tr name="113" id="113">
-<td><a id="l113" class='ln'>113</a></td><td>      <span class="ct">/* Set model inputs associated with subrates here */</span></td></tr>
+<td><a id="l113" class='ln'>113</a></td><td>    <span class="br">}</span></td></tr>
 <tr name="114" id="114">
 <td><a id="l114" class='ln'>114</a></td><td></td></tr>
 <tr name="115" id="115">
-<td><a id="l115" class='ln'>115</a></td><td>      <span class="ct">/* Step the model for subrate "i" */</span></td></tr>
+<td><a id="l115" class='ln'>115</a></td><td>    <span class="kw">if</span> (<a id="115c9" class="tk">eventFlags</a>[<a id="115c20" class="tk">i</a>]) <span class="br">{</span></td></tr>
 <tr name="116" id="116">
-<td><a id="l116" class='ln'>116</a></td><td>      <span class="kw">switch</span> (<a id="116c15" class="tk">i</a>) <span class="br">{</span></td></tr>
+<td><a id="l116" class='ln'>116</a></td><td>      <a id="116c7" class="tk">OverrunFlags</a>[<a id="116c20" class="tk">i</a>] = true;</td></tr>
 <tr name="117" id="117">
-<td><a id="l117" class='ln'>117</a></td><td>       <span class="kw">case</span> 1 <a id="117c15" class="tk">:</a></td></tr>
+<td><a id="l117" class='ln'>117</a></td><td></td></tr>
 <tr name="118" id="118">
-<td><a id="l118" class='ln'>118</a></td><td>        <a id="118c9" class="tk">GCU_Model_genCode_step1</a>();</td></tr>
+<td><a id="l118" class='ln'>118</a></td><td>      <span class="ct">/* Set model inputs associated with subrates here */</span></td></tr>
 <tr name="119" id="119">
 <td><a id="l119" class='ln'>119</a></td><td></td></tr>
 <tr name="120" id="120">
-<td><a id="l120" class='ln'>120</a></td><td>        <span class="ct">/* Get model outputs here */</span></td></tr>
+<td><a id="l120" class='ln'>120</a></td><td>      <span class="ct">/* Step the model for subrate "i" */</span></td></tr>
 <tr name="121" id="121">
-<td><a id="l121" class='ln'>121</a></td><td>        <span class="kw">break</span>;</td></tr>
+<td><a id="l121" class='ln'>121</a></td><td>      <span class="kw">switch</span> (<a id="121c15" class="tk">i</a>) <span class="br">{</span></td></tr>
 <tr name="122" id="122">
-<td><a id="l122" class='ln'>122</a></td><td></td></tr>
+<td><a id="l122" class='ln'>122</a></td><td>       <span class="kw">case</span> 1 <a id="122c15" class="tk">:</a></td></tr>
 <tr name="123" id="123">
-<td><a id="l123" class='ln'>123</a></td><td>       <span class="kw">case</span> 2 <a id="123c15" class="tk">:</a></td></tr>
+<td><a id="l123" class='ln'>123</a></td><td>        <a id="123c9" class="tk">GCU_Model_genCode_step1</a>();</td></tr>
 <tr name="124" id="124">
-<td><a id="l124" class='ln'>124</a></td><td>        <a id="124c9" class="tk">GCU_Model_genCode_step2</a>();</td></tr>
+<td><a id="l124" class='ln'>124</a></td><td></td></tr>
 <tr name="125" id="125">
-<td><a id="l125" class='ln'>125</a></td><td></td></tr>
+<td><a id="l125" class='ln'>125</a></td><td>        <span class="ct">/* Get model outputs here */</span></td></tr>
 <tr name="126" id="126">
-<td><a id="l126" class='ln'>126</a></td><td>        <span class="ct">/* Get model outputs here */</span></td></tr>
+<td><a id="l126" class='ln'>126</a></td><td>        <span class="kw">break</span>;</td></tr>
 <tr name="127" id="127">
-<td><a id="l127" class='ln'>127</a></td><td>        <span class="kw">break</span>;</td></tr>
+<td><a id="l127" class='ln'>127</a></td><td></td></tr>
 <tr name="128" id="128">
-<td><a id="l128" class='ln'>128</a></td><td></td></tr>
+<td><a id="l128" class='ln'>128</a></td><td>       <span class="kw">case</span> 2 <a id="128c15" class="tk">:</a></td></tr>
 <tr name="129" id="129">
-<td><a id="l129" class='ln'>129</a></td><td>       <span class="kw">default</span> <a id="129c16" class="tk">:</a></td></tr>
+<td><a id="l129" class='ln'>129</a></td><td>        <a id="129c9" class="tk">GCU_Model_genCode_step2</a>();</td></tr>
 <tr name="130" id="130">
-<td><a id="l130" class='ln'>130</a></td><td>        <span class="kw">break</span>;</td></tr>
+<td><a id="l130" class='ln'>130</a></td><td></td></tr>
 <tr name="131" id="131">
-<td><a id="l131" class='ln'>131</a></td><td>      <span class="br">}</span></td></tr>
+<td><a id="l131" class='ln'>131</a></td><td>        <span class="ct">/* Get model outputs here */</span></td></tr>
 <tr name="132" id="132">
-<td><a id="l132" class='ln'>132</a></td><td></td></tr>
+<td><a id="l132" class='ln'>132</a></td><td>        <span class="kw">break</span>;</td></tr>
 <tr name="133" id="133">
-<td><a id="l133" class='ln'>133</a></td><td>      <span class="ct">/* Indicate task complete for sample time "i" */</span></td></tr>
+<td><a id="l133" class='ln'>133</a></td><td></td></tr>
 <tr name="134" id="134">
-<td><a id="l134" class='ln'>134</a></td><td>      <a id="134c7" class="tk">OverrunFlags</a>[<a id="134c20" class="tk">i</a>] = false;</td></tr>
+<td><a id="l134" class='ln'>134</a></td><td>       <span class="kw">case</span> 3 <a id="134c15" class="tk">:</a></td></tr>
 <tr name="135" id="135">
-<td><a id="l135" class='ln'>135</a></td><td>      <a id="135c7" class="tk">eventFlags</a>[<a id="135c18" class="tk">i</a>] = false;</td></tr>
+<td><a id="l135" class='ln'>135</a></td><td>        <a id="135c9" class="tk">GCU_Model_genCode_step3</a>();</td></tr>
 <tr name="136" id="136">
-<td><a id="l136" class='ln'>136</a></td><td>    <span class="br">}</span></td></tr>
+<td><a id="l136" class='ln'>136</a></td><td></td></tr>
 <tr name="137" id="137">
-<td><a id="l137" class='ln'>137</a></td><td>  <span class="br">}</span></td></tr>
+<td><a id="l137" class='ln'>137</a></td><td>        <span class="ct">/* Get model outputs here */</span></td></tr>
 <tr name="138" id="138">
-<td><a id="l138" class='ln'>138</a></td><td></td></tr>
+<td><a id="l138" class='ln'>138</a></td><td>        <span class="kw">break</span>;</td></tr>
 <tr name="139" id="139">
-<td><a id="l139" class='ln'>139</a></td><td>  <span class="ct">/* Disable interrupts here */</span></td></tr>
+<td><a id="l139" class='ln'>139</a></td><td></td></tr>
 <tr name="140" id="140">
-<td><a id="l140" class='ln'>140</a></td><td>  <span class="ct">/* Restore FPU context here (if necessary) */</span></td></tr>
+<td><a id="l140" class='ln'>140</a></td><td>       <span class="kw">default</span> <a id="140c16" class="tk">:</a></td></tr>
 <tr name="141" id="141">
-<td><a id="l141" class='ln'>141</a></td><td>  <span class="ct">/* Enable interrupts here */</span></td></tr>
+<td><a id="l141" class='ln'>141</a></td><td>        <span class="kw">break</span>;</td></tr>
 <tr name="142" id="142">
-<td><a id="l142" class='ln'>142</a></td><td><span class="br">}</span></td></tr>
+<td><a id="l142" class='ln'>142</a></td><td>      <span class="br">}</span></td></tr>
 <tr name="143" id="143">
 <td><a id="l143" class='ln'>143</a></td><td></td></tr>
 <tr name="144" id="144">
-<td><a id="l144" class='ln'>144</a></td><td><span class="ct">/*</span></td></tr>
+<td><a id="l144" class='ln'>144</a></td><td>      <span class="ct">/* Indicate task complete for sample time "i" */</span></td></tr>
 <tr name="145" id="145">
-<td><a id="l145" class='ln'>145</a></td><td><span class="ct"> * The example "main" function illustrates what is required by your</span></td></tr>
+<td><a id="l145" class='ln'>145</a></td><td>      <a id="145c7" class="tk">OverrunFlags</a>[<a id="145c20" class="tk">i</a>] = false;</td></tr>
 <tr name="146" id="146">
-<td><a id="l146" class='ln'>146</a></td><td><span class="ct"> * application code to initialize, execute, and terminate the generated code.</span></td></tr>
+<td><a id="l146" class='ln'>146</a></td><td>      <a id="146c7" class="tk">eventFlags</a>[<a id="146c18" class="tk">i</a>] = false;</td></tr>
 <tr name="147" id="147">
-<td><a id="l147" class='ln'>147</a></td><td><span class="ct"> * Attaching rt_OneStep to a real-time clock is target specific.  This example</span></td></tr>
+<td><a id="l147" class='ln'>147</a></td><td>    <span class="br">}</span></td></tr>
 <tr name="148" id="148">
-<td><a id="l148" class='ln'>148</a></td><td><span class="ct"> * illustrates how you do this relative to initializing the model.</span></td></tr>
+<td><a id="l148" class='ln'>148</a></td><td>  <span class="br">}</span></td></tr>
 <tr name="149" id="149">
-<td><a id="l149" class='ln'>149</a></td><td><span class="ct"> */</span></td></tr>
+<td><a id="l149" class='ln'>149</a></td><td></td></tr>
 <tr name="150" id="150">
-<td><a id="l150" class='ln'>150</a></td><td><a id="150c1" class="tk">int_T</a> <a id="150c7" class="tk">main</a>(<a id="150c12" class="tk">int_T</a> <a id="150c18" class="tk">argc</a>, <span class="kw">const</span> <span class="kw">char</span> <a id="150c35" class="tk">*</a><a id="150c36" class="tk">argv</a>[])</td></tr>
+<td><a id="l150" class='ln'>150</a></td><td>  <span class="ct">/* Disable interrupts here */</span></td></tr>
 <tr name="151" id="151">
-<td><a id="l151" class='ln'>151</a></td><td><span class="br">{</span></td></tr>
+<td><a id="l151" class='ln'>151</a></td><td>  <span class="ct">/* Restore FPU context here (if necessary) */</span></td></tr>
 <tr name="152" id="152">
-<td><a id="l152" class='ln'>152</a></td><td>  <span class="ct">/* Unused arguments */</span></td></tr>
+<td><a id="l152" class='ln'>152</a></td><td>  <span class="ct">/* Enable interrupts here */</span></td></tr>
 <tr name="153" id="153">
-<td><a id="l153" class='ln'>153</a></td><td>  (<span class="kw">void</span>)(<a id="153c10" class="tk">argc</a>);</td></tr>
+<td><a id="l153" class='ln'>153</a></td><td><span class="br">}</span></td></tr>
 <tr name="154" id="154">
-<td><a id="l154" class='ln'>154</a></td><td>  (<span class="kw">void</span>)(<a id="154c10" class="tk">argv</a>);</td></tr>
+<td><a id="l154" class='ln'>154</a></td><td></td></tr>
 <tr name="155" id="155">
-<td><a id="l155" class='ln'>155</a></td><td></td></tr>
+<td><a id="l155" class='ln'>155</a></td><td><span class="ct">/*</span></td></tr>
 <tr name="156" id="156">
-<td><a id="l156" class='ln'>156</a></td><td>  <span class="ct">/* Initialize model */</span></td></tr>
+<td><a id="l156" class='ln'>156</a></td><td><span class="ct"> * The example "main" function illustrates what is required by your</span></td></tr>
 <tr name="157" id="157">
-<td><a id="l157" class='ln'>157</a></td><td>  <a id="157c3" class="tk">GCU_Model_genCode_initialize</a>();</td></tr>
+<td><a id="l157" class='ln'>157</a></td><td><span class="ct"> * application code to initialize, execute, and terminate the generated code.</span></td></tr>
 <tr name="158" id="158">
-<td><a id="l158" class='ln'>158</a></td><td></td></tr>
+<td><a id="l158" class='ln'>158</a></td><td><span class="ct"> * Attaching rt_OneStep to a real-time clock is target specific.  This example</span></td></tr>
 <tr name="159" id="159">
-<td><a id="l159" class='ln'>159</a></td><td>  <span class="ct">/* Attach rt_OneStep to a timer or interrupt service routine with</span></td></tr>
+<td><a id="l159" class='ln'>159</a></td><td><span class="ct"> * illustrates how you do this relative to initializing the model.</span></td></tr>
 <tr name="160" id="160">
-<td><a id="l160" class='ln'>160</a></td><td><span class="ct">   * period 0.001 seconds (the model's base sample time) here.  The</span></td></tr>
+<td><a id="l160" class='ln'>160</a></td><td><span class="ct"> */</span></td></tr>
 <tr name="161" id="161">
-<td><a id="l161" class='ln'>161</a></td><td><span class="ct">   * call syntax for rt_OneStep is</span></td></tr>
+<td><a id="l161" class='ln'>161</a></td><td><a id="161c1" class="tk">int_T</a> <a id="161c7" class="tk">main</a>(<a id="161c12" class="tk">int_T</a> <a id="161c18" class="tk">argc</a>, <span class="kw">const</span> <span class="kw">char</span> <a id="161c35" class="tk">*</a><a id="161c36" class="tk">argv</a>[])</td></tr>
 <tr name="162" id="162">
-<td><a id="l162" class='ln'>162</a></td><td><span class="ct">   *</span></td></tr>
+<td><a id="l162" class='ln'>162</a></td><td><span class="br">{</span></td></tr>
 <tr name="163" id="163">
-<td><a id="l163" class='ln'>163</a></td><td><span class="ct">   *  rt_OneStep();</span></td></tr>
+<td><a id="l163" class='ln'>163</a></td><td>  <span class="ct">/* Unused arguments */</span></td></tr>
 <tr name="164" id="164">
-<td><a id="l164" class='ln'>164</a></td><td><span class="ct">   */</span></td></tr>
+<td><a id="l164" class='ln'>164</a></td><td>  (<span class="kw">void</span>)(<a id="164c10" class="tk">argc</a>);</td></tr>
 <tr name="165" id="165">
-<td><a id="l165" class='ln'>165</a></td><td>  <a id="165c3" class="tk">printf</a>("Warning: The simulation will run forever. "</td></tr>
+<td><a id="l165" class='ln'>165</a></td><td>  (<span class="kw">void</span>)(<a id="165c10" class="tk">argv</a>);</td></tr>
 <tr name="166" id="166">
-<td><a id="l166" class='ln'>166</a></td><td>         "Generated ERT main won't simulate model step behavior. "</td></tr>
+<td><a id="l166" class='ln'>166</a></td><td></td></tr>
 <tr name="167" id="167">
-<td><a id="l167" class='ln'>167</a></td><td>         "To change this behavior select the 'MAT-file logging' option.\n");</td></tr>
+<td><a id="l167" class='ln'>167</a></td><td>  <span class="ct">/* Initialize model */</span></td></tr>
 <tr name="168" id="168">
-<td><a id="l168" class='ln'>168</a></td><td>  <a id="168c3" class="tk">fflush</a>((<a id="168c11" class="tk">NULL</a>));</td></tr>
+<td><a id="l168" class='ln'>168</a></td><td>  <a id="168c3" class="tk">GCU_Model_genCode_initialize</a>();</td></tr>
 <tr name="169" id="169">
-<td><a id="l169" class='ln'>169</a></td><td>  <span class="kw">while</span> (<a id="169c10" class="tk">rtmGetErrorStatus</a>(<a id="169c28" class="tk">rtM</a>) <a id="169c33" class="tk">==</a> (<a id="169c37" class="tk">NULL</a>)) <span class="br">{</span></td></tr>
+<td><a id="l169" class='ln'>169</a></td><td></td></tr>
 <tr name="170" id="170">
-<td><a id="l170" class='ln'>170</a></td><td>    <span class="ct">/*  Perform other application tasks here */</span></td></tr>
+<td><a id="l170" class='ln'>170</a></td><td>  <span class="ct">/* Attach rt_OneStep to a timer or interrupt service routine with</span></td></tr>
 <tr name="171" id="171">
-<td><a id="l171" class='ln'>171</a></td><td>  <span class="br">}</span></td></tr>
+<td><a id="l171" class='ln'>171</a></td><td><span class="ct">   * period 0.0002 seconds (the model's base sample time) here.  The</span></td></tr>
 <tr name="172" id="172">
-<td><a id="l172" class='ln'>172</a></td><td></td></tr>
+<td><a id="l172" class='ln'>172</a></td><td><span class="ct">   * call syntax for rt_OneStep is</span></td></tr>
 <tr name="173" id="173">
-<td><a id="l173" class='ln'>173</a></td><td>  <span class="ct">/* Disable rt_OneStep() here */</span></td></tr>
+<td><a id="l173" class='ln'>173</a></td><td><span class="ct">   *</span></td></tr>
 <tr name="174" id="174">
-<td><a id="l174" class='ln'>174</a></td><td>  <span class="kw">return</span> 0;</td></tr>
+<td><a id="l174" class='ln'>174</a></td><td><span class="ct">   *  rt_OneStep();</span></td></tr>
 <tr name="175" id="175">
-<td><a id="l175" class='ln'>175</a></td><td><span class="br">}</span></td></tr>
+<td><a id="l175" class='ln'>175</a></td><td><span class="ct">   */</span></td></tr>
 <tr name="176" id="176">
-<td><a id="l176" class='ln'>176</a></td><td></td></tr>
+<td><a id="l176" class='ln'>176</a></td><td>  <a id="176c3" class="tk">printf</a>("Warning: The simulation will run forever. "</td></tr>
 <tr name="177" id="177">
-<td><a id="l177" class='ln'>177</a></td><td><span class="ct">/*</span></td></tr>
+<td><a id="l177" class='ln'>177</a></td><td>         "Generated ERT main won't simulate model step behavior. "</td></tr>
 <tr name="178" id="178">
-<td><a id="l178" class='ln'>178</a></td><td><span class="ct"> * File trailer for generated code.</span></td></tr>
+<td><a id="l178" class='ln'>178</a></td><td>         "To change this behavior select the 'MAT-file logging' option.\n");</td></tr>
 <tr name="179" id="179">
-<td><a id="l179" class='ln'>179</a></td><td><span class="ct"> *</span></td></tr>
+<td><a id="l179" class='ln'>179</a></td><td>  <a id="179c3" class="tk">fflush</a>((<a id="179c11" class="tk">NULL</a>));</td></tr>
 <tr name="180" id="180">
-<td><a id="l180" class='ln'>180</a></td><td><span class="ct"> * [EOF]</span></td></tr>
+<td><a id="l180" class='ln'>180</a></td><td>  <span class="kw">while</span> (<a id="180c10" class="tk">rtmGetErrorStatus</a>(<a id="180c28" class="tk">rtM</a>) <a id="180c33" class="tk">==</a> (<a id="180c37" class="tk">NULL</a>)) <span class="br">{</span></td></tr>
 <tr name="181" id="181">
-<td><a id="l181" class='ln'>181</a></td><td><span class="ct"> */</span></td></tr>
+<td><a id="l181" class='ln'>181</a></td><td>    <span class="ct">/*  Perform other application tasks here */</span></td></tr>
 <tr name="182" id="182">
-<td><a id="l182" class='ln'>182</a></td><td></td></tr>
+<td><a id="l182" class='ln'>182</a></td><td>  <span class="br">}</span></td></tr>
+<tr name="183" id="183">
+<td><a id="l183" class='ln'>183</a></td><td></td></tr>
+<tr name="184" id="184">
+<td><a id="l184" class='ln'>184</a></td><td>  <span class="ct">/* Disable rt_OneStep() here */</span></td></tr>
+<tr name="185" id="185">
+<td><a id="l185" class='ln'>185</a></td><td>  <span class="kw">return</span> 0;</td></tr>
+<tr name="186" id="186">
+<td><a id="l186" class='ln'>186</a></td><td><span class="br">}</span></td></tr>
+<tr name="187" id="187">
+<td><a id="l187" class='ln'>187</a></td><td></td></tr>
+<tr name="188" id="188">
+<td><a id="l188" class='ln'>188</a></td><td><span class="ct">/*</span></td></tr>
+<tr name="189" id="189">
+<td><a id="l189" class='ln'>189</a></td><td><span class="ct"> * File trailer for generated code.</span></td></tr>
+<tr name="190" id="190">
+<td><a id="l190" class='ln'>190</a></td><td><span class="ct"> *</span></td></tr>
+<tr name="191" id="191">
+<td><a id="l191" class='ln'>191</a></td><td><span class="ct"> * [EOF]</span></td></tr>
+<tr name="192" id="192">
+<td><a id="l192" class='ln'>192</a></td><td><span class="ct"> */</span></td></tr>
+<tr name="193" id="193">
+<td><a id="l193" class='ln'>193</a></td><td></td></tr>
 </table>
 </pre>
 </body>

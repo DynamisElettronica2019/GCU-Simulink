@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.38
+ * Model version                  : 1.44
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Wed Mar 27 21:36:38 2019
+ * C/C++ source code generated on : Mon Apr  1 11:41:47 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -39,11 +39,11 @@
 void rt_OneStep(void);
 void rt_OneStep(void)
 {
-  static boolean_T OverrunFlags[3] = { 0, 0, 0 };
+  static boolean_T OverrunFlags[4] = { 0, 0, 0, 0 };
 
-  static boolean_T eventFlags[3] = { 0, 0, 0 };/* Model has 3 rates */
+  static boolean_T eventFlags[4] = { 0, 0, 0, 0 };/* Model has 4 rates */
 
-  static int_T taskCounter[3] = { 0, 0, 0 };
+  static int_T taskCounter[4] = { 0, 0, 4, 3 };
 
   int_T i;
 
@@ -65,7 +65,7 @@ void rt_OneStep(void)
    * following code checks whether any subrate overruns,
    * and also sets the rates that need to run this time step.
    */
-  for (i = 1; i < 3; i++) {
+  for (i = 1; i < 4; i++) {
     if (taskCounter[i] == 0) {
       if (eventFlags[i]) {
         OverrunFlags[0] = false;
@@ -81,13 +81,18 @@ void rt_OneStep(void)
   }
 
   taskCounter[1]++;
-  if (taskCounter[1] == 10) {
+  if (taskCounter[1] == 5) {
     taskCounter[1]= 0;
   }
 
   taskCounter[2]++;
-  if (taskCounter[2] == 20) {
+  if (taskCounter[2] == 5) {
     taskCounter[2]= 0;
+  }
+
+  taskCounter[3]++;
+  if (taskCounter[3] == 5) {
+    taskCounter[3]= 0;
   }
 
   /* Set model inputs associated with base rate here */
@@ -101,7 +106,7 @@ void rt_OneStep(void)
   OverrunFlags[0] = false;
 
   /* Step the model for any subrate */
-  for (i = 1; i < 3; i++) {
+  for (i = 1; i < 4; i++) {
     /* If task "i" is running, don't run any lower priority task */
     if (OverrunFlags[i]) {
       return;
@@ -122,6 +127,12 @@ void rt_OneStep(void)
 
        case 2 :
         GCU_Model_genCode_step2();
+
+        /* Get model outputs here */
+        break;
+
+       case 3 :
+        GCU_Model_genCode_step3();
 
         /* Get model outputs here */
         break;
@@ -157,7 +168,7 @@ int_T main(int_T argc, const char *argv[])
   GCU_Model_genCode_initialize();
 
   /* Attach rt_OneStep to a timer or interrupt service routine with
-   * period 0.001 seconds (the model's base sample time) here.  The
+   * period 0.0002 seconds (the model's base sample time) here.  The
    * call syntax for rt_OneStep is
    *
    *  rt_OneStep();

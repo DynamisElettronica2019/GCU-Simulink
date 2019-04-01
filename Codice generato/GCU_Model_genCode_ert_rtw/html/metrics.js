@@ -3,9 +3,9 @@ function CodeMetrics() {
 	 this.metricsArray.var = new Array();
 	 this.metricsArray.fcn = new Array();
 	 this.metricsArray.var["rtDW"] = {file: "C:\\Users\\SIMONE\\Documents\\Programmi per GCU\\git\\GCU-Simulink\\Codice generato\\GCU_Model_genCode_ert_rtw\\GCU_Model_genCode.c",
-	size: 393};
+	size: 396};
 	 this.metricsArray.var["rtM_"] = {file: "C:\\Users\\SIMONE\\Documents\\Programmi per GCU\\git\\GCU-Simulink\\Codice generato\\GCU_Model_genCode_ert_rtw\\GCU_Model_genCode.c",
-	size: 7};
+	size: 4};
 	 this.metricsArray.var["rtPrevZCX"] = {file: "C:\\Users\\SIMONE\\Documents\\Programmi per GCU\\git\\GCU-Simulink\\Codice generato\\GCU_Model_genCode_ert_rtw\\GCU_Model_genCode.c",
 	size: 2};
 	 this.metricsArray.var["rtU"] = {file: "C:\\Users\\SIMONE\\Documents\\Programmi per GCU\\git\\GCU-Simulink\\Codice generato\\GCU_Model_genCode_ert_rtw\\GCU_Model_genCode.c",
@@ -145,14 +145,17 @@ function CodeMetrics() {
 	stack: 0,
 	stackTotal: 0};
 	 this.metricsArray.fcn["GCU_Model_genCode_step0"] = {file: "C:\\Users\\SIMONE\\Documents\\Programmi per GCU\\git\\GCU-Simulink\\Codice generato\\GCU_Model_genCode_ert_rtw\\GCU_Model_genCode.c",
+	stack: 0,
+	stackTotal: 0};
+	 this.metricsArray.fcn["GCU_Model_genCode_step1"] = {file: "C:\\Users\\SIMONE\\Documents\\Programmi per GCU\\git\\GCU-Simulink\\Codice generato\\GCU_Model_genCode_ert_rtw\\GCU_Model_genCode.c",
 	stack: 5,
 	stackTotal: 43};
-	 this.metricsArray.fcn["GCU_Model_genCode_step1"] = {file: "C:\\Users\\SIMONE\\Documents\\Programmi per GCU\\git\\GCU-Simulink\\Codice generato\\GCU_Model_genCode_ert_rtw\\GCU_Model_genCode.c",
-	stack: 12,
-	stackTotal: 25};
 	 this.metricsArray.fcn["GCU_Model_genCode_step2"] = {file: "C:\\Users\\SIMONE\\Documents\\Programmi per GCU\\git\\GCU-Simulink\\Codice generato\\GCU_Model_genCode_ert_rtw\\GCU_Model_genCode.c",
-	stack: 2,
-	stackTotal: 2};
+	stack: 11,
+	stackTotal: 24};
+	 this.metricsArray.fcn["GCU_Model_genCode_step3"] = {file: "C:\\Users\\SIMONE\\Documents\\Programmi per GCU\\git\\GCU-Simulink\\Codice generato\\GCU_Model_genCode_ert_rtw\\GCU_Model_genCode.c",
+	stack: 27,
+	stackTotal: 27};
 	 this.metricsArray.fcn["GearMotor_brake_Outputs_wrapper"] = {file: "C:\\Users\\SIMONE\\Documents\\Programmi per GCU\\git\\GCU-Simulink\\Codice generato\\GCU_Model_genCode_ert_rtw\\GCU_Model_genCode.c",
 	stack: 0,
 	stackTotal: 0};
@@ -190,6 +193,6 @@ function CodeMetrics() {
 			 data.type = "var";
 		 }
 	 return data; }; 
-	 this.codeMetricsSummary = '<a href="GCU_Model_genCode_metrics.html">Global Memory: 440(bytes) Maximum Stack: 21(bytes)</a>';
+	 this.codeMetricsSummary = '<a href="GCU_Model_genCode_metrics.html">Global Memory: 440(bytes) Maximum Stack: 27(bytes)</a>';
 	}
 CodeMetrics.instance = new CodeMetrics();
