@@ -9,7 +9,7 @@ function CodeMetrics() {
 	 this.metricsArray.var["rtPrevZCX"] = {file: "C:\\Users\\SIMONE\\Documents\\Programmi per GCU\\git\\GCU-Simulink\\Codice generato\\GCU_Model_genCode_ert_rtw\\GCU_Model_genCode.c",
 	size: 2};
 	 this.metricsArray.var["rtU"] = {file: "C:\\Users\\SIMONE\\Documents\\Programmi per GCU\\git\\GCU-Simulink\\Codice generato\\GCU_Model_genCode_ert_rtw\\GCU_Model_genCode.c",
-	size: 18};
+	size: 28};
 	 this.metricsArray.var["rtY"] = {file: "C:\\Users\\SIMONE\\Documents\\Programmi per GCU\\git\\GCU-Simulink\\Codice generato\\GCU_Model_genCode_ert_rtw\\GCU_Model_genCode.c",
 	size: 20};
 	 this.metricsArray.fcn["ClutchMotor_init_Outputs_wrapper"] = {file: "C:\\Users\\SIMONE\\Documents\\Programmi per GCU\\git\\GCU-Simulink\\Codice generato\\GCU_Model_genCode_ert_rtw\\GCU_Model_genCode.c",
@@ -49,8 +49,8 @@ function CodeMetrics() {
 	stack: 21,
 	stackTotal: 34};
 	 this.metricsArray.fcn["GCU_Model_genCode.c:Clutch_setValue"] = {file: "C:\\Users\\SIMONE\\Documents\\Programmi per GCU\\git\\GCU-Simulink\\Codice generato\\GCU_Model_genCode_ert_rtw\\GCU_Model_genCode.c",
-	stack: 0,
-	stackTotal: 0};
+	stack: 1,
+	stackTotal: 1};
 	 this.metricsArray.fcn["GCU_Model_genCode.c:Efi_setRpmLimiter"] = {file: "C:\\Users\\SIMONE\\Documents\\Programmi per GCU\\git\\GCU-Simulink\\Codice generato\\GCU_Model_genCode_ert_rtw\\GCU_Model_genCode.c",
 	stack: 0,
 	stackTotal: 0};
@@ -107,7 +107,7 @@ function CodeMetrics() {
 	stackTotal: 9};
 	 this.metricsArray.fcn["GCU_Model_genCode.c:checkClutch"] = {file: "C:\\Users\\SIMONE\\Documents\\Programmi per GCU\\git\\GCU-Simulink\\Codice generato\\GCU_Model_genCode_ert_rtw\\GCU_Model_genCode.c",
 	stack: 0,
-	stackTotal: 0};
+	stackTotal: 1};
 	 this.metricsArray.fcn["GCU_Model_genCode.c:checkGear"] = {file: "C:\\Users\\SIMONE\\Documents\\Programmi per GCU\\git\\GCU-Simulink\\Codice generato\\GCU_Model_genCode_ert_rtw\\GCU_Model_genCode.c",
 	stack: 4,
 	stackTotal: 4};
@@ -193,6 +193,6 @@ function CodeMetrics() {
 			 data.type = "var";
 		 }
 	 return data; }; 
-	 this.codeMetricsSummary = '<a href="GCU_Model_genCode_metrics.html">Global Memory: 440(bytes) Maximum Stack: 27(bytes)</a>';
+	 this.codeMetricsSummary = '<a href="GCU_Model_genCode_metrics.html">Global Memory: 450(bytes) Maximum Stack: 27(bytes)</a>';
 	}
 CodeMetrics.instance = new CodeMetrics();

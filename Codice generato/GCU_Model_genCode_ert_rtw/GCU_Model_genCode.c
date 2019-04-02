@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.44
+ * Model version                  : 1.46
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Mon Apr  1 11:41:47 2019
+ * C/C++ source code generated on : Tue Apr  2 14:42:18 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -733,13 +733,23 @@ static int32_T Gearshift_getTime(void)
 /* Function for Chart: '<S3>/GCULogic' */
 static void Clutch_setValue(uint8_T setValue)
 {
+  uint8_T tmp;
   rtDW.clutchCurrVal = setValue;
 
   /* Outputs for Function Call SubSystem: '<S16>/ClutchMotor SetPosition ' */
+  /* Saturate: '<S22>/Saturation' */
+  if (rtDW.clutchCurrVal < 100) {
+    tmp = rtDW.clutchCurrVal;
+  } else {
+    tmp = 100U;
+  }
+
+  /* End of Saturate: '<S22>/Saturation' */
+
   /* Sum: '<S22>/Minus' incorporates:
    *  Constant: '<S22>/Constant'
    */
-  rtDW.Minus = (uint8_T)(100 - rtDW.clutchCurrVal);
+  rtDW.Minus = (uint8_T)(100 - tmp);
 
   /* S-Function (ClutchMotor_setPosition): '<S22>/ClutchMotor SetPosition' */
   ClutchMotor_setPosition_Outputs_wrapper(&rtDW.Minus);
@@ -2518,6 +2528,7 @@ void GCU_Model_genCode_step2(void)     /* Sample time: [0.001s, 0.0002s] */
   /* End of Outputs for SubSystem: '<Root>/Simulink_Debug' */
 
   /* MultiPortSwitch: '<Root>/Multiport Switch' incorporates:
+   *  Inport: '<Root>/CAN'
    *  Inport: '<Root>/SelectMode'
    *  Inport: '<Root>/UART_debug'
    */
@@ -2530,7 +2541,7 @@ void GCU_Model_genCode_step2(void)     /* Sample time: [0.001s, 0.0002s] */
 
    case 2:
     for (i = 0; i < 10; i++) {
-      rtDW.MultiportSwitch[i] = 0U;
+      rtDW.MultiportSwitch[i] = rtU.CAN[i];
     }
     break;
 

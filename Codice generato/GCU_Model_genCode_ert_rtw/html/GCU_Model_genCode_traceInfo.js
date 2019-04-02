@@ -81,6 +81,8 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["GCU_Model_genCode:849"] = {rtwname: "<Root>/UART_debug"};
 	this.rtwnameHashMap["<Root>/SelectMode"] = {sid: "GCU_Model_genCode:850"};
 	this.sidHashMap["GCU_Model_genCode:850"] = {rtwname: "<Root>/SelectMode"};
+	this.rtwnameHashMap["<Root>/CAN"] = {sid: "GCU_Model_genCode:905"};
+	this.sidHashMap["GCU_Model_genCode:905"] = {rtwname: "<Root>/CAN"};
 	this.rtwnameHashMap["<Root>/Cast"] = {sid: "GCU_Model_genCode:593"};
 	this.sidHashMap["GCU_Model_genCode:593"] = {rtwname: "<Root>/Cast"};
 	this.rtwnameHashMap["<Root>/Cast1"] = {sid: "GCU_Model_genCode:594"};
@@ -1203,6 +1205,8 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["GCU_Model_genCode:648:28"] = {rtwname: "<S22>/Constant"};
 	this.rtwnameHashMap["<S22>/Minus"] = {sid: "GCU_Model_genCode:648:29"};
 	this.sidHashMap["GCU_Model_genCode:648:29"] = {rtwname: "<S22>/Minus"};
+	this.rtwnameHashMap["<S22>/Saturation"] = {sid: "GCU_Model_genCode:648:34"};
+	this.sidHashMap["GCU_Model_genCode:648:34"] = {rtwname: "<S22>/Saturation"};
 	this.rtwnameHashMap["<S23>/function"] = {sid: "GCU_Model_genCode:649:21"};
 	this.sidHashMap["GCU_Model_genCode:649:21"] = {rtwname: "<S23>/function"};
 	this.rtwnameHashMap["<S23>/Efi Init"] = {sid: "GCU_Model_genCode:649:22"};
