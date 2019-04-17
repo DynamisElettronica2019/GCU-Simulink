@@ -13,7 +13,10 @@
 
 
 /* %%%-SFUNWIZ_wrapper_includes_Changes_BEGIN --- EDIT HERE TO _END */
-#include <math.h>
+#if !defined(MATLAB_MEX_FILE)
+#include "stm32f7xx_hal.h"
+#include "pin_defines.h"
+#endif
 /* %%%-SFUNWIZ_wrapper_includes_Changes_END --- EDIT HERE TO _BEGIN */
 #define y_width 1
 
@@ -34,11 +37,15 @@ void GearMotor_turnRight_Outputs_wrapper(uint8_T *GearMotor_In1,
 			uint8_T *GearMotor_H)
 {
 /* %%%-SFUNWIZ_wrapper_Outputs_Changes_BEGIN --- EDIT HERE TO _END */
-//#if defined(MATLAB_MEX_FILE)
 *GearMotor_In1 = 1;
 *GearMotor_In2 = 0;
 *GearMotor_H = 1;
-//#endif
+
+#if !defined(MATLAB_MEX_FILE)
+HAL_GPIO_WritePin(GPIO_GEAR_MOTOR, GEAR_MOTOR_IN1, GPIO_PIN_SET);
+HAL_GPIO_WritePin(GPIO_GEAR_MOTOR_B, GEAR_MOTOR_IN2, GPIO_PIN_RESET);
+HAL_GPIO_WritePin(GPIO_GEAR_MOTOR, GEAR_MOTOR_INHIBIT, GPIO_PIN_SET);
+#endif
 /* %%%-SFUNWIZ_wrapper_Outputs_Changes_END --- EDIT HERE TO _BEGIN */
 }
 
