@@ -26,7 +26,7 @@
  * | See matlabroot/simulink/src/sfuntmpl_doc.c for a more detailed template |
  *  ------------------------------------------------------------------------- 
  *
- * Created: Tue Apr 02 14:11:55 2019
+ * Created: Wed Apr 17 14:09:27 2019
  */
 
 #define S_FUNCTION_LEVEL 2
@@ -46,7 +46,7 @@
 #define CONT_STATES_IC        [0]
 
 #define SFUNWIZ_GENERATE_TLC  1
-#define SOURCEFILES           "__SFB__"
+#define SOURCEFILES           "__SFB__ClutchMotor_setupPWM_wrapper.c__SFB__ClutchMotor_setPosition_wrapper.c"
 #define PANELINDEX            8
 #define USE_SIMSTRUCT         0
 #define SHOW_COMPILE_STEPS    0
