@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.46
+ * Model version                  : 1.52
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Tue Apr  2 14:42:18 2019
+ * C/C++ source code generated on : Fri Apr 19 12:11:13 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -24,19 +24,19 @@
 /* Constant parameters (default storage) */
 const ConstP rtConstP = {
   /* Computed Parameter: GCU_TRACTION_CONTROL_EFI_ID_Val
-   * Referenced by: '<S14>/GCU_TRACTION_CONTROL_EFI_ID'
+   * Referenced by: '<S15>/GCU_TRACTION_CONTROL_EFI_ID'
    */
   1280U,
 
   /* Pooled Parameter (Expression: 793)
    * Referenced by:
-   *   '<S15>/GCU_FEEDBACK_ID'
-   *   '<S30>/GCU_FEEDBACK_ID'
+   *   '<S16>/GCU_FEEDBACK_ID'
+   *   '<S31>/GCU_FEEDBACK_ID'
    */
   793U,
 
   /* Computed Parameter: TRACTION_CODE_Value
-   * Referenced by: '<S11>/TRACTION_CODE'
+   * Referenced by: '<S12>/TRACTION_CODE'
    */
   3U
 };
