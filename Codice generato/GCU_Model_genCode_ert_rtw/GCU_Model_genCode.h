@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.52
+ * Model version                  : 1.56
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Fri Apr 19 12:11:13 2019
+ * C/C++ source code generated on : Fri Apr 19 16:21:31 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -125,16 +125,6 @@ typedef struct {
   uint16_T UnitDelay_DSTATE[3];        /* '<S9>/Unit Delay' */
 } DW_AAC_ExternalValues;
 
-/* Block signals and states (default storage) for system '<S18>/SetCut' */
-typedef struct {
-  uint8_T EfiSetBlip;                  /* '<S25>/Efi SetBlip' */
-} DW_SetCut;
-
-/* Block signals and states (default storage) for system '<S18>/UnsetCut' */
-typedef struct {
-  uint8_T EfiUnSetBlip;                /* '<S27>/Efi UnSetBlip' */
-} DW_UnsetCut;
-
 /* Block signals and states (default storage) for system '<S21>/Gearmotor_turnRight' */
 typedef struct {
   uint8_T GearMotorTurnRight_o1;       /* '<S35>/GearMotor Turn Right' */
@@ -165,10 +155,8 @@ typedef struct {
   DW_EngineControl_Start EngineControl_Start_h;/* '<S19>/EngineControl_Start' */
   DW_Gearmotor_brake Gearmotor_brake_c;/* '<S21>/Gearmotor_brake' */
   DW_Gearmotor_turnRight Gearmotor_turnRight_f;/* '<S21>/Gearmotor_turnRight' */
-  DW_UnsetCut UnsetRPMLimiter_c;       /* '<S18>/UnsetRPMLimiter' */
-  DW_SetCut SetRPMLimiter_e;           /* '<S18>/SetRPMLimiter' */
-  DW_UnsetCut UnsetCut_i;              /* '<S18>/UnsetCut' */
-  DW_SetCut SetCut_p;                  /* '<S18>/SetCut' */
+  DW_Efi_unsetRpmLimiter UnsetRPMLimiter_c;/* '<S18>/UnsetRPMLimiter' */
+  DW_Efi_setRpmLimiter SetRPMLimiter_e;/* '<S18>/SetRPMLimiter' */
   DW_AAC_ExternalValues AAC_ExternalValues_f;/* '<S2>/AAC_ExternalValues' */
   DW_Efi_unsetRpmLimiter Efi_unsetRpmLimiter_f;/* '<S10>/Efi_unsetRpmLimiter' */
   DW_Efi_setRpmLimiter Efi_setRpmLimiter_b;/* '<S10>/Efi_setRpmLimiter' */
@@ -212,7 +200,6 @@ typedef struct {
   uint16_T UnpackCanUart_o4;           /* '<S2>/UnpackCanUart' */
   uint16_T UnpackCanUart_o5;           /* '<S2>/UnpackCanUart' */
   uint16_T currGear;                   /* '<S2>/MessageEvaluation' */
-  uint16_T Assignment_e;               /* '<S12>/Assignment' */
   uint16_T rpm;                        /* '<S5>/AccelerationRoutine' */
   uint16_T wheelSpeed;                 /* '<S5>/AccelerationRoutine' */
   uint16_T currGear_m;                 /* '<S5>/AccelerationRoutine' */
@@ -251,7 +238,10 @@ typedef struct {
   uint8_T GearMotorTurnLeft_o2;        /* '<S34>/GearMotor Turn Left' */
   uint8_T GearMotorTurnLeft_o3;        /* '<S34>/GearMotor Turn Left' */
   uint8_T GearMotorRelease;            /* '<S33>/GearMotor Release' */
+  uint8_T EfiUnSetCut;                 /* '<S27>/Efi UnSetCut' */
+  uint8_T EfiSetCut;                   /* '<S25>/Efi SetCut' */
   uint8_T Minus;                       /* '<S23>/Minus' */
+  uint8_T Merge_i;                     /* '<S10>/Merge' */
   uint8_T startEngCommand;             /* '<S2>/MessageEvaluation' */
   volatile uint8_T RateTransition_Buffer0;/* '<Root>/Rate Transition' */
   volatile uint8_T RateTransition3_Buffer0;/* '<Root>/Rate Transition3' */
@@ -360,6 +350,7 @@ extern RT_MODEL *const rtM;
  * These blocks were eliminated from the model due to optimizations:
  *
  * Block '<S1>/Scope1' : Unused code path elimination
+ * Block '<Root>/Cast1' : Eliminate redundant data type conversion
  */
 
 /*-
