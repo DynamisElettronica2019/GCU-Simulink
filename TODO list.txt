@@ -1,4 +1,4 @@
--github?
--Nascondere i blocchi dentro ai subsystem della libreria
-- portare fuori Efi_setRPMLimiter da CAN
-- generare il codice da GCU_Model con referenced models
+-decidere come inviare e aggiungere i blocchi sendCanMsg in CAN_send
+-aggiungere ingressi di CAN_send a DebugUART e verificare se la frequenza regge ancora
+-togliere tutte le init delle periferiche dal main e spostarle nelle rispettive s-functions
+-confrontare il modello con il codice c dell'anno scorso per stabilire cosa ancora va inserito

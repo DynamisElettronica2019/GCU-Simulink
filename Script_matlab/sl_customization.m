@@ -25,10 +25,12 @@ cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/EngineControl Library/stop
 
 cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/CAN Library/Unpack Builder','Hidden'});
 cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/CAN Library/Pack Builder','Hidden'});
-
+cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/CAN Library/PackCAN Builder','Hidden'});
+cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/CAN Library/SendCAN Builder','Hidden'});
 
 cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/UART Library/SendUART Builder','Hidden'});
 cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/UART Library/PackUART Builder','Hidden'});
 cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/UART Library/UnpackUART Builder','Hidden'});
 
 cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/Sensors Library/update_ADC_data Builder','Hidden'});
+
