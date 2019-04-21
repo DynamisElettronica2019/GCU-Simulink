@@ -2,3 +2,4 @@
 -aggiungere ingressi di CAN_send a DebugUART e verificare se la frequenza regge ancora
 -togliere tutte le init delle periferiche dal main e spostarle nelle rispettive s-functions
 -confrontare il modello con il codice c dell'anno scorso per stabilire cosa ancora va inserito
+-modificare il codice con delle #ifdef in modo che funzioni sia sulla scheda effettiva che sulla nucleo per debug
