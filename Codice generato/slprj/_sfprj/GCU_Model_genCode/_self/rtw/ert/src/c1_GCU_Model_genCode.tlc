@@ -7,7 +7,7 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   33 \
+    NumChartData   32 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
@@ -179,13 +179,6 @@
       Description  "ChartLocal"\
       SFName       ""\
       Path         "MODES.lastClutchCom"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "lastModeCom"\
-      Description  "ChartLocal"\
-      SFName       ""\
-      Path         "MODES.lastModeCom"\
       SrcLocation  ""\
     }\
     ChartData {\

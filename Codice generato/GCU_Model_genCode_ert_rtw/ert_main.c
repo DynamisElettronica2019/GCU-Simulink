@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.56
+ * Model version                  : 1.64
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Fri Apr 19 16:21:31 2019
+ * C/C++ source code generated on : Sun Apr 21 17:22:39 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -39,11 +39,11 @@
 void rt_OneStep(void);
 void rt_OneStep(void)
 {
-  static boolean_T OverrunFlags[5] = { 0, 0, 0, 0, 0 };
+  static boolean_T OverrunFlags[6] = { 0, 0, 0, 0, 0, 0 };
 
-  static boolean_T eventFlags[5] = { 0, 0, 0, 0, 0 };/* Model has 5 rates */
+  static boolean_T eventFlags[6] = { 0, 0, 0, 0, 0, 0 };/* Model has 6 rates */
 
-  static int_T taskCounter[5] = { 0, 0, 4, 3, 2 };
+  static int_T taskCounter[6] = { 0, 0, 4, 3, 2, 1 };
 
   int_T i;
 
@@ -65,7 +65,7 @@ void rt_OneStep(void)
    * following code checks whether any subrate overruns,
    * and also sets the rates that need to run this time step.
    */
-  for (i = 1; i < 5; i++) {
+  for (i = 1; i < 6; i++) {
     if (taskCounter[i] == 0) {
       if (eventFlags[i]) {
         OverrunFlags[0] = false;
@@ -100,6 +100,11 @@ void rt_OneStep(void)
     taskCounter[4]= 0;
   }
 
+  taskCounter[5]++;
+  if (taskCounter[5] == 5) {
+    taskCounter[5]= 0;
+  }
+
   /* Set model inputs associated with base rate here */
 
   /* Step the model for base rate */
@@ -111,7 +116,7 @@ void rt_OneStep(void)
   OverrunFlags[0] = false;
 
   /* Step the model for any subrate */
-  for (i = 1; i < 5; i++) {
+  for (i = 1; i < 6; i++) {
     /* If task "i" is running, don't run any lower priority task */
     if (OverrunFlags[i]) {
       return;
@@ -144,6 +149,12 @@ void rt_OneStep(void)
 
        case 4 :
         GCU_Model_genCode_step4();
+
+        /* Get model outputs here */
+        break;
+
+       case 5 :
+        GCU_Model_genCode_step5();
 
         /* Get model outputs here */
         break;
