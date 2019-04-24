@@ -16,4 +16,12 @@
 #define EFI_UPCUT_Pin   LED_1_GIALLO_Pin
 #define EFI_RPM_LIMITER_Pin LED_5_ROSSO_Pin
 
+//Definizione timer per clutch
+#define TIM_CLUTCH_CHANNEL TIM_CHANNEL_4
+#define hClutchTim htim4
+
+//Definizione uart utilizzata per debug
+#define huartDebug huart3
+
+
 #endif
