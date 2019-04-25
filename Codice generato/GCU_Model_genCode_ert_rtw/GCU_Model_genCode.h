@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.64
+ * Model version                  : 1.75
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Sun Apr 21 17:22:39 2019
+ * C/C++ source code generated on : Thu Apr 25 16:59:34 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -209,10 +209,10 @@ typedef struct {
   uint16_T Cast1;                      /* '<S10>/Cast1' */
   uint16_T Cast2;                      /* '<S10>/Cast2' */
   uint16_T Cast3;                      /* '<S10>/Cast3' */
-  uint16_T Cast_p;                     /* '<S11>/Cast' */
-  uint16_T Cast1_d;                    /* '<S11>/Cast1' */
-  uint16_T Cast2_i;                    /* '<S11>/Cast2' */
-  uint16_T Cast3_f;                    /* '<S11>/Cast3' */
+  uint16_T Cast_l;                     /* '<S11>/Cast' */
+  uint16_T Cast1_e;                    /* '<S11>/Cast1' */
+  uint16_T Cast2_a;                    /* '<S11>/Cast2' */
+  uint16_T Cast3_o;                    /* '<S11>/Cast3' */
   uint16_T Cast_k;                     /* '<S12>/Cast' */
   uint16_T Cast1_k;                    /* '<S12>/Cast1' */
   uint16_T Cast_j;                     /* '<S13>/Cast' */
@@ -239,7 +239,7 @@ typedef struct {
   uint8_T PackCanUart[10];             /* '<S6>/PackCanUart' */
   uint8_T clutchCommand[2];            /* '<S3>/MessageEvaluation' */
   uint8_T PackCANMsg[8];               /* '<S10>/PackCANMsg' */
-  uint8_T PackCANMsg_g[8];             /* '<S11>/PackCANMsg' */
+  uint8_T PackCANMsg_m[8];             /* '<S11>/PackCANMsg' */
   uint8_T PackCANMsg_i[8];             /* '<S12>/PackCANMsg' */
   uint8_T PackCANMsg_p[8];             /* '<S13>/PackCANMsg' */
   uint8_T PackCANMsg_o[8];             /* '<S14>/PackCANMsg' */
@@ -308,8 +308,8 @@ typedef struct {
 typedef struct {
   /* Pooled Parameter (Expression: 100)
    * Referenced by:
-   *   '<S10>/ADC_data1_ID'
-   *   '<S11>/ADC_data1_ID'
+   *   '<S1>/ADC_data1_ID'
+   *   '<S1>/ADC_data2_ID'
    *   '<S12>/ADC_data1_ID'
    *   '<S13>/ADC_data1_ID'
    *   '<S14>/ADC_data1_ID'

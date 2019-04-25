@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.64
+ * Model version                  : 1.75
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Sun Apr 21 17:22:39 2019
+ * C/C++ source code generated on : Thu Apr 25 16:59:34 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -38,8 +38,6 @@
 #define IN_SW_CHANGE_MODE              ((uint8_T)7U)
 #define IN_SW_GEARSHIFT                ((uint8_T)8U)
 #define IN_WHEEL_SPEED_UPDATE          ((uint8_T)9U)
-#define RPM_LIMITER_OFF                ((uint16_T)160U)
-#define RPM_LIMITER_ON                 ((uint16_T)150U)
 #define STOP_COM                       ((uint16_T)0U)
 #define SW_ACCELERATION_GCU_ID         ((uint16_T)514U)
 #define SW_CLUTCH_TARGET_GCU_ID        ((uint16_T)513U)
@@ -364,7 +362,7 @@ extern "C" {
 #endif
 
   extern void GearMotor_release_Start_wrapper(void);
-  extern void GearMotor_release_Outputs_wrapper(uint8_T *GearMotor_H);
+  extern void GearMotor_release_Outputs_wrapper(uint8_T *GearMotor_INH);
   extern void GearMotor_release_Terminate_wrapper(void);
 
 #ifdef __cplusplus
@@ -381,7 +379,7 @@ extern "C" {
   extern void GearMotor_turnRight_Start_wrapper(void);
   extern void GearMotor_turnRight_Outputs_wrapper(uint8_T *GearMotor_In1,
     uint8_T *GearMotor_In2,
-    uint8_T *GearMotor_H);
+    uint8_T *GearMotor_INH);
   extern void GearMotor_turnRight_Terminate_wrapper(void);
 
 #ifdef __cplusplus
@@ -398,7 +396,7 @@ extern "C" {
   extern void GearMotor_turnLeft_Start_wrapper(void);
   extern void GearMotor_turnLeft_Outputs_wrapper(uint8_T *GearMotor_In1,
     uint8_T *GearMotor_In2,
-    uint8_T *GearMotor_H);
+    uint8_T *GearMotor_INH);
   extern void GearMotor_turnLeft_Terminate_wrapper(void);
 
 #ifdef __cplusplus
@@ -415,7 +413,7 @@ extern "C" {
   extern void GearMotor_brake_Start_wrapper(void);
   extern void GearMotor_brake_Outputs_wrapper(uint8_T *GearMotor_In1,
     uint8_T *GearMotor_In2,
-    uint8_T *GearMotor_H);
+    uint8_T *GearMotor_INH);
   extern void GearMotor_brake_Terminate_wrapper(void);
 
 #ifdef __cplusplus
@@ -462,6 +460,51 @@ extern "C" {
   extern void GearMotor_init_Start_wrapper(void);
   extern void GearMotor_init_Outputs_wrapper(void);
   extern void GearMotor_init_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void InitADC_Start_wrapper(void);
+  extern void InitADC_Outputs_wrapper(void);
+  extern void InitADC_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void InitTimer_Start_wrapper(void);
+  extern void InitTimer_Outputs_wrapper(void);
+  extern void InitTimer_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void InitUART_Start_wrapper(void);
+  extern void InitUART_Outputs_wrapper(void);
+  extern void InitUART_Terminate_wrapper(void);
 
 #ifdef __cplusplus
 
@@ -1891,19 +1934,7 @@ static void WHEEL_SPEED_UPDATE(uint16_T *tractionValue, uint16_T
     sendStartEngCommand();
   } else if (rtDW.UnpackCanUart_o1 == (int32_T)SW_GEARSHIFT_ID) {
     rtDW.is_c2_GCU_Model_genCode = IN_SW_GEARSHIFT;
-    if (rtDW.UnpackCanUart_o2 == RPM_LIMITER_ON) {
-      /* Outputs for Function Call SubSystem: '<S16>/Efi_setRpmLimiter' */
-      Efi_setRpmLimiter(&rtDW.Merge_i, &rtDW.Efi_setRpmLimiter_b);
-
-      /* End of Outputs for SubSystem: '<S16>/Efi_setRpmLimiter' */
-    } else if (rtDW.UnpackCanUart_o2 == RPM_LIMITER_OFF) {
-      /* Outputs for Function Call SubSystem: '<S16>/Efi_unsetRpmLimiter' */
-      Efi_unsetRpmLimiter(&rtDW.Merge_i, &rtDW.Efi_unsetRpmLimiter_f);
-
-      /* End of Outputs for SubSystem: '<S16>/Efi_unsetRpmLimiter' */
-    } else {
-      sendShiftCommand(rtDW.UnpackCanUart_o2);
-    }
+    sendShiftCommand(rtDW.UnpackCanUart_o2);
   } else if (rtDW.UnpackCanUart_o1 == EFI_TRACTION_CONTROL_ID) {
     rtDW.is_c2_GCU_Model_genCode = IN_WHEEL_SPEED_UPDATE;
     *aac_externValues_index = (uint16_T)WHEEL_SPEED;
@@ -1971,19 +2002,7 @@ static void AAC_COM(uint16_T *tractionValue, uint16_T *aac_externValues_index,
     sendStartEngCommand();
   } else if (rtDW.UnpackCanUart_o1 == (int32_T)SW_GEARSHIFT_ID) {
     rtDW.is_c2_GCU_Model_genCode = IN_SW_GEARSHIFT;
-    if (rtDW.UnpackCanUart_o2 == RPM_LIMITER_ON) {
-      /* Outputs for Function Call SubSystem: '<S16>/Efi_setRpmLimiter' */
-      Efi_setRpmLimiter(&rtDW.Merge_i, &rtDW.Efi_setRpmLimiter_b);
-
-      /* End of Outputs for SubSystem: '<S16>/Efi_setRpmLimiter' */
-    } else if (rtDW.UnpackCanUart_o2 == RPM_LIMITER_OFF) {
-      /* Outputs for Function Call SubSystem: '<S16>/Efi_unsetRpmLimiter' */
-      Efi_unsetRpmLimiter(&rtDW.Merge_i, &rtDW.Efi_unsetRpmLimiter_f);
-
-      /* End of Outputs for SubSystem: '<S16>/Efi_unsetRpmLimiter' */
-    } else {
-      sendShiftCommand(rtDW.UnpackCanUart_o2);
-    }
+    sendShiftCommand(rtDW.UnpackCanUart_o2);
   } else if (rtDW.UnpackCanUart_o1 == EFI_TRACTION_CONTROL_ID) {
     rtDW.is_c2_GCU_Model_genCode = IN_WHEEL_SPEED_UPDATE;
     *aac_externValues_index = (uint16_T)WHEEL_SPEED;
@@ -2052,19 +2071,7 @@ static void GEAR_RPM_UPDATE(uint16_T *tractionValue, uint16_T
     sendStartEngCommand();
   } else if (rtDW.UnpackCanUart_o1 == (int32_T)SW_GEARSHIFT_ID) {
     rtDW.is_c2_GCU_Model_genCode = IN_SW_GEARSHIFT;
-    if (rtDW.UnpackCanUart_o2 == RPM_LIMITER_ON) {
-      /* Outputs for Function Call SubSystem: '<S16>/Efi_setRpmLimiter' */
-      Efi_setRpmLimiter(&rtDW.Merge_i, &rtDW.Efi_setRpmLimiter_b);
-
-      /* End of Outputs for SubSystem: '<S16>/Efi_setRpmLimiter' */
-    } else if (rtDW.UnpackCanUart_o2 == RPM_LIMITER_OFF) {
-      /* Outputs for Function Call SubSystem: '<S16>/Efi_unsetRpmLimiter' */
-      Efi_unsetRpmLimiter(&rtDW.Merge_i, &rtDW.Efi_unsetRpmLimiter_f);
-
-      /* End of Outputs for SubSystem: '<S16>/Efi_unsetRpmLimiter' */
-    } else {
-      sendShiftCommand(rtDW.UnpackCanUart_o2);
-    }
+    sendShiftCommand(rtDW.UnpackCanUart_o2);
   } else if (rtDW.UnpackCanUart_o1 == EFI_TRACTION_CONTROL_ID) {
     rtDW.is_c2_GCU_Model_genCode = IN_WHEEL_SPEED_UPDATE;
     *aac_externValues_index = (uint16_T)WHEEL_SPEED;
@@ -2132,19 +2139,7 @@ static void IDLE(uint16_T *tractionValue, uint16_T *aac_externValues_index,
     sendStartEngCommand();
   } else if (rtDW.UnpackCanUart_o1 == (int32_T)SW_GEARSHIFT_ID) {
     rtDW.is_c2_GCU_Model_genCode = IN_SW_GEARSHIFT;
-    if (rtDW.UnpackCanUart_o2 == RPM_LIMITER_ON) {
-      /* Outputs for Function Call SubSystem: '<S16>/Efi_setRpmLimiter' */
-      Efi_setRpmLimiter(&rtDW.Merge_i, &rtDW.Efi_setRpmLimiter_b);
-
-      /* End of Outputs for SubSystem: '<S16>/Efi_setRpmLimiter' */
-    } else if (rtDW.UnpackCanUart_o2 == RPM_LIMITER_OFF) {
-      /* Outputs for Function Call SubSystem: '<S16>/Efi_unsetRpmLimiter' */
-      Efi_unsetRpmLimiter(&rtDW.Merge_i, &rtDW.Efi_unsetRpmLimiter_f);
-
-      /* End of Outputs for SubSystem: '<S16>/Efi_unsetRpmLimiter' */
-    } else {
-      sendShiftCommand(rtDW.UnpackCanUart_o2);
-    }
+    sendShiftCommand(rtDW.UnpackCanUart_o2);
   } else if (rtDW.UnpackCanUart_o1 == EFI_TRACTION_CONTROL_ID) {
     rtDW.is_c2_GCU_Model_genCode = IN_WHEEL_SPEED_UPDATE;
     *aac_externValues_index = (uint16_T)WHEEL_SPEED;
@@ -2212,19 +2207,7 @@ static void SET_CLUTCH(uint16_T *tractionValue, uint16_T *aac_externValues_index
     sendStartEngCommand();
   } else if (rtDW.UnpackCanUart_o1 == (int32_T)SW_GEARSHIFT_ID) {
     rtDW.is_c2_GCU_Model_genCode = IN_SW_GEARSHIFT;
-    if (rtDW.UnpackCanUart_o2 == RPM_LIMITER_ON) {
-      /* Outputs for Function Call SubSystem: '<S16>/Efi_setRpmLimiter' */
-      Efi_setRpmLimiter(&rtDW.Merge_i, &rtDW.Efi_setRpmLimiter_b);
-
-      /* End of Outputs for SubSystem: '<S16>/Efi_setRpmLimiter' */
-    } else if (rtDW.UnpackCanUart_o2 == RPM_LIMITER_OFF) {
-      /* Outputs for Function Call SubSystem: '<S16>/Efi_unsetRpmLimiter' */
-      Efi_unsetRpmLimiter(&rtDW.Merge_i, &rtDW.Efi_unsetRpmLimiter_f);
-
-      /* End of Outputs for SubSystem: '<S16>/Efi_unsetRpmLimiter' */
-    } else {
-      sendShiftCommand(rtDW.UnpackCanUart_o2);
-    }
+    sendShiftCommand(rtDW.UnpackCanUart_o2);
   } else if (rtDW.UnpackCanUart_o1 == EFI_TRACTION_CONTROL_ID) {
     rtDW.is_c2_GCU_Model_genCode = IN_WHEEL_SPEED_UPDATE;
     *aac_externValues_index = (uint16_T)WHEEL_SPEED;
@@ -2353,7 +2336,7 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
     if (rtDW.is_active_START_ENGINE != 0U) {
       switch (rtDW.is_START_ENGINE) {
        case IN_START_l:
-        if (rtDW.startCounter == 0) {
+        if (rtDW.startCounter <= 0) {
           rtDW.is_START_ENGINE = IN_NO_ACTIVE_CHILD;
           if (rtDW.is_START_ENGINE != IN_STOP) {
             rtDW.is_START_ENGINE = IN_STOP;
@@ -2364,6 +2347,18 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
             EngineControl_stop_Outputs_wrapper(&rtDW.EngineControlStop);
 
             /* End of Outputs for SubSystem: '<S25>/EngineControl_Stop' */
+          }
+        } else if (rtDW.RateTransition3 != rtDW.lastCom) {
+          rtDW.is_START_ENGINE = IN_NO_ACTIVE_CHILD;
+          if (rtDW.is_START_ENGINE != IN_START_l) {
+            rtDW.is_START_ENGINE = IN_START_l;
+
+            /* Outputs for Function Call SubSystem: '<S25>/EngineControl_Start' */
+            EngineControl_Start(&Merge_b, &rtDW.EngineControl_Start_h);
+
+            /* End of Outputs for SubSystem: '<S25>/EngineControl_Start' */
+            rtDW.lastCom = rtDW.RateTransition3;
+            rtDW.startCounter = 100U;
           }
         } else {
           tmp = rtDW.startCounter - 1;
@@ -2601,19 +2596,7 @@ void GCU_Model_genCode_step2(void)     /* Sample time: [0.001s, 0.0002s] */
         sendStartEngCommand();
       } else if (rtDW.UnpackCanUart_o1 == (int32_T)SW_GEARSHIFT_ID) {
         rtDW.is_c2_GCU_Model_genCode = IN_SW_GEARSHIFT;
-        if (rtDW.UnpackCanUart_o2 == RPM_LIMITER_ON) {
-          /* Outputs for Function Call SubSystem: '<S16>/Efi_setRpmLimiter' */
-          Efi_setRpmLimiter(&rtDW.Merge_i, &rtDW.Efi_setRpmLimiter_b);
-
-          /* End of Outputs for SubSystem: '<S16>/Efi_setRpmLimiter' */
-        } else if (rtDW.UnpackCanUart_o2 == RPM_LIMITER_OFF) {
-          /* Outputs for Function Call SubSystem: '<S16>/Efi_unsetRpmLimiter' */
-          Efi_unsetRpmLimiter(&rtDW.Merge_i, &rtDW.Efi_unsetRpmLimiter_f);
-
-          /* End of Outputs for SubSystem: '<S16>/Efi_unsetRpmLimiter' */
-        } else {
-          sendShiftCommand(rtDW.UnpackCanUart_o2);
-        }
+        sendShiftCommand(rtDW.UnpackCanUart_o2);
       } else if (rtDW.UnpackCanUart_o1 == EFI_TRACTION_CONTROL_ID) {
         rtDW.is_c2_GCU_Model_genCode = IN_WHEEL_SPEED_UPDATE;
 
@@ -2671,19 +2654,7 @@ void GCU_Model_genCode_step2(void)     /* Sample time: [0.001s, 0.0002s] */
         sendStartEngCommand();
       } else if (rtDW.UnpackCanUart_o1 == (int32_T)SW_GEARSHIFT_ID) {
         rtDW.is_c2_GCU_Model_genCode = IN_SW_GEARSHIFT;
-        if (rtDW.UnpackCanUart_o2 == RPM_LIMITER_ON) {
-          /* Outputs for Function Call SubSystem: '<S16>/Efi_setRpmLimiter' */
-          Efi_setRpmLimiter(&rtDW.Merge_i, &rtDW.Efi_setRpmLimiter_b);
-
-          /* End of Outputs for SubSystem: '<S16>/Efi_setRpmLimiter' */
-        } else if (rtDW.UnpackCanUart_o2 == RPM_LIMITER_OFF) {
-          /* Outputs for Function Call SubSystem: '<S16>/Efi_unsetRpmLimiter' */
-          Efi_unsetRpmLimiter(&rtDW.Merge_i, &rtDW.Efi_unsetRpmLimiter_f);
-
-          /* End of Outputs for SubSystem: '<S16>/Efi_unsetRpmLimiter' */
-        } else {
-          sendShiftCommand(rtDW.UnpackCanUart_o2);
-        }
+        sendShiftCommand(rtDW.UnpackCanUart_o2);
       } else if (rtDW.UnpackCanUart_o1 == EFI_TRACTION_CONTROL_ID) {
         rtDW.is_c2_GCU_Model_genCode = IN_WHEEL_SPEED_UPDATE;
 
@@ -2741,19 +2712,7 @@ void GCU_Model_genCode_step2(void)     /* Sample time: [0.001s, 0.0002s] */
         sendStartEngCommand();
       } else if (rtDW.UnpackCanUart_o1 == (int32_T)SW_GEARSHIFT_ID) {
         rtDW.is_c2_GCU_Model_genCode = IN_SW_GEARSHIFT;
-        if (rtDW.UnpackCanUart_o2 == RPM_LIMITER_ON) {
-          /* Outputs for Function Call SubSystem: '<S16>/Efi_setRpmLimiter' */
-          Efi_setRpmLimiter(&rtDW.Merge_i, &rtDW.Efi_setRpmLimiter_b);
-
-          /* End of Outputs for SubSystem: '<S16>/Efi_setRpmLimiter' */
-        } else if (rtDW.UnpackCanUart_o2 == RPM_LIMITER_OFF) {
-          /* Outputs for Function Call SubSystem: '<S16>/Efi_unsetRpmLimiter' */
-          Efi_unsetRpmLimiter(&rtDW.Merge_i, &rtDW.Efi_unsetRpmLimiter_f);
-
-          /* End of Outputs for SubSystem: '<S16>/Efi_unsetRpmLimiter' */
-        } else {
-          sendShiftCommand(rtDW.UnpackCanUart_o2);
-        }
+        sendShiftCommand(rtDW.UnpackCanUart_o2);
       } else if (rtDW.UnpackCanUart_o1 == EFI_TRACTION_CONTROL_ID) {
         rtDW.is_c2_GCU_Model_genCode = IN_WHEEL_SPEED_UPDATE;
 
@@ -2811,19 +2770,7 @@ void GCU_Model_genCode_step2(void)     /* Sample time: [0.001s, 0.0002s] */
         sendStartEngCommand();
       } else if (rtDW.UnpackCanUart_o1 == (int32_T)SW_GEARSHIFT_ID) {
         rtDW.is_c2_GCU_Model_genCode = IN_SW_GEARSHIFT;
-        if (rtDW.UnpackCanUart_o2 == RPM_LIMITER_ON) {
-          /* Outputs for Function Call SubSystem: '<S16>/Efi_setRpmLimiter' */
-          Efi_setRpmLimiter(&rtDW.Merge_i, &rtDW.Efi_setRpmLimiter_b);
-
-          /* End of Outputs for SubSystem: '<S16>/Efi_setRpmLimiter' */
-        } else if (rtDW.UnpackCanUart_o2 == RPM_LIMITER_OFF) {
-          /* Outputs for Function Call SubSystem: '<S16>/Efi_unsetRpmLimiter' */
-          Efi_unsetRpmLimiter(&rtDW.Merge_i, &rtDW.Efi_unsetRpmLimiter_f);
-
-          /* End of Outputs for SubSystem: '<S16>/Efi_unsetRpmLimiter' */
-        } else {
-          sendShiftCommand(rtDW.UnpackCanUart_o2);
-        }
+        sendShiftCommand(rtDW.UnpackCanUart_o2);
       } else if (rtDW.UnpackCanUart_o1 == EFI_TRACTION_CONTROL_ID) {
         rtDW.is_c2_GCU_Model_genCode = IN_WHEEL_SPEED_UPDATE;
 
@@ -3188,30 +3135,30 @@ void GCU_Model_genCode_step5(void)     /* Sample time: [0.001s, 0.0008s] */
     &rtDW.PackCANMsg[0]);
 
   /* S-Function (sendCAN): '<S10>/sendCAN' incorporates:
-   *  Constant: '<S10>/ADC_data1_ID'
+   *  Constant: '<S1>/ADC_data1_ID'
    */
   sendCAN_Outputs_wrapper(&rtConstP.pooled2, &rtDW.PackCANMsg[0]);
 
   /* DataTypeConversion: '<S11>/Cast' */
-  rtDW.Cast_p = (uint16_T)rtb_RateTransition18[4];
+  rtDW.Cast_l = (uint16_T)rtb_RateTransition18[4];
 
   /* DataTypeConversion: '<S11>/Cast1' */
-  rtDW.Cast1_d = (uint16_T)rtb_RateTransition18[5];
+  rtDW.Cast1_e = (uint16_T)rtb_RateTransition18[5];
 
   /* DataTypeConversion: '<S11>/Cast2' */
-  rtDW.Cast2_i = (uint16_T)rtb_RateTransition18[6];
+  rtDW.Cast2_a = (uint16_T)rtb_RateTransition18[6];
 
   /* DataTypeConversion: '<S11>/Cast3' */
-  rtDW.Cast3_f = (uint16_T)rtb_RateTransition18[7];
+  rtDW.Cast3_o = (uint16_T)rtb_RateTransition18[7];
 
   /* S-Function (PackCANMsg): '<S11>/PackCANMsg' */
-  PackCANMsg_Outputs_wrapper(&rtDW.Cast_p, &rtDW.Cast1_d, &rtDW.Cast2_i,
-    &rtDW.Cast3_f, &rtDW.PackCANMsg_g[0]);
+  PackCANMsg_Outputs_wrapper(&rtDW.Cast_l, &rtDW.Cast1_e, &rtDW.Cast2_a,
+    &rtDW.Cast3_o, &rtDW.PackCANMsg_m[0]);
 
   /* S-Function (sendCAN): '<S11>/sendCAN' incorporates:
-   *  Constant: '<S11>/ADC_data1_ID'
+   *  Constant: '<S1>/ADC_data2_ID'
    */
-  sendCAN_Outputs_wrapper(&rtConstP.pooled2, &rtDW.PackCANMsg_g[0]);
+  sendCAN_Outputs_wrapper(&rtConstP.pooled2, &rtDW.PackCANMsg_m[0]);
 
   /* DataTypeConversion: '<S12>/Cast' */
   rtDW.Cast_k = (uint16_T)rtb_RateTransition18[8];
@@ -3304,6 +3251,15 @@ void GCU_Model_genCode_initialize(void)
 
   /* S-Function (GearMotor_init): '<S5>/GearMotor Init' */
   GearMotor_init_Outputs_wrapper();
+
+  /* S-Function (InitADC): '<S5>/InitADC' */
+  InitADC_Outputs_wrapper();
+
+  /* S-Function (InitTimer): '<S5>/InitTimer' */
+  InitTimer_Outputs_wrapper();
+
+  /* S-Function (InitUART): '<S5>/InitUART' */
+  InitUART_Outputs_wrapper();
 
   /* End of SystemInitialize for SubSystem: '<Root>/Initialize Function' */
 }
