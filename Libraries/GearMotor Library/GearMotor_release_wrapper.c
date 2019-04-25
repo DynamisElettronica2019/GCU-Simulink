@@ -35,9 +35,7 @@
 void GearMotor_release_Outputs_wrapper(uint8_T *GearMotor_H)
 {
 /* %%%-SFUNWIZ_wrapper_Outputs_Changes_BEGIN --- EDIT HERE TO _END */
-#if defined(MATLAB_MEX_FILE)
 *GearMotor_H = 0;
-#endif
 
 #if !defined(MATLAB_MEX_FILE)
 HAL_GPIO_WritePin(GPIO_GEAR_MOTOR, GEAR_MOTOR_INHIBIT, GPIO_PIN_RESET);
