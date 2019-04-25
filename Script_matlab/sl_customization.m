@@ -31,6 +31,7 @@ cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/CAN Library/SendCAN Builde
 cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/UART Library/SendUART Builder','Hidden'});
 cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/UART Library/PackUART Builder','Hidden'});
 cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/UART Library/UnpackUART Builder','Hidden'});
+cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/UART Library/InitUART Builder','Hidden'});
 
 cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/Sensors Library/update_ADC_data Builder','Hidden'});
 
