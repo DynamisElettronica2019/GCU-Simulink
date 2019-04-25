@@ -34,4 +34,7 @@ cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/UART Library/UnpackUART Bu
 cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/UART Library/InitUART Builder','Hidden'});
 
 cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/Sensors Library/update_ADC_data Builder','Hidden'});
+cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/Sensors Library/InitADC Builder','Hidden'});
+
+cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/Timer Library/InitTimer Builder','Hidden'});
 
