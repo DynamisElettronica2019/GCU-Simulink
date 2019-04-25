@@ -1,5 +1,5 @@
 %% File : GearMotor_release.tlc
-%% Created : Thu Apr 25 12:06:16 2019
+%% Created : Thu Apr 25 16:07:27 2019
 %%
 %% Description: 
 %%   Simulink Coder wrapper functions interface generated for 
@@ -30,7 +30,7 @@
 
     extern void GearMotor_release_Start_wrapper(void);
 
-    extern void GearMotor_release_Outputs_wrapper(uint8_T *GearMotor_H);
+    extern void GearMotor_release_Outputs_wrapper(uint8_T *GearMotor_INH);
 
     extern void GearMotor_release_Terminate_wrapper(void);
 

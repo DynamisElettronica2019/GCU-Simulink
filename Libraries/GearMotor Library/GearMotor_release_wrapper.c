@@ -14,7 +14,7 @@
 
 /* %%%-SFUNWIZ_wrapper_includes_Changes_BEGIN --- EDIT HERE TO _END */
 #if !defined(MATLAB_MEX_FILE)
-#include "stm32f7xx_hal.h"
+//#include "stm32f7xx_hal.h"
 #include "pin_defines.h"
 #endif
 /* %%%-SFUNWIZ_wrapper_includes_Changes_END --- EDIT HERE TO _BEGIN */
@@ -32,10 +32,10 @@
  * Output function
  *
  */
-void GearMotor_release_Outputs_wrapper(uint8_T *GearMotor_H)
+void GearMotor_release_Outputs_wrapper(uint8_T *GearMotor_INH)
 {
 /* %%%-SFUNWIZ_wrapper_Outputs_Changes_BEGIN --- EDIT HERE TO _END */
-*GearMotor_H = 0;
+*GearMotor_INH = 0;
 
 #if !defined(MATLAB_MEX_FILE)
 HAL_GPIO_WritePin(GPIO_GEAR_MOTOR, GEAR_MOTOR_INHIBIT, GPIO_PIN_RESET);

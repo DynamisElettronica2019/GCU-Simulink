@@ -26,7 +26,7 @@
  * | See matlabroot/simulink/src/sfuntmpl_doc.c for a more detailed template |
  *  ------------------------------------------------------------------------- 
  *
- * Created: Thu Apr 25 12:06:16 2019
+ * Created: Thu Apr 25 16:07:27 2019
  */
 
 #define S_FUNCTION_LEVEL 2
@@ -37,7 +37,7 @@
 
 #define NUM_OUTPUTS           1
 /* Output Port  0 */
-#define OUT_PORT_0_NAME       GearMotor_H
+#define OUT_PORT_0_NAME       GearMotor_INH
 #define OUTPUT_0_WIDTH        1
 #define OUTPUT_DIMS_0_COL     1
 #define OUTPUT_0_DTYPE        uint8_T
@@ -73,7 +73,7 @@
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 #include "simstruc.h"
 
-extern void GearMotor_release_Outputs_wrapper(uint8_T *GearMotor_H);
+extern void GearMotor_release_Outputs_wrapper(uint8_T *GearMotor_INH);
 /*====================*
  * S-function methods *
  *====================*/
@@ -160,9 +160,9 @@ static void mdlStart(SimStruct *S)
  */
 static void mdlOutputs(SimStruct *S, int_T tid)
 {
-    uint8_T *GearMotor_H = (uint8_T *) ssGetOutputPortRealSignal(S, 0);
+    uint8_T *GearMotor_INH = (uint8_T *) ssGetOutputPortRealSignal(S, 0);
 
-    GearMotor_release_Outputs_wrapper(GearMotor_H);
+    GearMotor_release_Outputs_wrapper(GearMotor_INH);
 
 }
 

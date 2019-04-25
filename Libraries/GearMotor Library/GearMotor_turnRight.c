@@ -26,7 +26,7 @@
  * | See matlabroot/simulink/src/sfuntmpl_doc.c for a more detailed template |
  *  ------------------------------------------------------------------------- 
  *
- * Created: Wed Apr 17 13:28:08 2019
+ * Created: Thu Apr 25 16:10:30 2019
  */
 
 #define S_FUNCTION_LEVEL 2
@@ -69,7 +69,7 @@
 #define OUT_1_BIAS            0
 #define OUT_1_SLOPE           0.125
 /* Output Port  2 */
-#define OUT_PORT_2_NAME       GearMotor_H
+#define OUT_PORT_2_NAME       GearMotor_INH
 #define OUTPUT_2_WIDTH        1
 #define OUTPUT_DIMS_2_COL     1
 #define OUTPUT_2_DTYPE        uint8_T
@@ -107,7 +107,7 @@
 
 extern void GearMotor_turnRight_Outputs_wrapper(uint8_T *GearMotor_In1,
 			uint8_T *GearMotor_In2,
-			uint8_T *GearMotor_H);
+			uint8_T *GearMotor_INH);
 /*====================*
  * S-function methods *
  *====================*/
@@ -205,9 +205,9 @@ static void mdlOutputs(SimStruct *S, int_T tid)
 {
     uint8_T *GearMotor_In1 = (uint8_T *) ssGetOutputPortRealSignal(S, 0);
     uint8_T *GearMotor_In2 = (uint8_T *) ssGetOutputPortRealSignal(S, 1);
-    uint8_T *GearMotor_H = (uint8_T *) ssGetOutputPortRealSignal(S, 2);
+    uint8_T *GearMotor_INH = (uint8_T *) ssGetOutputPortRealSignal(S, 2);
 
-    GearMotor_turnRight_Outputs_wrapper(GearMotor_In1, GearMotor_In2, GearMotor_H);
+    GearMotor_turnRight_Outputs_wrapper(GearMotor_In1, GearMotor_In2, GearMotor_INH);
 
 }
 

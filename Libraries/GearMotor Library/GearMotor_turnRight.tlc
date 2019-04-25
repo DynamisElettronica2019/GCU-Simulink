@@ -1,5 +1,5 @@
 %% File : GearMotor_turnRight.tlc
-%% Created : Wed Apr 17 13:28:08 2019
+%% Created : Thu Apr 25 16:10:30 2019
 %%
 %% Description: 
 %%   Simulink Coder wrapper functions interface generated for 
@@ -32,7 +32,7 @@
 
     extern void GearMotor_turnRight_Outputs_wrapper(uint8_T *GearMotor_In1,
 			uint8_T *GearMotor_In2,
-			uint8_T *GearMotor_H);
+			uint8_T *GearMotor_INH);
 
     extern void GearMotor_turnRight_Terminate_wrapper(void);
 

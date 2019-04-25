@@ -14,7 +14,7 @@
 
 /* %%%-SFUNWIZ_wrapper_includes_Changes_BEGIN --- EDIT HERE TO _END */
 #if !defined(MATLAB_MEX_FILE)
-#include "stm32f7xx_hal.h"
+//#include "stm32f7xx_hal.h"
 #include "pin_defines.h"
 #endif
 /* %%%-SFUNWIZ_wrapper_includes_Changes_END --- EDIT HERE TO _BEGIN */
@@ -34,8 +34,8 @@ extern void GearMotor_release_Outputs_wrapper(uint8_T *GearMotor_H);
 void GearMotor_init_Outputs_wrapper(void)
 {
 /* %%%-SFUNWIZ_wrapper_Outputs_Changes_BEGIN --- EDIT HERE TO _END */
-uint8_T GearMotor_H;
-GearMotor_release_Outputs_wrapper(&GearMotor_H);
+uint8_T GearMotor_INH;
+GearMotor_release_Outputs_wrapper(&GearMotor_INH);
 /* %%%-SFUNWIZ_wrapper_Outputs_Changes_END --- EDIT HERE TO _BEGIN */
 }
 
