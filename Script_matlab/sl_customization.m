@@ -38,3 +38,6 @@ cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/Sensors Library/InitADC Bu
 
 cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/Timer Library/InitTimer Builder','Hidden'});
 
+cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/EEPROM Library/loadParams Builder','Hidden'});
+cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/EEPROM Library/loadTimings Builder','Hidden'});
+

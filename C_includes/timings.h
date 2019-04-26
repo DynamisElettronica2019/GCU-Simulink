@@ -1,3 +1,8 @@
+#ifndef TIMINGS_H
+#define TIMINGS_H
+
+#define TIMINGS_NUM 23
+
 #define DEFAULT_DELAY       20
 #define DEFAULT_UP_REBOUND  15
 #define DEFAULT_UP_BRAKE    20
@@ -25,4 +30,47 @@
 #define DEFAULT_UP_TIME_CHECK   500
 #define DEFAULT_MAX_TRIES       2
 
+typedef enum 
+{
+  //Neutral 1->N
+  NT_PUSH_1_N,
+  NT_CLUTCH_1_N,
+  NT_REBOUND_1_N,
+  NT_BRAKE_1_N,
+  
+  //Neutral 2->N
+  NT_PUSH_2_N,
+  NT_CLUTCH_2_N,
+  NT_REBOUND_2_N,
+  NT_BRAKE_2_N,
+  
+  //Downshift
+  DN_PUSH,
+  CLUTCH,
+  DN_REBOUND,
+  DN_BRAKE,
+  
+  //Upshift gear specific
+  UP_PUSH_1_2,
+  UP_PUSH_2_3,
+  UP_PUSH_3_4,
+  UP_PUSH_4_5,
+  
+  //Up generics
+  DELAY,
+  UP_REBOUND,
+  UP_BRAKE,
+  //neutral
+  NT_CLUTCH_DELAY,
+
+  //Multiple tries
+  DOWN_TIME_CHECK,
+  UP_TIME_CHECK,
+  MAX_TRIES,
+
+  //Keep Last
+  TIMES_LAST
+}time_id;
+
+#endif
    
