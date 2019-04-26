@@ -1,3 +1,6 @@
+#ifndef DEF_ACC_PARAMS
+#define DEF_ACC_PARAMS
+
 #define DEF_RAMP_START 50
 #define DEF_RAMP_END 0
 #define DEF_RAMP_TIME 250
@@ -11,4 +14,4 @@
 #define DEF_SPEED_LIMIT_3_4 77
 #define DEF_SPEED_LIMIT_4_5 113
 
-   
+ #endif  

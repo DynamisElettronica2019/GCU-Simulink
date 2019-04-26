@@ -437,6 +437,10 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["GCU_Model_genCode:1078"] = {rtwname: "<S5>/InitTimer"};
 	this.rtwnameHashMap["<S5>/InitUART"] = {sid: "GCU_Model_genCode:1076"};
 	this.sidHashMap["GCU_Model_genCode:1076"] = {rtwname: "<S5>/InitUART"};
+	this.rtwnameHashMap["<S5>/load_accParameters"] = {sid: "GCU_Model_genCode:1081"};
+	this.sidHashMap["GCU_Model_genCode:1081"] = {rtwname: "<S5>/load_accParameters"};
+	this.rtwnameHashMap["<S5>/accParameters"] = {sid: "GCU_Model_genCode:1083"};
+	this.sidHashMap["GCU_Model_genCode:1083"] = {rtwname: "<S5>/accParameters"};
 	this.rtwnameHashMap["<S6>/gearPin"] = {sid: "GCU_Model_genCode:844"};
 	this.sidHashMap["GCU_Model_genCode:844"] = {rtwname: "<S6>/gearPin"};
 	this.rtwnameHashMap["<S6>/AccelerationRoutine"] = {sid: "GCU_Model_genCode:592"};

@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.75
+ * Model version                  : 1.82
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Thu Apr 25 16:59:34 2019
+ * C/C++ source code generated on : Fri Apr 26 17:07:52 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -104,10 +104,7 @@ typedef enum {
 
 /* Block signals and states (default storage) for system '<S3>/TractionValue' */
 typedef struct {
-  uint16_T Divide;                     /* '<S18>/Divide' */
   uint16_T UnitDelay_DSTATE;           /* '<S18>/Unit Delay' */
-  uint8_T PackCanUart[10];             /* '<S21>/PackCanUart' */
-  uint8_T PackCanUart_g[10];           /* '<S22>/PackCanUart' */
 } DW_TractionValue;
 
 /* Block signals and states (default storage) for system '<S16>/Efi_setRpmLimiter' */
@@ -165,6 +162,7 @@ typedef struct {
   real_T count;                        /* '<S6>/AccelerationRoutine' */
   real_T aac_clutchValue;              /* '<S4>/GCULogic' */
   real_T aac_clutchStep;               /* '<S4>/GCULogic' */
+  int32_T load_accParameters[11];      /* '<S5>/load_accParameters' */
   int32_T aac_parameters[11];          /* '<S4>/GCULogic' */
   int32_T sfEvent;                     /* '<S4>/GCULogic' */
   int32_T aac_dtRelease;               /* '<S4>/GCULogic' */
@@ -189,8 +187,8 @@ typedef struct {
   volatile uint16_T RateTransition11_Buffer0[3];/* '<Root>/Rate Transition11' */
   volatile uint16_T RateTransition14_Buffer0[2];/* '<Root>/Rate Transition14' */
   volatile uint16_T RateTransition17_Buffer0[2];/* '<Root>/Rate Transition17' */
-  uint16_T RateTransition22;           /* '<Root>/Rate Transition22' */
   uint16_T RateTransition21;           /* '<Root>/Rate Transition21' */
+  uint16_T RateTransition22;           /* '<Root>/Rate Transition22' */
   uint16_T RateTransition23;           /* '<Root>/Rate Transition23' */
   uint16_T id;                         /* '<S6>/AccelerationRoutine' */
   uint16_T firstInt;                   /* '<S6>/AccelerationRoutine' */
@@ -223,6 +221,7 @@ typedef struct {
   uint16_T lastAacCom;                 /* '<S4>/GCULogic' */
   uint16_T lastShiftCom;               /* '<S4>/GCULogic' */
   uint16_T aacCounter;                 /* '<S4>/GCULogic' */
+  volatile int8_T RateTransition9_ActiveBufIdx;/* '<Root>/Rate Transition9' */
   volatile int8_T RateTransition1_ActiveBufIdx;/* '<Root>/Rate Transition1' */
   volatile int8_T RateTransition2_ActiveBufIdx;/* '<Root>/Rate Transition2' */
   volatile int8_T RateTransition4_ActiveBufIdx;/* '<Root>/Rate Transition4' */
@@ -232,7 +231,6 @@ typedef struct {
   volatile int8_T RateTransition14_semaphoreTaken;/* '<Root>/Rate Transition14' */
   volatile int8_T RateTransition17_semaphoreTaken;/* '<Root>/Rate Transition17' */
   volatile int8_T RateTransition15_semaphoreTaken;/* '<Root>/Rate Transition15' */
-  volatile int8_T RateTransition9_ActiveBufIdx;/* '<Root>/Rate Transition9' */
   volatile int8_T RateTransition18_semaphoreTaken;/* '<Root>/Rate Transition18' */
   uint8_T RateTransition5[2];          /* '<Root>/Rate Transition5' */
   uint8_T MultiportSwitch[10];         /* '<Root>/Multiport Switch' */
@@ -248,8 +246,8 @@ typedef struct {
   volatile uint8_T RateTransition15_Buffer0[2];/* '<Root>/Rate Transition15' */
   uint8_T RateTransition;              /* '<Root>/Rate Transition' */
   uint8_T RateTransition3;             /* '<Root>/Rate Transition3' */
-  uint8_T RateTransition7;             /* '<Root>/Rate Transition7' */
   uint8_T RateTransition6;             /* '<Root>/Rate Transition6' */
+  uint8_T RateTransition7;             /* '<Root>/Rate Transition7' */
   uint8_T Cast_a;                      /* '<Root>/Cast' */
   uint8_T Merge;                       /* '<S8>/Merge' */
   uint8_T Merge2;                      /* '<S24>/Merge2' */
@@ -313,7 +311,6 @@ typedef struct {
    *   '<S12>/ADC_data1_ID'
    *   '<S13>/ADC_data1_ID'
    *   '<S14>/ADC_data1_ID'
-   *   '<S18>/Constant'
    */
   uint16_T pooled2;
 
@@ -332,22 +329,10 @@ typedef struct {
    */
   uint16_T pooled3;
 
-  /* Computed Parameter: GCU_TRACTION_CONTROL_EFI_ID_Val
-   * Referenced by: '<S21>/GCU_TRACTION_CONTROL_EFI_ID'
+  /* Computed Parameter: GCU_FEEDBACK_ID_Value
+   * Referenced by: '<S37>/GCU_FEEDBACK_ID'
    */
-  uint16_T GCU_TRACTION_CONTROL_EFI_ID_Val;
-
-  /* Pooled Parameter (Expression: 793)
-   * Referenced by:
-   *   '<S22>/GCU_FEEDBACK_ID'
-   *   '<S37>/GCU_FEEDBACK_ID'
-   */
-  uint16_T pooled4;
-
-  /* Computed Parameter: TRACTION_CODE_Value
-   * Referenced by: '<S18>/TRACTION_CODE'
-   */
-  uint16_T TRACTION_CODE_Value;
+  uint16_T GCU_FEEDBACK_ID_Value;
 } ConstP;
 
 /* External inputs (root inport signals with default storage) */
@@ -399,6 +384,9 @@ extern RT_MODEL *const rtM;
 /*-
  * These blocks were eliminated from the model due to optimizations:
  *
+ * Block '<S18>/Constant' : Unused code path elimination
+ * Block '<S18>/Divide' : Unused code path elimination
+ * Block '<S18>/TRACTION_CODE' : Unused code path elimination
  * Block '<S12>/Cast2' : Eliminate redundant data type conversion
  * Block '<S12>/Cast3' : Eliminate redundant data type conversion
  * Block '<S13>/Cast2' : Eliminate redundant data type conversion

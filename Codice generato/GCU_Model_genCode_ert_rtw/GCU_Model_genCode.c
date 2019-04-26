@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.75
+ * Model version                  : 1.82
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Thu Apr 25 16:59:34 2019
+ * C/C++ source code generated on : Fri Apr 26 17:07:52 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -204,26 +204,6 @@ extern "C" {
   extern void sendCAN_Outputs_wrapper(const uint16_T *id,
     const uint8_T *dataArray);
   extern void sendCAN_Terminate_wrapper(void);
-
-#ifdef __cplusplus
-
-}
-#endif
-
-#ifdef __cplusplus
-
-extern "C" {
-
-#endif
-
-  extern void PackCanUART_Start_wrapper(void);
-  extern void PackCanUART_Outputs_wrapper(const uint16_T *id,
-    const uint16_T *firstInt,
-    const uint16_T *secondInt,
-    const uint16_T *thirdInt,
-    const uint16_T *fourthInt,
-    uint8_T *message);
-  extern void PackCanUART_Terminate_wrapper(void);
 
 #ifdef __cplusplus
 
@@ -457,6 +437,41 @@ extern "C" {
 
 #endif
 
+  extern void PackCanUART_Start_wrapper(void);
+  extern void PackCanUART_Outputs_wrapper(const uint16_T *id,
+    const uint16_T *firstInt,
+    const uint16_T *secondInt,
+    const uint16_T *thirdInt,
+    const uint16_T *fourthInt,
+    uint8_T *message);
+  extern void PackCanUART_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void load_accParameters_Start_wrapper(void);
+  extern void load_accParameters_Outputs_wrapper(int32_T *accParameters);
+  extern void load_accParameters_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
   extern void GearMotor_init_Start_wrapper(void);
   extern void GearMotor_init_Outputs_wrapper(void);
   extern void GearMotor_init_Terminate_wrapper(void);
@@ -539,6 +554,7 @@ static int32_T getAacParam(aac_params b_index);
 static void aacCheckShift(void);
 static void checkClutch(void);
 static void enter_atomic_MANUAL_MODES(void);
+static void enter_atomic_ACCELERATION(void);
 static void ACCELERATION(void);
 static void MODES(void);
 static void updateData(void);
@@ -568,25 +584,6 @@ static void TractionValue(uint16_T rtu_Value, uint16_T *rty_tractionValue,
    */
   *rty_tractionValue = localDW->UnitDelay_DSTATE;
   *rty_tractionValue = rtu_Value;
-
-  /* S-Function (PackCanUART): '<S21>/PackCanUart' incorporates:
-   *  Constant: '<S21>/GCU_TRACTION_CONTROL_EFI_ID'
-   */
-  PackCanUART_Outputs_wrapper(&rtConstP.GCU_TRACTION_CONTROL_EFI_ID_Val,
-    rty_tractionValue, (uint16_T*)&GCU_Model_genCode_U16GND, (uint16_T*)
-    &GCU_Model_genCode_U16GND, (uint16_T*)&GCU_Model_genCode_U16GND,
-    &localDW->PackCanUart[0]);
-
-  /* Product: '<S18>/Divide' */
-  localDW->Divide = (uint16_T)(*rty_tractionValue / 100U);
-
-  /* S-Function (PackCanUART): '<S22>/PackCanUart' incorporates:
-   *  Constant: '<S18>/TRACTION_CODE'
-   *  Constant: '<S22>/GCU_FEEDBACK_ID'
-   */
-  PackCanUART_Outputs_wrapper(&rtConstP.pooled4, &rtConstP.TRACTION_CODE_Value,
-    &localDW->Divide, (uint16_T*)&GCU_Model_genCode_U16GND, (uint16_T*)
-    &GCU_Model_genCode_U16GND, &localDW->PackCanUart_g[0]);
 
   /* Update for UnitDelay: '<S18>/Unit Delay' */
   localDW->UnitDelay_DSTATE = *rty_tractionValue;
@@ -704,9 +701,9 @@ static void sendUpdatesSW(uint16_T rtu_valCode, uint16_T rtu_value,
   /* S-Function (PackCanUART): '<S37>/PackCanUart' incorporates:
    *  Constant: '<S37>/GCU_FEEDBACK_ID'
    */
-  PackCanUART_Outputs_wrapper(&rtConstP.pooled4, &rtu_valCode, &rtu_value,
-    (uint16_T*)&GCU_Model_genCode_U16GND, (uint16_T*)&GCU_Model_genCode_U16GND,
-    &localDW->PackCanUart[0]);
+  PackCanUART_Outputs_wrapper(&rtConstP.GCU_FEEDBACK_ID_Value, &rtu_valCode,
+    &rtu_value, (uint16_T*)&GCU_Model_genCode_U16GND, (uint16_T*)
+    &GCU_Model_genCode_U16GND, &localDW->PackCanUart[0]);
 }
 
 /* Function for Chart: '<S4>/GCULogic' */
@@ -1258,6 +1255,14 @@ static void enter_atomic_MANUAL_MODES(void)
 }
 
 /* Function for Chart: '<S4>/GCULogic' */
+static void enter_atomic_ACCELERATION(void)
+{
+  rtDW.lastAacCom = rtDW.RateTransition4[0];
+  rtDW.lastModeCom[0] = rtDW.RateTransition8[0];
+  rtDW.lastModeCom[1] = rtDW.RateTransition8[1];
+}
+
+/* Function for Chart: '<S4>/GCULogic' */
 static void ACCELERATION(void)
 {
   int32_T q0;
@@ -1270,6 +1275,8 @@ static void ACCELERATION(void)
     Efi_unsetRpmLimiter(&rtDW.Merge2, &rtDW.UnsetRPMLimiter_c);
 
     /* End of Outputs for SubSystem: '<S24>/UnsetRPMLimiter' */
+    rtDW.accFb = 0U;
+    Clutch_setValue(0);
     if (rtDW.RateTransition8[1] == AUTOCROSS_MODE) {
       rtDW.is_ACTIVE = IN_NO_ACTIVE_CHILD;
       rtDW.is_AAC = IN_NO_ACTIVE_CHILD;
@@ -1304,8 +1311,7 @@ static void ACCELERATION(void)
       rtDW.is_MODES = IN_NO_ACTIVE_CHILD;
       if (rtDW.is_MODES != IN_ACCELERATION) {
         rtDW.is_MODES = IN_ACCELERATION;
-        rtDW.lastModeCom[0] = rtDW.RateTransition8[0];
-        rtDW.lastModeCom[1] = rtDW.RateTransition8[1];
+        enter_atomic_ACCELERATION();
       }
 
       if (rtDW.is_ACCELERATION != IN_NotReady) {
@@ -1321,10 +1327,7 @@ static void ACCELERATION(void)
       rtDW.is_MODES = IN_NO_ACTIVE_CHILD;
       if (rtDW.is_MODES != IN_MANUAL_MODES) {
         rtDW.is_MODES = IN_MANUAL_MODES;
-        rtDW.lastModeCom[0] = rtDW.RateTransition8[0];
-        rtDW.lastModeCom[1] = rtDW.RateTransition8[1];
-        checkShift();
-        checkClutch();
+        enter_atomic_MANUAL_MODES();
       }
     }
   } else {
@@ -1344,13 +1347,9 @@ static void ACCELERATION(void)
             Efi_unsetRpmLimiter(&rtDW.Merge2, &rtDW.UnsetRPMLimiter_c);
 
             /* End of Outputs for SubSystem: '<S24>/UnsetRPMLimiter' */
-            rtDW.valCode = ACC_CODE;
-            rtDW.value = 0U;
+            Clutch_setValue(0);
 
-            /* Outputs for Function Call SubSystem: '<S26>/sendUpdatesSW' */
-            sendUpdatesSW(rtDW.valCode, rtDW.value, &rtDW.sendUpdatesSW_e);
-
-            /* End of Outputs for SubSystem: '<S26>/sendUpdatesSW' */
+            /* sendUpdatesSW(ACC_CODE, uint16(0)); */
           }
         } else {
           switch (rtDW.is_ACTIVE) {
@@ -1489,13 +1488,9 @@ static void ACCELERATION(void)
                 Efi_unsetRpmLimiter(&rtDW.Merge2, &rtDW.UnsetRPMLimiter_c);
 
                 /* End of Outputs for SubSystem: '<S24>/UnsetRPMLimiter' */
-                rtDW.valCode = ACC_CODE;
-                rtDW.value = 0U;
+                Clutch_setValue(0);
 
-                /* Outputs for Function Call SubSystem: '<S26>/sendUpdatesSW' */
-                sendUpdatesSW(rtDW.valCode, rtDW.value, &rtDW.sendUpdatesSW_e);
-
-                /* End of Outputs for SubSystem: '<S26>/sendUpdatesSW' */
+                /* sendUpdatesSW(ACC_CODE, uint16(0)); */
               }
             } else {
               aacCheckShift();
@@ -1662,6 +1657,7 @@ static void MODES(void)
       rtDW.is_MODES = IN_NO_ACTIVE_CHILD;
       if (rtDW.is_MODES != IN_ACCELERATION) {
         rtDW.is_MODES = IN_ACCELERATION;
+        rtDW.lastAacCom = rtDW.RateTransition4[0];
         rtDW.lastModeCom[0] = rtDW.RateTransition8[0];
         rtDW.lastModeCom[1] = rtDW.RateTransition8[1];
       }
@@ -1718,6 +1714,7 @@ static void MODES(void)
         rtDW.is_MODES = IN_NO_ACTIVE_CHILD;
         if (rtDW.is_MODES != IN_ACCELERATION) {
           rtDW.is_MODES = IN_ACCELERATION;
+          rtDW.lastAacCom = rtDW.RateTransition4[0];
           rtDW.lastModeCom[0] = rtDW.RateTransition8[0];
           rtDW.lastModeCom[1] = rtDW.RateTransition8[1];
         }
@@ -2449,6 +2446,9 @@ void GCU_Model_genCode_step2(void)     /* Sample time: [0.001s, 0.0002s] */
   uint16_T aac_externValue;
   int32_T i;
 
+  /* RateTransition: '<Root>/Rate Transition6' */
+  rtDW.RateTransition6 = rtDW.clutchCurrVal;
+
   /* RateTransition: '<Root>/Rate Transition7' */
   rtDW.RateTransition7 = rtDW.Pin_In1;
 
@@ -2549,9 +2549,6 @@ void GCU_Model_genCode_step2(void)     /* Sample time: [0.001s, 0.0002s] */
   }
 
   /* End of MultiPortSwitch: '<Root>/Multiport Switch' */
-
-  /* RateTransition: '<Root>/Rate Transition6' */
-  rtDW.RateTransition6 = rtDW.clutchCurrVal;
 
   /* Outputs for Atomic SubSystem: '<Root>/GCU_CAN_Read' */
   /* S-Function (UnpackCanUART): '<S3>/UnpackCanUart' */
@@ -2823,6 +2820,9 @@ void GCU_Model_genCode_step2(void)     /* Sample time: [0.001s, 0.0002s] */
   /* End of Chart: '<S3>/MessageEvaluation' */
   /* End of Outputs for SubSystem: '<Root>/GCU_CAN_Read' */
 
+  /* DataTypeConversion: '<Root>/Cast' */
+  rtDW.Cast_a = (uint8_T)rtDW.currGear;
+
   /* RateTransition: '<Root>/Rate Transition11' */
   if (!(rtDW.RateTransition11_semaphoreTaken != 0)) {
     rtDW.RateTransition11_Buffer0[0] = rtDW.Assignment[0];
@@ -2855,9 +2855,6 @@ void GCU_Model_genCode_step2(void)     /* Sample time: [0.001s, 0.0002s] */
   }
 
   /* End of RateTransition: '<Root>/Rate Transition15' */
-
-  /* DataTypeConversion: '<Root>/Cast' */
-  rtDW.Cast_a = (uint8_T)rtDW.currGear;
 
   /* Update for RateTransition: '<Root>/Rate Transition' */
   rtDW.RateTransition_Buffer0 = rtDW.Cast_a;
@@ -2914,11 +2911,11 @@ void GCU_Model_genCode_step2(void)     /* Sample time: [0.001s, 0.0002s] */
 /* Model step function for TID3 */
 void GCU_Model_genCode_step3(void)     /* Sample time: [0.001s, 0.0004s] */
 {
+  uint32_T rtb_RateTransition9[10];
   uint8_T rtb_RateTransition10;
   uint16_T rtb_RateTransition16;
   uint8_T rtb_RateTransition12;
   uint8_T rtb_RateTransition13;
-  uint32_T rtb_RateTransition9[10];
   uint16_T rtb_RateTransition11[3];
   uint16_T rtb_RateTransition14[2];
   uint16_T rtb_RateTransition17[2];
@@ -2927,12 +2924,32 @@ void GCU_Model_genCode_step3(void)     /* Sample time: [0.001s, 0.0004s] */
   int32_T tmp;
   int32_T i;
 
+  /* RateTransition: '<Root>/Rate Transition9' */
+  tmp = rtDW.RateTransition9_ActiveBufIdx * 10;
+  for (i = 0; i < 10; i++) {
+    rtb_RateTransition9[i] = rtDW.RateTransition9_Buffer[i + tmp];
+  }
+
+  /* End of RateTransition: '<Root>/Rate Transition9' */
+
+  /* RateTransition: '<Root>/Rate Transition10' */
+  rtb_RateTransition10 = rtDW.Cast_a;
+
   /* RateTransition: '<Root>/Rate Transition11' */
   rtDW.RateTransition11_semaphoreTaken = 1;
   rtb_RateTransition11[0] = rtDW.RateTransition11_Buffer0[0];
   rtb_RateTransition11[1] = rtDW.RateTransition11_Buffer0[1];
   rtb_RateTransition11[2] = rtDW.RateTransition11_Buffer0[2];
   rtDW.RateTransition11_semaphoreTaken = 0;
+
+  /* RateTransition: '<Root>/Rate Transition16' */
+  rtb_RateTransition16 = rtDW.accFb;
+
+  /* RateTransition: '<Root>/Rate Transition12' */
+  rtb_RateTransition12 = rtDW.Pin_In1;
+
+  /* RateTransition: '<Root>/Rate Transition13' */
+  rtb_RateTransition13 = rtDW.clutchCurrVal;
 
   /* RateTransition: '<Root>/Rate Transition14' */
   rtDW.RateTransition14_semaphoreTaken = 1;
@@ -2951,26 +2968,6 @@ void GCU_Model_genCode_step3(void)     /* Sample time: [0.001s, 0.0004s] */
   rtb_RateTransition15[0] = rtDW.RateTransition15_Buffer0[0];
   rtb_RateTransition15[1] = rtDW.RateTransition15_Buffer0[1];
   rtDW.RateTransition15_semaphoreTaken = 0;
-
-  /* RateTransition: '<Root>/Rate Transition10' */
-  rtb_RateTransition10 = rtDW.Cast_a;
-
-  /* RateTransition: '<Root>/Rate Transition16' */
-  rtb_RateTransition16 = rtDW.accFb;
-
-  /* RateTransition: '<Root>/Rate Transition12' */
-  rtb_RateTransition12 = rtDW.Pin_In1;
-
-  /* RateTransition: '<Root>/Rate Transition13' */
-  rtb_RateTransition13 = rtDW.clutchCurrVal;
-
-  /* RateTransition: '<Root>/Rate Transition9' */
-  tmp = rtDW.RateTransition9_ActiveBufIdx * 10;
-  for (i = 0; i < 10; i++) {
-    rtb_RateTransition9[i] = rtDW.RateTransition9_Buffer[i + tmp];
-  }
-
-  /* End of RateTransition: '<Root>/Rate Transition9' */
 
   /* S-Function (fcncallgen): '<Root>/Function_Call_Generator' incorporates:
    *  SubSystem: '<Root>/Debug_UART '
@@ -3085,22 +3082,10 @@ void GCU_Model_genCode_step4(void)     /* Sample time: [0.001s, 0.0006s] */
 /* Model step function for TID5 */
 void GCU_Model_genCode_step5(void)     /* Sample time: [0.001s, 0.0008s] */
 {
-  uint8_T rtb_RateTransition20;
   uint32_T rtb_RateTransition18[10];
   uint8_T rtb_RateTransition19;
+  uint8_T rtb_RateTransition20;
   int32_T i;
-
-  /* RateTransition: '<Root>/Rate Transition22' */
-  rtDW.RateTransition22 = rtDW.Assignment_e;
-
-  /* RateTransition: '<Root>/Rate Transition20' */
-  rtb_RateTransition20 = rtDW.clutchCurrVal;
-
-  /* RateTransition: '<Root>/Rate Transition21' */
-  rtDW.RateTransition21 = rtDW.accFb;
-
-  /* RateTransition: '<Root>/Rate Transition23' */
-  rtDW.RateTransition23 = rtDW.lastModeCom[1];
 
   /* RateTransition: '<Root>/Rate Transition18' */
   rtDW.RateTransition18_semaphoreTaken = 1;
@@ -3114,6 +3099,18 @@ void GCU_Model_genCode_step5(void)     /* Sample time: [0.001s, 0.0008s] */
 
   /* RateTransition: '<Root>/Rate Transition19' */
   rtb_RateTransition19 = rtDW.Merge;
+
+  /* RateTransition: '<Root>/Rate Transition20' */
+  rtb_RateTransition20 = rtDW.clutchCurrVal;
+
+  /* RateTransition: '<Root>/Rate Transition21' */
+  rtDW.RateTransition21 = rtDW.accFb;
+
+  /* RateTransition: '<Root>/Rate Transition22' */
+  rtDW.RateTransition22 = rtDW.Assignment_e;
+
+  /* RateTransition: '<Root>/Rate Transition23' */
+  rtDW.RateTransition23 = rtDW.lastModeCom[1];
 
   /* S-Function (fcncallgen): '<Root>/Function_Call_Generator2' incorporates:
    *  SubSystem: '<Root>/CAN_Send'
@@ -3242,6 +3239,9 @@ void GCU_Model_genCode_initialize(void)
   /* End of SystemInitialize for SubSystem: '<Root>/Simulink_Debug' */
 
   /* SystemInitialize for Atomic SubSystem: '<Root>/Initialize Function' */
+
+  /* S-Function (load_accParameters): '<S5>/load_accParameters' */
+  load_accParameters_Outputs_wrapper(&rtDW.load_accParameters[0]);
 
   /* S-Function (ClutchMotor_init): '<S5>/ClutchMotor Init' */
   ClutchMotor_init_Outputs_wrapper();
