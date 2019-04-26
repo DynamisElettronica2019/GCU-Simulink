@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.82
+ * Model version                  : 1.85
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Fri Apr 26 17:07:52 2019
+ * C/C++ source code generated on : Fri Apr 26 17:18:24 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -163,7 +163,6 @@ typedef struct {
   real_T aac_clutchValue;              /* '<S4>/GCULogic' */
   real_T aac_clutchStep;               /* '<S4>/GCULogic' */
   int32_T load_accParameters[11];      /* '<S5>/load_accParameters' */
-  int32_T aac_parameters[11];          /* '<S4>/GCULogic' */
   int32_T sfEvent;                     /* '<S4>/GCULogic' */
   int32_T aac_dtRelease;               /* '<S4>/GCULogic' */
   int32_T ticksCounter;                /* '<S4>/GCULogic' */
@@ -187,8 +186,8 @@ typedef struct {
   volatile uint16_T RateTransition11_Buffer0[3];/* '<Root>/Rate Transition11' */
   volatile uint16_T RateTransition14_Buffer0[2];/* '<Root>/Rate Transition14' */
   volatile uint16_T RateTransition17_Buffer0[2];/* '<Root>/Rate Transition17' */
-  uint16_T RateTransition21;           /* '<Root>/Rate Transition21' */
   uint16_T RateTransition22;           /* '<Root>/Rate Transition22' */
+  uint16_T RateTransition21;           /* '<Root>/Rate Transition21' */
   uint16_T RateTransition23;           /* '<Root>/Rate Transition23' */
   uint16_T id;                         /* '<S6>/AccelerationRoutine' */
   uint16_T firstInt;                   /* '<S6>/AccelerationRoutine' */
@@ -221,7 +220,6 @@ typedef struct {
   uint16_T lastAacCom;                 /* '<S4>/GCULogic' */
   uint16_T lastShiftCom;               /* '<S4>/GCULogic' */
   uint16_T aacCounter;                 /* '<S4>/GCULogic' */
-  volatile int8_T RateTransition9_ActiveBufIdx;/* '<Root>/Rate Transition9' */
   volatile int8_T RateTransition1_ActiveBufIdx;/* '<Root>/Rate Transition1' */
   volatile int8_T RateTransition2_ActiveBufIdx;/* '<Root>/Rate Transition2' */
   volatile int8_T RateTransition4_ActiveBufIdx;/* '<Root>/Rate Transition4' */
@@ -231,6 +229,7 @@ typedef struct {
   volatile int8_T RateTransition14_semaphoreTaken;/* '<Root>/Rate Transition14' */
   volatile int8_T RateTransition17_semaphoreTaken;/* '<Root>/Rate Transition17' */
   volatile int8_T RateTransition15_semaphoreTaken;/* '<Root>/Rate Transition15' */
+  volatile int8_T RateTransition9_ActiveBufIdx;/* '<Root>/Rate Transition9' */
   volatile int8_T RateTransition18_semaphoreTaken;/* '<Root>/Rate Transition18' */
   uint8_T RateTransition5[2];          /* '<Root>/Rate Transition5' */
   uint8_T MultiportSwitch[10];         /* '<Root>/Multiport Switch' */
@@ -246,8 +245,8 @@ typedef struct {
   volatile uint8_T RateTransition15_Buffer0[2];/* '<Root>/Rate Transition15' */
   uint8_T RateTransition;              /* '<Root>/Rate Transition' */
   uint8_T RateTransition3;             /* '<Root>/Rate Transition3' */
-  uint8_T RateTransition6;             /* '<Root>/Rate Transition6' */
   uint8_T RateTransition7;             /* '<Root>/Rate Transition7' */
+  uint8_T RateTransition6;             /* '<Root>/Rate Transition6' */
   uint8_T Cast_a;                      /* '<Root>/Cast' */
   uint8_T Merge;                       /* '<S8>/Merge' */
   uint8_T Merge2;                      /* '<S24>/Merge2' */

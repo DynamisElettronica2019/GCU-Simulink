@@ -7,7 +7,7 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   32 \
+    NumChartData   31 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
@@ -180,14 +180,6 @@
       SFName       ""\
       Path         "MODES.lastClutchCom"\
       SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "aac_parameters"\
-      Description  "ChartLocal"\
-      SFName       ""\
-      Path         "MODES.ACCELERATION.AAC.aac_parameters"\
-      SrcLocation  ""\
-      Dimensions   [1,11]\
     }\
     ChartData {\
       Name         "aacCounter"\

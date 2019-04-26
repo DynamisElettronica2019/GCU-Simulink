@@ -379,6 +379,8 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["GCU_Model_genCode:714"] = {rtwname: "<S3>/tractionValue"};
 	this.rtwnameHashMap["<S3>/rpmLimiter_pin"] = {sid: "GCU_Model_genCode:715"};
 	this.sidHashMap["GCU_Model_genCode:715"] = {rtwname: "<S3>/rpmLimiter_pin"};
+	this.rtwnameHashMap["<S4>/acc_parameters"] = {sid: "GCU_Model_genCode:1085"};
+	this.sidHashMap["GCU_Model_genCode:1085"] = {rtwname: "<S4>/acc_parameters"};
 	this.rtwnameHashMap["<S4>/currentGear"] = {sid: "GCU_Model_genCode:641"};
 	this.sidHashMap["GCU_Model_genCode:641"] = {rtwname: "<S4>/currentGear"};
 	this.rtwnameHashMap["<S4>/aac_externValues"] = {sid: "GCU_Model_genCode:642"};
