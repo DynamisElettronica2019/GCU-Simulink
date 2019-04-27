@@ -13,10 +13,7 @@
 
 
 /* %%%-SFUNWIZ_wrapper_includes_Changes_BEGIN --- EDIT HERE TO _END */
-#include <math.h>
-#if !defined(MATLAB_MEX_FILE)
-#include "stm32f7xx_hal.h"
-#endif
+ 
 /* %%%-SFUNWIZ_wrapper_includes_Changes_END --- EDIT HERE TO _BEGIN */
 #define u_width 10
 #define y_width 1
@@ -41,10 +38,6 @@ void UnpackCanUART_Outputs_wrapper(const uint8_T *serialMsg,
 			uint16_T *fourthInt)
 {
 /* %%%-SFUNWIZ_wrapper_Outputs_Changes_BEGIN --- EDIT HERE TO _END */
-/*#if !defined(MATLAB_MEX_FILE)
-HAL_UART_Receive(&huart3,serialMsg,10,0);
-#endif*/
-
 *identifier = (serialMsg[0]<<8) | serialMsg[1];
 
 *firstInt = (serialMsg[2]<<8) | serialMsg[3];
