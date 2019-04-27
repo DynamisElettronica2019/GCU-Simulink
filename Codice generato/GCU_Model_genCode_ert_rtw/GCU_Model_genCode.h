@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.85
+ * Model version                  : 1.91
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Fri Apr 26 17:18:24 2019
+ * C/C++ source code generated on : Sat Apr 27 11:09:19 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -41,6 +41,8 @@
 /* Forward declaration for rtModel */
 typedef struct tag_RTM RT_MODEL;
 
+/* user code (top of header file) */
+#include "timings.h"
 #ifndef DEFINED_TYPEDEF_FOR_aac_params_
 #define DEFINED_TYPEDEF_FOR_aac_params_
 
@@ -68,37 +70,6 @@ typedef enum {
   WHEEL_SPEED,
   APPS
 } aac_values;
-
-#endif
-
-#ifndef DEFINED_TYPEDEF_FOR_timings_
-#define DEFINED_TYPEDEF_FOR_timings_
-
-typedef enum {
-  DEFAULT_DELAY = 20,                  /* Default value */
-  DEFAULT_UP_REBOUND = 15,
-  DEFAULT_UP_BRAKE = 20,
-  DEFAULT_UP_PUSH_1_2 = 115,
-  DEFAULT_UP_PUSH_2_3 = 100,
-  DEFAULT_UP_PUSH_3_4 = 100,
-  DEFAULT_UP_PUSH_4_5 = 100,
-  DEFAULT_CLUTCH = 70,
-  DEFAULT_DN_PUSH = 100,
-  DEFAULT_DN_BRAKE = 15,
-  DEFAULT_DN_REBOUND = 20,
-  DEFAULT_NT_CLUTCH_DELAY = 20,
-  DEFAULT_NT_REBOUND_1_N = 15,
-  DEFAULT_NT_REBOUND_2_N = 15,
-  DEFAULT_NT_BRAKE_1_N = 35,
-  DEFAULT_NT_BRAKE_2_N = 35,
-  DEFAULT_NT_PUSH_1_N = 22,
-  DEFAULT_NT_PUSH_2_N = 25,
-  DEFAULT_NT_CLUTCH_1_N = 300,
-  DEFAULT_NT_CLUTCH_2_N = 300,
-  DEFAULT_DOWN_TIME_CHECK = 500,
-  DEFAULT_UP_TIME_CHECK = 500,
-  DEFAULT_MAX_TRIES = 2
-} timings;
 
 #endif
 
@@ -163,6 +134,7 @@ typedef struct {
   real_T aac_clutchValue;              /* '<S4>/GCULogic' */
   real_T aac_clutchStep;               /* '<S4>/GCULogic' */
   int32_T load_accParameters[11];      /* '<S5>/load_accParameters' */
+  int32_T load_default_timings[23];    /* '<S5>/load_default_timings' */
   int32_T sfEvent;                     /* '<S4>/GCULogic' */
   int32_T aac_dtRelease;               /* '<S4>/GCULogic' */
   int32_T ticksCounter;                /* '<S4>/GCULogic' */
@@ -416,7 +388,7 @@ extern RT_MODEL *const rtM;
  * '<S2>'   : 'GCU_Model_genCode/Debug_UART '
  * '<S3>'   : 'GCU_Model_genCode/GCU_CAN_Read'
  * '<S4>'   : 'GCU_Model_genCode/GCU_timer'
- * '<S5>'   : 'GCU_Model_genCode/Initialize Function'
+ * '<S5>'   : 'GCU_Model_genCode/InitializeFunction'
  * '<S6>'   : 'GCU_Model_genCode/Simulink_Debug'
  * '<S7>'   : 'GCU_Model_genCode/Triggered Subsystem'
  * '<S8>'   : 'GCU_Model_genCode/rpmPin_update'

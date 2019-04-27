@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.85
+ * Model version                  : 1.91
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Fri Apr 26 17:18:24 2019
+ * C/C++ source code generated on : Sat Apr 27 11:09:19 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -472,6 +472,21 @@ extern "C" {
 
 #endif
 
+  extern void load_default_timings_Start_wrapper(void);
+  extern void load_default_timings_Outputs_wrapper(int32_T *timings);
+  extern void load_default_timings_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
   extern void GearMotor_init_Start_wrapper(void);
   extern void GearMotor_init_Outputs_wrapper(void);
   extern void GearMotor_init_Terminate_wrapper(void);
@@ -744,56 +759,56 @@ static int32_T Gearshift_getTime(void)
   int32_T time;
   if (rtDW.is_UPSHIFTING == IN_UP_START) {
     if (rtDW.is_NEUTRAL_STATE == IN_SET_NEUTRAL) {
-      time = DEFAULT_NT_CLUTCH_DELAY;
+      time = rtDW.load_default_timings[(int32_T)DEFAULT_NT_CLUTCH_DELAY];
     } else {
-      time = DEFAULT_DELAY;
+      time = rtDW.load_default_timings[(int32_T)DELAY];
     }
   } else if (rtDW.is_UPSHIFTING == IN_UP_PUSH) {
     if (rtDW.is_NEUTRAL_STATE == IN_SET_NEUTRAL) {
-      time = DEFAULT_NT_CLUTCH_DELAY;
+      time = rtDW.load_default_timings[(int32_T)NT_CLUTCH_DELAY];
     } else {
       switch (rtDW.RateTransition) {
        case 1:
-        time = DEFAULT_UP_PUSH_1_2;
+        time = rtDW.load_default_timings[(int32_T)UP_PUSH_1_2];
         break;
 
        case 2:
-        time = DEFAULT_UP_PUSH_2_3;
+        time = rtDW.load_default_timings[(int32_T)UP_PUSH_2_3];
         break;
 
        case 3:
-        time = DEFAULT_UP_PUSH_3_4;
+        time = rtDW.load_default_timings[(int32_T)UP_PUSH_3_4];
         break;
 
        case 4:
-        time = DEFAULT_UP_PUSH_4_5;
+        time = rtDW.load_default_timings[(int32_T)UP_PUSH_4_5];
         break;
 
        default:
-        time = DEFAULT_UP_PUSH_2_3;
+        time = rtDW.load_default_timings[(int32_T)UP_PUSH_2_3];
         break;
       }
     }
   } else if (rtDW.is_UPSHIFTING == IN_UP_REBOUND) {
     if (rtDW.is_NEUTRAL_STATE == IN_SET_NEUTRAL) {
-      time = DEFAULT_NT_REBOUND_1_N;
+      time = rtDW.load_default_timings[(int32_T)NT_REBOUND_1_N];
     } else {
-      time = DEFAULT_UP_REBOUND;
+      time = rtDW.load_default_timings[(int32_T)UP_REBOUND];
     }
   } else if (rtDW.is_UPSHIFTING == IN_UP_BRAKE) {
     if (rtDW.is_NEUTRAL_STATE == IN_SET_NEUTRAL) {
-      time = DEFAULT_NT_BRAKE_1_N;
+      time = rtDW.load_default_timings[(int32_T)NT_BRAKE_1_N];
     } else {
-      time = DEFAULT_UP_BRAKE;
+      time = rtDW.load_default_timings[(int32_T)UP_BRAKE];
     }
   } else if (rtDW.is_DOWNSHIFTING == IN_DOWN_START) {
-    time = DEFAULT_CLUTCH;
+    time = rtDW.load_default_timings[(int32_T)CLUTCH];
   } else if (rtDW.is_DOWNSHIFTING == IN_DOWN_PUSH) {
-    time = DEFAULT_DN_PUSH;
+    time = rtDW.load_default_timings[(int32_T)DN_PUSH];
   } else if (rtDW.is_DOWNSHIFTING == IN_DOWN_REBOUND) {
-    time = DEFAULT_DN_REBOUND;
+    time = rtDW.load_default_timings[(int32_T)DN_REBOUND];
   } else {
-    time = DEFAULT_DN_BRAKE;
+    time = rtDW.load_default_timings[(int32_T)DN_BRAKE];
   }
 
   return time;
@@ -3218,10 +3233,13 @@ void GCU_Model_genCode_initialize(void)
 
   /* End of SystemInitialize for SubSystem: '<Root>/Simulink_Debug' */
 
-  /* SystemInitialize for Atomic SubSystem: '<Root>/Initialize Function' */
+  /* SystemInitialize for Atomic SubSystem: '<Root>/InitializeFunction' */
 
   /* S-Function (load_accParameters): '<S5>/load_accParameters' */
   load_accParameters_Outputs_wrapper(&rtDW.load_accParameters[0]);
+
+  /* S-Function (load_default_timings): '<S5>/load_default_timings' */
+  load_default_timings_Outputs_wrapper(&rtDW.load_default_timings[0]);
 
   /* S-Function (ClutchMotor_init): '<S5>/ClutchMotor Init' */
   ClutchMotor_init_Outputs_wrapper();
@@ -3241,7 +3259,7 @@ void GCU_Model_genCode_initialize(void)
   /* S-Function (InitUART): '<S5>/InitUART' */
   InitUART_Outputs_wrapper();
 
-  /* End of SystemInitialize for SubSystem: '<Root>/Initialize Function' */
+  /* End of SystemInitialize for SubSystem: '<Root>/InitializeFunction' */
 }
 
 /*
