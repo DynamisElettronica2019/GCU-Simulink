@@ -1,6 +1,8 @@
--decidere come inviare e aggiungere i blocchi sendCanMsg in CAN_send
+-aggiungere s-functions per i2c e gestione eeprom
+-gli indirizzi can e i messaggi CAN non sono definitivi
+
+
+
+
 -aggiungere ingressi di CAN_send a DebugUART e verificare se la frequenza regge ancora
--togliere tutte le init delle periferiche dal main e spostarle nelle rispettive s-functions
--confrontare il modello con il codice c dell'anno scorso per stabilire cosa ancora va inserito
--modificare il codice con delle #ifdef in modo che funzioni sia sulla scheda effettiva che sulla nucleo per debug
--aggiungere periferica EEPROM
+
