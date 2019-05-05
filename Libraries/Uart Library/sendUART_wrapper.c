@@ -28,7 +28,7 @@
 /* %%%-SFUNWIZ_wrapper_externs_Changes_BEGIN --- EDIT HERE TO _END */
 #if !defined(MATLAB_MEX_FILE)
 extern UART_HandleTypeDef huartDebug;
-extern uint8_t tempMsg[24];
+extern uint8_t tempMsg[WIDTH+4];
 #endif
 /* %%%-SFUNWIZ_wrapper_externs_Changes_END --- EDIT HERE TO _BEGIN */
 
@@ -43,39 +43,19 @@ void sendUART_Outputs_wrapper(const uint8_T *msg)
 
   uint8_t header[3] = "hdr", terminator[2] = "\r";
 	
-  //uint8_t tempMsg[24];
-	
   tempMsg[0] = header[0];
   tempMsg[1] = header[1];
   tempMsg[2] = header[2];
 	
-  for(int i = 0; i<20; i++)
+  for(int i = 0; i<WIDTH; i++)
 		tempMsg[3+i] = msg[i];
 	
-  tempMsg[23] = '\r';
+  tempMsg[WIDTH+3] = '\r';
 
-	
-  //HAL_UART_Transmit(&huart3, header, 3, 1);	
-  HAL_UART_Transmit_DMA(&huartDebug, tempMsg, 24);
-  //HAL_UART_Transmit(&huart3, terminator, 1, 1);
-	
-  /*char tempMsg[25];
-	
-	
-	
-	tempMsg[0] = header[0];
-	tempMsg[1] = header[1];
-	tempMsg[2] = header[2];
-	
-  for(int i = 0; i<20; i++)
-		tempMsg[3+i] = msg[i];
-	
-	tempMsg[23] = '\r';
-	tempMsg[24] = '\n'; 
-		
-	HAL_UART_Transmit_IT(&huart3, (uint8_t*) tempMsg, 25);*/
-	
+  HAL_UART_Transmit_DMA(&huartDebug, tempMsg, WIDTH+4);	
 #endif
+  
+  
 /* %%%-SFUNWIZ_wrapper_Outputs_Changes_END --- EDIT HERE TO _BEGIN */
 }
 
