@@ -40,13 +40,14 @@ void ClutchMotor_setPosition_Outputs_wrapper(const uint8_T *percentage)
 #if !defined(MATLAB_MEX_FILE)
   TIM_OC_InitTypeDef sConfigOC;
   
-  int pwmValue, dutyCycle;
+  int pwmValue, actualPercentage;
   
-  if(*percentage > 100)
-      dutyCycle = 100;
-  else dutyCycle = *percentage;
+  actualPercentage = *percentage;
   
-  pwmValue = (hClutchTim.Init.Period)*(dutyCycle)/100;
+  if(actualPercentage > 100)
+      actualPercentage = 100;
+  
+  pwmValue = (hClutchTim.Init.Period)*(0.05 + (double)(*percentage)/((double)2000));
   
   sConfigOC.OCMode = TIM_OCMODE_PWM1;
   sConfigOC.Pulse = pwmValue;
