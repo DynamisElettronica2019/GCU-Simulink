@@ -1,8 +1,6 @@
 -aggiungere s-functions per i2c e gestione eeprom
+-aggiungere funzionalità per salvare pagine eeprom su matlab
+-completare i feedback CAN
 -gli indirizzi can e i messaggi CAN non sono definitivi
-
-
-
-
--aggiungere ingressi di CAN_send a DebugUART e verificare se la frequenza regge ancora
+-aggiungere ingressi di CAN_send a DebugUART
 
