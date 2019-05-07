@@ -18,9 +18,9 @@
 #include "pin_defines.h"
 #endif*/
 
-#define MAX_LENGTH 10
+#define MAX_LENGTH 20
 /* %%%-SFUNWIZ_wrapper_includes_Changes_END --- EDIT HERE TO _BEGIN */
-#define u_width 20
+#define u_width 40
 #define y_width 1
 
 /*
