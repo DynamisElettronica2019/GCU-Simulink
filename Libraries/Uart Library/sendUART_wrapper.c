@@ -50,7 +50,7 @@ void sendUART_Outputs_wrapper(const uint8_T *msg)
   for(int i = 0; i<WIDTH; i++)
 		tempMsg[3+i] = msg[i];
 	
-  tempMsg[WIDTH+3] = '\r';
+  tempMsg[WIDTH+3] = (uint8_t) '\r';
 
   HAL_UART_Transmit_DMA(&huartDebug, tempMsg, WIDTH+4);	
 #endif

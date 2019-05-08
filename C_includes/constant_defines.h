@@ -1,45 +1,21 @@
-#ifndef PINDEF_INCLUDE
-#define PINDEF_INCLUDE
+#ifndef CONST_DEF_INCLUDE
+#define CONST_DEF_INCLUDE
 
-#include "main.h"
-//se il nome del pin e della define coincidono, commentare la riga della define
-//(segnandosi però che il nome è uguale)
 
-//Definizione pin per GearMotor
-#define GPIO_GEAR_MOTOR LED_4_GIALLO_GPIO_Port
-#define GPIO_GEAR_MOTOR_B LED_2_GIALLO_GPIO_Port //provvisorio
-#define GEAR_MOTOR_IN1 LED_4_GIALLO_Pin
-#define GEAR_MOTOR_IN2 LED_2_GIALLO_Pin
-#define GEAR_MOTOR_INHIBIT LED_3_GIALLO_Pin
+#define UART_SENT_DATA_WIDTH 40 //dimensione dei dati inviati via seriale dal modello
+#define ADC_DATA_SIZE 9  //numero di segnali campionati dall'adc
+#define UART_READ_DATA_WIDTH 10  //dimensione del vettore dei dati letto da seriale
 
-//Definizione pin per EFI
-#define EFI_UPCUT_GPIO_PORT   LED_1_GIALLO_GPIO_Port
-#define EFI_RPM_LIMITER_GPIO_PORT LED_5_ROSSO_GPIO_Port
-#define EFI_UPCUT_Pin   LED_1_GIALLO_Pin
-#define EFI_RPM_LIMITER_Pin LED_5_ROSSO_Pin
+#define SEND_DATA_PERIOD 50     //periodo di invio dei dati su seriale
+#define TOGGLE_LED_PERIOD 500   //periodo di accensione del led
 
-//Definizione pwm per clutch
-#define TIM_CLUTCH_CHANNEL TIM_CHANNEL_4
-#define hClutchTim htim4
 
-//Definizione uart utilizzata per debug
-#define huartDebug huart3
+//modalità di lettura dei dati di input
+#define UART_READ_MODE 1
+#define CAN_READ_MODE 2
+#define DEMO_READ_MODE 3
 
-//Definizione timer utilizzato per logica
-#define htim_1khz htim2
-#define TIM_1KHZ TIM2
 
-//Definizione ADC per sensori
-#define hadc_sensors hadc1
-#define ADC_SENSORS ADC1
-
-//Definizione led ausiliari su scheda
-//#define RedLed_GPIO_Port RedLed_GPIO_Port 
-//#define BlueLed_GPIO_Port BlueLed_GPIO_Port
-//#define GreenLed_GPIO_Port GreenLed_GPIO_Port
-//#define RedLed_Pin RedLed_Pin
-//#define BlueLed_Pin BlueLed_Pin
-//#define GreenLed_Pin GreenLed_Pin
 
 
 #endif
