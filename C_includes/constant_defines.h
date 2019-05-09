@@ -8,7 +8,7 @@
 #define UART_READ_DATA_WIDTH 10  //dimensione del vettore dei dati letto da seriale
 #define CAN_READ_DATA_WIDTH 8
 
-#define SEND_DATA_PERIOD 50     //periodo di invio dei dati su seriale
+#define SEND_DATA_PERIOD 50     //periodo di invio dei dati su seriale 
 #define TOGGLE_LED_PERIOD 500   //periodo di accensione del led
 
 
