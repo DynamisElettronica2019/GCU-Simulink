@@ -13,23 +13,20 @@
 
 
 /* %%%-SFUNWIZ_wrapper_includes_Changes_BEGIN --- EDIT HERE TO _END */
-
 #if !defined(MATLAB_MEX_FILE)
 #include "pin_defines.h"
-#include "constant_defines.h"
 #endif
 /* %%%-SFUNWIZ_wrapper_includes_Changes_END --- EDIT HERE TO _BEGIN */
-#define u_width 1
 
 /*
  * Create external references here.  
  *
  */
 /* %%%-SFUNWIZ_wrapper_externs_Changes_BEGIN --- EDIT HERE TO _END */
+extern void CAN_Filter_Setup_Outputs_wrapper(void);
+
 #if !defined(MATLAB_MEX_FILE)
 extern CAN_HandleTypeDef hcan_active;
-extern uint8_t GCU_Packet_Data[8];
-extern CAN_TxHeaderTypeDef GCU_Packet_Header;
 #endif
 /* %%%-SFUNWIZ_wrapper_externs_Changes_END --- EDIT HERE TO _BEGIN */
 
@@ -37,26 +34,19 @@ extern CAN_TxHeaderTypeDef GCU_Packet_Header;
  * Output function
  *
  */
-void sendCAN_Outputs_wrapper(const uint16_T *id,
-			const uint8_T *dataArray)
+void CAN_Start_Outputs_wrapper(void)
 {
 /* %%%-SFUNWIZ_wrapper_Outputs_Changes_BEGIN --- EDIT HERE TO _END */
+  CAN_Filter_Setup_Outputs_wrapper();
+    
   #if !defined(MATLAB_MEX_FILE)
-
-  uint32_t GCU_Packet_Mailbox;
   
-  GCU_Packet_Header.StdId = *id;
-  GCU_Packet_Header.RTR = CAN_RTR_DATA;
-  GCU_Packet_Header.IDE = CAN_ID_STD;
-  GCU_Packet_Header.DLC = 8;
-  GCU_Packet_Header.TransmitGlobalTime = DISABLE;
+  HAL_CAN_ActivateNotification(&hcan_active, CAN_IT_TX_MAILBOX_EMPTY);
+  HAL_CAN_ActivateNotification(&hcan_active, CAN_IT_RX_FIFO0_MSG_PENDING);
+  HAL_CAN_ActivateNotification(&hcan_active, CAN_IT_RX_FIFO1_MSG_PENDING);
+  HAL_CAN_Start(&hcan_active);
   
-  for(int i=0; i<CAN_SENT_DATA_WIDTH; i++)
-    GCU_Packet_Data[i] = dataArray[i];    
-	
-  HAL_CAN_AddTxMessage(&hcan_active, &GCU_Packet_Header, GCU_Packet_Data, &GCU_Packet_Mailbox);
   #endif
-  
 /* %%%-SFUNWIZ_wrapper_Outputs_Changes_END --- EDIT HERE TO _BEGIN */
 }
 

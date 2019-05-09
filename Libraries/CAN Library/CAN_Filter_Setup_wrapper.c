@@ -13,13 +13,10 @@
 
 
 /* %%%-SFUNWIZ_wrapper_includes_Changes_BEGIN --- EDIT HERE TO _END */
-
 #if !defined(MATLAB_MEX_FILE)
 #include "pin_defines.h"
-#include "constant_defines.h"
 #endif
 /* %%%-SFUNWIZ_wrapper_includes_Changes_END --- EDIT HERE TO _BEGIN */
-#define u_width 1
 
 /*
  * Create external references here.  
@@ -28,8 +25,7 @@
 /* %%%-SFUNWIZ_wrapper_externs_Changes_BEGIN --- EDIT HERE TO _END */
 #if !defined(MATLAB_MEX_FILE)
 extern CAN_HandleTypeDef hcan_active;
-extern uint8_t GCU_Packet_Data[8];
-extern CAN_TxHeaderTypeDef GCU_Packet_Header;
+extern CAN_FilterTypeDef CAN_Filter_Config;
 #endif
 /* %%%-SFUNWIZ_wrapper_externs_Changes_END --- EDIT HERE TO _BEGIN */
 
@@ -37,26 +33,25 @@ extern CAN_TxHeaderTypeDef GCU_Packet_Header;
  * Output function
  *
  */
-void sendCAN_Outputs_wrapper(const uint16_T *id,
-			const uint8_T *dataArray)
+void CAN_Filter_Setup_Outputs_wrapper(void)
 {
 /* %%%-SFUNWIZ_wrapper_Outputs_Changes_BEGIN --- EDIT HERE TO _END */
-  #if !defined(MATLAB_MEX_FILE)
+#if !defined(MATLAB_MEX_FILE)
 
-  uint32_t GCU_Packet_Mailbox;
+  CAN_Filter_Config.FilterBank = 14;
+  CAN_Filter_Config.FilterMode = CAN_FILTERMODE_IDMASK;
+  CAN_Filter_Config.FilterScale = CAN_FILTERSCALE_32BIT;
+  CAN_Filter_Config.FilterIdHigh = (0x1F0 << 5);
+  CAN_Filter_Config.FilterIdLow = 0x0000;
+  CAN_Filter_Config.FilterMaskIdHigh = 0x0000;//(0x7F0  << 5);
+  CAN_Filter_Config.FilterMaskIdLow = 0x0000;
+  CAN_Filter_Config.FilterFIFOAssignment = CAN_RX_FIFO0;
+  CAN_Filter_Config.FilterActivation = ENABLE;	
+  CAN_Filter_Config.SlaveStartFilterBank = 14;
+		
+  HAL_CAN_ConfigFilter(&hcan_active, &CAN_Filter_Config);
   
-  GCU_Packet_Header.StdId = *id;
-  GCU_Packet_Header.RTR = CAN_RTR_DATA;
-  GCU_Packet_Header.IDE = CAN_ID_STD;
-  GCU_Packet_Header.DLC = 8;
-  GCU_Packet_Header.TransmitGlobalTime = DISABLE;
-  
-  for(int i=0; i<CAN_SENT_DATA_WIDTH; i++)
-    GCU_Packet_Data[i] = dataArray[i];    
-	
-  HAL_CAN_AddTxMessage(&hcan_active, &GCU_Packet_Header, GCU_Packet_Data, &GCU_Packet_Mailbox);
   #endif
-  
 /* %%%-SFUNWIZ_wrapper_Outputs_Changes_END --- EDIT HERE TO _BEGIN */
 }
 

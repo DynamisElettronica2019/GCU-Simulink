@@ -27,6 +27,8 @@ cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/CAN Library/Unpack Builder
 cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/CAN Library/Pack Builder','Hidden'});
 cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/CAN Library/PackCAN Builder','Hidden'});
 cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/CAN Library/SendCAN Builder','Hidden'});
+cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/CAN Library/CAN_Filter_Setup Builder','Hidden'});
+cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/CAN Library/CAN_Start Builder','Hidden'});
 
 cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/UART Library/SendUART Builder','Hidden'});
 cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/UART Library/PackUART Builder','Hidden'});
