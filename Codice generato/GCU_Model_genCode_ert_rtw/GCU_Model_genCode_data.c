@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.113
+ * Model version                  : 1.119
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Tue May  7 22:05:47 2019
+ * C/C++ source code generated on : Thu May  9 23:23:31 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -27,9 +27,10 @@ const ConstP rtConstP = {
    * Referenced by:
    *   '<S1>/ADC_data1_ID'
    *   '<S1>/ADC_data2_ID'
+   *   '<S1>/UPDATES1_SW_ID'
+   *   '<S1>/UPDATES2_SW_ID'
+   *   '<S1>/UPDATES_EFI_ID'
    *   '<S13>/ADC_data1_ID'
-   *   '<S14>/ADC_data1_ID'
-   *   '<S15>/ADC_data1_ID'
    */
   100U,
 
@@ -41,15 +42,17 @@ const ConstP rtConstP = {
    *   '<Root>/Rate Transition8'
    *   '<S1>/Constant'
    *   '<S1>/Constant1'
+   *   '<S1>/Constant2'
+   *   '<S1>/Constant3'
    *   '<S8>/debugValues'
-   *   '<S22>/Values'
-   *   '<S25>/tractionValue'
-   *   '<S25>/Unit Delay'
+   *   '<S23>/Values'
+   *   '<S26>/tractionValue'
+   *   '<S26>/Unit Delay'
    */
   0U,
 
   /* Computed Parameter: GCU_FEEDBACK_ID_Value
-   * Referenced by: '<S44>/GCU_FEEDBACK_ID'
+   * Referenced by: '<S45>/GCU_FEEDBACK_ID'
    */
   793U
 };

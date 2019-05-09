@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.113
+ * Model version                  : 1.119
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Tue May  7 22:05:47 2019
+ * C/C++ source code generated on : Thu May  9 23:23:31 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -190,7 +190,7 @@ int_T main(int_T argc, const char *argv[])
   GCU_Model_genCode_initialize();
 
   /* Attach rt_OneStep to a timer or interrupt service routine with
-   * period 0.0002 seconds (the model's base sample time) here.  The
+   * period 0.00020000000000000009 seconds (the model's base sample time) here.  The
    * call syntax for rt_OneStep is
    *
    *  rt_OneStep();
