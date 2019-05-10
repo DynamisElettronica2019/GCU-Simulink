@@ -38,7 +38,7 @@ void CAN_Filter_Setup_Outputs_wrapper(void)
 /* %%%-SFUNWIZ_wrapper_Outputs_Changes_BEGIN --- EDIT HERE TO _END */
 #if !defined(MATLAB_MEX_FILE)
 
-  CAN_Filter_Config.FilterBank = 14;
+  CAN_Filter_Config.FilterBank = CAN_FILTER_NUMBER;
   CAN_Filter_Config.FilterMode = CAN_FILTERMODE_IDMASK;
   CAN_Filter_Config.FilterScale = CAN_FILTERSCALE_32BIT;
   CAN_Filter_Config.FilterIdHigh = (0x1F0 << 5);
