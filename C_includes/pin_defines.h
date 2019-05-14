@@ -18,6 +18,10 @@
 #define EFI_UPCUT_Pin   LED_1_GIALLO_Pin
 #define EFI_RPM_LIMITER_Pin LED_5_ROSSO_Pin
 
+//Definizione pin per livello olio
+#define L_OIL_GPIO_Port UserButton_GPIO_PORT
+#define L_OIL_Pin       UserButton_Pin
+
 //Definizione pwm per clutch
 #define TIM_CLUTCH_CHANNEL TIM_CHANNEL_4
 #define hClutchTim htim4
