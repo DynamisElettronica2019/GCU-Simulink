@@ -13,11 +13,7 @@
 
 
 /* %%%-SFUNWIZ_wrapper_includes_Changes_BEGIN --- EDIT HERE TO _END */
-#if !defined(MATLAB_MEX_FILE)
-#include "adc.h"
-#else
-#define ADC_DATA_SIZE 10
-#endif
+#include "constant_defines.h"
 /* %%%-SFUNWIZ_wrapper_includes_Changes_END --- EDIT HERE TO _BEGIN */
 #define u_width 10
 #define y_width 1

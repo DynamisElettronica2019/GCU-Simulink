@@ -14,10 +14,10 @@
 
 /* %%%-SFUNWIZ_wrapper_includes_Changes_BEGIN --- EDIT HERE TO _END */
 #if !defined(MATLAB_MEX_FILE)
-//#include "stm32f7xx_hal.h"
+#include "constant_defines.h"
 #include "pin_defines.h"
 #endif
-#define WIDTH 40
+
 /* %%%-SFUNWIZ_wrapper_includes_Changes_END --- EDIT HERE TO _BEGIN */
 #define u_width 40
 
@@ -28,7 +28,7 @@
 /* %%%-SFUNWIZ_wrapper_externs_Changes_BEGIN --- EDIT HERE TO _END */
 #if !defined(MATLAB_MEX_FILE)
 extern UART_HandleTypeDef huartDebug;
-extern uint8_t tempMsg[WIDTH+4];
+extern uint8_t tempMsg[UART_SENT_DATA_WIDTH+4];
 #endif
 /* %%%-SFUNWIZ_wrapper_externs_Changes_END --- EDIT HERE TO _BEGIN */
 
@@ -47,12 +47,12 @@ void sendUART_Outputs_wrapper(const uint8_T *msg)
   tempMsg[1] = header[1];
   tempMsg[2] = header[2];
 	
-  for(int i = 0; i<WIDTH; i++)
+  for(int i = 0; i<UART_SENT_DATA_WIDTH; i++)
 		tempMsg[3+i] = msg[i];
 	
-  tempMsg[WIDTH+3] = (uint8_t) '\r';
+  tempMsg[UART_SENT_DATA_WIDTH+3] = (uint8_t) '\r';
 
-  HAL_UART_Transmit_DMA(&huartDebug, tempMsg, WIDTH+4);	
+  HAL_UART_Transmit_DMA(&huartDebug, tempMsg, UART_SENT_DATA_WIDTH+4);	
 #endif
 /* %%%-SFUNWIZ_wrapper_Outputs_Changes_END --- EDIT HERE TO _BEGIN */
 }

@@ -15,7 +15,8 @@
 /* %%%-SFUNWIZ_wrapper_includes_Changes_BEGIN --- EDIT HERE TO _END */
 #if !defined(MATLAB_MEX_FILE)
 #include "pin_defines.h"
-#include "adc.h"
+#include "constant_defines.h"
+#include "GCU_Model_genCode.h"
 #endif
 /* %%%-SFUNWIZ_wrapper_includes_Changes_END --- EDIT HERE TO _BEGIN */
 
@@ -24,7 +25,10 @@
  *
  */
 /* %%%-SFUNWIZ_wrapper_externs_Changes_BEGIN --- EDIT HERE TO _END */
- 
+#if !defined(MATLAB_MEX_FILE)
+extern ADC_HandleTypeDef hadc_sensors;
+extern ExtU rtU;
+#endif
 /* %%%-SFUNWIZ_wrapper_externs_Changes_END --- EDIT HERE TO _BEGIN */
 
 /*
