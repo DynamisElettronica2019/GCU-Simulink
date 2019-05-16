@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.135
+ * Model version                  : 1.140
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Thu May 16 15:05:21 2019
+ * C/C++ source code generated on : Thu May 16 17:12:06 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -46,6 +46,14 @@ typedef struct tag_RTM RT_MODEL;
 #include "timings.h"
 #include "constant_defines.h"
 #include "id_can.h"
+#ifndef SS_INT64
+#define SS_INT64                       17
+#endif
+
+#ifndef SS_UINT64
+#define SS_UINT64                      18
+#endif
+
 #ifndef DEFINED_TYPEDEF_FOR_aac_params_
 #define DEFINED_TYPEDEF_FOR_aac_params_
 
@@ -164,6 +172,7 @@ typedef struct {
   volatile uint16_T RateTransition4_Buffer[4];/* '<Root>/Rate Transition4' */
   volatile uint16_T RateTransition8_Buffer[4];/* '<Root>/Rate Transition8' */
   volatile uint16_T RateTransition14_Buffer0[3];/* '<Root>/Rate Transition14' */
+  uint16_T RateTransition22;           /* '<Root>/Rate Transition22' */
   uint16_T RateTransition26;           /* '<Root>/Rate Transition26' */
   uint16_T RateTransition21;           /* '<Root>/Rate Transition21' */
   uint16_T RateTransition23;           /* '<Root>/Rate Transition23' */
@@ -186,19 +195,24 @@ typedef struct {
   uint16_T timingsValue;               /* '<S3>/MessageEvaluation1' */
   uint16_T timingsIndex;               /* '<S3>/MessageEvaluation1' */
   uint16_T mapTarget;                  /* '<S3>/MessageEvaluation1' */
-  uint16_T Cast_o;                     /* '<S11>/Cast' */
-  uint16_T Cast1;                      /* '<S11>/Cast1' */
-  uint16_T Cast2;                      /* '<S11>/Cast2' */
-  uint16_T Cast3;                      /* '<S11>/Cast3' */
-  uint16_T Cast_l;                     /* '<S12>/Cast' */
-  uint16_T Cast1_e;                    /* '<S12>/Cast1' */
-  uint16_T Cast2_a;                    /* '<S12>/Cast2' */
-  uint16_T Cast3_o;                    /* '<S12>/Cast3' */
-  uint16_T Cast_k;                     /* '<S13>/Cast' */
-  uint16_T Divide;                     /* '<S1>/Divide' */
-  uint16_T Cast1_c;                    /* '<S14>/Cast1' */
-  uint16_T Cast1_o;                    /* '<S16>/Cast1' */
-  uint16_T Cast_e;                     /* '<S15>/Cast' */
+  uint16_T uDLookupTable2;             /* '<S1>/1-D Lookup Table2' */
+  uint16_T uDLookupTable1;             /* '<S1>/1-D Lookup Table1' */
+  uint16_T uDLookupTable3;             /* '<S1>/1-D Lookup Table3' */
+  uint16_T Cast_l;                     /* '<S13>/Cast' */
+  uint16_T Cast1;                      /* '<S14>/Cast1' */
+  uint16_T Cast_d;                     /* '<S15>/Cast' */
+  uint16_T Cast1_h;                    /* '<S15>/Cast1' */
+  uint16_T Cast2;                      /* '<S15>/Cast2' */
+  uint16_T Cast3;                      /* '<S15>/Cast3' */
+  uint16_T Cast_o;                     /* '<S16>/Cast' */
+  uint16_T Cast1_c;                    /* '<S16>/Cast1' */
+  uint16_T Cast2_e;                    /* '<S16>/Cast2' */
+  uint16_T Cast3_j;                    /* '<S16>/Cast3' */
+  uint16_T gcu_traction_limiter_loil_efi_i;/* '<S1>/CAN_id' */
+  uint16_T gcu_clutch_mode_map_sw_id;  /* '<S1>/CAN_id' */
+  uint16_T gcu_traction_limiter_autog_acc_;/* '<S1>/CAN_id' */
+  uint16_T gcu_debug_1_id;             /* '<S1>/CAN_id' */
+  uint16_T gcu_debug_2_id;             /* '<S1>/CAN_id' */
   uint16_T Read_oil_sensor;            /* '<S10>/Read_oil_sensor' */
   uint16_T Cast1_i;                    /* '<S21>/Cast1' */
   uint16_T Cast1_m;                    /* '<S19>/Cast1' */
@@ -222,12 +236,11 @@ typedef struct {
   uint8_T MultiportSwitch[10];         /* '<Root>/Multiport Switch' */
   uint8_T PackCanUart[10];             /* '<S6>/PackCanUart' */
   uint8_T clutchCommand[2];            /* '<S3>/MessageEvaluation1' */
-  uint8_T PackCANMsg[8];               /* '<S11>/PackCANMsg' */
-  uint8_T PackCANMsg_m[8];             /* '<S12>/PackCANMsg' */
-  uint8_T PackCANMsg_i[8];             /* '<S13>/PackCANMsg' */
-  uint8_T PackCANMsg_b[8];             /* '<S14>/PackCANMsg' */
-  uint8_T PackCANMsg_b5[8];            /* '<S16>/PackCANMsg' */
-  uint8_T PackCANMsg_ig[8];            /* '<S15>/PackCANMsg' */
+  uint8_T PackCANMsg[8];               /* '<S12>/PackCANMsg' */
+  uint8_T PackCANMsg_l[8];             /* '<S13>/PackCANMsg' */
+  uint8_T PackCANMsg_e[8];             /* '<S14>/PackCANMsg' */
+  uint8_T PackCANMsg_f[8];             /* '<S15>/PackCANMsg' */
+  uint8_T PackCANMsg_o[8];             /* '<S16>/PackCANMsg' */
   uint8_T Pack_Uart_Message[40];       /* '<S8>/Pack_Uart_Message' */
   volatile uint8_T RateTransition5_Buffer[4];/* '<Root>/Rate Transition5' */
   uint8_T RateTransition;              /* '<Root>/Rate Transition' */
@@ -259,7 +272,7 @@ typedef struct {
   uint8_T is_MODES;                    /* '<S4>/GCULogic' */
   uint8_T is_active_MODES;             /* '<S4>/GCULogic' */
   uint8_T is_ACCELERATION;             /* '<S4>/GCULogic' */
-  uint8_T is_AAC;                      /* '<S4>/GCULogic' */
+  uint8_T is_ACC;                      /* '<S4>/GCULogic' */
   uint8_T is_ACTIVE;                   /* '<S4>/GCULogic' */
   uint8_T is_NEUTRAL_STATE;            /* '<S4>/GCULogic' */
   uint8_T is_active_NEUTRAL_STATE;     /* '<S4>/GCULogic' */
@@ -294,17 +307,21 @@ typedef struct {
 
 /* Constant parameters (default storage) */
 typedef struct {
-  /* Pooled Parameter (Expression: 100)
+  /* Pooled Parameter (Expression: [uint16(0),uint16(100),uint16(200),uint16(300),uint16(400),uint16(500),uint16(600),uint16(700)])
    * Referenced by:
-   *   '<S1>/ADC_data1_ID'
-   *   '<S1>/ADC_data2_ID'
-   *   '<S1>/Constant4'
-   *   '<S1>/UPDATES1_SW_ID'
-   *   '<S1>/UPDATES2_SW_ID'
-   *   '<S1>/UPDATES_EFI_ID'
-   *   '<S13>/ADC_data1_ID'
+   *   '<S1>/1-D Lookup Table1'
+   *   '<S1>/1-D Lookup Table2'
+   *   '<S1>/1-D Lookup Table3'
    */
-  uint16_T pooled3;
+  uint16_T pooled3[8];
+
+  /* Pooled Parameter (Expression: [0:7])
+   * Referenced by:
+   *   '<S1>/1-D Lookup Table1'
+   *   '<S1>/1-D Lookup Table2'
+   *   '<S1>/1-D Lookup Table3'
+   */
+  uint16_T pooled4[8];
 
   /* Pooled Parameter (Mixed Expressions)
    * Referenced by:
@@ -314,14 +331,11 @@ typedef struct {
    *   '<Root>/Rate Transition4'
    *   '<Root>/Rate Transition8'
    *   '<S1>/Constant'
-   *   '<S1>/Constant1'
-   *   '<S1>/Constant2'
-   *   '<S1>/Constant3'
    *   '<S8>/debugValues'
    *   '<S10>/oil_sensor'
    *   '<S23>/Values'
    */
-  uint16_T pooled4;
+  uint16_T pooled5;
 
   /* Computed Parameter: GCU_FEEDBACK_ID_Value
    * Referenced by: '<S43>/GCU_FEEDBACK_ID'
@@ -378,18 +392,17 @@ extern RT_MODEL *const rtM;
 /*-
  * These blocks were eliminated from the model due to optimizations:
  *
+ * Block '<S1>/Cast1' : Eliminate redundant data type conversion
+ * Block '<S12>/Cast' : Eliminate redundant data type conversion
+ * Block '<S12>/Cast1' : Eliminate redundant data type conversion
+ * Block '<S12>/Cast2' : Eliminate redundant data type conversion
+ * Block '<S12>/Cast3' : Eliminate redundant data type conversion
  * Block '<S13>/Cast1' : Eliminate redundant data type conversion
  * Block '<S13>/Cast2' : Eliminate redundant data type conversion
  * Block '<S13>/Cast3' : Eliminate redundant data type conversion
  * Block '<S14>/Cast' : Eliminate redundant data type conversion
  * Block '<S14>/Cast2' : Eliminate redundant data type conversion
  * Block '<S14>/Cast3' : Eliminate redundant data type conversion
- * Block '<S15>/Cast1' : Eliminate redundant data type conversion
- * Block '<S15>/Cast2' : Eliminate redundant data type conversion
- * Block '<S15>/Cast3' : Eliminate redundant data type conversion
- * Block '<S16>/Cast' : Eliminate redundant data type conversion
- * Block '<S16>/Cast2' : Eliminate redundant data type conversion
- * Block '<S16>/Cast3' : Eliminate redundant data type conversion
  * Block '<Root>/Cast1' : Eliminate redundant data type conversion
  */
 
@@ -418,12 +431,12 @@ extern RT_MODEL *const rtM;
  * '<S8>'   : 'GCU_Model_genCode/debugUART'
  * '<S9>'   : 'GCU_Model_genCode/rpmPin_update'
  * '<S10>'  : 'GCU_Model_genCode/update_ADC_data'
- * '<S11>'  : 'GCU_Model_genCode/CAN_Send/send_ADC_data1'
- * '<S12>'  : 'GCU_Model_genCode/CAN_Send/send_ADC_data2'
- * '<S13>'  : 'GCU_Model_genCode/CAN_Send/send_ADC_data3'
- * '<S14>'  : 'GCU_Model_genCode/CAN_Send/send_Updates1_SW'
- * '<S15>'  : 'GCU_Model_genCode/CAN_Send/send_Updates2_SW'
- * '<S16>'  : 'GCU_Model_genCode/CAN_Send/send_Updates_EFI'
+ * '<S11>'  : 'GCU_Model_genCode/CAN_Send/CAN_id'
+ * '<S12>'  : 'GCU_Model_genCode/CAN_Send/sendMessage'
+ * '<S13>'  : 'GCU_Model_genCode/CAN_Send/sendMessage1'
+ * '<S14>'  : 'GCU_Model_genCode/CAN_Send/sendMessage2'
+ * '<S15>'  : 'GCU_Model_genCode/CAN_Send/sendMessage3'
+ * '<S16>'  : 'GCU_Model_genCode/CAN_Send/sendMessage4'
  * '<S17>'  : 'GCU_Model_genCode/EEPROM Memory/changeAccValue'
  * '<S18>'  : 'GCU_Model_genCode/EEPROM Memory/changeTimingsValue'
  * '<S19>'  : 'GCU_Model_genCode/EEPROM Memory/changeAccValue/ '

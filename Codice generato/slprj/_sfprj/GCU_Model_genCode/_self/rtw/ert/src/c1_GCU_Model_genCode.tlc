@@ -49,17 +49,17 @@
       SrcLocation  ""\
     }\
     ChartData {\
-      Name         "is_AAC"\
+      Name         "is_ACC"\
       Description  "StateActiveChild"\
       SFName       ""\
-      Path         "MODES.ACCELERATION.AAC"\
+      Path         "MODES.ACCELERATION.ACC"\
       SrcLocation  ""\
     }\
     ChartData {\
       Name         "is_ACTIVE"\
       Description  "StateActiveChild"\
       SFName       ""\
-      Path         "MODES.ACCELERATION.AAC.ACTIVE"\
+      Path         "MODES.ACCELERATION.ACC.ACTIVE"\
       SrcLocation  ""\
     }\
     ChartData {\
@@ -206,7 +206,7 @@
       Name         "aacCounter"\
       Description  "ChartLocal"\
       SFName       "aacCounter"\
-      Path         "MODES.ACCELERATION.AAC.aacCounter"\
+      Path         "MODES.ACCELERATION.ACC.aacCounter"\
       SrcLocation  ""\
       IsTestPoint  1\
     }\
@@ -214,21 +214,21 @@
       Name         "aac_clutchValue"\
       Description  "ChartLocal"\
       SFName       ""\
-      Path         "MODES.ACCELERATION.AAC.aac_clutchValue"\
+      Path         "MODES.ACCELERATION.ACC.aac_clutchValue"\
       SrcLocation  ""\
     }\
     ChartData {\
       Name         "aac_clutchStep"\
       Description  "ChartLocal"\
       SFName       ""\
-      Path         "MODES.ACCELERATION.AAC.aac_clutchStep"\
+      Path         "MODES.ACCELERATION.ACC.aac_clutchStep"\
       SrcLocation  ""\
     }\
     ChartData {\
       Name         "aac_dtRelease"\
       Description  "ChartLocal"\
       SFName       ""\
-      Path         "MODES.ACCELERATION.AAC.aac_dtRelease"\
+      Path         "MODES.ACCELERATION.ACC.aac_dtRelease"\
       SrcLocation  ""\
     }\
     ChartData {\

@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.135
+ * Model version                  : 1.140
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Thu May 16 15:05:21 2019
+ * C/C++ source code generated on : Thu May 16 17:12:06 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -23,17 +23,21 @@
 
 /* Constant parameters (default storage) */
 const ConstP rtConstP = {
-  /* Pooled Parameter (Expression: 100)
+  /* Pooled Parameter (Expression: [uint16(0),uint16(100),uint16(200),uint16(300),uint16(400),uint16(500),uint16(600),uint16(700)])
    * Referenced by:
-   *   '<S1>/ADC_data1_ID'
-   *   '<S1>/ADC_data2_ID'
-   *   '<S1>/Constant4'
-   *   '<S1>/UPDATES1_SW_ID'
-   *   '<S1>/UPDATES2_SW_ID'
-   *   '<S1>/UPDATES_EFI_ID'
-   *   '<S13>/ADC_data1_ID'
+   *   '<S1>/1-D Lookup Table1'
+   *   '<S1>/1-D Lookup Table2'
+   *   '<S1>/1-D Lookup Table3'
    */
-  100U,
+  { 0U, 100U, 200U, 300U, 400U, 500U, 600U, 700U },
+
+  /* Pooled Parameter (Expression: [0:7])
+   * Referenced by:
+   *   '<S1>/1-D Lookup Table1'
+   *   '<S1>/1-D Lookup Table2'
+   *   '<S1>/1-D Lookup Table3'
+   */
+  { 0U, 1U, 2U, 3U, 4U, 5U, 6U, 7U },
 
   /* Pooled Parameter (Mixed Expressions)
    * Referenced by:
@@ -43,9 +47,6 @@ const ConstP rtConstP = {
    *   '<Root>/Rate Transition4'
    *   '<Root>/Rate Transition8'
    *   '<S1>/Constant'
-   *   '<S1>/Constant1'
-   *   '<S1>/Constant2'
-   *   '<S1>/Constant3'
    *   '<S8>/debugValues'
    *   '<S10>/oil_sensor'
    *   '<S23>/Values'

@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.135
+ * Model version                  : 1.140
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Thu May 16 15:05:21 2019
+ * C/C++ source code generated on : Thu May 16 17:12:06 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -31,11 +31,8 @@
 /* Named constants for Chart: '<S4>/GCULogic' */
 #define AAC_WORK_RATE_ms               ((uint16_T)25U)
 #define ACC_CODE                       ((uint16_T)1U)
-#define ACC_MODE                       ((uint16_T)3U)
-#define AUTOCROSS_MODE                 ((uint16_T)0U)
-#define ENDURANCE_MODE                 ((uint16_T)2U)
 #define GEAR_COMMAND_UP                ((uint16_T)400U)
-#define IN_AAC                         ((uint8_T)1U)
+#define IN_ACC                         ((uint8_T)1U)
 #define IN_ACCELERATION                ((uint8_T)1U)
 #define IN_ACTIVE                      ((uint8_T)1U)
 #define IN_ChangeClutch                ((uint8_T)1U)
@@ -47,10 +44,10 @@
 #define IN_DOWN_REBOUND                ((uint8_T)3U)
 #define IN_DOWN_START                  ((uint8_T)4U)
 #define IN_Default                     ((uint8_T)1U)
-#define IN_Default_i                   ((uint8_T)2U)
+#define IN_Default_c                   ((uint8_T)2U)
 #define IN_IDLE                        ((uint8_T)3U)
 #define IN_INIT                        ((uint8_T)2U)
-#define IN_INIT_k                      ((uint8_T)4U)
+#define IN_INIT_j                      ((uint8_T)4U)
 #define IN_MANUAL_MODES                ((uint8_T)3U)
 #define IN_NEUTRAL                     ((uint8_T)1U)
 #define IN_NO_NEUTRAL                  ((uint8_T)2U)
@@ -62,11 +59,11 @@
 #define IN_SET_NEUTRAL                 ((uint8_T)3U)
 #define IN_START                       ((uint8_T)4U)
 #define IN_START_RELEASE               ((uint8_T)5U)
-#define IN_START_l                     ((uint8_T)1U)
+#define IN_START_b                     ((uint8_T)1U)
 #define IN_STOP                        ((uint8_T)2U)
 #define IN_STOPPING                    ((uint8_T)2U)
 #define IN_SettingNeutral              ((uint8_T)2U)
-#define IN_SettingNeutral_l            ((uint8_T)3U)
+#define IN_SettingNeutral_n            ((uint8_T)3U)
 #define IN_UNSET_NEUTRAL               ((uint8_T)4U)
 #define IN_UPSHIFTING                  ((uint8_T)5U)
 #define IN_UP_BRAKE                    ((uint8_T)1U)
@@ -75,9 +72,8 @@
 #define IN_UP_REBOUND                  ((uint8_T)3U)
 #define IN_UP_START                    ((uint8_T)4U)
 #define IN_WAIT                        ((uint8_T)3U)
-#define IN_WAIT_d                      ((uint8_T)2U)
+#define IN_WAIT_m                      ((uint8_T)2U)
 #define RELEASE_AAC_COM                ((uint16_T)2U)
-#define SKIDPAD_MODE                   ((uint16_T)1U)
 #define START_AAC_COM                  ((uint16_T)1U)
 #define STOP_AAC_COM                   ((uint16_T)0U)
 #define event_GearshiftDown            (0)
@@ -104,6 +100,55 @@
 #define slZcUnAliasEvents(evL, evR)    ((((slZcHadEvent((evL), (SL_ZCS_EVENT_N2Z)) && slZcHadEvent((evR), (SL_ZCS_EVENT_Z2P))) || (slZcHadEvent((evL), (SL_ZCS_EVENT_P2Z)) && slZcHadEvent((evR), (SL_ZCS_EVENT_Z2N)))) ? (SL_ZCS_EVENT_NUL) : (evR)))
 #endif
 
+#ifndef UCHAR_MAX
+#include <limits.h>
+#endif
+
+#if ( UCHAR_MAX != (0xFFU) ) || ( SCHAR_MAX != (0x7F) )
+#error Code was generated for compiler with different sized uchar/char. \
+Consider adjusting Test hardware word size settings on the \
+Hardware Implementation pane to match your compiler word sizes as \
+defined in limits.h of the compiler. Alternatively, you can \
+select the Test hardware is the same as production hardware option and \
+select the Enable portable word sizes option on the Code Generation > \
+Verification pane for ERT based targets, which will disable the \
+preprocessor word size checks.
+#endif
+
+#if ( USHRT_MAX != (0xFFFFU) ) || ( SHRT_MAX != (0x7FFF) )
+#error Code was generated for compiler with different sized ushort/short. \
+Consider adjusting Test hardware word size settings on the \
+Hardware Implementation pane to match your compiler word sizes as \
+defined in limits.h of the compiler. Alternatively, you can \
+select the Test hardware is the same as production hardware option and \
+select the Enable portable word sizes option on the Code Generation > \
+Verification pane for ERT based targets, which will disable the \
+preprocessor word size checks.
+#endif
+
+#if ( UINT_MAX != (0xFFFFFFFFU) ) || ( INT_MAX != (0x7FFFFFFF) )
+#error Code was generated for compiler with different sized uint/int. \
+Consider adjusting Test hardware word size settings on the \
+Hardware Implementation pane to match your compiler word sizes as \
+defined in limits.h of the compiler. Alternatively, you can \
+select the Test hardware is the same as production hardware option and \
+select the Enable portable word sizes option on the Code Generation > \
+Verification pane for ERT based targets, which will disable the \
+preprocessor word size checks.
+#endif
+
+#if ( ULONG_MAX != (0xFFFFFFFFU) ) || ( LONG_MAX != (0x7FFFFFFF) )
+#error Code was generated for compiler with different sized ulong/long. \
+Consider adjusting Test hardware word size settings on the \
+Hardware Implementation pane to match your compiler word sizes as \
+defined in limits.h of the compiler. Alternatively, you can \
+select the Test hardware is the same as production hardware option and \
+select the Enable portable word sizes option on the Code Generation > \
+Verification pane for ERT based targets, which will disable the \
+preprocessor word size checks.
+#endif
+
+/* Skipping ulong_long/long_long check: insufficient preprocessor integer range. */
 const uint16_T GCU_Model_genCode_U16GND = 0U;/* uint16_T ground */
 
 /* Block signals and states (default storage) */
@@ -462,14 +507,9 @@ extern "C" {
 
 #endif
 
-  extern void PackCanUART_Start_wrapper(void);
-  extern void PackCanUART_Outputs_wrapper(const uint16_T *id,
-    const uint16_T *firstInt,
-    const uint16_T *secondInt,
-    const uint16_T *thirdInt,
-    const uint16_T *fourthInt,
-    uint8_T *message);
-  extern void PackCanUART_Terminate_wrapper(void);
+  extern void ScanADC_Start_wrapper(void);
+  extern void ScanADC_Outputs_wrapper(void);
+  extern void ScanADC_Terminate_wrapper(void);
 
 #ifdef __cplusplus
 
@@ -482,9 +522,14 @@ extern "C" {
 
 #endif
 
-  extern void ScanADC_Start_wrapper(void);
-  extern void ScanADC_Outputs_wrapper(void);
-  extern void ScanADC_Terminate_wrapper(void);
+  extern void PackCanUART_Start_wrapper(void);
+  extern void PackCanUART_Outputs_wrapper(const uint16_T *id,
+    const uint16_T *firstInt,
+    const uint16_T *secondInt,
+    const uint16_T *thirdInt,
+    const uint16_T *fourthInt,
+    uint8_T *message);
+  extern void PackCanUART_Terminate_wrapper(void);
 
 #ifdef __cplusplus
 
@@ -596,6 +641,8 @@ extern "C" {
 }
 #endif
 
+static uint16_T look1_iu16lu64n48_binlcse(uint16_T u0, const uint16_T bp0[],
+  const uint16_T table[], uint32_T maxIndex);
 static void Efi_setRpmLimiter(uint8_T *rty_rpmLimiter_pin, DW_Efi_setRpmLimiter *
   localDW);
 static void Efi_unsetRpmLimiter(uint8_T *rty_rpmLimiter_pin,
@@ -608,9 +655,9 @@ static void Gearmotor_brake(uint8_T *rty_Pin_In1, uint8_T *rty_Pin_In2, uint8_T 
   rty_Pin_H, DW_Gearmotor_brake *localDW);
 static void EngineControl_Start(uint8_T *rty_engine_starter,
   DW_EngineControl_Start *localDW);
+static void SCAN_ADCScanADC(void);
 static void sendUpdatesSW(uint16_T rtu_valCode, uint16_T rtu_value,
   DW_sendUpdatesSW *localDW);
-static void SCAN_ADCScanADC(void);
 static void Gearmotor_release(void);
 
 /* Forward declaration for local functions */
@@ -706,6 +753,74 @@ ZCEventType rt_I32ZCFcn(ZCDirection zcDir, ZCSigState *prevZc, int32_T currValue
 
   return zcEvent;
 }                                      /* end rt_I32ZCFcn */
+
+static uint16_T look1_iu16lu64n48_binlcse(uint16_T u0, const uint16_T bp0[],
+  const uint16_T table[], uint32_T maxIndex)
+{
+  uint16_T y;
+  uint64_T frac;
+  uint32_T iRght;
+  uint32_T iLeft;
+  uint32_T bpIdx;
+
+  /* Lookup 1-D
+     Search method: 'binary'
+     Use previous index: 'off'
+     Interpolation method: 'Linear point-slope'
+     Extrapolation method: 'Clip'
+     Use last breakpoint for index at or above upper limit: 'off'
+     Remove protection against out-of-range input in generated code: 'off'
+     Rounding mode: 'simplest'
+   */
+  /* Prelookup - Index and Fraction
+     Index Search method: 'binary'
+     Extrapolation method: 'Clip'
+     Use previous index: 'off'
+     Use last breakpoint for index at or above upper limit: 'off'
+     Remove protection against out-of-range input in generated code: 'off'
+     Rounding mode: 'simplest'
+   */
+  if (u0 <= bp0[0U]) {
+    iLeft = 0U;
+    frac = 0ULL;
+  } else if (u0 < bp0[maxIndex]) {
+    /* Binary Search */
+    bpIdx = maxIndex >> 1U;
+    iLeft = 0U;
+    iRght = maxIndex;
+    while (iRght - iLeft > 1U) {
+      if (u0 < bp0[bpIdx]) {
+        iRght = bpIdx;
+      } else {
+        iLeft = bpIdx;
+      }
+
+      bpIdx = (iRght + iLeft) >> 1U;
+    }
+
+    frac = ((uint64_T)(uint16_T)((uint32_T)u0 - bp0[iLeft]) << 48) / (uint16_T)
+      ((uint32_T)bp0[iLeft + 1U] - bp0[iLeft]);
+  } else {
+    iLeft = maxIndex - 1U;
+    frac = 281474976710656ULL;
+  }
+
+  /* Interpolation 1-D
+     Interpolation method: 'Linear point-slope'
+     Use last breakpoint for index at or above upper limit: 'off'
+     Rounding mode: 'simplest'
+     Overflow mode: 'wrapping'
+   */
+  if (table[iLeft + 1U] >= table[iLeft]) {
+    y = (uint16_T)((uint32_T)(uint16_T)(((uint16_T)((uint32_T)table[iLeft + 1U]
+      - table[iLeft]) * frac) >> 48) + table[iLeft]);
+  } else {
+    y = (uint16_T)((uint32_T)table[iLeft] - (uint16_T)(((uint16_T)((uint32_T)
+      table[iLeft] - table[iLeft + 1U]) * frac) >> 48));
+  }
+
+  return y;
+}
 
 /*
  * Output and update for function-call system:
@@ -812,6 +927,13 @@ static void EngineControl_Start(uint8_T *rty_engine_starter,
   *rty_engine_starter = localDW->EngineControlStart;
 }
 
+/* Output and update for function-call system: '<S31>/SCAN_ADC.ScanADC' */
+static void SCAN_ADCScanADC(void)
+{
+  /* S-Function (ScanADC): '<S42>/ScanADC' */
+  ScanADC_Outputs_wrapper();
+}
+
 /* Output and update for function-call system: '<S31>/sendUpdatesSW' */
 static void sendUpdatesSW(uint16_T rtu_valCode, uint16_T rtu_value,
   DW_sendUpdatesSW *localDW)
@@ -822,13 +944,6 @@ static void sendUpdatesSW(uint16_T rtu_valCode, uint16_T rtu_value,
   PackCanUART_Outputs_wrapper(&rtConstP.GCU_FEEDBACK_ID_Value, &rtu_valCode,
     &rtu_value, (uint16_T*)&GCU_Model_genCode_U16GND, (uint16_T*)
     &GCU_Model_genCode_U16GND, &localDW->PackCanUart[0]);
-}
-
-/* Output and update for function-call system: '<S31>/SCAN_ADC.ScanADC' */
-static void SCAN_ADCScanADC(void)
-{
-  /* S-Function (ScanADC): '<S42>/ScanADC' */
-  ScanADC_Outputs_wrapper();
 }
 
 /* Function for Chart: '<S4>/GCULogic' */
@@ -1017,8 +1132,8 @@ static void GEARSHIFT(void)
             /* End of Outputs for SubSystem: '<S32>/Gearmotor_brake' */
           }
         } else {
-          if (rtDW.is_DOWN_BRAKE != IN_Default_i) {
-            rtDW.is_DOWN_BRAKE = IN_Default_i;
+          if (rtDW.is_DOWN_BRAKE != IN_Default_c) {
+            rtDW.is_DOWN_BRAKE = IN_Default_c;
 
             /* Outputs for Function Call SubSystem: '<S32>/Gearmotor_brake' */
             Gearmotor_brake(&rtDW.Pin_In1, &rtDW.Pin_In2, &rtDW.Pin_H,
@@ -1106,8 +1221,8 @@ static void GEARSHIFT(void)
 
         if ((rtDW.is_NEUTRAL_STATE == IN_SET_NEUTRAL) && (rtDW.clutchCurrVal <=
              80)) {
-          if (rtDW.is_DOWN_START != IN_SettingNeutral_l) {
-            rtDW.is_DOWN_START = IN_SettingNeutral_l;
+          if (rtDW.is_DOWN_START != IN_SettingNeutral_n) {
+            rtDW.is_DOWN_START = IN_SettingNeutral_n;
             Clutch_setValue(80);
           }
         } else if ((!(rtDW.is_NEUTRAL_STATE == IN_UNSET_NEUTRAL)) &&
@@ -1117,13 +1232,13 @@ static void GEARSHIFT(void)
             Clutch_setValue(60);
           }
         } else {
-          rtDW.is_DOWN_START = IN_Default_i;
+          rtDW.is_DOWN_START = IN_Default_c;
         }
       }
     }
     break;
 
-   case IN_INIT_k:
+   case IN_INIT_j:
     rtDW.is_GEARSHIFT = IN_IDLE;
     break;
 
@@ -1232,8 +1347,8 @@ static void GEARSHIFT(void)
             /* End of Outputs for SubSystem: '<S32>/Gearmotor_turnRight' */
           }
         } else {
-          if (rtDW.is_UP_PUSH != IN_Default_i) {
-            rtDW.is_UP_PUSH = IN_Default_i;
+          if (rtDW.is_UP_PUSH != IN_Default_c) {
+            rtDW.is_UP_PUSH = IN_Default_c;
 
             /* Outputs for Function Call SubSystem: '<S32>/Gearmotor_turnRight' */
             Gearmotor_turnRight(&rtDW.Pin_In1, &rtDW.Pin_In2, &rtDW.Pin_H,
@@ -1394,9 +1509,9 @@ static void ACCELERATION(void)
     /* End of Outputs for SubSystem: '<S29>/UnsetRPMLimiter' */
     rtDW.accFb = 0U;
     Clutch_setValue(0);
-    if (rtDW.RateTransition8[1] == AUTOCROSS_MODE) {
+    if (rtDW.RateTransition8[1] == AUTOX_MODE) {
       rtDW.is_ACTIVE = 0;
-      rtDW.is_AAC = 0;
+      rtDW.is_ACC = 0;
       rtDW.is_ACCELERATION = 0;
       rtDW.is_MODES = 0;
       if (rtDW.is_MODES != IN_MANUAL_MODES) {
@@ -1405,7 +1520,7 @@ static void ACCELERATION(void)
       }
     } else if (rtDW.RateTransition8[1] == ENDURANCE_MODE) {
       rtDW.is_ACTIVE = 0;
-      rtDW.is_AAC = 0;
+      rtDW.is_ACC = 0;
       rtDW.is_ACCELERATION = 0;
       rtDW.is_MODES = 0;
       if (rtDW.is_MODES != IN_MANUAL_MODES) {
@@ -1417,7 +1532,7 @@ static void ACCELERATION(void)
       }
     } else if (rtDW.RateTransition8[1] == SKIDPAD_MODE) {
       rtDW.is_ACTIVE = 0;
-      rtDW.is_AAC = 0;
+      rtDW.is_ACC = 0;
       rtDW.is_ACCELERATION = 0;
       rtDW.is_MODES = 0;
       if (rtDW.is_MODES != IN_MANUAL_MODES) {
@@ -1427,9 +1542,9 @@ static void ACCELERATION(void)
         checkShift();
         checkClutch();
       }
-    } else if (rtDW.RateTransition8[1] == ACC_MODE) {
+    } else if (rtDW.RateTransition8[1] == ACCELERATION_MODE) {
       rtDW.is_ACTIVE = 0;
-      rtDW.is_AAC = 0;
+      rtDW.is_ACC = 0;
       rtDW.is_ACCELERATION = 0;
       rtDW.is_MODES = 0;
       if (rtDW.is_MODES != IN_ACCELERATION) {
@@ -1447,7 +1562,7 @@ static void ACCELERATION(void)
       }
     } else {
       rtDW.is_ACTIVE = 0;
-      rtDW.is_AAC = 0;
+      rtDW.is_ACC = 0;
       rtDW.is_ACCELERATION = 0;
       rtDW.is_MODES = 0;
       if (rtDW.is_MODES != IN_MANUAL_MODES) {
@@ -1460,16 +1575,16 @@ static void ACCELERATION(void)
     }
   } else {
     switch (rtDW.is_ACCELERATION) {
-     case IN_AAC:
-      switch (rtDW.is_AAC) {
+     case IN_ACC:
+      switch (rtDW.is_ACC) {
        case IN_ACTIVE:
         if ((rtDW.RateTransition4[0] != rtDW.lastAacCom) &&
             (rtDW.RateTransition4[1] == STOP_AAC_COM)) {
           rtDW.lastAacCom = rtDW.RateTransition4[0];
           rtDW.is_ACTIVE = 0;
-          rtDW.is_AAC = 0;
-          if (rtDW.is_AAC != IN_STOPPING) {
-            rtDW.is_AAC = IN_STOPPING;
+          rtDW.is_ACC = 0;
+          if (rtDW.is_ACC != IN_STOPPING) {
+            rtDW.is_ACC = IN_STOPPING;
 
             /* Outputs for Function Call SubSystem: '<S29>/UnsetRPMLimiter' */
             Efi_unsetRpmLimiter(&rtDW.Merge2, &rtDW.UnsetRPMLimiter_c);
@@ -1608,9 +1723,9 @@ static void ACCELERATION(void)
            case IN_RUNNING:
             if (rtDW.RateTransition == 5) {
               rtDW.is_ACTIVE = 0;
-              rtDW.is_AAC = 0;
-              if (rtDW.is_AAC != IN_STOPPING) {
-                rtDW.is_AAC = IN_STOPPING;
+              rtDW.is_ACC = 0;
+              if (rtDW.is_ACC != IN_STOPPING) {
+                rtDW.is_ACC = IN_STOPPING;
 
                 /* Outputs for Function Call SubSystem: '<S29>/UnsetRPMLimiter' */
                 Efi_unsetRpmLimiter(&rtDW.Merge2, &rtDW.UnsetRPMLimiter_c);
@@ -1684,7 +1799,7 @@ static void ACCELERATION(void)
         break;
 
        case IN_STOPPING:
-        rtDW.is_AAC = 0;
+        rtDW.is_ACC = 0;
         rtDW.is_ACCELERATION = 0;
         if (rtDW.is_ACCELERATION != IN_NotReady) {
           rtDW.is_ACCELERATION = IN_NotReady;
@@ -1700,12 +1815,12 @@ static void ACCELERATION(void)
       if ((rtDW.RateTransition4[0] != rtDW.lastAacCom) && (rtDW.RateTransition4
            [1] == START_AAC_COM)) {
         rtDW.lastAacCom = rtDW.RateTransition4[0];
-        rtDW.is_ACCELERATION = IN_AAC;
+        rtDW.is_ACCELERATION = IN_ACC;
         rtDW.aacCounter = 0U;
         rtDW.aac_clutchValue = 0.0;
         rtDW.aac_clutchStep = 0.0;
         rtDW.aac_dtRelease = 0;
-        rtDW.is_AAC = IN_ACTIVE;
+        rtDW.is_ACC = IN_ACTIVE;
         if (rtDW.is_ACTIVE != IN_START) {
           rtDW.is_ACTIVE = IN_START;
           rtDW.accFb = 2U;
@@ -1743,7 +1858,7 @@ static void MODES(void)
     break;
 
    case IN_INIT:
-    if (rtDW.RateTransition8[1] == AUTOCROSS_MODE) {
+    if (rtDW.RateTransition8[1] == AUTOX_MODE) {
       rtDW.is_MODES = 0;
       if (rtDW.is_MODES != IN_MANUAL_MODES) {
         rtDW.is_MODES = IN_MANUAL_MODES;
@@ -1770,7 +1885,7 @@ static void MODES(void)
         checkShift();
         checkClutch();
       }
-    } else if (rtDW.RateTransition8[1] == ACC_MODE) {
+    } else if (rtDW.RateTransition8[1] == ACCELERATION_MODE) {
       rtDW.is_MODES = 0;
       if (rtDW.is_MODES != IN_ACCELERATION) {
         rtDW.is_MODES = IN_ACCELERATION;
@@ -1800,7 +1915,7 @@ static void MODES(void)
    case IN_MANUAL_MODES:
     if ((rtDW.RateTransition8[0] != rtDW.lastModeCom[0]) &&
         (rtDW.RateTransition8[1] != rtDW.lastModeCom[1])) {
-      if (rtDW.RateTransition8[1] == AUTOCROSS_MODE) {
+      if (rtDW.RateTransition8[1] == AUTOX_MODE) {
         rtDW.is_MODES = 0;
         if (rtDW.is_MODES != IN_MANUAL_MODES) {
           rtDW.is_MODES = IN_MANUAL_MODES;
@@ -1827,7 +1942,7 @@ static void MODES(void)
           checkShift();
           checkClutch();
         }
-      } else if (rtDW.RateTransition8[1] == ACC_MODE) {
+      } else if (rtDW.RateTransition8[1] == ACCELERATION_MODE) {
         rtDW.is_MODES = 0;
         if (rtDW.is_MODES != IN_ACCELERATION) {
           rtDW.is_MODES = IN_ACCELERATION;
@@ -2205,8 +2320,8 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
     rtDW.is_NEUTRAL_STATE = IN_NEUTRAL;
     rtDW.is_active_GEARSHIFT = 1U;
     rtDW.ticksCounter = 0;
-    if (rtDW.is_GEARSHIFT != IN_INIT_k) {
-      rtDW.is_GEARSHIFT = IN_INIT_k;
+    if (rtDW.is_GEARSHIFT != IN_INIT_j) {
+      rtDW.is_GEARSHIFT = IN_INIT_j;
       rtDW.ticksCounter = 0;
     }
 
@@ -2242,7 +2357,7 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
 
     if (rtDW.is_active_START_ENGINE != 0U) {
       switch (rtDW.is_START_ENGINE) {
-       case IN_START_l:
+       case IN_START_b:
         if (rtDW.startCounter <= 0) {
           rtDW.is_START_ENGINE = 0;
           if (rtDW.is_START_ENGINE != IN_STOP) {
@@ -2257,8 +2372,8 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
           }
         } else if (rtDW.RateTransition3 != rtDW.lastCom) {
           rtDW.is_START_ENGINE = 0;
-          if (rtDW.is_START_ENGINE != IN_START_l) {
-            rtDW.is_START_ENGINE = IN_START_l;
+          if (rtDW.is_START_ENGINE != IN_START_b) {
+            rtDW.is_START_ENGINE = IN_START_b;
 
             /* Outputs for Function Call SubSystem: '<S30>/EngineControl_Start' */
             EngineControl_Start(&Merge_b, &rtDW.EngineControl_Start_h);
@@ -2280,8 +2395,8 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
        case IN_STOP:
         if (rtDW.RateTransition3 != rtDW.lastCom) {
           rtDW.is_START_ENGINE = 0;
-          if (rtDW.is_START_ENGINE != IN_START_l) {
-            rtDW.is_START_ENGINE = IN_START_l;
+          if (rtDW.is_START_ENGINE != IN_START_b) {
+            rtDW.is_START_ENGINE = IN_START_b;
 
             /* Outputs for Function Call SubSystem: '<S30>/EngineControl_Start' */
             EngineControl_Start(&Merge_b, &rtDW.EngineControl_Start_h);
@@ -2296,8 +2411,8 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
        case IN_WAIT:
         if (rtDW.RateTransition3 != rtDW.lastCom) {
           rtDW.is_START_ENGINE = 0;
-          if (rtDW.is_START_ENGINE != IN_START_l) {
-            rtDW.is_START_ENGINE = IN_START_l;
+          if (rtDW.is_START_ENGINE != IN_START_b) {
+            rtDW.is_START_ENGINE = IN_START_b;
 
             /* Outputs for Function Call SubSystem: '<S30>/EngineControl_Start' */
             EngineControl_Start(&Merge_b, &rtDW.EngineControl_Start_h);
@@ -2315,13 +2430,13 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
       switch (rtDW.is_SCAN_ADC) {
        case IN_SCAN:
         rtDW.is_SCAN_ADC = 0;
-        if (rtDW.is_SCAN_ADC != IN_WAIT_d) {
-          rtDW.is_SCAN_ADC = IN_WAIT_d;
+        if (rtDW.is_SCAN_ADC != IN_WAIT_m) {
+          rtDW.is_SCAN_ADC = IN_WAIT_m;
           rtDW.timerCounter = 0U;
         }
         break;
 
-       case IN_WAIT_d:
+       case IN_WAIT_m:
         if (rtDW.timerCounter >= ADC_PERIOD) {
           rtDW.is_SCAN_ADC = 0;
           if (rtDW.is_SCAN_ADC != IN_SCAN) {
@@ -2457,7 +2572,7 @@ void GCU_Model_genCode_step2(void)     /* Sample time: [0.001s, 0.0002s] */
     if (rtDW.count == 10.0) {
       rtDW.is_c3_GCU_Model_genCode = IN_EnterAcceleration;
       rtDW.id = 513U;
-      rtDW.secondInt = 3U;
+      rtDW.secondInt = 5U;
     } else {
       rtDW.count++;
     }
@@ -2856,14 +2971,14 @@ void GCU_Model_genCode_step4(void)     /* Sample time: [0.001s, 0.0006s] */
 /* Model step function for TID5 */
 void GCU_Model_genCode_step5(void)     /* Sample time: [0.001s, 0.0008s] */
 {
-  uint16_T rtb_RateTransition22;
   uint8_T rtb_RateTransition20;
   uint32_T rtb_RateTransition18[9];
   uint8_T rtb_RateTransition19;
   int32_T i;
+  uint16_T uDLookupTable2_tmp;
 
   /* RateTransition: '<Root>/Rate Transition22' */
-  rtb_RateTransition22 = rtDW.tractionTarget;
+  rtDW.RateTransition22 = rtDW.tractionTarget;
 
   /* RateTransition: '<Root>/Rate Transition26' */
   rtDW.RateTransition26 = rtDW.mapTarget;
@@ -2896,106 +3011,99 @@ void GCU_Model_genCode_step5(void)     /* Sample time: [0.001s, 0.0008s] */
   /* S-Function (fcncallgen): '<Root>/Function_Call_Generator2' incorporates:
    *  SubSystem: '<Root>/CAN_Send'
    */
-  /* DataTypeConversion: '<S11>/Cast' */
-  rtDW.Cast_o = (uint16_T)rtb_RateTransition18[0];
+  /* Chart: '<S1>/CAN_id' */
+  rtDW.gcu_traction_limiter_loil_efi_i = (uint16_T)
+    GCU_TRACTION_LIMITER_LOIL_EFI_ID;
+  rtDW.gcu_clutch_mode_map_sw_id = (uint16_T)GCU_CLUTCH_MODE_MAP_SW_ID;
+  rtDW.gcu_traction_limiter_autog_acc_ = (uint16_T)
+    GCU_TRACTION_LIMITER_AUTOG_ACC_SW_ID;
+  rtDW.gcu_debug_1_id = (uint16_T)GCU_DEBUG_1_ID;
+  rtDW.gcu_debug_2_id = (uint16_T)GCU_DEBUG_2_ID;
 
-  /* DataTypeConversion: '<S11>/Cast1' */
-  rtDW.Cast1 = (uint16_T)rtb_RateTransition18[1];
-
-  /* DataTypeConversion: '<S11>/Cast2' */
-  rtDW.Cast2 = (uint16_T)rtb_RateTransition18[2];
-
-  /* DataTypeConversion: '<S11>/Cast3' */
-  rtDW.Cast3 = (uint16_T)rtb_RateTransition18[3];
-
-  /* S-Function (PackCANMsg): '<S11>/PackCANMsg' */
-  PackCANMsg_Outputs_wrapper(&rtDW.Cast_o, &rtDW.Cast1, &rtDW.Cast2, &rtDW.Cast3,
-    &rtDW.PackCANMsg[0]);
-
-  /* S-Function (sendCAN): '<S11>/sendCAN' incorporates:
-   *  Constant: '<S1>/ADC_data1_ID'
+  /* Lookup_n-D: '<S1>/1-D Lookup Table2' incorporates:
+   *  Lookup_n-D: '<S1>/1-D Lookup Table1'
    */
-  sendCAN_Outputs_wrapper(&rtConstP.pooled3, &rtDW.PackCANMsg[0]);
+  uDLookupTable2_tmp = look1_iu16lu64n48_binlcse(rtDW.RateTransition22,
+    rtConstP.pooled4, rtConstP.pooled3, 7U);
+  rtDW.uDLookupTable2 = uDLookupTable2_tmp;
 
-  /* DataTypeConversion: '<S12>/Cast' */
-  rtDW.Cast_l = (uint16_T)rtb_RateTransition18[4];
+  /* Lookup_n-D: '<S1>/1-D Lookup Table1' */
+  rtDW.uDLookupTable1 = uDLookupTable2_tmp;
 
-  /* DataTypeConversion: '<S12>/Cast1' */
-  rtDW.Cast1_e = (uint16_T)rtb_RateTransition18[5];
-
-  /* DataTypeConversion: '<S12>/Cast2' */
-  rtDW.Cast2_a = (uint16_T)rtb_RateTransition18[6];
-
-  /* DataTypeConversion: '<S12>/Cast3' */
-  rtDW.Cast3_o = (uint16_T)rtb_RateTransition18[7];
+  /* Lookup_n-D: '<S1>/1-D Lookup Table3' incorporates:
+   *  DataTypeConversion: '<S1>/Cast'
+   */
+  rtDW.uDLookupTable3 = look1_iu16lu64n48_binlcse(rtb_RateTransition19,
+    rtConstP.pooled4, rtConstP.pooled3, 7U);
 
   /* S-Function (PackCANMsg): '<S12>/PackCANMsg' */
-  PackCANMsg_Outputs_wrapper(&rtDW.Cast_l, &rtDW.Cast1_e, &rtDW.Cast2_a,
-    &rtDW.Cast3_o, &rtDW.PackCANMsg_m[0]);
+  PackCANMsg_Outputs_wrapper(&rtDW.uDLookupTable2, &rtDW.uDLookupTable1,
+    &rtDW.uDLookupTable3, &rtDW.RateTransition28, &rtDW.PackCANMsg[0]);
 
-  /* S-Function (sendCAN): '<S12>/sendCAN' incorporates:
-   *  Constant: '<S1>/ADC_data2_ID'
-   */
-  sendCAN_Outputs_wrapper(&rtConstP.pooled3, &rtDW.PackCANMsg_m[0]);
+  /* S-Function (sendCAN): '<S12>/sendCAN' */
+  sendCAN_Outputs_wrapper(&rtDW.gcu_traction_limiter_loil_efi_i,
+    &rtDW.PackCANMsg[0]);
 
   /* DataTypeConversion: '<S13>/Cast' */
-  rtDW.Cast_k = (uint16_T)rtb_RateTransition18[8];
+  rtDW.Cast_l = rtb_RateTransition20;
 
   /* S-Function (PackCANMsg): '<S13>/PackCANMsg' incorporates:
    *  Constant: '<S1>/Constant'
    */
-  PackCANMsg_Outputs_wrapper(&rtDW.Cast_k, &rtDW.RateTransition28,
-    &rtConstP.pooled4, &rtConstP.pooled4, &rtDW.PackCANMsg_i[0]);
+  PackCANMsg_Outputs_wrapper(&rtDW.Cast_l, &rtDW.RateTransition23,
+    &rtDW.RateTransition26, &rtConstP.pooled5, &rtDW.PackCANMsg_l[0]);
 
-  /* S-Function (sendCAN): '<S13>/sendCAN' incorporates:
-   *  Constant: '<S13>/ADC_data1_ID'
-   */
-  sendCAN_Outputs_wrapper(&rtConstP.pooled3, &rtDW.PackCANMsg_i[0]);
-
-  /* Product: '<S1>/Divide' */
-  rtDW.Divide = (uint16_T)(rtb_RateTransition22 / 100U);
+  /* S-Function (sendCAN): '<S13>/sendCAN' */
+  sendCAN_Outputs_wrapper(&rtDW.gcu_clutch_mode_map_sw_id, &rtDW.PackCANMsg_l[0]);
 
   /* DataTypeConversion: '<S14>/Cast1' */
-  rtDW.Cast1_c = rtb_RateTransition19;
+  rtDW.Cast1 = rtb_RateTransition19;
 
-  /* S-Function (PackCANMsg): '<S14>/PackCANMsg' incorporates:
-   *  Constant: '<S1>/Constant2'
-   */
-  PackCANMsg_Outputs_wrapper(&rtDW.Divide, &rtDW.Cast1_c, &rtDW.RateTransition26,
-    &rtConstP.pooled4, &rtDW.PackCANMsg_b[0]);
+  /* S-Function (PackCANMsg): '<S14>/PackCANMsg' */
+  PackCANMsg_Outputs_wrapper(&rtDW.RateTransition22, &rtDW.Cast1, (uint16_T*)
+    &GCU_Model_genCode_U16GND, &rtDW.RateTransition21, &rtDW.PackCANMsg_e[0]);
 
-  /* S-Function (sendCAN): '<S14>/sendCAN' incorporates:
-   *  Constant: '<S1>/UPDATES1_SW_ID'
-   */
-  sendCAN_Outputs_wrapper(&rtConstP.pooled3, &rtDW.PackCANMsg_b[0]);
-
-  /* DataTypeConversion: '<S16>/Cast1' */
-  rtDW.Cast1_o = rtb_RateTransition19;
-
-  /* S-Function (PackCANMsg): '<S16>/PackCANMsg' incorporates:
-   *  Constant: '<S1>/Constant3'
-   */
-  PackCANMsg_Outputs_wrapper(&rtDW.Divide, &rtDW.Cast1_o, &rtDW.RateTransition26,
-    &rtConstP.pooled4, &rtDW.PackCANMsg_b5[0]);
-
-  /* S-Function (sendCAN): '<S16>/sendCAN' incorporates:
-   *  Constant: '<S1>/UPDATES_EFI_ID'
-   */
-  sendCAN_Outputs_wrapper(&rtConstP.pooled3, &rtDW.PackCANMsg_b5[0]);
+  /* S-Function (sendCAN): '<S14>/sendCAN' */
+  sendCAN_Outputs_wrapper(&rtDW.gcu_traction_limiter_autog_acc_,
+    &rtDW.PackCANMsg_e[0]);
 
   /* DataTypeConversion: '<S15>/Cast' */
-  rtDW.Cast_e = rtb_RateTransition20;
+  rtDW.Cast_d = (uint16_T)rtb_RateTransition18[4];
 
-  /* S-Function (PackCANMsg): '<S15>/PackCANMsg' incorporates:
-   *  Constant: '<S1>/Constant1'
-   */
-  PackCANMsg_Outputs_wrapper(&rtDW.Cast_e, &rtDW.RateTransition21,
-    &rtDW.RateTransition23, &rtConstP.pooled4, &rtDW.PackCANMsg_ig[0]);
+  /* DataTypeConversion: '<S15>/Cast1' */
+  rtDW.Cast1_h = (uint16_T)rtb_RateTransition18[5];
 
-  /* S-Function (sendCAN): '<S15>/sendCAN' incorporates:
-   *  Constant: '<S1>/UPDATES2_SW_ID'
-   */
-  sendCAN_Outputs_wrapper(&rtConstP.pooled3, &rtDW.PackCANMsg_ig[0]);
+  /* DataTypeConversion: '<S15>/Cast2' */
+  rtDW.Cast2 = (uint16_T)rtb_RateTransition18[3];
+
+  /* DataTypeConversion: '<S15>/Cast3' */
+  rtDW.Cast3 = (uint16_T)rtb_RateTransition18[8];
+
+  /* S-Function (PackCANMsg): '<S15>/PackCANMsg' */
+  PackCANMsg_Outputs_wrapper(&rtDW.Cast_d, &rtDW.Cast1_h, &rtDW.Cast2,
+    &rtDW.Cast3, &rtDW.PackCANMsg_f[0]);
+
+  /* S-Function (sendCAN): '<S15>/sendCAN' */
+  sendCAN_Outputs_wrapper(&rtDW.gcu_debug_1_id, &rtDW.PackCANMsg_f[0]);
+
+  /* DataTypeConversion: '<S16>/Cast' */
+  rtDW.Cast_o = (uint16_T)rtb_RateTransition18[6];
+
+  /* DataTypeConversion: '<S16>/Cast1' */
+  rtDW.Cast1_c = (uint16_T)rtb_RateTransition18[0];
+
+  /* DataTypeConversion: '<S16>/Cast2' */
+  rtDW.Cast2_e = (uint16_T)rtb_RateTransition18[1];
+
+  /* DataTypeConversion: '<S16>/Cast3' */
+  rtDW.Cast3_j = (uint16_T)rtb_RateTransition18[2];
+
+  /* S-Function (PackCANMsg): '<S16>/PackCANMsg' */
+  PackCANMsg_Outputs_wrapper(&rtDW.Cast_o, &rtDW.Cast1_c, &rtDW.Cast2_e,
+    &rtDW.Cast3_j, &rtDW.PackCANMsg_o[0]);
+
+  /* S-Function (sendCAN): '<S16>/sendCAN' */
+  sendCAN_Outputs_wrapper(&rtDW.gcu_debug_2_id, &rtDW.PackCANMsg_o[0]);
 
   /* End of Outputs for S-Function (fcncallgen): '<Root>/Function_Call_Generator2' */
 }
