@@ -7,7 +7,7 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   31 \
+    NumChartData   34 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
@@ -154,10 +154,31 @@
       SrcLocation  ""\
     }\
     ChartData {\
+      Name         "is_SCAN_ADC"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "SCAN_ADC"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_active_SCAN_ADC"\
+      Description  "StateIsActive"\
+      SFName       ""\
+      Path         "SCAN_ADC"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
       Name         "lastShift"\
       Description  "ChartLocal"\
       SFName       ""\
       Path         "lastShift"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "timerCounter"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "SCAN_ADC.timerCounter"\
       SrcLocation  ""\
     }\
     ChartData {\

@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.127
+ * Model version                  : 1.133
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Thu May 16 09:29:38 2019
+ * C/C++ source code generated on : Thu May 16 14:03:49 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -69,6 +69,7 @@
 #define IN_READY                       ((uint8_T)1U)
 #define IN_RELEASING                   ((uint8_T)2U)
 #define IN_RUNNING                     ((uint8_T)3U)
+#define IN_SCAN                        ((uint8_T)1U)
 #define IN_SET_NEUTRAL                 ((uint8_T)3U)
 #define IN_START                       ((uint8_T)4U)
 #define IN_START_RELEASE               ((uint8_T)5U)
@@ -85,6 +86,7 @@
 #define IN_UP_REBOUND                  ((uint8_T)3U)
 #define IN_UP_START                    ((uint8_T)4U)
 #define IN_WAIT                        ((uint8_T)3U)
+#define IN_WAIT_d                      ((uint8_T)2U)
 #define RELEASE_AAC_COM                ((uint16_T)2U)
 #define SKIDPAD_MODE                   ((uint16_T)1U)
 #define START_AAC_COM                  ((uint16_T)1U)
@@ -200,6 +202,21 @@ extern "C" {
 
 #endif
 
+  extern void Read_oil_sensor_Start_wrapper(void);
+  extern void Read_oil_sensor_Outputs_wrapper(uint16_T *l_oil);
+  extern void Read_oil_sensor_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
   extern void PackCANMsg_Start_wrapper(void);
   extern void PackCANMsg_Outputs_wrapper(const uint16_T *firstInt,
     const uint16_T *secondInt,
@@ -223,21 +240,6 @@ extern "C" {
   extern void sendCAN_Outputs_wrapper(const uint16_T *id,
     const uint8_T *dataArray);
   extern void sendCAN_Terminate_wrapper(void);
-
-#ifdef __cplusplus
-
-}
-#endif
-
-#ifdef __cplusplus
-
-extern "C" {
-
-#endif
-
-  extern void Read_oil_sensor_Start_wrapper(void);
-  extern void Read_oil_sensor_Outputs_wrapper(uint16_T *l_oil);
-  extern void Read_oil_sensor_Terminate_wrapper(void);
 
 #ifdef __cplusplus
 
@@ -491,6 +493,21 @@ extern "C" {
 
 #endif
 
+  extern void ScanADC_Start_wrapper(void);
+  extern void ScanADC_Outputs_wrapper(void);
+  extern void ScanADC_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
   extern void load_accParameters_Start_wrapper(void);
   extern void load_accParameters_Outputs_wrapper(int32_T *accParameters);
   extern void load_accParameters_Terminate_wrapper(void);
@@ -521,6 +538,21 @@ extern "C" {
 
 #endif
 
+  extern void CAN_Load_id_Start_wrapper(void);
+  extern void CAN_Load_id_Outputs_wrapper(uint16_T *id_can_array);
+  extern void CAN_Load_id_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
   extern void CAN_Start_Start_wrapper(void);
   extern void CAN_Start_Outputs_wrapper(void);
   extern void CAN_Start_Terminate_wrapper(void);
@@ -539,21 +571,6 @@ extern "C" {
   extern void GearMotor_init_Start_wrapper(void);
   extern void GearMotor_init_Outputs_wrapper(void);
   extern void GearMotor_init_Terminate_wrapper(void);
-
-#ifdef __cplusplus
-
-}
-#endif
-
-#ifdef __cplusplus
-
-extern "C" {
-
-#endif
-
-  extern void InitADC_Start_wrapper(void);
-  extern void InitADC_Outputs_wrapper(void);
-  extern void InitADC_Terminate_wrapper(void);
 
 #ifdef __cplusplus
 
@@ -604,6 +621,7 @@ static void EngineControl_Start(uint8_T *rty_engine_starter,
   DW_EngineControl_Start *localDW);
 static void sendUpdatesSW(uint16_T rtu_valCode, uint16_T rtu_value,
   DW_sendUpdatesSW *localDW);
+static void SCAN_ADCScanADC(void);
 static void Gearmotor_release(void);
 
 /* Forward declaration for local functions */
@@ -751,10 +769,10 @@ static void AAC_ExternalValues(uint16_T rtu_Value, uint16_T rtu_Index, uint16_T
 /* Output and update for function-call system: '<S32>/Gearmotor_release' */
 static void Gearmotor_release(void)
 {
-  /* S-Function (GearMotor_release): '<S44>/GearMotor Release' */
+  /* S-Function (GearMotor_release): '<S45>/GearMotor Release' */
   GearMotor_release_Outputs_wrapper(&rtDW.GearMotorRelease);
 
-  /* SignalConversion: '<S44>/OutportBufferForPin H' */
+  /* SignalConversion: '<S45>/OutportBufferForPin H' */
   rtDW.Pin_H = rtDW.GearMotorRelease;
 }
 
@@ -762,17 +780,17 @@ static void Gearmotor_release(void)
 static void Gearmotor_turnRight(uint8_T *rty_Pin_In1, uint8_T *rty_Pin_In2,
   uint8_T *rty_Pin_H, DW_Gearmotor_turnRight *localDW)
 {
-  /* S-Function (GearMotor_turnRight): '<S46>/GearMotor Turn Right' */
+  /* S-Function (GearMotor_turnRight): '<S47>/GearMotor Turn Right' */
   GearMotor_turnRight_Outputs_wrapper(&localDW->GearMotorTurnRight_o1,
     &localDW->GearMotorTurnRight_o2, &localDW->GearMotorTurnRight_o3);
 
-  /* SignalConversion: '<S46>/OutportBufferForPin_H' */
+  /* SignalConversion: '<S47>/OutportBufferForPin_H' */
   *rty_Pin_H = localDW->GearMotorTurnRight_o3;
 
-  /* SignalConversion: '<S46>/OutportBufferForPin_In1' */
+  /* SignalConversion: '<S47>/OutportBufferForPin_In1' */
   *rty_Pin_In1 = localDW->GearMotorTurnRight_o1;
 
-  /* SignalConversion: '<S46>/OutportBufferForPin_In2' */
+  /* SignalConversion: '<S47>/OutportBufferForPin_In2' */
   *rty_Pin_In2 = localDW->GearMotorTurnRight_o2;
 }
 
@@ -780,17 +798,17 @@ static void Gearmotor_turnRight(uint8_T *rty_Pin_In1, uint8_T *rty_Pin_In2,
 static void Gearmotor_brake(uint8_T *rty_Pin_In1, uint8_T *rty_Pin_In2, uint8_T *
   rty_Pin_H, DW_Gearmotor_brake *localDW)
 {
-  /* S-Function (GearMotor_brake): '<S43>/GearMotor Brake' */
+  /* S-Function (GearMotor_brake): '<S44>/GearMotor Brake' */
   GearMotor_brake_Outputs_wrapper(&localDW->GearMotorBrake_o1,
     &localDW->GearMotorBrake_o2, &localDW->GearMotorBrake_o3);
 
-  /* SignalConversion: '<S43>/OutportBufferForPin_H' */
+  /* SignalConversion: '<S44>/OutportBufferForPin_H' */
   *rty_Pin_H = localDW->GearMotorBrake_o3;
 
-  /* SignalConversion: '<S43>/OutportBufferForPin_In1' */
+  /* SignalConversion: '<S44>/OutportBufferForPin_In1' */
   *rty_Pin_In1 = localDW->GearMotorBrake_o1;
 
-  /* SignalConversion: '<S43>/OutportBufferForPin_In2' */
+  /* SignalConversion: '<S44>/OutportBufferForPin_In2' */
   *rty_Pin_In2 = localDW->GearMotorBrake_o2;
 }
 
@@ -809,12 +827,19 @@ static void EngineControl_Start(uint8_T *rty_engine_starter,
 static void sendUpdatesSW(uint16_T rtu_valCode, uint16_T rtu_value,
   DW_sendUpdatesSW *localDW)
 {
-  /* S-Function (PackCanUART): '<S42>/PackCanUart' incorporates:
-   *  Constant: '<S42>/GCU_FEEDBACK_ID'
+  /* S-Function (PackCanUART): '<S43>/PackCanUart' incorporates:
+   *  Constant: '<S43>/GCU_FEEDBACK_ID'
    */
   PackCanUART_Outputs_wrapper(&rtConstP.GCU_FEEDBACK_ID_Value, &rtu_valCode,
     &rtu_value, (uint16_T*)&GCU_Model_genCode_U16GND, (uint16_T*)
     &GCU_Model_genCode_U16GND, &localDW->PackCanUart[0]);
+}
+
+/* Output and update for function-call system: '<S31>/SCAN_ADC.ScanADC' */
+static void SCAN_ADCScanADC(void)
+{
+  /* S-Function (ScanADC): '<S42>/ScanADC' */
+  ScanADC_Outputs_wrapper();
 }
 
 /* Function for Chart: '<S4>/GCULogic' */
@@ -1029,17 +1054,17 @@ static void GEARSHIFT(void)
           rtDW.ticksCounter = Gearshift_getTime();
 
           /* Outputs for Function Call SubSystem: '<S32>/Gearmotor_turnLeft' */
-          /* S-Function (GearMotor_turnLeft): '<S45>/GearMotor Turn Left' */
+          /* S-Function (GearMotor_turnLeft): '<S46>/GearMotor Turn Left' */
           GearMotor_turnLeft_Outputs_wrapper(&rtDW.GearMotorTurnLeft_o1,
             &rtDW.GearMotorTurnLeft_o2, &rtDW.GearMotorTurnLeft_o3);
 
-          /* SignalConversion: '<S45>/OutportBufferForPin_H' */
+          /* SignalConversion: '<S46>/OutportBufferForPin_H' */
           rtDW.Pin_H = rtDW.GearMotorTurnLeft_o3;
 
-          /* SignalConversion: '<S45>/OutportBufferForPin_In1' */
+          /* SignalConversion: '<S46>/OutportBufferForPin_In1' */
           rtDW.Pin_In1 = rtDW.GearMotorTurnLeft_o1;
 
-          /* SignalConversion: '<S45>/OutportBufferForPin_In2' */
+          /* SignalConversion: '<S46>/OutportBufferForPin_In2' */
           rtDW.Pin_In2 = rtDW.GearMotorTurnLeft_o2;
 
           /* End of Outputs for SubSystem: '<S32>/Gearmotor_turnLeft' */
@@ -2012,7 +2037,7 @@ static void sendStartEngCommand(void)
 }
 
 /* Model step function for TID0 */
-void GCU_Model_genCode_step0(void)     /* Sample time: [0.00020000000000000009s, 0.0s] */
+void GCU_Model_genCode_step0(void)     /* Sample time: [0.0002s, 0.0s] */
 {
   /* (no output/update code required) */
 }
@@ -2200,6 +2225,19 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
     rtDW.lastCom = 0U;
     rtDW.startCounter = 0U;
     rtDW.is_START_ENGINE = IN_WAIT;
+    if (rtDW.is_active_SCAN_ADC != 1U) {
+      rtDW.is_active_SCAN_ADC = 1U;
+      rtDW.timerCounter = 0U;
+    }
+
+    if (rtDW.is_SCAN_ADC != IN_SCAN) {
+      rtDW.is_SCAN_ADC = IN_SCAN;
+
+      /* Outputs for Function Call SubSystem: '<S31>/SCAN_ADC.ScanADC' */
+      SCAN_ADCScanADC();
+
+      /* End of Outputs for SubSystem: '<S31>/SCAN_ADC.ScanADC' */
+    }
   } else {
     if (rtDW.is_active_MODES != 0U) {
       MODES();
@@ -2283,17 +2321,50 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
         break;
       }
     }
+
+    if (rtDW.is_active_SCAN_ADC != 0U) {
+      switch (rtDW.is_SCAN_ADC) {
+       case IN_SCAN:
+        rtDW.is_SCAN_ADC = 0;
+        if (rtDW.is_SCAN_ADC != IN_WAIT_d) {
+          rtDW.is_SCAN_ADC = IN_WAIT_d;
+          rtDW.timerCounter = 0U;
+        }
+        break;
+
+       case IN_WAIT_d:
+        if (rtDW.timerCounter >= ADC_PERIOD) {
+          rtDW.is_SCAN_ADC = 0;
+          if (rtDW.is_SCAN_ADC != IN_SCAN) {
+            rtDW.is_SCAN_ADC = IN_SCAN;
+
+            /* Outputs for Function Call SubSystem: '<S31>/SCAN_ADC.ScanADC' */
+            SCAN_ADCScanADC();
+
+            /* End of Outputs for SubSystem: '<S31>/SCAN_ADC.ScanADC' */
+          }
+        } else {
+          i = rtDW.timerCounter + 1;
+          if (i > 65535) {
+            i = 65535;
+          }
+
+          rtDW.timerCounter = (uint16_T)i;
+        }
+        break;
+      }
+    }
   }
 
   /* End of Chart: '<S4>/GCULogic' */
   /* End of Outputs for SubSystem: '<Root>/GCU_timer' */
 
   /* Outputs for Triggered SubSystem: '<S9>/Triggered_Subsystem' incorporates:
-   *  TriggerPort: '<S48>/Trigger'
+   *  TriggerPort: '<S49>/Trigger'
    */
   if (((rtDW.Merge2 > 0) != (rtPrevZCX.Triggered_Subsystem_Trig_ZCE == POS_ZCSIG))
       && (rtPrevZCX.Triggered_Subsystem_Trig_ZCE != UNINITIALIZED_ZCSIG)) {
-    /* Inport: '<S48>/In1' */
+    /* Inport: '<S49>/In1' */
     rtDW.Merge_j = rtDW.Merge2;
   }
 
@@ -2302,10 +2373,10 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
   /* End of Outputs for SubSystem: '<S9>/Triggered_Subsystem' */
 
   /* Outputs for Triggered SubSystem: '<S9>/Triggered_Subsystem1' incorporates:
-   *  TriggerPort: '<S49>/Trigger'
+   *  TriggerPort: '<S50>/Trigger'
    */
   /* RateTransition: '<S9>/Rate Transition' incorporates:
-   *  Inport: '<S49>/In1'
+   *  Inport: '<S50>/In1'
    */
   if (((rtDW.RateTransition_Buffer0_g > 0) !=
        (rtPrevZCX.Triggered_Subsystem1_Trig_ZCE == POS_ZCSIG)) &&
@@ -2602,8 +2673,8 @@ void GCU_Model_genCode_step3(void)     /* Sample time: [0.001s, 0.0004s] */
   uint8_T rtb_RateTransition15;
   uint8_T rtb_RateTransition17;
   uint8_T rtb_RateTransition24;
-  uint16_T rtb_RateTransition27;
   uint32_T rtb_RateTransition9[9];
+  uint16_T rtb_RateTransition27;
   uint8_T rtb_RateTransition10;
   uint16_T rtb_RateTransition14[3];
   uint16_T Cast_n[9];
@@ -2642,9 +2713,6 @@ void GCU_Model_genCode_step3(void)     /* Sample time: [0.001s, 0.0004s] */
   /* RateTransition: '<Root>/Rate Transition24' */
   rtb_RateTransition24 = rtDW.Pin_H;
 
-  /* RateTransition: '<Root>/Rate Transition27' */
-  rtb_RateTransition27 = rtDW.RateTransition27_Buffer0;
-
   /* RateTransition: '<Root>/Rate Transition9' */
   i = rtDW.RateTransition9_ActiveBufIdx * 9;
   for (i_0 = 0; i_0 < 9; i_0++) {
@@ -2652,6 +2720,9 @@ void GCU_Model_genCode_step3(void)     /* Sample time: [0.001s, 0.0004s] */
   }
 
   /* End of RateTransition: '<Root>/Rate Transition9' */
+
+  /* RateTransition: '<Root>/Rate Transition27' */
+  rtb_RateTransition27 = rtDW.RateTransition27_Buffer0;
 
   /* RateTransition: '<Root>/Rate Transition10' */
   rtb_RateTransition10 = rtDW.Merge_j;
@@ -2760,6 +2831,10 @@ void GCU_Model_genCode_step4(void)     /* Sample time: [0.001s, 0.0006s] */
   }
 
   /* End of Product: '<S10>/Multiply' */
+
+  /* S-Function (Read_oil_sensor): '<S10>/Read_oil_sensor' */
+  Read_oil_sensor_Outputs_wrapper(&rtDW.Read_oil_sensor);
+
   /* End of Outputs for S-Function (fcncallgen): '<Root>/Function_Call_Generator1' */
 
   /* RateTransition: '<Root>/Rate Transition18' */
@@ -2788,6 +2863,9 @@ void GCU_Model_genCode_step4(void)     /* Sample time: [0.001s, 0.0006s] */
     == 0);
 
   /* End of Update for RateTransition: '<Root>/Rate Transition9' */
+
+  /* Update for RateTransition: '<Root>/Rate Transition27' */
+  rtDW.RateTransition27_Buffer0 = rtDW.Read_oil_sensor;
 }
 
 /* Model step function for TID5 */
@@ -2826,6 +2904,9 @@ void GCU_Model_genCode_step5(void)     /* Sample time: [0.001s, 0.0008s] */
 
   /* RateTransition: '<Root>/Rate Transition19' */
   rtb_RateTransition19 = rtDW.Merge_j;
+
+  /* RateTransition: '<Root>/Rate Transition28' */
+  rtDW.RateTransition28 = rtDW.Read_oil_sensor;
 
   /* S-Function (fcncallgen): '<Root>/Function_Call_Generator2' incorporates:
    *  SubSystem: '<Root>/CAN_Send'
@@ -2875,13 +2956,10 @@ void GCU_Model_genCode_step5(void)     /* Sample time: [0.001s, 0.0008s] */
   /* DataTypeConversion: '<S13>/Cast' */
   rtDW.Cast_k = (uint16_T)rtb_RateTransition18[8];
 
-  /* S-Function (Read_oil_sensor): '<S1>/Read_oil_sensor' */
-  Read_oil_sensor_Outputs_wrapper(&rtDW.Read_oil_sensor);
-
   /* S-Function (PackCANMsg): '<S13>/PackCANMsg' incorporates:
    *  Constant: '<S1>/Constant'
    */
-  PackCANMsg_Outputs_wrapper(&rtDW.Cast_k, &rtDW.Read_oil_sensor,
+  PackCANMsg_Outputs_wrapper(&rtDW.Cast_k, &rtDW.RateTransition28,
     &rtConstP.pooled4, &rtConstP.pooled4, &rtDW.PackCANMsg_i[0]);
 
   /* S-Function (sendCAN): '<S13>/sendCAN' incorporates:
@@ -2935,9 +3013,6 @@ void GCU_Model_genCode_step5(void)     /* Sample time: [0.001s, 0.0008s] */
   sendCAN_Outputs_wrapper(&rtConstP.pooled3, &rtDW.PackCANMsg_ig[0]);
 
   /* End of Outputs for S-Function (fcncallgen): '<Root>/Function_Call_Generator2' */
-
-  /* Update for RateTransition: '<Root>/Rate Transition27' */
-  rtDW.RateTransition27_Buffer0 = rtDW.Read_oil_sensor;
 }
 
 /* Model initialize function */
@@ -2994,6 +3069,9 @@ void GCU_Model_genCode_initialize(void)
     /* S-Function (load_default_timings): '<S5>/load_default_timings' */
     load_default_timings_Outputs_wrapper(&rtDW.load_default_timings[0]);
 
+    /* S-Function (CAN_Load_id): '<S5>/CAN_Load_id' */
+    CAN_Load_id_Outputs_wrapper(&rtDW.CAN_Load_id[0]);
+
     /* S-Function (CAN_Start): '<S5>/CAN_Start' */
     CAN_Start_Outputs_wrapper();
 
@@ -3006,14 +3084,14 @@ void GCU_Model_genCode_initialize(void)
     /* S-Function (GearMotor_init): '<S5>/GearMotor Init' */
     GearMotor_init_Outputs_wrapper();
 
-    /* S-Function (InitADC): '<S5>/InitADC' */
-    InitADC_Outputs_wrapper();
-
     /* S-Function (InitTimer): '<S5>/InitTimer' */
     InitTimer_Outputs_wrapper();
 
     /* S-Function (InitUART): '<S5>/InitUART' */
     InitUART_Outputs_wrapper();
+
+    /* S-Function (ScanADC): '<S5>/ScanADC' */
+    ScanADC_Outputs_wrapper();
 
     /* End of SystemInitialize for SubSystem: '<Root>/InitializeFunction' */
   }
