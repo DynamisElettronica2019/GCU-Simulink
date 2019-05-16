@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.133
+ * Model version                  : 1.135
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Thu May 16 14:03:49 2019
+ * C/C++ source code generated on : Thu May 16 15:05:21 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -45,6 +45,7 @@ typedef struct tag_RTM RT_MODEL;
 /* user code (top of header file) */
 #include "timings.h"
 #include "constant_defines.h"
+#include "id_can.h"
 #ifndef DEFINED_TYPEDEF_FOR_aac_params_
 #define DEFINED_TYPEDEF_FOR_aac_params_
 
@@ -154,7 +155,7 @@ typedef struct {
   uint16_T CAN_Load_id[20];            /* '<S5>/CAN_Load_id' */
   uint16_T lastModeCom[2];             /* '<S4>/GCULogic' */
   uint16_T shiftCommand[2];            /* '<S3>/MessageEvaluation1' */
-  uint16_T aacCommand[2];              /* '<S3>/MessageEvaluation1' */
+  uint16_T accCommand[2];              /* '<S3>/MessageEvaluation1' */
   uint16_T modeCommand[2];             /* '<S3>/MessageEvaluation1' */
   uint16_T Assignment[3];              /* '<S23>/Assignment' */
   uint16_T TmpSignalConversionAtPack_Uart_[20];
@@ -179,12 +180,12 @@ typedef struct {
   uint16_T UnpackCanUart_o4;           /* '<S3>/UnpackCanUart' */
   uint16_T UnpackCanUart_o5;           /* '<S3>/UnpackCanUart' */
   uint16_T currGear;                   /* '<S3>/MessageEvaluation1' */
-  uint16_T tractionValue;              /* '<S3>/MessageEvaluation1' */
+  uint16_T tractionTarget;             /* '<S3>/MessageEvaluation1' */
   uint16_T accParametersValue;         /* '<S3>/MessageEvaluation1' */
   uint16_T accParametersIndex;         /* '<S3>/MessageEvaluation1' */
   uint16_T timingsValue;               /* '<S3>/MessageEvaluation1' */
   uint16_T timingsIndex;               /* '<S3>/MessageEvaluation1' */
-  uint16_T mapValue;                   /* '<S3>/MessageEvaluation1' */
+  uint16_T mapTarget;                  /* '<S3>/MessageEvaluation1' */
   uint16_T Cast_o;                     /* '<S11>/Cast' */
   uint16_T Cast1;                      /* '<S11>/Cast1' */
   uint16_T Cast2;                      /* '<S11>/Cast2' */

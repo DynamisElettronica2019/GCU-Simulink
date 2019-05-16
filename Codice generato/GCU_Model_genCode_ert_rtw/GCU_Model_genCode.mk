@@ -2,7 +2,7 @@
 ## Makefile generated for Simulink model 'GCU_Model_genCode'. 
 ## 
 ## Makefile     : GCU_Model_genCode.mk
-## Generated on : Thu May 16 13:23:15 2019
+## Generated on : Thu May 16 15:05:46 2019
 ## MATLAB Coder version: 4.0 (R2018a)
 ## 
 ## Build Info:
@@ -31,7 +31,7 @@ MATLAB_ROOT               = C:/PROGRA~1/MATLAB/R2018a
 MATLAB_BIN                = C:/PROGRA~1/MATLAB/R2018a/bin
 MATLAB_ARCH_BIN           = $(MATLAB_BIN)/win64
 MASTER_ANCHOR_DIR         = 
-START_DIR                 = C:/Users/SIMONE/DOCUME~1/PROGRA~1/git/GCU-SI~1/CODICE~1
+START_DIR                 = C:/Users/SIMONE/DOCUME~1/PROGRA~1/git/GCU-SI~1/LIBRAR~1
 ARCH                      = win64
 SOLVER                    = 
 SOLVER_OBJ                = 
@@ -357,75 +357,75 @@ $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS) $(MAIN_OBJ)
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-%.obj : C:/Users/SIMONE/DOCUME~1/PROGRA~1/git/GCU-SI~1/LIBRAR~1/CANLIB~1/%.c
+%.obj : $(START_DIR)/CANLIB~1/%.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-%.obj : C:/Users/SIMONE/DOCUME~1/PROGRA~1/git/GCU-SI~1/LIBRAR~1/CANLIB~1/%.cpp
+%.obj : $(START_DIR)/CANLIB~1/%.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-%.obj : C:/Users/SIMONE/DOCUME~1/PROGRA~1/git/GCU-SI~1/LIBRAR~1/EEPROM~1/%.c
+%.obj : $(START_DIR)/EEPROM~1/%.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-%.obj : C:/Users/SIMONE/DOCUME~1/PROGRA~1/git/GCU-SI~1/LIBRAR~1/EEPROM~1/%.cpp
+%.obj : $(START_DIR)/EEPROM~1/%.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-%.obj : C:/Users/SIMONE/DOCUME~1/PROGRA~1/git/GCU-SI~1/LIBRAR~1/EFILIB~1/%.c
+%.obj : $(START_DIR)/EFILIB~1/%.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-%.obj : C:/Users/SIMONE/DOCUME~1/PROGRA~1/git/GCU-SI~1/LIBRAR~1/EFILIB~1/%.cpp
+%.obj : $(START_DIR)/EFILIB~1/%.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-%.obj : C:/Users/SIMONE/DOCUME~1/PROGRA~1/git/GCU-SI~1/LIBRAR~1/CLUTCH~1/%.c
+%.obj : $(START_DIR)/CLUTCH~1/%.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-%.obj : C:/Users/SIMONE/DOCUME~1/PROGRA~1/git/GCU-SI~1/LIBRAR~1/CLUTCH~1/%.cpp
+%.obj : $(START_DIR)/CLUTCH~1/%.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-%.obj : C:/Users/SIMONE/DOCUME~1/PROGRA~1/git/GCU-SI~1/LIBRAR~1/ENGINE~1/%.c
+%.obj : $(START_DIR)/ENGINE~1/%.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-%.obj : C:/Users/SIMONE/DOCUME~1/PROGRA~1/git/GCU-SI~1/LIBRAR~1/ENGINE~1/%.cpp
+%.obj : $(START_DIR)/ENGINE~1/%.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-%.obj : C:/Users/SIMONE/DOCUME~1/PROGRA~1/git/GCU-SI~1/LIBRAR~1/SENSOR~1/%.c
+%.obj : $(START_DIR)/SENSOR~1/%.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-%.obj : C:/Users/SIMONE/DOCUME~1/PROGRA~1/git/GCU-SI~1/LIBRAR~1/SENSOR~1/%.cpp
+%.obj : $(START_DIR)/SENSOR~1/%.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-%.obj : C:/Users/SIMONE/DOCUME~1/PROGRA~1/git/GCU-SI~1/LIBRAR~1/GEARMO~1/%.c
+%.obj : $(START_DIR)/GEARMO~1/%.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-%.obj : C:/Users/SIMONE/DOCUME~1/PROGRA~1/git/GCU-SI~1/LIBRAR~1/GEARMO~1/%.cpp
+%.obj : $(START_DIR)/GEARMO~1/%.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-%.obj : C:/Users/SIMONE/DOCUME~1/PROGRA~1/git/GCU-SI~1/LIBRAR~1/TIMERL~1/%.c
+%.obj : $(START_DIR)/TIMERL~1/%.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-%.obj : C:/Users/SIMONE/DOCUME~1/PROGRA~1/git/GCU-SI~1/LIBRAR~1/TIMERL~1/%.cpp
+%.obj : $(START_DIR)/TIMERL~1/%.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-%.obj : C:/Users/SIMONE/DOCUME~1/PROGRA~1/git/GCU-SI~1/LIBRAR~1/UARTLI~1/%.c
+%.obj : $(START_DIR)/UARTLI~1/%.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-%.obj : C:/Users/SIMONE/DOCUME~1/PROGRA~1/git/GCU-SI~1/LIBRAR~1/UARTLI~1/%.cpp
+%.obj : $(START_DIR)/UARTLI~1/%.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
