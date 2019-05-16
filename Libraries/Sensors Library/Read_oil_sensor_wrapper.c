@@ -34,7 +34,7 @@
 void Read_oil_sensor_Outputs_wrapper(uint16_T *l_oil)
 {
 /* %%%-SFUNWIZ_wrapper_Outputs_Changes_BEGIN --- EDIT HERE TO _END */
-  #if !defined(MATLAB_MEX_FILE)
+#if !defined(MATLAB_MEX_FILE)
   *l_oil = (uint16_T) HAL_GPIO_ReadPin(L_OIL_GPIO_Port, L_OIL_Pin);
   #endif
 /* %%%-SFUNWIZ_wrapper_Outputs_Changes_END --- EDIT HERE TO _BEGIN */

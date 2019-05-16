@@ -29,6 +29,7 @@ cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/CAN Library/PackCAN Builde
 cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/CAN Library/SendCAN Builder','Hidden'});
 cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/CAN Library/CAN_Filter_Setup Builder','Hidden'});
 cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/CAN Library/CAN_Start Builder','Hidden'});
+cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/CAN Library/CAN_Load_id Builder','Hidden'});
 
 cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/UART Library/SendUART Builder','Hidden'});
 cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/UART Library/PackUART Builder','Hidden'});
@@ -42,4 +43,6 @@ cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/Timer Library/InitTimer Bu
 
 cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/EEPROM Library/loadParams Builder','Hidden'});
 cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/EEPROM Library/loadTimings Builder','Hidden'});
+
+cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/Utility Library/ Read_oil_sensor Builder','Hidden'});
 

@@ -195,6 +195,8 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["GCU_Model_genCode:1388"] = {rtwname: "<Root>/From31"};
 	this.rtwnameHashMap["<Root>/From32"] = {sid: "GCU_Model_genCode:1300"};
 	this.sidHashMap["GCU_Model_genCode:1300"] = {rtwname: "<Root>/From32"};
+	this.rtwnameHashMap["<Root>/From33"] = {sid: "GCU_Model_genCode:1408"};
+	this.sidHashMap["GCU_Model_genCode:1408"] = {rtwname: "<Root>/From33"};
 	this.rtwnameHashMap["<Root>/From4"] = {sid: "GCU_Model_genCode:862"};
 	this.sidHashMap["GCU_Model_genCode:862"] = {rtwname: "<Root>/From4"};
 	this.rtwnameHashMap["<Root>/From5"] = {sid: "GCU_Model_genCode:867"};
@@ -251,6 +253,8 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["GCU_Model_genCode:1303"] = {rtwname: "<Root>/Goto22"};
 	this.rtwnameHashMap["<Root>/Goto23"] = {sid: "GCU_Model_genCode:1387"};
 	this.sidHashMap["GCU_Model_genCode:1387"] = {rtwname: "<Root>/Goto23"};
+	this.rtwnameHashMap["<Root>/Goto24"] = {sid: "GCU_Model_genCode:1407"};
+	this.sidHashMap["GCU_Model_genCode:1407"] = {rtwname: "<Root>/Goto24"};
 	this.rtwnameHashMap["<Root>/Goto3"] = {sid: "GCU_Model_genCode:859"};
 	this.sidHashMap["GCU_Model_genCode:859"] = {rtwname: "<Root>/Goto3"};
 	this.rtwnameHashMap["<Root>/Goto4"] = {sid: "GCU_Model_genCode:861"};
@@ -313,6 +317,8 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["GCU_Model_genCode:1305"] = {rtwname: "<Root>/Rate Transition25"};
 	this.rtwnameHashMap["<Root>/Rate Transition26"] = {sid: "GCU_Model_genCode:1390"};
 	this.sidHashMap["GCU_Model_genCode:1390"] = {rtwname: "<Root>/Rate Transition26"};
+	this.rtwnameHashMap["<Root>/Rate Transition27"] = {sid: "GCU_Model_genCode:1411"};
+	this.sidHashMap["GCU_Model_genCode:1411"] = {rtwname: "<Root>/Rate Transition27"};
 	this.rtwnameHashMap["<Root>/Rate Transition3"] = {sid: "GCU_Model_genCode:615"};
 	this.sidHashMap["GCU_Model_genCode:615"] = {rtwname: "<Root>/Rate Transition3"};
 	this.rtwnameHashMap["<Root>/Rate Transition4"] = {sid: "GCU_Model_genCode:616"};
@@ -375,6 +381,8 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["GCU_Model_genCode:969"] = {rtwname: "<S1>/Demux"};
 	this.rtwnameHashMap["<S1>/Divide"] = {sid: "GCU_Model_genCode:1395"};
 	this.sidHashMap["GCU_Model_genCode:1395"] = {rtwname: "<S1>/Divide"};
+	this.rtwnameHashMap["<S1>/Read_oil_sensor"] = {sid: "GCU_Model_genCode:1405"};
+	this.sidHashMap["GCU_Model_genCode:1405"] = {rtwname: "<S1>/Read_oil_sensor"};
 	this.rtwnameHashMap["<S1>/UPDATES1_SW_ID"] = {sid: "GCU_Model_genCode:1379"};
 	this.sidHashMap["GCU_Model_genCode:1379"] = {rtwname: "<S1>/UPDATES1_SW_ID"};
 	this.rtwnameHashMap["<S1>/UPDATES2_SW_ID"] = {sid: "GCU_Model_genCode:1384"};
@@ -393,6 +401,8 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["GCU_Model_genCode:1331"] = {rtwname: "<S1>/send_Updates2_SW"};
 	this.rtwnameHashMap["<S1>/send_Updates_EFI"] = {sid: "GCU_Model_genCode:1319"};
 	this.sidHashMap["GCU_Model_genCode:1319"] = {rtwname: "<S1>/send_Updates_EFI"};
+	this.rtwnameHashMap["<S1>/oil_sensor"] = {sid: "GCU_Model_genCode:1406"};
+	this.sidHashMap["GCU_Model_genCode:1406"] = {rtwname: "<S1>/oil_sensor"};
 	this.rtwnameHashMap["<S2>/accInitialParameters"] = {sid: "GCU_Model_genCode:1095"};
 	this.sidHashMap["GCU_Model_genCode:1095"] = {rtwname: "<S2>/accInitialParameters"};
 	this.rtwnameHashMap["<S2>/valueAcc"] = {sid: "GCU_Model_genCode:1145"};
@@ -553,6 +563,8 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["GCU_Model_genCode:891"] = {rtwname: "<S7>/Outport"};
 	this.rtwnameHashMap["<S8>/adc_data_vector"] = {sid: "GCU_Model_genCode:1258"};
 	this.sidHashMap["GCU_Model_genCode:1258"] = {rtwname: "<S8>/adc_data_vector"};
+	this.rtwnameHashMap["<S8>/oil_sensor"] = {sid: "GCU_Model_genCode:1409"};
+	this.sidHashMap["GCU_Model_genCode:1409"] = {rtwname: "<S8>/oil_sensor"};
 	this.rtwnameHashMap["<S8>/rpm_Limiter"] = {sid: "GCU_Model_genCode:1259"};
 	this.sidHashMap["GCU_Model_genCode:1259"] = {rtwname: "<S8>/rpm_Limiter"};
 	this.rtwnameHashMap["<S8>/clutchCurrVal"] = {sid: "GCU_Model_genCode:1260"};
@@ -581,6 +593,8 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["GCU_Model_genCode:1270"] = {rtwname: "<S8>/Cast1"};
 	this.rtwnameHashMap["<S8>/Cast10"] = {sid: "GCU_Model_genCode:1302"};
 	this.sidHashMap["GCU_Model_genCode:1302"] = {rtwname: "<S8>/Cast10"};
+	this.rtwnameHashMap["<S8>/Cast11"] = {sid: "GCU_Model_genCode:1410"};
+	this.sidHashMap["GCU_Model_genCode:1410"] = {rtwname: "<S8>/Cast11"};
 	this.rtwnameHashMap["<S8>/Cast2"] = {sid: "GCU_Model_genCode:1271"};
 	this.sidHashMap["GCU_Model_genCode:1271"] = {rtwname: "<S8>/Cast2"};
 	this.rtwnameHashMap["<S8>/Cast3"] = {sid: "GCU_Model_genCode:1272"};

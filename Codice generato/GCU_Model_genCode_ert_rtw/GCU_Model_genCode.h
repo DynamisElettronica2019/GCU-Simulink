@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.123
+ * Model version                  : 1.127
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Tue May 14 21:37:39 2019
+ * C/C++ source code generated on : Thu May 16 09:29:38 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -141,9 +141,9 @@ typedef struct {
   int32_T sfEvent;                     /* '<S4>/GCULogic' */
   int32_T aac_dtRelease;               /* '<S4>/GCULogic' */
   int32_T ticksCounter;                /* '<S4>/GCULogic' */
-  uint32_T update_ADC_data[10];        /* '<S10>/update_ADC_data' */
-  volatile uint32_T RateTransition9_Buffer[20];/* '<Root>/Rate Transition9' */
-  volatile uint32_T RateTransition18_Buffer0[10];/* '<Root>/Rate Transition18' */
+  uint32_T update_ADC_data[9];         /* '<S10>/update_ADC_data' */
+  volatile uint32_T RateTransition9_Buffer[18];/* '<Root>/Rate Transition9' */
+  volatile uint32_T RateTransition18_Buffer0[9];/* '<Root>/Rate Transition18' */
   uint32_T Cast;                       /* '<S21>/Cast' */
   uint32_T Cast_m;                     /* '<S19>/Cast' */
   uint16_T RateTransition1[3];         /* '<Root>/Rate Transition1' */
@@ -191,13 +191,14 @@ typedef struct {
   uint16_T Cast2_a;                    /* '<S12>/Cast2' */
   uint16_T Cast3_o;                    /* '<S12>/Cast3' */
   uint16_T Cast_k;                     /* '<S13>/Cast' */
-  uint16_T Cast1_k;                    /* '<S13>/Cast1' */
+  uint16_T Read_oil_sensor;            /* '<S1>/Read_oil_sensor' */
   uint16_T Divide;                     /* '<S1>/Divide' */
   uint16_T Cast1_c;                    /* '<S14>/Cast1' */
   uint16_T Cast1_o;                    /* '<S16>/Cast1' */
   uint16_T Cast_e;                     /* '<S15>/Cast' */
   uint16_T Cast1_i;                    /* '<S21>/Cast1' */
   uint16_T Cast1_m;                    /* '<S19>/Cast1' */
+  volatile uint16_T RateTransition27_Buffer0;/* '<Root>/Rate Transition27' */
   uint16_T rpm;                        /* '<S6>/AccelerationRoutine' */
   uint16_T wheelSpeed;                 /* '<S6>/AccelerationRoutine' */
   uint16_T currGear_m;                 /* '<S6>/AccelerationRoutine' */
@@ -302,8 +303,10 @@ typedef struct {
    * Referenced by:
    *   '<Root>/Rate Transition1'
    *   '<Root>/Rate Transition2'
+   *   '<Root>/Rate Transition27'
    *   '<Root>/Rate Transition4'
    *   '<Root>/Rate Transition8'
+   *   '<S1>/oil_sensor'
    *   '<S1>/Constant'
    *   '<S1>/Constant1'
    *   '<S1>/Constant2'
@@ -324,13 +327,13 @@ typedef struct {
   uint8_T UART_debug[10];              /* '<Root>/UART_debug' */
   real_T SelectMode;                   /* '<Root>/SelectMode' */
   uint8_T CAN[10];                     /* '<Root>/CAN' */
-  uint32_T adc_buffer[10];             /* '<Root>/adc_buffer' */
+  uint32_T adc_buffer[9];              /* '<Root>/adc_buffer' */
 } ExtU;
 
 /* External outputs (root outports fed by signals with default storage) */
 typedef struct {
   uint16_T debugValues[20];            /* '<Root>/debugValues  ' */
-  uint32_T adc_data_vector[10];        /* '<Root>/adc_data_vector' */
+  uint32_T adc_data_vector[9];         /* '<Root>/adc_data_vector' */
 } ExtY;
 
 /* Real-time Model Data Structure */
@@ -368,6 +371,7 @@ extern RT_MODEL *const rtM;
 /*-
  * These blocks were eliminated from the model due to optimizations:
  *
+ * Block '<S13>/Cast1' : Eliminate redundant data type conversion
  * Block '<S13>/Cast2' : Eliminate redundant data type conversion
  * Block '<S13>/Cast3' : Eliminate redundant data type conversion
  * Block '<S14>/Cast' : Eliminate redundant data type conversion

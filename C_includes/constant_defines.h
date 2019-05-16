@@ -22,5 +22,4 @@
 #define CAN_FILTER_NUMBER 14
 
 
-
 #endif

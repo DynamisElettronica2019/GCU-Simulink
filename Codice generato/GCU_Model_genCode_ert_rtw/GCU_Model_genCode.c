@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.123
+ * Model version                  : 1.127
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Tue May 14 21:37:39 2019
+ * C/C++ source code generated on : Thu May 16 09:29:38 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -223,6 +223,21 @@ extern "C" {
   extern void sendCAN_Outputs_wrapper(const uint16_T *id,
     const uint8_T *dataArray);
   extern void sendCAN_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void Read_oil_sensor_Start_wrapper(void);
+  extern void Read_oil_sensor_Outputs_wrapper(uint16_T *l_oil);
+  extern void Read_oil_sensor_Terminate_wrapper(void);
 
 #ifdef __cplusplus
 
@@ -2587,10 +2602,11 @@ void GCU_Model_genCode_step3(void)     /* Sample time: [0.001s, 0.0004s] */
   uint8_T rtb_RateTransition15;
   uint8_T rtb_RateTransition17;
   uint8_T rtb_RateTransition24;
-  uint32_T rtb_RateTransition9[10];
+  uint16_T rtb_RateTransition27;
+  uint32_T rtb_RateTransition9[9];
   uint8_T rtb_RateTransition10;
   uint16_T rtb_RateTransition14[3];
-  uint16_T Cast_n[10];
+  uint16_T Cast_n[9];
   int32_T i;
   int32_T i_0;
   uint16_T Cast_n_0;
@@ -2626,9 +2642,12 @@ void GCU_Model_genCode_step3(void)     /* Sample time: [0.001s, 0.0004s] */
   /* RateTransition: '<Root>/Rate Transition24' */
   rtb_RateTransition24 = rtDW.Pin_H;
 
+  /* RateTransition: '<Root>/Rate Transition27' */
+  rtb_RateTransition27 = rtDW.RateTransition27_Buffer0;
+
   /* RateTransition: '<Root>/Rate Transition9' */
-  i = rtDW.RateTransition9_ActiveBufIdx * 10;
-  for (i_0 = 0; i_0 < 10; i_0++) {
+  i = rtDW.RateTransition9_ActiveBufIdx * 9;
+  for (i_0 = 0; i_0 < 9; i_0++) {
     rtb_RateTransition9[i_0] = rtDW.RateTransition9_Buffer[i_0 + i];
   }
 
@@ -2640,7 +2659,7 @@ void GCU_Model_genCode_step3(void)     /* Sample time: [0.001s, 0.0004s] */
   /* S-Function (fcncallgen): '<Root>/Function_Call_Generator' incorporates:
    *  SubSystem: '<Root>/debugUART'
    */
-  for (i = 0; i < 10; i++) {
+  for (i = 0; i < 9; i++) {
     /* DataTypeConversion: '<S8>/Cast' */
     Cast_n_0 = (uint16_T)rtb_RateTransition9[i];
 
@@ -2654,6 +2673,7 @@ void GCU_Model_genCode_step3(void)     /* Sample time: [0.001s, 0.0004s] */
   /* SignalConversion: '<S8>/TmpSignal ConversionAtPack_Uart_MessageInport1' incorporates:
    *  DataTypeConversion: '<S8>/Cast1'
    *  DataTypeConversion: '<S8>/Cast10'
+   *  DataTypeConversion: '<S8>/Cast11'
    *  DataTypeConversion: '<S8>/Cast2'
    *  DataTypeConversion: '<S8>/Cast3'
    *  DataTypeConversion: '<S8>/Cast4'
@@ -2663,6 +2683,7 @@ void GCU_Model_genCode_step3(void)     /* Sample time: [0.001s, 0.0004s] */
    *  DataTypeConversion: '<S8>/Cast8'
    *  DataTypeConversion: '<S8>/Cast9'
    */
+  rtDW.TmpSignalConversionAtPack_Uart_[9] = rtb_RateTransition27;
   rtDW.TmpSignalConversionAtPack_Uart_[10] = rtb_RateTransition10;
   rtDW.TmpSignalConversionAtPack_Uart_[11] = rtb_RateTransition11;
   rtDW.TmpSignalConversionAtPack_Uart_[12] = rtb_RateTransition16;
@@ -2686,6 +2707,7 @@ void GCU_Model_genCode_step3(void)     /* Sample time: [0.001s, 0.0004s] */
   /* Outport: '<Root>/debugValues  ' incorporates:
    *  DataTypeConversion: '<S8>/Cast1'
    *  DataTypeConversion: '<S8>/Cast10'
+   *  DataTypeConversion: '<S8>/Cast11'
    *  DataTypeConversion: '<S8>/Cast2'
    *  DataTypeConversion: '<S8>/Cast3'
    *  DataTypeConversion: '<S8>/Cast4'
@@ -2695,13 +2717,14 @@ void GCU_Model_genCode_step3(void)     /* Sample time: [0.001s, 0.0004s] */
    *  DataTypeConversion: '<S8>/Cast8'
    *  DataTypeConversion: '<S8>/Cast9'
    */
-  for (i = 0; i < 10; i++) {
+  for (i = 0; i < 9; i++) {
     rtY.debugValues[i] = Cast_n[i];
   }
 
   /* S-Function (fcncallgen): '<Root>/Function_Call_Generator' incorporates:
    *  SubSystem: '<Root>/debugUART'
    */
+  rtY.debugValues[9] = rtb_RateTransition27;
   rtY.debugValues[10] = rtb_RateTransition10;
   rtY.debugValues[11] = rtb_RateTransition11;
   rtY.debugValues[12] = rtb_RateTransition16;
@@ -2720,7 +2743,7 @@ void GCU_Model_genCode_step3(void)     /* Sample time: [0.001s, 0.0004s] */
 /* Model step function for TID4 */
 void GCU_Model_genCode_step4(void)     /* Sample time: [0.001s, 0.0006s] */
 {
-  uint32_T Multiply[10];
+  uint32_T Multiply[9];
   int32_T i;
 
   /* S-Function (fcncallgen): '<Root>/Function_Call_Generator1' incorporates:
@@ -2732,7 +2755,7 @@ void GCU_Model_genCode_step4(void)     /* Sample time: [0.001s, 0.0006s] */
   update_ADC_data_Outputs_wrapper(&rtU.adc_buffer[0], &rtDW.update_ADC_data[0]);
 
   /* Product: '<S10>/Multiply' */
-  for (i = 0; i < 10; i++) {
+  for (i = 0; i < 9; i++) {
     Multiply[i] = rtDW.update_ADC_data[i];
   }
 
@@ -2741,7 +2764,7 @@ void GCU_Model_genCode_step4(void)     /* Sample time: [0.001s, 0.0006s] */
 
   /* RateTransition: '<Root>/Rate Transition18' */
   if (!(rtDW.RateTransition18_semaphoreTaken != 0)) {
-    for (i = 0; i < 10; i++) {
+    for (i = 0; i < 9; i++) {
       rtDW.RateTransition18_Buffer0[i] = Multiply[i];
     }
   }
@@ -2749,16 +2772,16 @@ void GCU_Model_genCode_step4(void)     /* Sample time: [0.001s, 0.0006s] */
   /* End of RateTransition: '<Root>/Rate Transition18' */
 
   /* Outport: '<Root>/adc_data_vector' */
-  for (i = 0; i < 10; i++) {
+  for (i = 0; i < 9; i++) {
     rtY.adc_data_vector[i] = Multiply[i];
   }
 
   /* End of Outport: '<Root>/adc_data_vector' */
 
   /* Update for RateTransition: '<Root>/Rate Transition9' */
-  for (i = 0; i < 10; i++) {
-    rtDW.RateTransition9_Buffer[i + (rtDW.RateTransition9_ActiveBufIdx == 0) *
-      10] = Multiply[i];
+  for (i = 0; i < 9; i++) {
+    rtDW.RateTransition9_Buffer[i + (rtDW.RateTransition9_ActiveBufIdx == 0) * 9]
+      = Multiply[i];
   }
 
   rtDW.RateTransition9_ActiveBufIdx = (int8_T)(rtDW.RateTransition9_ActiveBufIdx
@@ -2772,7 +2795,7 @@ void GCU_Model_genCode_step5(void)     /* Sample time: [0.001s, 0.0008s] */
 {
   uint16_T rtb_RateTransition22;
   uint8_T rtb_RateTransition20;
-  uint32_T rtb_RateTransition18[10];
+  uint32_T rtb_RateTransition18[9];
   uint8_T rtb_RateTransition19;
   int32_T i;
 
@@ -2793,7 +2816,7 @@ void GCU_Model_genCode_step5(void)     /* Sample time: [0.001s, 0.0008s] */
 
   /* RateTransition: '<Root>/Rate Transition18' */
   rtDW.RateTransition18_semaphoreTaken = 1;
-  for (i = 0; i < 10; i++) {
+  for (i = 0; i < 9; i++) {
     rtb_RateTransition18[i] = rtDW.RateTransition18_Buffer0[i];
   }
 
@@ -2852,14 +2875,14 @@ void GCU_Model_genCode_step5(void)     /* Sample time: [0.001s, 0.0008s] */
   /* DataTypeConversion: '<S13>/Cast' */
   rtDW.Cast_k = (uint16_T)rtb_RateTransition18[8];
 
-  /* DataTypeConversion: '<S13>/Cast1' */
-  rtDW.Cast1_k = (uint16_T)rtb_RateTransition18[9];
+  /* S-Function (Read_oil_sensor): '<S1>/Read_oil_sensor' */
+  Read_oil_sensor_Outputs_wrapper(&rtDW.Read_oil_sensor);
 
   /* S-Function (PackCANMsg): '<S13>/PackCANMsg' incorporates:
    *  Constant: '<S1>/Constant'
    */
-  PackCANMsg_Outputs_wrapper(&rtDW.Cast_k, &rtDW.Cast1_k, &rtConstP.pooled4,
-    &rtConstP.pooled4, &rtDW.PackCANMsg_i[0]);
+  PackCANMsg_Outputs_wrapper(&rtDW.Cast_k, &rtDW.Read_oil_sensor,
+    &rtConstP.pooled4, &rtConstP.pooled4, &rtDW.PackCANMsg_i[0]);
 
   /* S-Function (sendCAN): '<S13>/sendCAN' incorporates:
    *  Constant: '<S13>/ADC_data1_ID'
@@ -2912,6 +2935,9 @@ void GCU_Model_genCode_step5(void)     /* Sample time: [0.001s, 0.0008s] */
   sendCAN_Outputs_wrapper(&rtConstP.pooled3, &rtDW.PackCANMsg_ig[0]);
 
   /* End of Outputs for S-Function (fcncallgen): '<Root>/Function_Call_Generator2' */
+
+  /* Update for RateTransition: '<Root>/Rate Transition27' */
+  rtDW.RateTransition27_Buffer0 = rtDW.Read_oil_sensor;
 }
 
 /* Model initialize function */
