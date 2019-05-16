@@ -26,7 +26,7 @@
  * | See matlabroot/simulink/src/sfuntmpl_doc.c for a more detailed template |
  *  ------------------------------------------------------------------------- 
  *
- * Created: Tue May 14 21:57:56 2019
+ * Created: Thu May 16 09:19:03 2019
  */
 
 #define S_FUNCTION_LEVEL 2
@@ -36,7 +36,7 @@
 #define NUM_INPUTS            1
 /* Input Port  0 */
 #define IN_PORT_0_NAME        adc_buffer
-#define INPUT_0_WIDTH         10
+#define INPUT_0_WIDTH         9
 #define INPUT_DIMS_0_COL      1
 #define INPUT_0_DTYPE         uint32_T
 #define INPUT_0_COMPLEX       COMPLEX_NO
@@ -55,7 +55,7 @@
 #define NUM_OUTPUTS           1
 /* Output Port  0 */
 #define OUT_PORT_0_NAME       adc_data_vector
-#define OUTPUT_0_WIDTH        10
+#define OUTPUT_0_WIDTH        9
 #define OUTPUT_DIMS_0_COL     1
 #define OUTPUT_0_DTYPE        uint32_T
 #define OUTPUT_0_COMPLEX      COMPLEX_NO
