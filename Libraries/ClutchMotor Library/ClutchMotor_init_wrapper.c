@@ -14,7 +14,6 @@
 
 /* %%%-SFUNWIZ_wrapper_includes_Changes_BEGIN --- EDIT HERE TO _END */
 #if !defined(MATLAB_MEX_FILE)
-//#include "stm32f7xx_hal.h"
 #include "pin_defines.h"
 #endif
 /* %%%-SFUNWIZ_wrapper_includes_Changes_END --- EDIT HERE TO _BEGIN */
@@ -38,10 +37,14 @@ void ClutchMotor_init_Outputs_wrapper(void)
 {
 /* %%%-SFUNWIZ_wrapper_Outputs_Changes_BEGIN --- EDIT HERE TO _END */
 #if !defined(MATLAB_MEX_FILE)
+uint8_T percentage = 100;
+
+ClutchMotor_setPosition_Outputs_wrapper(&percentage);
+
 HAL_TIM_PWM_Start(&hClutchTim, TIM_CLUTCH_CHANNEL);
 #endif
 
-ClutchMotor_setupPWM_Outputs_wrapper();
+
 /* %%%-SFUNWIZ_wrapper_Outputs_Changes_END --- EDIT HERE TO _BEGIN */
 }
 
