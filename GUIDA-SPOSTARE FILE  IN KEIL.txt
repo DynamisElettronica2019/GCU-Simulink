@@ -1,0 +1,7 @@
+-nella cartella Gcu_model_genCode ci sono i file che contengono il modello simulink,
+ gcuModel_genCode.c, genCode_data.c e i file header vanno messi nelle relative cartelle del progetto e sono in comune
+ tra Nucleo_debug e DP11
+-tutti gli header eccetto pin_defines vanno aggiunti ai progetti keil e sono in comune tra Nucleo e GCU
+-pin_defines.h che si trova su simulink fa riferimento ai pin della Nucleo, questo file va inserito nei progetti keil
+ e bisogna modificare le define in modo che facciano riferimento ai pin giusti. ATTENZIONE: modificare solo il nome dei pin,
+ non aggiungere nè togliere define dal .h se non come indicato dai commenti presenti dentro il file
