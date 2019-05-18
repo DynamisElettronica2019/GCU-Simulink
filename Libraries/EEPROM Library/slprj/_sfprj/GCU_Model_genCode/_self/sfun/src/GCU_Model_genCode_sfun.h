@@ -27,6 +27,8 @@ extern struct SfDebugInstanceStruct* sfGlobalDebugInstanceStruct;
 
 /* Custom Code from Simulation Target dialog*/
 #include "timings.h"
+#include "constant_defines.h"
+#include "id_can.h"
 
 /* Type Definitions */
 

@@ -5,51 +5,52 @@
 #include "rtw_modelmap.h"
 
 /* Type Definitions */
-#ifndef enum_aac_params
-#define enum_aac_params
+#ifndef enum_acc_params
+#define enum_acc_params
 
-enum aac_params
+enum acc_params
 {
-  aac_params_RAMP_START = 0,           /* Default value */
-  aac_params_RAMP_END,
-  aac_params_RAMP_TIME,
-  aac_params_RPM_LIMIT_1_2,
-  aac_params_RPM_LIMIT_2_3,
-  aac_params_RPM_LIMIT_3_4,
-  aac_params_RPM_LIMIT_4_5,
-  aac_params_SPEED_LIMIT_1_2,
-  aac_params_SPEED_LIMIT_2_3,
-  aac_params_SPEED_LIMIT_3_4,
-  aac_params_SPEED_LIMIT_4_5
+  acc_params_RAMP_START = 0,           /* Default value */
+  acc_params_RAMP_END,
+  acc_params_RAMP_TIME,
+  acc_params_RPM_LIMIT_1_2,
+  acc_params_RPM_LIMIT_2_3,
+  acc_params_RPM_LIMIT_3_4,
+  acc_params_RPM_LIMIT_4_5,
+  acc_params_SPEED_LIMIT_1_2,
+  acc_params_SPEED_LIMIT_2_3,
+  acc_params_SPEED_LIMIT_3_4,
+  acc_params_SPEED_LIMIT_4_5,
+  acc_params_TPS_START_LIMIT
 };
 
-#endif                                 /*enum_aac_params*/
+#endif                                 /*enum_acc_params*/
 
-#ifndef typedef_c1_aac_params
-#define typedef_c1_aac_params
+#ifndef typedef_c1_acc_params
+#define typedef_c1_acc_params
 
-typedef enum aac_params c1_aac_params;
+typedef enum acc_params c1_acc_params;
 
-#endif                                 /*typedef_c1_aac_params*/
+#endif                                 /*typedef_c1_acc_params*/
 
-#ifndef enum_aac_values
-#define enum_aac_values
+#ifndef enum_acc_values
+#define enum_acc_values
 
-enum aac_values
+enum acc_values
 {
-  aac_values_RPM = 0,                  /* Default value */
-  aac_values_WHEEL_SPEED,
-  aac_values_APPS
+  acc_values_RPM = 0,                  /* Default value */
+  acc_values_WHEEL_SPEED,
+  acc_values_TPS
 };
 
-#endif                                 /*enum_aac_values*/
+#endif                                 /*enum_acc_values*/
 
-#ifndef typedef_c1_aac_values
-#define typedef_c1_aac_values
+#ifndef typedef_c1_acc_values
+#define typedef_c1_acc_values
 
-typedef enum aac_values c1_aac_values;
+typedef enum acc_values c1_acc_values;
 
-#endif                                 /*typedef_c1_aac_values*/
+#endif                                 /*typedef_c1_acc_values*/
 
 #ifndef typedef_SFc1_GCU_Model_genCodeInstanceStruct
 #define typedef_SFc1_GCU_Model_genCodeInstanceStruct
@@ -67,7 +68,7 @@ typedef struct {
   uint8_T c1_tp_SKIDPAD;
   uint8_T c1_tp_INIT;
   uint8_T c1_tp_ACCELERATION;
-  uint8_T c1_tp_AAC;
+  uint8_T c1_tp_ACC;
   uint8_T c1_tp_ACTIVE;
   uint8_T c1_tp_START;
   uint8_T c1_tp_READY;
@@ -111,13 +112,15 @@ typedef struct {
   uint8_T c1_tp_WAIT;
   uint8_T c1_b_tp_START;
   uint8_T c1_tp_STOP;
-  uint8_T c1_tp_SENSORS;
+  uint8_T c1_tp_SCAN_ADC;
+  uint8_T c1_b_tp_WAIT;
+  uint8_T c1_tp_SCAN;
   uint8_T c1_is_active_c1_GCU_Model_genCode;
   uint8_T c1_is_MODES;
   uint8_T c1_is_active_MODES;
   uint8_T c1_is_MANUAL_MODES;
   uint8_T c1_is_ACCELERATION;
-  uint8_T c1_is_AAC;
+  uint8_T c1_is_ACC;
   uint8_T c1_is_ACTIVE;
   uint8_T c1_is_NEUTRAL_STATE;
   uint8_T c1_is_active_NEUTRAL_STATE;
@@ -132,18 +135,12 @@ typedef struct {
   uint8_T c1_is_DOWN_BRAKE;
   uint8_T c1_is_START_ENGINE;
   uint8_T c1_is_active_START_ENGINE;
-  uint8_T c1_is_active_SENSORS;
+  uint8_T c1_is_SCAN_ADC;
+  uint8_T c1_is_active_SCAN_ADC;
   uint8_T c1_lastShift;
   uint16_T c1_lastAacCom;
-  uint16_T c1_START_AAC_COM;
-  uint16_T c1_RELEASE_AAC_COM;
-  uint16_T c1_STOP_AAC_COM;
   uint16_T c1_lastShiftCom;
   uint8_T c1_lastClutchCom;
-  uint16_T c1_AUTOCROSS_MODE;
-  uint16_T c1_SKIDPAD_MODE;
-  uint16_T c1_ENDURANCE_MODE;
-  uint16_T c1_ACC_MODE;
   uint16_T c1_GEAR_COMMAND_NEUTRAL_UP;
   uint16_T c1_GEAR_COMMAND_NEUTRAL_DOWN;
   uint16_T c1_GEAR_COMMAND_UP;
@@ -173,11 +170,12 @@ typedef struct {
   real_T c1_data;
   uint8_T c1_lastCom;
   uint8_T c1_startCounter;
+  uint16_T c1_timerCounter;
   uint8_T c1_doSetSimStateSideEffects;
   const mxArray *c1_setSimStateSideEffectsInfo;
   void *c1_dataSetLogObjVector[2];
-  uint8_T c1_sdiLoggedStatesBuffer[53];
-  uint8_T c1_sdiLoggedDataBuffer[58];
+  uint8_T c1_sdiLoggedStatesBuffer[55];
+  uint8_T c1_sdiLoggedDataBuffer[50];
   sdiBlockID_t c1_sdiBlockInfo;
   SignalExportStruct c1_SignalExportProp;
   SignalExportStruct c1_b_SignalExportProp;
@@ -245,6 +243,9 @@ typedef struct {
   SignalExportStruct c1_nc_SignalExportProp;
   SignalExportStruct c1_oc_SignalExportProp;
   SignalExportStruct c1_pc_SignalExportProp;
+  SignalExportStruct c1_qc_SignalExportProp;
+  SignalExportStruct c1_rc_SignalExportProp;
+  SignalExportStruct c1_sc_SignalExportProp;
   rtwCAPI_ModelMappingInfo c1_testPointMappingInfo;
   void *c1_testPointAddrMap[2];
   void *c1_fEmlrtCtx;
@@ -254,14 +255,12 @@ typedef struct {
   uint16_T (*c1_shiftCom)[2];
   uint8_T *c1_startEngCom;
   uint16_T (*c1_aacCom)[2];
-  uint16_T (*c1_aac_externValues)[3];
+  uint16_T (*c1_acc_externValues)[3];
   uint8_T (*c1_clutchCom)[2];
   uint16_T (*c1_modeCom)[2];
   uint16_T *c1_accFb;
-  int32_T (*c1_aac_parameters)[11];
+  int32_T (*c1_acc_parameters)[12];
   int32_T (*c1_timings)[23];
-  uint16_T *c1_valCode;
-  uint16_T *c1_value;
 } SFc1_GCU_Model_genCodeInstanceStruct;
 
 #endif                                 /*typedef_SFc1_GCU_Model_genCodeInstanceStruct*/

@@ -4,6 +4,8 @@
 #include "GCU_Model_genCode_sfun.h"
 #include "GCU_Model_genCode_sfun_debug_macros.h"
 #include "c1_GCU_Model_genCode.h"
+#include "c2_GCU_Model_genCode.h"
+#include "c4_GCU_Model_genCode.h"
 
 /* Type Definitions */
 
@@ -31,6 +33,16 @@ unsigned int sf_GCU_Model_genCode_method_dispatcher(SimStruct *simstructPtr,
 {
   if (chartFileNumber==1) {
     c1_GCU_Model_genCode_method_dispatcher(simstructPtr, method, data);
+    return 1;
+  }
+
+  if (chartFileNumber==2) {
+    c2_GCU_Model_genCode_method_dispatcher(simstructPtr, method, data);
+    return 1;
+  }
+
+  if (chartFileNumber==4) {
+    c4_GCU_Model_genCode_method_dispatcher(simstructPtr, method, data);
     return 1;
   }
 
@@ -72,6 +84,20 @@ unsigned int sf_GCU_Model_genCode_process_check_sum_call( int nlhs, mxArray *
           break;
         }
 
+       case 2:
+        {
+          extern void sf_c2_GCU_Model_genCode_get_check_sum(mxArray *plhs[]);
+          sf_c2_GCU_Model_genCode_get_check_sum(plhs);
+          break;
+        }
+
+       case 4:
+        {
+          extern void sf_c4_GCU_Model_genCode_get_check_sum(mxArray *plhs[]);
+          sf_c4_GCU_Model_genCode_get_check_sum(plhs);
+          break;
+        }
+
        default:
         ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(0.0);
         ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(0.0);
@@ -79,18 +105,18 @@ unsigned int sf_GCU_Model_genCode_process_check_sum_call( int nlhs, mxArray *
         ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(0.0);
       }
     } else if (!strcmp(commandName,"target")) {
-      ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(3239017638U);
-      ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(722363149U);
-      ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(2975103291U);
-      ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(1889317790U);
+      ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(3396320905U);
+      ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(3534093100U);
+      ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(1163356009U);
+      ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(1282337809U);
     } else {
       return 0;
     }
   } else {
-    ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(3857339703U);
-    ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(169751882U);
-    ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(2351147923U);
-    ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(308692324U);
+    ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(2902997441U);
+    ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(1750052129U);
+    ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(1649502381U);
+    ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(3287871486U);
   }
 
   return 1;
@@ -128,9 +154,33 @@ unsigned int sf_GCU_Model_genCode_autoinheritance_info( int nlhs, mxArray *
     switch (chartFileNumber) {
      case 1:
       {
-        if (strcmp(aiChksum, "R2fjr15xaV3eCo2IsOT75E") == 0) {
+        if (strcmp(aiChksum, "1hGoK8o1R4KbweJ2m2q1AG") == 0) {
           extern mxArray *sf_c1_GCU_Model_genCode_get_autoinheritance_info(void);
           plhs[0] = sf_c1_GCU_Model_genCode_get_autoinheritance_info();
+          break;
+        }
+
+        plhs[0] = mxCreateDoubleMatrix(0,0,mxREAL);
+        break;
+      }
+
+     case 2:
+      {
+        if (strcmp(aiChksum, "omJ5FmgkvjCfIpwIvPAuRC") == 0) {
+          extern mxArray *sf_c2_GCU_Model_genCode_get_autoinheritance_info(void);
+          plhs[0] = sf_c2_GCU_Model_genCode_get_autoinheritance_info();
+          break;
+        }
+
+        plhs[0] = mxCreateDoubleMatrix(0,0,mxREAL);
+        break;
+      }
+
+     case 4:
+      {
+        if (strcmp(aiChksum, "4Xxv6L1PexrhJj19ejmekG") == 0) {
+          extern mxArray *sf_c4_GCU_Model_genCode_get_autoinheritance_info(void);
+          plhs[0] = sf_c4_GCU_Model_genCode_get_autoinheritance_info();
           break;
         }
 
@@ -178,11 +228,37 @@ unsigned int sf_GCU_Model_genCode_get_eml_resolved_functions_info( int nlhs,
     switch (chartFileNumber) {
      case 1:
       {
-        if (strcmp(instanceChksum, "sRvCHqs2rT1YQSpX23f4rCH") == 0) {
+        if (strcmp(instanceChksum, "sOLpTJGBCZEJkDRakTjLCrE") == 0) {
           extern const mxArray
             *sf_c1_GCU_Model_genCode_get_eml_resolved_functions_info(void);
           mxArray *persistentMxArray = (mxArray *)
             sf_c1_GCU_Model_genCode_get_eml_resolved_functions_info();
+          plhs[0] = mxDuplicateArray(persistentMxArray);
+          mxDestroyArray(persistentMxArray);
+          break;
+        }
+      }
+
+     case 2:
+      {
+        if (strcmp(instanceChksum, "s4JycQuEsBuP466ZT6qWrcE") == 0) {
+          extern const mxArray
+            *sf_c2_GCU_Model_genCode_get_eml_resolved_functions_info(void);
+          mxArray *persistentMxArray = (mxArray *)
+            sf_c2_GCU_Model_genCode_get_eml_resolved_functions_info();
+          plhs[0] = mxDuplicateArray(persistentMxArray);
+          mxDestroyArray(persistentMxArray);
+          break;
+        }
+      }
+
+     case 4:
+      {
+        if (strcmp(instanceChksum, "swxdfDlMAtEcZ4Pl9LztGBH") == 0) {
+          extern const mxArray
+            *sf_c4_GCU_Model_genCode_get_eml_resolved_functions_info(void);
+          mxArray *persistentMxArray = (mxArray *)
+            sf_c4_GCU_Model_genCode_get_eml_resolved_functions_info();
           plhs[0] = mxDuplicateArray(persistentMxArray);
           mxDestroyArray(persistentMxArray);
           break;
@@ -226,9 +302,27 @@ unsigned int sf_GCU_Model_genCode_third_party_uses_info( int nlhs, mxArray *
     switch (chartFileNumber) {
      case 1:
       {
-        if (strcmp(tpChksum, "sRvCHqs2rT1YQSpX23f4rCH") == 0) {
+        if (strcmp(tpChksum, "sOLpTJGBCZEJkDRakTjLCrE") == 0) {
           extern mxArray *sf_c1_GCU_Model_genCode_third_party_uses_info(void);
           plhs[0] = sf_c1_GCU_Model_genCode_third_party_uses_info();
+          break;
+        }
+      }
+
+     case 2:
+      {
+        if (strcmp(tpChksum, "s4JycQuEsBuP466ZT6qWrcE") == 0) {
+          extern mxArray *sf_c2_GCU_Model_genCode_third_party_uses_info(void);
+          plhs[0] = sf_c2_GCU_Model_genCode_third_party_uses_info();
+          break;
+        }
+      }
+
+     case 4:
+      {
+        if (strcmp(tpChksum, "swxdfDlMAtEcZ4Pl9LztGBH") == 0) {
+          extern mxArray *sf_c4_GCU_Model_genCode_third_party_uses_info(void);
+          plhs[0] = sf_c4_GCU_Model_genCode_third_party_uses_info();
           break;
         }
       }
@@ -263,9 +357,27 @@ unsigned int sf_GCU_Model_genCode_jit_fallback_info( int nlhs, mxArray * plhs[],
     switch (chartFileNumber) {
      case 1:
       {
-        if (strcmp(tpChksum, "sRvCHqs2rT1YQSpX23f4rCH") == 0) {
+        if (strcmp(tpChksum, "sOLpTJGBCZEJkDRakTjLCrE") == 0) {
           extern mxArray *sf_c1_GCU_Model_genCode_jit_fallback_info(void);
           plhs[0] = sf_c1_GCU_Model_genCode_jit_fallback_info();
+          break;
+        }
+      }
+
+     case 2:
+      {
+        if (strcmp(tpChksum, "s4JycQuEsBuP466ZT6qWrcE") == 0) {
+          extern mxArray *sf_c2_GCU_Model_genCode_jit_fallback_info(void);
+          plhs[0] = sf_c2_GCU_Model_genCode_jit_fallback_info();
+          break;
+        }
+      }
+
+     case 4:
+      {
+        if (strcmp(tpChksum, "swxdfDlMAtEcZ4Pl9LztGBH") == 0) {
+          extern mxArray *sf_c4_GCU_Model_genCode_jit_fallback_info(void);
+          plhs[0] = sf_c4_GCU_Model_genCode_jit_fallback_info();
           break;
         }
       }
@@ -300,9 +412,27 @@ unsigned int sf_GCU_Model_genCode_updateBuildInfo_args_info( int nlhs, mxArray *
     switch (chartFileNumber) {
      case 1:
       {
-        if (strcmp(tpChksum, "sRvCHqs2rT1YQSpX23f4rCH") == 0) {
+        if (strcmp(tpChksum, "sOLpTJGBCZEJkDRakTjLCrE") == 0) {
           extern mxArray *sf_c1_GCU_Model_genCode_updateBuildInfo_args_info(void);
           plhs[0] = sf_c1_GCU_Model_genCode_updateBuildInfo_args_info();
+          break;
+        }
+      }
+
+     case 2:
+      {
+        if (strcmp(tpChksum, "s4JycQuEsBuP466ZT6qWrcE") == 0) {
+          extern mxArray *sf_c2_GCU_Model_genCode_updateBuildInfo_args_info(void);
+          plhs[0] = sf_c2_GCU_Model_genCode_updateBuildInfo_args_info();
+          break;
+        }
+      }
+
+     case 4:
+      {
+        if (strcmp(tpChksum, "swxdfDlMAtEcZ4Pl9LztGBH") == 0) {
+          extern mxArray *sf_c4_GCU_Model_genCode_updateBuildInfo_args_info(void);
+          plhs[0] = sf_c4_GCU_Model_genCode_updateBuildInfo_args_info();
           break;
         }
       }
@@ -319,7 +449,7 @@ void GCU_Model_genCode_debug_initialize(struct SfDebugInstanceStruct*
   debugInstance)
 {
   _GCU_Model_genCodeMachineNumber_ = sf_debug_initialize_machine(debugInstance,
-    "GCU_Model_genCode","sfun",0,3,0,0,0);
+    "GCU_Model_genCode","sfun",0,4,0,0,0);
   sf_debug_set_machine_event_thresholds(debugInstance,
     _GCU_Model_genCodeMachineNumber_,0,0);
   sf_debug_set_machine_data_thresholds(debugInstance,

@@ -1,4 +1,4 @@
-classdef aac_params < Simulink.IntEnumType
+classdef acc_params < Simulink.IntEnumType
  enumeration
     RAMP_START       (0)
     RAMP_END         (1)
@@ -12,5 +12,6 @@ classdef aac_params < Simulink.IntEnumType
     SPEED_LIMIT_2_3  (8)
     SPEED_LIMIT_3_4  (9)
     SPEED_LIMIT_4_5  (10)
+    TPS_START_LIMIT  (11)
  end    
 end

@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.150
+ * Model version                  : 1.153
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Sat May 18 16:06:00 2019
+ * C/C++ source code generated on : Sat May 18 16:55:41 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -84,8 +84,9 @@
 #define IN_EnterAcceleration           ((uint8_T)5U)
 #define IN_InsertGear                  ((uint8_T)6U)
 #define IN_Ready                       ((uint8_T)7U)
-#define IN_Wait                        ((uint8_T)8U)
-#define IN_delay                       ((uint8_T)9U)
+#define IN_TPS_On                      ((uint8_T)8U)
+#define IN_Wait                        ((uint8_T)9U)
+#define IN_delay                       ((uint8_T)10U)
 #include "solver_zc.h"
 #include "zero_crossing_types.h"
 #ifndef slZcHadEvent
@@ -660,7 +661,7 @@ static int32_T Gearshift_getTime(void);
 static void Clutch_setValue(uint8_T setValue);
 static void GEARSHIFT(void);
 static void checkShift(void);
-static int32_T getAacParam(aac_params b_index);
+static int32_T getAacParam(acc_params b_index);
 static void aacCheckShift(void);
 static void checkClutch(void);
 static void ACCELERATION(void);
@@ -1426,7 +1427,7 @@ static void checkShift(void)
 }
 
 /* Function for Chart: '<S4>/GCULogic' */
-static int32_T getAacParam(aac_params b_index)
+static int32_T getAacParam(acc_params b_index)
 {
   return rtDW.Merge[b_index];
 }
@@ -1574,7 +1575,8 @@ static void ACCELERATION(void)
            case IN_READY:
             if (rtDW.aacCounter <= 1) {
               if ((rtDW.RateTransition4[0] != rtDW.lastAacCom) &&
-                  (rtDW.RateTransition4[1] == ACC_GO)) {
+                  (rtDW.RateTransition4[1] == ACC_GO) &&
+                  (rtDW.RateTransition1[TPS] >= getAacParam(TPS_START_LIMIT))) {
                 rtDW.lastAacCom = rtDW.RateTransition4[0];
                 rtDW.is_ACTIVE = 0;
                 if (rtDW.is_ACTIVE != IN_START_RELEASE) {
@@ -2111,7 +2113,7 @@ void GCU_Model_genCode_step0(void)     /* Sample time: [0.0002s, 0.0s] */
 void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
 {
   ZCEventType zcEvent[23];
-  ZCEventType zcEvent_0[11];
+  ZCEventType zcEvent_0[12];
   int32_T rtb_RateTransition1;
   int32_T rtb_RateTransition;
   uint8_T Merge_b;
@@ -2144,20 +2146,20 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
   /* Outputs for Triggered SubSystem: '<S17>/Triggered Subsystem' incorporates:
    *  TriggerPort: '<S20>/Trigger'
    */
-  for (i = 0; i < 11; i++) {
+  for (i = 0; i < 12; i++) {
     zcEvent_0[i] = rt_I32ZCFcn(ANY_ZERO_CROSSING,
       &rtPrevZCX.TriggeredSubsystem_Trig_ZCE_j[i],
       (rtDW.load_accParameters[i]));
   }
 
   tmp = false;
-  for (i = 0; i < 11; i++) {
+  for (i = 0; i < 12; i++) {
     tmp = (tmp || (zcEvent_0[i] != NO_ZCEVENT));
   }
 
   if (tmp) {
     /* Inport: '<S20>/In1' */
-    for (i = 0; i < 11; i++) {
+    for (i = 0; i < 12; i++) {
       rtDW.Merge[i] = rtDW.load_accParameters[i];
     }
 
@@ -2192,7 +2194,7 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
     /* Assignment: '<S19>/Assignment' incorporates:
      *  UnitDelay: '<S17>/Unit Delay'
      */
-    for (i = 0; i < 11; i++) {
+    for (i = 0; i < 12; i++) {
       rtDW.Merge[i] = rtDW.UnitDelay_DSTATE_j[i];
     }
 
@@ -2459,7 +2461,7 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
   memcpy(&rtDW.UnitDelay_DSTATE[0], &rtDW.Merge_m[0], 23U * sizeof(int32_T));
 
   /* Update for UnitDelay: '<S17>/Unit Delay' */
-  for (i = 0; i < 11; i++) {
+  for (i = 0; i < 12; i++) {
     rtDW.UnitDelay_DSTATE_j[i] = rtDW.Merge[i];
   }
 
@@ -2509,9 +2511,9 @@ void GCU_Model_genCode_step2(void)     /* Sample time: [0.001s, 0.0002s] */
 
    case IN_InsertGear:
     if (rtDW.currGear_m == 1) {
-      rtDW.is_c3_GCU_Model_genCode = IN_Ready;
-      rtDW.id = 514U;
-      rtDW.firstInt = 2U;
+      rtDW.is_c3_GCU_Model_genCode = IN_TPS_On;
+      rtDW.id = 773U;
+      rtDW.thirdInt = 100U;
     } else {
       checkGear();
     }
@@ -2522,6 +2524,13 @@ void GCU_Model_genCode_step2(void)     /* Sample time: [0.001s, 0.0002s] */
     rtDW.id = 0U;
     rtDW.rpm = 0U;
     rtDW.wheelSpeed = 0U;
+    break;
+
+   case IN_TPS_On:
+    rtDW.thirdInt = 100U;
+    rtDW.is_c3_GCU_Model_genCode = IN_Ready;
+    rtDW.id = 514U;
+    rtDW.firstInt = 2U;
     break;
 
    case IN_Wait:
@@ -2544,8 +2553,7 @@ void GCU_Model_genCode_step2(void)     /* Sample time: [0.001s, 0.0002s] */
 
   /* S-Function (PackCanUART): '<S6>/PackCanUart' */
   PackCanUART_Outputs_wrapper(&rtDW.id, &rtDW.firstInt, &rtDW.secondInt,
-    (uint16_T*)&GCU_Model_genCode_U16GND, (uint16_T*)&GCU_Model_genCode_U16GND,
-    &rtDW.PackCanUart[0]);
+    &rtDW.thirdInt, (uint16_T*)&GCU_Model_genCode_U16GND, &rtDW.PackCanUart[0]);
 
   /* End of Outputs for SubSystem: '<Root>/Simulink_Debug' */
 
@@ -2591,6 +2599,8 @@ void GCU_Model_genCode_step2(void)     /* Sample time: [0.001s, 0.0002s] */
 
     /* Outputs for Function Call SubSystem: '<S3>/AAC_ExternalValues' */
     AAC_ExternalValues(rtDW.UnpackCanUart_o3, (uint16_T)RPM, rtDW.Assignment,
+                       &rtDW.AAC_ExternalValues_f);
+    AAC_ExternalValues(rtDW.UnpackCanUart_o4, (uint16_T)TPS, rtDW.Assignment,
                        &rtDW.AAC_ExternalValues_f);
 
     /* End of Outputs for SubSystem: '<S3>/AAC_ExternalValues' */
@@ -3096,7 +3106,7 @@ void GCU_Model_genCode_initialize(void)
 
     /* SystemInitialize for Triggered SubSystem: '<S17>/Triggered Subsystem' */
     /* SystemInitialize for Merge: '<S17>/Merge' */
-    for (i = 0; i < 11; i++) {
+    for (i = 0; i < 12; i++) {
       rtPrevZCX.TriggeredSubsystem_Trig_ZCE_j[i] = ZERO_ZCSIG;
     }
 

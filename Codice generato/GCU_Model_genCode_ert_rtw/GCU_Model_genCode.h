@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.150
+ * Model version                  : 1.153
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Sat May 18 16:06:00 2019
+ * C/C++ source code generated on : Sat May 18 16:55:41 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -54,8 +54,8 @@ typedef struct tag_RTM RT_MODEL;
 #define SS_UINT64                      18
 #endif
 
-#ifndef DEFINED_TYPEDEF_FOR_aac_params_
-#define DEFINED_TYPEDEF_FOR_aac_params_
+#ifndef DEFINED_TYPEDEF_FOR_acc_params_
+#define DEFINED_TYPEDEF_FOR_acc_params_
 
 typedef enum {
   RAMP_START = 0,                      /* Default value */
@@ -68,19 +68,20 @@ typedef enum {
   SPEED_LIMIT_1_2,
   SPEED_LIMIT_2_3,
   SPEED_LIMIT_3_4,
-  SPEED_LIMIT_4_5
-} aac_params;
+  SPEED_LIMIT_4_5,
+  TPS_START_LIMIT
+} acc_params;
 
 #endif
 
-#ifndef DEFINED_TYPEDEF_FOR_aac_values_
-#define DEFINED_TYPEDEF_FOR_aac_values_
+#ifndef DEFINED_TYPEDEF_FOR_acc_values_
+#define DEFINED_TYPEDEF_FOR_acc_values_
 
 typedef enum {
   RPM = 0,                             /* Default value */
   WHEEL_SPEED,
-  APPS
-} aac_values;
+  TPS
+} acc_values;
 
 #endif
 
@@ -132,12 +133,12 @@ typedef struct {
   real_T count;                        /* '<S6>/AccelerationRoutine' */
   real_T aac_clutchValue;              /* '<S4>/GCULogic' */
   real_T aac_clutchStep;               /* '<S4>/GCULogic' */
-  int32_T Merge[11];                   /* '<S17>/Merge' */
+  int32_T Merge[12];                   /* '<S17>/Merge' */
   int32_T Merge_m[23];                 /* '<S18>/Merge' */
-  int32_T load_accParameters[11];      /* '<S5>/load_accParameters' */
+  int32_T load_accParameters[12];      /* '<S5>/load_accParameters' */
   int32_T load_default_timings[23];    /* '<S5>/load_default_timings' */
   int32_T UnitDelay_DSTATE[23];        /* '<S18>/Unit Delay' */
-  int32_T UnitDelay_DSTATE_j[11];      /* '<S17>/Unit Delay' */
+  int32_T UnitDelay_DSTATE_j[12];      /* '<S17>/Unit Delay' */
   volatile int32_T RateTransition1_Buffer0;/* '<S17>/Rate Transition1' */
   volatile int32_T RateTransition_Buffer0;/* '<S17>/Rate Transition' */
   volatile int32_T RateTransition1_Buffer0_m;/* '<S18>/Rate Transition1' */
@@ -174,6 +175,7 @@ typedef struct {
   uint16_T id;                         /* '<S6>/AccelerationRoutine' */
   uint16_T firstInt;                   /* '<S6>/AccelerationRoutine' */
   uint16_T secondInt;                  /* '<S6>/AccelerationRoutine' */
+  uint16_T thirdInt;                   /* '<S6>/AccelerationRoutine' */
   uint16_T accFb;                      /* '<S4>/GCULogic' */
   uint16_T UnpackCanUart_o1;           /* '<S3>/UnpackCanUart' */
   uint16_T UnpackCanUart_o2;           /* '<S3>/UnpackCanUart' */
@@ -293,7 +295,7 @@ typedef struct {
   ZCSigState Triggered_Subsystem_Trig_ZCE;/* '<S9>/Triggered_Subsystem' */
   ZCSigState TriggeredSubsystem_Trig_ZCE[23];/* '<S18>/Triggered Subsystem' */
   ZCSigState _Trig_ZCE[2];             /* '<S18>/ ' */
-  ZCSigState TriggeredSubsystem_Trig_ZCE_j[11];/* '<S17>/Triggered Subsystem' */
+  ZCSigState TriggeredSubsystem_Trig_ZCE_j[12];/* '<S17>/Triggered Subsystem' */
   ZCSigState _Trig_ZCE_i[2];           /* '<S17>/ ' */
 } PrevZCX;
 

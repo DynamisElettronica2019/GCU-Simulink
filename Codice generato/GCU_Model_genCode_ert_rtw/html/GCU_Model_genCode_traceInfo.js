@@ -1841,6 +1841,8 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["GCU_Model_genCode:592:6"] = {rtwname: "<S46>:6"};
 	this.rtwnameHashMap["<S46>:50"] = {sid: "GCU_Model_genCode:592:50"};
 	this.sidHashMap["GCU_Model_genCode:592:50"] = {rtwname: "<S46>:50"};
+	this.rtwnameHashMap["<S46>:79"] = {sid: "GCU_Model_genCode:592:79"};
+	this.sidHashMap["GCU_Model_genCode:592:79"] = {rtwname: "<S46>:79"};
 	this.rtwnameHashMap["<S46>:8"] = {sid: "GCU_Model_genCode:592:8"};
 	this.sidHashMap["GCU_Model_genCode:592:8"] = {rtwname: "<S46>:8"};
 	this.rtwnameHashMap["<S46>:54"] = {sid: "GCU_Model_genCode:592:54"};
@@ -1853,10 +1855,12 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["GCU_Model_genCode:592:5"] = {rtwname: "<S46>:5"};
 	this.rtwnameHashMap["<S46>:9"] = {sid: "GCU_Model_genCode:592:9"};
 	this.sidHashMap["GCU_Model_genCode:592:9"] = {rtwname: "<S46>:9"};
-	this.rtwnameHashMap["<S46>:75"] = {sid: "GCU_Model_genCode:592:75"};
-	this.sidHashMap["GCU_Model_genCode:592:75"] = {rtwname: "<S46>:75"};
 	this.rtwnameHashMap["<S46>:52"] = {sid: "GCU_Model_genCode:592:52"};
 	this.sidHashMap["GCU_Model_genCode:592:52"] = {rtwname: "<S46>:52"};
+	this.rtwnameHashMap["<S46>:75"] = {sid: "GCU_Model_genCode:592:75"};
+	this.sidHashMap["GCU_Model_genCode:592:75"] = {rtwname: "<S46>:75"};
+	this.rtwnameHashMap["<S46>:80"] = {sid: "GCU_Model_genCode:592:80"};
+	this.sidHashMap["GCU_Model_genCode:592:80"] = {rtwname: "<S46>:80"};
 	this.rtwnameHashMap["<S46>:7"] = {sid: "GCU_Model_genCode:592:7"};
 	this.sidHashMap["GCU_Model_genCode:592:7"] = {rtwname: "<S46>:7"};
 	this.rtwnameHashMap["<S46>:73"] = {sid: "GCU_Model_genCode:592:73"};

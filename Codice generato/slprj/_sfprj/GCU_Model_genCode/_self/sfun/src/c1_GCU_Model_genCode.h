@@ -5,51 +5,52 @@
 #include "rtw_modelmap.h"
 
 /* Type Definitions */
-#ifndef enum_aac_params
-#define enum_aac_params
+#ifndef enum_acc_params
+#define enum_acc_params
 
-enum aac_params
+enum acc_params
 {
-  aac_params_RAMP_START = 0,           /* Default value */
-  aac_params_RAMP_END,
-  aac_params_RAMP_TIME,
-  aac_params_RPM_LIMIT_1_2,
-  aac_params_RPM_LIMIT_2_3,
-  aac_params_RPM_LIMIT_3_4,
-  aac_params_RPM_LIMIT_4_5,
-  aac_params_SPEED_LIMIT_1_2,
-  aac_params_SPEED_LIMIT_2_3,
-  aac_params_SPEED_LIMIT_3_4,
-  aac_params_SPEED_LIMIT_4_5
+  acc_params_RAMP_START = 0,           /* Default value */
+  acc_params_RAMP_END,
+  acc_params_RAMP_TIME,
+  acc_params_RPM_LIMIT_1_2,
+  acc_params_RPM_LIMIT_2_3,
+  acc_params_RPM_LIMIT_3_4,
+  acc_params_RPM_LIMIT_4_5,
+  acc_params_SPEED_LIMIT_1_2,
+  acc_params_SPEED_LIMIT_2_3,
+  acc_params_SPEED_LIMIT_3_4,
+  acc_params_SPEED_LIMIT_4_5,
+  acc_params_TPS_START_LIMIT
 };
 
-#endif                                 /*enum_aac_params*/
+#endif                                 /*enum_acc_params*/
 
-#ifndef typedef_c1_aac_params
-#define typedef_c1_aac_params
+#ifndef typedef_c1_acc_params
+#define typedef_c1_acc_params
 
-typedef enum aac_params c1_aac_params;
+typedef enum acc_params c1_acc_params;
 
-#endif                                 /*typedef_c1_aac_params*/
+#endif                                 /*typedef_c1_acc_params*/
 
-#ifndef enum_aac_values
-#define enum_aac_values
+#ifndef enum_acc_values
+#define enum_acc_values
 
-enum aac_values
+enum acc_values
 {
-  aac_values_RPM = 0,                  /* Default value */
-  aac_values_WHEEL_SPEED,
-  aac_values_APPS
+  acc_values_RPM = 0,                  /* Default value */
+  acc_values_WHEEL_SPEED,
+  acc_values_TPS
 };
 
-#endif                                 /*enum_aac_values*/
+#endif                                 /*enum_acc_values*/
 
-#ifndef typedef_c1_aac_values
-#define typedef_c1_aac_values
+#ifndef typedef_c1_acc_values
+#define typedef_c1_acc_values
 
-typedef enum aac_values c1_aac_values;
+typedef enum acc_values c1_acc_values;
 
-#endif                                 /*typedef_c1_aac_values*/
+#endif                                 /*typedef_c1_acc_values*/
 
 #ifndef typedef_SFc1_GCU_Model_genCodeInstanceStruct
 #define typedef_SFc1_GCU_Model_genCodeInstanceStruct
@@ -254,11 +255,11 @@ typedef struct {
   uint16_T (*c1_shiftCom)[2];
   uint8_T *c1_startEngCom;
   uint16_T (*c1_aacCom)[2];
-  uint16_T (*c1_aac_externValues)[3];
+  uint16_T (*c1_acc_externValues)[3];
   uint8_T (*c1_clutchCom)[2];
   uint16_T (*c1_modeCom)[2];
   uint16_T *c1_accFb;
-  int32_T (*c1_aac_parameters)[11];
+  int32_T (*c1_acc_parameters)[12];
   int32_T (*c1_timings)[23];
 } SFc1_GCU_Model_genCodeInstanceStruct;
 

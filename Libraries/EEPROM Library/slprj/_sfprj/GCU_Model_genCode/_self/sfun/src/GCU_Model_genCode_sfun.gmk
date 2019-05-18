@@ -8,7 +8,7 @@ LD = $(CC)
  
 MODEL     = GCU_Model_genCode
 TARGET      = sfun
-MODULE_SRCS   = c1_GCU_Model_genCode.c
+MODULE_SRCS   = c1_GCU_Model_genCode.c c2_GCU_Model_genCode.c c4_GCU_Model_genCode.c
 MODEL_SRC  = GCU_Model_genCode_sfun.c
 MODEL_REG = GCU_Model_genCode_sfun_registry.c
 MAKEFILE    = GCU_Model_genCode_sfun.gmk

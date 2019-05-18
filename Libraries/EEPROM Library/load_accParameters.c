@@ -26,7 +26,7 @@
  * | See matlabroot/simulink/src/sfuntmpl_doc.c for a more detailed template |
  *  ------------------------------------------------------------------------- 
  *
- * Created: Fri Apr 26 18:44:47 2019
+ * Created: Sat May 18 16:37:39 2019
  */
 
 #define S_FUNCTION_LEVEL 2
@@ -38,7 +38,7 @@
 #define NUM_OUTPUTS           1
 /* Output Port  0 */
 #define OUT_PORT_0_NAME       accParameters
-#define OUTPUT_0_WIDTH        11
+#define OUTPUT_0_WIDTH        12
 #define OUTPUT_DIMS_0_COL     1
 #define OUTPUT_0_DTYPE        int32_T
 #define OUTPUT_0_COMPLEX      COMPLEX_NO

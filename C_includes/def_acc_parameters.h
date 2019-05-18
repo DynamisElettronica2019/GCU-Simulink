@@ -14,4 +14,6 @@
 #define DEF_SPEED_LIMIT_3_4 77
 #define DEF_SPEED_LIMIT_4_5 113
 
+#define DEF_TPS_START_LIMIT 50
+
  #endif  
