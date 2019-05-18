@@ -15,8 +15,8 @@
 #define ADC_PERIOD              10           //periodo di campionamento dei sensori
 
 //Modalità di lettura dei dati di input
-#define UART_READ_MODE  1
-#define CAN_READ_MODE   2
+#define UART_READ_MODE  2
+#define CAN_READ_MODE   1
 #define DEMO_READ_MODE  3
 
 //Filtri impostati per il CAN
