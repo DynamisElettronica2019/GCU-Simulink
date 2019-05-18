@@ -28,20 +28,6 @@
       SrcLocation  ""\
     }\
     ChartData {\
-      Name         "is_SCAN_ADC"\
-      Description  "StateActiveChild"\
-      SFName       ""\
-      Path         "SCAN_ADC"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "is_active_SCAN_ADC"\
-      Description  "StateIsActive"\
-      SFName       ""\
-      Path         "SCAN_ADC"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
       Name         "is_MODES"\
       Description  "StateActiveChild"\
       SFName       ""\
@@ -168,17 +154,24 @@
       SrcLocation  ""\
     }\
     ChartData {\
+      Name         "is_SCAN_ADC"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "SCAN_ADC"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_active_SCAN_ADC"\
+      Description  "StateIsActive"\
+      SFName       ""\
+      Path         "SCAN_ADC"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
       Name         "lastShift"\
       Description  "ChartLocal"\
       SFName       ""\
       Path         "lastShift"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "timerCounter"\
-      Description  "ChartLocal"\
-      SFName       ""\
-      Path         "SCAN_ADC.timerCounter"\
       SrcLocation  ""\
     }\
     ChartData {\
@@ -250,6 +243,13 @@
       Description  "ChartLocal"\
       SFName       ""\
       Path         "START_ENGINE.startCounter"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "timerCounter"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "SCAN_ADC.timerCounter"\
       SrcLocation  ""\
     }\
   }
