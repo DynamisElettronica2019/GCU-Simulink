@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.140
+ * Model version                  : 1.149
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Thu May 16 17:12:06 2019
+ * C/C++ source code generated on : Sat May 18 11:18:55 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -30,7 +30,6 @@
 
 /* Named constants for Chart: '<S4>/GCULogic' */
 #define AAC_WORK_RATE_ms               ((uint16_T)25U)
-#define ACC_CODE                       ((uint16_T)1U)
 #define GEAR_COMMAND_UP                ((uint16_T)400U)
 #define IN_ACC                         ((uint8_T)1U)
 #define IN_ACCELERATION                ((uint8_T)1U)
@@ -73,9 +72,6 @@
 #define IN_UP_START                    ((uint8_T)4U)
 #define IN_WAIT                        ((uint8_T)3U)
 #define IN_WAIT_m                      ((uint8_T)2U)
-#define RELEASE_AAC_COM                ((uint16_T)2U)
-#define START_AAC_COM                  ((uint16_T)1U)
-#define STOP_AAC_COM                   ((uint16_T)0U)
 #define event_GearshiftDown            (0)
 #define event_GearshiftSetNeutral      (1)
 #define event_GearshiftUp              (2)
@@ -336,21 +332,6 @@ extern "C" {
 
 #endif
 
-  extern void ClutchMotor_init_Start_wrapper(void);
-  extern void ClutchMotor_init_Outputs_wrapper(void);
-  extern void ClutchMotor_init_Terminate_wrapper(void);
-
-#ifdef __cplusplus
-
-}
-#endif
-
-#ifdef __cplusplus
-
-extern "C" {
-
-#endif
-
   extern void ClutchMotor_setPosition_Start_wrapper(void);
   extern void ClutchMotor_setPosition_Outputs_wrapper(const uint8_T *percentage);
   extern void ClutchMotor_setPosition_Terminate_wrapper(void);
@@ -522,26 +503,6 @@ extern "C" {
 
 #endif
 
-  extern void PackCanUART_Start_wrapper(void);
-  extern void PackCanUART_Outputs_wrapper(const uint16_T *id,
-    const uint16_T *firstInt,
-    const uint16_T *secondInt,
-    const uint16_T *thirdInt,
-    const uint16_T *fourthInt,
-    uint8_T *message);
-  extern void PackCanUART_Terminate_wrapper(void);
-
-#ifdef __cplusplus
-
-}
-#endif
-
-#ifdef __cplusplus
-
-extern "C" {
-
-#endif
-
   extern void load_accParameters_Start_wrapper(void);
   extern void load_accParameters_Outputs_wrapper(int32_T *accParameters);
   extern void load_accParameters_Terminate_wrapper(void);
@@ -602,6 +563,21 @@ extern "C" {
 
 #endif
 
+  extern void ClutchMotor_init_Start_wrapper(void);
+  extern void ClutchMotor_init_Outputs_wrapper(void);
+  extern void ClutchMotor_init_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
   extern void GearMotor_init_Start_wrapper(void);
   extern void GearMotor_init_Outputs_wrapper(void);
   extern void GearMotor_init_Terminate_wrapper(void);
@@ -641,6 +617,26 @@ extern "C" {
 }
 #endif
 
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void PackCanUART_Start_wrapper(void);
+  extern void PackCanUART_Outputs_wrapper(const uint16_T *id,
+    const uint16_T *firstInt,
+    const uint16_T *secondInt,
+    const uint16_T *thirdInt,
+    const uint16_T *fourthInt,
+    uint8_T *message);
+  extern void PackCanUART_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
 static uint16_T look1_iu16lu64n48_binlcse(uint16_T u0, const uint16_T bp0[],
   const uint16_T table[], uint32_T maxIndex);
 static void Efi_setRpmLimiter(uint8_T *rty_rpmLimiter_pin, DW_Efi_setRpmLimiter *
@@ -656,8 +652,6 @@ static void Gearmotor_brake(uint8_T *rty_Pin_In1, uint8_T *rty_Pin_In2, uint8_T 
 static void EngineControl_Start(uint8_T *rty_engine_starter,
   DW_EngineControl_Start *localDW);
 static void SCAN_ADCScanADC(void);
-static void sendUpdatesSW(uint16_T rtu_valCode, uint16_T rtu_value,
-  DW_sendUpdatesSW *localDW);
 static void Gearmotor_release(void);
 
 /* Forward declaration for local functions */
@@ -669,7 +663,6 @@ static void checkShift(void);
 static int32_T getAacParam(aac_params b_index);
 static void aacCheckShift(void);
 static void checkClutch(void);
-static void enter_atomic_MANUAL_MODES(void);
 static void ACCELERATION(void);
 static void MODES(void);
 static void updateData(void);
@@ -873,10 +866,10 @@ static void AAC_ExternalValues(uint16_T rtu_Value, uint16_T rtu_Index, uint16_T
 /* Output and update for function-call system: '<S32>/Gearmotor_release' */
 static void Gearmotor_release(void)
 {
-  /* S-Function (GearMotor_release): '<S45>/GearMotor Release' */
+  /* S-Function (GearMotor_release): '<S43>/GearMotor Release' */
   GearMotor_release_Outputs_wrapper(&rtDW.GearMotorRelease);
 
-  /* SignalConversion: '<S45>/OutportBufferForPin H' */
+  /* SignalConversion: '<S43>/OutportBufferForPin H' */
   rtDW.Pin_H = rtDW.GearMotorRelease;
 }
 
@@ -884,17 +877,17 @@ static void Gearmotor_release(void)
 static void Gearmotor_turnRight(uint8_T *rty_Pin_In1, uint8_T *rty_Pin_In2,
   uint8_T *rty_Pin_H, DW_Gearmotor_turnRight *localDW)
 {
-  /* S-Function (GearMotor_turnRight): '<S47>/GearMotor Turn Right' */
+  /* S-Function (GearMotor_turnRight): '<S45>/GearMotor Turn Right' */
   GearMotor_turnRight_Outputs_wrapper(&localDW->GearMotorTurnRight_o1,
     &localDW->GearMotorTurnRight_o2, &localDW->GearMotorTurnRight_o3);
 
-  /* SignalConversion: '<S47>/OutportBufferForPin_H' */
+  /* SignalConversion: '<S45>/OutportBufferForPin_H' */
   *rty_Pin_H = localDW->GearMotorTurnRight_o3;
 
-  /* SignalConversion: '<S47>/OutportBufferForPin_In1' */
+  /* SignalConversion: '<S45>/OutportBufferForPin_In1' */
   *rty_Pin_In1 = localDW->GearMotorTurnRight_o1;
 
-  /* SignalConversion: '<S47>/OutportBufferForPin_In2' */
+  /* SignalConversion: '<S45>/OutportBufferForPin_In2' */
   *rty_Pin_In2 = localDW->GearMotorTurnRight_o2;
 }
 
@@ -902,17 +895,17 @@ static void Gearmotor_turnRight(uint8_T *rty_Pin_In1, uint8_T *rty_Pin_In2,
 static void Gearmotor_brake(uint8_T *rty_Pin_In1, uint8_T *rty_Pin_In2, uint8_T *
   rty_Pin_H, DW_Gearmotor_brake *localDW)
 {
-  /* S-Function (GearMotor_brake): '<S44>/GearMotor Brake' */
+  /* S-Function (GearMotor_brake): '<S42>/GearMotor Brake' */
   GearMotor_brake_Outputs_wrapper(&localDW->GearMotorBrake_o1,
     &localDW->GearMotorBrake_o2, &localDW->GearMotorBrake_o3);
 
-  /* SignalConversion: '<S44>/OutportBufferForPin_H' */
+  /* SignalConversion: '<S42>/OutportBufferForPin_H' */
   *rty_Pin_H = localDW->GearMotorBrake_o3;
 
-  /* SignalConversion: '<S44>/OutportBufferForPin_In1' */
+  /* SignalConversion: '<S42>/OutportBufferForPin_In1' */
   *rty_Pin_In1 = localDW->GearMotorBrake_o1;
 
-  /* SignalConversion: '<S44>/OutportBufferForPin_In2' */
+  /* SignalConversion: '<S42>/OutportBufferForPin_In2' */
   *rty_Pin_In2 = localDW->GearMotorBrake_o2;
 }
 
@@ -920,30 +913,18 @@ static void Gearmotor_brake(uint8_T *rty_Pin_In1, uint8_T *rty_Pin_In2, uint8_T 
 static void EngineControl_Start(uint8_T *rty_engine_starter,
   DW_EngineControl_Start *localDW)
 {
-  /* S-Function (EngineControl_start): '<S40>/EngineControl Start' */
+  /* S-Function (EngineControl_start): '<S39>/EngineControl Start' */
   EngineControl_start_Outputs_wrapper(&localDW->EngineControlStart);
 
-  /* SignalConversion: '<S40>/OutportBufferForengine_starter' */
+  /* SignalConversion: '<S39>/OutportBufferForengine_starter' */
   *rty_engine_starter = localDW->EngineControlStart;
 }
 
 /* Output and update for function-call system: '<S31>/SCAN_ADC.ScanADC' */
 static void SCAN_ADCScanADC(void)
 {
-  /* S-Function (ScanADC): '<S42>/ScanADC' */
+  /* S-Function (ScanADC): '<S41>/ScanADC' */
   ScanADC_Outputs_wrapper();
-}
-
-/* Output and update for function-call system: '<S31>/sendUpdatesSW' */
-static void sendUpdatesSW(uint16_T rtu_valCode, uint16_T rtu_value,
-  DW_sendUpdatesSW *localDW)
-{
-  /* S-Function (PackCanUART): '<S43>/PackCanUart' incorporates:
-   *  Constant: '<S43>/GCU_FEEDBACK_ID'
-   */
-  PackCanUART_Outputs_wrapper(&rtConstP.GCU_FEEDBACK_ID_Value, &rtu_valCode,
-    &rtu_value, (uint16_T*)&GCU_Model_genCode_U16GND, (uint16_T*)
-    &GCU_Model_genCode_U16GND, &localDW->PackCanUart[0]);
 }
 
 /* Function for Chart: '<S4>/GCULogic' */
@@ -1047,21 +1028,21 @@ static void Clutch_setValue(uint8_T setValue)
   rtDW.clutchCurrVal = setValue;
 
   /* Outputs for Function Call SubSystem: '<S28>/ClutchMotor SetPosition ' */
-  /* Saturate: '<S34>/Saturation' */
+  /* Saturate: '<S33>/Saturation' */
   if (rtDW.clutchCurrVal < 100) {
     tmp = rtDW.clutchCurrVal;
   } else {
     tmp = 100U;
   }
 
-  /* End of Saturate: '<S34>/Saturation' */
+  /* End of Saturate: '<S33>/Saturation' */
 
-  /* Sum: '<S34>/Minus' incorporates:
-   *  Constant: '<S34>/Constant'
+  /* Sum: '<S33>/Minus' incorporates:
+   *  Constant: '<S33>/Constant'
    */
   rtDW.Minus = (uint8_T)(100 - tmp);
 
-  /* S-Function (ClutchMotor_setPosition): '<S34>/ClutchMotor SetPosition' */
+  /* S-Function (ClutchMotor_setPosition): '<S33>/ClutchMotor SetPosition' */
   ClutchMotor_setPosition_Outputs_wrapper(&rtDW.Minus);
 
   /* End of Outputs for SubSystem: '<S28>/ClutchMotor SetPosition ' */
@@ -1158,17 +1139,17 @@ static void GEARSHIFT(void)
           rtDW.ticksCounter = Gearshift_getTime();
 
           /* Outputs for Function Call SubSystem: '<S32>/Gearmotor_turnLeft' */
-          /* S-Function (GearMotor_turnLeft): '<S46>/GearMotor Turn Left' */
+          /* S-Function (GearMotor_turnLeft): '<S44>/GearMotor Turn Left' */
           GearMotor_turnLeft_Outputs_wrapper(&rtDW.GearMotorTurnLeft_o1,
             &rtDW.GearMotorTurnLeft_o2, &rtDW.GearMotorTurnLeft_o3);
 
-          /* SignalConversion: '<S46>/OutportBufferForPin_H' */
+          /* SignalConversion: '<S44>/OutportBufferForPin_H' */
           rtDW.Pin_H = rtDW.GearMotorTurnLeft_o3;
 
-          /* SignalConversion: '<S46>/OutportBufferForPin_In1' */
+          /* SignalConversion: '<S44>/OutportBufferForPin_In1' */
           rtDW.Pin_In1 = rtDW.GearMotorTurnLeft_o1;
 
-          /* SignalConversion: '<S46>/OutportBufferForPin_In2' */
+          /* SignalConversion: '<S44>/OutportBufferForPin_In2' */
           rtDW.Pin_In2 = rtDW.GearMotorTurnLeft_o2;
 
           /* End of Outputs for SubSystem: '<S32>/Gearmotor_turnLeft' */
@@ -1205,7 +1186,7 @@ static void GEARSHIFT(void)
 
           /* Outputs for Function Call SubSystem: '<S29>/SetCut' */
 
-          /* S-Function (Efi_setCut): '<S36>/Efi SetCut' */
+          /* S-Function (Efi_setCut): '<S35>/Efi SetCut' */
           Efi_setCut_Outputs_wrapper(&rtDW.EfiSetCut);
 
           /* End of Outputs for SubSystem: '<S29>/SetCut' */
@@ -1335,7 +1316,7 @@ static void GEARSHIFT(void)
 
             /* Outputs for Function Call SubSystem: '<S29>/UnsetCut' */
 
-            /* S-Function (Efi_unsetCut): '<S38>/Efi UnSetCut' */
+            /* S-Function (Efi_unsetCut): '<S37>/Efi UnSetCut' */
             Efi_unsetCut_Outputs_wrapper(&rtDW.EfiUnSetCut);
 
             /* End of Outputs for SubSystem: '<S29>/UnsetCut' */
@@ -1486,15 +1467,6 @@ static void checkClutch(void)
 }
 
 /* Function for Chart: '<S4>/GCULogic' */
-static void enter_atomic_MANUAL_MODES(void)
-{
-  rtDW.lastModeCom[0] = rtDW.RateTransition8[0];
-  rtDW.lastModeCom[1] = rtDW.RateTransition8[1];
-  checkShift();
-  checkClutch();
-}
-
-/* Function for Chart: '<S4>/GCULogic' */
 static void ACCELERATION(void)
 {
   int32_T q0;
@@ -1516,7 +1488,10 @@ static void ACCELERATION(void)
       rtDW.is_MODES = 0;
       if (rtDW.is_MODES != IN_MANUAL_MODES) {
         rtDW.is_MODES = IN_MANUAL_MODES;
-        enter_atomic_MANUAL_MODES();
+        rtDW.lastModeCom[0] = rtDW.RateTransition8[0];
+        rtDW.lastModeCom[1] = rtDW.RateTransition8[1];
+        checkShift();
+        checkClutch();
       }
     } else if (rtDW.RateTransition8[1] == ENDURANCE_MODE) {
       rtDW.is_ACTIVE = 0;
@@ -1579,7 +1554,7 @@ static void ACCELERATION(void)
       switch (rtDW.is_ACC) {
        case IN_ACTIVE:
         if ((rtDW.RateTransition4[0] != rtDW.lastAacCom) &&
-            (rtDW.RateTransition4[1] == STOP_AAC_COM)) {
+            (rtDW.RateTransition4[1] == ACC_OFF)) {
           rtDW.lastAacCom = rtDW.RateTransition4[0];
           rtDW.is_ACTIVE = 0;
           rtDW.is_ACC = 0;
@@ -1599,7 +1574,7 @@ static void ACCELERATION(void)
            case IN_READY:
             if (rtDW.aacCounter <= 1) {
               if ((rtDW.RateTransition4[0] != rtDW.lastAacCom) &&
-                  (rtDW.RateTransition4[1] == RELEASE_AAC_COM)) {
+                  (rtDW.RateTransition4[1] == ACC_GO)) {
                 rtDW.lastAacCom = rtDW.RateTransition4[0];
                 rtDW.is_ACTIVE = 0;
                 if (rtDW.is_ACTIVE != IN_START_RELEASE) {
@@ -1639,13 +1614,6 @@ static void ACCELERATION(void)
                   rtDW.aac_clutchStep = (real_T)(int32_T)tmp / (real_T)
                     getAacParam(RAMP_TIME);
                   rtDW.aacCounter = AAC_WORK_RATE_ms;
-                  rtDW.valCode = ACC_CODE;
-                  rtDW.value = 2U;
-
-                  /* Outputs for Function Call SubSystem: '<S31>/sendUpdatesSW' */
-                  sendUpdatesSW(rtDW.valCode, rtDW.value, &rtDW.sendUpdatesSW_e);
-
-                  /* End of Outputs for SubSystem: '<S31>/sendUpdatesSW' */
                 }
               } else {
                 rtDW.is_ACTIVE = 0;
@@ -1813,7 +1781,7 @@ static void ACCELERATION(void)
 
      case IN_NotReady:
       if ((rtDW.RateTransition4[0] != rtDW.lastAacCom) && (rtDW.RateTransition4
-           [1] == START_AAC_COM)) {
+           [1] == ACC_READY)) {
         rtDW.lastAacCom = rtDW.RateTransition4[0];
         rtDW.is_ACCELERATION = IN_ACC;
         rtDW.aacCounter = 0U;
@@ -1831,13 +1799,6 @@ static void ACCELERATION(void)
 
           /* End of Outputs for SubSystem: '<S29>/SetRPMLimiter' */
           Clutch_setValue(100);
-          rtDW.valCode = ACC_CODE;
-          rtDW.value = 1U;
-
-          /* Outputs for Function Call SubSystem: '<S31>/sendUpdatesSW' */
-          sendUpdatesSW(rtDW.valCode, rtDW.value, &rtDW.sendUpdatesSW_e);
-
-          /* End of Outputs for SubSystem: '<S31>/sendUpdatesSW' */
         }
       } else {
         rtDW.accFb = 1U;
@@ -2365,7 +2326,7 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
 
             /* Outputs for Function Call SubSystem: '<S30>/EngineControl_Stop' */
 
-            /* S-Function (EngineControl_stop): '<S41>/EngineControl Stop' */
+            /* S-Function (EngineControl_stop): '<S40>/EngineControl Stop' */
             EngineControl_stop_Outputs_wrapper(&rtDW.EngineControlStop);
 
             /* End of Outputs for SubSystem: '<S30>/EngineControl_Stop' */
@@ -2464,11 +2425,11 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
   /* End of Outputs for SubSystem: '<Root>/GCU_timer' */
 
   /* Outputs for Triggered SubSystem: '<S9>/Triggered_Subsystem' incorporates:
-   *  TriggerPort: '<S49>/Trigger'
+   *  TriggerPort: '<S47>/Trigger'
    */
   if (((rtDW.Merge2 > 0) != (rtPrevZCX.Triggered_Subsystem_Trig_ZCE == POS_ZCSIG))
       && (rtPrevZCX.Triggered_Subsystem_Trig_ZCE != UNINITIALIZED_ZCSIG)) {
-    /* Inport: '<S49>/In1' */
+    /* Inport: '<S47>/In1' */
     rtDW.Merge_j = rtDW.Merge2;
   }
 
@@ -2477,10 +2438,10 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
   /* End of Outputs for SubSystem: '<S9>/Triggered_Subsystem' */
 
   /* Outputs for Triggered SubSystem: '<S9>/Triggered_Subsystem1' incorporates:
-   *  TriggerPort: '<S50>/Trigger'
+   *  TriggerPort: '<S48>/Trigger'
    */
   /* RateTransition: '<S9>/Rate Transition' incorporates:
-   *  Inport: '<S50>/In1'
+   *  Inport: '<S48>/In1'
    */
   if (((rtDW.RateTransition_Buffer0_g > 0) !=
        (rtPrevZCX.Triggered_Subsystem1_Trig_ZCE == POS_ZCSIG)) &&
@@ -2596,13 +2557,13 @@ void GCU_Model_genCode_step2(void)     /* Sample time: [0.001s, 0.0002s] */
   switch ((int32_T)rtU.SelectMode) {
    case 1:
     for (i = 0; i < 10; i++) {
-      rtDW.MultiportSwitch[i] = rtU.UART_debug[i];
+      rtDW.MultiportSwitch[i] = rtU.CAN[i];
     }
     break;
 
    case 2:
     for (i = 0; i < 10; i++) {
-      rtDW.MultiportSwitch[i] = rtU.CAN[i];
+      rtDW.MultiportSwitch[i] = rtU.UART_debug[i];
     }
     break;
 
@@ -2658,7 +2619,7 @@ void GCU_Model_genCode_step2(void)     /* Sample time: [0.001s, 0.0002s] */
     sendClutchCommand((uint16_T)(uint8_T)tmp);
   } else if (rtDW.UnpackCanUart_o1 == SW_OK_BUTTON_GCU_ID) {
     sendAccCommand(rtDW.UnpackCanUart_o2);
-    if (rtDW.accCommand[1] == STOP_COM) {
+    if (rtDW.accCommand[1] == ACC_OFF) {
       sendClutchCommand(0);
     }
   } else {

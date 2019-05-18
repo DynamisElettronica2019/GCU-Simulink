@@ -175,13 +175,6 @@
       SrcLocation  ""\
     }\
     ChartData {\
-      Name         "timerCounter"\
-      Description  "ChartLocal"\
-      SFName       ""\
-      Path         "SCAN_ADC.timerCounter"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
       Name         "lastAacCom"\
       Description  "ChartLocal"\
       SFName       ""\
@@ -250,6 +243,13 @@
       Description  "ChartLocal"\
       SFName       ""\
       Path         "START_ENGINE.startCounter"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "timerCounter"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "SCAN_ADC.timerCounter"\
       SrcLocation  ""\
     }\
   }

@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.140
+ * Model version                  : 1.149
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Thu May 16 17:12:06 2019
+ * C/C++ source code generated on : Sat May 18 11:18:55 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -101,31 +101,25 @@ typedef struct {
 
 /* Block signals and states (default storage) for system '<S32>/Gearmotor_turnRight' */
 typedef struct {
-  uint8_T GearMotorTurnRight_o1;       /* '<S47>/GearMotor Turn Right' */
-  uint8_T GearMotorTurnRight_o2;       /* '<S47>/GearMotor Turn Right' */
-  uint8_T GearMotorTurnRight_o3;       /* '<S47>/GearMotor Turn Right' */
+  uint8_T GearMotorTurnRight_o1;       /* '<S45>/GearMotor Turn Right' */
+  uint8_T GearMotorTurnRight_o2;       /* '<S45>/GearMotor Turn Right' */
+  uint8_T GearMotorTurnRight_o3;       /* '<S45>/GearMotor Turn Right' */
 } DW_Gearmotor_turnRight;
 
 /* Block signals and states (default storage) for system '<S32>/Gearmotor_brake' */
 typedef struct {
-  uint8_T GearMotorBrake_o1;           /* '<S44>/GearMotor Brake' */
-  uint8_T GearMotorBrake_o2;           /* '<S44>/GearMotor Brake' */
-  uint8_T GearMotorBrake_o3;           /* '<S44>/GearMotor Brake' */
+  uint8_T GearMotorBrake_o1;           /* '<S42>/GearMotor Brake' */
+  uint8_T GearMotorBrake_o2;           /* '<S42>/GearMotor Brake' */
+  uint8_T GearMotorBrake_o3;           /* '<S42>/GearMotor Brake' */
 } DW_Gearmotor_brake;
 
 /* Block signals and states (default storage) for system '<S30>/EngineControl_Start' */
 typedef struct {
-  uint8_T EngineControlStart;          /* '<S40>/EngineControl Start' */
+  uint8_T EngineControlStart;          /* '<S39>/EngineControl Start' */
 } DW_EngineControl_Start;
-
-/* Block signals and states (default storage) for system '<S31>/sendUpdatesSW' */
-typedef struct {
-  uint8_T PackCanUart[10];             /* '<S43>/PackCanUart' */
-} DW_sendUpdatesSW;
 
 /* Block signals and states (default storage) for system '<Root>' */
 typedef struct {
-  DW_sendUpdatesSW sendUpdatesSW_e;    /* '<S31>/sendUpdatesSW' */
   DW_EngineControl_Start EngineControl_Start_h;/* '<S30>/EngineControl_Start' */
   DW_Gearmotor_brake Gearmotor_brake_c;/* '<S32>/Gearmotor_brake' */
   DW_Gearmotor_turnRight Gearmotor_turnRight_f;/* '<S32>/Gearmotor_turnRight' */
@@ -181,8 +175,6 @@ typedef struct {
   uint16_T firstInt;                   /* '<S6>/AccelerationRoutine' */
   uint16_T secondInt;                  /* '<S6>/AccelerationRoutine' */
   uint16_T accFb;                      /* '<S4>/GCULogic' */
-  uint16_T valCode;                    /* '<S4>/GCULogic' */
-  uint16_T value;                      /* '<S4>/GCULogic' */
   uint16_T UnpackCanUart_o1;           /* '<S3>/UnpackCanUart' */
   uint16_T UnpackCanUart_o2;           /* '<S3>/UnpackCanUart' */
   uint16_T UnpackCanUart_o3;           /* '<S3>/UnpackCanUart' */
@@ -220,10 +212,10 @@ typedef struct {
   uint16_T rpm;                        /* '<S6>/AccelerationRoutine' */
   uint16_T wheelSpeed;                 /* '<S6>/AccelerationRoutine' */
   uint16_T currGear_m;                 /* '<S6>/AccelerationRoutine' */
-  uint16_T timerCounter;               /* '<S4>/GCULogic' */
   uint16_T lastAacCom;                 /* '<S4>/GCULogic' */
   uint16_T lastShiftCom;               /* '<S4>/GCULogic' */
   uint16_T aacCounter;                 /* '<S4>/GCULogic' */
+  uint16_T timerCounter;               /* '<S4>/GCULogic' */
   volatile int8_T RateTransition1_ActiveBufIdx;/* '<Root>/Rate Transition1' */
   volatile int8_T RateTransition2_ActiveBufIdx;/* '<Root>/Rate Transition2' */
   volatile int8_T RateTransition4_ActiveBufIdx;/* '<Root>/Rate Transition4' */
@@ -253,14 +245,14 @@ typedef struct {
   uint8_T Pin_In1;                     /* '<S32>/Pin_In1' */
   uint8_T Pin_In2;                     /* '<S32>/Pin_In2' */
   uint8_T clutchCurrVal;               /* '<S4>/GCULogic' */
-  uint8_T EngineControlStop;           /* '<S41>/EngineControl Stop' */
-  uint8_T GearMotorTurnLeft_o1;        /* '<S46>/GearMotor Turn Left' */
-  uint8_T GearMotorTurnLeft_o2;        /* '<S46>/GearMotor Turn Left' */
-  uint8_T GearMotorTurnLeft_o3;        /* '<S46>/GearMotor Turn Left' */
-  uint8_T GearMotorRelease;            /* '<S45>/GearMotor Release' */
-  uint8_T EfiUnSetCut;                 /* '<S38>/Efi UnSetCut' */
-  uint8_T EfiSetCut;                   /* '<S36>/Efi SetCut' */
-  uint8_T Minus;                       /* '<S34>/Minus' */
+  uint8_T EngineControlStop;           /* '<S40>/EngineControl Stop' */
+  uint8_T GearMotorTurnLeft_o1;        /* '<S44>/GearMotor Turn Left' */
+  uint8_T GearMotorTurnLeft_o2;        /* '<S44>/GearMotor Turn Left' */
+  uint8_T GearMotorTurnLeft_o3;        /* '<S44>/GearMotor Turn Left' */
+  uint8_T GearMotorRelease;            /* '<S43>/GearMotor Release' */
+  uint8_T EfiUnSetCut;                 /* '<S37>/Efi UnSetCut' */
+  uint8_T EfiSetCut;                   /* '<S35>/Efi SetCut' */
+  uint8_T Minus;                       /* '<S33>/Minus' */
   uint8_T Merge_i;                     /* '<S24>/Merge' */
   uint8_T startEngCommand;             /* '<S3>/MessageEvaluation1' */
   volatile uint8_T RateTransition_Buffer0_b;/* '<Root>/Rate Transition' */
@@ -336,11 +328,6 @@ typedef struct {
    *   '<S23>/Values'
    */
   uint16_T pooled5;
-
-  /* Computed Parameter: GCU_FEEDBACK_ID_Value
-   * Referenced by: '<S43>/GCU_FEEDBACK_ID'
-   */
-  uint16_T GCU_FEEDBACK_ID_Value;
 } ConstP;
 
 /* External inputs (root inport signals with default storage) */
@@ -453,24 +440,22 @@ extern RT_MODEL *const rtM;
  * '<S30>'  : 'GCU_Model_genCode/GCU_timer/EngineControl'
  * '<S31>'  : 'GCU_Model_genCode/GCU_timer/GCULogic'
  * '<S32>'  : 'GCU_Model_genCode/GCU_timer/GearMotor1'
- * '<S33>'  : 'GCU_Model_genCode/GCU_timer/ClutchMotor/ClutchMotor Init '
- * '<S34>'  : 'GCU_Model_genCode/GCU_timer/ClutchMotor/ClutchMotor SetPosition '
- * '<S35>'  : 'GCU_Model_genCode/GCU_timer/Efi/Init'
- * '<S36>'  : 'GCU_Model_genCode/GCU_timer/Efi/SetCut'
- * '<S37>'  : 'GCU_Model_genCode/GCU_timer/Efi/SetRPMLimiter'
- * '<S38>'  : 'GCU_Model_genCode/GCU_timer/Efi/UnsetCut'
- * '<S39>'  : 'GCU_Model_genCode/GCU_timer/Efi/UnsetRPMLimiter'
- * '<S40>'  : 'GCU_Model_genCode/GCU_timer/EngineControl/EngineControl_Start'
- * '<S41>'  : 'GCU_Model_genCode/GCU_timer/EngineControl/EngineControl_Stop'
- * '<S42>'  : 'GCU_Model_genCode/GCU_timer/GCULogic/SCAN_ADC.ScanADC'
- * '<S43>'  : 'GCU_Model_genCode/GCU_timer/GCULogic/sendUpdatesSW'
- * '<S44>'  : 'GCU_Model_genCode/GCU_timer/GearMotor1/Gearmotor_brake'
- * '<S45>'  : 'GCU_Model_genCode/GCU_timer/GearMotor1/Gearmotor_release'
- * '<S46>'  : 'GCU_Model_genCode/GCU_timer/GearMotor1/Gearmotor_turnLeft'
- * '<S47>'  : 'GCU_Model_genCode/GCU_timer/GearMotor1/Gearmotor_turnRight'
- * '<S48>'  : 'GCU_Model_genCode/Simulink_Debug/AccelerationRoutine'
- * '<S49>'  : 'GCU_Model_genCode/rpmPin_update/Triggered_Subsystem'
- * '<S50>'  : 'GCU_Model_genCode/rpmPin_update/Triggered_Subsystem1'
+ * '<S33>'  : 'GCU_Model_genCode/GCU_timer/ClutchMotor/ClutchMotor SetPosition '
+ * '<S34>'  : 'GCU_Model_genCode/GCU_timer/Efi/Init'
+ * '<S35>'  : 'GCU_Model_genCode/GCU_timer/Efi/SetCut'
+ * '<S36>'  : 'GCU_Model_genCode/GCU_timer/Efi/SetRPMLimiter'
+ * '<S37>'  : 'GCU_Model_genCode/GCU_timer/Efi/UnsetCut'
+ * '<S38>'  : 'GCU_Model_genCode/GCU_timer/Efi/UnsetRPMLimiter'
+ * '<S39>'  : 'GCU_Model_genCode/GCU_timer/EngineControl/EngineControl_Start'
+ * '<S40>'  : 'GCU_Model_genCode/GCU_timer/EngineControl/EngineControl_Stop'
+ * '<S41>'  : 'GCU_Model_genCode/GCU_timer/GCULogic/SCAN_ADC.ScanADC'
+ * '<S42>'  : 'GCU_Model_genCode/GCU_timer/GearMotor1/Gearmotor_brake'
+ * '<S43>'  : 'GCU_Model_genCode/GCU_timer/GearMotor1/Gearmotor_release'
+ * '<S44>'  : 'GCU_Model_genCode/GCU_timer/GearMotor1/Gearmotor_turnLeft'
+ * '<S45>'  : 'GCU_Model_genCode/GCU_timer/GearMotor1/Gearmotor_turnRight'
+ * '<S46>'  : 'GCU_Model_genCode/Simulink_Debug/AccelerationRoutine'
+ * '<S47>'  : 'GCU_Model_genCode/rpmPin_update/Triggered_Subsystem'
+ * '<S48>'  : 'GCU_Model_genCode/rpmPin_update/Triggered_Subsystem1'
  */
 #endif                                 /* RTW_HEADER_GCU_Model_genCode_h_ */
 
