@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.165
+ * Model version                  : 1.167
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Mon May 20 16:29:43 2019
+ * C/C++ source code generated on : Mon May 20 16:58:19 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -664,6 +664,7 @@ static void checkShift(void);
 static int32_T getAacParam(acc_params b_index);
 static void aacCheckShift(void);
 static void checkClutch(void);
+static void enter_atomic_MANUAL_MODES(void);
 static void ACCELERATION(void);
 static void MODES(void);
 static void updateOutput(void);
@@ -1470,6 +1471,15 @@ static void checkClutch(void)
 }
 
 /* Function for Chart: '<S5>/GCULogic' */
+static void enter_atomic_MANUAL_MODES(void)
+{
+  rtDW.lastModeCom[0] = rtDW.RateTransition8[0];
+  rtDW.lastModeCom[1] = rtDW.RateTransition8[1];
+  checkShift();
+  checkClutch();
+}
+
+/* Function for Chart: '<S5>/GCULogic' */
 static void ACCELERATION(void)
 {
   int32_T q0;
@@ -1482,7 +1492,7 @@ static void ACCELERATION(void)
     Efi_unsetRpmLimiter(&rtDW.Merge2, &rtDW.UnsetRPMLimiter_c);
 
     /* End of Outputs for SubSystem: '<S32>/UnsetRPMLimiter' */
-    rtDW.accFb = 0U;
+    rtDW.accFb = (uint16_T)ACC_OFF;
     Clutch_setValue(0);
     if (rtDW.RateTransition8[1] == AUTOX_MODE) {
       rtDW.is_ACTIVE = 0;
@@ -1491,10 +1501,7 @@ static void ACCELERATION(void)
       rtDW.is_MODES = 0;
       if (rtDW.is_MODES != IN_MANUAL_MODES) {
         rtDW.is_MODES = IN_MANUAL_MODES;
-        rtDW.lastModeCom[0] = rtDW.RateTransition8[0];
-        rtDW.lastModeCom[1] = rtDW.RateTransition8[1];
-        checkShift();
-        checkClutch();
+        enter_atomic_MANUAL_MODES();
       }
     } else if (rtDW.RateTransition8[1] == ENDURANCE_MODE) {
       rtDW.is_ACTIVE = 0;
@@ -1534,7 +1541,7 @@ static void ACCELERATION(void)
 
       if (rtDW.is_ACCELERATION != IN_NotReady) {
         rtDW.is_ACCELERATION = IN_NotReady;
-        rtDW.accFb = 1U;
+        rtDW.accFb = (uint16_T)ACC_OFF;
         checkShift();
         checkClutch();
       }
@@ -1583,6 +1590,7 @@ static void ACCELERATION(void)
                 rtDW.is_ACTIVE = 0;
                 if (rtDW.is_ACTIVE != IN_START_RELEASE) {
                   rtDW.is_ACTIVE = IN_START_RELEASE;
+                  rtDW.accFb = (uint16_T)ACC_GO;
                   rtDW.aac_clutchValue = getAacParam(RAMP_START);
                   if (rtDW.aac_clutchValue < 256.0) {
                     if (rtDW.aac_clutchValue >= 0.0) {
@@ -1623,7 +1631,7 @@ static void ACCELERATION(void)
                 rtDW.is_ACTIVE = 0;
                 if (rtDW.is_ACTIVE != IN_READY) {
                   rtDW.is_ACTIVE = IN_READY;
-                  rtDW.accFb = 3U;
+                  rtDW.accFb = (uint16_T)ACC_READY;
                   rtDW.aacCounter = AAC_WORK_RATE_ms;
                   Clutch_setValue(100);
                   checkShift();
@@ -1717,7 +1725,7 @@ static void ACCELERATION(void)
               rtDW.is_ACTIVE = 0;
               if (rtDW.is_ACTIVE != IN_READY) {
                 rtDW.is_ACTIVE = IN_READY;
-                rtDW.accFb = 3U;
+                rtDW.accFb = (uint16_T)ACC_READY;
                 rtDW.aacCounter = AAC_WORK_RATE_ms;
                 Clutch_setValue(100);
                 checkShift();
@@ -1775,7 +1783,7 @@ static void ACCELERATION(void)
         rtDW.is_ACCELERATION = 0;
         if (rtDW.is_ACCELERATION != IN_NotReady) {
           rtDW.is_ACCELERATION = IN_NotReady;
-          rtDW.accFb = 1U;
+          rtDW.accFb = (uint16_T)ACC_OFF;
           checkShift();
           checkClutch();
         }
@@ -1795,7 +1803,7 @@ static void ACCELERATION(void)
         rtDW.is_ACC = IN_ACTIVE;
         if (rtDW.is_ACTIVE != IN_START) {
           rtDW.is_ACTIVE = IN_START;
-          rtDW.accFb = 2U;
+          rtDW.accFb = (uint16_T)ACC_READY;
           rtDW.aacCounter = AAC_WORK_RATE_ms;
 
           /* Outputs for Function Call SubSystem: '<S32>/SetRPMLimiter' */
@@ -1805,7 +1813,7 @@ static void ACCELERATION(void)
           Clutch_setValue(100);
         }
       } else {
-        rtDW.accFb = 1U;
+        rtDW.accFb = (uint16_T)ACC_OFF;
         checkShift();
         checkClutch();
       }
@@ -1861,7 +1869,7 @@ static void MODES(void)
 
       if (rtDW.is_ACCELERATION != IN_NotReady) {
         rtDW.is_ACCELERATION = IN_NotReady;
-        rtDW.accFb = 1U;
+        rtDW.accFb = (uint16_T)ACC_OFF;
         checkShift();
         checkClutch();
       }
@@ -1918,7 +1926,7 @@ static void MODES(void)
 
         if (rtDW.is_ACCELERATION != IN_NotReady) {
           rtDW.is_ACCELERATION = IN_NotReady;
-          rtDW.accFb = 1U;
+          rtDW.accFb = (uint16_T)ACC_OFF;
           checkShift();
           checkClutch();
         }
