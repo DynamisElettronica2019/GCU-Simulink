@@ -7,7 +7,7 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   34 \
+    NumChartData   35 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
@@ -165,6 +165,13 @@
       Description  "StateIsActive"\
       SFName       ""\
       Path         "SCAN_ADC"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_active_EEPROM_TRIGGER"\
+      Description  "StateIsActive"\
+      SFName       ""\
+      Path         "EEPROM_TRIGGER"\
       SrcLocation  ""\
     }\
     ChartData {\
