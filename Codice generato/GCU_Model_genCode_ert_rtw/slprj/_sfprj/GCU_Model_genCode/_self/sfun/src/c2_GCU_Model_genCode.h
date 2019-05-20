@@ -2,24 +2,24 @@
 #define __c2_GCU_Model_genCode_h__
 
 /* Type Definitions */
-#ifndef enum_aac_values
-#define enum_aac_values
+#ifndef enum_acc_values
+#define enum_acc_values
 
-enum aac_values
+enum acc_values
 {
-  aac_values_RPM = 0,                  /* Default value */
-  aac_values_WHEEL_SPEED,
-  aac_values_APPS
+  acc_values_RPM = 0,                  /* Default value */
+  acc_values_WHEEL_SPEED,
+  acc_values_TPS
 };
 
-#endif                                 /*enum_aac_values*/
+#endif                                 /*enum_acc_values*/
 
-#ifndef typedef_c2_aac_values
-#define typedef_c2_aac_values
+#ifndef typedef_c2_acc_values
+#define typedef_c2_acc_values
 
-typedef enum aac_values c2_aac_values;
+typedef enum acc_values c2_acc_values;
 
-#endif                                 /*typedef_c2_aac_values*/
+#endif                                 /*typedef_c2_acc_values*/
 
 #ifndef typedef_SFc2_GCU_Model_genCodeInstanceStruct
 #define typedef_SFc2_GCU_Model_genCodeInstanceStruct
@@ -51,8 +51,8 @@ typedef struct {
   uint16_T *c2_fourthInt;
   real_T *c2_out;
   uint16_T *c2_currGear;
-  uint16_T *c2_aac_externValue;
-  uint16_T *c2_aac_externValues_index;
+  uint16_T *c2_acc_externValue;
+  uint16_T *c2_acc_externValues_index;
   uint16_T (*c2_shiftCommand)[2];
   uint8_T *c2_startEngCommand;
   uint16_T (*c2_accCommand)[2];
