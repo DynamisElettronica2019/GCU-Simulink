@@ -1,0 +1,4 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Info Type="StartUp" Visible="0" Icon="" File="Script_matlab/eepromBus_inizialization.mat" Name="eepromBus_inizialization">
+    <Extension Value="f6850014-0391-4418-8425-dc8162ad375c" Name="StartUpPrev" />
+</Info>
