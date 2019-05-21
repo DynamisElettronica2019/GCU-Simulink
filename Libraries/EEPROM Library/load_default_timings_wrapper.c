@@ -14,7 +14,7 @@
 
 /* %%%-SFUNWIZ_wrapper_includes_Changes_BEGIN --- EDIT HERE TO _END */
 #if defined(MATLAB_MEX_FILE)
-#include "C_includes\timings.h"
+#include "..\..\C_includes\timings.h"
 #else
 #include "timings.h"
 #endif

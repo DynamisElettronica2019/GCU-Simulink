@@ -14,7 +14,7 @@
 
 /* %%%-SFUNWIZ_wrapper_includes_Changes_BEGIN --- EDIT HERE TO _END */
 #if defined(MATLAB_MEX_FILE)
-#include "C_includes\def_acc_parameters.h"
+#include "..\..\C_includes\def_acc_parameters.h"
 #else
 #include "def_acc_parameters.h"
 #endif
