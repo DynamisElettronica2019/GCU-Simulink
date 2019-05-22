@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.173
+ * Model version                  : 1.179
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Tue May 21 18:47:07 2019
+ * C/C++ source code generated on : Wed May 22 10:18:11 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -21,37 +21,16 @@
 
 #ifndef RTW_HEADER_GCU_Model_genCode_h_
 #define RTW_HEADER_GCU_Model_genCode_h_
-#include <stddef.h>
+#include "rtwtypes.h"
+#include "zero_crossing_types.h"
 #include <string.h>
 #ifndef GCU_Model_genCode_COMMON_INCLUDES_
 # define GCU_Model_genCode_COMMON_INCLUDES_
 #include "rtwtypes.h"
 #include "zero_crossing_types.h"
-#include "simstruc.h"
-#include "fixedpoint.h"
 #endif                                 /* GCU_Model_genCode_COMMON_INCLUDES_ */
 
-#include "GCU_Model_genCode_types.h"
-#include "rt_i32zcfcn.h"
-#include "rt_nonfinite.h"
-
 /* Macros for accessing real-time model data structure */
-#ifndef rtmGetFinalTime
-# define rtmGetFinalTime(rtm)          ((rtm)->Timing.tFinal)
-#endif
-
-#ifndef rtmGetSampleHitArray
-# define rtmGetSampleHitArray(rtm)     ((rtm)->Timing.sampleHitArray)
-#endif
-
-#ifndef rtmGetStepSize
-# define rtmGetStepSize(rtm)           ((rtm)->Timing.stepSize)
-#endif
-
-#ifndef rtmGet_TimeOfLastOutput
-# define rtmGet_TimeOfLastOutput(rtm)  ((rtm)->Timing.timeOfLastOutput)
-#endif
-
 #ifndef rtmGetErrorStatus
 # define rtmGetErrorStatus(rtm)        ((rtm)->errorStatus)
 #endif
@@ -60,42 +39,64 @@
 # define rtmSetErrorStatus(rtm, val)   ((rtm)->errorStatus = (val))
 #endif
 
-#ifndef rtmGetStopRequested
-# define rtmGetStopRequested(rtm)      ((rtm)->Timing.stopRequestedFlag)
-#endif
-
-#ifndef rtmSetStopRequested
-# define rtmSetStopRequested(rtm, val) ((rtm)->Timing.stopRequestedFlag = (val))
-#endif
-
-#ifndef rtmGetStopRequestedPtr
-# define rtmGetStopRequestedPtr(rtm)   (&((rtm)->Timing.stopRequestedFlag))
-#endif
-
-#ifndef rtmGetT
-# define rtmGetT(rtm)                  (rtmGetTPtr((rtm))[0])
-#endif
-
-#ifndef rtmGetTFinal
-# define rtmGetTFinal(rtm)             ((rtm)->Timing.tFinal)
-#endif
-
-#ifndef rtmGetTPtr
-# define rtmGetTPtr(rtm)               ((rtm)->Timing.t)
-#endif
-
-#ifndef rtmGetTStart
-# define rtmGetTStart(rtm)             ((rtm)->Timing.tStart)
-#endif
-
-#ifndef rtmGetTimeOfLastOutput
-# define rtmGetTimeOfLastOutput(rtm)   ((rtm)->Timing.timeOfLastOutput)
-#endif
+/* Forward declaration for rtModel */
+typedef struct tag_RTM RT_MODEL;
 
 /* user code (top of header file) */
 #include "timings.h"
 #include "constant_defines.h"
 #include "id_can.h"
+#ifndef SS_INT64
+#define SS_INT64                       18
+#endif
+
+#ifndef SS_UINT64
+#define SS_UINT64                      19
+#endif
+
+#ifndef DEFINED_TYPEDEF_FOR_eepromRequest_
+#define DEFINED_TYPEDEF_FOR_eepromRequest_
+
+typedef struct {
+  uint8_T operation;
+  uint8_T page;
+  uint8_T cell;
+  uint8_T dataSize;
+  uint8_T data[16];
+} eepromRequest;
+
+#endif
+
+#ifndef DEFINED_TYPEDEF_FOR_acc_params_
+#define DEFINED_TYPEDEF_FOR_acc_params_
+
+typedef enum {
+  RAMP_START = 0,                      /* Default value */
+  RAMP_END,
+  RAMP_TIME,
+  RPM_LIMIT_1_2,
+  RPM_LIMIT_2_3,
+  RPM_LIMIT_3_4,
+  RPM_LIMIT_4_5,
+  SPEED_LIMIT_1_2,
+  SPEED_LIMIT_2_3,
+  SPEED_LIMIT_3_4,
+  SPEED_LIMIT_4_5,
+  TPS_START_LIMIT
+} acc_params;
+
+#endif
+
+#ifndef DEFINED_TYPEDEF_FOR_acc_values_
+#define DEFINED_TYPEDEF_FOR_acc_values_
+
+typedef enum {
+  RPM = 0,                             /* Default value */
+  WHEEL_SPEED,
+  TPS
+} acc_values;
+
+#endif
 
 /* Block signals and states (default storage) for system '<S30>/Efi_setRpmLimiter' */
 typedef struct {
@@ -141,13 +142,13 @@ typedef struct {
   DW_AAC_ExternalValues AAC_ExternalValues_f;/* '<S4>/AAC_ExternalValues' */
   DW_Efi_unsetRpmLimiter Efi_unsetRpmLimiter_f;/* '<S30>/Efi_unsetRpmLimiter' */
   DW_Efi_setRpmLimiter Efi_setRpmLimiter_b;/* '<S30>/Efi_setRpmLimiter' */
-  volatile eepromRequest TmpRTBAtEEPROM_Load_BufferOutpo[40];/* synthesized block */
-  eepromRequest TmpRTBAtEEPROM_Load_BufferOut_m[20];/* '<S2>/EEPROM_Load_Buffer' */
+  volatile eepromRequest RT_Buffer[40];/* '<S2>/RT' */
+  eepromRequest RT_n[20];              /* '<S2>/RT' */
   eepromRequest requestBuffer[20];     /* '<S2>/EEPROM_Load_Buffer' */
   eepromRequest outputRequest;         /* '<S2>/EEPROM_OutputRequest' */
-  real_T TmpRTBAtEEPROM_Load_BufferOut_n;/* '<S2>/EEPROM_Load_Buffer' */
+  real_T RT1;                          /* '<S2>/RT1' */
   real_T lastInsertedIndex;            /* '<S2>/EEPROM_Load_Buffer' */
-  volatile real_T TmpRTBAtEEPROM_Load_BufferOut_l;/* synthesized block */
+  volatile real_T RT1_Buffer0;         /* '<S2>/RT1' */
   real_T message;                      /* '<S7>/AccelerationRoutine' */
   real_T count;                        /* '<S7>/AccelerationRoutine' */
   real_T aac_clutchValue;              /* '<S5>/GCULogic' */
@@ -229,7 +230,7 @@ typedef struct {
   volatile uint16_T RateTransition27_Buffer0;/* '<Root>/Rate Transition27' */
   uint16_T rpm;                        /* '<S7>/AccelerationRoutine' */
   uint16_T wheelSpeed;                 /* '<S7>/AccelerationRoutine' */
-  uint16_T currGear_c;                 /* '<S7>/AccelerationRoutine' */
+  uint16_T currGear_m;                 /* '<S7>/AccelerationRoutine' */
   uint16_T lastAacCom;                 /* '<S5>/GCULogic' */
   uint16_T lastShiftCom;               /* '<S5>/GCULogic' */
   uint16_T aacCounter;                 /* '<S5>/GCULogic' */
@@ -239,13 +240,15 @@ typedef struct {
   volatile int8_T RateTransition4_ActiveBufIdx;/* '<Root>/Rate Transition4' */
   volatile int8_T RateTransition5_ActiveBufIdx;/* '<Root>/Rate Transition5' */
   volatile int8_T RateTransition8_ActiveBufIdx;/* '<Root>/Rate Transition8' */
-  volatile int8_T TmpRTBAtEEPROM_Load_BufferOut_g;/* synthesized block */
+  volatile int8_T RT_ActiveBufIdx;     /* '<S2>/RT' */
   volatile int8_T RateTransition14_semaphoreTaken;/* '<Root>/Rate Transition14' */
   volatile int8_T RateTransition9_ActiveBufIdx;/* '<Root>/Rate Transition9' */
   volatile int8_T RateTransition18_semaphoreTaken;/* '<Root>/Rate Transition18' */
   uint8_T RateTransition5[2];          /* '<Root>/Rate Transition5' */
   uint8_T MultiportSwitch[10];         /* '<Root>/Multiport Switch' */
   uint8_T PackCanUart[10];             /* '<S7>/PackCanUart' */
+  uint8_T TmpSignalConversionAtsendEeprom[19];
+  uint8_T OutportBufferFordataRead[19];
   uint8_T Eeprom_read_o2[16];          /* '<S21>/Eeprom_read' */
   uint8_T clutchCommand[2];            /* '<S4>/MessageEvaluation1' */
   uint8_T PackCANMsg[8];               /* '<S13>/PackCANMsg' */
@@ -268,6 +271,9 @@ typedef struct {
   uint8_T Pin_In1;                     /* '<S38>/Pin_In1' */
   uint8_T Pin_In2;                     /* '<S38>/Pin_In2' */
   uint8_T clutchCurrVal;               /* '<S5>/GCULogic' */
+  uint8_T page;
+  uint8_T cell;
+  uint8_T dataSize;
   uint8_T Eeprom_read_o1;              /* '<S21>/Eeprom_read' */
   uint8_T Eeprom_write_o1;             /* '<S22>/Eeprom_write' */
   uint8_T Eeprom_write_o2;             /* '<S22>/Eeprom_write' */
@@ -371,104 +377,15 @@ typedef struct {
   uint16_T debugValues[20];            /* '<Root>/debugValues  ' */
   uint32_T adc_data_vector[9];         /* '<Root>/adc_data_vector' */
   eepromRequest outputRequest;         /* '<Root>/outputRequest' */
-  uint8_T dataRead[16];                /* '<Root>/dataRead' */
+  uint8_T readResult;                  /* '<Root>/readResult' */
+  uint8_T writeResult;                 /* '<Root>/writeResult' */
+  uint8_T wpState;                     /* '<Root>/wpState' */
+  uint8_T dataRead[19];                /* '<Root>/dataRead' */
 } ExtY;
 
 /* Real-time Model Data Structure */
 struct tag_RTM {
-  struct SimStruct_tag * *childSfunctions;
   const char_T * volatile errorStatus;
-  SS_SimMode simMode;
-  RTWSolverInfo solverInfo;
-  RTWSolverInfo *solverInfoPtr;
-  void *sfcnInfo;
-
-  /*
-   * NonInlinedSFcns:
-   * The following substructure contains information regarding
-   * non-inlined s-functions used in the model.
-   */
-  struct {
-    RTWSfcnInfo sfcnInfo;
-    time_T *taskTimePtrs[8];
-    SimStruct childSFunctions[1];
-    SimStruct *childSFunctionPtrs[1];
-    struct _ssBlkInfo2 blkInfo2[1];
-    struct _ssSFcnModelMethods2 methods2[1];
-    struct _ssSFcnModelMethods3 methods3[1];
-    struct _ssSFcnModelMethods4 methods4[1];
-    struct _ssStatesInfo2 statesInfo2[1];
-    ssPeriodicStatesInfo periodicStatesInfo[1];
-    struct _ssPortInfo2 inputOutputPortInfo2[1];
-    struct {
-      time_T sfcnPeriod[1];
-      time_T sfcnOffset[1];
-      int_T sfcnTsMap[1];
-      struct _ssPortInputs inputPortInfo[4];
-      struct _ssInPortUnit inputPortUnits[4];
-      struct _ssInPortCoSimAttribute inputPortCoSimAttribute[4];
-      int_T iDims3[2];
-      struct _ssPortOutputs outputPortInfo[2];
-      struct _ssOutPortUnit outputPortUnits[2];
-      struct _ssOutPortCoSimAttribute outputPortCoSimAttribute[2];
-    } Sfcn0;
-  } NonInlinedSFcns;
-
-  boolean_T zCCacheNeedsReset;
-  boolean_T derivCacheNeedsReset;
-  boolean_T CTOutputIncnstWithState;
-
-  /*
-   * Sizes:
-   * The following substructure contains sizes information
-   * for many of the model attributes such as inputs, outputs,
-   * dwork, sample times, etc.
-   */
-  struct {
-    uint32_T options;
-    int_T numContStates;
-    int_T numU;
-    int_T numY;
-    int_T numSampTimes;
-    int_T numBlocks;
-    int_T numBlockIO;
-    int_T numBlockPrms;
-    int_T numDwork;
-    int_T numSFcnPrms;
-    int_T numSFcns;
-    int_T numIports;
-    int_T numOports;
-    int_T numNonSampZCs;
-    int_T sysDirFeedThru;
-    int_T rtwGenSfcn;
-  } Sizes;
-
-  /*
-   * Timing:
-   * The following substructure contains information regarding
-   * the timing information for the model.
-   */
-  struct {
-    time_T stepSize;
-    uint32_T clockTick1;
-    time_T stepSize1;
-    time_T tStart;
-    time_T tFinal;
-    time_T timeOfLastOutput;
-    boolean_T stopRequestedFlag;
-    time_T *sampleTimes;
-    time_T *offsetTimes;
-    int_T *sampleTimeTaskIDPtr;
-    int_T *sampleHits;
-    int_T *perTaskSampleHits;
-    time_T *t;
-    time_T sampleTimesArray[7];
-    time_T offsetTimesArray[7];
-    int_T sampleTimeTaskIDArray[7];
-    int_T sampleHitArray[7];
-    int_T perTaskSampleHitsArray[49];
-    time_T tArray[8];
-  } Timing;
 };
 
 /* Block signals and states (default storage) */

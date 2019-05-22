@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.173
+ * Model version                  : 1.179
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Tue May 21 18:47:07 2019
+ * C/C++ source code generated on : Wed May 22 10:18:11 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -20,7 +20,6 @@
  */
 
 #include "GCU_Model_genCode.h"
-#include "GCU_Model_genCode_private.h"
 
 /* Named constants for Chart: '<S4>/MessageEvaluation1' */
 #define ACC_CLUTCH_NOISE_LEVEL         ((uint8_T)30U)
@@ -88,7 +87,65 @@
 #define IN_TPS_On                      ((uint8_T)8U)
 #define IN_Wait                        ((uint8_T)9U)
 #define IN_delay                       ((uint8_T)10U)
+#include "solver_zc.h"
+#include "zero_crossing_types.h"
+#ifndef slZcHadEvent
+#define slZcHadEvent(ev, zcsDir)       (((ev) & (zcsDir)) != 0x00 )
+#endif
 
+#ifndef slZcUnAliasEvents
+#define slZcUnAliasEvents(evL, evR)    ((((slZcHadEvent((evL), (SL_ZCS_EVENT_N2Z)) && slZcHadEvent((evR), (SL_ZCS_EVENT_Z2P))) || (slZcHadEvent((evL), (SL_ZCS_EVENT_P2Z)) && slZcHadEvent((evR), (SL_ZCS_EVENT_Z2N)))) ? (SL_ZCS_EVENT_NUL) : (evR)))
+#endif
+
+#ifndef UCHAR_MAX
+#include <limits.h>
+#endif
+
+#if ( UCHAR_MAX != (0xFFU) ) || ( SCHAR_MAX != (0x7F) )
+#error Code was generated for compiler with different sized uchar/char. \
+Consider adjusting Test hardware word size settings on the \
+Hardware Implementation pane to match your compiler word sizes as \
+defined in limits.h of the compiler. Alternatively, you can \
+select the Test hardware is the same as production hardware option and \
+select the Enable portable word sizes option on the Code Generation > \
+Verification pane for ERT based targets, which will disable the \
+preprocessor word size checks.
+#endif
+
+#if ( USHRT_MAX != (0xFFFFU) ) || ( SHRT_MAX != (0x7FFF) )
+#error Code was generated for compiler with different sized ushort/short. \
+Consider adjusting Test hardware word size settings on the \
+Hardware Implementation pane to match your compiler word sizes as \
+defined in limits.h of the compiler. Alternatively, you can \
+select the Test hardware is the same as production hardware option and \
+select the Enable portable word sizes option on the Code Generation > \
+Verification pane for ERT based targets, which will disable the \
+preprocessor word size checks.
+#endif
+
+#if ( UINT_MAX != (0xFFFFFFFFU) ) || ( INT_MAX != (0x7FFFFFFF) )
+#error Code was generated for compiler with different sized uint/int. \
+Consider adjusting Test hardware word size settings on the \
+Hardware Implementation pane to match your compiler word sizes as \
+defined in limits.h of the compiler. Alternatively, you can \
+select the Test hardware is the same as production hardware option and \
+select the Enable portable word sizes option on the Code Generation > \
+Verification pane for ERT based targets, which will disable the \
+preprocessor word size checks.
+#endif
+
+#if ( ULONG_MAX != (0xFFFFFFFFU) ) || ( LONG_MAX != (0x7FFFFFFF) )
+#error Code was generated for compiler with different sized ulong/long. \
+Consider adjusting Test hardware word size settings on the \
+Hardware Implementation pane to match your compiler word sizes as \
+defined in limits.h of the compiler. Alternatively, you can \
+select the Test hardware is the same as production hardware option and \
+select the Enable portable word sizes option on the Code Generation > \
+Verification pane for ERT based targets, which will disable the \
+preprocessor word size checks.
+#endif
+
+/* Skipping ulong_long/long_long check: insufficient preprocessor integer range. */
 const uint16_T GCU_Model_genCode_U16GND = 0U;/* uint16_T ground */
 
 /* Block signals and states (default storage) */
@@ -106,6 +163,552 @@ ExtY rtY;
 /* Real-time model */
 RT_MODEL rtM_;
 RT_MODEL *const rtM = &rtM_;
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void PackUARTMsg_Start_wrapper(void);
+  extern void PackUARTMsg_Outputs_wrapper(const uint16_T *dataArray,
+    uint8_T *msgArray);
+  extern void PackUARTMsg_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void sendUART_Start_wrapper(void);
+  extern void sendUART_Outputs_wrapper(const uint8_T *msg);
+  extern void sendUART_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void update_ADC_data_Start_wrapper(void);
+  extern void update_ADC_data_Outputs_wrapper(const uint32_T *adc_buffer,
+    uint32_T *adc_data_vector);
+  extern void update_ADC_data_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void Read_oil_sensor_Start_wrapper(void);
+  extern void Read_oil_sensor_Outputs_wrapper(uint16_T *l_oil);
+  extern void Read_oil_sensor_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void PackCANMsg_Start_wrapper(void);
+  extern void PackCANMsg_Outputs_wrapper(const uint16_T *firstInt,
+    const uint16_T *secondInt,
+    const uint16_T *thirdInt,
+    const uint16_T *fourthInt,
+    uint8_T *dataArray);
+  extern void PackCANMsg_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void sendCAN_Start_wrapper(void);
+  extern void sendCAN_Outputs_wrapper(const uint16_T *id,
+    const uint8_T *dataArray);
+  extern void sendCAN_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void Efi_setRPMLimiter_Start_wrapper(void);
+  extern void Efi_setRPMLimiter_Outputs_wrapper(uint8_T *rpmLimiter_pin);
+  extern void Efi_setRPMLimiter_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void Efi_unsetRPMLimiter_Start_wrapper(void);
+  extern void Efi_unsetRPMLimiter_Outputs_wrapper(uint8_T *rpmLimiter_pin);
+  extern void Efi_unsetRPMLimiter_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void UnpackCanUART_Start_wrapper(void);
+  extern void UnpackCanUART_Outputs_wrapper(const uint8_T *serialMsg,
+    uint16_T *identifier,
+    uint16_T *firstInt,
+    uint16_T *secondInt,
+    uint16_T *thirdInt,
+    uint16_T *fourthInt);
+  extern void UnpackCanUART_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void ClutchMotor_setPosition_Start_wrapper(void);
+  extern void ClutchMotor_setPosition_Outputs_wrapper(const uint8_T *percentage);
+  extern void ClutchMotor_setPosition_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void Efi_init_Start_wrapper(void);
+  extern void Efi_init_Outputs_wrapper(void);
+  extern void Efi_init_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void Efi_setCut_Start_wrapper(void);
+  extern void Efi_setCut_Outputs_wrapper(uint8_T *upCut_pin);
+  extern void Efi_setCut_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void Efi_unsetCut_Start_wrapper(void);
+  extern void Efi_unsetCut_Outputs_wrapper(uint8_T *upCut_pin);
+  extern void Efi_unsetCut_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void GearMotor_release_Start_wrapper(void);
+  extern void GearMotor_release_Outputs_wrapper(uint8_T *GearMotor_INH);
+  extern void GearMotor_release_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void GearMotor_turnRight_Start_wrapper(void);
+  extern void GearMotor_turnRight_Outputs_wrapper(uint8_T *GearMotor_In1,
+    uint8_T *GearMotor_In2,
+    uint8_T *GearMotor_INH);
+  extern void GearMotor_turnRight_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void GearMotor_turnLeft_Start_wrapper(void);
+  extern void GearMotor_turnLeft_Outputs_wrapper(uint8_T *GearMotor_In1,
+    uint8_T *GearMotor_In2,
+    uint8_T *GearMotor_INH);
+  extern void GearMotor_turnLeft_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void GearMotor_brake_Start_wrapper(void);
+  extern void GearMotor_brake_Outputs_wrapper(uint8_T *GearMotor_In1,
+    uint8_T *GearMotor_In2,
+    uint8_T *GearMotor_INH);
+  extern void GearMotor_brake_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void EngineControl_start_Start_wrapper(void);
+  extern void EngineControl_start_Outputs_wrapper(uint8_T *engine_starter);
+  extern void EngineControl_start_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void EngineControl_stop_Start_wrapper(void);
+  extern void EngineControl_stop_Outputs_wrapper(uint8_T *engine_starter);
+  extern void EngineControl_stop_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void Eeprom_write_Start_wrapper(void);
+  extern void Eeprom_write_Outputs_wrapper(const uint8_T *page,
+    const uint8_T *cell,
+    const uint8_T *dataSize,
+    const uint8_T *data,
+    uint8_T *resWrite,
+    uint8_T *wpState);
+  extern void Eeprom_write_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void Eeprom_read_Start_wrapper(void);
+  extern void Eeprom_read_Outputs_wrapper(const uint8_T *page,
+    const uint8_T *cell,
+    const uint8_T *dataSize,
+    uint8_T *resRead,
+    uint8_T *data);
+  extern void Eeprom_read_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void sendEepromUART_Start_wrapper(void);
+  extern void sendEepromUART_Outputs_wrapper(const uint8_T *msg);
+  extern void sendEepromUART_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void ScanADC_Start_wrapper(void);
+  extern void ScanADC_Outputs_wrapper(void);
+  extern void ScanADC_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void load_accParameters_Start_wrapper(void);
+  extern void load_accParameters_Outputs_wrapper(int32_T *accParameters);
+  extern void load_accParameters_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void load_default_timings_Start_wrapper(void);
+  extern void load_default_timings_Outputs_wrapper(int32_T *timings);
+  extern void load_default_timings_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void CAN_Load_id_Start_wrapper(void);
+  extern void CAN_Load_id_Outputs_wrapper(uint16_T *id_can_array);
+  extern void CAN_Load_id_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void Eeprom_init_Start_wrapper(void);
+  extern void Eeprom_init_Outputs_wrapper(uint8_T *wpState,
+    uint8_T *eepromState,
+    uint8_T *resRead);
+  extern void Eeprom_init_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void CAN_Start_Start_wrapper(void);
+  extern void CAN_Start_Outputs_wrapper(void);
+  extern void CAN_Start_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void ClutchMotor_init_Start_wrapper(void);
+  extern void ClutchMotor_init_Outputs_wrapper(void);
+  extern void ClutchMotor_init_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void GearMotor_init_Start_wrapper(void);
+  extern void GearMotor_init_Outputs_wrapper(void);
+  extern void GearMotor_init_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void InitTimer_Start_wrapper(void);
+  extern void InitTimer_Outputs_wrapper(void);
+  extern void InitTimer_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void InitUART_Start_wrapper(void);
+  extern void InitUART_Outputs_wrapper(void);
+  extern void InitUART_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void PackCanUART_Start_wrapper(void);
+  extern void PackCanUART_Outputs_wrapper(const uint16_T *id,
+    const uint16_T *firstInt,
+    const uint16_T *secondInt,
+    const uint16_T *thirdInt,
+    const uint16_T *fourthInt,
+    uint8_T *message);
+  extern void PackCanUART_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+static uint16_T look1_iu16lu64n48_binlcse(uint16_T u0, const uint16_T bp0[],
+  const uint16_T table[], uint32_T maxIndex);
+static void Efi_setRpmLimiter(uint8_T *rty_rpmLimiter_pin, DW_Efi_setRpmLimiter *
+  localDW);
+static void Efi_unsetRpmLimiter(uint8_T *rty_rpmLimiter_pin,
+  DW_Efi_unsetRpmLimiter *localDW);
+static void AAC_ExternalValues(uint16_T rtu_Value, uint16_T rtu_Index, uint16_T
+  rty_Values[3], DW_AAC_ExternalValues *localDW);
+static void Gearmotor_turnRight(uint8_T *rty_Pin_In1, uint8_T *rty_Pin_In2,
+  uint8_T *rty_Pin_H, DW_Gearmotor_turnRight *localDW);
+static void Gearmotor_brake(uint8_T *rty_Pin_In1, uint8_T *rty_Pin_In2, uint8_T *
+  rty_Pin_H, DW_Gearmotor_brake *localDW);
+static void EngineControl_Start(uint8_T *rty_engine_starter,
+  DW_EngineControl_Start *localDW);
+static void SCAN_ADCScanADC(void);
+static void Gearmotor_release(void);
 
 /* Forward declaration for local functions */
 static void NEUTRAL_STATE(void);
@@ -128,8 +731,83 @@ static void sendModeCommand(uint16_T com);
 static void sendShiftCommand(uint16_T com);
 static void sendStartEngCommand(void);
 static void updateBuffer(const eepromRequest *BusConversion_InsertedFor_EEPRO);
-uint16_T look1_iu16lu64n48_binlcse(uint16_T u0, const uint16_T bp0[], const
-  uint16_T table[], uint32_T maxIndex)
+extern ZCEventType rt_I32ZCFcn(ZCDirection zcDir, ZCSigState *prevZc, int32_T
+  currValue);
+
+/* Detect zero crossings events. */
+ZCEventType rt_I32ZCFcn(ZCDirection zcDir, ZCSigState *prevZc, int32_T currValue)
+{
+  slZcEventType zcsDir;
+  slZcEventType tempEv;
+  ZCEventType zcEvent = NO_ZCEVENT;    /* assume */
+
+  /* zcEvent matrix */
+  static const slZcEventType eventMatrix[4][4] = {
+    /*          ZER              POS              NEG              UNK */
+    { SL_ZCS_EVENT_NUL, SL_ZCS_EVENT_Z2P, SL_ZCS_EVENT_Z2N, SL_ZCS_EVENT_NUL },/* ZER */
+
+    { SL_ZCS_EVENT_P2Z, SL_ZCS_EVENT_NUL, SL_ZCS_EVENT_P2N, SL_ZCS_EVENT_NUL },/* POS */
+
+    { SL_ZCS_EVENT_N2Z, SL_ZCS_EVENT_N2P, SL_ZCS_EVENT_NUL, SL_ZCS_EVENT_NUL },/* NEG */
+
+    { SL_ZCS_EVENT_NUL, SL_ZCS_EVENT_NUL, SL_ZCS_EVENT_NUL, SL_ZCS_EVENT_NUL }/* UNK */
+  };
+
+  /* get prevZcEvent and prevZcSign from prevZc */
+  slZcEventType prevEv = (slZcEventType)(((uint8_T)(*prevZc)) >> 2);
+  slZcSignalSignType prevSign = (slZcSignalSignType)(((uint8_T)(*prevZc)) &
+    (uint8_T)0x03);
+
+  /* get current zcSignal sign from current zcSignal value */
+  slZcSignalSignType currSign = (slZcSignalSignType)((currValue) > 0 ?
+    SL_ZCS_SIGN_POS :
+    ((currValue) < 0 ? SL_ZCS_SIGN_NEG : SL_ZCS_SIGN_ZERO));
+
+  /* get current zcEvent based on prev and current zcSignal value */
+  slZcEventType currEv = eventMatrix[prevSign][currSign];
+
+  /* get slZcEventType from ZCDirection */
+  switch (zcDir) {
+   case ANY_ZERO_CROSSING:
+    zcsDir = SL_ZCS_EVENT_ALL;
+    break;
+
+   case FALLING_ZERO_CROSSING:
+    zcsDir = SL_ZCS_EVENT_ALL_DN;
+    break;
+
+   case RISING_ZERO_CROSSING:
+    zcsDir = SL_ZCS_EVENT_ALL_UP;
+    break;
+
+   default:
+    zcsDir = SL_ZCS_EVENT_NUL;
+    break;
+  }
+
+  /*had event, check if double zc happend remove double detection. */
+  if (slZcHadEvent(currEv, zcsDir)) {
+    currEv = (slZcEventType)(slZcUnAliasEvents(prevEv, currEv));
+  } else {
+    currEv = SL_ZCS_EVENT_NUL;
+  }
+
+  /* Update prevZc */
+  tempEv = (slZcEventType)(currEv << 2);/* shift left by 2 bits */
+  *prevZc = (ZCSigState)((currSign) | (tempEv));
+  if ((currEv & SL_ZCS_EVENT_ALL_DN) != 0) {
+    zcEvent = FALLING_ZCEVENT;
+  } else if ((currEv & SL_ZCS_EVENT_ALL_UP) != 0) {
+    zcEvent = RISING_ZCEVENT;
+  } else {
+    zcEvent = NO_ZCEVENT;
+  }
+
+  return zcEvent;
+}                                      /* end rt_I32ZCFcn */
+
+static uint16_T look1_iu16lu64n48_binlcse(uint16_T u0, const uint16_T bp0[],
+  const uint16_T table[], uint32_T maxIndex)
 {
   uint16_T y;
   uint64_T frac;
@@ -201,8 +879,8 @@ uint16_T look1_iu16lu64n48_binlcse(uint16_T u0, const uint16_T bp0[], const
  *    '<S30>/Efi_setRpmLimiter'
  *    '<S35>/SetRPMLimiter'
  */
-void Efi_setRpmLimiter(uint8_T *rty_rpmLimiter_pin, DW_Efi_setRpmLimiter
-  *localDW)
+static void Efi_setRpmLimiter(uint8_T *rty_rpmLimiter_pin, DW_Efi_setRpmLimiter *
+  localDW)
 {
   /* S-Function (Efi_setRPMLimiter): '<S32>/Efi SetRPMLimiter' */
   Efi_setRPMLimiter_Outputs_wrapper(&localDW->EfiSetRPMLimiter);
@@ -216,8 +894,8 @@ void Efi_setRpmLimiter(uint8_T *rty_rpmLimiter_pin, DW_Efi_setRpmLimiter
  *    '<S30>/Efi_unsetRpmLimiter'
  *    '<S35>/UnsetRPMLimiter'
  */
-void Efi_unsetRpmLimiter(uint8_T *rty_rpmLimiter_pin, DW_Efi_unsetRpmLimiter
-  *localDW)
+static void Efi_unsetRpmLimiter(uint8_T *rty_rpmLimiter_pin,
+  DW_Efi_unsetRpmLimiter *localDW)
 {
   /* S-Function (Efi_unsetRPMLimiter): '<S33>/Efi UnSetRPMLimiter' */
   Efi_unsetRPMLimiter_Outputs_wrapper(&localDW->EfiUnSetRPMLimiter);
@@ -227,7 +905,7 @@ void Efi_unsetRpmLimiter(uint8_T *rty_rpmLimiter_pin, DW_Efi_unsetRpmLimiter
 }
 
 /* Output and update for function-call system: '<S4>/AAC_ExternalValues' */
-void AAC_ExternalValues(uint16_T rtu_Value, uint16_T rtu_Index, uint16_T
+static void AAC_ExternalValues(uint16_T rtu_Value, uint16_T rtu_Index, uint16_T
   rty_Values[3], DW_AAC_ExternalValues *localDW)
 {
   /* Assignment: '<S29>/Assignment' incorporates:
@@ -245,7 +923,7 @@ void AAC_ExternalValues(uint16_T rtu_Value, uint16_T rtu_Index, uint16_T
 }
 
 /* Output and update for function-call system: '<S38>/Gearmotor_release' */
-void Gearmotor_release(void)
+static void Gearmotor_release(void)
 {
   /* S-Function (GearMotor_release): '<S49>/GearMotor Release' */
   GearMotor_release_Outputs_wrapper(&rtDW.GearMotorRelease);
@@ -255,8 +933,8 @@ void Gearmotor_release(void)
 }
 
 /* Output and update for function-call system: '<S38>/Gearmotor_turnRight' */
-void Gearmotor_turnRight(uint8_T *rty_Pin_In1, uint8_T *rty_Pin_In2, uint8_T
-  *rty_Pin_H, DW_Gearmotor_turnRight *localDW)
+static void Gearmotor_turnRight(uint8_T *rty_Pin_In1, uint8_T *rty_Pin_In2,
+  uint8_T *rty_Pin_H, DW_Gearmotor_turnRight *localDW)
 {
   /* S-Function (GearMotor_turnRight): '<S51>/GearMotor Turn Right' */
   GearMotor_turnRight_Outputs_wrapper(&localDW->GearMotorTurnRight_o1,
@@ -273,8 +951,8 @@ void Gearmotor_turnRight(uint8_T *rty_Pin_In1, uint8_T *rty_Pin_In2, uint8_T
 }
 
 /* Output and update for function-call system: '<S38>/Gearmotor_brake' */
-void Gearmotor_brake(uint8_T *rty_Pin_In1, uint8_T *rty_Pin_In2, uint8_T
-                     *rty_Pin_H, DW_Gearmotor_brake *localDW)
+static void Gearmotor_brake(uint8_T *rty_Pin_In1, uint8_T *rty_Pin_In2, uint8_T *
+  rty_Pin_H, DW_Gearmotor_brake *localDW)
 {
   /* S-Function (GearMotor_brake): '<S48>/GearMotor Brake' */
   GearMotor_brake_Outputs_wrapper(&localDW->GearMotorBrake_o1,
@@ -291,8 +969,8 @@ void Gearmotor_brake(uint8_T *rty_Pin_In1, uint8_T *rty_Pin_In2, uint8_T
 }
 
 /* Output and update for function-call system: '<S36>/EngineControl_Start' */
-void EngineControl_Start(uint8_T *rty_engine_starter, DW_EngineControl_Start
-  *localDW)
+static void EngineControl_Start(uint8_T *rty_engine_starter,
+  DW_EngineControl_Start *localDW)
 {
   /* S-Function (EngineControl_start): '<S45>/EngineControl Start' */
   EngineControl_start_Outputs_wrapper(&localDW->EngineControlStart);
@@ -302,7 +980,7 @@ void EngineControl_Start(uint8_T *rty_engine_starter, DW_EngineControl_Start
 }
 
 /* Output and update for function-call system: '<S37>/SCAN_ADC.ScanADC' */
-void SCAN_ADCScanADC(void)
+static void SCAN_ADCScanADC(void)
 {
   /* S-Function (ScanADC): '<S47>/ScanADC' */
   ScanADC_Outputs_wrapper();
@@ -1327,17 +2005,15 @@ static void updateOutput(void)
     rtDW.lastEvaluatedIndex++;
   }
 
-  rtDW.outputRequest.operation = rtDW.TmpRTBAtEEPROM_Load_BufferOut_m[(int32_T)
-    rtDW.lastEvaluatedIndex - 1].operation;
-  rtDW.outputRequest.page = rtDW.TmpRTBAtEEPROM_Load_BufferOut_m[(int32_T)
-    rtDW.lastEvaluatedIndex - 1].page;
-  rtDW.outputRequest.cell = rtDW.TmpRTBAtEEPROM_Load_BufferOut_m[(int32_T)
-    rtDW.lastEvaluatedIndex - 1].cell;
-  rtDW.outputRequest.dataSize = rtDW.TmpRTBAtEEPROM_Load_BufferOut_m[(int32_T)
-    rtDW.lastEvaluatedIndex - 1].dataSize;
+  rtDW.outputRequest.operation = rtDW.RT_n[(int32_T)rtDW.lastEvaluatedIndex - 1]
+    .operation;
+  rtDW.outputRequest.page = rtDW.RT_n[(int32_T)rtDW.lastEvaluatedIndex - 1].page;
+  rtDW.outputRequest.cell = rtDW.RT_n[(int32_T)rtDW.lastEvaluatedIndex - 1].cell;
+  rtDW.outputRequest.dataSize = rtDW.RT_n[(int32_T)rtDW.lastEvaluatedIndex - 1].
+    dataSize;
   for (i = 0; i < 16; i++) {
-    rtDW.outputRequest.data[i] = rtDW.TmpRTBAtEEPROM_Load_BufferOut_m[(int32_T)
-      rtDW.lastEvaluatedIndex - 1].data[i];
+    rtDW.outputRequest.data[i] = rtDW.RT_n[(int32_T)rtDW.lastEvaluatedIndex - 1]
+      .data[i];
   }
 }
 
@@ -1347,12 +2023,12 @@ static void updateData(void)
   uint32_T tmp;
   boolean_T guard1 = false;
   if ((rtDW.RateTransition7 == 0) && (rtDW.lastGearPin == 1)) {
-    tmp = rtDW.currGear_c + 1U;
+    tmp = rtDW.currGear_m + 1U;
     if (tmp > 65535U) {
       tmp = 65535U;
     }
 
-    rtDW.currGear_c = (uint16_T)tmp;
+    rtDW.currGear_m = (uint16_T)tmp;
   } else {
     guard1 = false;
     if (rtDW.RateTransition7 == 1) {
@@ -1384,7 +2060,7 @@ static void updateData(void)
     if (guard1) {
       rtDW.message = 1.0;
       rtDW.id = 773U;
-      rtDW.firstInt = rtDW.currGear_c;
+      rtDW.firstInt = rtDW.currGear_m;
       rtDW.secondInt = rtDW.rpm;
     }
   }
@@ -1397,12 +2073,12 @@ static void checkGear(void)
 {
   uint32_T tmp;
   if ((rtDW.RateTransition7 == 0) && (rtDW.lastGearPin == 1)) {
-    tmp = rtDW.currGear_c + 1U;
+    tmp = rtDW.currGear_m + 1U;
     if (tmp > 65535U) {
       tmp = 65535U;
     }
 
-    rtDW.currGear_c = (uint16_T)tmp;
+    rtDW.currGear_m = (uint16_T)tmp;
   }
 
   rtDW.lastGearPin = rtDW.RateTransition7;
@@ -1675,18 +2351,17 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
   rtDW.RateTransition8[0] = rtDW.RateTransition8_Buffer[i];
   rtDW.RateTransition8[1] = rtDW.RateTransition8_Buffer[1 + i];
 
-  /* RateTransition: '<S2>/TmpRTBAtEEPROM_Load_BufferOutport1' */
-  i = rtDW.TmpRTBAtEEPROM_Load_BufferOut_g * 20;
+  /* RateTransition: '<S2>/RT' */
+  i = rtDW.RT_ActiveBufIdx * 20;
   for (rtb_RateTransition1 = 0; rtb_RateTransition1 < 20; rtb_RateTransition1++)
   {
-    rtDW.TmpRTBAtEEPROM_Load_BufferOut_m[rtb_RateTransition1] =
-      rtDW.TmpRTBAtEEPROM_Load_BufferOutpo[rtb_RateTransition1 + i];
+    rtDW.RT_n[rtb_RateTransition1] = rtDW.RT_Buffer[rtb_RateTransition1 + i];
   }
 
-  /* End of RateTransition: '<S2>/TmpRTBAtEEPROM_Load_BufferOutport1' */
+  /* End of RateTransition: '<S2>/RT' */
 
-  /* RateTransition: '<S2>/TmpRTBAtEEPROM_Load_BufferOutport2' */
-  rtDW.TmpRTBAtEEPROM_Load_BufferOut_n = rtDW.TmpRTBAtEEPROM_Load_BufferOut_l;
+  /* RateTransition: '<S2>/RT1' */
+  rtDW.RT1 = rtDW.RT1_Buffer0;
 
   /* Outputs for Atomic SubSystem: '<Root>/GCU_timer' */
   /* Chart: '<S5>/GCULogic' */
@@ -1845,11 +2520,20 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
 
     /* Chart: '<S2>/EEPROM_OutputRequest' */
     /* Chart: '<S2>/EEPROM_OutputRequest' */
-    if ((rtDW.is_active_EEPROM_TRIGGER != 0U) &&
-        (rtDW.TmpRTBAtEEPROM_Load_BufferOut_n != rtDW.lastEvaluatedIndex)) {
+    if ((rtDW.is_active_EEPROM_TRIGGER != 0U) && (rtDW.RT1 !=
+         rtDW.lastEvaluatedIndex)) {
       updateOutput();
 
       /* Outputs for Function Call SubSystem: '<S2>/Evaluate_Request' */
+      /* SignalConversion: '<S20>/TmpSignal ConversionAtBus SelectorOutport2' */
+      rtDW.page = rtDW.outputRequest.page;
+
+      /* SignalConversion: '<S20>/TmpSignal ConversionAtBus SelectorOutport3' */
+      rtDW.cell = rtDW.outputRequest.cell;
+
+      /* SignalConversion: '<S20>/TmpSignal ConversionAtBus SelectorOutport4' */
+      rtDW.dataSize = rtDW.outputRequest.dataSize;
+
       /* If: '<S20>/If' incorporates:
        *  Constant: '<S20>/Constant'
        *  Constant: '<S20>/Constant1'
@@ -1860,12 +2544,9 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
          */
 
         /* S-Function (Eeprom_write): '<S22>/Eeprom_write' */
-
-        /* Level2 S-Function Block: '<S22>/Eeprom_write' (Eeprom_write) */
-        {
-          SimStruct *rts = rtM->childSfunctions[0];
-          sfcnOutputs(rts,1);
-        }
+        Eeprom_write_Outputs_wrapper(&rtDW.page, &rtDW.cell, &rtDW.dataSize,
+          &rtDW.outputRequest.data[0], &rtDW.Eeprom_write_o1,
+          &rtDW.Eeprom_write_o2);
 
         /* End of Outputs for SubSystem: '<S20>/Write' */
       } else {
@@ -1875,8 +2556,7 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
            */
 
           /* S-Function (Eeprom_read): '<S21>/Eeprom_read' */
-          Eeprom_read_Outputs_wrapper(&rtDW.outputRequest.page,
-            &rtDW.outputRequest.cell, &rtDW.outputRequest.dataSize,
+          Eeprom_read_Outputs_wrapper(&rtDW.page, &rtDW.cell, &rtDW.dataSize,
             &rtDW.Eeprom_read_o1, &rtDW.Eeprom_read_o2[0]);
 
           /* End of Outputs for SubSystem: '<S20>/Read' */
@@ -1884,6 +2564,27 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
       }
 
       /* End of If: '<S20>/If' */
+
+      /* SignalConversion: '<S20>/TmpSignal ConversionAtsendEepromUARTInport1' */
+      rtDW.TmpSignalConversionAtsendEeprom[0] = rtDW.page;
+      rtDW.TmpSignalConversionAtsendEeprom[1] = rtDW.cell;
+      rtDW.TmpSignalConversionAtsendEeprom[2] = rtDW.dataSize;
+      for (i = 0; i < 16; i++) {
+        rtDW.TmpSignalConversionAtsendEeprom[i + 3] = rtDW.Eeprom_read_o2[i];
+      }
+
+      /* End of SignalConversion: '<S20>/TmpSignal ConversionAtsendEepromUARTInport1' */
+
+      /* S-Function (sendEepromUART): '<S20>/sendEepromUART' */
+      sendEepromUART_Outputs_wrapper(&rtDW.TmpSignalConversionAtsendEeprom[0]);
+
+      /* SignalConversion: '<S20>/OutportBufferFordataRead' */
+      for (i = 0; i < 19; i++) {
+        rtDW.OutportBufferFordataRead[i] =
+          rtDW.TmpSignalConversionAtsendEeprom[i];
+      }
+
+      /* End of SignalConversion: '<S20>/OutportBufferFordataRead' */
       /* End of Outputs for SubSystem: '<S2>/Evaluate_Request' */
     }
 
@@ -1927,9 +2628,18 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
   /* Outport: '<Root>/outputRequest' */
   rtY.outputRequest = rtDW.outputRequest;
 
+  /* Outport: '<Root>/readResult' */
+  rtY.readResult = rtDW.Eeprom_read_o1;
+
+  /* Outport: '<Root>/writeResult' */
+  rtY.writeResult = rtDW.Eeprom_write_o1;
+
+  /* Outport: '<Root>/wpState' */
+  rtY.wpState = rtDW.Eeprom_write_o2;
+
   /* Outport: '<Root>/dataRead' */
-  for (i = 0; i < 16; i++) {
-    rtY.dataRead[i] = rtDW.Eeprom_read_o2[i];
+  for (i = 0; i < 19; i++) {
+    rtY.dataRead[i] = rtDW.OutportBufferFordataRead[i];
   }
 
   /* End of Outport: '<Root>/dataRead' */
@@ -1943,15 +2653,6 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
   }
 
   /* End of Update for UnitDelay: '<S23>/Unit Delay' */
-
-  /* Update absolute time */
-  /* The "clockTick1" counts the number of times the code of this task has
-   * been executed. The absolute time is the multiplication of "clockTick1"
-   * and "Timing.stepSize1". Size of "clockTick1" ensures timer will not
-   * overflow during the application lifespan selected.
-   */
-  rtM->Timing.t[1] =
-    (++rtM->Timing.clockTick1) * rtM->Timing.stepSize1;
 }
 
 /* Model step function for TID2 */
@@ -1980,7 +2681,7 @@ void GCU_Model_genCode_step2(void)     /* Sample time: [0.001s, 0.0002s] */
     break;
 
    case IN_DajeDeGas:
-    if (rtDW.currGear_c == 4) {
+    if (rtDW.currGear_m == 4) {
       rtDW.is_c3_GCU_Model_genCode = IN_CHANGE_MODE;
       rtDW.id = 1000U;
       rtDW.firstInt = 2U;
@@ -1996,7 +2697,7 @@ void GCU_Model_genCode_step2(void)     /* Sample time: [0.001s, 0.0002s] */
     break;
 
    case IN_InsertGear:
-    if (rtDW.currGear_c == 1) {
+    if (rtDW.currGear_m == 1) {
       rtDW.is_c3_GCU_Model_genCode = IN_TPS_On;
       rtDW.id = 773U;
       rtDW.thirdInt = 100U;
@@ -2592,19 +3293,17 @@ void GCU_Model_genCode_step6(void)     /* Sample time: [0.001s, 0.0009s] */
 
   /* End of Outputs for S-Function (fcncallgen): '<Root>/Function-Call Generator' */
 
-  /* Update for RateTransition: '<S2>/TmpRTBAtEEPROM_Load_BufferOutport1' */
+  /* Update for RateTransition: '<S2>/RT' */
   for (i = 0; i < 20; i++) {
-    rtDW.TmpRTBAtEEPROM_Load_BufferOutpo[i +
-      (rtDW.TmpRTBAtEEPROM_Load_BufferOut_g == 0) * 20] = rtDW.requestBuffer[i];
+    rtDW.RT_Buffer[i + (rtDW.RT_ActiveBufIdx == 0) * 20] = rtDW.requestBuffer[i];
   }
 
-  rtDW.TmpRTBAtEEPROM_Load_BufferOut_g = (int8_T)
-    (rtDW.TmpRTBAtEEPROM_Load_BufferOut_g == 0);
+  rtDW.RT_ActiveBufIdx = (int8_T)(rtDW.RT_ActiveBufIdx == 0);
 
-  /* End of Update for RateTransition: '<S2>/TmpRTBAtEEPROM_Load_BufferOutport1' */
+  /* End of Update for RateTransition: '<S2>/RT' */
 
-  /* Update for RateTransition: '<S2>/TmpRTBAtEEPROM_Load_BufferOutport2' */
-  rtDW.TmpRTBAtEEPROM_Load_BufferOut_l = rtDW.lastInsertedIndex;
+  /* Update for RateTransition: '<S2>/RT1' */
+  rtDW.RT1_Buffer0 = rtDW.lastInsertedIndex;
 }
 
 /* Model initialize function */
@@ -2612,317 +3311,25 @@ void GCU_Model_genCode_initialize(void)
 {
   /* Registration code */
 
-  /* initialize non-finites */
-  rt_InitInfAndNaN(sizeof(real_T));
-  rtsiSetSolverName(&rtM->solverInfo,"FixedStepDiscrete");
-  rtM->solverInfoPtr = (&rtM->solverInfo);
-
-  /* Initialize timing info */
-  {
-    int_T *mdlTsMap = rtM->Timing.sampleTimeTaskIDArray;
-    int_T i;
-    for (i = 0; i < 7; i++) {
-      mdlTsMap[i] = i;
-    }
-
-    rtM->Timing.sampleTimeTaskIDPtr = (&mdlTsMap[0]);
-    rtM->Timing.sampleTimes = (&rtM->Timing.sampleTimesArray[0]);
-    rtM->Timing.offsetTimes = (&rtM->Timing.offsetTimesArray[0]);
-
-    /* task periods */
-    rtM->Timing.sampleTimes[0] = (9.9999999999999991E-5);
-    rtM->Timing.sampleTimes[1] = (0.001);
-    rtM->Timing.sampleTimes[2] = (0.001);
-    rtM->Timing.sampleTimes[3] = (0.001);
-    rtM->Timing.sampleTimes[4] = (0.001);
-    rtM->Timing.sampleTimes[5] = (0.001);
-    rtM->Timing.sampleTimes[6] = (0.001);
-
-    /* task offsets */
-    rtM->Timing.offsetTimes[0] = (0.0);
-    rtM->Timing.offsetTimes[1] = (0.0);
-    rtM->Timing.offsetTimes[2] = (0.0002);
-    rtM->Timing.offsetTimes[3] = (0.0004);
-    rtM->Timing.offsetTimes[4] = (0.0006);
-    rtM->Timing.offsetTimes[5] = (0.0008);
-    rtM->Timing.offsetTimes[6] = (0.0009);
-  }
-
-  rtmSetTPtr(rtM, &rtM->Timing.tArray[0]);
-
-  {
-    int_T *mdlSampleHits = rtM->Timing.sampleHitArray;
-    int_T *mdlPerTaskSampleHits = rtM->Timing.perTaskSampleHitsArray;
-    rtM->Timing.perTaskSampleHits = (&mdlPerTaskSampleHits[0]);
-    mdlSampleHits[0] = 1;
-    rtM->Timing.sampleHits = (&mdlSampleHits[0]);
-  }
-
-  rtmSetTFinal(rtM, -1);
-  rtM->Timing.stepSize1 = 0.001;
-
   /* initialize sample time offsets */
   /* initialize sample time offsets */
   /* initialize sample time offsets */
   /* initialize sample time offsets */
   /* initialize sample time offsets */
-  rtM->solverInfoPtr = (&rtM->solverInfo);
-  rtM->Timing.stepSize = (9.9999999999999991E-5);
-  rtsiSetFixedStepSize(&rtM->solverInfo, 9.9999999999999991E-5);
-  rtsiSetSolverMode(&rtM->solverInfo, SOLVER_MODE_MULTITASKING);
-
-  /* child S-Function registration */
-  {
-    RTWSfcnInfo *sfcnInfo = &rtM->NonInlinedSFcns.sfcnInfo;
-    rtM->sfcnInfo = (sfcnInfo);
-    rtssSetErrorStatusPtr(sfcnInfo, ((const char_T **)(&rtmGetErrorStatus(rtM))));
-    rtssSetNumRootSampTimesPtr(sfcnInfo, &rtM->Sizes.numSampTimes);
-    rtM->NonInlinedSFcns.taskTimePtrs[0] = &(rtmGetTPtr(rtM)[0]);
-    rtM->NonInlinedSFcns.taskTimePtrs[1] = &(rtmGetTPtr(rtM)[1]);
-    rtM->NonInlinedSFcns.taskTimePtrs[2] = &(rtmGetTPtr(rtM)[2]);
-    rtM->NonInlinedSFcns.taskTimePtrs[3] = &(rtmGetTPtr(rtM)[3]);
-    rtM->NonInlinedSFcns.taskTimePtrs[4] = &(rtmGetTPtr(rtM)[4]);
-    rtM->NonInlinedSFcns.taskTimePtrs[5] = &(rtmGetTPtr(rtM)[5]);
-    rtM->NonInlinedSFcns.taskTimePtrs[6] = &(rtmGetTPtr(rtM)[6]);
-    rtM->NonInlinedSFcns.taskTimePtrs[7] = &(rtmGetTPtr(rtM)[7]);
-    rtssSetTPtrPtr(sfcnInfo,rtM->NonInlinedSFcns.taskTimePtrs);
-    rtssSetTStartPtr(sfcnInfo, &rtmGetTStart(rtM));
-    rtssSetTFinalPtr(sfcnInfo, &rtmGetTFinal(rtM));
-    rtssSetTimeOfLastOutputPtr(sfcnInfo, &rtmGetTimeOfLastOutput(rtM));
-    rtssSetStepSizePtr(sfcnInfo, &rtM->Timing.stepSize);
-    rtssSetStopRequestedPtr(sfcnInfo, &rtmGetStopRequested(rtM));
-    rtssSetDerivCacheNeedsResetPtr(sfcnInfo, &rtM->derivCacheNeedsReset);
-    rtssSetZCCacheNeedsResetPtr(sfcnInfo, &rtM->zCCacheNeedsReset);
-    rtssSetContTimeOutputInconsistentWithStateAtMajorStepPtr(sfcnInfo,
-      &rtM->CTOutputIncnstWithState);
-    rtssSetSampleHitsPtr(sfcnInfo, &rtM->Timing.sampleHits);
-    rtssSetPerTaskSampleHitsPtr(sfcnInfo, &rtM->Timing.perTaskSampleHits);
-    rtssSetSimModePtr(sfcnInfo, &rtM->simMode);
-    rtssSetSolverInfoPtr(sfcnInfo, &rtM->solverInfoPtr);
-  }
-
-  rtM->Sizes.numSFcns = (1);
-
-  /* register each child */
-  {
-    (void) memset((void *)&rtM->NonInlinedSFcns.childSFunctions[0], 0,
-                  1*sizeof(SimStruct));
-    rtM->childSfunctions = (&rtM->NonInlinedSFcns.childSFunctionPtrs[0]);
-    rtM->childSfunctions[0] = (&rtM->NonInlinedSFcns.childSFunctions[0]);
-
-    /* Level2 S-Function Block: GCU_Model_genCode/<S22>/Eeprom_write (Eeprom_write) */
-    {
-      SimStruct *rts = rtM->childSfunctions[0];
-
-      /* timing info */
-      time_T *sfcnPeriod = rtM->NonInlinedSFcns.Sfcn0.sfcnPeriod;
-      time_T *sfcnOffset = rtM->NonInlinedSFcns.Sfcn0.sfcnOffset;
-      int_T *sfcnTsMap = rtM->NonInlinedSFcns.Sfcn0.sfcnTsMap;
-      (void) memset((void*)sfcnPeriod, 0,
-                    sizeof(time_T)*1);
-      (void) memset((void*)sfcnOffset, 0,
-                    sizeof(time_T)*1);
-      ssSetSampleTimePtr(rts, &sfcnPeriod[0]);
-      ssSetOffsetTimePtr(rts, &sfcnOffset[0]);
-      ssSetSampleTimeTaskIDPtr(rts, sfcnTsMap);
-
-      {
-        ssSetBlkInfo2Ptr(rts, &rtM->NonInlinedSFcns.blkInfo2[0]);
-      }
-
-      _ssSetBlkInfo2PortInfo2Ptr(rts, &rtM->
-        NonInlinedSFcns.inputOutputPortInfo2[0]);
-
-      /* Set up the mdlInfo pointer */
-      ssSetRTWSfcnInfo(rts, rtM->sfcnInfo);
-
-      /* Allocate memory of model methods 2 */
-      {
-        ssSetModelMethods2(rts, &rtM->NonInlinedSFcns.methods2[0]);
-      }
-
-      /* Allocate memory of model methods 3 */
-      {
-        ssSetModelMethods3(rts, &rtM->NonInlinedSFcns.methods3[0]);
-      }
-
-      /* Allocate memory of model methods 4 */
-      {
-        ssSetModelMethods4(rts, &rtM->NonInlinedSFcns.methods4[0]);
-      }
-
-      /* Allocate memory for states auxilliary information */
-      {
-        ssSetStatesInfo2(rts, &rtM->NonInlinedSFcns.statesInfo2[0]);
-        ssSetPeriodicStatesInfo(rts, &rtM->NonInlinedSFcns.periodicStatesInfo[0]);
-      }
-
-      /* inputs */
-      {
-        _ssSetNumInputPorts(rts, 4);
-        ssSetPortInfoForInputs(rts, &rtM->NonInlinedSFcns.Sfcn0.inputPortInfo[0]);
-        _ssSetPortInfo2ForInputUnits(rts,
-          &rtM->NonInlinedSFcns.Sfcn0.inputPortUnits[0]);
-        ssSetInputPortUnit(rts, 0, 0);
-        ssSetInputPortUnit(rts, 1, 0);
-        ssSetInputPortUnit(rts, 2, 0);
-        ssSetInputPortUnit(rts, 3, 0);
-        _ssSetPortInfo2ForInputCoSimAttribute(rts,
-          &rtM->NonInlinedSFcns.Sfcn0.inputPortCoSimAttribute[0]);
-        ssSetInputPortIsContinuousQuantity(rts, 0, 0);
-        ssSetInputPortIsContinuousQuantity(rts, 1, 0);
-        ssSetInputPortIsContinuousQuantity(rts, 2, 0);
-        ssSetInputPortIsContinuousQuantity(rts, 3, 0);
-
-        /* port 0 */
-        {
-          ssSetInputPortRequiredContiguous(rts, 0, 1);
-          ssSetInputPortSignal(rts, 0, &rtDW.outputRequest.page);
-          _ssSetInputPortNumDimensions(rts, 0, 1);
-          ssSetInputPortWidth(rts, 0, 1);
-        }
-
-        /* port 1 */
-        {
-          ssSetInputPortRequiredContiguous(rts, 1, 1);
-          ssSetInputPortSignal(rts, 1, &rtDW.outputRequest.cell);
-          _ssSetInputPortNumDimensions(rts, 1, 1);
-          ssSetInputPortWidth(rts, 1, 1);
-        }
-
-        /* port 2 */
-        {
-          ssSetInputPortRequiredContiguous(rts, 2, 1);
-          ssSetInputPortSignal(rts, 2, &rtDW.outputRequest.dataSize);
-          _ssSetInputPortNumDimensions(rts, 2, 1);
-          ssSetInputPortWidth(rts, 2, 1);
-        }
-
-        /* port 3 */
-        {
-          int_T *dimensions = (int_T *) &rtM->NonInlinedSFcns.Sfcn0.iDims3;
-          ssSetInputPortRequiredContiguous(rts, 3, 1);
-          ssSetInputPortSignal(rts, 3, rtDW.outputRequest.data);
-          dimensions[0] = 1;
-          dimensions[1] = 16;
-          _ssSetInputPortDimensionsPtr(rts, 3, dimensions);
-          _ssSetInputPortNumDimensions(rts, 3, 2);
-          ssSetInputPortWidth(rts, 3, 16);
-        }
-      }
-
-      /* outputs */
-      {
-        ssSetPortInfoForOutputs(rts, &rtM->NonInlinedSFcns.Sfcn0.outputPortInfo
-          [0]);
-        _ssSetNumOutputPorts(rts, 2);
-        _ssSetPortInfo2ForOutputUnits(rts,
-          &rtM->NonInlinedSFcns.Sfcn0.outputPortUnits[0]);
-        ssSetOutputPortUnit(rts, 0, 0);
-        ssSetOutputPortUnit(rts, 1, 0);
-        _ssSetPortInfo2ForOutputCoSimAttribute(rts,
-          &rtM->NonInlinedSFcns.Sfcn0.outputPortCoSimAttribute[0]);
-        ssSetOutputPortIsContinuousQuantity(rts, 0, 0);
-        ssSetOutputPortIsContinuousQuantity(rts, 1, 0);
-
-        /* port 0 */
-        {
-          _ssSetOutputPortNumDimensions(rts, 0, 1);
-          ssSetOutputPortWidth(rts, 0, 1);
-          ssSetOutputPortSignal(rts, 0, ((uint8_T *) &rtDW.Eeprom_write_o1));
-        }
-
-        /* port 1 */
-        {
-          _ssSetOutputPortNumDimensions(rts, 1, 1);
-          ssSetOutputPortWidth(rts, 1, 1);
-          ssSetOutputPortSignal(rts, 1, ((uint8_T *) &rtDW.Eeprom_write_o2));
-        }
-      }
-
-      /* path info */
-      ssSetModelName(rts, "Eeprom_write");
-      ssSetPath(rts,
-                "GCU_Model_genCode/EEPROM/Evaluate_Request/Write/Eeprom_write");
-      ssSetRTModel(rts,rtM);
-      ssSetParentSS(rts, (NULL));
-      ssSetRootSS(rts, rts);
-      ssSetVersion(rts, SIMSTRUCT_VERSION_LEVEL2);
-
-      /* registration */
-      Eeprom_write(rts);
-      sfcnInitializeSizes(rts);
-      sfcnInitializeSampleTimes(rts);
-
-      /* adjust sample time */
-      ssSetSampleTime(rts, 0, 0.001);
-      ssSetOffsetTime(rts, 0, 0.0);
-      sfcnTsMap[0] = 1;
-
-      /* set compiled values of dynamic vector attributes */
-      ssSetNumNonsampledZCs(rts, 0);
-
-      /* Update connectivity flags for each port */
-      _ssSetInputPortConnected(rts, 0, 1);
-      _ssSetInputPortConnected(rts, 1, 1);
-      _ssSetInputPortConnected(rts, 2, 1);
-      _ssSetInputPortConnected(rts, 3, 1);
-      _ssSetOutputPortConnected(rts, 0, 1);
-      _ssSetOutputPortConnected(rts, 1, 1);
-      _ssSetOutputPortBeingMerged(rts, 0, 0);
-      _ssSetOutputPortBeingMerged(rts, 1, 0);
-
-      /* Update the BufferDstPort flags for each input port */
-      ssSetInputPortBufferDstPort(rts, 0, -1);
-      ssSetInputPortBufferDstPort(rts, 1, -1);
-      ssSetInputPortBufferDstPort(rts, 2, -1);
-      ssSetInputPortBufferDstPort(rts, 3, -1);
-    }
-  }
-
   {
     int32_T i;
 
-    /* SetupRuntimeResources for Atomic SubSystem: '<Root>/GCU_timer' */
-
-    /* SetupRuntimeResources for Chart: '<S5>/GCULogic' incorporates:
-     *  Chart: '<S2>/EEPROM_OutputRequest'
-     */
-    /* SetupRuntimeResources for Chart: '<S2>/EEPROM_OutputRequest' incorporates:
-     *  SubSystem: '<S2>/Evaluate_Request'
-     */
-
-    /* End of SetupRuntimeResources for SubSystem: '<Root>/GCU_timer' */
-
-    /* Start for Atomic SubSystem: '<Root>/GCU_timer' */
-
-    /* Start for Chart: '<S5>/GCULogic' incorporates:
-     *  Chart: '<S2>/EEPROM_OutputRequest'
-     */
-    /* Start for Chart: '<S2>/EEPROM_OutputRequest' incorporates:
-     *  SubSystem: '<S2>/Evaluate_Request'
-     */
-
-    /* Start for IfAction SubSystem: '<S20>/Write' */
-
-    /* Start for S-Function (Eeprom_write): '<S22>/Eeprom_write' */
-    /* Level2 S-Function Block: '<S22>/Eeprom_write' (Eeprom_write) */
-    {
-      SimStruct *rts = rtM->childSfunctions[0];
-      sfcnStart(rts);
-      if (ssGetErrorStatus(rts) != (NULL))
-        return;
-    }
-
-    /* End of Start for SubSystem: '<S20>/Write' */
-
-    /* End of Start for SubSystem: '<Root>/GCU_timer' */
+    /* Start for RateTransition: '<S2>/RT1' */
+    rtDW.RT1 = 1.0;
     rtPrevZCX._Trig_ZCE_i[0] = UNINITIALIZED_ZCSIG;
     rtPrevZCX._Trig_ZCE[0] = UNINITIALIZED_ZCSIG;
     rtPrevZCX._Trig_ZCE_i[1] = UNINITIALIZED_ZCSIG;
     rtPrevZCX._Trig_ZCE[1] = UNINITIALIZED_ZCSIG;
     rtPrevZCX.Triggered_Subsystem_Trig_ZCE = UNINITIALIZED_ZCSIG;
     rtPrevZCX.Triggered_Subsystem1_Trig_ZCE = UNINITIALIZED_ZCSIG;
+
+    /* InitializeConditions for RateTransition: '<S2>/RT1' */
+    rtDW.RT1_Buffer0 = 1.0;
 
     /* SystemInitialize for Triggered SubSystem: '<S24>/Triggered Subsystem' */
     for (i = 0; i < 23; i++) {

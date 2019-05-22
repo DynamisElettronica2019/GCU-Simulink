@@ -8,7 +8,7 @@ LD = $(CC)
  
 MODEL     = GCU_Model_genCode
 TARGET      = sfun
-MODULE_SRCS   = c1_GCU_Model_genCode.c
+MODULE_SRCS   = c1_GCU_Model_genCode.c c2_GCU_Model_genCode.c c4_GCU_Model_genCode.c
 MODEL_SRC  = GCU_Model_genCode_sfun.c
 MODEL_REG = GCU_Model_genCode_sfun_registry.c
 MAKEFILE    = GCU_Model_genCode_sfun.gmk
@@ -16,7 +16,7 @@ MATLAB_ROOT  = c:\program files\matlab\r2018a\toolbox\stateflow\stateflow\..\..\
 BUILDARGS   = 
 #------------------------------ Include/Lib Path ------------------------------
  
-USER_INCLUDES = -I"C:\Users\SIMONE\documents\programmi per gcu\git\gcu-simulink\libraries\uart library\slprj\_sfprj\gcu_model_gencode\_self\sfun\src" -I"C:\Users\SIMONE\documents\programmi per gcu\git\gcu-simulink\libraries\uart library" -I"C:\Users\SIMONE\documents\programmi per gcu\git\gcu-simulink\Models" -I"C:\Users\SIMONE\documents\programmi per gcu\git\gcu-simulink\c_includes" 
+USER_INCLUDES = -I"C:\Users\sA\Desktop\git\2019\test_eeprom_seriale_modello\gcu-simulink\libraries\uart library\slprj\_sfprj\gcu_model_gencode\_self\sfun\src" -I"C:\Users\sA\Desktop\git\2019\test_eeprom_seriale_modello\gcu-simulink\libraries\uart library" -I"C:\Users\sA\Desktop\git\2019\test_eeprom_seriale_modello\gcu-simulink\Models" -I"C:\Users\sA\Desktop\git\2019\test_eeprom_seriale_modello\gcu-simulink\c_includes" 
 AUX_INCLUDES = 
 MLSLSF_INCLUDES  = \
     -I"C:\Program Files\MATLAB\R2018a\extern\include" \
@@ -24,7 +24,7 @@ MLSLSF_INCLUDES  = \
     -I"C:\Program Files\MATLAB\R2018a\simulink\include\sf_runtime" \
     -I"C:\Program Files\MATLAB\R2018a\stateflow\c\mex\include" \
     -I"C:\Program Files\MATLAB\R2018a\rtw\c\src" \
-    -I"C:\Users\SIMONE\Documents\Programmi per GCU\git\GCU-Simulink\Libraries\Uart Library\slprj\_sfprj\GCU_Model_genCode\_self\sfun\src" 
+    -I"C:\Users\sA\Desktop\git\2019\test_eeprom_seriale_modello\GCU-Simulink\Libraries\Uart Library\slprj\_sfprj\GCU_Model_genCode\_self\sfun\src" 
 
 THIRD_PARTY_INCLUDES = 
 

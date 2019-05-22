@@ -29,11 +29,11 @@
 <tr name="9" id="9">
 <td><a id="l9" class='ln'>9</a></td><td><span class="ct"> *</span></td></tr>
 <tr name="10" id="10">
-<td><a id="l10" class='ln'>10</a></td><td><span class="ct"> * Model version                  : 1.173</span></td></tr>
+<td><a id="l10" class='ln'>10</a></td><td><span class="ct"> * Model version                  : 1.179</span></td></tr>
 <tr name="11" id="11">
 <td><a id="l11" class='ln'>11</a></td><td><span class="ct"> * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018</span></td></tr>
 <tr name="12" id="12">
-<td><a id="l12" class='ln'>12</a></td><td><span class="ct"> * C/C++ source code generated on : Tue May 21 18:47:07 2019</span></td></tr>
+<td><a id="l12" class='ln'>12</a></td><td><span class="ct"> * C/C++ source code generated on : Wed May 22 10:18:11 2019</span></td></tr>
 <tr name="13" id="13">
 <td><a id="l13" class='ln'>13</a></td><td><span class="ct"> *</span></td></tr>
 <tr name="14" id="14">
@@ -415,39 +415,53 @@
 <tr name="202" id="202">
 <td><a id="l202" class='ln'>202</a></td><td></td></tr>
 <tr name="203" id="203">
-<td><a id="l203" class='ln'>203</a></td><td>  <span class="ct">/* Simulating the model step behavior (in non real-time) to</span></td></tr>
+<td><a id="l203" class='ln'>203</a></td><td>  <span class="ct">/* Attach rt_OneStep to a timer or interrupt service routine with</span></td></tr>
 <tr name="204" id="204">
-<td><a id="l204" class='ln'>204</a></td><td><span class="ct">   *  simulate model behavior at stop time.</span></td></tr>
+<td><a id="l204" class='ln'>204</a></td><td><span class="ct">   * period 9.9999999999999991E-5 seconds (the model's base sample time) here.  The</span></td></tr>
 <tr name="205" id="205">
-<td><a id="l205" class='ln'>205</a></td><td><span class="ct">   */</span></td></tr>
+<td><a id="l205" class='ln'>205</a></td><td><span class="ct">   * call syntax for rt_OneStep is</span></td></tr>
 <tr name="206" id="206">
-<td><a id="l206" class='ln'>206</a></td><td>  <span class="kw">while</span> ((<a id="206c11" class="tk">rtmGetErrorStatus</a>(<a id="206c29" class="tk">rtM</a>) <a id="206c34" class="tk">==</a> (<a id="206c38" class="tk">NULL</a>)) <a id="206c45" class="tk">&amp;&amp;</a> <a id="206c48" class="tk">!</a><a id="206c49" class="tk">rtmGetStopRequested</a>(<a id="206c69" class="tk">rtM</a>)) <span class="br">{</span></td></tr>
+<td><a id="l206" class='ln'>206</a></td><td><span class="ct">   *</span></td></tr>
 <tr name="207" id="207">
-<td><a id="l207" class='ln'>207</a></td><td>    <a id="207c5" class="tk">rt_OneStep</a>();</td></tr>
+<td><a id="l207" class='ln'>207</a></td><td><span class="ct">   *  rt_OneStep();</span></td></tr>
 <tr name="208" id="208">
-<td><a id="l208" class='ln'>208</a></td><td>  <span class="br">}</span></td></tr>
+<td><a id="l208" class='ln'>208</a></td><td><span class="ct">   */</span></td></tr>
 <tr name="209" id="209">
-<td><a id="l209" class='ln'>209</a></td><td></td></tr>
+<td><a id="l209" class='ln'>209</a></td><td>  <a id="209c3" class="tk">printf</a>("Warning: The simulation will run forever. "</td></tr>
 <tr name="210" id="210">
-<td><a id="l210" class='ln'>210</a></td><td>  <span class="ct">/* Disable rt_OneStep() here */</span></td></tr>
+<td><a id="l210" class='ln'>210</a></td><td>         "Generated ERT main won't simulate model step behavior. "</td></tr>
 <tr name="211" id="211">
-<td><a id="l211" class='ln'>211</a></td><td>  <span class="kw">return</span> 0;</td></tr>
+<td><a id="l211" class='ln'>211</a></td><td>         "To change this behavior select the 'MAT-file logging' option.\n");</td></tr>
 <tr name="212" id="212">
-<td><a id="l212" class='ln'>212</a></td><td><span class="br">}</span></td></tr>
+<td><a id="l212" class='ln'>212</a></td><td>  <a id="212c3" class="tk">fflush</a>((<a id="212c11" class="tk">NULL</a>));</td></tr>
 <tr name="213" id="213">
-<td><a id="l213" class='ln'>213</a></td><td></td></tr>
+<td><a id="l213" class='ln'>213</a></td><td>  <span class="kw">while</span> (<a id="213c10" class="tk">rtmGetErrorStatus</a>(<a id="213c28" class="tk">rtM</a>) <a id="213c33" class="tk">==</a> (<a id="213c37" class="tk">NULL</a>)) <span class="br">{</span></td></tr>
 <tr name="214" id="214">
-<td><a id="l214" class='ln'>214</a></td><td><span class="ct">/*</span></td></tr>
+<td><a id="l214" class='ln'>214</a></td><td>    <span class="ct">/*  Perform other application tasks here */</span></td></tr>
 <tr name="215" id="215">
-<td><a id="l215" class='ln'>215</a></td><td><span class="ct"> * File trailer for generated code.</span></td></tr>
+<td><a id="l215" class='ln'>215</a></td><td>  <span class="br">}</span></td></tr>
 <tr name="216" id="216">
-<td><a id="l216" class='ln'>216</a></td><td><span class="ct"> *</span></td></tr>
+<td><a id="l216" class='ln'>216</a></td><td></td></tr>
 <tr name="217" id="217">
-<td><a id="l217" class='ln'>217</a></td><td><span class="ct"> * [EOF]</span></td></tr>
+<td><a id="l217" class='ln'>217</a></td><td>  <span class="ct">/* Disable rt_OneStep() here */</span></td></tr>
 <tr name="218" id="218">
-<td><a id="l218" class='ln'>218</a></td><td><span class="ct"> */</span></td></tr>
+<td><a id="l218" class='ln'>218</a></td><td>  <span class="kw">return</span> 0;</td></tr>
 <tr name="219" id="219">
-<td><a id="l219" class='ln'>219</a></td><td></td></tr>
+<td><a id="l219" class='ln'>219</a></td><td><span class="br">}</span></td></tr>
+<tr name="220" id="220">
+<td><a id="l220" class='ln'>220</a></td><td></td></tr>
+<tr name="221" id="221">
+<td><a id="l221" class='ln'>221</a></td><td><span class="ct">/*</span></td></tr>
+<tr name="222" id="222">
+<td><a id="l222" class='ln'>222</a></td><td><span class="ct"> * File trailer for generated code.</span></td></tr>
+<tr name="223" id="223">
+<td><a id="l223" class='ln'>223</a></td><td><span class="ct"> *</span></td></tr>
+<tr name="224" id="224">
+<td><a id="l224" class='ln'>224</a></td><td><span class="ct"> * [EOF]</span></td></tr>
+<tr name="225" id="225">
+<td><a id="l225" class='ln'>225</a></td><td><span class="ct"> */</span></td></tr>
+<tr name="226" id="226">
+<td><a id="l226" class='ln'>226</a></td><td></td></tr>
 </table>
 </pre>
 </body>

@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.173
+ * Model version                  : 1.179
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Tue May 21 18:47:07 2019
+ * C/C++ source code generated on : Wed May 22 10:18:11 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -200,11 +200,18 @@ int_T main(int_T argc, const char *argv[])
   /* Initialize model */
   GCU_Model_genCode_initialize();
 
-  /* Simulating the model step behavior (in non real-time) to
-   *  simulate model behavior at stop time.
+  /* Attach rt_OneStep to a timer or interrupt service routine with
+   * period 9.9999999999999991E-5 seconds (the model's base sample time) here.  The
+   * call syntax for rt_OneStep is
+   *
+   *  rt_OneStep();
    */
-  while ((rtmGetErrorStatus(rtM) == (NULL)) && !rtmGetStopRequested(rtM)) {
-    rt_OneStep();
+  printf("Warning: The simulation will run forever. "
+         "Generated ERT main won't simulate model step behavior. "
+         "To change this behavior select the 'MAT-file logging' option.\n");
+  fflush((NULL));
+  while (rtmGetErrorStatus(rtM) == (NULL)) {
+    /*  Perform other application tasks here */
   }
 
   /* Disable rt_OneStep() here */
