@@ -7,11 +7,25 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   1 \
+    NumChartData   6 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
       IsTestPoint  0\
+    }\
+    ChartData {\
+      Name         "is_c6_GCU_Model_genCode"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_LOAD_TO_EEPROM"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "LOAD_TO_EEPROM"\
+      SrcLocation  ""\
     }\
     ChartData {\
       Name         "lastEvaluatedIndex"\
@@ -19,6 +33,29 @@
       SFName       ""\
       Path         "lastEvaluatedIndex"\
       SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "tempShiftedArray"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "tempShiftedArray"\
+      SrcLocation  ""\
+      Dimensions   [1,50]\
+    }\
+    ChartData {\
+      Name         "counter"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "LOAD_TO_EEPROM.counter"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "newData"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "LOAD_TO_EEPROM.newData"\
+      SrcLocation  ""\
+      Dimensions   [1,16]\
     }\
   }
   %return ChartDataElements

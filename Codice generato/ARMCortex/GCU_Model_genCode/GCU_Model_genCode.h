@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.179
+ * Model version                  : 1.182
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Wed May 22 10:18:11 2019
+ * C/C++ source code generated on : Wed May 22 19:45:07 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -132,8 +132,18 @@ typedef struct {
   uint8_T EngineControlStart;          /* '<S45>/EngineControl Start' */
 } DW_EngineControl_Start;
 
+/* Block signals and states (default storage) for system '<S2>/Evaluate_Request' */
+typedef struct {
+  uint8_T TmpSignalConversionAtsendEeprom[19];
+  uint8_T Eeprom_read_o2[16];          /* '<S21>/Eeprom_read' */
+  uint8_T page;
+  uint8_T cell;
+  uint8_T dataSize;
+} DW_Evaluate_Request;
+
 /* Block signals and states (default storage) for system '<Root>' */
 typedef struct {
+  DW_Evaluate_Request Evaluate_Request_l;/* '<S2>/Evaluate_Request' */
   DW_EngineControl_Start EngineControl_Start_h;/* '<S36>/EngineControl_Start' */
   DW_Gearmotor_brake Gearmotor_brake_c;/* '<S38>/Gearmotor_brake' */
   DW_Gearmotor_turnRight Gearmotor_turnRight_f;/* '<S38>/Gearmotor_turnRight' */
@@ -247,9 +257,8 @@ typedef struct {
   uint8_T RateTransition5[2];          /* '<Root>/Rate Transition5' */
   uint8_T MultiportSwitch[10];         /* '<Root>/Multiport Switch' */
   uint8_T PackCanUart[10];             /* '<S7>/PackCanUart' */
-  uint8_T TmpSignalConversionAtsendEeprom[19];
+  uint8_T dataDebug[16];               /* '<S2>/EEPROM_OutputRequest' */
   uint8_T OutportBufferFordataRead[19];
-  uint8_T Eeprom_read_o2[16];          /* '<S21>/Eeprom_read' */
   uint8_T clutchCommand[2];            /* '<S4>/MessageEvaluation1' */
   uint8_T PackCANMsg[8];               /* '<S13>/PackCANMsg' */
   uint8_T PackCANMsg_l[8];             /* '<S14>/PackCANMsg' */
@@ -258,22 +267,20 @@ typedef struct {
   uint8_T PackCANMsg_o[8];             /* '<S17>/PackCANMsg' */
   uint8_T Pack_Uart_Message[40];       /* '<S9>/Pack_Uart_Message' */
   volatile uint8_T RateTransition5_Buffer[4];/* '<Root>/Rate Transition5' */
+  uint8_T tempShiftedArray[50];        /* '<S2>/EEPROM_OutputRequest' */
+  uint8_T newData[16];                 /* '<S2>/EEPROM_OutputRequest' */
   uint8_T RateTransition;              /* '<Root>/Rate Transition' */
   uint8_T RateTransition3;             /* '<Root>/Rate Transition3' */
   uint8_T RateTransition7;             /* '<Root>/Rate Transition7' */
   uint8_T RateTransition6;             /* '<Root>/Rate Transition6' */
   uint8_T Merge_j;                     /* '<S10>/Merge' */
   uint8_T Eeprom_init_o1;              /* '<S6>/Eeprom_init' */
-  uint8_T Eeprom_init_o2;              /* '<S6>/Eeprom_init' */
   uint8_T Eeprom_init_o3;              /* '<S6>/Eeprom_init' */
   uint8_T Merge2;                      /* '<S35>/Merge2' */
   uint8_T Pin_H;                       /* '<S38>/Pin_H' */
   uint8_T Pin_In1;                     /* '<S38>/Pin_In1' */
   uint8_T Pin_In2;                     /* '<S38>/Pin_In2' */
   uint8_T clutchCurrVal;               /* '<S5>/GCULogic' */
-  uint8_T page;
-  uint8_T cell;
-  uint8_T dataSize;
   uint8_T Eeprom_read_o1;              /* '<S21>/Eeprom_read' */
   uint8_T Eeprom_write_o1;             /* '<S22>/Eeprom_write' */
   uint8_T Eeprom_write_o2;             /* '<S22>/Eeprom_write' */
@@ -318,6 +325,9 @@ typedef struct {
   uint8_T lastClutchCom;               /* '<S5>/GCULogic' */
   uint8_T lastCom;                     /* '<S5>/GCULogic' */
   uint8_T startCounter;                /* '<S5>/GCULogic' */
+  uint8_T is_c6_GCU_Model_genCode;     /* '<S2>/EEPROM_OutputRequest' */
+  uint8_T is_LOAD_TO_EEPROM;           /* '<S2>/EEPROM_OutputRequest' */
+  uint8_T counter;                     /* '<S2>/EEPROM_OutputRequest' */
 } DW;
 
 /* Zero-crossing (trigger) state */
@@ -381,6 +391,8 @@ typedef struct {
   uint8_T writeResult;                 /* '<Root>/writeResult' */
   uint8_T wpState;                     /* '<Root>/wpState' */
   uint8_T dataRead[19];                /* '<Root>/dataRead' */
+  uint8_T dataDebug[16];               /* '<Root>/dataDebug' */
+  uint8_T eepromStateDebug;            /* '<Root>/eepromStateDebug' */
 } ExtY;
 
 /* Real-time Model Data Structure */
@@ -419,6 +431,7 @@ extern RT_MODEL *const rtM;
 /*-
  * These blocks were eliminated from the model due to optimizations:
  *
+ * Block '<S2>/Display' : Unused code path elimination
  * Block '<S25>/Cast' : Unused code path elimination
  * Block '<S25>/Cast1' : Unused code path elimination
  * Block '<S27>/Cast' : Unused code path elimination
