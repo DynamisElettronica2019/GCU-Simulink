@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.189
+ * Model version                  : 1.190
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Thu May 23 14:06:08 2019
+ * C/C++ source code generated on : Thu May 23 15:16:06 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -1056,9 +1056,8 @@ static void Evaluate_Request(const eepromRequest *rtu_request, uint8_T
 {
   int32_T b_index;
   uint16_T data_16bit[8];
-  uint8_T indexTemp;
-  int32_T tmp;
   uint32_T qY;
+  uint8_T tmp;
 
   /* SignalConversion: '<S20>/TmpSignal ConversionAtBus SelectorOutport2' */
   localDW->page = rtu_request->page;
@@ -1113,29 +1112,29 @@ static void Evaluate_Request(const eepromRequest *rtu_request, uint8_T
       if ((localDW->page == 1) || (localDW->page == 2) || (localDW->page == 3))
       {
         if (localDW->page > 31) {
-          indexTemp = MAX_uint8_T;
+          tmp = MAX_uint8_T;
         } else {
-          indexTemp = (uint8_T)(localDW->page << 3);
+          tmp = (uint8_T)(localDW->page << 3);
+        }
+
+        qY = tmp - /*MW:OvSatOk*/ 7U;
+        if (qY > tmp) {
+          qY = 0U;
         }
 
         for (b_index = 0; b_index < 8; b_index++) {
-          tmp = (int32_T)((uint32_T)indexTemp + b_index);
-          if ((uint32_T)tmp > 255U) {
-            tmp = 255;
-          }
-
-          rty_gearshiftTimings[tmp - 1] = data_16bit[b_index];
+          rty_gearshiftTimings[(b_index + (uint8_T)qY) - 1] = data_16bit[b_index];
         }
       } else {
         if ((localDW->page == 5) || (localDW->page == 6)) {
           if (localDW->page > 31) {
-            indexTemp = MAX_uint8_T;
+            tmp = MAX_uint8_T;
           } else {
-            indexTemp = (uint8_T)(localDW->page << 3);
+            tmp = (uint8_T)(localDW->page << 3);
           }
 
-          qY = indexTemp - /*MW:OvSatOk*/ 7U;
-          if (qY > indexTemp) {
+          qY = tmp - /*MW:OvSatOk*/ 7U;
+          if (qY > tmp) {
             qY = 0U;
           }
 
