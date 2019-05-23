@@ -27,7 +27,7 @@
 /* %%%-SFUNWIZ_wrapper_externs_Changes_BEGIN --- EDIT HERE TO _END */
 #if !defined(MATLAB_MEX_FILE)
 extern UART_HandleTypeDef huartDebug;
-extern uint8_t tempMsg[UART_SENT_EEPROM_DATA_WIDTH+3];
+extern uint8_t tempEepromUartMsg[UART_SENT_EEPROM_DATA_WIDTH+3];
 #endif
 /* %%%-SFUNWIZ_wrapper_externs_Changes_END --- EDIT HERE TO _BEGIN */
 
@@ -42,16 +42,16 @@ void sendEepromUART_Outputs_wrapper(const uint8_T *msg)
 
   uint8_t header[3] = "epr";// terminator[2] = "\r";
 	
-  tempMsg[0] = header[0];
-  tempMsg[1] = header[1];
-  tempMsg[2] = header[2];
+  tempEepromUartMsg[0] = header[0];
+  tempEepromUartMsg[1] = header[1];
+  tempEepromUartMsg[2] = header[2];
 	
   for(int i = 0; i<UART_SENT_EEPROM_DATA_WIDTH; i++)
-		tempMsg[3+i] = msg[i];
+		tempEepromUartMsg[3+i] = msg[i];
 	
   //tempMsg[UART_SENT_DATA_WIDTH+3] = (uint8_t) '\r';
 
-  HAL_UART_Transmit_DMA(&huartDebug, tempMsg, UART_SENT_EEPROM_DATA_WIDTH+3);	
+  HAL_UART_Transmit_DMA(&huartDebug, tempEepromUartMsg, UART_SENT_EEPROM_DATA_WIDTH+3);	
 #endif
 /* %%%-SFUNWIZ_wrapper_Outputs_Changes_END --- EDIT HERE TO _BEGIN */
 }

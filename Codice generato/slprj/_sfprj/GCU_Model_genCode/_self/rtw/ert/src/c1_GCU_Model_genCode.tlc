@@ -7,7 +7,7 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   35 \
+    NumChartData   37 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
@@ -168,6 +168,13 @@
       SrcLocation  ""\
     }\
     ChartData {\
+      Name         "is_EEPROM_TRIGGER"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "EEPROM_TRIGGER"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
       Name         "is_active_EEPROM_TRIGGER"\
       Description  "StateIsActive"\
       SFName       ""\
@@ -236,6 +243,13 @@
       Description  "ChartLocal"\
       SFName       ""\
       Path         "GEARSHIFT.ticksCounter"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "counterWait"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "EEPROM_TRIGGER.counterWait"\
       SrcLocation  ""\
     }\
     ChartData {\

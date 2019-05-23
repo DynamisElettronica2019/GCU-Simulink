@@ -14,6 +14,7 @@
 
 /* %%%-SFUNWIZ_wrapper_includes_Changes_BEGIN --- EDIT HERE TO _END */
 #if !defined(MATLAB_MEX_FILE)  
+#include "constant_defines.h"
 #include "pin_defines.h"
 #endif
 /* %%%-SFUNWIZ_wrapper_includes_Changes_END --- EDIT HERE TO _BEGIN */
@@ -27,6 +28,7 @@
 /* %%%-SFUNWIZ_wrapper_externs_Changes_BEGIN --- EDIT HERE TO _END */
 #if !defined(MATLAB_MEX_FILE)
 extern I2C_HandleTypeDef hi2cEeprom;
+extern uint8_t tempEepromMsg[I2C_SENT_EEPROM_DATA_WIDTH];
 #endif
 /* %%%-SFUNWIZ_wrapper_externs_Changes_END --- EDIT HERE TO _BEGIN */
 
@@ -50,9 +52,12 @@ void Eeprom_write_Outputs_wrapper(const uint8_T *page,
     devAddress = eepromAddress << 3 | *page >> 4;
 	memAddress = *page << 4 | *cell;
     
+    for(int i = 0; i<I2C_SENT_EEPROM_DATA_WIDTH; i++)
+		tempEepromMsg[i] = data[i];
+    
     HAL_GPIO_WritePin(EEPROM_WP_GPIO_Port, EEPROM_WP_Pin, GPIO_PIN_RESET);
     *wpState = (uint8_T)0;
-    HAL_I2C_Mem_Write(&hi2cEeprom, devAddress<<1, memAddress, I2C_MEMADD_SIZE_8BIT, data, *dataSize, 100);
+    HAL_I2C_Mem_Write(&hi2cEeprom, devAddress<<1, memAddress, I2C_MEMADD_SIZE_8BIT, tempEepromMsg, *dataSize, 100);
     
 #endif
 /* %%%-SFUNWIZ_wrapper_Outputs_Changes_END --- EDIT HERE TO _BEGIN */

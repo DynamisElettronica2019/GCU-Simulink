@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.182
+ * Model version                  : 1.184
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Wed May 22 19:45:07 2019
+ * C/C++ source code generated on : Thu May 23 12:11:08 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -64,6 +64,7 @@
 #define IN_RELEASING                   ((uint8_T)2U)
 #define IN_RUNNING                     ((uint8_T)3U)
 #define IN_SCAN                        ((uint8_T)1U)
+#define IN_SEND                        ((uint8_T)1U)
 #define IN_SET_NEUTRAL                 ((uint8_T)3U)
 #define IN_START                       ((uint8_T)4U)
 #define IN_START_RELEASE               ((uint8_T)5U)
@@ -737,9 +738,9 @@ static void MODES(void);
 static void extractValues(void);
 static void createRequest(uint8_T operation, uint8_T page, uint8_T cell, uint8_T
   dataSize, const uint8_T tempData[16]);
-static void shiftArray(const int32_T array[23], real_T nValues);
 static void updateOutput(void);
 static void testIndex(void);
+static void shiftArray(const int32_T array[23], real_T nValues);
 static void updateData(void);
 static void checkGear(void);
 static void sendAccCommand(uint16_T com);
@@ -2117,36 +2118,6 @@ static void createRequest(uint8_T operation, uint8_T page, uint8_T cell, uint8_T
 }
 
 /* Function for Chart: '<S2>/EEPROM_OutputRequest' */
-static void shiftArray(const int32_T array[23], real_T nValues)
-{
-  real_T b_index;
-  int32_T tmp;
-  for (b_index = 1.0; b_index <= nValues; b_index++) {
-    /* NEW_PATTERN */
-    tmp = array[(int32_T)b_index - 1] >> 8;
-    if (tmp < 0) {
-      tmp = 0;
-    } else {
-      if (tmp > 255) {
-        tmp = 255;
-      }
-    }
-
-    rtDW.tempShiftedArray[(int32_T)(2.0 * b_index - 1.0) - 1] = (uint8_T)tmp;
-    tmp = array[(int32_T)b_index - 1];
-    if (array[(int32_T)b_index - 1] < 0) {
-      tmp = 0;
-    } else {
-      if (array[(int32_T)b_index - 1] > 65535) {
-        tmp = 65535;
-      }
-    }
-
-    rtDW.tempShiftedArray[(int32_T)(2.0 * b_index) - 1] = (uint8_T)(tmp & 255);
-  }
-}
-
-/* Function for Chart: '<S2>/EEPROM_OutputRequest' */
 static void updateOutput(void)
 {
   int32_T i;
@@ -2180,6 +2151,36 @@ static void testIndex(void)
                      rtDW.OutportBufferFordataRead, &rtDW.Evaluate_Request_l);
 
     /* End of Outputs for SubSystem: '<S2>/Evaluate_Request' */
+  }
+}
+
+/* Function for Chart: '<S2>/EEPROM_OutputRequest' */
+static void shiftArray(const int32_T array[23], real_T nValues)
+{
+  real_T b_index;
+  int32_T tmp;
+  for (b_index = 1.0; b_index <= nValues; b_index++) {
+    /* NEW_PATTERN */
+    tmp = array[(int32_T)b_index - 1] >> 8;
+    if (tmp < 0) {
+      tmp = 0;
+    } else {
+      if (tmp > 255) {
+        tmp = 255;
+      }
+    }
+
+    rtDW.tempShiftedArray[(int32_T)(2.0 * b_index - 1.0) - 1] = (uint8_T)tmp;
+    tmp = array[(int32_T)b_index - 1];
+    if (array[(int32_T)b_index - 1] < 0) {
+      tmp = 0;
+    } else {
+      if (array[(int32_T)b_index - 1] > 65535) {
+        tmp = 65535;
+      }
+    }
+
+    rtDW.tempShiftedArray[(int32_T)(2.0 * b_index) - 1] = (uint8_T)(tmp & 255);
   }
 }
 
@@ -2567,6 +2568,11 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
     }
 
     rtDW.is_active_EEPROM_TRIGGER = 1U;
+    rtDW.counterWait = 0.0;
+    if (rtDW.is_EEPROM_TRIGGER != IN_WAIT_m) {
+      rtDW.is_EEPROM_TRIGGER = IN_WAIT_m;
+      rtDW.counterWait = 1.0;
+    }
   } else {
     if (rtDW.is_active_MODES != 0U) {
       MODES();
@@ -2685,124 +2691,158 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
     }
 
     if (rtDW.is_active_EEPROM_TRIGGER != 0U) {
-      /* Chart: '<S2>/EEPROM_OutputRequest' */
-      /* Chart: '<S2>/EEPROM_OutputRequest' incorporates:
-       *  Outport: '<Root>/eepromStateDebug'
-       */
-      switch (rtDW.is_c6_GCU_Model_genCode) {
-       case IN_BUFFER:
-        testIndex();
-        break;
-
-       case IN_ERROR:
-        break;
-
-       case IN_INIT:
-        if ((rtY.eepromStateDebug == 255) || (!(rtY.eepromStateDebug == 252))) {
-          rtDW.is_c6_GCU_Model_genCode = IN_LOAD_TO_EEPROM;
-          rtDW.counter = 0U;
-          rtDW.newData[0] = 0U;
-          rtDW.newData[1] = 0U;
-          rtDW.newData[2] = 0U;
-          rtDW.newData[3] = 0U;
-          rtDW.newData[4] = 0U;
-          rtDW.newData[5] = 0U;
-          rtDW.newData[6] = 0U;
-          rtDW.newData[7] = 0U;
-          rtDW.newData[8] = 0U;
-          rtDW.newData[9] = 0U;
-          rtDW.newData[10] = 0U;
-          rtDW.newData[11] = 0U;
-          rtDW.newData[12] = 0U;
-          rtDW.newData[13] = 0U;
-          rtDW.newData[14] = 0U;
-          rtDW.newData[15] = 0U;
-          rtDW.is_LOAD_TO_EEPROM = IN_FIRST_BYTE;
-          rtDW.newData[0] = 252U;
-          createRequest(87, 0, 0, 1, rtDW.newData);
-
-          /* Outputs for Function Call SubSystem: '<S2>/Evaluate_Request' */
-          Evaluate_Request(&rtDW.outputRequest, &rtDW.Eeprom_write_o1,
-                           &rtDW.Eeprom_read_o1, &rtDW.Eeprom_write_o2,
-                           rtDW.OutportBufferFordataRead,
-                           &rtDW.Evaluate_Request_l);
-
-          /* End of Outputs for SubSystem: '<S2>/Evaluate_Request' */
-        } else {
-          rtDW.is_c6_GCU_Model_genCode = IN_BUFFER;
-          testIndex();
+      switch (rtDW.is_EEPROM_TRIGGER) {
+       case IN_SEND:
+        rtDW.is_EEPROM_TRIGGER = 0;
+        if (rtDW.is_EEPROM_TRIGGER != IN_WAIT_m) {
+          rtDW.is_EEPROM_TRIGGER = IN_WAIT_m;
+          rtDW.counterWait = 1.0;
         }
         break;
 
-       default:
-        switch (rtDW.is_LOAD_TO_EEPROM) {
-         case IN_ACC_PARAMETERS:
-          break;
+       case IN_WAIT_m:
+        if (rtDW.counterWait >= 10.0) {
+          rtDW.is_EEPROM_TRIGGER = 0;
+          if (rtDW.is_EEPROM_TRIGGER != IN_SEND) {
+            rtDW.is_EEPROM_TRIGGER = IN_SEND;
 
-         case IN_FIRST_BYTE:
-          rtDW.is_LOAD_TO_EEPROM = IN_GEARSHIFT_TIMINGS;
-          shiftArray(rtDW.load_default_timings, 23.0);
-          extractValues();
-          i = (int32_T)(rtDW.counter + 1U);
-          rtb_RateTransition1 = i;
-          if ((uint32_T)i > 255U) {
-            rtb_RateTransition1 = 255;
-          }
+            /* Chart: '<S2>/EEPROM_OutputRequest' */
+            /* Chart: '<S2>/EEPROM_OutputRequest' incorporates:
+             *  Outport: '<Root>/eepromStateDebug'
+             */
+            switch (rtDW.is_c6_GCU_Model_genCode) {
+             case IN_BUFFER:
+              testIndex();
+              break;
 
-          createRequest(87, (uint8_T)rtb_RateTransition1, 0, 16, rtDW.newData);
+             case IN_ERROR:
+              break;
 
-          /* Outputs for Function Call SubSystem: '<S2>/Evaluate_Request' */
-          Evaluate_Request(&rtDW.outputRequest, &rtDW.Eeprom_write_o1,
-                           &rtDW.Eeprom_read_o1, &rtDW.Eeprom_write_o2,
-                           rtDW.OutportBufferFordataRead,
-                           &rtDW.Evaluate_Request_l);
+             case IN_INIT:
+              switch (rtY.eepromStateDebug) {
+               case 255:
+                rtDW.is_c6_GCU_Model_genCode = IN_LOAD_TO_EEPROM;
+                rtDW.counter = 0U;
+                rtDW.newData[0] = 0U;
+                rtDW.newData[1] = 0U;
+                rtDW.newData[2] = 0U;
+                rtDW.newData[3] = 0U;
+                rtDW.newData[4] = 0U;
+                rtDW.newData[5] = 0U;
+                rtDW.newData[6] = 0U;
+                rtDW.newData[7] = 0U;
+                rtDW.newData[8] = 0U;
+                rtDW.newData[9] = 0U;
+                rtDW.newData[10] = 0U;
+                rtDW.newData[11] = 0U;
+                rtDW.newData[12] = 0U;
+                rtDW.newData[13] = 0U;
+                rtDW.newData[14] = 0U;
+                rtDW.newData[15] = 0U;
+                rtDW.is_LOAD_TO_EEPROM = IN_FIRST_BYTE;
+                rtDW.newData[0] = 252U;
+                createRequest(87, 0, 0, 1, rtDW.newData);
 
-          /* End of Outputs for SubSystem: '<S2>/Evaluate_Request' */
-          if ((uint32_T)i > 255U) {
-            i = 255;
-          }
+                /* Outputs for Function Call SubSystem: '<S2>/Evaluate_Request' */
+                Evaluate_Request(&rtDW.outputRequest, &rtDW.Eeprom_write_o1,
+                                 &rtDW.Eeprom_read_o1, &rtDW.Eeprom_write_o2,
+                                 rtDW.OutportBufferFordataRead,
+                                 &rtDW.Evaluate_Request_l);
 
-          rtDW.counter = (uint8_T)i;
-          for (i = 0; i < 16; i++) {
-            rtDW.dataDebug[i] = rtDW.newData[i];
-          }
-          break;
+                /* End of Outputs for SubSystem: '<S2>/Evaluate_Request' */
+                break;
 
-         default:
-          if (rtDW.counter >= 3) {
-            rtDW.is_LOAD_TO_EEPROM = IN_ACC_PARAMETERS;
-          } else {
-            extractValues();
-            i = (int32_T)(rtDW.counter + 1U);
-            rtb_RateTransition1 = i;
-            if ((uint32_T)i > 255U) {
-              rtb_RateTransition1 = 255;
+               case 252:
+                rtDW.is_c6_GCU_Model_genCode = IN_BUFFER;
+                testIndex();
+                break;
+
+               default:
+                rtDW.is_c6_GCU_Model_genCode = IN_ERROR;
+                break;
+              }
+              break;
+
+             default:
+              switch (rtDW.is_LOAD_TO_EEPROM) {
+               case IN_ACC_PARAMETERS:
+                rtDW.is_LOAD_TO_EEPROM = 0;
+                rtDW.is_c6_GCU_Model_genCode = IN_BUFFER;
+                testIndex();
+                break;
+
+               case IN_FIRST_BYTE:
+                rtDW.is_LOAD_TO_EEPROM = IN_GEARSHIFT_TIMINGS;
+                shiftArray(rtDW.load_default_timings, 23.0);
+                extractValues();
+                i = (int32_T)(rtDW.counter + 1U);
+                rtb_RateTransition1 = i;
+                if ((uint32_T)i > 255U) {
+                  rtb_RateTransition1 = 255;
+                }
+
+                createRequest(87, (uint8_T)rtb_RateTransition1, 0, 16,
+                              rtDW.newData);
+
+                /* Outputs for Function Call SubSystem: '<S2>/Evaluate_Request' */
+                Evaluate_Request(&rtDW.outputRequest, &rtDW.Eeprom_write_o1,
+                                 &rtDW.Eeprom_read_o1, &rtDW.Eeprom_write_o2,
+                                 rtDW.OutportBufferFordataRead,
+                                 &rtDW.Evaluate_Request_l);
+
+                /* End of Outputs for SubSystem: '<S2>/Evaluate_Request' */
+                if ((uint32_T)i > 255U) {
+                  i = 255;
+                }
+
+                rtDW.counter = (uint8_T)i;
+                for (i = 0; i < 16; i++) {
+                  rtDW.dataDebug[i] = rtDW.newData[i];
+                }
+                break;
+
+               default:
+                if (rtDW.counter >= 3) {
+                  rtDW.is_LOAD_TO_EEPROM = IN_ACC_PARAMETERS;
+                } else {
+                  extractValues();
+                  i = (int32_T)(rtDW.counter + 1U);
+                  rtb_RateTransition1 = i;
+                  if ((uint32_T)i > 255U) {
+                    rtb_RateTransition1 = 255;
+                  }
+
+                  createRequest(87, (uint8_T)rtb_RateTransition1, 0, 16,
+                                rtDW.newData);
+
+                  /* Outputs for Function Call SubSystem: '<S2>/Evaluate_Request' */
+                  Evaluate_Request(&rtDW.outputRequest, &rtDW.Eeprom_write_o1,
+                                   &rtDW.Eeprom_read_o1, &rtDW.Eeprom_write_o2,
+                                   rtDW.OutportBufferFordataRead,
+                                   &rtDW.Evaluate_Request_l);
+
+                  /* End of Outputs for SubSystem: '<S2>/Evaluate_Request' */
+                  if ((uint32_T)i > 255U) {
+                    i = 255;
+                  }
+
+                  rtDW.counter = (uint8_T)i;
+                  for (i = 0; i < 16; i++) {
+                    rtDW.dataDebug[i] = rtDW.newData[i];
+                  }
+                }
+                break;
+              }
+              break;
             }
 
-            createRequest(87, (uint8_T)rtb_RateTransition1, 0, 16, rtDW.newData);
-
-            /* Outputs for Function Call SubSystem: '<S2>/Evaluate_Request' */
-            Evaluate_Request(&rtDW.outputRequest, &rtDW.Eeprom_write_o1,
-                             &rtDW.Eeprom_read_o1, &rtDW.Eeprom_write_o2,
-                             rtDW.OutportBufferFordataRead,
-                             &rtDW.Evaluate_Request_l);
-
-            /* End of Outputs for SubSystem: '<S2>/Evaluate_Request' */
-            if ((uint32_T)i > 255U) {
-              i = 255;
-            }
-
-            rtDW.counter = (uint8_T)i;
-            for (i = 0; i < 16; i++) {
-              rtDW.dataDebug[i] = rtDW.newData[i];
-            }
+            /* End of Chart: '<S2>/EEPROM_OutputRequest' */
           }
-          break;
+        } else {
+          rtDW.counterWait++;
         }
         break;
       }
-
-      /* End of Chart: '<S2>/EEPROM_OutputRequest' */
     }
   }
 

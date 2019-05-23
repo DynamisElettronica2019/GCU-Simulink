@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.182
+ * Model version                  : 1.184
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Wed May 22 19:45:07 2019
+ * C/C++ source code generated on : Thu May 23 12:11:08 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -163,6 +163,7 @@ typedef struct {
   real_T count;                        /* '<S7>/AccelerationRoutine' */
   real_T aac_clutchValue;              /* '<S5>/GCULogic' */
   real_T aac_clutchStep;               /* '<S5>/GCULogic' */
+  real_T counterWait;                  /* '<S5>/GCULogic' */
   real_T lastEvaluatedIndex;           /* '<S2>/EEPROM_OutputRequest' */
   int32_T Merge[12];                   /* '<S23>/Merge' */
   int32_T Merge_m[23];                 /* '<S24>/Merge' */
@@ -320,6 +321,7 @@ typedef struct {
   uint8_T is_active_START_ENGINE;      /* '<S5>/GCULogic' */
   uint8_T is_SCAN_ADC;                 /* '<S5>/GCULogic' */
   uint8_T is_active_SCAN_ADC;          /* '<S5>/GCULogic' */
+  uint8_T is_EEPROM_TRIGGER;           /* '<S5>/GCULogic' */
   uint8_T is_active_EEPROM_TRIGGER;    /* '<S5>/GCULogic' */
   uint8_T lastShift;                   /* '<S5>/GCULogic' */
   uint8_T lastClutchCom;               /* '<S5>/GCULogic' */
@@ -431,7 +433,6 @@ extern RT_MODEL *const rtM;
 /*-
  * These blocks were eliminated from the model due to optimizations:
  *
- * Block '<S2>/Display' : Unused code path elimination
  * Block '<S25>/Cast' : Unused code path elimination
  * Block '<S25>/Cast1' : Unused code path elimination
  * Block '<S27>/Cast' : Unused code path elimination
