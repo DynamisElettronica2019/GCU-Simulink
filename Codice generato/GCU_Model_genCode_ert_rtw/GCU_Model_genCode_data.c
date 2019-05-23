@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.167
+ * Model version                  : 1.189
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Mon May 20 16:58:19 2019
+ * C/C++ source code generated on : Thu May 23 14:06:08 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -49,7 +49,7 @@ const ConstP rtConstP = {
    *   '<S1>/Constant'
    *   '<S9>/debugValues'
    *   '<S11>/oil_sensor'
-   *   '<S26>/Values'
+   *   '<S31>/Values'
    */
   0U
 };

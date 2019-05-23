@@ -2,7 +2,7 @@
 ## Makefile generated for Simulink model 'GCU_Model_genCode'. 
 ## 
 ## Makefile     : GCU_Model_genCode.mk
-## Generated on : Mon May 20 12:44:37 2019
+## Generated on : Thu May 23 13:38:41 2019
 ## MATLAB Coder version: 4.0 (R2018a)
 ## 
 ## Build Info:
@@ -373,6 +373,14 @@ $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS) $(MAIN_OBJ)
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
+%.obj : C:/Users/SIMONE/DOCUME~1/PROGRA~1/git/GCU-SI~1/LIBRAR~1/UARTLI~1/%.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+%.obj : C:/Users/SIMONE/DOCUME~1/PROGRA~1/git/GCU-SI~1/LIBRAR~1/UARTLI~1/%.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
 %.obj : C:/Users/SIMONE/DOCUME~1/PROGRA~1/git/GCU-SI~1/LIBRAR~1/EFILIB~1/%.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
@@ -418,14 +426,6 @@ $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS) $(MAIN_OBJ)
 
 
 %.obj : C:/Users/SIMONE/DOCUME~1/PROGRA~1/git/GCU-SI~1/LIBRAR~1/TIMERL~1/%.cpp
-	$(CPP) $(CPPFLAGS) -o "$@" "$<"
-
-
-%.obj : C:/Users/SIMONE/DOCUME~1/PROGRA~1/git/GCU-SI~1/LIBRAR~1/UARTLI~1/%.c
-	$(CC) $(CFLAGS) -o "$@" "$<"
-
-
-%.obj : C:/Users/SIMONE/DOCUME~1/PROGRA~1/git/GCU-SI~1/LIBRAR~1/UARTLI~1/%.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 

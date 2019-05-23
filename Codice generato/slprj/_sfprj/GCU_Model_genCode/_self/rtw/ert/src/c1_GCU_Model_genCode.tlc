@@ -140,6 +140,20 @@
       SrcLocation  ""\
     }\
     ChartData {\
+      Name         "is_EEPROM_TRIGGER"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "EEPROM_TRIGGER"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_active_EEPROM_TRIGGER"\
+      Description  "StateIsActive"\
+      SFName       ""\
+      Path         "EEPROM_TRIGGER"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
       Name         "is_START_ENGINE"\
       Description  "StateActiveChild"\
       SFName       ""\
@@ -165,20 +179,6 @@
       Description  "StateIsActive"\
       SFName       ""\
       Path         "SCAN_ADC"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "is_EEPROM_TRIGGER"\
-      Description  "StateActiveChild"\
-      SFName       ""\
-      Path         "EEPROM_TRIGGER"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "is_active_EEPROM_TRIGGER"\
-      Description  "StateIsActive"\
-      SFName       ""\
-      Path         "EEPROM_TRIGGER"\
       SrcLocation  ""\
     }\
     ChartData {\
