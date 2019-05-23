@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.198
+ * Model version                  : 1.200
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Thu May 23 17:58:10 2019
+ * C/C++ source code generated on : Thu May 23 19:35:25 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -31,13 +31,14 @@
 /* Named constants for Chart: '<S2>/EEPROM_OutputRequest' */
 #define IN_ACC_PARAMETERS              ((uint8_T)1U)
 #define IN_ERROR                       ((uint8_T)1U)
-#define IN_EVALUATE_SERIAL             ((uint8_T)2U)
+#define IN_EVALUATE_SERIAL             ((uint8_T)5U)
 #define IN_FIRST_BYTE                  ((uint8_T)2U)
 #define IN_GEARSHIFT_TIMINGS           ((uint8_T)3U)
 #define IN_GEARSHIFT_TIMINGS_j         ((uint8_T)2U)
-#define IN_INIT                        ((uint8_T)3U)
-#define IN_LOAD_FROM_EEPROM            ((uint8_T)4U)
-#define IN_LOAD_TO_EEPROM              ((uint8_T)5U)
+#define IN_INIT                        ((uint8_T)2U)
+#define IN_LOAD_FROM_EEPROM            ((uint8_T)3U)
+#define IN_LOAD_TO_EEPROM              ((uint8_T)4U)
+#define IN_RELOAD                      ((uint8_T)6U)
 
 /* Named constants for Chart: '<S5>/GCULogic' */
 #define AAC_WORK_RATE_ms               ((uint16_T)25U)
@@ -56,8 +57,7 @@
 #define IN_Default                     ((uint8_T)1U)
 #define IN_Default_c                   ((uint8_T)2U)
 #define IN_IDLE                        ((uint8_T)3U)
-#define IN_INIT_j                      ((uint8_T)2U)
-#define IN_INIT_jx                     ((uint8_T)4U)
+#define IN_INIT_j                      ((uint8_T)4U)
 #define IN_MANUAL_MODES                ((uint8_T)3U)
 #define IN_NEUTRAL                     ((uint8_T)1U)
 #define IN_NO_NEUTRAL                  ((uint8_T)2U)
@@ -731,13 +731,13 @@ static void checkClutch(void);
 static void enter_atomic_MANUAL_MODES(void);
 static void ACCELERATION(void);
 static void MODES(void);
-static void extractValues(uint8_T count);
-static void createRequest(uint8_T operation, uint8_T page, uint8_T cell, uint8_T
-  dataSize, const uint8_T tempData[16]);
-static void shiftArray_h(const int32_T array[12], real_T nValues);
-static void shiftArray(const int32_T array[23], real_T nValues);
 static void updateOutput(void);
 static void testIndex(void);
+static void createRequest(uint8_T operation, uint8_T page, uint8_T cell, uint8_T
+  dataSize, const uint8_T tempData[16]);
+static void extractValues(uint8_T count);
+static void shiftArray_h(const int32_T array[12], real_T nValues);
+static void shiftArray(const int32_T array[23], real_T nValues);
 static void updateData(void);
 static void checkGear(void);
 static void sendAccCommand(uint16_T com);
@@ -1400,7 +1400,7 @@ static void GEARSHIFT(void)
     }
     break;
 
-   case IN_INIT_jx:
+   case IN_INIT_j:
     rtDW.is_GEARSHIFT = IN_IDLE;
     break;
 
@@ -1999,7 +1999,7 @@ static void MODES(void)
     ACCELERATION();
     break;
 
-   case IN_INIT_j:
+   case IN_INIT:
     if (rtDW.RateTransition8[1] == AUTOX_MODE) {
       rtDW.is_MODES = 0;
       if (rtDW.is_MODES != IN_MANUAL_MODES) {
@@ -2118,6 +2118,60 @@ static void MODES(void)
 }
 
 /* Function for Chart: '<S2>/EEPROM_OutputRequest' */
+static void updateOutput(void)
+{
+  int32_T i;
+  if (rtDW.lastEvaluatedIndex >= 20.0) {
+    rtDW.lastEvaluatedIndex = 1.0;
+  } else {
+    rtDW.lastEvaluatedIndex++;
+  }
+
+  rtDW.outputRequest.operation = rtDW.RT_n[(int32_T)rtDW.lastEvaluatedIndex - 1]
+    .operation;
+  rtDW.outputRequest.page = rtDW.RT_n[(int32_T)rtDW.lastEvaluatedIndex - 1].page;
+  rtDW.outputRequest.cell = rtDW.RT_n[(int32_T)rtDW.lastEvaluatedIndex - 1].cell;
+  rtDW.outputRequest.dataSize = rtDW.RT_n[(int32_T)rtDW.lastEvaluatedIndex - 1].
+    dataSize;
+  for (i = 0; i < 16; i++) {
+    rtDW.outputRequest.data[i] = rtDW.RT_n[(int32_T)rtDW.lastEvaluatedIndex - 1]
+      .data[i];
+  }
+}
+
+/* Function for Chart: '<S2>/EEPROM_OutputRequest' */
+static void testIndex(void)
+{
+  if (rtDW.RT1 != rtDW.lastEvaluatedIndex) {
+    updateOutput();
+
+    /* Outputs for Function Call SubSystem: '<S2>/Evaluate_Request' */
+    Evaluate_Request(&rtDW.outputRequest, rtDW.load_accParameters,
+                     rtDW.load_default_timings, &rtDW.Eeprom_write_o1,
+                     &rtDW.Eeprom_read_o1, &rtDW.Eeprom_write_o2,
+                     rtDW.OutportBufferFordataRead, rtDW.Merge, rtDW.Merge1,
+                     &rtDW.Evaluate_Request_l);
+
+    /* End of Outputs for SubSystem: '<S2>/Evaluate_Request' */
+    rtDW.reloadFlag = 1.0;
+  }
+}
+
+/* Function for Chart: '<S2>/EEPROM_OutputRequest' */
+static void createRequest(uint8_T operation, uint8_T page, uint8_T cell, uint8_T
+  dataSize, const uint8_T tempData[16])
+{
+  int32_T i;
+  rtDW.outputRequest.operation = operation;
+  rtDW.outputRequest.page = page;
+  rtDW.outputRequest.cell = cell;
+  rtDW.outputRequest.dataSize = dataSize;
+  for (i = 0; i < 16; i++) {
+    rtDW.outputRequest.data[i] = tempData[i];
+  }
+}
+
+/* Function for Chart: '<S2>/EEPROM_OutputRequest' */
 static void extractValues(uint8_T count)
 {
   int32_T b_index;
@@ -2137,20 +2191,6 @@ static void extractValues(uint8_T count)
     }
 
     rtDW.newData[b_index] = rtDW.tempShiftedArray[tmp - 1];
-  }
-}
-
-/* Function for Chart: '<S2>/EEPROM_OutputRequest' */
-static void createRequest(uint8_T operation, uint8_T page, uint8_T cell, uint8_T
-  dataSize, const uint8_T tempData[16])
-{
-  int32_T i;
-  rtDW.outputRequest.operation = operation;
-  rtDW.outputRequest.page = page;
-  rtDW.outputRequest.cell = cell;
-  rtDW.outputRequest.dataSize = dataSize;
-  for (i = 0; i < 16; i++) {
-    rtDW.outputRequest.data[i] = tempData[i];
   }
 }
 
@@ -2219,45 +2259,6 @@ static void shiftArray(const int32_T array[23], real_T nValues)
     }
 
     rtDW.tempShiftedArray[(int32_T)(2.0 * b_index) - 1] = (uint8_T)(i & 255);
-  }
-}
-
-/* Function for Chart: '<S2>/EEPROM_OutputRequest' */
-static void updateOutput(void)
-{
-  int32_T i;
-  if (rtDW.lastEvaluatedIndex >= 20.0) {
-    rtDW.lastEvaluatedIndex = 1.0;
-  } else {
-    rtDW.lastEvaluatedIndex++;
-  }
-
-  rtDW.outputRequest.operation = rtDW.RT_n[(int32_T)rtDW.lastEvaluatedIndex - 1]
-    .operation;
-  rtDW.outputRequest.page = rtDW.RT_n[(int32_T)rtDW.lastEvaluatedIndex - 1].page;
-  rtDW.outputRequest.cell = rtDW.RT_n[(int32_T)rtDW.lastEvaluatedIndex - 1].cell;
-  rtDW.outputRequest.dataSize = rtDW.RT_n[(int32_T)rtDW.lastEvaluatedIndex - 1].
-    dataSize;
-  for (i = 0; i < 16; i++) {
-    rtDW.outputRequest.data[i] = rtDW.RT_n[(int32_T)rtDW.lastEvaluatedIndex - 1]
-      .data[i];
-  }
-}
-
-/* Function for Chart: '<S2>/EEPROM_OutputRequest' */
-static void testIndex(void)
-{
-  if (rtDW.RT1 != rtDW.lastEvaluatedIndex) {
-    updateOutput();
-
-    /* Outputs for Function Call SubSystem: '<S2>/Evaluate_Request' */
-    Evaluate_Request(&rtDW.outputRequest, rtDW.load_accParameters,
-                     rtDW.load_default_timings, &rtDW.Eeprom_write_o1,
-                     &rtDW.Eeprom_read_o1, &rtDW.Eeprom_write_o2,
-                     rtDW.OutportBufferFordataRead, rtDW.Merge, rtDW.Merge1,
-                     &rtDW.Evaluate_Request_l);
-
-    /* End of Outputs for SubSystem: '<S2>/Evaluate_Request' */
   }
 }
 
@@ -2519,13 +2520,13 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
     rtDW.lastAacCom = 0U;
     rtDW.lastShiftCom = 0U;
     rtDW.lastClutchCom = 0U;
-    rtDW.is_MODES = IN_INIT_j;
+    rtDW.is_MODES = IN_INIT;
     rtDW.is_active_NEUTRAL_STATE = 1U;
     rtDW.is_NEUTRAL_STATE = IN_NEUTRAL;
     rtDW.is_active_GEARSHIFT = 1U;
     rtDW.ticksCounter = 0;
-    if (rtDW.is_GEARSHIFT != IN_INIT_jx) {
-      rtDW.is_GEARSHIFT = IN_INIT_jx;
+    if (rtDW.is_GEARSHIFT != IN_INIT_j) {
+      rtDW.is_GEARSHIFT = IN_INIT_j;
       rtDW.ticksCounter = 0;
     }
 
@@ -2696,10 +2697,6 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
               testIndex();
               break;
 
-             case IN_EVALUATE_SERIAL:
-              testIndex();
-              break;
-
              case IN_INIT:
               if (rtY.eepromStateDebug == (int32_T)NEW_EEPROM) {
                 rtDW.is_c6_GCU_Model_genCode = IN_LOAD_TO_EEPROM;
@@ -2742,11 +2739,12 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
                 }
 
                 i = (int32_T)(rtDW.counter + 1U);
+                i_0 = i;
                 if ((uint32_T)i > 255U) {
-                  i = 255;
+                  i_0 = 255;
                 }
 
-                createRequest(76, (uint8_T)i, 0, 16, tmp);
+                createRequest(76, (uint8_T)i_0, 0, 16, tmp);
 
                 /* Outputs for Function Call SubSystem: '<S2>/Evaluate_Request' */
                 Evaluate_Request(&rtDW.outputRequest, rtDW.load_accParameters,
@@ -2757,7 +2755,6 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
                                  rtDW.Merge1, &rtDW.Evaluate_Request_l);
 
                 /* End of Outputs for SubSystem: '<S2>/Evaluate_Request' */
-                i = (int32_T)(rtDW.counter + 1U);
                 if ((uint32_T)i > 255U) {
                   i = 255;
                 }
@@ -2820,32 +2817,6 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
               } else if (rtDW.counter >= 3) {
                 rtDW.is_LOAD_FROM_EEPROM = IN_ACC_PARAMETERS;
                 rtDW.counter = 4U;
-                for (i = 0; i < 16; i++) {
-                  tmp[i] = 0U;
-                }
-
-                i = (int32_T)(rtDW.counter + 1U);
-                i_0 = i;
-                if ((uint32_T)i > 255U) {
-                  i_0 = 255;
-                }
-
-                createRequest(76, (uint8_T)i_0, 0, 16, tmp);
-
-                /* Outputs for Function Call SubSystem: '<S2>/Evaluate_Request' */
-                Evaluate_Request(&rtDW.outputRequest, rtDW.load_accParameters,
-                                 rtDW.load_default_timings,
-                                 &rtDW.Eeprom_write_o1, &rtDW.Eeprom_read_o1,
-                                 &rtDW.Eeprom_write_o2,
-                                 rtDW.OutportBufferFordataRead, rtDW.Merge,
-                                 rtDW.Merge1, &rtDW.Evaluate_Request_l);
-
-                /* End of Outputs for SubSystem: '<S2>/Evaluate_Request' */
-                if ((uint32_T)i > 255U) {
-                  i = 255;
-                }
-
-                rtDW.counter = (uint8_T)i;
               } else {
                 for (i = 0; i < 16; i++) {
                   tmp[i] = 0U;
@@ -2876,7 +2847,7 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
               }
               break;
 
-             default:
+             case IN_LOAD_TO_EEPROM:
               switch (rtDW.is_LOAD_TO_EEPROM) {
                case IN_ACC_PARAMETERS:
                 if (rtDW.counter >= 2) {
@@ -3005,6 +2976,36 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
                   }
                 }
                 break;
+              }
+              break;
+
+             case IN_EVALUATE_SERIAL:
+              if (rtDW.reloadFlag == 1.0) {
+                rtDW.is_c6_GCU_Model_genCode = IN_RELOAD;
+              } else {
+                testIndex();
+              }
+              break;
+
+             default:
+              if (rtDW.reloadFlag == 0.0) {
+                rtDW.is_c6_GCU_Model_genCode = IN_EVALUATE_SERIAL;
+                testIndex();
+              } else {
+                rtDW.reloadFlag = 0.0;
+                rtDW.outputRequest.operation = 76U;
+                rtDW.outputRequest.cell = 0U;
+                rtDW.outputRequest.dataSize = 16U;
+
+                /* Outputs for Function Call SubSystem: '<S2>/Evaluate_Request' */
+                Evaluate_Request(&rtDW.outputRequest, rtDW.load_accParameters,
+                                 rtDW.load_default_timings,
+                                 &rtDW.Eeprom_write_o1, &rtDW.Eeprom_read_o1,
+                                 &rtDW.Eeprom_write_o2,
+                                 rtDW.OutportBufferFordataRead, rtDW.Merge,
+                                 rtDW.Merge1, &rtDW.Evaluate_Request_l);
+
+                /* End of Outputs for SubSystem: '<S2>/Evaluate_Request' */
               }
               break;
             }

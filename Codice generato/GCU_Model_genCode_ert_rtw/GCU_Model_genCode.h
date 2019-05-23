@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.198
+ * Model version                  : 1.200
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Thu May 23 17:58:10 2019
+ * C/C++ source code generated on : Thu May 23 19:35:25 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -181,6 +181,7 @@ typedef struct {
   real_T aac_clutchStep;               /* '<S5>/GCULogic' */
   real_T counterWait;                  /* '<S5>/GCULogic' */
   real_T lastEvaluatedIndex;           /* '<S2>/EEPROM_OutputRequest' */
+  real_T reloadFlag;                   /* '<S2>/EEPROM_OutputRequest' */
   int32_T UnitDelay[24];               /* '<Root>/Unit Delay' */
   int32_T UnitDelay1[16];              /* '<Root>/Unit Delay1' */
   int32_T load_accParameters[12];      /* '<S6>/load_accParameters' */
@@ -442,6 +443,8 @@ extern RT_MODEL *const rtM;
 /*-
  * These blocks were eliminated from the model due to optimizations:
  *
+ * Block '<S20>/Display' : Unused code path elimination
+ * Block '<S24>/Display' : Unused code path elimination
  * Block '<S1>/Cast1' : Eliminate redundant data type conversion
  * Block '<S13>/Cast' : Eliminate redundant data type conversion
  * Block '<S13>/Cast1' : Eliminate redundant data type conversion
