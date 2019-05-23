@@ -16,7 +16,7 @@ MATLAB_ROOT  = c:\program files\matlab\r2018a\toolbox\stateflow\stateflow\..\..\
 BUILDARGS   = 
 #------------------------------ Include/Lib Path ------------------------------
  
-USER_INCLUDES = -I"C:\Users\sA\Desktop\git\2019\test_eeprom_seriale_modello\gcu-simulink\codice generato\slprj\_sfprj\gcu_model_gencode\_self\sfun\src" -I"C:\Users\sA\Desktop\git\2019\test_eeprom_seriale_modello\gcu-simulink\codice generato" -I"C:\Users\sA\Desktop\git\2019\test_eeprom_seriale_modello\gcu-simulink\Models" -I"C:\Users\sA\Desktop\git\2019\test_eeprom_seriale_modello\gcu-simulink\c_includes" 
+USER_INCLUDES = -I"C:\Users\SIMONE\documents\programmi per gcu\git\gcu-simulink\codice generato\slprj\_sfprj\gcu_model_gencode\_self\sfun\src" -I"C:\Users\SIMONE\documents\programmi per gcu\git\gcu-simulink\codice generato" -I"C:\Users\SIMONE\documents\programmi per gcu\git\gcu-simulink\Models" -I"C:\Users\SIMONE\documents\programmi per gcu\git\gcu-simulink\c_includes" 
 AUX_INCLUDES = 
 MLSLSF_INCLUDES  = \
     -I"C:\Program Files\MATLAB\R2018a\extern\include" \
@@ -24,7 +24,7 @@ MLSLSF_INCLUDES  = \
     -I"C:\Program Files\MATLAB\R2018a\simulink\include\sf_runtime" \
     -I"C:\Program Files\MATLAB\R2018a\stateflow\c\mex\include" \
     -I"C:\Program Files\MATLAB\R2018a\rtw\c\src" \
-    -I"C:\Users\sA\Desktop\git\2019\test_eeprom_seriale_modello\GCU-Simulink\Codice generato\slprj\_sfprj\GCU_Model_genCode\_self\sfun\src" 
+    -I"C:\Users\SIMONE\Documents\Programmi per GCU\git\GCU-Simulink\Codice generato\slprj\_sfprj\GCU_Model_genCode\_self\sfun\src" 
 
 THIRD_PARTY_INCLUDES = 
 

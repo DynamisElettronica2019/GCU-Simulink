@@ -108,16 +108,16 @@ typedef struct {
   uint8_T c1_tp_DOWN_PUSH;
   uint8_T c1_tp_DOWN_REBOUND;
   uint8_T c1_tp_DOWN_END;
-  uint8_T c1_tp_START_ENGINE;
+  uint8_T c1_tp_EEPROM_TRIGGER;
   uint8_T c1_tp_WAIT;
+  uint8_T c1_tp_SEND;
+  uint8_T c1_tp_START_ENGINE;
+  uint8_T c1_b_tp_WAIT;
   uint8_T c1_b_tp_START;
   uint8_T c1_tp_STOP;
   uint8_T c1_tp_SCAN_ADC;
-  uint8_T c1_b_tp_WAIT;
-  uint8_T c1_tp_SCAN;
-  uint8_T c1_tp_EEPROM_TRIGGER;
   uint8_T c1_c_tp_WAIT;
-  uint8_T c1_tp_SEND;
+  uint8_T c1_tp_SCAN;
   uint8_T c1_is_active_c1_GCU_Model_genCode;
   uint8_T c1_is_MODES;
   uint8_T c1_is_active_MODES;
@@ -136,12 +136,12 @@ typedef struct {
   uint8_T c1_is_DOWNSHIFTING;
   uint8_T c1_is_DOWN_START;
   uint8_T c1_is_DOWN_BRAKE;
+  uint8_T c1_is_EEPROM_TRIGGER;
+  uint8_T c1_is_active_EEPROM_TRIGGER;
   uint8_T c1_is_START_ENGINE;
   uint8_T c1_is_active_START_ENGINE;
   uint8_T c1_is_SCAN_ADC;
   uint8_T c1_is_active_SCAN_ADC;
-  uint8_T c1_is_EEPROM_TRIGGER;
-  uint8_T c1_is_active_EEPROM_TRIGGER;
   uint8_T c1_lastShift;
   uint16_T c1_lastAacCom;
   uint16_T c1_lastShiftCom;
@@ -269,8 +269,8 @@ typedef struct {
   uint8_T (*c1_clutchCom)[2];
   uint16_T (*c1_modeCom)[2];
   uint16_T *c1_accFb;
-  int32_T (*c1_acc_parameters)[12];
-  int32_T (*c1_timings)[23];
+  int32_T (*c1_acc_parameters)[16];
+  int32_T (*c1_timings)[24];
 } SFc1_GCU_Model_genCodeInstanceStruct;
 
 #endif                                 /*typedef_SFc1_GCU_Model_genCodeInstanceStruct*/

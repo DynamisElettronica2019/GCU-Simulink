@@ -7,7 +7,7 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   8 \
+    NumChartData   7 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
@@ -53,7 +53,7 @@
       Name         "counter"\
       Description  "ChartLocal"\
       SFName       ""\
-      Path         "LOAD_TO_EEPROM.counter"\
+      Path         "counter"\
       SrcLocation  ""\
     }\
     ChartData {\
@@ -63,13 +63,6 @@
       Path         "LOAD_TO_EEPROM.newData"\
       SrcLocation  ""\
       Dimensions   [1,16]\
-    }\
-    ChartData {\
-      Name         "counter"\
-      Description  "ChartLocal"\
-      SFName       ""\
-      Path         "LOAD_FROM_EEPROM.counter"\
-      SrcLocation  ""\
     }\
   }
   %return ChartDataElements

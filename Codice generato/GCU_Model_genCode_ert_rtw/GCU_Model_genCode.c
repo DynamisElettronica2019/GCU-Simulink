@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.190
+ * Model version                  : 1.198
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Thu May 23 15:16:06 2019
+ * C/C++ source code generated on : Thu May 23 17:58:10 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -30,8 +30,8 @@
 
 /* Named constants for Chart: '<S2>/EEPROM_OutputRequest' */
 #define IN_ACC_PARAMETERS              ((uint8_T)1U)
-#define IN_BUFFER                      ((uint8_T)1U)
-#define IN_ERROR                       ((uint8_T)2U)
+#define IN_ERROR                       ((uint8_T)1U)
+#define IN_EVALUATE_SERIAL             ((uint8_T)2U)
 #define IN_FIRST_BYTE                  ((uint8_T)2U)
 #define IN_GEARSHIFT_TIMINGS           ((uint8_T)3U)
 #define IN_GEARSHIFT_TIMINGS_j         ((uint8_T)2U)
@@ -99,16 +99,6 @@
 #define IN_TPS_On                      ((uint8_T)8U)
 #define IN_Wait                        ((uint8_T)9U)
 #define IN_delay                       ((uint8_T)10U)
-#include "solver_zc.h"
-#include "zero_crossing_types.h"
-#ifndef slZcHadEvent
-#define slZcHadEvent(ev, zcsDir)       (((ev) & (zcsDir)) != 0x00 )
-#endif
-
-#ifndef slZcUnAliasEvents
-#define slZcUnAliasEvents(evL, evR)    ((((slZcHadEvent((evL), (SL_ZCS_EVENT_N2Z)) && slZcHadEvent((evR), (SL_ZCS_EVENT_Z2P))) || (slZcHadEvent((evL), (SL_ZCS_EVENT_P2Z)) && slZcHadEvent((evR), (SL_ZCS_EVENT_Z2N)))) ? (SL_ZCS_EVENT_NUL) : (evR)))
-#endif
-
 #ifndef UCHAR_MAX
 #include <limits.h>
 #endif
@@ -719,12 +709,13 @@ static void Gearmotor_brake(uint8_T *rty_Pin_In1, uint8_T *rty_Pin_In2, uint8_T 
   rty_Pin_H, DW_Gearmotor_brake *localDW);
 static void EngineControl_Start(uint8_T *rty_engine_starter,
   DW_EngineControl_Start *localDW);
-static void Evaluate_Request_Init(uint16_T rty_gearshiftTimings[24], uint16_T
-  rty_accParameters[12]);
-static void Evaluate_Request(const eepromRequest *rtu_request, uint8_T
-  *rty_writeResult, uint8_T *rty_readResult, uint8_T *rty_wpState, uint8_T
-  rty_dataRead[19], uint16_T rty_gearshiftTimings[24], uint16_T
-  rty_accParameters[12], DW_Evaluate_Request *localDW);
+static void Evaluate_Request_Init(int32_T rty_gearshiftTimings[24], int32_T
+  rty_accParameters[16]);
+static void Evaluate_Request(const eepromRequest *rtu_request, const int32_T
+  rtu_accInitialParameters[12], const int32_T rtu_gearshiftInitialTimings[23],
+  uint8_T *rty_writeResult, uint8_T *rty_readResult, uint8_T *rty_wpState,
+  uint8_T rty_dataRead[19], int32_T rty_gearshiftTimings[24], int32_T
+  rty_accParameters[16], DW_Evaluate_Request *localDW);
 static void SCAN_ADCScanADC(void);
 static void Gearmotor_release(void);
 
@@ -740,12 +731,13 @@ static void checkClutch(void);
 static void enter_atomic_MANUAL_MODES(void);
 static void ACCELERATION(void);
 static void MODES(void);
-static void extractValues(void);
+static void extractValues(uint8_T count);
 static void createRequest(uint8_T operation, uint8_T page, uint8_T cell, uint8_T
   dataSize, const uint8_T tempData[16]);
+static void shiftArray_h(const int32_T array[12], real_T nValues);
+static void shiftArray(const int32_T array[23], real_T nValues);
 static void updateOutput(void);
 static void testIndex(void);
-static void shiftArray(const int32_T array[23], real_T nValues);
 static void updateData(void);
 static void checkGear(void);
 static void sendAccCommand(uint16_T com);
@@ -754,81 +746,6 @@ static void sendModeCommand(uint16_T com);
 static void sendShiftCommand(uint16_T com);
 static void sendStartEngCommand(void);
 static void updateBuffer(const eepromRequest *BusConversion_InsertedFor_EEPRO);
-extern ZCEventType rt_I32ZCFcn(ZCDirection zcDir, ZCSigState *prevZc, int32_T
-  currValue);
-
-/* Detect zero crossings events. */
-ZCEventType rt_I32ZCFcn(ZCDirection zcDir, ZCSigState *prevZc, int32_T currValue)
-{
-  slZcEventType zcsDir;
-  slZcEventType tempEv;
-  ZCEventType zcEvent = NO_ZCEVENT;    /* assume */
-
-  /* zcEvent matrix */
-  static const slZcEventType eventMatrix[4][4] = {
-    /*          ZER              POS              NEG              UNK */
-    { SL_ZCS_EVENT_NUL, SL_ZCS_EVENT_Z2P, SL_ZCS_EVENT_Z2N, SL_ZCS_EVENT_NUL },/* ZER */
-
-    { SL_ZCS_EVENT_P2Z, SL_ZCS_EVENT_NUL, SL_ZCS_EVENT_P2N, SL_ZCS_EVENT_NUL },/* POS */
-
-    { SL_ZCS_EVENT_N2Z, SL_ZCS_EVENT_N2P, SL_ZCS_EVENT_NUL, SL_ZCS_EVENT_NUL },/* NEG */
-
-    { SL_ZCS_EVENT_NUL, SL_ZCS_EVENT_NUL, SL_ZCS_EVENT_NUL, SL_ZCS_EVENT_NUL }/* UNK */
-  };
-
-  /* get prevZcEvent and prevZcSign from prevZc */
-  slZcEventType prevEv = (slZcEventType)(((uint8_T)(*prevZc)) >> 2);
-  slZcSignalSignType prevSign = (slZcSignalSignType)(((uint8_T)(*prevZc)) &
-    (uint8_T)0x03);
-
-  /* get current zcSignal sign from current zcSignal value */
-  slZcSignalSignType currSign = (slZcSignalSignType)((currValue) > 0 ?
-    SL_ZCS_SIGN_POS :
-    ((currValue) < 0 ? SL_ZCS_SIGN_NEG : SL_ZCS_SIGN_ZERO));
-
-  /* get current zcEvent based on prev and current zcSignal value */
-  slZcEventType currEv = eventMatrix[prevSign][currSign];
-
-  /* get slZcEventType from ZCDirection */
-  switch (zcDir) {
-   case ANY_ZERO_CROSSING:
-    zcsDir = SL_ZCS_EVENT_ALL;
-    break;
-
-   case FALLING_ZERO_CROSSING:
-    zcsDir = SL_ZCS_EVENT_ALL_DN;
-    break;
-
-   case RISING_ZERO_CROSSING:
-    zcsDir = SL_ZCS_EVENT_ALL_UP;
-    break;
-
-   default:
-    zcsDir = SL_ZCS_EVENT_NUL;
-    break;
-  }
-
-  /*had event, check if double zc happend remove double detection. */
-  if (slZcHadEvent(currEv, zcsDir)) {
-    currEv = (slZcEventType)(slZcUnAliasEvents(prevEv, currEv));
-  } else {
-    currEv = SL_ZCS_EVENT_NUL;
-  }
-
-  /* Update prevZc */
-  tempEv = (slZcEventType)(currEv << 2);/* shift left by 2 bits */
-  *prevZc = (ZCSigState)((currSign) | (tempEv));
-  if ((currEv & SL_ZCS_EVENT_ALL_DN) != 0) {
-    zcEvent = FALLING_ZCEVENT;
-  } else if ((currEv & SL_ZCS_EVENT_ALL_UP) != 0) {
-    zcEvent = RISING_ZCEVENT;
-  } else {
-    zcEvent = NO_ZCEVENT;
-  }
-
-  return zcEvent;
-}                                      /* end rt_I32ZCFcn */
-
 static uint16_T look1_iu16lu64n48_binlcse(uint16_T u0, const uint16_T bp0[],
   const uint16_T table[], uint32_T maxIndex)
 {
@@ -899,31 +816,31 @@ static uint16_T look1_iu16lu64n48_binlcse(uint16_T u0, const uint16_T bp0[],
 
 /*
  * Output and update for function-call system:
- *    '<S32>/Efi_setRpmLimiter'
- *    '<S37>/SetRPMLimiter'
+ *    '<S33>/Efi_setRpmLimiter'
+ *    '<S38>/SetRPMLimiter'
  */
 static void Efi_setRpmLimiter(uint8_T *rty_rpmLimiter_pin, DW_Efi_setRpmLimiter *
   localDW)
 {
-  /* S-Function (Efi_setRPMLimiter): '<S34>/Efi SetRPMLimiter' */
+  /* S-Function (Efi_setRPMLimiter): '<S35>/Efi SetRPMLimiter' */
   Efi_setRPMLimiter_Outputs_wrapper(&localDW->EfiSetRPMLimiter);
 
-  /* SignalConversion: '<S34>/OutportBufferForrpmLimiter_pin' */
+  /* SignalConversion: '<S35>/OutportBufferForrpmLimiter_pin' */
   *rty_rpmLimiter_pin = localDW->EfiSetRPMLimiter;
 }
 
 /*
  * Output and update for function-call system:
- *    '<S32>/Efi_unsetRpmLimiter'
- *    '<S37>/UnsetRPMLimiter'
+ *    '<S33>/Efi_unsetRpmLimiter'
+ *    '<S38>/UnsetRPMLimiter'
  */
 static void Efi_unsetRpmLimiter(uint8_T *rty_rpmLimiter_pin,
   DW_Efi_unsetRpmLimiter *localDW)
 {
-  /* S-Function (Efi_unsetRPMLimiter): '<S35>/Efi UnSetRPMLimiter' */
+  /* S-Function (Efi_unsetRPMLimiter): '<S36>/Efi UnSetRPMLimiter' */
   Efi_unsetRPMLimiter_Outputs_wrapper(&localDW->EfiUnSetRPMLimiter);
 
-  /* SignalConversion: '<S35>/OutportBufferForrpmLimiter_pin' */
+  /* SignalConversion: '<S36>/OutportBufferForrpmLimiter_pin' */
   *rty_rpmLimiter_pin = localDW->EfiUnSetRPMLimiter;
 }
 
@@ -931,133 +848,99 @@ static void Efi_unsetRpmLimiter(uint8_T *rty_rpmLimiter_pin,
 static void AAC_ExternalValues(uint16_T rtu_Value, uint16_T rtu_Index, uint16_T
   rty_Values[3], DW_AAC_ExternalValues *localDW)
 {
-  /* Assignment: '<S31>/Assignment' incorporates:
-   *  UnitDelay: '<S31>/Unit Delay'
+  /* Assignment: '<S32>/Assignment' incorporates:
+   *  UnitDelay: '<S32>/Unit Delay'
    */
   rty_Values[0] = localDW->UnitDelay_DSTATE[0];
   rty_Values[1] = localDW->UnitDelay_DSTATE[1];
   rty_Values[2] = localDW->UnitDelay_DSTATE[2];
   rty_Values[rtu_Index] = rtu_Value;
 
-  /* Update for UnitDelay: '<S31>/Unit Delay' */
+  /* Update for UnitDelay: '<S32>/Unit Delay' */
   localDW->UnitDelay_DSTATE[0] = rty_Values[0];
   localDW->UnitDelay_DSTATE[1] = rty_Values[1];
   localDW->UnitDelay_DSTATE[2] = rty_Values[2];
 }
 
-/* Output and update for function-call system: '<S40>/Gearmotor_release' */
+/* Output and update for function-call system: '<S41>/Gearmotor_release' */
 static void Gearmotor_release(void)
 {
-  /* S-Function (GearMotor_release): '<S51>/GearMotor Release' */
+  /* S-Function (GearMotor_release): '<S52>/GearMotor Release' */
   GearMotor_release_Outputs_wrapper(&rtDW.GearMotorRelease);
 
-  /* SignalConversion: '<S51>/OutportBufferForPin H' */
+  /* SignalConversion: '<S52>/OutportBufferForPin H' */
   rtDW.Pin_H = rtDW.GearMotorRelease;
 }
 
-/* Output and update for function-call system: '<S40>/Gearmotor_turnRight' */
+/* Output and update for function-call system: '<S41>/Gearmotor_turnRight' */
 static void Gearmotor_turnRight(uint8_T *rty_Pin_In1, uint8_T *rty_Pin_In2,
   uint8_T *rty_Pin_H, DW_Gearmotor_turnRight *localDW)
 {
-  /* S-Function (GearMotor_turnRight): '<S53>/GearMotor Turn Right' */
+  /* S-Function (GearMotor_turnRight): '<S54>/GearMotor Turn Right' */
   GearMotor_turnRight_Outputs_wrapper(&localDW->GearMotorTurnRight_o1,
     &localDW->GearMotorTurnRight_o2, &localDW->GearMotorTurnRight_o3);
 
-  /* SignalConversion: '<S53>/OutportBufferForPin_H' */
+  /* SignalConversion: '<S54>/OutportBufferForPin_H' */
   *rty_Pin_H = localDW->GearMotorTurnRight_o3;
 
-  /* SignalConversion: '<S53>/OutportBufferForPin_In1' */
+  /* SignalConversion: '<S54>/OutportBufferForPin_In1' */
   *rty_Pin_In1 = localDW->GearMotorTurnRight_o1;
 
-  /* SignalConversion: '<S53>/OutportBufferForPin_In2' */
+  /* SignalConversion: '<S54>/OutportBufferForPin_In2' */
   *rty_Pin_In2 = localDW->GearMotorTurnRight_o2;
 }
 
-/* Output and update for function-call system: '<S40>/Gearmotor_brake' */
+/* Output and update for function-call system: '<S41>/Gearmotor_brake' */
 static void Gearmotor_brake(uint8_T *rty_Pin_In1, uint8_T *rty_Pin_In2, uint8_T *
   rty_Pin_H, DW_Gearmotor_brake *localDW)
 {
-  /* S-Function (GearMotor_brake): '<S50>/GearMotor Brake' */
+  /* S-Function (GearMotor_brake): '<S51>/GearMotor Brake' */
   GearMotor_brake_Outputs_wrapper(&localDW->GearMotorBrake_o1,
     &localDW->GearMotorBrake_o2, &localDW->GearMotorBrake_o3);
 
-  /* SignalConversion: '<S50>/OutportBufferForPin_H' */
+  /* SignalConversion: '<S51>/OutportBufferForPin_H' */
   *rty_Pin_H = localDW->GearMotorBrake_o3;
 
-  /* SignalConversion: '<S50>/OutportBufferForPin_In1' */
+  /* SignalConversion: '<S51>/OutportBufferForPin_In1' */
   *rty_Pin_In1 = localDW->GearMotorBrake_o1;
 
-  /* SignalConversion: '<S50>/OutportBufferForPin_In2' */
+  /* SignalConversion: '<S51>/OutportBufferForPin_In2' */
   *rty_Pin_In2 = localDW->GearMotorBrake_o2;
 }
 
-/* Output and update for function-call system: '<S38>/EngineControl_Start' */
+/* Output and update for function-call system: '<S39>/EngineControl_Start' */
 static void EngineControl_Start(uint8_T *rty_engine_starter,
   DW_EngineControl_Start *localDW)
 {
-  /* S-Function (EngineControl_start): '<S47>/EngineControl Start' */
+  /* S-Function (EngineControl_start): '<S48>/EngineControl Start' */
   EngineControl_start_Outputs_wrapper(&localDW->EngineControlStart);
 
-  /* SignalConversion: '<S47>/OutportBufferForengine_starter' */
+  /* SignalConversion: '<S48>/OutportBufferForengine_starter' */
   *rty_engine_starter = localDW->EngineControlStart;
 }
 
 /* System initialize for function-call system: '<S2>/Evaluate_Request' */
-static void Evaluate_Request_Init(uint16_T rty_gearshiftTimings[24], uint16_T
-  rty_accParameters[12])
+static void Evaluate_Request_Init(int32_T rty_gearshiftTimings[24], int32_T
+  rty_accParameters[16])
 {
-  /* SystemInitialize for IfAction SubSystem: '<S20>/LoadFromEEPROM' */
-  /* SystemInitialize for Chart: '<S21>/updateValues' */
-  rty_gearshiftTimings[0] = 0U;
-  rty_gearshiftTimings[1] = 0U;
-  rty_gearshiftTimings[2] = 0U;
-  rty_gearshiftTimings[3] = 0U;
-  rty_gearshiftTimings[4] = 0U;
-  rty_gearshiftTimings[5] = 0U;
-  rty_gearshiftTimings[6] = 0U;
-  rty_gearshiftTimings[7] = 0U;
-  rty_gearshiftTimings[8] = 0U;
-  rty_gearshiftTimings[9] = 0U;
-  rty_gearshiftTimings[10] = 0U;
-  rty_gearshiftTimings[11] = 0U;
-  rty_gearshiftTimings[12] = 0U;
-  rty_gearshiftTimings[13] = 0U;
-  rty_gearshiftTimings[14] = 0U;
-  rty_gearshiftTimings[15] = 0U;
-  rty_gearshiftTimings[16] = 0U;
-  rty_gearshiftTimings[17] = 0U;
-  rty_gearshiftTimings[18] = 0U;
-  rty_gearshiftTimings[19] = 0U;
-  rty_gearshiftTimings[20] = 0U;
-  rty_gearshiftTimings[21] = 0U;
-  rty_gearshiftTimings[22] = 0U;
-  rty_gearshiftTimings[23] = 0U;
-  rty_accParameters[0] = 0U;
-  rty_accParameters[1] = 0U;
-  rty_accParameters[2] = 0U;
-  rty_accParameters[3] = 0U;
-  rty_accParameters[4] = 0U;
-  rty_accParameters[5] = 0U;
-  rty_accParameters[6] = 0U;
-  rty_accParameters[7] = 0U;
-  rty_accParameters[8] = 0U;
-  rty_accParameters[9] = 0U;
-  rty_accParameters[10] = 0U;
-  rty_accParameters[11] = 0U;
+  /* SystemInitialize for Merge: '<S20>/Merge' */
+  memset(&rty_gearshiftTimings[0], 0, 24U * sizeof(int32_T));
 
-  /* End of SystemInitialize for SubSystem: '<S20>/LoadFromEEPROM' */
+  /* SystemInitialize for Merge: '<S20>/Merge1' */
+  memset(&rty_accParameters[0], 0, sizeof(int32_T) << 4U);
 }
 
 /* Output and update for function-call system: '<S2>/Evaluate_Request' */
-static void Evaluate_Request(const eepromRequest *rtu_request, uint8_T
-  *rty_writeResult, uint8_T *rty_readResult, uint8_T *rty_wpState, uint8_T
-  rty_dataRead[19], uint16_T rty_gearshiftTimings[24], uint16_T
-  rty_accParameters[12], DW_Evaluate_Request *localDW)
+static void Evaluate_Request(const eepromRequest *rtu_request, const int32_T
+  rtu_accInitialParameters[12], const int32_T rtu_gearshiftInitialTimings[23],
+  uint8_T *rty_writeResult, uint8_T *rty_readResult, uint8_T *rty_wpState,
+  uint8_T rty_dataRead[19], int32_T rty_gearshiftTimings[24], int32_T
+  rty_accParameters[16], DW_Evaluate_Request *localDW)
 {
-  int32_T b_index;
   uint16_T data_16bit[8];
-  uint32_T qY;
+  int32_T i;
   uint8_T tmp;
+  uint32_T qY;
 
   /* SignalConversion: '<S20>/TmpSignal ConversionAtBus SelectorOutport2' */
   localDW->page = rtu_request->page;
@@ -1072,6 +955,7 @@ static void Evaluate_Request(const eepromRequest *rtu_request, uint8_T
    *  Constant: '<S20>/Constant'
    *  Constant: '<S20>/Constant1'
    *  Constant: '<S20>/Constant2'
+   *  Constant: '<S20>/Constant3'
    */
   if (rtu_request->operation == 87) {
     /* Outputs for IfAction SubSystem: '<S20>/Write' incorporates:
@@ -1093,28 +977,47 @@ static void Evaluate_Request(const eepromRequest *rtu_request, uint8_T
       &localDW->dataSize, rty_readResult, &localDW->Eeprom_read_o2_e[0]);
 
     /* End of Outputs for SubSystem: '<S20>/Read' */
-  } else {
-    if (rtu_request->operation == 76) {
-      /* Outputs for IfAction SubSystem: '<S20>/LoadFromEEPROM' incorporates:
-       *  ActionPort: '<S21>/Action Port'
-       */
-      /* S-Function (Eeprom_read): '<S21>/Eeprom_read' */
-      Eeprom_read_Outputs_wrapper(&localDW->page, &localDW->cell,
-        &localDW->dataSize, &localDW->Eeprom_read_o1, &localDW->Eeprom_read_o2[0]);
+  } else if (rtu_request->operation == 76) {
+    /* Outputs for IfAction SubSystem: '<S20>/LoadFromEEPROM' incorporates:
+     *  ActionPort: '<S21>/Action Port'
+     */
+    /* S-Function (Eeprom_read): '<S21>/Eeprom_read' */
+    Eeprom_read_Outputs_wrapper(&localDW->page, &localDW->cell,
+      &localDW->dataSize, &localDW->Eeprom_read_o1, &localDW->Eeprom_read_o2[0]);
 
-      /* Chart: '<S21>/updateValues' */
-      for (b_index = 0; b_index < 8; b_index++) {
-        /* NEW_PATTERN */
-        data_16bit[b_index] = (uint16_T)((localDW->Eeprom_read_o2[((b_index + 1)
-          << 1) - 2] << 8) + localDW->Eeprom_read_o2[((b_index + 1) << 1) - 1]);
+    /* Chart: '<S21>/updateValues' */
+    for (i = 0; i < 8; i++) {
+      /* NEW_PATTERN */
+      data_16bit[i] = (uint16_T)((localDW->Eeprom_read_o2[((i + 1) << 1) - 2] <<
+        8) + localDW->Eeprom_read_o2[((i + 1) << 1) - 1]);
+    }
+
+    if ((localDW->page == 1) || (localDW->page == 2) || (localDW->page == 3)) {
+      if (localDW->page > 31) {
+        tmp = MAX_uint8_T;
+      } else {
+        tmp = (uint8_T)(localDW->page << 3);
       }
 
-      if ((localDW->page == 1) || (localDW->page == 2) || (localDW->page == 3))
-      {
-        if (localDW->page > 31) {
+      qY = tmp - /*MW:OvSatOk*/ 7U;
+      if (qY > tmp) {
+        qY = 0U;
+      }
+
+      for (i = 0; i < 8; i++) {
+        localDW->gearshiftTimings[(i + (uint8_T)qY) - 1] = data_16bit[i];
+      }
+    } else {
+      if ((localDW->page == 5) || (localDW->page == 6)) {
+        qY = localDW->page - /*MW:OvSatOk*/ 4U;
+        if (qY > localDW->page) {
+          qY = 0U;
+        }
+
+        if ((uint8_T)qY > 31) {
           tmp = MAX_uint8_T;
         } else {
-          tmp = (uint8_T)(localDW->page << 3);
+          tmp = (uint8_T)((uint8_T)qY << 3);
         }
 
         qY = tmp - /*MW:OvSatOk*/ 7U;
@@ -1122,30 +1025,55 @@ static void Evaluate_Request(const eepromRequest *rtu_request, uint8_T
           qY = 0U;
         }
 
-        for (b_index = 0; b_index < 8; b_index++) {
-          rty_gearshiftTimings[(b_index + (uint8_T)qY) - 1] = data_16bit[b_index];
-        }
-      } else {
-        if ((localDW->page == 5) || (localDW->page == 6)) {
-          if (localDW->page > 31) {
-            tmp = MAX_uint8_T;
-          } else {
-            tmp = (uint8_T)(localDW->page << 3);
-          }
-
-          qY = tmp - /*MW:OvSatOk*/ 7U;
-          if (qY > tmp) {
-            qY = 0U;
-          }
-
-          for (b_index = 0; b_index < 8; b_index++) {
-            rty_accParameters[(b_index + (uint8_T)qY) - 1] = data_16bit[b_index];
-          }
+        for (i = 0; i < 8; i++) {
+          localDW->accParameters[(i + (uint8_T)qY) - 1] = data_16bit[i];
         }
       }
+    }
 
-      /* End of Chart: '<S21>/updateValues' */
-      /* End of Outputs for SubSystem: '<S20>/LoadFromEEPROM' */
+    /* End of Chart: '<S21>/updateValues' */
+
+    /* DataTypeConversion: '<S21>/Cast2' */
+    for (i = 0; i < 24; i++) {
+      rty_gearshiftTimings[i] = localDW->gearshiftTimings[i];
+    }
+
+    /* End of DataTypeConversion: '<S21>/Cast2' */
+
+    /* DataTypeConversion: '<S21>/Cast3' */
+    for (i = 0; i < 16; i++) {
+      rty_accParameters[i] = localDW->accParameters[i];
+    }
+
+    /* End of DataTypeConversion: '<S21>/Cast3' */
+    /* End of Outputs for SubSystem: '<S20>/LoadFromEEPROM' */
+  } else {
+    if (rtu_request->operation == 69) {
+      /* Outputs for IfAction SubSystem: '<S20>/Write1' incorporates:
+       *  ActionPort: '<S24>/Action Port'
+       */
+      /* SignalConversion: '<S24>/OutportBufferForgearshiftTimings' incorporates:
+       *  Constant: '<S24>/Constant'
+       *  Inport: '<S24>/gearshiftInitialTimings'
+       */
+      memcpy(&rty_gearshiftTimings[0], &rtu_gearshiftInitialTimings[0], 23U *
+             sizeof(int32_T));
+      rty_gearshiftTimings[23] = 0;
+
+      /* SignalConversion: '<S24>/OutportBufferForaccParameters' incorporates:
+       *  Inport: '<S24>/accInitialParameters'
+       */
+      for (i = 0; i < 12; i++) {
+        rty_accParameters[i] = rtu_accInitialParameters[i];
+      }
+
+      rty_accParameters[12] = 0;
+      rty_accParameters[13] = 0;
+      rty_accParameters[14] = 0;
+      rty_accParameters[15] = 0;
+
+      /* End of SignalConversion: '<S24>/OutportBufferForaccParameters' */
+      /* End of Outputs for SubSystem: '<S20>/Write1' */
     }
   }
 
@@ -1155,9 +1083,9 @@ static void Evaluate_Request(const eepromRequest *rtu_request, uint8_T
   localDW->TmpSignalConversionAtsendEeprom[0] = localDW->page;
   localDW->TmpSignalConversionAtsendEeprom[1] = localDW->cell;
   localDW->TmpSignalConversionAtsendEeprom[2] = localDW->dataSize;
-  for (b_index = 0; b_index < 16; b_index++) {
-    localDW->TmpSignalConversionAtsendEeprom[b_index + 3] =
-      localDW->Eeprom_read_o2_e[b_index];
+  for (i = 0; i < 16; i++) {
+    localDW->TmpSignalConversionAtsendEeprom[i + 3] = localDW->
+      Eeprom_read_o2_e[i];
   }
 
   /* End of SignalConversion: '<S20>/TmpSignal ConversionAtsendEepromUARTInport1' */
@@ -1166,17 +1094,17 @@ static void Evaluate_Request(const eepromRequest *rtu_request, uint8_T
   sendEepromUART_Outputs_wrapper(&localDW->TmpSignalConversionAtsendEeprom[0]);
 
   /* SignalConversion: '<S20>/OutportBufferFordataRead' */
-  for (b_index = 0; b_index < 19; b_index++) {
-    rty_dataRead[b_index] = localDW->TmpSignalConversionAtsendEeprom[b_index];
+  for (i = 0; i < 19; i++) {
+    rty_dataRead[i] = localDW->TmpSignalConversionAtsendEeprom[i];
   }
 
   /* End of SignalConversion: '<S20>/OutportBufferFordataRead' */
 }
 
-/* Output and update for function-call system: '<S39>/SCAN_ADC.ScanADC' */
+/* Output and update for function-call system: '<S40>/SCAN_ADC.ScanADC' */
 static void SCAN_ADCScanADC(void)
 {
-  /* S-Function (ScanADC): '<S49>/ScanADC' */
+  /* S-Function (ScanADC): '<S50>/ScanADC' */
   ScanADC_Outputs_wrapper();
 }
 
@@ -1219,56 +1147,56 @@ static int32_T Gearshift_getTime(void)
   int32_T time;
   if (rtDW.is_UPSHIFTING == IN_UP_START) {
     if (rtDW.is_NEUTRAL_STATE == IN_SET_NEUTRAL) {
-      time = rtDW.Merge_m[(int32_T)DEFAULT_NT_CLUTCH_DELAY];
+      time = rtDW.UnitDelay[(int32_T)DEFAULT_NT_CLUTCH_DELAY];
     } else {
-      time = rtDW.Merge_m[(int32_T)DELAY];
+      time = rtDW.UnitDelay[(int32_T)DELAY];
     }
   } else if (rtDW.is_UPSHIFTING == IN_UP_PUSH) {
     if (rtDW.is_NEUTRAL_STATE == IN_SET_NEUTRAL) {
-      time = rtDW.Merge_m[(int32_T)NT_CLUTCH_DELAY];
+      time = rtDW.UnitDelay[(int32_T)NT_CLUTCH_DELAY];
     } else {
       switch (rtDW.RateTransition) {
        case 1:
-        time = rtDW.Merge_m[(int32_T)UP_PUSH_1_2];
+        time = rtDW.UnitDelay[(int32_T)UP_PUSH_1_2];
         break;
 
        case 2:
-        time = rtDW.Merge_m[(int32_T)UP_PUSH_2_3];
+        time = rtDW.UnitDelay[(int32_T)UP_PUSH_2_3];
         break;
 
        case 3:
-        time = rtDW.Merge_m[(int32_T)UP_PUSH_3_4];
+        time = rtDW.UnitDelay[(int32_T)UP_PUSH_3_4];
         break;
 
        case 4:
-        time = rtDW.Merge_m[(int32_T)UP_PUSH_4_5];
+        time = rtDW.UnitDelay[(int32_T)UP_PUSH_4_5];
         break;
 
        default:
-        time = rtDW.Merge_m[(int32_T)UP_PUSH_2_3];
+        time = rtDW.UnitDelay[(int32_T)UP_PUSH_2_3];
         break;
       }
     }
   } else if (rtDW.is_UPSHIFTING == IN_UP_REBOUND) {
     if (rtDW.is_NEUTRAL_STATE == IN_SET_NEUTRAL) {
-      time = rtDW.Merge_m[(int32_T)NT_REBOUND_1_N];
+      time = rtDW.UnitDelay[(int32_T)NT_REBOUND_1_N];
     } else {
-      time = rtDW.Merge_m[(int32_T)UP_REBOUND];
+      time = rtDW.UnitDelay[(int32_T)UP_REBOUND];
     }
   } else if (rtDW.is_UPSHIFTING == IN_UP_BRAKE) {
     if (rtDW.is_NEUTRAL_STATE == IN_SET_NEUTRAL) {
-      time = rtDW.Merge_m[(int32_T)NT_BRAKE_1_N];
+      time = rtDW.UnitDelay[(int32_T)NT_BRAKE_1_N];
     } else {
-      time = rtDW.Merge_m[(int32_T)UP_BRAKE];
+      time = rtDW.UnitDelay[(int32_T)UP_BRAKE];
     }
   } else if (rtDW.is_DOWNSHIFTING == IN_DOWN_START) {
-    time = rtDW.Merge_m[(int32_T)CLUTCH];
+    time = rtDW.UnitDelay[(int32_T)CLUTCH];
   } else if (rtDW.is_DOWNSHIFTING == IN_DOWN_PUSH) {
-    time = rtDW.Merge_m[(int32_T)DN_PUSH];
+    time = rtDW.UnitDelay[(int32_T)DN_PUSH];
   } else if (rtDW.is_DOWNSHIFTING == IN_DOWN_REBOUND) {
-    time = rtDW.Merge_m[(int32_T)DN_REBOUND];
+    time = rtDW.UnitDelay[(int32_T)DN_REBOUND];
   } else {
-    time = rtDW.Merge_m[(int32_T)DN_BRAKE];
+    time = rtDW.UnitDelay[(int32_T)DN_BRAKE];
   }
 
   return time;
@@ -1280,25 +1208,25 @@ static void Clutch_setValue(uint8_T setValue)
   uint8_T tmp;
   rtDW.clutchCurrVal = setValue;
 
-  /* Outputs for Function Call SubSystem: '<S36>/ClutchMotor SetPosition ' */
-  /* Saturate: '<S41>/Saturation' */
+  /* Outputs for Function Call SubSystem: '<S37>/ClutchMotor SetPosition ' */
+  /* Saturate: '<S42>/Saturation' */
   if (rtDW.clutchCurrVal < 100) {
     tmp = rtDW.clutchCurrVal;
   } else {
     tmp = 100U;
   }
 
-  /* End of Saturate: '<S41>/Saturation' */
+  /* End of Saturate: '<S42>/Saturation' */
 
-  /* Sum: '<S41>/Minus' incorporates:
-   *  Constant: '<S41>/Constant'
+  /* Sum: '<S42>/Minus' incorporates:
+   *  Constant: '<S42>/Constant'
    */
   rtDW.Minus = (uint8_T)(100 - tmp);
 
-  /* S-Function (ClutchMotor_setPosition): '<S41>/ClutchMotor SetPosition' */
+  /* S-Function (ClutchMotor_setPosition): '<S42>/ClutchMotor SetPosition' */
   ClutchMotor_setPosition_Outputs_wrapper(&rtDW.Minus);
 
-  /* End of Outputs for SubSystem: '<S36>/ClutchMotor SetPosition ' */
+  /* End of Outputs for SubSystem: '<S37>/ClutchMotor SetPosition ' */
 }
 
 /* Function for Chart: '<S5>/GCULogic' */
@@ -1315,10 +1243,10 @@ static void GEARSHIFT(void)
         if (rtDW.is_GEARSHIFT != IN_DOWN_END) {
           rtDW.is_GEARSHIFT = IN_DOWN_END;
 
-          /* Outputs for Function Call SubSystem: '<S40>/Gearmotor_release' */
+          /* Outputs for Function Call SubSystem: '<S41>/Gearmotor_release' */
           Gearmotor_release();
 
-          /* End of Outputs for SubSystem: '<S40>/Gearmotor_release' */
+          /* End of Outputs for SubSystem: '<S41>/Gearmotor_release' */
         }
       } else if (rtDW.ticksCounter < -2147483647) {
         rtDW.ticksCounter = MIN_int32_T;
@@ -1334,10 +1262,10 @@ static void GEARSHIFT(void)
           rtDW.is_DOWNSHIFTING = IN_DOWN_REBOUND;
           rtDW.ticksCounter = Gearshift_getTime();
 
-          /* Outputs for Function Call SubSystem: '<S40>/Gearmotor_release' */
+          /* Outputs for Function Call SubSystem: '<S41>/Gearmotor_release' */
           Gearmotor_release();
 
-          /* End of Outputs for SubSystem: '<S40>/Gearmotor_release' */
+          /* End of Outputs for SubSystem: '<S41>/Gearmotor_release' */
         }
       } else if (rtDW.ticksCounter < -2147483647) {
         rtDW.ticksCounter = MIN_int32_T;
@@ -1359,21 +1287,21 @@ static void GEARSHIFT(void)
             rtDW.is_DOWN_BRAKE = IN_ChangeClutch;
             Clutch_setValue(80);
 
-            /* Outputs for Function Call SubSystem: '<S40>/Gearmotor_brake' */
+            /* Outputs for Function Call SubSystem: '<S41>/Gearmotor_brake' */
             Gearmotor_brake(&rtDW.Pin_In1, &rtDW.Pin_In2, &rtDW.Pin_H,
                             &rtDW.Gearmotor_brake_c);
 
-            /* End of Outputs for SubSystem: '<S40>/Gearmotor_brake' */
+            /* End of Outputs for SubSystem: '<S41>/Gearmotor_brake' */
           }
         } else {
           if (rtDW.is_DOWN_BRAKE != IN_Default_c) {
             rtDW.is_DOWN_BRAKE = IN_Default_c;
 
-            /* Outputs for Function Call SubSystem: '<S40>/Gearmotor_brake' */
+            /* Outputs for Function Call SubSystem: '<S41>/Gearmotor_brake' */
             Gearmotor_brake(&rtDW.Pin_In1, &rtDW.Pin_In2, &rtDW.Pin_H,
                             &rtDW.Gearmotor_brake_c);
 
-            /* End of Outputs for SubSystem: '<S40>/Gearmotor_brake' */
+            /* End of Outputs for SubSystem: '<S41>/Gearmotor_brake' */
           }
         }
       } else if (rtDW.ticksCounter < -2147483647) {
@@ -1391,21 +1319,21 @@ static void GEARSHIFT(void)
           rtDW.is_DOWNSHIFTING = IN_DOWN_PUSH;
           rtDW.ticksCounter = Gearshift_getTime();
 
-          /* Outputs for Function Call SubSystem: '<S40>/Gearmotor_turnLeft' */
-          /* S-Function (GearMotor_turnLeft): '<S52>/GearMotor Turn Left' */
+          /* Outputs for Function Call SubSystem: '<S41>/Gearmotor_turnLeft' */
+          /* S-Function (GearMotor_turnLeft): '<S53>/GearMotor Turn Left' */
           GearMotor_turnLeft_Outputs_wrapper(&rtDW.GearMotorTurnLeft_o1,
             &rtDW.GearMotorTurnLeft_o2, &rtDW.GearMotorTurnLeft_o3);
 
-          /* SignalConversion: '<S52>/OutportBufferForPin_H' */
+          /* SignalConversion: '<S53>/OutportBufferForPin_H' */
           rtDW.Pin_H = rtDW.GearMotorTurnLeft_o3;
 
-          /* SignalConversion: '<S52>/OutportBufferForPin_In1' */
+          /* SignalConversion: '<S53>/OutportBufferForPin_In1' */
           rtDW.Pin_In1 = rtDW.GearMotorTurnLeft_o1;
 
-          /* SignalConversion: '<S52>/OutportBufferForPin_In2' */
+          /* SignalConversion: '<S53>/OutportBufferForPin_In2' */
           rtDW.Pin_In2 = rtDW.GearMotorTurnLeft_o2;
 
-          /* End of Outputs for SubSystem: '<S40>/Gearmotor_turnLeft' */
+          /* End of Outputs for SubSystem: '<S41>/Gearmotor_turnLeft' */
         }
       } else if (rtDW.ticksCounter < -2147483647) {
         rtDW.ticksCounter = MIN_int32_T;
@@ -1437,12 +1365,12 @@ static void GEARSHIFT(void)
         if (rtDW.is_UP_START != IN_Default) {
           rtDW.is_UP_START = IN_Default;
 
-          /* Outputs for Function Call SubSystem: '<S37>/SetCut' */
+          /* Outputs for Function Call SubSystem: '<S38>/SetCut' */
 
-          /* S-Function (Efi_setCut): '<S43>/Efi SetCut' */
+          /* S-Function (Efi_setCut): '<S44>/Efi SetCut' */
           Efi_setCut_Outputs_wrapper(&rtDW.EfiSetCut);
 
-          /* End of Outputs for SubSystem: '<S37>/SetCut' */
+          /* End of Outputs for SubSystem: '<S38>/SetCut' */
         }
       }
     } else {
@@ -1485,10 +1413,10 @@ static void GEARSHIFT(void)
         if (rtDW.is_GEARSHIFT != IN_UP_END) {
           rtDW.is_GEARSHIFT = IN_UP_END;
 
-          /* Outputs for Function Call SubSystem: '<S40>/Gearmotor_release' */
+          /* Outputs for Function Call SubSystem: '<S41>/Gearmotor_release' */
           Gearmotor_release();
 
-          /* End of Outputs for SubSystem: '<S40>/Gearmotor_release' */
+          /* End of Outputs for SubSystem: '<S41>/Gearmotor_release' */
         }
       } else if (rtDW.ticksCounter < -2147483647) {
         rtDW.ticksCounter = MIN_int32_T;
@@ -1511,19 +1439,19 @@ static void GEARSHIFT(void)
             rtDW.is_UP_REBOUND = IN_SettingNeutral;
             Clutch_setValue(0);
 
-            /* Outputs for Function Call SubSystem: '<S40>/Gearmotor_release' */
+            /* Outputs for Function Call SubSystem: '<S41>/Gearmotor_release' */
             Gearmotor_release();
 
-            /* End of Outputs for SubSystem: '<S40>/Gearmotor_release' */
+            /* End of Outputs for SubSystem: '<S41>/Gearmotor_release' */
           }
         } else {
           if (rtDW.is_UP_REBOUND != IN_Default) {
             rtDW.is_UP_REBOUND = IN_Default;
 
-            /* Outputs for Function Call SubSystem: '<S40>/Gearmotor_release' */
+            /* Outputs for Function Call SubSystem: '<S41>/Gearmotor_release' */
             Gearmotor_release();
 
-            /* End of Outputs for SubSystem: '<S40>/Gearmotor_release' */
+            /* End of Outputs for SubSystem: '<S41>/Gearmotor_release' */
           }
         }
       } else if (rtDW.ticksCounter < -2147483647) {
@@ -1541,11 +1469,11 @@ static void GEARSHIFT(void)
           rtDW.is_UPSHIFTING = IN_UP_BRAKE;
           rtDW.ticksCounter = Gearshift_getTime();
 
-          /* Outputs for Function Call SubSystem: '<S40>/Gearmotor_brake' */
+          /* Outputs for Function Call SubSystem: '<S41>/Gearmotor_brake' */
           Gearmotor_brake(&rtDW.Pin_In1, &rtDW.Pin_In2, &rtDW.Pin_H,
                           &rtDW.Gearmotor_brake_c);
 
-          /* End of Outputs for SubSystem: '<S40>/Gearmotor_brake' */
+          /* End of Outputs for SubSystem: '<S41>/Gearmotor_brake' */
         }
       } else if (rtDW.ticksCounter < -2147483647) {
         rtDW.ticksCounter = MIN_int32_T;
@@ -1567,28 +1495,28 @@ static void GEARSHIFT(void)
           if (rtDW.is_UP_PUSH != IN_CutOff) {
             rtDW.is_UP_PUSH = IN_CutOff;
 
-            /* Outputs for Function Call SubSystem: '<S37>/UnsetCut' */
+            /* Outputs for Function Call SubSystem: '<S38>/UnsetCut' */
 
-            /* S-Function (Efi_unsetCut): '<S45>/Efi UnSetCut' */
+            /* S-Function (Efi_unsetCut): '<S46>/Efi UnSetCut' */
             Efi_unsetCut_Outputs_wrapper(&rtDW.EfiUnSetCut);
 
-            /* End of Outputs for SubSystem: '<S37>/UnsetCut' */
+            /* End of Outputs for SubSystem: '<S38>/UnsetCut' */
 
-            /* Outputs for Function Call SubSystem: '<S40>/Gearmotor_turnRight' */
+            /* Outputs for Function Call SubSystem: '<S41>/Gearmotor_turnRight' */
             Gearmotor_turnRight(&rtDW.Pin_In1, &rtDW.Pin_In2, &rtDW.Pin_H,
                                 &rtDW.Gearmotor_turnRight_f);
 
-            /* End of Outputs for SubSystem: '<S40>/Gearmotor_turnRight' */
+            /* End of Outputs for SubSystem: '<S41>/Gearmotor_turnRight' */
           }
         } else {
           if (rtDW.is_UP_PUSH != IN_Default_c) {
             rtDW.is_UP_PUSH = IN_Default_c;
 
-            /* Outputs for Function Call SubSystem: '<S40>/Gearmotor_turnRight' */
+            /* Outputs for Function Call SubSystem: '<S41>/Gearmotor_turnRight' */
             Gearmotor_turnRight(&rtDW.Pin_In1, &rtDW.Pin_In2, &rtDW.Pin_H,
                                 &rtDW.Gearmotor_turnRight_f);
 
-            /* End of Outputs for SubSystem: '<S40>/Gearmotor_turnRight' */
+            /* End of Outputs for SubSystem: '<S41>/Gearmotor_turnRight' */
           }
         }
       } else if (rtDW.ticksCounter < -2147483647) {
@@ -1619,8 +1547,6 @@ static void checkShift(void)
         NEUTRAL_STATE();
       }
 
-      rtDW.sfEvent = b_previousEvent;
-      b_previousEvent = rtDW.sfEvent;
       rtDW.sfEvent = event_GearshiftUp;
       if (rtDW.is_active_GEARSHIFT != 0U) {
         GEARSHIFT();
@@ -1634,8 +1560,6 @@ static void checkShift(void)
         NEUTRAL_STATE();
       }
 
-      rtDW.sfEvent = b_previousEvent;
-      b_previousEvent = rtDW.sfEvent;
       rtDW.sfEvent = event_GearshiftDown;
       if (rtDW.is_active_GEARSHIFT != 0U) {
         GEARSHIFT();
@@ -1649,8 +1573,6 @@ static void checkShift(void)
         NEUTRAL_STATE();
       }
 
-      rtDW.sfEvent = b_previousEvent;
-      b_previousEvent = rtDW.sfEvent;
       rtDW.sfEvent = event_GearshiftUp;
       if (rtDW.is_active_GEARSHIFT != 0U) {
         GEARSHIFT();
@@ -1665,8 +1587,6 @@ static void checkShift(void)
           NEUTRAL_STATE();
         }
 
-        rtDW.sfEvent = b_previousEvent;
-        b_previousEvent = rtDW.sfEvent;
         rtDW.sfEvent = event_GearshiftDown;
         if (rtDW.is_active_GEARSHIFT != 0U) {
           GEARSHIFT();
@@ -1681,7 +1601,7 @@ static void checkShift(void)
 /* Function for Chart: '<S5>/GCULogic' */
 static int32_T getAacParam(acc_params b_index)
 {
-  return rtDW.Merge[b_index];
+  return rtDW.UnitDelay1[b_index];
 }
 
 /* Function for Chart: '<S5>/GCULogic' */
@@ -1689,9 +1609,9 @@ static void aacCheckShift(void)
 {
   int32_T b_previousEvent;
   if ((rtDW.lastShift == rtDW.RateTransition) && (rtDW.RateTransition1[RPM] >=
-       rtDW.Merge[((int32_T)RPM_LIMIT_1_2 + rtDW.RateTransition) - 1]) &&
-      (rtDW.RateTransition1[WHEEL_SPEED] >= rtDW.Merge[((int32_T)SPEED_LIMIT_1_2
-        + rtDW.RateTransition) - 1])) {
+       rtDW.UnitDelay1[((int32_T)RPM_LIMIT_1_2 + rtDW.RateTransition) - 1]) &&
+      (rtDW.RateTransition1[WHEEL_SPEED] >= rtDW.UnitDelay1[((int32_T)
+        SPEED_LIMIT_1_2 + rtDW.RateTransition) - 1])) {
     b_previousEvent = rtDW.sfEvent;
     rtDW.sfEvent = event_GearshiftUp;
     if (rtDW.is_active_GEARSHIFT != 0U) {
@@ -1737,10 +1657,10 @@ static void ACCELERATION(void)
   uint8_T tmp_0;
   if ((rtDW.RateTransition8[0] != rtDW.lastModeCom[0]) && (rtDW.RateTransition8
        [1] != rtDW.lastModeCom[1])) {
-    /* Outputs for Function Call SubSystem: '<S37>/UnsetRPMLimiter' */
+    /* Outputs for Function Call SubSystem: '<S38>/UnsetRPMLimiter' */
     Efi_unsetRpmLimiter(&rtDW.Merge2, &rtDW.UnsetRPMLimiter_c);
 
-    /* End of Outputs for SubSystem: '<S37>/UnsetRPMLimiter' */
+    /* End of Outputs for SubSystem: '<S38>/UnsetRPMLimiter' */
     rtDW.accFb = (uint16_T)ACC_OFF;
     Clutch_setValue(0);
     if (rtDW.RateTransition8[1] == AUTOX_MODE) {
@@ -1820,10 +1740,10 @@ static void ACCELERATION(void)
           if (rtDW.is_ACC != IN_STOPPING) {
             rtDW.is_ACC = IN_STOPPING;
 
-            /* Outputs for Function Call SubSystem: '<S37>/UnsetRPMLimiter' */
+            /* Outputs for Function Call SubSystem: '<S38>/UnsetRPMLimiter' */
             Efi_unsetRpmLimiter(&rtDW.Merge2, &rtDW.UnsetRPMLimiter_c);
 
-            /* End of Outputs for SubSystem: '<S37>/UnsetRPMLimiter' */
+            /* End of Outputs for SubSystem: '<S38>/UnsetRPMLimiter' */
             Clutch_setValue(0);
 
             /* sendUpdatesSW(ACC_CODE, uint16(0)); */
@@ -1903,10 +1823,10 @@ static void ACCELERATION(void)
                    getAacParam(RAMP_END))) {
                 Clutch_setValue(0);
 
-                /* Outputs for Function Call SubSystem: '<S37>/UnsetRPMLimiter' */
+                /* Outputs for Function Call SubSystem: '<S38>/UnsetRPMLimiter' */
                 Efi_unsetRpmLimiter(&rtDW.Merge2, &rtDW.UnsetRPMLimiter_c);
 
-                /* End of Outputs for SubSystem: '<S37>/UnsetRPMLimiter' */
+                /* End of Outputs for SubSystem: '<S38>/UnsetRPMLimiter' */
                 rtDW.is_ACTIVE = 0;
                 if (rtDW.is_ACTIVE != IN_RUNNING) {
                   rtDW.is_ACTIVE = IN_RUNNING;
@@ -1956,10 +1876,10 @@ static void ACCELERATION(void)
               if (rtDW.is_ACC != IN_STOPPING) {
                 rtDW.is_ACC = IN_STOPPING;
 
-                /* Outputs for Function Call SubSystem: '<S37>/UnsetRPMLimiter' */
+                /* Outputs for Function Call SubSystem: '<S38>/UnsetRPMLimiter' */
                 Efi_unsetRpmLimiter(&rtDW.Merge2, &rtDW.UnsetRPMLimiter_c);
 
-                /* End of Outputs for SubSystem: '<S37>/UnsetRPMLimiter' */
+                /* End of Outputs for SubSystem: '<S38>/UnsetRPMLimiter' */
                 Clutch_setValue(0);
 
                 /* sendUpdatesSW(ACC_CODE, uint16(0)); */
@@ -2055,10 +1975,10 @@ static void ACCELERATION(void)
           rtDW.accFb = (uint16_T)ACC_READY;
           rtDW.aacCounter = AAC_WORK_RATE_ms;
 
-          /* Outputs for Function Call SubSystem: '<S37>/SetRPMLimiter' */
+          /* Outputs for Function Call SubSystem: '<S38>/SetRPMLimiter' */
           Efi_setRpmLimiter(&rtDW.Merge2, &rtDW.SetRPMLimiter_e);
 
-          /* End of Outputs for SubSystem: '<S37>/SetRPMLimiter' */
+          /* End of Outputs for SubSystem: '<S38>/SetRPMLimiter' */
           Clutch_setValue(100);
         }
       } else {
@@ -2198,20 +2118,20 @@ static void MODES(void)
 }
 
 /* Function for Chart: '<S2>/EEPROM_OutputRequest' */
-static void extractValues(void)
+static void extractValues(uint8_T count)
 {
   int32_T b_index;
   int32_T tmp;
-  uint8_T tmp_0;
-  if (rtDW.counter > 15) {
-    tmp_0 = MAX_uint8_T;
+  uint8_T count_0;
+  if (count > 15) {
+    count_0 = MAX_uint8_T;
   } else {
-    tmp_0 = (uint8_T)(rtDW.counter << 4);
+    count_0 = (uint8_T)(count << 4);
   }
 
   for (b_index = 0; b_index < 16; b_index++) {
     /* NEW_PATTERN */
-    tmp = (b_index + tmp_0) + 1;
+    tmp = (b_index + count_0) + 1;
     if (tmp > 255) {
       tmp = 255;
     }
@@ -2231,6 +2151,74 @@ static void createRequest(uint8_T operation, uint8_T page, uint8_T cell, uint8_T
   rtDW.outputRequest.dataSize = dataSize;
   for (i = 0; i < 16; i++) {
     rtDW.outputRequest.data[i] = tempData[i];
+  }
+}
+
+/* Function for Chart: '<S2>/EEPROM_OutputRequest' */
+static void shiftArray_h(const int32_T array[12], real_T nValues)
+{
+  real_T b_index;
+  int32_T i;
+  for (i = 0; i < 50; i++) {
+    rtDW.tempShiftedArray[i] = 0U;
+  }
+
+  for (b_index = 1.0; b_index <= nValues; b_index++) {
+    /* NEW_PATTERN */
+    i = array[(int32_T)b_index - 1] >> 8;
+    if (i < 0) {
+      i = 0;
+    } else {
+      if (i > 255) {
+        i = 255;
+      }
+    }
+
+    rtDW.tempShiftedArray[(int32_T)(2.0 * b_index - 1.0) - 1] = (uint8_T)i;
+    i = array[(int32_T)b_index - 1];
+    if (array[(int32_T)b_index - 1] < 0) {
+      i = 0;
+    } else {
+      if (array[(int32_T)b_index - 1] > 65535) {
+        i = 65535;
+      }
+    }
+
+    rtDW.tempShiftedArray[(int32_T)(2.0 * b_index) - 1] = (uint8_T)(i & 255);
+  }
+}
+
+/* Function for Chart: '<S2>/EEPROM_OutputRequest' */
+static void shiftArray(const int32_T array[23], real_T nValues)
+{
+  real_T b_index;
+  int32_T i;
+  for (i = 0; i < 50; i++) {
+    rtDW.tempShiftedArray[i] = 0U;
+  }
+
+  for (b_index = 1.0; b_index <= nValues; b_index++) {
+    /* NEW_PATTERN */
+    i = array[(int32_T)b_index - 1] >> 8;
+    if (i < 0) {
+      i = 0;
+    } else {
+      if (i > 255) {
+        i = 255;
+      }
+    }
+
+    rtDW.tempShiftedArray[(int32_T)(2.0 * b_index - 1.0) - 1] = (uint8_T)i;
+    i = array[(int32_T)b_index - 1];
+    if (array[(int32_T)b_index - 1] < 0) {
+      i = 0;
+    } else {
+      if (array[(int32_T)b_index - 1] > 65535) {
+        i = 65535;
+      }
+    }
+
+    rtDW.tempShiftedArray[(int32_T)(2.0 * b_index) - 1] = (uint8_T)(i & 255);
   }
 }
 
@@ -2263,42 +2251,13 @@ static void testIndex(void)
     updateOutput();
 
     /* Outputs for Function Call SubSystem: '<S2>/Evaluate_Request' */
-    Evaluate_Request(&rtDW.outputRequest, &rtDW.Eeprom_write_o1,
+    Evaluate_Request(&rtDW.outputRequest, rtDW.load_accParameters,
+                     rtDW.load_default_timings, &rtDW.Eeprom_write_o1,
                      &rtDW.Eeprom_read_o1, &rtDW.Eeprom_write_o2,
-                     rtDW.OutportBufferFordataRead, rtDW.gearshiftTimings,
-                     rtDW.accParameters, &rtDW.Evaluate_Request_l);
+                     rtDW.OutportBufferFordataRead, rtDW.Merge, rtDW.Merge1,
+                     &rtDW.Evaluate_Request_l);
 
     /* End of Outputs for SubSystem: '<S2>/Evaluate_Request' */
-  }
-}
-
-/* Function for Chart: '<S2>/EEPROM_OutputRequest' */
-static void shiftArray(const int32_T array[23], real_T nValues)
-{
-  real_T b_index;
-  int32_T tmp;
-  for (b_index = 1.0; b_index <= nValues; b_index++) {
-    /* NEW_PATTERN */
-    tmp = array[(int32_T)b_index - 1] >> 8;
-    if (tmp < 0) {
-      tmp = 0;
-    } else {
-      if (tmp > 255) {
-        tmp = 255;
-      }
-    }
-
-    rtDW.tempShiftedArray[(int32_T)(2.0 * b_index - 1.0) - 1] = (uint8_T)tmp;
-    tmp = array[(int32_T)b_index - 1];
-    if (array[(int32_T)b_index - 1] < 0) {
-      tmp = 0;
-    } else {
-      if (array[(int32_T)b_index - 1] > 65535) {
-        tmp = 65535;
-      }
-    }
-
-    rtDW.tempShiftedArray[(int32_T)(2.0 * b_index) - 1] = (uint8_T)(tmp & 255);
   }
 }
 
@@ -2497,116 +2456,19 @@ void GCU_Model_genCode_step0(void)     /* Sample time: [9.9999999999999991E-5s, 
 /* Model step function for TID1 */
 void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
 {
-  ZCEventType zcEvent[23];
-  int32_T rtb_RateTransition1;
-  int32_T rtb_RateTransition;
-  ZCEventType zcEvent_0[12];
   uint8_T Merge_b;
   int32_T i;
   uint8_T tmp[16];
-  boolean_T tmp_0;
-  ZCEventType zcEvent_idx_1;
-  ZCEventType zcEvent_idx_0;
+  int32_T i_0;
 
-  /* Outputs for Triggered SubSystem: '<S26>/Triggered Subsystem' incorporates:
-   *  TriggerPort: '<S30>/Trigger'
-   */
-  for (i = 0; i < 23; i++) {
-    zcEvent[i] = rt_I32ZCFcn(ANY_ZERO_CROSSING,
-      &rtPrevZCX.TriggeredSubsystem_Trig_ZCE[i],
-      (rtDW.load_default_timings[i]));
-  }
+  /* UnitDelay: '<Root>/Unit Delay' */
+  memcpy(&rtDW.UnitDelay[0], &rtDW.UnitDelay_DSTATE[0], 24U * sizeof(int32_T));
 
-  tmp_0 = false;
-  for (i = 0; i < 23; i++) {
-    tmp_0 = (tmp_0 || (zcEvent[i] != NO_ZCEVENT));
-  }
-
-  if (tmp_0) {
-    /* Inport: '<S30>/In1' */
-    memcpy(&rtDW.Merge_m[0], &rtDW.load_default_timings[0], 23U * sizeof(int32_T));
-  }
-
-  /* End of Outputs for SubSystem: '<S26>/Triggered Subsystem' */
-
-  /* RateTransition: '<S26>/Rate Transition1' */
-  rtb_RateTransition1 = rtDW.RateTransition1_Buffer0;
-
-  /* RateTransition: '<S26>/Rate Transition' */
-  rtb_RateTransition = rtDW.RateTransition_Buffer0;
-
-  /* Outputs for Triggered SubSystem: '<S26>/ ' incorporates:
-   *  TriggerPort: '<S29>/Trigger'
-   */
-  zcEvent_idx_0 = rt_I32ZCFcn(ANY_ZERO_CROSSING,&rtPrevZCX._Trig_ZCE[0],
-    (rtb_RateTransition1));
-  zcEvent_idx_1 = rt_I32ZCFcn(ANY_ZERO_CROSSING,&rtPrevZCX._Trig_ZCE[1],
-    (rtb_RateTransition));
-  if ((zcEvent_idx_0 != NO_ZCEVENT) || (zcEvent_idx_1 != NO_ZCEVENT)) {
-    /* Assignment: '<S29>/Assignment' incorporates:
-     *  UnitDelay: '<S26>/Unit Delay'
-     */
-    memcpy(&rtDW.Merge_m[0], &rtDW.UnitDelay_DSTATE[0], 23U * sizeof(int32_T));
-    rtDW.Merge_m[rtb_RateTransition1] = rtb_RateTransition;
-  }
-
-  /* End of Outputs for SubSystem: '<S26>/ ' */
-
-  /* Outputs for Triggered SubSystem: '<S25>/Triggered Subsystem' incorporates:
-   *  TriggerPort: '<S28>/Trigger'
-   */
-  for (i = 0; i < 12; i++) {
-    zcEvent_0[i] = rt_I32ZCFcn(ANY_ZERO_CROSSING,
-      &rtPrevZCX.TriggeredSubsystem_Trig_ZCE_j[i],
-      (rtDW.load_accParameters[i]));
-  }
-
-  tmp_0 = false;
-  for (i = 0; i < 12; i++) {
-    tmp_0 = (tmp_0 || (zcEvent_0[i] != NO_ZCEVENT));
-  }
-
-  if (tmp_0) {
-    /* Inport: '<S28>/In1' */
-    for (i = 0; i < 12; i++) {
-      rtDW.Merge[i] = rtDW.load_accParameters[i];
-    }
-
-    /* End of Inport: '<S28>/In1' */
-  }
-
-  /* End of Outputs for SubSystem: '<S25>/Triggered Subsystem' */
-
-  /* RateTransition: '<S25>/Rate Transition1' */
-  rtb_RateTransition1 = rtDW.RateTransition1_Buffer0_a;
-
-  /* RateTransition: '<S25>/Rate Transition' */
-  rtb_RateTransition = rtDW.RateTransition_Buffer0_k;
-
-  /* Outputs for Triggered SubSystem: '<S25>/ ' incorporates:
-   *  TriggerPort: '<S27>/Trigger'
-   */
-  zcEvent_idx_0 = rt_I32ZCFcn(ANY_ZERO_CROSSING,&rtPrevZCX._Trig_ZCE_i[0],
-    (rtb_RateTransition1));
-  zcEvent_idx_1 = rt_I32ZCFcn(ANY_ZERO_CROSSING,&rtPrevZCX._Trig_ZCE_i[1],
-    (rtb_RateTransition));
-  if ((zcEvent_idx_0 != NO_ZCEVENT) || (zcEvent_idx_1 != NO_ZCEVENT)) {
-    /* Assignment: '<S27>/Assignment' incorporates:
-     *  UnitDelay: '<S25>/Unit Delay'
-     */
-    for (i = 0; i < 12; i++) {
-      rtDW.Merge[i] = rtDW.UnitDelay_DSTATE_j[i];
-    }
-
-    rtDW.Merge[rtb_RateTransition1] = rtb_RateTransition;
-
-    /* End of Assignment: '<S27>/Assignment' */
-  }
-
-  /* End of Outputs for SubSystem: '<S25>/ ' */
+  /* UnitDelay: '<Root>/Unit Delay1' */
+  memcpy(&rtDW.UnitDelay1[0], &rtDW.UnitDelay1_DSTATE[0], sizeof(int32_T) << 4U);
 
   /* RateTransition: '<Root>/Rate Transition' */
-  rtDW.RateTransition = rtDW.RateTransition_Buffer0_b;
+  rtDW.RateTransition = rtDW.RateTransition_Buffer0;
 
   /* RateTransition: '<Root>/Rate Transition1' */
   i = rtDW.RateTransition1_ActiveBufIdx * 3;
@@ -2639,9 +2501,8 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
 
   /* RateTransition: '<S2>/RT' */
   i = rtDW.RT_ActiveBufIdx * 20;
-  for (rtb_RateTransition1 = 0; rtb_RateTransition1 < 20; rtb_RateTransition1++)
-  {
-    rtDW.RT_n[rtb_RateTransition1] = rtDW.RT_Buffer[rtb_RateTransition1 + i];
+  for (i_0 = 0; i_0 < 20; i_0++) {
+    rtDW.RT_n[i_0] = rtDW.RT_Buffer[i_0 + i];
   }
 
   /* End of RateTransition: '<S2>/RT' */
@@ -2680,10 +2541,10 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
     if (rtDW.is_SCAN_ADC != IN_SCAN) {
       rtDW.is_SCAN_ADC = IN_SCAN;
 
-      /* Outputs for Function Call SubSystem: '<S39>/SCAN_ADC.ScanADC' */
+      /* Outputs for Function Call SubSystem: '<S40>/SCAN_ADC.ScanADC' */
       SCAN_ADCScanADC();
 
-      /* End of Outputs for SubSystem: '<S39>/SCAN_ADC.ScanADC' */
+      /* End of Outputs for SubSystem: '<S40>/SCAN_ADC.ScanADC' */
     }
 
     rtDW.is_active_EEPROM_TRIGGER = 1U;
@@ -2713,22 +2574,22 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
           if (rtDW.is_START_ENGINE != IN_STOP) {
             rtDW.is_START_ENGINE = IN_STOP;
 
-            /* Outputs for Function Call SubSystem: '<S38>/EngineControl_Stop' */
+            /* Outputs for Function Call SubSystem: '<S39>/EngineControl_Stop' */
 
-            /* S-Function (EngineControl_stop): '<S48>/EngineControl Stop' */
+            /* S-Function (EngineControl_stop): '<S49>/EngineControl Stop' */
             EngineControl_stop_Outputs_wrapper(&rtDW.EngineControlStop);
 
-            /* End of Outputs for SubSystem: '<S38>/EngineControl_Stop' */
+            /* End of Outputs for SubSystem: '<S39>/EngineControl_Stop' */
           }
         } else if (rtDW.RateTransition3 != rtDW.lastCom) {
           rtDW.is_START_ENGINE = 0;
           if (rtDW.is_START_ENGINE != IN_START_b) {
             rtDW.is_START_ENGINE = IN_START_b;
 
-            /* Outputs for Function Call SubSystem: '<S38>/EngineControl_Start' */
+            /* Outputs for Function Call SubSystem: '<S39>/EngineControl_Start' */
             EngineControl_Start(&Merge_b, &rtDW.EngineControl_Start_h);
 
-            /* End of Outputs for SubSystem: '<S38>/EngineControl_Start' */
+            /* End of Outputs for SubSystem: '<S39>/EngineControl_Start' */
             rtDW.lastCom = rtDW.RateTransition3;
             rtDW.startCounter = 100U;
           }
@@ -2748,10 +2609,10 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
           if (rtDW.is_START_ENGINE != IN_START_b) {
             rtDW.is_START_ENGINE = IN_START_b;
 
-            /* Outputs for Function Call SubSystem: '<S38>/EngineControl_Start' */
+            /* Outputs for Function Call SubSystem: '<S39>/EngineControl_Start' */
             EngineControl_Start(&Merge_b, &rtDW.EngineControl_Start_h);
 
-            /* End of Outputs for SubSystem: '<S38>/EngineControl_Start' */
+            /* End of Outputs for SubSystem: '<S39>/EngineControl_Start' */
             rtDW.lastCom = rtDW.RateTransition3;
             rtDW.startCounter = 100U;
           }
@@ -2764,10 +2625,10 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
           if (rtDW.is_START_ENGINE != IN_START_b) {
             rtDW.is_START_ENGINE = IN_START_b;
 
-            /* Outputs for Function Call SubSystem: '<S38>/EngineControl_Start' */
+            /* Outputs for Function Call SubSystem: '<S39>/EngineControl_Start' */
             EngineControl_Start(&Merge_b, &rtDW.EngineControl_Start_h);
 
-            /* End of Outputs for SubSystem: '<S38>/EngineControl_Start' */
+            /* End of Outputs for SubSystem: '<S39>/EngineControl_Start' */
             rtDW.lastCom = rtDW.RateTransition3;
             rtDW.startCounter = 100U;
           }
@@ -2792,10 +2653,10 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
           if (rtDW.is_SCAN_ADC != IN_SCAN) {
             rtDW.is_SCAN_ADC = IN_SCAN;
 
-            /* Outputs for Function Call SubSystem: '<S39>/SCAN_ADC.ScanADC' */
+            /* Outputs for Function Call SubSystem: '<S40>/SCAN_ADC.ScanADC' */
             SCAN_ADCScanADC();
 
-            /* End of Outputs for SubSystem: '<S39>/SCAN_ADC.ScanADC' */
+            /* End of Outputs for SubSystem: '<S40>/SCAN_ADC.ScanADC' */
           }
         } else {
           i = rtDW.timerCounter + 1;
@@ -2830,18 +2691,18 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
              *  Outport: '<Root>/eepromStateDebug'
              */
             switch (rtDW.is_c6_GCU_Model_genCode) {
-             case IN_BUFFER:
+             case IN_ERROR:
+              rtDW.is_c6_GCU_Model_genCode = IN_EVALUATE_SERIAL;
               testIndex();
               break;
 
-             case IN_ERROR:
+             case IN_EVALUATE_SERIAL:
+              testIndex();
               break;
 
              case IN_INIT:
-              switch (rtY.eepromStateDebug) {
-               case 255:
+              if (rtY.eepromStateDebug == (int32_T)NEW_EEPROM) {
                 rtDW.is_c6_GCU_Model_genCode = IN_LOAD_TO_EEPROM;
-                rtDW.counter = 0U;
                 rtDW.newData[0] = 0U;
                 rtDW.newData[1] = 0U;
                 rtDW.newData[2] = 0U;
@@ -2858,120 +2719,246 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
                 rtDW.newData[13] = 0U;
                 rtDW.newData[14] = 0U;
                 rtDW.newData[15] = 0U;
+                rtDW.counter = 0U;
                 rtDW.is_LOAD_TO_EEPROM = IN_FIRST_BYTE;
-                rtDW.newData[0] = 252U;
+                rtDW.newData[0] = (uint8_T)USED_EEPROM;
                 createRequest(87, 0, 0, 1, rtDW.newData);
 
                 /* Outputs for Function Call SubSystem: '<S2>/Evaluate_Request' */
-                Evaluate_Request(&rtDW.outputRequest, &rtDW.Eeprom_write_o1,
-                                 &rtDW.Eeprom_read_o1, &rtDW.Eeprom_write_o2,
-                                 rtDW.OutportBufferFordataRead,
-                                 rtDW.gearshiftTimings, rtDW.accParameters,
-                                 &rtDW.Evaluate_Request_l);
+                Evaluate_Request(&rtDW.outputRequest, rtDW.load_accParameters,
+                                 rtDW.load_default_timings,
+                                 &rtDW.Eeprom_write_o1, &rtDW.Eeprom_read_o1,
+                                 &rtDW.Eeprom_write_o2,
+                                 rtDW.OutportBufferFordataRead, rtDW.Merge,
+                                 rtDW.Merge1, &rtDW.Evaluate_Request_l);
 
                 /* End of Outputs for SubSystem: '<S2>/Evaluate_Request' */
-                break;
-
-               case 252:
+              } else if (rtY.eepromStateDebug == (int32_T)USED_EEPROM) {
                 rtDW.is_c6_GCU_Model_genCode = IN_LOAD_FROM_EEPROM;
-                rtDW.counter_g = 0U;
+                rtDW.counter = 0U;
                 rtDW.is_LOAD_FROM_EEPROM = IN_GEARSHIFT_TIMINGS_j;
                 for (i = 0; i < 16; i++) {
                   tmp[i] = 0U;
                 }
 
-                i = (int32_T)(rtDW.counter_g + 1U);
-                rtb_RateTransition1 = i;
-                if ((uint32_T)i > 255U) {
-                  rtb_RateTransition1 = 255;
-                }
-
-                createRequest(76, (uint8_T)rtb_RateTransition1, 0, 16, tmp);
-
-                /* Outputs for Function Call SubSystem: '<S2>/Evaluate_Request' */
-                Evaluate_Request(&rtDW.outputRequest, &rtDW.Eeprom_write_o1,
-                                 &rtDW.Eeprom_read_o1, &rtDW.Eeprom_write_o2,
-                                 rtDW.OutportBufferFordataRead,
-                                 rtDW.gearshiftTimings, rtDW.accParameters,
-                                 &rtDW.Evaluate_Request_l);
-
-                /* End of Outputs for SubSystem: '<S2>/Evaluate_Request' */
+                i = (int32_T)(rtDW.counter + 1U);
                 if ((uint32_T)i > 255U) {
                   i = 255;
                 }
 
-                rtDW.counter_g = (uint8_T)i;
-                break;
+                createRequest(76, (uint8_T)i, 0, 16, tmp);
 
-               default:
+                /* Outputs for Function Call SubSystem: '<S2>/Evaluate_Request' */
+                Evaluate_Request(&rtDW.outputRequest, rtDW.load_accParameters,
+                                 rtDW.load_default_timings,
+                                 &rtDW.Eeprom_write_o1, &rtDW.Eeprom_read_o1,
+                                 &rtDW.Eeprom_write_o2,
+                                 rtDW.OutportBufferFordataRead, rtDW.Merge,
+                                 rtDW.Merge1, &rtDW.Evaluate_Request_l);
+
+                /* End of Outputs for SubSystem: '<S2>/Evaluate_Request' */
+                i = (int32_T)(rtDW.counter + 1U);
+                if ((uint32_T)i > 255U) {
+                  i = 255;
+                }
+
+                rtDW.counter = (uint8_T)i;
+              } else {
                 rtDW.is_c6_GCU_Model_genCode = IN_ERROR;
-                break;
+                for (i = 0; i < 16; i++) {
+                  tmp[i] = 0U;
+                }
+
+                createRequest(69, 0, 0, 0, tmp);
+
+                /* Outputs for Function Call SubSystem: '<S2>/Evaluate_Request' */
+                Evaluate_Request(&rtDW.outputRequest, rtDW.load_accParameters,
+                                 rtDW.load_default_timings,
+                                 &rtDW.Eeprom_write_o1, &rtDW.Eeprom_read_o1,
+                                 &rtDW.Eeprom_write_o2,
+                                 rtDW.OutportBufferFordataRead, rtDW.Merge,
+                                 rtDW.Merge1, &rtDW.Evaluate_Request_l);
+
+                /* End of Outputs for SubSystem: '<S2>/Evaluate_Request' */
               }
               break;
 
              case IN_LOAD_FROM_EEPROM:
               if (rtDW.is_LOAD_FROM_EEPROM == IN_ACC_PARAMETERS) {
-                rtDW.is_LOAD_FROM_EEPROM = 0;
-                rtDW.is_c6_GCU_Model_genCode = IN_BUFFER;
-                testIndex();
-              } else if (rtDW.counter_g >= 3) {
+                if (rtDW.counter >= 6) {
+                  rtDW.is_LOAD_FROM_EEPROM = 0;
+                  rtDW.is_c6_GCU_Model_genCode = IN_EVALUATE_SERIAL;
+                  testIndex();
+                } else {
+                  for (i = 0; i < 16; i++) {
+                    tmp[i] = 0U;
+                  }
+
+                  i = (int32_T)(rtDW.counter + 1U);
+                  i_0 = i;
+                  if ((uint32_T)i > 255U) {
+                    i_0 = 255;
+                  }
+
+                  createRequest(76, (uint8_T)i_0, 0, 16, tmp);
+
+                  /* Outputs for Function Call SubSystem: '<S2>/Evaluate_Request' */
+                  Evaluate_Request(&rtDW.outputRequest, rtDW.load_accParameters,
+                                   rtDW.load_default_timings,
+                                   &rtDW.Eeprom_write_o1, &rtDW.Eeprom_read_o1,
+                                   &rtDW.Eeprom_write_o2,
+                                   rtDW.OutportBufferFordataRead, rtDW.Merge,
+                                   rtDW.Merge1, &rtDW.Evaluate_Request_l);
+
+                  /* End of Outputs for SubSystem: '<S2>/Evaluate_Request' */
+                  if ((uint32_T)i > 255U) {
+                    i = 255;
+                  }
+
+                  rtDW.counter = (uint8_T)i;
+                }
+              } else if (rtDW.counter >= 3) {
                 rtDW.is_LOAD_FROM_EEPROM = IN_ACC_PARAMETERS;
-              } else {
+                rtDW.counter = 4U;
                 for (i = 0; i < 16; i++) {
                   tmp[i] = 0U;
                 }
 
-                i = (int32_T)(rtDW.counter_g + 1U);
-                rtb_RateTransition1 = i;
+                i = (int32_T)(rtDW.counter + 1U);
+                i_0 = i;
                 if ((uint32_T)i > 255U) {
-                  rtb_RateTransition1 = 255;
+                  i_0 = 255;
                 }
 
-                createRequest(76, (uint8_T)rtb_RateTransition1, 0, 16, tmp);
+                createRequest(76, (uint8_T)i_0, 0, 16, tmp);
 
                 /* Outputs for Function Call SubSystem: '<S2>/Evaluate_Request' */
-                Evaluate_Request(&rtDW.outputRequest, &rtDW.Eeprom_write_o1,
-                                 &rtDW.Eeprom_read_o1, &rtDW.Eeprom_write_o2,
-                                 rtDW.OutportBufferFordataRead,
-                                 rtDW.gearshiftTimings, rtDW.accParameters,
-                                 &rtDW.Evaluate_Request_l);
+                Evaluate_Request(&rtDW.outputRequest, rtDW.load_accParameters,
+                                 rtDW.load_default_timings,
+                                 &rtDW.Eeprom_write_o1, &rtDW.Eeprom_read_o1,
+                                 &rtDW.Eeprom_write_o2,
+                                 rtDW.OutportBufferFordataRead, rtDW.Merge,
+                                 rtDW.Merge1, &rtDW.Evaluate_Request_l);
 
                 /* End of Outputs for SubSystem: '<S2>/Evaluate_Request' */
                 if ((uint32_T)i > 255U) {
                   i = 255;
                 }
 
-                rtDW.counter_g = (uint8_T)i;
+                rtDW.counter = (uint8_T)i;
+              } else {
+                for (i = 0; i < 16; i++) {
+                  tmp[i] = 0U;
+                }
+
+                i = (int32_T)(rtDW.counter + 1U);
+                if ((uint32_T)i > 255U) {
+                  i = 255;
+                }
+
+                createRequest(76, (uint8_T)i, 0, 16, tmp);
+
+                /* Outputs for Function Call SubSystem: '<S2>/Evaluate_Request' */
+                Evaluate_Request(&rtDW.outputRequest, rtDW.load_accParameters,
+                                 rtDW.load_default_timings,
+                                 &rtDW.Eeprom_write_o1, &rtDW.Eeprom_read_o1,
+                                 &rtDW.Eeprom_write_o2,
+                                 rtDW.OutportBufferFordataRead, rtDW.Merge,
+                                 rtDW.Merge1, &rtDW.Evaluate_Request_l);
+
+                /* End of Outputs for SubSystem: '<S2>/Evaluate_Request' */
+                i = (int32_T)(rtDW.counter + 1U);
+                if ((uint32_T)i > 255U) {
+                  i = 255;
+                }
+
+                rtDW.counter = (uint8_T)i;
               }
               break;
 
              default:
               switch (rtDW.is_LOAD_TO_EEPROM) {
                case IN_ACC_PARAMETERS:
-                rtDW.is_LOAD_TO_EEPROM = 0;
-                rtDW.is_c6_GCU_Model_genCode = IN_BUFFER;
-                testIndex();
+                if (rtDW.counter >= 2) {
+                  rtDW.is_LOAD_TO_EEPROM = 0;
+                  rtDW.is_c6_GCU_Model_genCode = IN_LOAD_FROM_EEPROM;
+                  rtDW.counter = 0U;
+                  rtDW.is_LOAD_FROM_EEPROM = IN_GEARSHIFT_TIMINGS_j;
+                  for (i = 0; i < 16; i++) {
+                    tmp[i] = 0U;
+                  }
+
+                  i = (int32_T)(rtDW.counter + 1U);
+                  if ((uint32_T)i > 255U) {
+                    i = 255;
+                  }
+
+                  createRequest(76, (uint8_T)i, 0, 16, tmp);
+
+                  /* Outputs for Function Call SubSystem: '<S2>/Evaluate_Request' */
+                  Evaluate_Request(&rtDW.outputRequest, rtDW.load_accParameters,
+                                   rtDW.load_default_timings,
+                                   &rtDW.Eeprom_write_o1, &rtDW.Eeprom_read_o1,
+                                   &rtDW.Eeprom_write_o2,
+                                   rtDW.OutportBufferFordataRead, rtDW.Merge,
+                                   rtDW.Merge1, &rtDW.Evaluate_Request_l);
+
+                  /* End of Outputs for SubSystem: '<S2>/Evaluate_Request' */
+                  i = (int32_T)(rtDW.counter + 1U);
+                  if ((uint32_T)i > 255U) {
+                    i = 255;
+                  }
+
+                  rtDW.counter = (uint8_T)i;
+                } else {
+                  extractValues(rtDW.counter);
+                  i = (int32_T)(rtDW.counter + 5U);
+                  if ((uint32_T)i > 255U) {
+                    i = 255;
+                  }
+
+                  createRequest(87, (uint8_T)i, 0, 16, rtDW.newData);
+
+                  /* Outputs for Function Call SubSystem: '<S2>/Evaluate_Request' */
+                  Evaluate_Request(&rtDW.outputRequest, rtDW.load_accParameters,
+                                   rtDW.load_default_timings,
+                                   &rtDW.Eeprom_write_o1, &rtDW.Eeprom_read_o1,
+                                   &rtDW.Eeprom_write_o2,
+                                   rtDW.OutportBufferFordataRead, rtDW.Merge,
+                                   rtDW.Merge1, &rtDW.Evaluate_Request_l);
+
+                  /* End of Outputs for SubSystem: '<S2>/Evaluate_Request' */
+                  i = (int32_T)(rtDW.counter + 1U);
+                  if ((uint32_T)i > 255U) {
+                    i = 255;
+                  }
+
+                  rtDW.counter = (uint8_T)i;
+                  for (i = 0; i < 16; i++) {
+                    rtDW.dataDebug[i] = rtDW.newData[i];
+                  }
+                }
                 break;
 
                case IN_FIRST_BYTE:
                 rtDW.is_LOAD_TO_EEPROM = IN_GEARSHIFT_TIMINGS;
                 shiftArray(rtDW.load_default_timings, 23.0);
-                extractValues();
+                extractValues(rtDW.counter);
                 i = (int32_T)(rtDW.counter + 1U);
-                rtb_RateTransition1 = i;
+                i_0 = i;
                 if ((uint32_T)i > 255U) {
-                  rtb_RateTransition1 = 255;
+                  i_0 = 255;
                 }
 
-                createRequest(87, (uint8_T)rtb_RateTransition1, 0, 16,
-                              rtDW.newData);
+                createRequest(87, (uint8_T)i_0, 0, 16, rtDW.newData);
 
                 /* Outputs for Function Call SubSystem: '<S2>/Evaluate_Request' */
-                Evaluate_Request(&rtDW.outputRequest, &rtDW.Eeprom_write_o1,
-                                 &rtDW.Eeprom_read_o1, &rtDW.Eeprom_write_o2,
-                                 rtDW.OutportBufferFordataRead,
-                                 rtDW.gearshiftTimings, rtDW.accParameters,
-                                 &rtDW.Evaluate_Request_l);
+                Evaluate_Request(&rtDW.outputRequest, rtDW.load_accParameters,
+                                 rtDW.load_default_timings,
+                                 &rtDW.Eeprom_write_o1, &rtDW.Eeprom_read_o1,
+                                 &rtDW.Eeprom_write_o2,
+                                 rtDW.OutportBufferFordataRead, rtDW.Merge,
+                                 rtDW.Merge1, &rtDW.Evaluate_Request_l);
 
                 /* End of Outputs for SubSystem: '<S2>/Evaluate_Request' */
                 if ((uint32_T)i > 255U) {
@@ -2986,24 +2973,26 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
 
                default:
                 if (rtDW.counter >= 3) {
+                  rtDW.counter = 0U;
                   rtDW.is_LOAD_TO_EEPROM = IN_ACC_PARAMETERS;
+                  shiftArray_h(rtDW.load_accParameters, 12.0);
                 } else {
-                  extractValues();
+                  extractValues(rtDW.counter);
                   i = (int32_T)(rtDW.counter + 1U);
-                  rtb_RateTransition1 = i;
+                  i_0 = i;
                   if ((uint32_T)i > 255U) {
-                    rtb_RateTransition1 = 255;
+                    i_0 = 255;
                   }
 
-                  createRequest(87, (uint8_T)rtb_RateTransition1, 0, 16,
-                                rtDW.newData);
+                  createRequest(87, (uint8_T)i_0, 0, 16, rtDW.newData);
 
                   /* Outputs for Function Call SubSystem: '<S2>/Evaluate_Request' */
-                  Evaluate_Request(&rtDW.outputRequest, &rtDW.Eeprom_write_o1,
-                                   &rtDW.Eeprom_read_o1, &rtDW.Eeprom_write_o2,
-                                   rtDW.OutportBufferFordataRead,
-                                   rtDW.gearshiftTimings, rtDW.accParameters,
-                                   &rtDW.Evaluate_Request_l);
+                  Evaluate_Request(&rtDW.outputRequest, rtDW.load_accParameters,
+                                   rtDW.load_default_timings,
+                                   &rtDW.Eeprom_write_o1, &rtDW.Eeprom_read_o1,
+                                   &rtDW.Eeprom_write_o2,
+                                   rtDW.OutportBufferFordataRead, rtDW.Merge,
+                                   rtDW.Merge1, &rtDW.Evaluate_Request_l);
 
                   /* End of Outputs for SubSystem: '<S2>/Evaluate_Request' */
                   if ((uint32_T)i > 255U) {
@@ -3034,11 +3023,11 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
   /* End of Outputs for SubSystem: '<Root>/GCU_timer' */
 
   /* Outputs for Triggered SubSystem: '<S10>/Triggered_Subsystem' incorporates:
-   *  TriggerPort: '<S55>/Trigger'
+   *  TriggerPort: '<S56>/Trigger'
    */
   if (((rtDW.Merge2 > 0) != (rtPrevZCX.Triggered_Subsystem_Trig_ZCE == POS_ZCSIG))
       && (rtPrevZCX.Triggered_Subsystem_Trig_ZCE != UNINITIALIZED_ZCSIG)) {
-    /* Inport: '<S55>/In1' */
+    /* Inport: '<S56>/In1' */
     rtDW.Merge_j = rtDW.Merge2;
   }
 
@@ -3047,10 +3036,10 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
   /* End of Outputs for SubSystem: '<S10>/Triggered_Subsystem' */
 
   /* Outputs for Triggered SubSystem: '<S10>/Triggered_Subsystem1' incorporates:
-   *  TriggerPort: '<S56>/Trigger'
+   *  TriggerPort: '<S57>/Trigger'
    */
   /* RateTransition: '<S10>/Rate Transition' incorporates:
-   *  Inport: '<S56>/In1'
+   *  Inport: '<S57>/In1'
    */
   if (((rtDW.RateTransition_Buffer0_g > 0) !=
        (rtPrevZCX.Triggered_Subsystem1_Trig_ZCE == POS_ZCSIG)) &&
@@ -3091,36 +3080,21 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
   /* End of Outport: '<Root>/dataDebug' */
 
   /* Outport: '<Root>/gearshiftTimings' */
-  for (i = 0; i < 24; i++) {
-    rtY.gearshiftTimings[i] = rtDW.gearshiftTimings[i];
-  }
-
-  /* End of Outport: '<Root>/gearshiftTimings' */
+  memcpy(&rtY.gearshiftTimings[0], &rtDW.Merge[0], 24U * sizeof(int32_T));
 
   /* Outport: '<Root>/accParameters' */
-  for (i = 0; i < 12; i++) {
-    rtY.accParameters[i] = rtDW.accParameters[i];
-  }
+  memcpy(&rtY.accParameters[0], &rtDW.Merge1[0], sizeof(int32_T) << 4U);
 
-  /* End of Outport: '<Root>/accParameters' */
+  /* Update for UnitDelay: '<Root>/Unit Delay' */
+  memcpy(&rtDW.UnitDelay_DSTATE[0], &rtDW.Merge[0], 24U * sizeof(int32_T));
 
-  /* Update for UnitDelay: '<S26>/Unit Delay' */
-  memcpy(&rtDW.UnitDelay_DSTATE[0], &rtDW.Merge_m[0], 23U * sizeof(int32_T));
-
-  /* Update for UnitDelay: '<S25>/Unit Delay' */
-  for (i = 0; i < 12; i++) {
-    rtDW.UnitDelay_DSTATE_j[i] = rtDW.Merge[i];
-  }
-
-  /* End of Update for UnitDelay: '<S25>/Unit Delay' */
+  /* Update for UnitDelay: '<Root>/Unit Delay1' */
+  memcpy(&rtDW.UnitDelay1_DSTATE[0], &rtDW.Merge1[0], sizeof(int32_T) << 4U);
 }
 
 /* Model step function for TID2 */
 void GCU_Model_genCode_step2(void)     /* Sample time: [0.001s, 0.0002s] */
 {
-  int32_T rtb_Cast1;
-  int32_T rtb_Cast_h;
-  int32_T rtb_Cast1_i;
   int32_T i;
   uint16_T tmp;
 
@@ -3302,34 +3276,10 @@ void GCU_Model_genCode_step2(void)     /* Sample time: [0.001s, 0.0002s] */
 
   /* End of RateTransition: '<Root>/Rate Transition14' */
 
-  /* DataTypeConversion: '<S25>/Cast' */
-  i = rtDW.accParametersIndex;
-
-  /* DataTypeConversion: '<S25>/Cast1' */
-  rtb_Cast1 = rtDW.accParametersValue;
-
-  /* DataTypeConversion: '<S26>/Cast' */
-  rtb_Cast_h = rtDW.timingsIndex;
-
-  /* DataTypeConversion: '<S26>/Cast1' */
-  rtb_Cast1_i = rtDW.timingsValue;
-
-  /* Update for RateTransition: '<S26>/Rate Transition1' */
-  rtDW.RateTransition1_Buffer0 = rtb_Cast_h;
-
-  /* Update for RateTransition: '<S26>/Rate Transition' */
-  rtDW.RateTransition_Buffer0 = rtb_Cast1_i;
-
-  /* Update for RateTransition: '<S25>/Rate Transition1' */
-  rtDW.RateTransition1_Buffer0_a = i;
-
-  /* Update for RateTransition: '<S25>/Rate Transition' */
-  rtDW.RateTransition_Buffer0_k = rtb_Cast1;
-
   /* Update for RateTransition: '<Root>/Rate Transition' incorporates:
    *  DataTypeConversion: '<Root>/Cast'
    */
-  rtDW.RateTransition_Buffer0_b = (uint8_T)rtDW.currGear;
+  rtDW.RateTransition_Buffer0 = (uint8_T)rtDW.currGear;
 
   /* Update for RateTransition: '<Root>/Rate Transition1' */
   rtDW.RateTransition1_Buffer[(rtDW.RateTransition1_ActiveBufIdx == 0) * 3] =
@@ -3776,110 +3726,87 @@ void GCU_Model_genCode_initialize(void)
   /* initialize sample time offsets */
   /* initialize sample time offsets */
   /* initialize sample time offsets */
-  {
-    int32_T i;
 
-    /* Start for RateTransition: '<S2>/RT1' */
-    rtDW.RT1 = 1.0;
-    rtPrevZCX._Trig_ZCE_i[0] = UNINITIALIZED_ZCSIG;
-    rtPrevZCX._Trig_ZCE[0] = UNINITIALIZED_ZCSIG;
-    rtPrevZCX._Trig_ZCE_i[1] = UNINITIALIZED_ZCSIG;
-    rtPrevZCX._Trig_ZCE[1] = UNINITIALIZED_ZCSIG;
-    rtPrevZCX.Triggered_Subsystem_Trig_ZCE = UNINITIALIZED_ZCSIG;
-    rtPrevZCX.Triggered_Subsystem1_Trig_ZCE = UNINITIALIZED_ZCSIG;
+  /* Start for RateTransition: '<S2>/RT1' */
+  rtDW.RT1 = 1.0;
+  rtPrevZCX.Triggered_Subsystem_Trig_ZCE = UNINITIALIZED_ZCSIG;
+  rtPrevZCX.Triggered_Subsystem1_Trig_ZCE = UNINITIALIZED_ZCSIG;
 
-    /* InitializeConditions for RateTransition: '<S2>/RT1' */
-    rtDW.RT1_Buffer0 = 1.0;
+  /* InitializeConditions for RateTransition: '<S2>/RT1' */
+  rtDW.RT1_Buffer0 = 1.0;
 
-    /* SystemInitialize for Triggered SubSystem: '<S26>/Triggered Subsystem' */
-    for (i = 0; i < 23; i++) {
-      rtPrevZCX.TriggeredSubsystem_Trig_ZCE[i] = ZERO_ZCSIG;
-    }
+  /* SystemInitialize for Atomic SubSystem: '<Root>/GCU_timer' */
+  rtDW.sfEvent = -1;
 
-    /* End of SystemInitialize for SubSystem: '<S26>/Triggered Subsystem' */
+  /* SystemInitialize for Chart: '<S5>/GCULogic' incorporates:
+   *  Chart: '<S2>/EEPROM_OutputRequest'
+   */
+  rtDW.lastEvaluatedIndex = 1.0;
 
-    /* SystemInitialize for Triggered SubSystem: '<S25>/Triggered Subsystem' */
-    /* SystemInitialize for Merge: '<S25>/Merge' */
-    for (i = 0; i < 12; i++) {
-      rtPrevZCX.TriggeredSubsystem_Trig_ZCE_j[i] = ZERO_ZCSIG;
-    }
+  /* Chart: '<S2>/EEPROM_OutputRequest' */
+  /* Chart: '<S2>/EEPROM_OutputRequest' */
+  rtDW.is_c6_GCU_Model_genCode = IN_INIT;
 
-    /* End of SystemInitialize for Merge: '<S25>/Merge' */
-    /* End of SystemInitialize for SubSystem: '<S25>/Triggered Subsystem' */
+  /* SystemInitialize for Chart: '<S2>/EEPROM_OutputRequest' incorporates:
+   *  SubSystem: '<S2>/Evaluate_Request'
+   */
+  Evaluate_Request_Init(rtDW.Merge, rtDW.Merge1);
 
-    /* SystemInitialize for Atomic SubSystem: '<Root>/GCU_timer' */
-    rtDW.sfEvent = -1;
+  /* End of SystemInitialize for SubSystem: '<Root>/GCU_timer' */
 
-    /* SystemInitialize for Chart: '<S5>/GCULogic' incorporates:
-     *  Chart: '<S2>/EEPROM_OutputRequest'
-     */
-    rtDW.lastEvaluatedIndex = 1.0;
+  /* SystemInitialize for Atomic SubSystem: '<Root>/Simulink_Debug' */
+  /* Chart: '<S7>/AccelerationRoutine' */
+  rtDW.is_c3_GCU_Model_genCode = IN_Wait;
 
-    /* Chart: '<S2>/EEPROM_OutputRequest' */
-    /* Chart: '<S2>/EEPROM_OutputRequest' */
-    rtDW.is_c6_GCU_Model_genCode = IN_INIT;
+  /* End of SystemInitialize for SubSystem: '<Root>/Simulink_Debug' */
 
-    /* SystemInitialize for Chart: '<S2>/EEPROM_OutputRequest' incorporates:
-     *  SubSystem: '<S2>/Evaluate_Request'
-     */
-    Evaluate_Request_Init(rtDW.gearshiftTimings, rtDW.accParameters);
+  /* SystemInitialize for S-Function (fcncallgen): '<Root>/Function-Call Generator' incorporates:
+   *  Chart: '<S2>/EEPROM_Load_Buffer'
+   */
+  /* SystemInitialize for Chart: '<S2>/EEPROM_Load_Buffer' */
+  rtDW.lastInsertedIndex = 1.0;
 
-    /* End of SystemInitialize for SubSystem: '<Root>/GCU_timer' */
+  /* End of SystemInitialize for S-Function (fcncallgen): '<Root>/Function-Call Generator' */
 
-    /* SystemInitialize for Atomic SubSystem: '<Root>/Simulink_Debug' */
-    /* Chart: '<S7>/AccelerationRoutine' */
-    rtDW.is_c3_GCU_Model_genCode = IN_Wait;
+  /* SystemInitialize for Atomic SubSystem: '<Root>/InitializeFunction' */
 
-    /* End of SystemInitialize for SubSystem: '<Root>/Simulink_Debug' */
+  /* S-Function (load_accParameters): '<S6>/load_accParameters' */
+  load_accParameters_Outputs_wrapper(&rtDW.load_accParameters[0]);
 
-    /* SystemInitialize for S-Function (fcncallgen): '<Root>/Function-Call Generator' incorporates:
-     *  Chart: '<S2>/EEPROM_Load_Buffer'
-     */
-    /* SystemInitialize for Chart: '<S2>/EEPROM_Load_Buffer' */
-    rtDW.lastInsertedIndex = 1.0;
+  /* S-Function (load_default_timings): '<S6>/load_default_timings' */
+  load_default_timings_Outputs_wrapper(&rtDW.load_default_timings[0]);
 
-    /* End of SystemInitialize for S-Function (fcncallgen): '<Root>/Function-Call Generator' */
+  /* S-Function (CAN_Load_id): '<S6>/CAN_Load_id' */
+  CAN_Load_id_Outputs_wrapper(&rtDW.CAN_Load_id[0]);
 
-    /* SystemInitialize for Atomic SubSystem: '<Root>/InitializeFunction' */
+  /* S-Function (Eeprom_init): '<S6>/Eeprom_init' incorporates:
+   *  Outport: '<Root>/eepromStateDebug'
+   */
+  Eeprom_init_Outputs_wrapper(&rtDW.Eeprom_init_o1, &rtY.eepromStateDebug,
+    &rtDW.Eeprom_init_o3);
 
-    /* S-Function (load_accParameters): '<S6>/load_accParameters' */
-    load_accParameters_Outputs_wrapper(&rtDW.load_accParameters[0]);
+  /* S-Function (CAN_Start): '<S6>/CAN_Start' */
+  CAN_Start_Outputs_wrapper();
 
-    /* S-Function (load_default_timings): '<S6>/load_default_timings' */
-    load_default_timings_Outputs_wrapper(&rtDW.load_default_timings[0]);
+  /* S-Function (ClutchMotor_init): '<S6>/ClutchMotor Init' */
+  ClutchMotor_init_Outputs_wrapper();
 
-    /* S-Function (CAN_Load_id): '<S6>/CAN_Load_id' */
-    CAN_Load_id_Outputs_wrapper(&rtDW.CAN_Load_id[0]);
+  /* S-Function (Efi_init): '<S6>/Efi Init' */
+  Efi_init_Outputs_wrapper();
 
-    /* S-Function (Eeprom_init): '<S6>/Eeprom_init' incorporates:
-     *  Outport: '<Root>/eepromStateDebug'
-     */
-    Eeprom_init_Outputs_wrapper(&rtDW.Eeprom_init_o1, &rtY.eepromStateDebug,
-      &rtDW.Eeprom_init_o3);
+  /* S-Function (GearMotor_init): '<S6>/GearMotor Init' */
+  GearMotor_init_Outputs_wrapper();
 
-    /* S-Function (CAN_Start): '<S6>/CAN_Start' */
-    CAN_Start_Outputs_wrapper();
+  /* S-Function (InitTimer): '<S6>/InitTimer' */
+  InitTimer_Outputs_wrapper();
 
-    /* S-Function (ClutchMotor_init): '<S6>/ClutchMotor Init' */
-    ClutchMotor_init_Outputs_wrapper();
+  /* S-Function (InitUART): '<S6>/InitUART' */
+  InitUART_Outputs_wrapper();
 
-    /* S-Function (Efi_init): '<S6>/Efi Init' */
-    Efi_init_Outputs_wrapper();
+  /* S-Function (ScanADC): '<S6>/ScanADC' */
+  ScanADC_Outputs_wrapper();
 
-    /* S-Function (GearMotor_init): '<S6>/GearMotor Init' */
-    GearMotor_init_Outputs_wrapper();
-
-    /* S-Function (InitTimer): '<S6>/InitTimer' */
-    InitTimer_Outputs_wrapper();
-
-    /* S-Function (InitUART): '<S6>/InitUART' */
-    InitUART_Outputs_wrapper();
-
-    /* S-Function (ScanADC): '<S6>/ScanADC' */
-    ScanADC_Outputs_wrapper();
-
-    /* End of SystemInitialize for SubSystem: '<Root>/InitializeFunction' */
-  }
+  /* End of SystemInitialize for SubSystem: '<Root>/InitializeFunction' */
 }
 
 /*

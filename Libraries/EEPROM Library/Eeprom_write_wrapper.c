@@ -57,7 +57,7 @@ void Eeprom_write_Outputs_wrapper(const uint8_T *page,
     
     HAL_GPIO_WritePin(EEPROM_WP_GPIO_Port, EEPROM_WP_Pin, GPIO_PIN_RESET);
     *wpState = (uint8_T)0;
-    HAL_I2C_Mem_Write(&hi2cEeprom, devAddress<<1, memAddress, I2C_MEMADD_SIZE_8BIT, tempEepromMsg, *dataSize, 100);
+    HAL_I2C_Mem_Write_IT(&hi2cEeprom, devAddress<<1, memAddress, I2C_MEMADD_SIZE_8BIT, tempEepromMsg, *dataSize);
     
 #endif
 /* %%%-SFUNWIZ_wrapper_Outputs_Changes_END --- EDIT HERE TO _BEGIN */
