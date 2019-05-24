@@ -269,8 +269,8 @@ typedef struct {
   uint8_T (*c1_clutchCom)[2];
   uint16_T (*c1_modeCom)[2];
   uint16_T *c1_accFb;
-  int32_T (*c1_acc_parameters)[12];
-  int32_T (*c1_timings)[23];
+  int32_T (*c1_acc_parameters)[16];
+  int32_T (*c1_timings)[24];
 } SFc1_GCU_Model_genCodeInstanceStruct;
 
 #endif                                 /*typedef_SFc1_GCU_Model_genCodeInstanceStruct*/

@@ -1,7 +1,0 @@
-classdef eepromConstants < Simulink.IntEnumType
- enumeration
-    GEARSHIFT_NUM       (23)
-    ACC
-
- end    
-end
