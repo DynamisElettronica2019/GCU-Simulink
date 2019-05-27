@@ -60,10 +60,6 @@ typedef struct {
   uint8_T (*c2_clutchCommand)[2];
   uint8_T *c2_clutchCurrVal;
   uint16_T (*c2_modeCommand)[2];
-  uint16_T *c2_accParametersValue;
-  uint16_T *c2_accParametersIndex;
-  uint16_T *c2_timingsValue;
-  uint16_T *c2_timingsIndex;
   uint16_T *c2_mapTarget;
   uint16_T *c2_rpmLimiterTarget;
 } SFc2_GCU_Model_genCodeInstanceStruct;

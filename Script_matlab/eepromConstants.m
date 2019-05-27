@@ -4,5 +4,6 @@ classdef eepromConstants < Simulink.IntEnumType
     NEW_EEPROM          (25)
     GEARSHIFT_NUM       (23)
     ACC_PAR_NUM         (12)
- end    
+    AUTOX_PAR_NUM       (12)
+  end    
 end
