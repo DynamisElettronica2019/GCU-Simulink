@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.223
+ * Model version                  : 1.226
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Tue May 28 22:43:09 2019
+ * C/C++ source code generated on : Tue May 28 23:41:46 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -51,6 +51,8 @@
 #define IN_AUTOCROSS                   ((uint8_T)2U)
 #define IN_ChangeClutch                ((uint8_T)1U)
 #define IN_CutOff                      ((uint8_T)1U)
+#define IN_DEFAULT                     ((uint8_T)2U)
+#define IN_DEFAULT_e                   ((uint8_T)1U)
 #define IN_DOWNSHIFTING                ((uint8_T)1U)
 #define IN_DOWN_BRAKE                  ((uint8_T)1U)
 #define IN_DOWN_END                    ((uint8_T)2U)
@@ -62,11 +64,10 @@
 #define IN_IDLE                        ((uint8_T)3U)
 #define IN_INIT_j                      ((uint8_T)3U)
 #define IN_INIT_jf                     ((uint8_T)4U)
-#define IN_LAUNCH                      ((uint8_T)1U)
+#define IN_LAUNCH                      ((uint8_T)2U)
 #define IN_MANUAL_MODES                ((uint8_T)4U)
 #define IN_NEUTRAL                     ((uint8_T)1U)
 #define IN_NO_NEUTRAL                  ((uint8_T)2U)
-#define IN_NotReady                    ((uint8_T)2U)
 #define IN_READY                       ((uint8_T)1U)
 #define IN_RELEASING                   ((uint8_T)2U)
 #define IN_RUNNING                     ((uint8_T)3U)
@@ -746,8 +747,9 @@ static void updateOutput(void);
 static void testIndex(void);
 static void updateData(void);
 static void checkGear(void);
-static void sendAccCommand(uint16_T com);
+static void sendAutoXCommand(uint16_T com);
 static void sendClutchCommand(uint16_T com);
+static void sendAccCommand(uint16_T com);
 static void sendModeCommand(uint16_T com);
 static void sendShiftCommand(uint16_T com);
 static void sendStartEngCommand(void);
@@ -1737,8 +1739,8 @@ static void ACCELERATION(void)
         rtDW.lastModeCom[1] = rtDW.RateTransition8[1];
       }
 
-      if (rtDW.is_ACCELERATION != IN_NotReady) {
-        rtDW.is_ACCELERATION = IN_NotReady;
+      if (rtDW.is_ACCELERATION != IN_DEFAULT) {
+        rtDW.is_ACCELERATION = IN_DEFAULT;
         rtDW.stateFb = (uint16_T)ACC_OFF;
         checkShift();
         checkClutch();
@@ -1755,8 +1757,8 @@ static void ACCELERATION(void)
         rtDW.lastModeCom[1] = rtDW.RateTransition8[1];
       }
 
-      if (rtDW.is_AUTOCROSS != IN_NotReady) {
-        rtDW.is_AUTOCROSS = IN_NotReady;
+      if (rtDW.is_AUTOCROSS != IN_DEFAULT_e) {
+        rtDW.is_AUTOCROSS = IN_DEFAULT_e;
         rtDW.stateFb = (uint16_T)AUTOX_DEFAULT;
         checkShift();
         checkClutch();
@@ -1998,8 +2000,8 @@ static void ACCELERATION(void)
        case IN_STOPPING:
         rtDW.is_ACC = 0;
         rtDW.is_ACCELERATION = 0;
-        if (rtDW.is_ACCELERATION != IN_NotReady) {
-          rtDW.is_ACCELERATION = IN_NotReady;
+        if (rtDW.is_ACCELERATION != IN_DEFAULT) {
+          rtDW.is_ACCELERATION = IN_DEFAULT;
           rtDW.stateFb = (uint16_T)ACC_OFF;
           checkShift();
           checkClutch();
@@ -2008,7 +2010,7 @@ static void ACCELERATION(void)
       }
       break;
 
-     case IN_NotReady:
+     case IN_DEFAULT:
       if ((rtDW.RateTransition4[0] != rtDW.lastAacCom) && (rtDW.RateTransition4
            [1] == ACC_READY)) {
         rtDW.lastAacCom = rtDW.RateTransition4[0];
@@ -2114,8 +2116,8 @@ static void AUTOCROSS(void)
         rtDW.lastModeCom[1] = rtDW.RateTransition8[1];
       }
 
-      if (rtDW.is_ACCELERATION != IN_NotReady) {
-        rtDW.is_ACCELERATION = IN_NotReady;
+      if (rtDW.is_ACCELERATION != IN_DEFAULT) {
+        rtDW.is_ACCELERATION = IN_DEFAULT;
         rtDW.stateFb = (uint16_T)ACC_OFF;
         checkShift();
         checkClutch();
@@ -2132,8 +2134,8 @@ static void AUTOCROSS(void)
         rtDW.lastModeCom[1] = rtDW.RateTransition8[1];
       }
 
-      if (rtDW.is_AUTOCROSS != IN_NotReady) {
-        rtDW.is_AUTOCROSS = IN_NotReady;
+      if (rtDW.is_AUTOCROSS != IN_DEFAULT_e) {
+        rtDW.is_AUTOCROSS = IN_DEFAULT_e;
         rtDW.stateFb = (uint16_T)AUTOX_DEFAULT;
         checkShift();
         checkClutch();
@@ -2153,6 +2155,34 @@ static void AUTOCROSS(void)
     }
   } else {
     switch (rtDW.is_AUTOCROSS) {
+     case IN_DEFAULT_e:
+      if ((rtDW.RateTransition29[0] != rtDW.lastAutoXCom) &&
+          (rtDW.RateTransition29[1] == AUTOX_READY)) {
+        rtDW.lastAutoXCom = rtDW.RateTransition29[0];
+        rtDW.is_AUTOCROSS = IN_LAUNCH;
+        rtDW.autoXCounter = 0U;
+        rtDW.autoX_clutchValue = 0.0;
+        rtDW.autoX_clutchStep = 0.0;
+        rtDW.autoX_dtRelease = 0;
+        rtDW.is_LAUNCH = IN_ACTIVE;
+        if (rtDW.is_ACTIVE_d != IN_START) {
+          rtDW.is_ACTIVE_d = IN_START;
+          rtDW.stateFb = (uint16_T)AUTOX_READY;
+          rtDW.autoXCounter = AUTOX_WORK_RATE_ms;
+
+          /* Outputs for Function Call SubSystem: '<S35>/SetRPMLimiter' */
+          SetRPMLimiter(&Merge2_i, &rtDW.SetRPMLimiter_e);
+
+          /* End of Outputs for SubSystem: '<S35>/SetRPMLimiter' */
+          Clutch_setValue(100);
+        }
+      } else {
+        rtDW.stateFb = (uint16_T)AUTOX_DEFAULT;
+        checkShift();
+        checkClutch();
+      }
+      break;
+
      case IN_LAUNCH:
       switch (rtDW.is_LAUNCH) {
        case IN_ACTIVE:
@@ -2372,41 +2402,13 @@ static void AUTOCROSS(void)
        case IN_STOPPING:
         rtDW.is_LAUNCH = 0;
         rtDW.is_AUTOCROSS = 0;
-        if (rtDW.is_AUTOCROSS != IN_NotReady) {
-          rtDW.is_AUTOCROSS = IN_NotReady;
+        if (rtDW.is_AUTOCROSS != IN_DEFAULT_e) {
+          rtDW.is_AUTOCROSS = IN_DEFAULT_e;
           rtDW.stateFb = (uint16_T)AUTOX_DEFAULT;
           checkShift();
           checkClutch();
         }
         break;
-      }
-      break;
-
-     case IN_NotReady:
-      if ((rtDW.RateTransition29[0] != rtDW.lastAutoXCom) &&
-          (rtDW.RateTransition29[1] == AUTOX_READY)) {
-        rtDW.lastAutoXCom = rtDW.RateTransition29[0];
-        rtDW.is_AUTOCROSS = IN_LAUNCH;
-        rtDW.autoXCounter = 0U;
-        rtDW.autoX_clutchValue = 0.0;
-        rtDW.autoX_clutchStep = 0.0;
-        rtDW.autoX_dtRelease = 0;
-        rtDW.is_LAUNCH = IN_ACTIVE;
-        if (rtDW.is_ACTIVE_d != IN_START) {
-          rtDW.is_ACTIVE_d = IN_START;
-          rtDW.stateFb = (uint16_T)AUTOX_READY;
-          rtDW.autoXCounter = AUTOX_WORK_RATE_ms;
-
-          /* Outputs for Function Call SubSystem: '<S35>/SetRPMLimiter' */
-          SetRPMLimiter(&Merge2_i, &rtDW.SetRPMLimiter_e);
-
-          /* End of Outputs for SubSystem: '<S35>/SetRPMLimiter' */
-          Clutch_setValue(100);
-        }
-      } else {
-        rtDW.stateFb = (uint16_T)AUTOX_DEFAULT;
-        checkShift();
-        checkClutch();
       }
       break;
     }
@@ -2453,8 +2455,8 @@ static void MODES(void)
         rtDW.lastModeCom[1] = rtDW.RateTransition8[1];
       }
 
-      if (rtDW.is_ACCELERATION != IN_NotReady) {
-        rtDW.is_ACCELERATION = IN_NotReady;
+      if (rtDW.is_ACCELERATION != IN_DEFAULT) {
+        rtDW.is_ACCELERATION = IN_DEFAULT;
         rtDW.stateFb = (uint16_T)ACC_OFF;
         checkShift();
         checkClutch();
@@ -2468,8 +2470,8 @@ static void MODES(void)
         rtDW.lastModeCom[1] = rtDW.RateTransition8[1];
       }
 
-      if (rtDW.is_AUTOCROSS != IN_NotReady) {
-        rtDW.is_AUTOCROSS = IN_NotReady;
+      if (rtDW.is_AUTOCROSS != IN_DEFAULT_e) {
+        rtDW.is_AUTOCROSS = IN_DEFAULT_e;
         rtDW.stateFb = (uint16_T)AUTOX_DEFAULT;
         checkShift();
         checkClutch();
@@ -2516,8 +2518,8 @@ static void MODES(void)
           rtDW.lastModeCom[1] = rtDW.RateTransition8[1];
         }
 
-        if (rtDW.is_ACCELERATION != IN_NotReady) {
-          rtDW.is_ACCELERATION = IN_NotReady;
+        if (rtDW.is_ACCELERATION != IN_DEFAULT) {
+          rtDW.is_ACCELERATION = IN_DEFAULT;
           rtDW.stateFb = (uint16_T)ACC_OFF;
           checkShift();
           checkClutch();
@@ -2531,8 +2533,8 @@ static void MODES(void)
           rtDW.lastModeCom[1] = rtDW.RateTransition8[1];
         }
 
-        if (rtDW.is_AUTOCROSS != IN_NotReady) {
-          rtDW.is_AUTOCROSS = IN_NotReady;
+        if (rtDW.is_AUTOCROSS != IN_DEFAULT_e) {
+          rtDW.is_AUTOCROSS = IN_DEFAULT_e;
           rtDW.stateFb = (uint16_T)AUTOX_DEFAULT;
           checkShift();
           checkClutch();
@@ -2773,21 +2775,21 @@ static void checkGear(void)
 }
 
 /* Function for Chart: '<S4>/MessageEvaluation1' */
-static void sendAccCommand(uint16_T com)
+static void sendAutoXCommand(uint16_T com)
 {
   int32_T tmp;
-  if (rtDW.accCommand[0] >= 255) {
-    rtDW.accCommand[0] = 0U;
+  if (rtDW.autoXCommand[0] >= 255) {
+    rtDW.autoXCommand[0] = 0U;
   } else {
-    tmp = rtDW.accCommand[0] + 1;
+    tmp = rtDW.autoXCommand[0] + 1;
     if (tmp > 65535) {
       tmp = 65535;
     }
 
-    rtDW.accCommand[0] = (uint16_T)tmp;
+    rtDW.autoXCommand[0] = (uint16_T)tmp;
   }
 
-  rtDW.accCommand[1] = com;
+  rtDW.autoXCommand[1] = com;
 }
 
 /* Function for Chart: '<S4>/MessageEvaluation1' */
@@ -2812,6 +2814,24 @@ static void sendClutchCommand(uint16_T com)
   }
 
   rtDW.clutchCommand[1] = (uint8_T)tmp;
+}
+
+/* Function for Chart: '<S4>/MessageEvaluation1' */
+static void sendAccCommand(uint16_T com)
+{
+  int32_T tmp;
+  if (rtDW.accCommand[0] >= 255) {
+    rtDW.accCommand[0] = 0U;
+  } else {
+    tmp = rtDW.accCommand[0] + 1;
+    if (tmp > 65535) {
+      tmp = 65535;
+    }
+
+    rtDW.accCommand[0] = (uint16_T)tmp;
+  }
+
+  rtDW.accCommand[1] = com;
 }
 
 /* Function for Chart: '<S4>/MessageEvaluation1' */
@@ -3611,7 +3631,8 @@ void GCU_Model_genCode_step2(void)     /* Sample time: [0.001s, 0.0002s] */
    case IN_EnterAcceleration:
     rtDW.is_c3_GCU_Model_genCode = IN_ActivateAac;
     rtDW.id = 514U;
-    rtDW.firstInt = 1U;
+    rtDW.firstInt = 5U;
+    rtDW.secondInt = 1U;
     break;
 
    case IN_InsertGear:
@@ -3725,14 +3746,24 @@ void GCU_Model_genCode_step2(void)     /* Sample time: [0.001s, 0.0002s] */
     sendModeCommand(rtDW.UnpackCanUart_o3);
     rtDW.mapTarget = rtDW.UnpackCanUart_o4;
     if ((uint8_T)tmp > ACC_CLUTCH_NOISE_LEVEL) {
-      sendAccCommand(STOP_COM);
+      sendAccCommand((uint16_T)ACC_OFF);
+      sendAutoXCommand((uint16_T)AUTOX_DEFAULT);
     }
 
     sendClutchCommand((uint16_T)(uint8_T)tmp);
   } else if (rtDW.UnpackCanUart_o1 == SW_OK_BUTTON_GCU_ID) {
-    sendAccCommand(rtDW.UnpackCanUart_o2);
-    if (rtDW.accCommand[1] == ACC_OFF) {
-      sendClutchCommand(0);
+    if (rtDW.UnpackCanUart_o2 == ACCELERATION_MODE) {
+      sendAccCommand(rtDW.UnpackCanUart_o3);
+      if (rtDW.accCommand[1] == ACC_OFF) {
+        sendClutchCommand(0);
+      }
+    } else {
+      if (rtDW.UnpackCanUart_o2 == AUTOX_MODE) {
+        sendAutoXCommand(rtDW.UnpackCanUart_o3);
+        if (rtDW.autoXCommand[1] == AUTOX_DEFAULT) {
+          sendClutchCommand(0);
+        }
+      }
     }
   } else {
     if (rtDW.UnpackCanUart_o1 == SW_TRACTION_LIMITER_GCU_ID) {

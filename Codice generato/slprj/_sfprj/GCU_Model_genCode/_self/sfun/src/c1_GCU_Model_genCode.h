@@ -103,7 +103,7 @@ typedef struct {
   uint8_T c1_tp_RUNNING;
   uint8_T c1_tp_RELEASING;
   uint8_T c1_tp_STOPPING;
-  uint8_T c1_tp_NotReady;
+  uint8_T c1_tp_DEFAULT;
   uint8_T c1_tp_AUTOCROSS;
   uint8_T c1_tp_LAUNCH;
   uint8_T c1_b_tp_ACTIVE;
@@ -113,7 +113,7 @@ typedef struct {
   uint8_T c1_b_tp_RUNNING;
   uint8_T c1_b_tp_RELEASING;
   uint8_T c1_b_tp_STOPPING;
-  uint8_T c1_b_tp_NotReady;
+  uint8_T c1_b_tp_DEFAULT;
   uint8_T c1_tp_NEUTRAL_STATE;
   uint8_T c1_tp_NEUTRAL;
   uint8_T c1_tp_UNSET_NEUTRAL;
