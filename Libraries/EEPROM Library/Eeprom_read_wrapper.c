@@ -51,8 +51,10 @@ void Eeprom_read_Outputs_wrapper(const uint8_T *page,
 		memAddress = *page << 4 | *cell;
     
     //aggiungere header nel file costanti
-    HAL_I2C_Mem_Read(&hi2cEeprom, devAddress<<1, memAddress, I2C_MEMADD_SIZE_8BIT, data, *dataSize, 100);
+    *resRead = !HAL_I2C_Mem_Read(&hi2cEeprom, devAddress<<1, memAddress, I2C_MEMADD_SIZE_8BIT, data, *dataSize, 100);
   
+#else
+    *resRead = 0;
 #endif
 /* %%%-SFUNWIZ_wrapper_Outputs_Changes_END --- EDIT HERE TO _BEGIN */
 }

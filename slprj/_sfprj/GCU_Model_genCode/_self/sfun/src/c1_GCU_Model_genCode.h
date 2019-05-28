@@ -33,6 +33,34 @@ typedef enum acc_params c1_acc_params;
 
 #endif                                 /*typedef_c1_acc_params*/
 
+#ifndef enum_autoX_params
+#define enum_autoX_params
+
+enum autoX_params
+{
+  autoX_params_RAMP_START = 0,         /* Default value */
+  autoX_params_RAMP_END,
+  autoX_params_RAMP_TIME,
+  autoX_params_RPM_LIMIT_1_2,
+  autoX_params_RPM_LIMIT_2_3,
+  autoX_params_RPM_LIMIT_3_4,
+  autoX_params_RPM_LIMIT_4_5,
+  autoX_params_SPEED_LIMIT_1_2,
+  autoX_params_SPEED_LIMIT_2_3,
+  autoX_params_SPEED_LIMIT_3_4,
+  autoX_params_SPEED_LIMIT_4_5,
+  autoX_params_TPS_START_LIMIT
+};
+
+#endif                                 /*enum_autoX_params*/
+
+#ifndef typedef_c1_autoX_params
+#define typedef_c1_autoX_params
+
+typedef enum autoX_params c1_autoX_params;
+
+#endif                                 /*typedef_c1_autoX_params*/
+
 #ifndef enum_acc_values
 #define enum_acc_values
 
@@ -63,7 +91,6 @@ typedef struct {
   int32_T c1_sfEvent;
   uint8_T c1_tp_MODES;
   uint8_T c1_tp_MANUAL_MODES;
-  uint8_T c1_tp_AUTOCROSS;
   uint8_T c1_tp_ENDURANCE;
   uint8_T c1_tp_SKIDPAD;
   uint8_T c1_tp_INIT;
@@ -77,6 +104,16 @@ typedef struct {
   uint8_T c1_tp_RELEASING;
   uint8_T c1_tp_STOPPING;
   uint8_T c1_tp_NotReady;
+  uint8_T c1_tp_AUTOCROSS;
+  uint8_T c1_tp_LAUNCH;
+  uint8_T c1_b_tp_ACTIVE;
+  uint8_T c1_b_tp_START;
+  uint8_T c1_b_tp_READY;
+  uint8_T c1_b_tp_START_RELEASE;
+  uint8_T c1_b_tp_RUNNING;
+  uint8_T c1_b_tp_RELEASING;
+  uint8_T c1_b_tp_STOPPING;
+  uint8_T c1_b_tp_NotReady;
   uint8_T c1_tp_NEUTRAL_STATE;
   uint8_T c1_tp_NEUTRAL;
   uint8_T c1_tp_UNSET_NEUTRAL;
@@ -113,7 +150,7 @@ typedef struct {
   uint8_T c1_tp_SEND;
   uint8_T c1_tp_START_ENGINE;
   uint8_T c1_b_tp_WAIT;
-  uint8_T c1_b_tp_START;
+  uint8_T c1_c_tp_START;
   uint8_T c1_tp_STOP;
   uint8_T c1_tp_SCAN_ADC;
   uint8_T c1_c_tp_WAIT;
@@ -125,6 +162,9 @@ typedef struct {
   uint8_T c1_is_ACCELERATION;
   uint8_T c1_is_ACC;
   uint8_T c1_is_ACTIVE;
+  uint8_T c1_is_AUTOCROSS;
+  uint8_T c1_is_LAUNCH;
+  uint8_T c1_b_is_ACTIVE;
   uint8_T c1_is_NEUTRAL_STATE;
   uint8_T c1_is_active_NEUTRAL_STATE;
   uint8_T c1_is_GEARSHIFT;
@@ -146,6 +186,7 @@ typedef struct {
   uint16_T c1_lastAacCom;
   uint16_T c1_lastShiftCom;
   uint8_T c1_lastClutchCom;
+  uint16_T c1_lastAutoXCom;
   uint16_T c1_GEAR_COMMAND_NEUTRAL_UP;
   uint16_T c1_GEAR_COMMAND_NEUTRAL_DOWN;
   uint16_T c1_GEAR_COMMAND_UP;
@@ -171,6 +212,11 @@ typedef struct {
   int32_T c1_DEF_SPEED_LIMIT_3_4;
   int32_T c1_DEF_SPEED_LIMIT_4_5;
   uint16_T c1_ACC_CODE;
+  uint16_T c1_AUTOX_WORK_RATE_ms;
+  uint16_T c1_autoXCounter;
+  real_T c1_autoX_clutchValue;
+  real_T c1_autoX_clutchStep;
+  int32_T c1_autoX_dtRelease;
   int32_T c1_ticksCounter;
   real_T c1_data;
   real_T c1_counterWait;
@@ -179,9 +225,9 @@ typedef struct {
   uint16_T c1_timerCounter;
   uint8_T c1_doSetSimStateSideEffects;
   const mxArray *c1_setSimStateSideEffectsInfo;
-  void *c1_dataSetLogObjVector[2];
-  uint8_T c1_sdiLoggedStatesBuffer[58];
-  uint8_T c1_sdiLoggedDataBuffer[51];
+  void *c1_dataSetLogObjVector[3];
+  uint8_T c1_sdiLoggedStatesBuffer[67];
+  uint8_T c1_sdiLoggedDataBuffer[61];
   sdiBlockID_t c1_sdiBlockInfo;
   SignalExportStruct c1_SignalExportProp;
   SignalExportStruct c1_b_SignalExportProp;
@@ -256,8 +302,22 @@ typedef struct {
   SignalExportStruct c1_uc_SignalExportProp;
   SignalExportStruct c1_vc_SignalExportProp;
   SignalExportStruct c1_wc_SignalExportProp;
+  SignalExportStruct c1_xc_SignalExportProp;
+  SignalExportStruct c1_yc_SignalExportProp;
+  SignalExportStruct c1_ad_SignalExportProp;
+  SignalExportStruct c1_bd_SignalExportProp;
+  SignalExportStruct c1_cd_SignalExportProp;
+  SignalExportStruct c1_dd_SignalExportProp;
+  SignalExportStruct c1_ed_SignalExportProp;
+  SignalExportStruct c1_fd_SignalExportProp;
+  SignalExportStruct c1_gd_SignalExportProp;
+  SignalExportStruct c1_hd_SignalExportProp;
+  SignalExportStruct c1_id_SignalExportProp;
+  SignalExportStruct c1_jd_SignalExportProp;
+  SignalExportStruct c1_kd_SignalExportProp;
+  SignalExportStruct c1_ld_SignalExportProp;
   rtwCAPI_ModelMappingInfo c1_testPointMappingInfo;
-  void *c1_testPointAddrMap[2];
+  void *c1_testPointAddrMap[3];
   void *c1_fEmlrtCtx;
   uint8_T *c1_currentGear;
   uint8_T *c1_clutchCurrVal;
@@ -268,9 +328,11 @@ typedef struct {
   uint16_T (*c1_acc_externValues)[3];
   uint8_T (*c1_clutchCom)[2];
   uint16_T (*c1_modeCom)[2];
-  uint16_T *c1_accFb;
+  uint16_T *c1_stateFb;
   int32_T (*c1_acc_parameters)[16];
   int32_T (*c1_timings)[24];
+  uint16_T (*c1_autoXCom)[2];
+  int32_T (*c1_autoX_parameters)[16];
 } SFc1_GCU_Model_genCodeInstanceStruct;
 
 #endif                                 /*typedef_SFc1_GCU_Model_genCodeInstanceStruct*/
