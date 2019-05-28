@@ -7,7 +7,7 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   37 \
+    NumChartData   45 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
@@ -60,6 +60,27 @@
       Description  "StateActiveChild"\
       SFName       ""\
       Path         "MODES.ACCELERATION.ACC.ACTIVE"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_AUTOCROSS"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "MODES.AUTOCROSS"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_LAUNCH"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "MODES.AUTOCROSS.LAUNCH"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_ACTIVE"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "MODES.AUTOCROSS.LAUNCH.ACTIVE"\
       SrcLocation  ""\
     }\
     ChartData {\
@@ -210,6 +231,13 @@
       SrcLocation  ""\
     }\
     ChartData {\
+      Name         "lastAutoXCom"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "MODES.lastAutoXCom"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
       Name         "aacCounter"\
       Description  "ChartLocal"\
       SFName       "aacCounter"\
@@ -236,6 +264,35 @@
       Description  "ChartLocal"\
       SFName       ""\
       Path         "MODES.ACCELERATION.ACC.aac_dtRelease"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "autoXCounter"\
+      Description  "ChartLocal"\
+      SFName       "autoXCounter"\
+      Path         "MODES.AUTOCROSS.LAUNCH.autoXCounter"\
+      SrcLocation  ""\
+      IsTestPoint  1\
+    }\
+    ChartData {\
+      Name         "autoX_clutchValue"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "MODES.AUTOCROSS.LAUNCH.autoX_clutchValue"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "autoX_clutchStep"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "MODES.AUTOCROSS.LAUNCH.autoX_clutchStep"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "autoX_dtRelease"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "MODES.AUTOCROSS.LAUNCH.autoX_dtRelease"\
       SrcLocation  ""\
     }\
     ChartData {\

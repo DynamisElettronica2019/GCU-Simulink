@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.205
+ * Model version                  : 1.223
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Mon May 27 11:25:29 2019
+ * C/C++ source code generated on : Tue May 28 22:43:09 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -45,11 +45,11 @@ typedef struct tag_RTM RT_MODEL;
 #include "constant_defines.h"
 #include "id_can.h"
 #ifndef SS_INT64
-#define SS_INT64                       19
+#define SS_INT64                       20
 #endif
 
 #ifndef SS_UINT64
-#define SS_UINT64                      20
+#define SS_UINT64                      21
 #endif
 
 #ifndef DEFINED_TYPEDEF_FOR_eepromRequest_
@@ -85,6 +85,26 @@ typedef enum {
 
 #endif
 
+#ifndef DEFINED_TYPEDEF_FOR_autoX_params_
+#define DEFINED_TYPEDEF_FOR_autoX_params_
+
+typedef enum {
+  AUTOX_RAMP_START = 0,                /* Default value */
+  AUTOX_RAMP_END,
+  AUTOX_RAMP_TIME,
+  AUTOX_RPM_LIMIT_1_2,
+  AUTOX_RPM_LIMIT_2_3,
+  AUTOX_RPM_LIMIT_3_4,
+  AUTOX_RPM_LIMIT_4_5,
+  AUTOX_SPEED_LIMIT_1_2,
+  AUTOX_SPEED_LIMIT_2_3,
+  AUTOX_SPEED_LIMIT_3_4,
+  AUTOX_SPEED_LIMIT_4_5,
+  AUTOX_TPS_START_LIMIT
+} autoX_params;
+
+#endif
+
 #ifndef DEFINED_TYPEDEF_FOR_acc_values_
 #define DEFINED_TYPEDEF_FOR_acc_values_
 
@@ -103,7 +123,8 @@ typedef enum {
   USED_EEPROM = 170,                   /* Default value */
   NEW_EEPROM = 25,
   GEARSHIFT_NUM = 23,
-  ACC_PAR_NUM = 12
+  ACC_PAR_NUM = 12,
+  AUTOX_PAR_NUM = 12
 } eepromConstants;
 
 #endif
@@ -112,6 +133,11 @@ typedef enum {
 typedef struct {
   uint16_T UnitDelay_DSTATE[3];        /* '<S32>/Unit Delay' */
 } DW_AAC_ExternalValues;
+
+/* Block signals and states (default storage) for system '<S35>/SetRPMLimiter' */
+typedef struct {
+  uint8_T EfiSetRPMLimiter;            /* '<S42>/Efi SetRPMLimiter' */
+} DW_SetRPMLimiter;
 
 /* Block signals and states (default storage) for system '<S35>/UnsetRPMLimiter' */
 typedef struct {
@@ -139,15 +165,16 @@ typedef struct {
 
 /* Block signals and states (default storage) for system '<S2>/Evaluate_Request' */
 typedef struct {
-  uint16_T gearshiftTimings[24];       /* '<S21>/updateValues' */
-  uint16_T accParameters[16];          /* '<S21>/updateValues' */
+  uint16_T gearshiftTimings[24];       /* '<S22>/updateValues' */
+  uint16_T accParameters[16];          /* '<S22>/updateValues' */
+  uint16_T autoXParameters[16];        /* '<S22>/updateValues' */
   uint8_T TmpSignalConversionAtsendEeprom[19];
-  uint8_T Eeprom_read_o2[16];          /* '<S21>/Eeprom_read' */
-  uint8_T Eeprom_read_o2_e[16];        /* '<S22>/Eeprom_read' */
+  uint8_T Eeprom_read_o2[16];          /* '<S22>/Eeprom_read' */
+  uint8_T Eeprom_read_o2_e[16];        /* '<S23>/Eeprom_read' */
   uint8_T page;
   uint8_T cell;
   uint8_T dataSize;
-  uint8_T Eeprom_read_o1;              /* '<S21>/Eeprom_read' */
+  uint8_T Eeprom_read_o1;              /* '<S22>/Eeprom_read' */
 } DW_Evaluate_Request;
 
 /* Block signals and states (default storage) for system '<Root>' */
@@ -157,6 +184,7 @@ typedef struct {
   DW_Gearmotor_brake Gearmotor_brake_c;/* '<S38>/Gearmotor_brake' */
   DW_Gearmotor_turnRight Gearmotor_turnRight_f;/* '<S38>/Gearmotor_turnRight' */
   DW_UnsetRPMLimiter UnsetRPMLimiter_c;/* '<S35>/UnsetRPMLimiter' */
+  DW_SetRPMLimiter SetRPMLimiter_e;    /* '<S35>/SetRPMLimiter' */
   DW_AAC_ExternalValues AAC_ExternalValues_f;/* '<S4>/AAC_ExternalValues' */
   volatile eepromRequest RateTransition_Buffer[40];/* '<S2>/Rate Transition' */
   eepromRequest RateTransition[20];    /* '<S2>/Rate Transition' */
@@ -169,15 +197,20 @@ typedef struct {
   real_T count;                        /* '<S7>/AccelerationRoutine' */
   real_T aac_clutchValue;              /* '<S5>/GCULogic' */
   real_T aac_clutchStep;               /* '<S5>/GCULogic' */
+  real_T autoX_clutchValue;            /* '<S5>/GCULogic' */
+  real_T autoX_clutchStep;             /* '<S5>/GCULogic' */
   real_T counterWait;                  /* '<S5>/GCULogic' */
   real_T lastEvaluatedIndex;           /* '<S2>/EEPROM_OutputRequest' */
   real_T reloadFlag;                   /* '<S2>/EEPROM_OutputRequest' */
   int32_T load_accParameters[12];      /* '<S6>/load_accParameters' */
   int32_T load_default_timings[23];    /* '<S6>/load_default_timings' */
+  int32_T load_accParameters1[12];     /* '<S6>/load_accParameters1' */
   int32_T Merge[24];                   /* '<S20>/Merge' */
   int32_T Merge1[16];                  /* '<S20>/Merge1' */
+  int32_T Merge2[16];                  /* '<S20>/Merge2' */
   int32_T sfEvent;                     /* '<S5>/GCULogic' */
   int32_T aac_dtRelease;               /* '<S5>/GCULogic' */
+  int32_T autoX_dtRelease;             /* '<S5>/GCULogic' */
   int32_T ticksCounter;                /* '<S5>/GCULogic' */
   uint32_T update_ADC_data[9];         /* '<S11>/update_ADC_data' */
   volatile uint32_T RateTransition9_Buffer[18];/* '<Root>/Rate Transition9' */
@@ -186,17 +219,19 @@ typedef struct {
   uint16_T RateTransition2[2];         /* '<Root>/Rate Transition2' */
   uint16_T RateTransition4[2];         /* '<Root>/Rate Transition4' */
   uint16_T RateTransition8[2];         /* '<Root>/Rate Transition8' */
-  uint16_T CAN_Load_id[20];            /* '<S6>/CAN_Load_id' */
+  uint16_T RateTransition29[2];        /* '<Root>/Rate Transition29' */
   uint16_T lastModeCom[2];             /* '<S5>/GCULogic' */
   uint16_T shiftCommand[2];            /* '<S4>/MessageEvaluation1' */
   uint16_T accCommand[2];              /* '<S4>/MessageEvaluation1' */
   uint16_T modeCommand[2];             /* '<S4>/MessageEvaluation1' */
+  uint16_T autoXCommand[2];            /* '<S4>/MessageEvaluation1' */
   uint16_T Assignment[3];              /* '<S32>/Assignment' */
   uint16_T TmpSignalConversionAtPack_Uart_[20];
   volatile uint16_T RateTransition1_Buffer[6];/* '<Root>/Rate Transition1' */
   volatile uint16_T RateTransition2_Buffer[4];/* '<Root>/Rate Transition2' */
   volatile uint16_T RateTransition4_Buffer[4];/* '<Root>/Rate Transition4' */
   volatile uint16_T RateTransition8_Buffer[4];/* '<Root>/Rate Transition8' */
+  volatile uint16_T RateTransition29_Buffer[4];/* '<Root>/Rate Transition29' */
   volatile uint16_T RateTransition14_Buffer0[3];/* '<Root>/Rate Transition14' */
   uint16_T RateTransition19;           /* '<Root>/Rate Transition19' */
   uint16_T RateTransition21;           /* '<Root>/Rate Transition21' */
@@ -208,7 +243,7 @@ typedef struct {
   uint16_T firstInt;                   /* '<S7>/AccelerationRoutine' */
   uint16_T secondInt;                  /* '<S7>/AccelerationRoutine' */
   uint16_T thirdInt;                   /* '<S7>/AccelerationRoutine' */
-  uint16_T accFb;                      /* '<S5>/GCULogic' */
+  uint16_T stateFb;                    /* '<S5>/GCULogic' */
   uint16_T UnpackCanUart_o1;           /* '<S4>/UnpackCanUart' */
   uint16_T UnpackCanUart_o2;           /* '<S4>/UnpackCanUart' */
   uint16_T UnpackCanUart_o3;           /* '<S4>/UnpackCanUart' */
@@ -242,7 +277,9 @@ typedef struct {
   uint16_T currGear_m;                 /* '<S7>/AccelerationRoutine' */
   uint16_T lastAacCom;                 /* '<S5>/GCULogic' */
   uint16_T lastShiftCom;               /* '<S5>/GCULogic' */
+  uint16_T lastAutoXCom;               /* '<S5>/GCULogic' */
   uint16_T aacCounter;                 /* '<S5>/GCULogic' */
+  uint16_T autoXCounter;               /* '<S5>/GCULogic' */
   uint16_T timerCounter;               /* '<S5>/GCULogic' */
   volatile int8_T RateTransition9_ActiveBufIdx;/* '<Root>/Rate Transition9' */
   volatile int8_T RateTransition1_ActiveBufIdx;/* '<Root>/Rate Transition1' */
@@ -250,6 +287,7 @@ typedef struct {
   volatile int8_T RateTransition4_ActiveBufIdx;/* '<Root>/Rate Transition4' */
   volatile int8_T RateTransition5_ActiveBufIdx;/* '<Root>/Rate Transition5' */
   volatile int8_T RateTransition8_ActiveBufIdx;/* '<Root>/Rate Transition8' */
+  volatile int8_T RateTransition29_ActiveBufIdx;/* '<Root>/Rate Transition29' */
   volatile int8_T RateTransition_ActiveBufIdx;/* '<S2>/Rate Transition' */
   volatile int8_T RateTransition14_semaphoreTaken;/* '<Root>/Rate Transition14' */
   volatile int8_T RateTransition18_semaphoreTaken;/* '<Root>/Rate Transition18' */
@@ -278,15 +316,14 @@ typedef struct {
   uint8_T Pin_In1;                     /* '<S38>/Pin_In1' */
   uint8_T Pin_In2;                     /* '<S38>/Pin_In2' */
   uint8_T clutchCurrVal;               /* '<S5>/GCULogic' */
-  uint8_T Eeprom_read_o1;              /* '<S22>/Eeprom_read' */
-  uint8_T Eeprom_write_o1;             /* '<S23>/Eeprom_write' */
-  uint8_T Eeprom_write_o2;             /* '<S23>/Eeprom_write' */
+  uint8_T Eeprom_read_o1;              /* '<S23>/Eeprom_read' */
+  uint8_T Eeprom_write_o1;             /* '<S24>/Eeprom_write' */
+  uint8_T Eeprom_write_o2;             /* '<S24>/Eeprom_write' */
   uint8_T EngineControlStop;           /* '<S46>/EngineControl Stop' */
   uint8_T GearMotorTurnLeft_o1;        /* '<S50>/GearMotor Turn Left' */
   uint8_T GearMotorTurnLeft_o2;        /* '<S50>/GearMotor Turn Left' */
   uint8_T GearMotorTurnLeft_o3;        /* '<S50>/GearMotor Turn Left' */
   uint8_T GearMotorRelease;            /* '<S49>/GearMotor Release' */
-  uint8_T EfiSetRPMLimiter;            /* '<S42>/Efi SetRPMLimiter' */
   uint8_T EfiUnSetCut;                 /* '<S43>/Efi UnSetCut' */
   uint8_T EfiSetCut;                   /* '<S41>/Efi SetCut' */
   uint8_T Minus;                       /* '<S39>/Minus' */
@@ -301,6 +338,9 @@ typedef struct {
   uint8_T is_ACCELERATION;             /* '<S5>/GCULogic' */
   uint8_T is_ACC;                      /* '<S5>/GCULogic' */
   uint8_T is_ACTIVE;                   /* '<S5>/GCULogic' */
+  uint8_T is_AUTOCROSS;                /* '<S5>/GCULogic' */
+  uint8_T is_LAUNCH;                   /* '<S5>/GCULogic' */
+  uint8_T is_ACTIVE_d;                 /* '<S5>/GCULogic' */
   uint8_T is_NEUTRAL_STATE;            /* '<S5>/GCULogic' */
   uint8_T is_active_NEUTRAL_STATE;     /* '<S5>/GCULogic' */
   uint8_T is_GEARSHIFT;                /* '<S5>/GCULogic' */
@@ -326,6 +366,7 @@ typedef struct {
   uint8_T is_LOAD_TO_EEPROM;           /* '<S2>/EEPROM_OutputRequest' */
   uint8_T is_LOAD_FROM_EEPROM;         /* '<S2>/EEPROM_OutputRequest' */
   uint8_T counter;                     /* '<S2>/EEPROM_OutputRequest' */
+  uint8_T HAL_ERROR;                   /* '<S2>/EEPROM_OutputRequest' */
 } DW;
 
 /* Constant parameters (default storage) */
@@ -336,7 +377,7 @@ typedef struct {
    *   '<S1>/1-D Lookup Table2'
    *   '<S1>/1-D Lookup Table3'
    */
-  uint16_T pooled3[8];
+  uint16_T pooled4[8];
 
   /* Pooled Parameter (Expression: [0:7])
    * Referenced by:
@@ -344,13 +385,14 @@ typedef struct {
    *   '<S1>/1-D Lookup Table2'
    *   '<S1>/1-D Lookup Table3'
    */
-  uint16_T pooled4[8];
+  uint16_T pooled5[8];
 
   /* Pooled Parameter (Mixed Expressions)
    * Referenced by:
    *   '<Root>/Rate Transition1'
    *   '<Root>/Rate Transition2'
    *   '<Root>/Rate Transition27'
+   *   '<Root>/Rate Transition29'
    *   '<Root>/Rate Transition4'
    *   '<Root>/Rate Transition8'
    *   '<S1>/Constant'
@@ -358,7 +400,7 @@ typedef struct {
    *   '<S11>/oil_sensor'
    *   '<S32>/Values'
    */
-  uint16_T pooled5;
+  uint16_T pooled6;
 } ConstP;
 
 /* External inputs (root inport signals with default storage) */
@@ -381,6 +423,7 @@ typedef struct {
   uint8_T dataRead[19];                /* '<Root>/dataRead' */
   int32_T gearshiftTimings[24];        /* '<Root>/gearshiftTimings' */
   int32_T accParameters[16];           /* '<Root>/accParameters' */
+  int32_T autoXParameters[16];         /* '<Root>/autoXParameters' */
 } ExtY;
 
 /* Real-time Model Data Structure */
@@ -469,10 +512,10 @@ extern RT_MODEL *const rtM;
  * '<S18>'  : 'GCU_Model_genCode/EEPROM/EEPROM_Load_Buffer'
  * '<S19>'  : 'GCU_Model_genCode/EEPROM/EEPROM_OutputRequest'
  * '<S20>'  : 'GCU_Model_genCode/EEPROM/Evaluate_Request'
- * '<S21>'  : 'GCU_Model_genCode/EEPROM/Evaluate_Request/LoadFromEEPROM'
- * '<S22>'  : 'GCU_Model_genCode/EEPROM/Evaluate_Request/Read'
- * '<S23>'  : 'GCU_Model_genCode/EEPROM/Evaluate_Request/Write'
- * '<S24>'  : 'GCU_Model_genCode/EEPROM/Evaluate_Request/Write1'
+ * '<S21>'  : 'GCU_Model_genCode/EEPROM/Evaluate_Request/Error'
+ * '<S22>'  : 'GCU_Model_genCode/EEPROM/Evaluate_Request/LoadFromEEPROM'
+ * '<S23>'  : 'GCU_Model_genCode/EEPROM/Evaluate_Request/Read'
+ * '<S24>'  : 'GCU_Model_genCode/EEPROM/Evaluate_Request/Write'
  * '<S25>'  : 'GCU_Model_genCode/EEPROM/Evaluate_Request/LoadFromEEPROM/updateValues'
  * '<S26>'  : 'GCU_Model_genCode/EEPROM Memory/changeAccValue'
  * '<S27>'  : 'GCU_Model_genCode/EEPROM Memory/changeTimingsValue'

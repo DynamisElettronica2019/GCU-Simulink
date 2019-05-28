@@ -38,18 +38,18 @@ typedef enum acc_params c1_acc_params;
 
 enum autoX_params
 {
-  autoX_params_RAMP_START = 0,         /* Default value */
-  autoX_params_RAMP_END,
-  autoX_params_RAMP_TIME,
-  autoX_params_RPM_LIMIT_1_2,
-  autoX_params_RPM_LIMIT_2_3,
-  autoX_params_RPM_LIMIT_3_4,
-  autoX_params_RPM_LIMIT_4_5,
-  autoX_params_SPEED_LIMIT_1_2,
-  autoX_params_SPEED_LIMIT_2_3,
-  autoX_params_SPEED_LIMIT_3_4,
-  autoX_params_SPEED_LIMIT_4_5,
-  autoX_params_TPS_START_LIMIT
+  autoX_params_AUTOX_RAMP_START = 0,   /* Default value */
+  autoX_params_AUTOX_RAMP_END,
+  autoX_params_AUTOX_RAMP_TIME,
+  autoX_params_AUTOX_RPM_LIMIT_1_2,
+  autoX_params_AUTOX_RPM_LIMIT_2_3,
+  autoX_params_AUTOX_RPM_LIMIT_3_4,
+  autoX_params_AUTOX_RPM_LIMIT_4_5,
+  autoX_params_AUTOX_SPEED_LIMIT_1_2,
+  autoX_params_AUTOX_SPEED_LIMIT_2_3,
+  autoX_params_AUTOX_SPEED_LIMIT_3_4,
+  autoX_params_AUTOX_SPEED_LIMIT_4_5,
+  autoX_params_AUTOX_TPS_START_LIMIT
 };
 
 #endif                                 /*enum_autoX_params*/

@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.205
+ * Model version                  : 1.223
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Mon May 27 11:25:29 2019
+ * C/C++ source code generated on : Tue May 28 22:43:09 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -44,6 +44,7 @@ const ConstP rtConstP = {
    *   '<Root>/Rate Transition1'
    *   '<Root>/Rate Transition2'
    *   '<Root>/Rate Transition27'
+   *   '<Root>/Rate Transition29'
    *   '<Root>/Rate Transition4'
    *   '<Root>/Rate Transition8'
    *   '<S1>/Constant'

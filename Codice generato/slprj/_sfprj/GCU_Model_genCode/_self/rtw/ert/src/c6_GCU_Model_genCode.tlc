@@ -7,7 +7,7 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   8 \
+    NumChartData   9 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
@@ -70,6 +70,13 @@
       Path         "LOAD_TO_EEPROM.newData"\
       SrcLocation  ""\
       Dimensions   [1,16]\
+    }\
+    ChartData {\
+      Name         "HAL_ERROR"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "SERIAL_UPDATES.HAL_ERROR"\
+      SrcLocation  ""\
     }\
   }
   %return ChartDataElements
