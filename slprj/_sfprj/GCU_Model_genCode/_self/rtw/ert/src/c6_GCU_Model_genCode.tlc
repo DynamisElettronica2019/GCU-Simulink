@@ -1,0 +1,83 @@
+%implements "chartSource" "C"
+%function ChartConfig(block, system) void
+  %createrecord chartConfiguration { ...
+          executeAtInitialization  1 ...
+  }
+  %return chartConfiguration
+%endfunction
+%function ChartDataMap(block, system) void
+  %createrecord ChartDataElements {\
+    NumChartData   9 \
+    ChartDataDefaults {\
+      RecordType   "ChartData"\
+      Dimensions   []\
+      IsTestPoint  0\
+    }\
+    ChartData {\
+      Name         "is_c6_GCU_Model_genCode"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_LOAD_TO_EEPROM"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "LOAD_TO_EEPROM"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_LOAD_FROM_EEPROM"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "LOAD_FROM_EEPROM"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "lastEvaluatedIndex"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "lastEvaluatedIndex"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "tempShiftedArray"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "tempShiftedArray"\
+      SrcLocation  ""\
+      Dimensions   [1,50]\
+    }\
+    ChartData {\
+      Name         "counter"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "counter"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "reloadFlag"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "reloadFlag"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "newData"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "LOAD_TO_EEPROM.newData"\
+      SrcLocation  ""\
+      Dimensions   [1,16]\
+    }\
+    ChartData {\
+      Name         "HAL_ERROR"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "SERIAL_UPDATES.HAL_ERROR"\
+      SrcLocation  ""\
+    }\
+  }
+  %return ChartDataElements
+%endfunction
