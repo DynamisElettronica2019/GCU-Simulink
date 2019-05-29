@@ -34,6 +34,11 @@
 #define hClutchTim htim4
 #define CCR_CLUTCH CCR4
 
+//Definizione pwm per buzzer
+#define TIM_BUZZER_CHANNEL TIM_CHANNEL_4
+#define hBuzzerTimer htim4
+#define CCR_BUZZER CCR4
+
 //Definizione uart utilizzata per debug
 #define huartDebug huart3
 

@@ -45,5 +45,7 @@ cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/EEPROM Library/loadAccPara
 cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/EEPROM Library/loadAutoXParams Builder','Hidden'});
 cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/EEPROM Library/loadTimings Builder','Hidden'});
 
-cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/Utility Library/ Read_oil_sensor Builder','Hidden'});
+cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/Utility Library/ activateBuzzer Builder','Hidden'});
+cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/Utility Library/ stopBuzzer Builder','Hidden'});
+cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/Utility Library/ Buzzer_init Builder','Hidden'});
 
