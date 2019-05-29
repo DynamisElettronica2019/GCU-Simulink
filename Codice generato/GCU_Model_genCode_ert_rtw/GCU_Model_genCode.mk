@@ -2,7 +2,7 @@
 ## Makefile generated for Simulink model 'GCU_Model_genCode'. 
 ## 
 ## Makefile     : GCU_Model_genCode.mk
-## Generated on : Mon May 27 11:26:20 2019
+## Generated on : Wed May 29 22:56:01 2019
 ## MATLAB Coder version: 4.0 (R2018a)
 ## 
 ## Build Info:
@@ -378,6 +378,14 @@ $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS) $(MAIN_OBJ)
 
 
 %.obj : C:/Users/SIMONE/DOCUME~1/PROGRA~1/git/GCU-SI~1/LIBRAR~1/UARTLI~1/%.cpp
+	$(CPP) $(CPPFLAGS) -o "$@" "$<"
+
+
+%.obj : C:/Users/SIMONE/DOCUME~1/PROGRA~1/git/GCU-SI~1/LIBRAR~1/UTILIT~1/%.c
+	$(CC) $(CFLAGS) -o "$@" "$<"
+
+
+%.obj : C:/Users/SIMONE/DOCUME~1/PROGRA~1/git/GCU-SI~1/LIBRAR~1/UTILIT~1/%.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
