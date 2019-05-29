@@ -9,7 +9,7 @@
  *
  * Model version                  : 1.229
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Wed May 29 22:55:03 2019
+ * C/C++ source code generated on : Wed May 29 23:04:16 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -175,6 +175,7 @@ typedef struct {
   uint8_T cell;
   uint8_T dataSize;
   uint8_T Eeprom_read_o1;              /* '<S22>/Eeprom_read' */
+  uint8_T HAL_ERROR;                   /* '<S22>/updateValues' */
 } DW_Evaluate_Request;
 
 /* Block signals and states (default storage) for system '<Root>' */

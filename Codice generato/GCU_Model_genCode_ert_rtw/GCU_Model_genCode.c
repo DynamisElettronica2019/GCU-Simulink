@@ -9,7 +9,7 @@
  *
  * Model version                  : 1.229
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Wed May 29 22:55:03 2019
+ * C/C++ source code generated on : Wed May 29 23:04:16 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -757,7 +757,8 @@ static void Gearmotor_brake(uint8_T *rty_Pin_In1, uint8_T *rty_Pin_In2, uint8_T 
 static void EngineControl_Start(uint8_T *rty_engine_starter,
   DW_EngineControl_Start *localDW);
 static void Evaluate_Request_Init(int32_T rty_gearshiftTimings[24], int32_T
-  rty_accParameters[16], int32_T rty_autoXParameters[16]);
+  rty_accParameters[16], int32_T rty_autoXParameters[16], DW_Evaluate_Request
+  *localDW);
 static void Evaluate_Request(const eepromRequest *rtu_outputRequest, const
   int32_T rtu_accInitialParameters[12], const int32_T
   rtu_gearshiftInitialTimings[23], const int32_T rtu_autoXInitialParameters[12],
@@ -965,8 +966,15 @@ static void EngineControl_Start(uint8_T *rty_engine_starter,
 
 /* System initialize for function-call system: '<S2>/Evaluate_Request' */
 static void Evaluate_Request_Init(int32_T rty_gearshiftTimings[24], int32_T
-  rty_accParameters[16], int32_T rty_autoXParameters[16])
+  rty_accParameters[16], int32_T rty_autoXParameters[16], DW_Evaluate_Request
+  *localDW)
 {
+  /* SystemInitialize for IfAction SubSystem: '<S20>/LoadFromEEPROM' */
+  /* SystemInitialize for Chart: '<S22>/updateValues' */
+  localDW->HAL_ERROR = 1U;
+
+  /* End of SystemInitialize for SubSystem: '<S20>/LoadFromEEPROM' */
+
   /* SystemInitialize for Merge: '<S20>/Merge' */
   memset(&rty_gearshiftTimings[0], 0, 24U * sizeof(int32_T));
 
@@ -1036,50 +1044,31 @@ static void Evaluate_Request(const eepromRequest *rtu_outputRequest, const
       &localDW->dataSize, &localDW->Eeprom_read_o1, &localDW->Eeprom_read_o2[0]);
 
     /* Chart: '<S22>/updateValues' */
-    for (i = 0; i < 8; i++) {
-      /* NEW_PATTERN */
-      data_16bit[i] = (uint16_T)((localDW->Eeprom_read_o2[((i + 1) << 1) - 2] <<
-        8) + localDW->Eeprom_read_o2[((i + 1) << 1) - 1]);
-    }
-
-    if ((localDW->page == 1) || (localDW->page == 2) || (localDW->page == 3)) {
-      if (localDW->page > 31) {
-        tmp = MAX_uint8_T;
-      } else {
-        tmp = (uint8_T)(localDW->page << 3);
-      }
-
-      qY = tmp - /*MW:OvSatOk*/ 7U;
-      if (qY > tmp) {
-        qY = 0U;
-      }
-
+    if (localDW->Eeprom_read_o1 != localDW->HAL_ERROR) {
       for (i = 0; i < 8; i++) {
-        localDW->gearshiftTimings[(i + (uint8_T)qY) - 1] = data_16bit[i];
-      }
-    } else if ((localDW->page == 5) || (localDW->page == 6)) {
-      qY = localDW->page - /*MW:OvSatOk*/ 4U;
-      if (qY > localDW->page) {
-        qY = 0U;
+        /* NEW_PATTERN */
+        data_16bit[i] = (uint16_T)((localDW->Eeprom_read_o2[((i + 1) << 1) - 2] <<
+          8) + localDW->Eeprom_read_o2[((i + 1) << 1) - 1]);
       }
 
-      if ((uint8_T)qY > 31) {
-        tmp = MAX_uint8_T;
-      } else {
-        tmp = (uint8_T)((uint8_T)qY << 3);
-      }
+      if ((localDW->page == 1) || (localDW->page == 2) || (localDW->page == 3))
+      {
+        if (localDW->page > 31) {
+          tmp = MAX_uint8_T;
+        } else {
+          tmp = (uint8_T)(localDW->page << 3);
+        }
 
-      qY = tmp - /*MW:OvSatOk*/ 7U;
-      if (qY > tmp) {
-        qY = 0U;
-      }
+        qY = tmp - /*MW:OvSatOk*/ 7U;
+        if (qY > tmp) {
+          qY = 0U;
+        }
 
-      for (i = 0; i < 8; i++) {
-        localDW->accParameters[(i + (uint8_T)qY) - 1] = data_16bit[i];
-      }
-    } else {
-      if ((localDW->page == 8) || (localDW->page == 9)) {
-        qY = localDW->page - /*MW:OvSatOk*/ 7U;
+        for (i = 0; i < 8; i++) {
+          localDW->gearshiftTimings[(i + (uint8_T)qY) - 1] = data_16bit[i];
+        }
+      } else if ((localDW->page == 5) || (localDW->page == 6)) {
+        qY = localDW->page - /*MW:OvSatOk*/ 4U;
         if (qY > localDW->page) {
           qY = 0U;
         }
@@ -1096,7 +1085,29 @@ static void Evaluate_Request(const eepromRequest *rtu_outputRequest, const
         }
 
         for (i = 0; i < 8; i++) {
-          localDW->autoXParameters[(i + (uint8_T)qY) - 1] = data_16bit[i];
+          localDW->accParameters[(i + (uint8_T)qY) - 1] = data_16bit[i];
+        }
+      } else {
+        if ((localDW->page == 8) || (localDW->page == 9)) {
+          qY = localDW->page - /*MW:OvSatOk*/ 7U;
+          if (qY > localDW->page) {
+            qY = 0U;
+          }
+
+          if ((uint8_T)qY > 31) {
+            tmp = MAX_uint8_T;
+          } else {
+            tmp = (uint8_T)((uint8_T)qY << 3);
+          }
+
+          qY = tmp - /*MW:OvSatOk*/ 7U;
+          if (qY > tmp) {
+            qY = 0U;
+          }
+
+          for (i = 0; i < 8; i++) {
+            localDW->autoXParameters[(i + (uint8_T)qY) - 1] = data_16bit[i];
+          }
         }
       }
     }
@@ -4309,7 +4320,8 @@ void GCU_Model_genCode_initialize(void)
   /* SystemInitialize for Chart: '<S2>/EEPROM_OutputRequest' incorporates:
    *  SubSystem: '<S2>/Evaluate_Request'
    */
-  Evaluate_Request_Init(rtDW.Merge, rtDW.Merge1, rtDW.Merge2);
+  Evaluate_Request_Init(rtDW.Merge, rtDW.Merge1, rtDW.Merge2,
+                        &rtDW.Evaluate_Request_l);
 
   /* End of SystemInitialize for SubSystem: '<Root>/GCU_timer' */
 

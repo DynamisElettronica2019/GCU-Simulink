@@ -38,18 +38,18 @@ typedef enum acc_params c1_acc_params;
 
 enum autoX_params
 {
-  autoX_params_RAMP_START = 0,         /* Default value */
-  autoX_params_RAMP_END,
-  autoX_params_RAMP_TIME,
-  autoX_params_RPM_LIMIT_1_2,
-  autoX_params_RPM_LIMIT_2_3,
-  autoX_params_RPM_LIMIT_3_4,
-  autoX_params_RPM_LIMIT_4_5,
-  autoX_params_SPEED_LIMIT_1_2,
-  autoX_params_SPEED_LIMIT_2_3,
-  autoX_params_SPEED_LIMIT_3_4,
-  autoX_params_SPEED_LIMIT_4_5,
-  autoX_params_TPS_START_LIMIT
+  autoX_params_AUTOX_RAMP_START = 0,   /* Default value */
+  autoX_params_AUTOX_RAMP_END,
+  autoX_params_AUTOX_RAMP_TIME,
+  autoX_params_AUTOX_RPM_LIMIT_1_2,
+  autoX_params_AUTOX_RPM_LIMIT_2_3,
+  autoX_params_AUTOX_RPM_LIMIT_3_4,
+  autoX_params_AUTOX_RPM_LIMIT_4_5,
+  autoX_params_AUTOX_SPEED_LIMIT_1_2,
+  autoX_params_AUTOX_SPEED_LIMIT_2_3,
+  autoX_params_AUTOX_SPEED_LIMIT_3_4,
+  autoX_params_AUTOX_SPEED_LIMIT_4_5,
+  autoX_params_AUTOX_TPS_START_LIMIT
 };
 
 #endif                                 /*enum_autoX_params*/
@@ -103,7 +103,7 @@ typedef struct {
   uint8_T c1_tp_RUNNING;
   uint8_T c1_tp_RELEASING;
   uint8_T c1_tp_STOPPING;
-  uint8_T c1_tp_NotReady;
+  uint8_T c1_tp_DEFAULT;
   uint8_T c1_tp_AUTOCROSS;
   uint8_T c1_tp_LAUNCH;
   uint8_T c1_b_tp_ACTIVE;
@@ -112,9 +112,8 @@ typedef struct {
   uint8_T c1_b_tp_START_RELEASE;
   uint8_T c1_b_tp_RUNNING;
   uint8_T c1_b_tp_RELEASING;
-  uint8_T c1_tp_SCAN;
   uint8_T c1_b_tp_STOPPING;
-  uint8_T c1_b_tp_NotReady;
+  uint8_T c1_b_tp_DEFAULT;
   uint8_T c1_tp_NEUTRAL_STATE;
   uint8_T c1_tp_NEUTRAL;
   uint8_T c1_tp_UNSET_NEUTRAL;
@@ -155,6 +154,7 @@ typedef struct {
   uint8_T c1_tp_STOP;
   uint8_T c1_tp_SCAN_ADC;
   uint8_T c1_c_tp_WAIT;
+  uint8_T c1_tp_SCAN;
   uint8_T c1_is_active_c1_GCU_Model_genCode;
   uint8_T c1_is_MODES;
   uint8_T c1_is_active_MODES;
