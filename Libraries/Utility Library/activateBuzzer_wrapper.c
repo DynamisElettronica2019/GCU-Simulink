@@ -38,7 +38,7 @@ void activateBuzzer_Outputs_wrapper(void)
 #if !defined(MATLAB_MEX_FILE)  
   int pwmValue;
   
-  pwmValue = hClutchTim.Init.Period/2;
+  pwmValue = hBuzzerTim.Init.Period/2;
   
   hBuzzerTim.Instance->CCR_BUZZER = pwmValue;
   
