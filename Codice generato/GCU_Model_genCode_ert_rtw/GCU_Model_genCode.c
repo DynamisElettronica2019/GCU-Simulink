@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.235
+ * Model version                  : 1.238
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Thu May 30 19:39:40 2019
+ * C/C++ source code generated on : Thu May 30 20:00:32 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -2489,6 +2489,7 @@ static void AUTOCROSS(void)
 /* Function for Chart: '<S5>/GCULogic' */
 static void MODES(void)
 {
+  int32_T tmp;
   switch (rtDW.is_MODES) {
    case IN_ACCELERATION:
     ACCELERATION();
@@ -2499,63 +2500,78 @@ static void MODES(void)
     break;
 
    case IN_INIT_j:
-    if (rtDW.RateTransition8[1] == ENDURANCE_MODE) {
-      rtDW.is_MODES = 0;
-      if (rtDW.is_MODES != IN_MANUAL_MODES) {
-        rtDW.is_MODES = IN_MANUAL_MODES;
-        rtDW.lastModeCom[0] = rtDW.RateTransition8[0];
-        rtDW.lastModeCom[1] = rtDW.RateTransition8[1];
-        checkShift();
-        checkClutch();
-      }
-    } else if (rtDW.RateTransition8[1] == SKIDPAD_MODE) {
-      rtDW.is_MODES = 0;
-      if (rtDW.is_MODES != IN_MANUAL_MODES) {
-        rtDW.is_MODES = IN_MANUAL_MODES;
-        rtDW.lastModeCom[0] = rtDW.RateTransition8[0];
-        rtDW.lastModeCom[1] = rtDW.RateTransition8[1];
-        checkShift();
-        checkClutch();
-      }
-    } else if (rtDW.RateTransition8[1] == ACCELERATION_MODE) {
-      rtDW.is_MODES = 0;
-      if (rtDW.is_MODES != IN_ACCELERATION) {
-        rtDW.is_MODES = IN_ACCELERATION;
-        rtDW.lastAacCom = rtDW.RateTransition4[0];
-        rtDW.lastModeCom[0] = rtDW.RateTransition8[0];
-        rtDW.lastModeCom[1] = rtDW.RateTransition8[1];
-      }
+    if (rtDW.buzzerCounter >= 1000) {
+      /* Outputs for Function Call SubSystem: '<S39>/BuzzerOff' */
 
-      if (rtDW.is_ACCELERATION != IN_DEFAULT) {
-        rtDW.is_ACCELERATION = IN_DEFAULT;
-        rtDW.stateFb = (uint16_T)ACC_OFF;
-        checkShift();
-        checkClutch();
-      }
-    } else if (rtDW.RateTransition8[1] == AUTOX_MODE) {
-      rtDW.is_MODES = 0;
-      if (rtDW.is_MODES != IN_AUTOCROSS) {
-        rtDW.is_MODES = IN_AUTOCROSS;
-        rtDW.lastAutoXCom = rtDW.RateTransition29[0];
-        rtDW.lastModeCom[0] = rtDW.RateTransition8[0];
-        rtDW.lastModeCom[1] = rtDW.RateTransition8[1];
-      }
+      /* S-Function (stopBuzzer): '<S45>/BuzzerOff' */
+      stopBuzzer_Outputs_wrapper();
 
-      if (rtDW.is_AUTOCROSS != IN_DEFAULT_e) {
-        rtDW.is_AUTOCROSS = IN_DEFAULT_e;
-        rtDW.stateFb = (uint16_T)AUTOX_DEFAULT;
-        checkShift();
-        checkClutch();
+      /* End of Outputs for SubSystem: '<S39>/BuzzerOff' */
+      if (rtDW.RateTransition8[1] == ENDURANCE_MODE) {
+        rtDW.is_MODES = 0;
+        if (rtDW.is_MODES != IN_MANUAL_MODES) {
+          rtDW.is_MODES = IN_MANUAL_MODES;
+          rtDW.lastModeCom[0] = rtDW.RateTransition8[0];
+          rtDW.lastModeCom[1] = rtDW.RateTransition8[1];
+          checkShift();
+          checkClutch();
+        }
+      } else if (rtDW.RateTransition8[1] == SKIDPAD_MODE) {
+        rtDW.is_MODES = 0;
+        if (rtDW.is_MODES != IN_MANUAL_MODES) {
+          rtDW.is_MODES = IN_MANUAL_MODES;
+          rtDW.lastModeCom[0] = rtDW.RateTransition8[0];
+          rtDW.lastModeCom[1] = rtDW.RateTransition8[1];
+          checkShift();
+          checkClutch();
+        }
+      } else if (rtDW.RateTransition8[1] == ACCELERATION_MODE) {
+        rtDW.is_MODES = 0;
+        if (rtDW.is_MODES != IN_ACCELERATION) {
+          rtDW.is_MODES = IN_ACCELERATION;
+          rtDW.lastAacCom = rtDW.RateTransition4[0];
+          rtDW.lastModeCom[0] = rtDW.RateTransition8[0];
+          rtDW.lastModeCom[1] = rtDW.RateTransition8[1];
+        }
+
+        if (rtDW.is_ACCELERATION != IN_DEFAULT) {
+          rtDW.is_ACCELERATION = IN_DEFAULT;
+          rtDW.stateFb = (uint16_T)ACC_OFF;
+          checkShift();
+          checkClutch();
+        }
+      } else if (rtDW.RateTransition8[1] == AUTOX_MODE) {
+        rtDW.is_MODES = 0;
+        if (rtDW.is_MODES != IN_AUTOCROSS) {
+          rtDW.is_MODES = IN_AUTOCROSS;
+          rtDW.lastAutoXCom = rtDW.RateTransition29[0];
+          rtDW.lastModeCom[0] = rtDW.RateTransition8[0];
+          rtDW.lastModeCom[1] = rtDW.RateTransition8[1];
+        }
+
+        if (rtDW.is_AUTOCROSS != IN_DEFAULT_e) {
+          rtDW.is_AUTOCROSS = IN_DEFAULT_e;
+          rtDW.stateFb = (uint16_T)AUTOX_DEFAULT;
+          checkShift();
+          checkClutch();
+        }
+      } else {
+        rtDW.is_MODES = 0;
+        if (rtDW.is_MODES != IN_MANUAL_MODES) {
+          rtDW.is_MODES = IN_MANUAL_MODES;
+          rtDW.lastModeCom[0] = rtDW.RateTransition8[0];
+          rtDW.lastModeCom[1] = rtDW.RateTransition8[1];
+          checkShift();
+          checkClutch();
+        }
       }
     } else {
-      rtDW.is_MODES = 0;
-      if (rtDW.is_MODES != IN_MANUAL_MODES) {
-        rtDW.is_MODES = IN_MANUAL_MODES;
-        rtDW.lastModeCom[0] = rtDW.RateTransition8[0];
-        rtDW.lastModeCom[1] = rtDW.RateTransition8[1];
-        checkShift();
-        checkClutch();
+      tmp = rtDW.buzzerCounter + 1;
+      if (tmp > 65535) {
+        tmp = 65535;
       }
+
+      rtDW.buzzerCounter = (uint16_T)tmp;
     }
     break;
 
@@ -3054,7 +3070,18 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
     rtDW.lastShiftCom = 0U;
     rtDW.lastClutchCom = 0U;
     rtDW.lastAutoXCom = 0U;
-    rtDW.is_MODES = IN_INIT_j;
+    rtDW.buzzerCounter = 0U;
+    if (rtDW.is_MODES != IN_INIT_j) {
+      rtDW.is_MODES = IN_INIT_j;
+
+      /* Outputs for Function Call SubSystem: '<S39>/BuzzerOn' */
+
+      /* S-Function (activateBuzzer): '<S46>/BuzzerOn' */
+      activateBuzzer_Outputs_wrapper();
+
+      /* End of Outputs for SubSystem: '<S39>/BuzzerOn' */
+    }
+
     rtDW.is_active_NEUTRAL_STATE = 1U;
     rtDW.is_NEUTRAL_STATE = IN_NEUTRAL;
     rtDW.is_active_GEARSHIFT = 1U;
