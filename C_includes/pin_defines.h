@@ -53,6 +53,10 @@
 #define hadc_sensors hadc1
 #define ADC_SENSORS ADC1
 
+//Definizione pin per KEYON
+#define KEY_ON_GPIO_Port	KEY_CTRL_GPIO_Port
+#define KEY_ON_Pin				KEY_CTRL_Pin
+
 //Definizione led ausiliari su scheda
 //#define RedLed_GPIO_Port RedLed_GPIO_Port 
 //#define BlueLed_GPIO_Port BlueLed_GPIO_Port
