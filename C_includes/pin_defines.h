@@ -39,6 +39,16 @@
 #define hBuzzerTimer htim4
 #define CCR_BUZZER CCR4
 
+//Definizione pwm per pompa benzina
+#define TIM_PUMP_CHANNEL  TIM_CHANNEL_1
+#define hPumpTimer	htim1
+#define CCR_PUMP CCR1
+
+//Definizione pwm per stop light
+#define TIM_STOP_CTRL_CHANNEL	TIM_CHANNEL_4
+#define hStopTim htim1
+#define CCR_STOP_CTRL	CCR4
+
 //Definizione uart utilizzata per debug
 #define huartDebug huart3
 
