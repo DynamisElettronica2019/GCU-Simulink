@@ -715,6 +715,8 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["GCU_Model_genCode:607"] = {rtwname: "<S6>/Efi Init"};
 	this.rtwnameHashMap["<S6>/Event Listener"] = {sid: "GCU_Model_genCode:608"};
 	this.sidHashMap["GCU_Model_genCode:608"] = {rtwname: "<S6>/Event Listener"};
+	this.rtwnameHashMap["<S6>/FuelPump"] = {sid: "GCU_Model_genCode:1893"};
+	this.sidHashMap["GCU_Model_genCode:1893"] = {rtwname: "<S6>/FuelPump"};
 	this.rtwnameHashMap["<S6>/GearMotor Init"] = {sid: "GCU_Model_genCode:609"};
 	this.sidHashMap["GCU_Model_genCode:609"] = {rtwname: "<S6>/GearMotor Init"};
 	this.rtwnameHashMap["<S6>/InitTimer"] = {sid: "GCU_Model_genCode:1078"};
@@ -723,6 +725,8 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["GCU_Model_genCode:1076"] = {rtwname: "<S6>/InitUART"};
 	this.rtwnameHashMap["<S6>/ScanADC"] = {sid: "GCU_Model_genCode:1415"};
 	this.sidHashMap["GCU_Model_genCode:1415"] = {rtwname: "<S6>/ScanADC"};
+	this.rtwnameHashMap["<S6>/StopLight"] = {sid: "GCU_Model_genCode:1892"};
+	this.sidHashMap["GCU_Model_genCode:1892"] = {rtwname: "<S6>/StopLight"};
 	this.rtwnameHashMap["<S6>/load_accParameters"] = {sid: "GCU_Model_genCode:1081"};
 	this.sidHashMap["GCU_Model_genCode:1081"] = {rtwname: "<S6>/load_accParameters"};
 	this.rtwnameHashMap["<S6>/load_accParameters1"] = {sid: "GCU_Model_genCode:1813"};

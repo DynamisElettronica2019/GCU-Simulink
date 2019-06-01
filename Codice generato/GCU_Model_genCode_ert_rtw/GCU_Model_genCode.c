@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.238
+ * Model version                  : 1.241
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Thu May 30 20:00:32 2019
+ * C/C++ source code generated on : Sat Jun  1 09:59:10 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -699,6 +699,21 @@ extern "C" {
 
 #endif
 
+  extern void FuelPump_init_Start_wrapper(void);
+  extern void FuelPump_init_Outputs_wrapper(void);
+  extern void FuelPump_init_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
   extern void GearMotor_init_Start_wrapper(void);
   extern void GearMotor_init_Outputs_wrapper(void);
   extern void GearMotor_init_Terminate_wrapper(void);
@@ -732,6 +747,21 @@ extern "C" {
   extern void InitUART_Start_wrapper(void);
   extern void InitUART_Outputs_wrapper(void);
   extern void InitUART_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void StopLight_init_Start_wrapper(void);
+  extern void StopLight_init_Outputs_wrapper(void);
+  extern void StopLight_init_Terminate_wrapper(void);
 
 #ifdef __cplusplus
 
@@ -4448,6 +4478,9 @@ void GCU_Model_genCode_initialize(void)
   /* S-Function (Efi_init): '<S6>/Efi Init' */
   Efi_init_Outputs_wrapper();
 
+  /* S-Function (FuelPump_init): '<S6>/FuelPump' */
+  FuelPump_init_Outputs_wrapper();
+
   /* S-Function (GearMotor_init): '<S6>/GearMotor Init' */
   GearMotor_init_Outputs_wrapper();
 
@@ -4459,6 +4492,9 @@ void GCU_Model_genCode_initialize(void)
 
   /* S-Function (ScanADC): '<S6>/ScanADC' */
   ScanADC_Outputs_wrapper();
+
+  /* S-Function (StopLight_init): '<S6>/StopLight' */
+  StopLight_init_Outputs_wrapper();
 
   /* End of SystemInitialize for SubSystem: '<Root>/InitializeFunction' */
 }
