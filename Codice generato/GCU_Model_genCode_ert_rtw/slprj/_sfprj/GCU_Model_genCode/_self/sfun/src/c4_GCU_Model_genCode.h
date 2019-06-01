@@ -13,6 +13,9 @@ typedef struct {
   int32_T c4_sfEvent;
   boolean_T c4_doneDoubleBufferReInit;
   uint8_T c4_is_active_c4_GCU_Model_genCode;
+  uint8_T c4_counter3;
+  uint8_T c4_counter1;
+  uint8_T c4_counter2;
   uint8_T c4_doSetSimStateSideEffects;
   const mxArray *c4_setSimStateSideEffectsInfo;
   void *c4_fEmlrtCtx;
