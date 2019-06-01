@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.241
+ * Model version                  : 1.245
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Sat Jun  1 09:59:10 2019
+ * C/C++ source code generated on : Sat Jun  1 15:46:09 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -4128,7 +4128,7 @@ void GCU_Model_genCode_step3(void)     /* Sample time: [0.001s, 0.0004s] */
 /* Model step function for TID4 */
 void GCU_Model_genCode_step4(void)     /* Sample time: [0.001s, 0.0006s] */
 {
-  uint32_T Multiply[9];
+  uint32_T rtb_Multiply1[9];
   int32_T i;
 
   /* S-Function (fcncallgen): '<Root>/Function_Call_Generator1' incorporates:
@@ -4139,38 +4139,68 @@ void GCU_Model_genCode_step4(void)     /* Sample time: [0.001s, 0.0006s] */
    */
   update_ADC_data_Outputs_wrapper(&rtU.adc_buffer[0], &rtDW.update_ADC_data[0]);
 
-  /* Product: '<S11>/Multiply' */
+  /* Product: '<S11>/Multiply1' incorporates:
+   *  Constant: '<S11>/Gain'
+   *  Constant: '<S11>/OffSet'
+   *  Constant: '<S11>/OffSet1'
+   *  DataTypeConversion: '<S11>/Cast'
+   *  Product: '<S11>/Multiply'
+   *  Sum: '<S11>/Sum'
+   */
   for (i = 0; i < 9; i++) {
-    Multiply[i] = rtDW.update_ADC_data[i];
+    rtb_Multiply1[i] = (uint32_T)(((real_T)(uint32_T)((real_T)
+      rtDW.update_ADC_data[i] * rtConstP.Gain_Value[i]) +
+      rtConstP.OffSet_Value[i]) * rtConstP.OffSet1_Value[i]);
   }
 
-  /* End of Product: '<S11>/Multiply' */
+  /* End of Product: '<S11>/Multiply1' */
 
   /* S-Function (Read_oil_sensor): '<S11>/Read_oil_sensor' */
   Read_oil_sensor_Outputs_wrapper(&rtDW.Read_oil_sensor);
 
   /* End of Outputs for S-Function (fcncallgen): '<Root>/Function_Call_Generator1' */
 
-  /* Outport: '<Root>/adc_data_vector' */
+  /* Outport: '<Root>/adc_data_vector' incorporates:
+   *  DataTypeConversion: '<S11>/Cast To Double'
+   */
   for (i = 0; i < 9; i++) {
-    rtY.adc_data_vector[i] = Multiply[i];
+    /* S-Function (fcncallgen): '<Root>/Function_Call_Generator1' incorporates:
+     *  SubSystem: '<Root>/update_ADC_data'
+     */
+    rtY.adc_data_vector[i] = rtb_Multiply1[i];
+
+    /* End of Outputs for S-Function (fcncallgen): '<Root>/Function_Call_Generator1' */
   }
 
   /* End of Outport: '<Root>/adc_data_vector' */
 
-  /* RateTransition: '<Root>/Rate Transition18' */
+  /* RateTransition: '<Root>/Rate Transition18' incorporates:
+   *  DataTypeConversion: '<S11>/Cast To Double'
+   */
   if (!(rtDW.RateTransition18_semaphoreTaken != 0)) {
     for (i = 0; i < 9; i++) {
-      rtDW.RateTransition18_Buffer0[i] = Multiply[i];
+      /* S-Function (fcncallgen): '<Root>/Function_Call_Generator1' incorporates:
+       *  SubSystem: '<Root>/update_ADC_data'
+       */
+      rtDW.RateTransition18_Buffer0[i] = rtb_Multiply1[i];
+
+      /* End of Outputs for S-Function (fcncallgen): '<Root>/Function_Call_Generator1' */
     }
   }
 
   /* End of RateTransition: '<Root>/Rate Transition18' */
 
-  /* Update for RateTransition: '<Root>/Rate Transition9' */
+  /* Update for RateTransition: '<Root>/Rate Transition9' incorporates:
+   *  DataTypeConversion: '<S11>/Cast To Double'
+   */
   for (i = 0; i < 9; i++) {
+    /* S-Function (fcncallgen): '<Root>/Function_Call_Generator1' incorporates:
+     *  SubSystem: '<Root>/update_ADC_data'
+     */
     rtDW.RateTransition9_Buffer[i + (rtDW.RateTransition9_ActiveBufIdx == 0) * 9]
-      = Multiply[i];
+      = rtb_Multiply1[i];
+
+    /* End of Outputs for S-Function (fcncallgen): '<Root>/Function_Call_Generator1' */
   }
 
   rtDW.RateTransition9_ActiveBufIdx = (int8_T)(rtDW.RateTransition9_ActiveBufIdx

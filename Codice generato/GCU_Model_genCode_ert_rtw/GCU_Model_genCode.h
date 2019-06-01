@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.241
+ * Model version                  : 1.245
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Sat Jun  1 09:59:10 2019
+ * C/C++ source code generated on : Sat Jun  1 15:46:09 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -378,6 +378,21 @@ typedef struct {
 
 /* Constant parameters (default storage) */
 typedef struct {
+  /* Expression: GainVector
+   * Referenced by: '<S11>/Gain'
+   */
+  real_T Gain_Value[9];
+
+  /* Expression: OffsetVector
+   * Referenced by: '<S11>/OffSet'
+   */
+  real_T OffSet_Value[9];
+
+  /* Expression: IS_to_IL_vector
+   * Referenced by: '<S11>/OffSet1'
+   */
+  real_T OffSet1_Value[9];
+
   /* Pooled Parameter (Expression: [uint16(0),uint16(100),uint16(200),uint16(300),uint16(400),uint16(500),uint16(600),uint16(700)])
    * Referenced by:
    *   '<S1>/1-D Lookup Table1'
