@@ -45,7 +45,10 @@ cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/EEPROM Library/loadAccPara
 cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/EEPROM Library/loadAutoXParams Builder','Hidden'});
 cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/EEPROM Library/loadTimings Builder','Hidden'});
 
-cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/Utility Library/ activateBuzzer Builder','Hidden'});
-cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/Utility Library/ stopBuzzer Builder','Hidden'});
-cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/Utility Library/ Buzzer_init Builder','Hidden'});
+cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/Utility Library/activateBuzzer Builder','Hidden'});
+cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/Utility Library/stopBuzzer Builder','Hidden'});
+cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/Utility Library/buzzerInit Builder','Hidden'});
+cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/Utility Library/FuelPump Builder','Hidden'});
+cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/Utility Library/StopLight Builder','Hidden'});
+cm.LibraryBrowserCustomizer.applyFilter({'GCU Library/Utility Library/setKeyOn Builder','Hidden'});
 
