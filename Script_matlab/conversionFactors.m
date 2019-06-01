@@ -21,4 +21,4 @@ IS_to_IL = 10*dk_ILIS;
 
 GainVector = [ACS725_gain, ACS725_gain, ACS725_gain, ACS725_gain, TEMP_EFI_gain, CURRENT_SENSE_gain, IS_gain, IS_gain, ACS725_gain];
 OffsetVector = [0, 0, 0, 0, TEMP_EFI_offset, 0, IS_offset, IS_offset, 0];
-IS_to_IL_vector = [0, 0, 0, 0, 0, 0, IS_to_IL, IS_to_IL, 0]; 
+IS_to_IL_vector = [1, 1, 1, 1, 1, 1, IS_to_IL, IS_to_IL, 1]; 

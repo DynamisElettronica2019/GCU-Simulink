@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.245
+ * Model version                  : 1.247
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Sat Jun  1 15:46:09 2019
+ * C/C++ source code generated on : Sat Jun  1 16:50:51 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -39,7 +39,7 @@ const ConstP rtConstP = {
   /* Expression: IS_to_IL_vector
    * Referenced by: '<S11>/OffSet1'
    */
-  { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 195000.0, 195000.0, 0.0 },
+  { 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 195000.0, 195000.0, 1.0 },
 
   /* Pooled Parameter (Expression: [uint16(0),uint16(100),uint16(200),uint16(300),uint16(400),uint16(500),uint16(600),uint16(700)])
    * Referenced by:

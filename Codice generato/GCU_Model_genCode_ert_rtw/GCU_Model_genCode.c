@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.245
+ * Model version                  : 1.247
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Sat Jun  1 15:46:09 2019
+ * C/C++ source code generated on : Sat Jun  1 16:50:51 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -1255,6 +1255,10 @@ static void NEUTRAL_STATE(void)
     if ((rtDW.sfEvent == event_GearshiftUp) || (rtDW.sfEvent ==
          event_GearshiftDown)) {
       rtDW.is_NEUTRAL_STATE = IN_UNSET_NEUTRAL;
+    } else {
+      if (rtDW.RateTransition_d != 0) {
+        rtDW.is_NEUTRAL_STATE = IN_NO_NEUTRAL;
+      }
     }
     break;
 

@@ -2119,6 +2119,8 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["GCU_Model_genCode:651:41"] = {rtwname: "<S43>:41"};
 	this.rtwnameHashMap["<S43>:44"] = {sid: "GCU_Model_genCode:651:44"};
 	this.sidHashMap["GCU_Model_genCode:651:44"] = {rtwname: "<S43>:44"};
+	this.rtwnameHashMap["<S43>:1065"] = {sid: "GCU_Model_genCode:651:1065"};
+	this.sidHashMap["GCU_Model_genCode:651:1065"] = {rtwname: "<S43>:1065"};
 	this.rtwnameHashMap["<S43>:42"] = {sid: "GCU_Model_genCode:651:42"};
 	this.sidHashMap["GCU_Model_genCode:651:42"] = {rtwname: "<S43>:42"};
 	this.rtwnameHashMap["<S43>:43"] = {sid: "GCU_Model_genCode:651:43"};
