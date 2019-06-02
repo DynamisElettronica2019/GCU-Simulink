@@ -13,7 +13,9 @@
 
 
 /* %%%-SFUNWIZ_wrapper_includes_Changes_BEGIN --- EDIT HERE TO _END */
-#include <math.h>
+#if !defined(MATLAB_MEX_FILE)
+#include "pin_defines.h"
+#endif
 /* %%%-SFUNWIZ_wrapper_includes_Changes_END --- EDIT HERE TO _BEGIN */
 #define y_width 1
 
@@ -33,6 +35,10 @@ void EngineControl_stop_Outputs_wrapper(uint8_T *engine_starter)
 {
 /* %%%-SFUNWIZ_wrapper_Outputs_Changes_BEGIN --- EDIT HERE TO _END */
 *engine_starter = 0;
+
+#if !defined(MATLAB_MEX_FILE)
+  HAL_GPIO_WritePin(KEY_START_GPIO_Port, KEY_START_Pin, GPIO_PIN_RESET);
+#endif
 /* %%%-SFUNWIZ_wrapper_Outputs_Changes_END --- EDIT HERE TO _BEGIN */
 }
 

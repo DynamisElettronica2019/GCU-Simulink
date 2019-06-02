@@ -33,10 +33,10 @@
 //#define BOARD_DEBUG_MODE   0
 //#define DEBUG_MODE		   1
 //#define SETTINGS_MODE	   2
-#define SKIDPAD_MODE		   3
-#define AUTOX_MODE			   4
-#define ACCELERATION_MODE  5
-#define ENDURANCE_MODE	   6
+#define SKIDPAD_MODE	   3
+#define AUTOX_MODE         2
+#define ACCELERATION_MODE  1
+#define ENDURANCE_MODE	   0
 
 //Define di accelerationFB
 #define ACC_OFF 				0
