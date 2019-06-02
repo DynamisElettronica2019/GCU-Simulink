@@ -359,9 +359,9 @@ function TraceInfoFlag() {
     this.traceFlag["GCU_Model_genCode.c:2279c30"]=1;
     this.traceFlag["GCU_Model_genCode.c:2285c25"]=1;
     this.traceFlag["GCU_Model_genCode.c:2285c36"]=1;
-    this.traceFlag["GCU_Model_genCode.c:2300c38"]=1;
-    this.traceFlag["GCU_Model_genCode.c:2300c58"]=1;
-    this.traceFlag["GCU_Model_genCode.c:2301c38"]=1;
+    this.traceFlag["GCU_Model_genCode.c:2300c39"]=1;
+    this.traceFlag["GCU_Model_genCode.c:2300c61"]=1;
+    this.traceFlag["GCU_Model_genCode.c:2301c39"]=1;
     this.traceFlag["GCU_Model_genCode.c:2305c30"]=1;
     this.traceFlag["GCU_Model_genCode.c:2309c29"]=1;
     this.traceFlag["GCU_Model_genCode.c:2309c40"]=1;

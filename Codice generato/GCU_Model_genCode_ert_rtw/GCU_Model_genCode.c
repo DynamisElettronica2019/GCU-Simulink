@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.253
+ * Model version                  : 1.255
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Sun Jun  2 12:59:53 2019
+ * C/C++ source code generated on : Sun Jun  2 15:32:10 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -2297,9 +2297,9 @@ static void AUTOCROSS(void)
      case IN_LAUNCH:
       switch (rtDW.is_LAUNCH) {
        case IN_ACTIVE:
-        if ((rtDW.RateTransition4[0] != rtDW.lastAacCom) &&
-            (rtDW.RateTransition4[1] == ACC_OFF)) {
-          rtDW.lastAacCom = rtDW.RateTransition4[0];
+        if ((rtDW.RateTransition29[0] != rtDW.lastAutoXCom) &&
+            (rtDW.RateTransition29[1] == AUTOX_DEFAULT)) {
+          rtDW.lastAutoXCom = rtDW.RateTransition29[0];
           rtDW.is_ACTIVE_d = 0;
           rtDW.is_LAUNCH = 0;
           if (rtDW.is_LAUNCH != IN_STOPPING) {
