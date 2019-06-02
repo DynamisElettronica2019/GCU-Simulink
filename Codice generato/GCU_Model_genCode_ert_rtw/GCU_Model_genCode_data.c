@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.258
+ * Model version                  : 1.263
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Sun Jun  2 16:37:50 2019
+ * C/C++ source code generated on : Sun Jun  2 18:28:57 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -32,7 +32,7 @@ const ConstP rtConstP = {
    * Referenced by: '<S11>/OffSet1'
    */
   { 0.030525030525030521, 0.030525030525030521, 0.030525030525030521,
-    0.030525030525030521, 100.0, 0.26862026862026861, 1.614951514751114E-6,
+    0.030525030525030521, 100.0, 333.33333333333331, 1.614951514751114E-6,
     1.614951514751114E-6, 0.030525030525030521 },
 
   /* Expression: ConversionOffsetVector
