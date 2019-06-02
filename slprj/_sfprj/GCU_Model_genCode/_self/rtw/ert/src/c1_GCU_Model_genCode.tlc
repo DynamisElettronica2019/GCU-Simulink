@@ -7,7 +7,7 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   45 \
+    NumChartData   46 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
@@ -235,6 +235,13 @@
       Description  "ChartLocal"\
       SFName       ""\
       Path         "MODES.lastAutoXCom"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "buzzerCounter"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "MODES.buzzerCounter"\
       SrcLocation  ""\
     }\
     ChartData {\

@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.247
+ * Model version                  : 1.249
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Sat Jun  1 16:50:51 2019
+ * C/C++ source code generated on : Sun Jun  2 10:41:53 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -1375,6 +1375,7 @@ static void Clutch_setValue(uint8_T setValue)
 /* Function for Chart: '<S5>/GCULogic' */
 static void GEARSHIFT(void)
 {
+  int32_T q0;
   switch (rtDW.is_GEARSHIFT) {
    case IN_DOWNSHIFTING:
     switch (rtDW.is_DOWNSHIFTING) {
@@ -1496,7 +1497,12 @@ static void GEARSHIFT(void)
       rtDW.is_GEARSHIFT = IN_UPSHIFTING;
       if (rtDW.is_UPSHIFTING != IN_UP_START) {
         rtDW.is_UPSHIFTING = IN_UP_START;
-        rtDW.ticksCounter = Gearshift_getTime();
+        q0 = Gearshift_getTime();
+        if (q0 > 2147483646) {
+          rtDW.ticksCounter = MAX_int32_T;
+        } else {
+          rtDW.ticksCounter = q0 + 1;
+        }
       }
 
       if (rtDW.is_NEUTRAL_STATE == IN_SET_NEUTRAL) {
