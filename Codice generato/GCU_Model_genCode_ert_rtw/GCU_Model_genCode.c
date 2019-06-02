@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.251
+ * Model version                  : 1.253
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Sun Jun  2 12:31:50 2019
+ * C/C++ source code generated on : Sun Jun  2 12:59:53 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -3883,13 +3883,15 @@ void GCU_Model_genCode_step2(void)     /* Sample time: [0.001s, 0.0002s] */
     }
 
     sendModeCommand(rtDW.UnpackCanUart_o3);
-    rtDW.mapTarget = rtDW.UnpackCanUart_o4;
     if ((uint8_T)tmp > ACC_CLUTCH_NOISE_LEVEL) {
       sendAccCommand((uint16_T)ACC_OFF);
       sendAutoXCommand((uint16_T)AUTOX_DEFAULT);
     }
 
     sendClutchCommand((uint16_T)(uint8_T)tmp);
+    if (rtDW.UnpackCanUart_o4 != 0) {
+      rtDW.mapTarget = rtDW.UnpackCanUart_o4;
+    }
   } else if (rtDW.UnpackCanUart_o1 == SW_OK_BUTTON_GCU_ID) {
     if (rtDW.UnpackCanUart_o2 == ACCELERATION_MODE) {
       sendAccCommand(rtDW.UnpackCanUart_o3);
