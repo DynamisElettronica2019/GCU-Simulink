@@ -26,7 +26,7 @@
  * | See matlabroot/simulink/src/sfuntmpl_doc.c for a more detailed template |
  *  ------------------------------------------------------------------------- 
  *
- * Created: Mon Jun 03 22:35:06 2019
+ * Created: Mon Jun 03 22:42:39 2019
  */
 
 #define S_FUNCTION_LEVEL 2
