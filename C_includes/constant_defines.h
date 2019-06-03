@@ -25,9 +25,13 @@
 //Filtri impostati per il CAN
 #define CAN_FILTER_NUMBER   14
 
-//Set e Reset del comando KeyOn
+//Set e Reset del comando KeyOn, upCut e rpmLimiter
 #define KEY_ON_SET   1
 #define KEY_ON_RESET 0
+#define UPCUT_SET 	 0
+#define UPCUT_RESET  1
+#define RPM_SET      0
+#define RPM_RESET    1
 
 //Define delle modalità di guida
 //#define BOARD_DEBUG_MODE   0
