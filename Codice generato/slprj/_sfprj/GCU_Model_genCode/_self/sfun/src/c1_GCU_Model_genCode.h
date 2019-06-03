@@ -185,7 +185,6 @@ typedef struct {
   uint8_T c1_lastShift;
   uint16_T c1_lastAacCom;
   uint16_T c1_lastShiftCom;
-  uint8_T c1_lastClutchCom;
   uint16_T c1_lastAutoXCom;
   uint16_T c1_buzzerCounter;
   uint16_T c1_GEAR_COMMAND_NEUTRAL_UP;
@@ -228,7 +227,7 @@ typedef struct {
   const mxArray *c1_setSimStateSideEffectsInfo;
   void *c1_dataSetLogObjVector[3];
   uint8_T c1_sdiLoggedStatesBuffer[67];
-  uint8_T c1_sdiLoggedDataBuffer[62];
+  uint8_T c1_sdiLoggedDataBuffer[61];
   sdiBlockID_t c1_sdiBlockInfo;
   SignalExportStruct c1_SignalExportProp;
   SignalExportStruct c1_b_SignalExportProp;
@@ -317,7 +316,6 @@ typedef struct {
   SignalExportStruct c1_jd_SignalExportProp;
   SignalExportStruct c1_kd_SignalExportProp;
   SignalExportStruct c1_ld_SignalExportProp;
-  SignalExportStruct c1_md_SignalExportProp;
   rtwCAPI_ModelMappingInfo c1_testPointMappingInfo;
   void *c1_testPointAddrMap[3];
   void *c1_fEmlrtCtx;
@@ -328,7 +326,7 @@ typedef struct {
   uint8_T *c1_startEngCom;
   uint16_T (*c1_aacCom)[2];
   uint16_T (*c1_acc_externValues)[3];
-  uint8_T (*c1_clutchCom)[2];
+  uint8_T *c1_clutchTarget;
   uint16_T (*c1_modeCom)[2];
   uint16_T *c1_stateFb;
   int32_T (*c1_acc_parameters)[16];

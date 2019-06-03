@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.263
+ * Model version                  : 1.265
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Sun Jun  2 18:28:57 2019
+ * C/C++ source code generated on : Mon Jun  3 16:54:39 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -289,7 +289,6 @@ typedef struct {
   volatile int8_T RateTransition1_ActiveBufIdx;/* '<Root>/Rate Transition1' */
   volatile int8_T RateTransition2_ActiveBufIdx;/* '<Root>/Rate Transition2' */
   volatile int8_T RateTransition4_ActiveBufIdx;/* '<Root>/Rate Transition4' */
-  volatile int8_T RateTransition5_ActiveBufIdx;/* '<Root>/Rate Transition5' */
   volatile int8_T RateTransition8_ActiveBufIdx;/* '<Root>/Rate Transition8' */
   volatile int8_T RateTransition29_ActiveBufIdx;/* '<Root>/Rate Transition29' */
   volatile int8_T RateTransition_ActiveBufIdx;/* '<S2>/Rate Transition' */
@@ -297,16 +296,13 @@ typedef struct {
   volatile int8_T RateTransition18_semaphoreTaken;/* '<Root>/Rate Transition18' */
   uint8_T MultiportSwitch[10];         /* '<Root>/Multiport Switch' */
   uint8_T PackCanUart[10];             /* '<S7>/PackCanUart' */
-  uint8_T TmpSignalConversionAtSFunctionI[2];/* '<S5>/GCULogic' */
   uint8_T OutportBufferFordataRead[19];
-  uint8_T clutchCommand[2];            /* '<S4>/MessageEvaluation1' */
   uint8_T PackCANMsg[8];               /* '<S20>/PackCANMsg' */
   uint8_T PackCANMsg_f[8];             /* '<S19>/PackCANMsg' */
   uint8_T PackCANMsg_l[8];             /* '<S22>/PackCANMsg' */
   uint8_T PackCANMsg_e[8];             /* '<S18>/PackCANMsg' */
   uint8_T PackCANMsg_ls[8];            /* '<S21>/PackCANMsg' */
   uint8_T Pack_Uart_Message[40];       /* '<S9>/Pack_Uart_Message' */
-  volatile uint8_T RateTransition5_Buffer[4];/* '<Root>/Rate Transition5' */
   uint8_T tempShiftedArray[50];        /* '<S2>/EEPROM_OutputRequest' */
   uint8_T newData[16];                 /* '<S2>/EEPROM_OutputRequest' */
   uint8_T RateTransition_d;            /* '<Root>/Rate Transition' */
@@ -318,6 +314,7 @@ typedef struct {
   uint8_T Eeprom_init_o2;              /* '<S6>/Eeprom_init' */
   uint8_T Eeprom_init_o3;              /* '<S6>/Eeprom_init' */
   uint8_T setKeyOn;                    /* '<S6>/setKeyOn' */
+  uint8_T Cast1_k;                     /* '<S5>/Cast1' */
   uint8_T Pin_H;                       /* '<S45>/Pin_H' */
   uint8_T Pin_In1;                     /* '<S45>/Pin_In1' */
   uint8_T clutchCurrVal;               /* '<S5>/GCULogic' */
@@ -333,8 +330,10 @@ typedef struct {
   uint8_T EfiSetCut;                   /* '<S50>/Efi SetCut' */
   uint8_T Minus;                       /* '<S48>/Minus' */
   uint8_T startEngCommand;             /* '<S4>/MessageEvaluation1' */
+  uint8_T clutchTarget;                /* '<S4>/MessageEvaluation1' */
   volatile uint8_T RateTransition_Buffer0;/* '<Root>/Rate Transition' */
   volatile uint8_T RateTransition3_Buffer0;/* '<Root>/Rate Transition3' */
+  volatile uint8_T RateTransition5_Buffer0;/* '<Root>/Rate Transition5' */
   uint8_T is_c3_GCU_Model_genCode;     /* '<S7>/AccelerationRoutine' */
   uint8_T lastGearPin;                 /* '<S7>/AccelerationRoutine' */
   uint8_T is_active_c1_GCU_Model_genCode;/* '<S5>/GCULogic' */
@@ -364,7 +363,6 @@ typedef struct {
   uint8_T is_SCAN_ADC;                 /* '<S5>/GCULogic' */
   uint8_T is_active_SCAN_ADC;          /* '<S5>/GCULogic' */
   uint8_T lastShift;                   /* '<S5>/GCULogic' */
-  uint8_T lastClutchCom;               /* '<S5>/GCULogic' */
   uint8_T lastCom;                     /* '<S5>/GCULogic' */
   uint8_T startCounter;                /* '<S5>/GCULogic' */
   uint8_T is_c6_GCU_Model_genCode;     /* '<S2>/EEPROM_OutputRequest' */

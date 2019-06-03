@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.263
+ * Model version                  : 1.265
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Sun Jun  2 18:28:57 2019
+ * C/C++ source code generated on : Mon Jun  3 16:54:39 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -839,7 +839,6 @@ static void testIndex(void);
 static void updateData(void);
 static void checkGear(void);
 static void sendAutoXCommand(uint16_T com);
-static void sendClutchCommand(uint16_T com);
 static void sendAccCommand(uint16_T com);
 static void sendModeCommand(uint16_T com);
 static void sendShiftCommand(uint16_T com);
@@ -1786,11 +1785,10 @@ static void aacCheckShift(void)
 /* Function for Chart: '<S5>/GCULogic' */
 static void checkClutch(void)
 {
-  if ((rtDW.TmpSignalConversionAtSFunctionI[0] != rtDW.lastClutchCom) &&
-      (((!(rtDW.is_GEARSHIFT == IN_DOWNSHIFTING)) && (!(rtDW.is_NEUTRAL_STATE ==
-          IN_SET_NEUTRAL))) || (rtDW.is_NEUTRAL_STATE == IN_UNSET_NEUTRAL))) {
-    rtDW.lastClutchCom = rtDW.TmpSignalConversionAtSFunctionI[0];
-    Clutch_setValue(rtDW.TmpSignalConversionAtSFunctionI[1]);
+  if ((rtDW.Cast1_k != rtDW.clutchCurrVal) && (((!(rtDW.is_GEARSHIFT ==
+          IN_DOWNSHIFTING)) && (!(rtDW.is_NEUTRAL_STATE == IN_SET_NEUTRAL))) ||
+       (rtDW.is_NEUTRAL_STATE == IN_UNSET_NEUTRAL))) {
+    Clutch_setValue(rtDW.Cast1_k);
   }
 }
 
@@ -2918,30 +2916,6 @@ static void sendAutoXCommand(uint16_T com)
 }
 
 /* Function for Chart: '<S4>/MessageEvaluation1' */
-static void sendClutchCommand(uint16_T com)
-{
-  uint16_T tmp;
-  int32_T tmp_0;
-  if (rtDW.clutchCommand[0] >= 255) {
-    rtDW.clutchCommand[0] = 0U;
-  } else {
-    tmp_0 = rtDW.clutchCommand[0] + 1;
-    if (tmp_0 > 255) {
-      tmp_0 = 255;
-    }
-
-    rtDW.clutchCommand[0] = (uint8_T)tmp_0;
-  }
-
-  tmp = com;
-  if (com > 255) {
-    tmp = 255U;
-  }
-
-  rtDW.clutchCommand[1] = (uint8_T)tmp;
-}
-
-/* Function for Chart: '<S4>/MessageEvaluation1' */
 static void sendAccCommand(uint16_T com)
 {
   int32_T tmp;
@@ -3049,7 +3023,7 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
   /* local block i/o variables */
   real_T rtb_CastToDouble;
   real_T rtb_Internal;
-  uint8_T rtb_RateTransition5[2];
+  uint8_T rtb_RateTransition5;
   uint8_T Merge_b;
   int32_T i;
   uint8_T tmp[16];
@@ -3078,9 +3052,7 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
   rtDW.RateTransition4[1] = rtDW.RateTransition4_Buffer[1 + i];
 
   /* RateTransition: '<Root>/Rate Transition5' */
-  i = rtDW.RateTransition5_ActiveBufIdx << 1;
-  rtb_RateTransition5[0] = rtDW.RateTransition5_Buffer[i];
-  rtb_RateTransition5[1] = rtDW.RateTransition5_Buffer[1 + i];
+  rtb_RateTransition5 = rtDW.RateTransition5_Buffer0;
 
   /* RateTransition: '<Root>/Rate Transition8' */
   i = rtDW.RateTransition8_ActiveBufIdx << 1;
@@ -3109,12 +3081,11 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
     rtb_Internal = 0.24359453030282938*rtDW.Internal_DSTATE;
   }
 
-  /* SignalConversion: '<S44>/TmpSignal ConversionAt SFunction Inport6' incorporates:
-   *  Chart: '<S5>/GCULogic'
-   *  DataTypeConversion: '<S5>/Cast1'
+  /* DataTypeConversion: '<S5>/Cast1' incorporates:
+   *  Constant: '<S5>/Constant'
+   *  Sum: '<S5>/Sum'
    */
-  rtDW.TmpSignalConversionAtSFunctionI[0] = rtb_RateTransition5[0];
-  rtDW.TmpSignalConversionAtSFunctionI[1] = (uint8_T)rtb_Internal;
+  rtDW.Cast1_k = (uint8_T)(rtb_Internal + 1.0);
 
   /* Chart: '<S5>/GCULogic' */
   rtDW.sfEvent = -1;
@@ -3123,7 +3094,6 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
     rtDW.is_active_MODES = 1U;
     rtDW.lastAacCom = 0U;
     rtDW.lastShiftCom = 0U;
-    rtDW.lastClutchCom = 0U;
     rtDW.lastAutoXCom = 0U;
     rtDW.buzzerCounter = 0U;
     if (rtDW.is_MODES != IN_INIT_j) {
@@ -3714,8 +3684,10 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
     }
   }
 
+  /* End of Chart: '<S5>/GCULogic' */
+
   /* DataTypeConversion: '<S5>/Cast To Double' */
-  rtb_CastToDouble = rtb_RateTransition5[1];
+  rtb_CastToDouble = rtb_RateTransition5;
 
   /* Update for DiscreteStateSpace: '<S43>/Internal' */
   {
@@ -3760,6 +3732,7 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
 /* Model step function for TID2 */
 void GCU_Model_genCode_step2(void)     /* Sample time: [0.001s, 0.0002s] */
 {
+  uint8_T rtb_Cast;
   int32_T i;
   uint16_T tmp;
 
@@ -3908,13 +3881,13 @@ void GCU_Model_genCode_step2(void)     /* Sample time: [0.001s, 0.0002s] */
       tmp = 255U;
     }
 
+    rtDW.clutchTarget = (uint8_T)tmp;
     sendModeCommand(rtDW.UnpackCanUart_o3);
-    if ((uint8_T)tmp > ACC_CLUTCH_NOISE_LEVEL) {
+    if (rtDW.clutchTarget > ACC_CLUTCH_NOISE_LEVEL) {
       sendAccCommand((uint16_T)ACC_OFF);
       sendAutoXCommand((uint16_T)AUTOX_DEFAULT);
     }
 
-    sendClutchCommand((uint16_T)(uint8_T)tmp);
     if (rtDW.UnpackCanUart_o4 != 0) {
       rtDW.mapTarget = rtDW.UnpackCanUart_o4;
     }
@@ -3922,13 +3895,13 @@ void GCU_Model_genCode_step2(void)     /* Sample time: [0.001s, 0.0002s] */
     if (rtDW.UnpackCanUart_o2 == ACCELERATION_MODE) {
       sendAccCommand(rtDW.UnpackCanUart_o3);
       if (rtDW.accCommand[1] == ACC_OFF) {
-        sendClutchCommand(0);
+        rtDW.clutchTarget = 0U;
       }
     } else {
       if (rtDW.UnpackCanUart_o2 == AUTOX_MODE) {
         sendAutoXCommand(rtDW.UnpackCanUart_o3);
         if (rtDW.autoXCommand[1] == AUTOX_DEFAULT) {
-          sendClutchCommand(0);
+          rtDW.clutchTarget = 0U;
         }
       }
     }
@@ -3951,10 +3924,11 @@ void GCU_Model_genCode_step2(void)     /* Sample time: [0.001s, 0.0002s] */
 
   /* End of RateTransition: '<Root>/Rate Transition14' */
 
-  /* Update for RateTransition: '<Root>/Rate Transition' incorporates:
-   *  DataTypeConversion: '<Root>/Cast'
-   */
-  rtDW.RateTransition_Buffer0 = (uint8_T)rtDW.currGear;
+  /* DataTypeConversion: '<Root>/Cast' */
+  rtb_Cast = (uint8_T)rtDW.currGear;
+
+  /* Update for RateTransition: '<Root>/Rate Transition' */
+  rtDW.RateTransition_Buffer0 = rtb_Cast;
 
   /* Update for RateTransition: '<Root>/Rate Transition1' */
   rtDW.RateTransition1_Buffer[(rtDW.RateTransition1_ActiveBufIdx == 0) * 3] =
@@ -3986,12 +3960,7 @@ void GCU_Model_genCode_step2(void)     /* Sample time: [0.001s, 0.0002s] */
     == 0);
 
   /* Update for RateTransition: '<Root>/Rate Transition5' */
-  rtDW.RateTransition5_Buffer[(rtDW.RateTransition5_ActiveBufIdx == 0) << 1] =
-    rtDW.clutchCommand[0];
-  rtDW.RateTransition5_Buffer[1 + ((rtDW.RateTransition5_ActiveBufIdx == 0) << 1)]
-    = rtDW.clutchCommand[1];
-  rtDW.RateTransition5_ActiveBufIdx = (int8_T)(rtDW.RateTransition5_ActiveBufIdx
-    == 0);
+  rtDW.RateTransition5_Buffer0 = rtDW.clutchTarget;
 
   /* Update for RateTransition: '<Root>/Rate Transition8' */
   rtDW.RateTransition8_Buffer[(rtDW.RateTransition8_ActiveBufIdx == 0) << 1] =
@@ -4070,7 +4039,7 @@ void GCU_Model_genCode_step3(void)     /* Sample time: [0.001s, 0.0004s] */
   rtb_RateTransition15 = rtDW.Pin_In1;
 
   /* RateTransition: '<Root>/Rate Transition17' */
-  rtb_RateTransition17 = rtDW.clutchCommand[1];
+  rtb_RateTransition17 = rtDW.clutchTarget;
 
   /* RateTransition: '<Root>/Rate Transition24' */
   rtb_RateTransition24 = rtDW.Pin_H;
