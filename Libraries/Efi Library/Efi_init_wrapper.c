@@ -13,7 +13,7 @@
 
 
 /* %%%-SFUNWIZ_wrapper_includes_Changes_BEGIN --- EDIT HERE TO _END */
-#include <math.h>
+ 
 /* %%%-SFUNWIZ_wrapper_includes_Changes_END --- EDIT HERE TO _BEGIN */
 
 /*
@@ -21,7 +21,8 @@
  *
  */
 /* %%%-SFUNWIZ_wrapper_externs_Changes_BEGIN --- EDIT HERE TO _END */
-/* extern double func(double a); */
+extern void  Efi_unsetRPMLimiter_Outputs_wrapper();
+extern void Efi_unsetCut_Outputs_wrapper();
 /* %%%-SFUNWIZ_wrapper_externs_Changes_END --- EDIT HERE TO _BEGIN */
 
 /*
@@ -31,7 +32,8 @@
 void Efi_init_Outputs_wrapper(void)
 {
 /* %%%-SFUNWIZ_wrapper_Outputs_Changes_BEGIN --- EDIT HERE TO _END */
- 
+Efi_unsetRPMLimiter_Outputs_wrapper();
+Efi_unsetCut_Outputs_wrapper();
 /* %%%-SFUNWIZ_wrapper_Outputs_Changes_END --- EDIT HERE TO _BEGIN */
 }
 
