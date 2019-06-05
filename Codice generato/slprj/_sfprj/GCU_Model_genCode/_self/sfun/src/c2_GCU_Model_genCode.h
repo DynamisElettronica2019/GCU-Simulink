@@ -63,6 +63,7 @@ typedef struct {
   uint16_T *c2_mapTarget;
   uint16_T *c2_rpmLimiterTarget;
   uint16_T (*c2_autoXCommand)[2];
+  uint8_T *c2_map;
 } SFc2_GCU_Model_genCodeInstanceStruct;
 
 #endif                                 /*typedef_SFc2_GCU_Model_genCodeInstanceStruct*/

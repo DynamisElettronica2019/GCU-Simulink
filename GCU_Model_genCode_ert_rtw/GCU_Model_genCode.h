@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.249
+ * Model version                  : 1.267
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Sun Jun  2 10:38:24 2019
+ * C/C++ source code generated on : Tue Jun  4 19:25:52 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -134,33 +134,33 @@ typedef struct {
   uint16_T UnitDelay_DSTATE[3];        /* '<S37>/Unit Delay' */
 } DW_AAC_ExternalValues;
 
-/* Block signals and states (default storage) for system '<S41>/SetRPMLimiter' */
+/* Block signals and states (default storage) for system '<S42>/SetRPMLimiter' */
 typedef struct {
-  uint8_T EfiSetRPMLimiter;            /* '<S50>/Efi SetRPMLimiter' */
+  uint8_T EfiSetRPMLimiter;            /* '<S52>/Efi SetRPMLimiter' */
 } DW_SetRPMLimiter;
 
-/* Block signals and states (default storage) for system '<S41>/UnsetRPMLimiter' */
+/* Block signals and states (default storage) for system '<S42>/UnsetRPMLimiter' */
 typedef struct {
-  uint8_T EfiUnSetRPMLimiter;          /* '<S52>/Efi UnSetRPMLimiter' */
+  uint8_T EfiUnSetRPMLimiter;          /* '<S54>/Efi UnSetRPMLimiter' */
 } DW_UnsetRPMLimiter;
 
-/* Block signals and states (default storage) for system '<S44>/Gearmotor_turnRight' */
+/* Block signals and states (default storage) for system '<S46>/Gearmotor_turnRight' */
 typedef struct {
-  uint8_T GearMotorTurnRight_o1;       /* '<S59>/GearMotor Turn Right' */
-  uint8_T GearMotorTurnRight_o2;       /* '<S59>/GearMotor Turn Right' */
-  uint8_T GearMotorTurnRight_o3;       /* '<S59>/GearMotor Turn Right' */
+  uint8_T GearMotorTurnRight_o1;       /* '<S64>/GearMotor Turn Right' */
+  uint8_T GearMotorTurnRight_o2;       /* '<S64>/GearMotor Turn Right' */
+  uint8_T GearMotorTurnRight_o3;       /* '<S64>/GearMotor Turn Right' */
 } DW_Gearmotor_turnRight;
 
-/* Block signals and states (default storage) for system '<S44>/Gearmotor_brake' */
+/* Block signals and states (default storage) for system '<S46>/Gearmotor_brake' */
 typedef struct {
-  uint8_T GearMotorBrake_o1;           /* '<S56>/GearMotor Brake' */
-  uint8_T GearMotorBrake_o2;           /* '<S56>/GearMotor Brake' */
-  uint8_T GearMotorBrake_o3;           /* '<S56>/GearMotor Brake' */
+  uint8_T GearMotorBrake_o1;           /* '<S61>/GearMotor Brake' */
+  uint8_T GearMotorBrake_o2;           /* '<S61>/GearMotor Brake' */
+  uint8_T GearMotorBrake_o3;           /* '<S61>/GearMotor Brake' */
 } DW_Gearmotor_brake;
 
-/* Block signals and states (default storage) for system '<S42>/EngineControl_Start' */
+/* Block signals and states (default storage) for system '<S43>/EngineControl_Start' */
 typedef struct {
-  uint8_T EngineControlStart;          /* '<S53>/EngineControl Start' */
+  uint8_T EngineControlStart;          /* '<S55>/EngineControl Start' */
 } DW_EngineControl_Start;
 
 /* Block signals and states (default storage) for system '<S2>/Evaluate_Request' */
@@ -181,11 +181,11 @@ typedef struct {
 /* Block signals and states (default storage) for system '<Root>' */
 typedef struct {
   DW_Evaluate_Request Evaluate_Request_l;/* '<S2>/Evaluate_Request' */
-  DW_EngineControl_Start EngineControl_Start_h;/* '<S42>/EngineControl_Start' */
-  DW_Gearmotor_brake Gearmotor_brake_c;/* '<S44>/Gearmotor_brake' */
-  DW_Gearmotor_turnRight Gearmotor_turnRight_f;/* '<S44>/Gearmotor_turnRight' */
-  DW_UnsetRPMLimiter UnsetRPMLimiter_c;/* '<S41>/UnsetRPMLimiter' */
-  DW_SetRPMLimiter SetRPMLimiter_e;    /* '<S41>/SetRPMLimiter' */
+  DW_EngineControl_Start EngineControl_Start_h;/* '<S43>/EngineControl_Start' */
+  DW_Gearmotor_brake Gearmotor_brake_c;/* '<S46>/Gearmotor_brake' */
+  DW_Gearmotor_turnRight Gearmotor_turnRight_f;/* '<S46>/Gearmotor_turnRight' */
+  DW_UnsetRPMLimiter UnsetRPMLimiter_c;/* '<S42>/UnsetRPMLimiter' */
+  DW_SetRPMLimiter SetRPMLimiter_e;    /* '<S42>/SetRPMLimiter' */
   DW_AAC_ExternalValues AAC_ExternalValues_f;/* '<S4>/AAC_ExternalValues' */
   volatile eepromRequest RateTransition_Buffer[40];/* '<S2>/Rate Transition' */
   eepromRequest RateTransition[20];    /* '<S2>/Rate Transition' */
@@ -193,6 +193,7 @@ typedef struct {
   eepromRequest outputRequest;         /* '<S2>/EEPROM_OutputRequest' */
   real_T RateTransition1;              /* '<S2>/Rate Transition1' */
   real_T lastInsertedIndex;            /* '<S2>/EEPROM_Load_Buffer' */
+  real_T Internal_DSTATE;              /* '<S44>/Internal' */
   volatile real_T RateTransition1_Buffer0;/* '<S2>/Rate Transition1' */
   real_T message;                      /* '<S7>/AccelerationRoutine' */
   real_T count;                        /* '<S7>/AccelerationRoutine' */
@@ -288,24 +289,20 @@ typedef struct {
   volatile int8_T RateTransition1_ActiveBufIdx;/* '<Root>/Rate Transition1' */
   volatile int8_T RateTransition2_ActiveBufIdx;/* '<Root>/Rate Transition2' */
   volatile int8_T RateTransition4_ActiveBufIdx;/* '<Root>/Rate Transition4' */
-  volatile int8_T RateTransition5_ActiveBufIdx;/* '<Root>/Rate Transition5' */
   volatile int8_T RateTransition8_ActiveBufIdx;/* '<Root>/Rate Transition8' */
   volatile int8_T RateTransition29_ActiveBufIdx;/* '<Root>/Rate Transition29' */
   volatile int8_T RateTransition_ActiveBufIdx;/* '<S2>/Rate Transition' */
   volatile int8_T RateTransition14_semaphoreTaken;/* '<Root>/Rate Transition14' */
   volatile int8_T RateTransition18_semaphoreTaken;/* '<Root>/Rate Transition18' */
-  uint8_T RateTransition5[2];          /* '<Root>/Rate Transition5' */
   uint8_T MultiportSwitch[10];         /* '<Root>/Multiport Switch' */
   uint8_T PackCanUart[10];             /* '<S7>/PackCanUart' */
   uint8_T OutportBufferFordataRead[19];
-  uint8_T clutchCommand[2];            /* '<S4>/MessageEvaluation1' */
   uint8_T PackCANMsg[8];               /* '<S20>/PackCANMsg' */
   uint8_T PackCANMsg_f[8];             /* '<S19>/PackCANMsg' */
   uint8_T PackCANMsg_l[8];             /* '<S22>/PackCANMsg' */
   uint8_T PackCANMsg_e[8];             /* '<S18>/PackCANMsg' */
   uint8_T PackCANMsg_ls[8];            /* '<S21>/PackCANMsg' */
   uint8_T Pack_Uart_Message[40];       /* '<S9>/Pack_Uart_Message' */
-  volatile uint8_T RateTransition5_Buffer[4];/* '<Root>/Rate Transition5' */
   uint8_T tempShiftedArray[50];        /* '<S2>/EEPROM_OutputRequest' */
   uint8_T newData[16];                 /* '<S2>/EEPROM_OutputRequest' */
   uint8_T RateTransition_d;            /* '<Root>/Rate Transition' */
@@ -317,24 +314,27 @@ typedef struct {
   uint8_T Eeprom_init_o2;              /* '<S6>/Eeprom_init' */
   uint8_T Eeprom_init_o3;              /* '<S6>/Eeprom_init' */
   uint8_T setKeyOn;                    /* '<S6>/setKeyOn' */
-  uint8_T Pin_H;                       /* '<S44>/Pin_H' */
-  uint8_T Pin_In1;                     /* '<S44>/Pin_In1' */
-  uint8_T Pin_In2;                     /* '<S44>/Pin_In2' */
+  uint8_T Cast1_k;                     /* '<S5>/Cast1' */
+  uint8_T Pin_H;                       /* '<S46>/Pin_H' */
+  uint8_T Pin_In1;                     /* '<S46>/Pin_In1' */
   uint8_T clutchCurrVal;               /* '<S5>/GCULogic' */
   uint8_T Eeprom_read_o1;              /* '<S28>/Eeprom_read' */
   uint8_T Eeprom_write_o1;             /* '<S29>/Eeprom_write' */
   uint8_T Eeprom_write_o2;             /* '<S29>/Eeprom_write' */
-  uint8_T EngineControlStop;           /* '<S54>/EngineControl Stop' */
-  uint8_T GearMotorTurnLeft_o1;        /* '<S58>/GearMotor Turn Left' */
-  uint8_T GearMotorTurnLeft_o2;        /* '<S58>/GearMotor Turn Left' */
-  uint8_T GearMotorTurnLeft_o3;        /* '<S58>/GearMotor Turn Left' */
-  uint8_T GearMotorRelease;            /* '<S57>/GearMotor Release' */
-  uint8_T EfiUnSetCut;                 /* '<S51>/Efi UnSetCut' */
-  uint8_T EfiSetCut;                   /* '<S49>/Efi SetCut' */
-  uint8_T Minus;                       /* '<S47>/Minus' */
+  uint8_T EngineControlStop;           /* '<S56>/EngineControl Stop' */
+  uint8_T GearMotorTurnLeft_o1;        /* '<S63>/GearMotor Turn Left' */
+  uint8_T GearMotorTurnLeft_o2;        /* '<S63>/GearMotor Turn Left' */
+  uint8_T GearMotorTurnLeft_o3;        /* '<S63>/GearMotor Turn Left' */
+  uint8_T GearMotorRelease;            /* '<S62>/GearMotor Release' */
+  uint8_T EfiUnSetCut;                 /* '<S53>/Efi UnSetCut' */
+  uint8_T EfiSetCut;                   /* '<S51>/Efi SetCut' */
+  uint8_T Minus;                       /* '<S49>/Minus' */
   uint8_T startEngCommand;             /* '<S4>/MessageEvaluation1' */
+  uint8_T clutchTarget;                /* '<S4>/MessageEvaluation1' */
+  uint8_T Sum;                         /* '<S39>/Sum' */
   volatile uint8_T RateTransition_Buffer0;/* '<Root>/Rate Transition' */
   volatile uint8_T RateTransition3_Buffer0;/* '<Root>/Rate Transition3' */
+  volatile uint8_T RateTransition5_Buffer0;/* '<Root>/Rate Transition5' */
   uint8_T is_c3_GCU_Model_genCode;     /* '<S7>/AccelerationRoutine' */
   uint8_T lastGearPin;                 /* '<S7>/AccelerationRoutine' */
   uint8_T is_active_c1_GCU_Model_genCode;/* '<S5>/GCULogic' */
@@ -364,7 +364,6 @@ typedef struct {
   uint8_T is_SCAN_ADC;                 /* '<S5>/GCULogic' */
   uint8_T is_active_SCAN_ADC;          /* '<S5>/GCULogic' */
   uint8_T lastShift;                   /* '<S5>/GCULogic' */
-  uint8_T lastClutchCom;               /* '<S5>/GCULogic' */
   uint8_T lastCom;                     /* '<S5>/GCULogic' */
   uint8_T startCounter;                /* '<S5>/GCULogic' */
   uint8_T is_c6_GCU_Model_genCode;     /* '<S2>/EEPROM_OutputRequest' */
@@ -378,20 +377,20 @@ typedef struct {
 
 /* Constant parameters (default storage) */
 typedef struct {
-  /* Expression: GainVector
-   * Referenced by: '<S11>/Gain'
-   */
-  real_T Gain_Value[9];
-
-  /* Expression: OffsetVector
+  /* Expression: VoltageOffsetVector
    * Referenced by: '<S11>/OffSet'
    */
   real_T OffSet_Value[9];
 
-  /* Expression: IS_to_IL_vector
+  /* Expression: ConversionGainVector
    * Referenced by: '<S11>/OffSet1'
    */
   real_T OffSet1_Value[9];
+
+  /* Expression: ConversionOffsetVector
+   * Referenced by: '<S11>/OffSet2'
+   */
+  real_T OffSet2_Value[9];
 
   /* Pooled Parameter (Expression: [uint16(0),uint16(100),uint16(200),uint16(300),uint16(400),uint16(500),uint16(600),uint16(700)])
    * Referenced by:
@@ -552,30 +551,35 @@ extern RT_MODEL *const rtM;
  * '<S36>'  : 'GCU_Model_genCode/EEPROM Memory/changeTimingsValue/Triggered Subsystem'
  * '<S37>'  : 'GCU_Model_genCode/GCU_CAN_Read/AAC_ExternalValues'
  * '<S38>'  : 'GCU_Model_genCode/GCU_CAN_Read/MessageEvaluation1'
- * '<S39>'  : 'GCU_Model_genCode/GCU_timer/Buzzer'
- * '<S40>'  : 'GCU_Model_genCode/GCU_timer/ClutchMotor'
- * '<S41>'  : 'GCU_Model_genCode/GCU_timer/Efi'
- * '<S42>'  : 'GCU_Model_genCode/GCU_timer/EngineControl'
- * '<S43>'  : 'GCU_Model_genCode/GCU_timer/GCULogic'
- * '<S44>'  : 'GCU_Model_genCode/GCU_timer/GearMotor1'
- * '<S45>'  : 'GCU_Model_genCode/GCU_timer/Buzzer/BuzzerOff'
- * '<S46>'  : 'GCU_Model_genCode/GCU_timer/Buzzer/BuzzerOn'
- * '<S47>'  : 'GCU_Model_genCode/GCU_timer/ClutchMotor/ClutchMotor SetPosition '
- * '<S48>'  : 'GCU_Model_genCode/GCU_timer/Efi/Init'
- * '<S49>'  : 'GCU_Model_genCode/GCU_timer/Efi/SetCut'
- * '<S50>'  : 'GCU_Model_genCode/GCU_timer/Efi/SetRPMLimiter'
- * '<S51>'  : 'GCU_Model_genCode/GCU_timer/Efi/UnsetCut'
- * '<S52>'  : 'GCU_Model_genCode/GCU_timer/Efi/UnsetRPMLimiter'
- * '<S53>'  : 'GCU_Model_genCode/GCU_timer/EngineControl/EngineControl_Start'
- * '<S54>'  : 'GCU_Model_genCode/GCU_timer/EngineControl/EngineControl_Stop'
- * '<S55>'  : 'GCU_Model_genCode/GCU_timer/GCULogic/SCAN_ADC.ScanADC'
- * '<S56>'  : 'GCU_Model_genCode/GCU_timer/GearMotor1/Gearmotor_brake'
- * '<S57>'  : 'GCU_Model_genCode/GCU_timer/GearMotor1/Gearmotor_release'
- * '<S58>'  : 'GCU_Model_genCode/GCU_timer/GearMotor1/Gearmotor_turnLeft'
- * '<S59>'  : 'GCU_Model_genCode/GCU_timer/GearMotor1/Gearmotor_turnRight'
- * '<S60>'  : 'GCU_Model_genCode/Simulink_Debug/AccelerationRoutine'
- * '<S61>'  : 'GCU_Model_genCode/rpmPin_update/Triggered_Subsystem'
- * '<S62>'  : 'GCU_Model_genCode/rpmPin_update/Triggered_Subsystem1'
+ * '<S39>'  : 'GCU_Model_genCode/GCU_CAN_Read/MessageEvaluation1/setMap'
+ * '<S40>'  : 'GCU_Model_genCode/GCU_timer/Buzzer'
+ * '<S41>'  : 'GCU_Model_genCode/GCU_timer/ClutchMotor'
+ * '<S42>'  : 'GCU_Model_genCode/GCU_timer/Efi'
+ * '<S43>'  : 'GCU_Model_genCode/GCU_timer/EngineControl'
+ * '<S44>'  : 'GCU_Model_genCode/GCU_timer/Filtro_software'
+ * '<S45>'  : 'GCU_Model_genCode/GCU_timer/GCULogic'
+ * '<S46>'  : 'GCU_Model_genCode/GCU_timer/GearMotor1'
+ * '<S47>'  : 'GCU_Model_genCode/GCU_timer/Buzzer/BuzzerOff'
+ * '<S48>'  : 'GCU_Model_genCode/GCU_timer/Buzzer/BuzzerOn'
+ * '<S49>'  : 'GCU_Model_genCode/GCU_timer/ClutchMotor/ClutchMotor SetPosition '
+ * '<S50>'  : 'GCU_Model_genCode/GCU_timer/Efi/Init'
+ * '<S51>'  : 'GCU_Model_genCode/GCU_timer/Efi/SetCut'
+ * '<S52>'  : 'GCU_Model_genCode/GCU_timer/Efi/SetRPMLimiter'
+ * '<S53>'  : 'GCU_Model_genCode/GCU_timer/Efi/UnsetCut'
+ * '<S54>'  : 'GCU_Model_genCode/GCU_timer/Efi/UnsetRPMLimiter'
+ * '<S55>'  : 'GCU_Model_genCode/GCU_timer/EngineControl/EngineControl_Start'
+ * '<S56>'  : 'GCU_Model_genCode/GCU_timer/EngineControl/EngineControl_Stop'
+ * '<S57>'  : 'GCU_Model_genCode/GCU_timer/Filtro_software/IO Delay'
+ * '<S58>'  : 'GCU_Model_genCode/GCU_timer/Filtro_software/Input Delay'
+ * '<S59>'  : 'GCU_Model_genCode/GCU_timer/Filtro_software/Output Delay'
+ * '<S60>'  : 'GCU_Model_genCode/GCU_timer/GCULogic/SCAN_ADC.ScanADC'
+ * '<S61>'  : 'GCU_Model_genCode/GCU_timer/GearMotor1/Gearmotor_brake'
+ * '<S62>'  : 'GCU_Model_genCode/GCU_timer/GearMotor1/Gearmotor_release'
+ * '<S63>'  : 'GCU_Model_genCode/GCU_timer/GearMotor1/Gearmotor_turnLeft'
+ * '<S64>'  : 'GCU_Model_genCode/GCU_timer/GearMotor1/Gearmotor_turnRight'
+ * '<S65>'  : 'GCU_Model_genCode/Simulink_Debug/AccelerationRoutine'
+ * '<S66>'  : 'GCU_Model_genCode/rpmPin_update/Triggered_Subsystem'
+ * '<S67>'  : 'GCU_Model_genCode/rpmPin_update/Triggered_Subsystem1'
  */
 #endif                                 /* RTW_HEADER_GCU_Model_genCode_h_ */
 
