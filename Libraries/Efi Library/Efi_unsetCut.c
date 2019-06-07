@@ -26,7 +26,7 @@
  * | See matlabroot/simulink/src/sfuntmpl_doc.c for a more detailed template |
  *  ------------------------------------------------------------------------- 
  *
- * Created: Mon Jun 03 22:42:39 2019
+ * Created: Fri Jun 07 11:56:41 2019
  */
 
 #define S_FUNCTION_LEVEL 2
@@ -35,23 +35,7 @@
 /* %%%-SFUNWIZ_defines_Changes_BEGIN --- EDIT HERE TO _END */
 #define NUM_INPUTS            0
 
-#define NUM_OUTPUTS           1
-/* Output Port  0 */
-#define OUT_PORT_0_NAME       upCut_pin
-#define OUTPUT_0_WIDTH        1
-#define OUTPUT_DIMS_0_COL     1
-#define OUTPUT_0_DTYPE        uint8_T
-#define OUTPUT_0_COMPLEX      COMPLEX_NO
-#define OUT_0_FRAME_BASED     FRAME_NO
-#define OUT_0_BUS_BASED       0
-#define OUT_0_BUS_NAME        
-#define OUT_0_DIMS            1-D
-#define OUT_0_ISSIGNED        1
-#define OUT_0_WORDLENGTH      8
-#define OUT_0_FIXPOINTSCALING 1
-#define OUT_0_FRACTIONLENGTH  3
-#define OUT_0_BIAS            0
-#define OUT_0_SLOPE           0.125
+#define NUM_OUTPUTS           0
 
 #define NPARAMS               0
 
@@ -73,7 +57,7 @@
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 #include "simstruc.h"
 
-extern void Efi_unsetCut_Outputs_wrapper(uint8_T *upCut_pin);
+extern void Efi_unsetCut_Outputs_wrapper(void);
 /*====================*
  * S-function methods *
  *====================*/
@@ -100,9 +84,6 @@ static void mdlInitializeSizes(SimStruct *S)
     if (!ssSetNumInputPorts(S, NUM_INPUTS)) return;
 
     if (!ssSetNumOutputPorts(S, NUM_OUTPUTS)) return;
-    ssSetOutputPortWidth(S, 0, OUTPUT_0_WIDTH);
-    ssSetOutputPortDataType(S, 0, SS_UINT8);
-    ssSetOutputPortComplexSignal(S, 0, OUTPUT_0_COMPLEX);
     ssSetNumPWork(S, 0);
 
     ssSetNumSampleTimes(S, 1);
@@ -160,9 +141,8 @@ static void mdlStart(SimStruct *S)
  */
 static void mdlOutputs(SimStruct *S, int_T tid)
 {
-    uint8_T *upCut_pin = (uint8_T *) ssGetOutputPortRealSignal(S, 0);
 
-    Efi_unsetCut_Outputs_wrapper(upCut_pin);
+    Efi_unsetCut_Outputs_wrapper();
 
 }
 

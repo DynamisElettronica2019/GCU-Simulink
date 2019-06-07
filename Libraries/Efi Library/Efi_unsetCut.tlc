@@ -1,5 +1,5 @@
 %% File : Efi_unsetCut.tlc
-%% Created : Mon Jun 03 22:42:39 2019
+%% Created : Fri Jun 07 11:56:41 2019
 %%
 %% Description: 
 %%   Simulink Coder wrapper functions interface generated for 
@@ -30,7 +30,7 @@
 
     extern void Efi_unsetCut_Start_wrapper(void);
 
-    extern void Efi_unsetCut_Outputs_wrapper(uint8_T *upCut_pin);
+    extern void Efi_unsetCut_Outputs_wrapper(void);
 
     extern void Efi_unsetCut_Terminate_wrapper(void);
 
@@ -50,8 +50,7 @@
 %%
 %function Outputs(block, system) Output
   %%
-  %assign py0 = LibBlockOutputSignalAddr(0, "", "", 0)
-  Efi_unsetCut_Outputs_wrapper(%<py0>);
+  Efi_unsetCut_Outputs_wrapper();
   %%
 %endfunction
 

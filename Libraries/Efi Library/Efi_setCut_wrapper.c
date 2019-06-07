@@ -18,7 +18,6 @@
 #include "constant_defines.h"
 #endif
 /* %%%-SFUNWIZ_wrapper_includes_Changes_END --- EDIT HERE TO _BEGIN */
-#define y_width 1
 
 /*
  * Create external references here.  
@@ -32,10 +31,9 @@
  * Output function
  *
  */
-void Efi_setCut_Outputs_wrapper(uint8_T *upCut_pin)
+void Efi_setCut_Outputs_wrapper(void)
 {
 /* %%%-SFUNWIZ_wrapper_Outputs_Changes_BEGIN --- EDIT HERE TO _END */
-*upCut_pin = 1;
 
 #if !defined(MATLAB_MEX_FILE)
 HAL_GPIO_WritePin(EFI_UPCUT_GPIO_PORT, EFI_UPCUT_Pin, UPCUT_SET);

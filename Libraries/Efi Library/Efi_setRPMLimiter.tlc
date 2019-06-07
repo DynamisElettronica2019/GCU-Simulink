@@ -1,5 +1,5 @@
 %% File : Efi_setRPMLimiter.tlc
-%% Created : Mon Jun 03 22:43:01 2019
+%% Created : Fri Jun 07 11:55:27 2019
 %%
 %% Description: 
 %%   Simulink Coder wrapper functions interface generated for 
@@ -30,7 +30,7 @@
 
     extern void Efi_setRPMLimiter_Start_wrapper(void);
 
-    extern void Efi_setRPMLimiter_Outputs_wrapper(uint8_T *rpmLimiter_pin);
+    extern void Efi_setRPMLimiter_Outputs_wrapper(void);
 
     extern void Efi_setRPMLimiter_Terminate_wrapper(void);
 
@@ -50,8 +50,7 @@
 %%
 %function Outputs(block, system) Output
   %%
-  %assign py0 = LibBlockOutputSignalAddr(0, "", "", 0)
-  Efi_setRPMLimiter_Outputs_wrapper(%<py0>);
+  Efi_setRPMLimiter_Outputs_wrapper();
   %%
 %endfunction
 
