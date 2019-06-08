@@ -21,7 +21,8 @@ enum acc_params
   acc_params_SPEED_LIMIT_2_3,
   acc_params_SPEED_LIMIT_3_4,
   acc_params_SPEED_LIMIT_4_5,
-  acc_params_TPS_START_LIMIT
+  acc_params_TPS_START_LIMIT,
+  acc_params_END_GEAR
 };
 
 #endif                                 /*enum_acc_params*/
@@ -49,7 +50,8 @@ enum autoX_params
   autoX_params_AUTOX_SPEED_LIMIT_2_3,
   autoX_params_AUTOX_SPEED_LIMIT_3_4,
   autoX_params_AUTOX_SPEED_LIMIT_4_5,
-  autoX_params_AUTOX_TPS_START_LIMIT
+  autoX_params_AUTOX_TPS_START_LIMIT,
+  autoX_params_AUTOX_END_GEAR
 };
 
 #endif                                 /*enum_autoX_params*/
@@ -156,7 +158,6 @@ typedef struct {
   uint8_T c1_c_tp_WAIT;
   uint8_T c1_tp_SCAN;
   uint8_T c1_tp_ANTISTALL_ENABLE;
-  uint8_T c1_tp_DISABLE;
   uint8_T c1_tp_ENABLE;
   uint8_T c1_is_active_c1_GCU_Model_genCode;
   uint8_T c1_is_MODES;
@@ -232,7 +233,7 @@ typedef struct {
   uint8_T c1_doSetSimStateSideEffects;
   const mxArray *c1_setSimStateSideEffectsInfo;
   void *c1_dataSetLogObjVector[3];
-  uint8_T c1_sdiLoggedStatesBuffer[70];
+  uint8_T c1_sdiLoggedStatesBuffer[69];
   uint8_T c1_sdiLoggedDataBuffer[64];
   sdiBlockID_t c1_sdiBlockInfo;
   SignalExportStruct c1_SignalExportProp;
@@ -326,7 +327,6 @@ typedef struct {
   SignalExportStruct c1_nd_SignalExportProp;
   SignalExportStruct c1_od_SignalExportProp;
   SignalExportStruct c1_pd_SignalExportProp;
-  SignalExportStruct c1_qd_SignalExportProp;
   rtwCAPI_ModelMappingInfo c1_testPointMappingInfo;
   void *c1_testPointAddrMap[3];
   void *c1_fEmlrtCtx;
