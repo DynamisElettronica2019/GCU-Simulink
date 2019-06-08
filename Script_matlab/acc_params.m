@@ -13,5 +13,6 @@ classdef acc_params < Simulink.IntEnumType
     SPEED_LIMIT_3_4  (9)
     SPEED_LIMIT_4_5  (10)
     TPS_START_LIMIT  (11)
+    END_GEAR         (12)
  end    
 end

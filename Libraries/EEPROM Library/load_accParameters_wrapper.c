@@ -48,6 +48,7 @@ accParameters[8] = DEF_SPEED_LIMIT_2_3;
 accParameters[9] = DEF_SPEED_LIMIT_3_4;
 accParameters[10] = DEF_SPEED_LIMIT_4_5;
 accParameters[11] = DEF_TPS_START_LIMIT;
+accParameters[12] = DEF_END_GEAR;
 /* %%%-SFUNWIZ_wrapper_Outputs_Changes_END --- EDIT HERE TO _BEGIN */
 }
 

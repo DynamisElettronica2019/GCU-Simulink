@@ -48,6 +48,7 @@ autoXParameters[8] = DEF_AUTOX_SPEED_LIMIT_2_3;
 autoXParameters[9] = DEF_AUTOX_SPEED_LIMIT_3_4;
 autoXParameters[10] = DEF_AUTOX_SPEED_LIMIT_4_5;
 autoXParameters[11] = DEF_AUTOX_TPS_START_LIMIT;
+autoXParameters[12] = DEF_AUTOX_END_GEAR;
 /* %%%-SFUNWIZ_wrapper_Outputs_Changes_END --- EDIT HERE TO _BEGIN */
 }
 

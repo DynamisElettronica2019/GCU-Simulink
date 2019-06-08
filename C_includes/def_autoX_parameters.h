@@ -16,4 +16,6 @@
 
 #define DEF_AUTOX_TPS_START_LIMIT 50
 
+#define DEF_AUTOX_END_GEAR 4
+
  #endif  

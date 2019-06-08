@@ -52,9 +52,9 @@
 #define AUTOX_READY         1
 #define AUTOX_GO            2
 
-//Definizione dei parametri anti-stall
-#define DEF_RPM_THRESHOLD   5000
-#define DEF_DELTA_RPM_THRESHOLD     300
+//Define dei comandi antistall
+#define ANTISTALL_ON        1
+#define ANTISTALL_OFF       0
 
 
 #endif

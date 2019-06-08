@@ -21,7 +21,8 @@ enum acc_params
   acc_params_SPEED_LIMIT_2_3,
   acc_params_SPEED_LIMIT_3_4,
   acc_params_SPEED_LIMIT_4_5,
-  acc_params_TPS_START_LIMIT
+  acc_params_TPS_START_LIMIT,
+  acc_params_END_GEAR
 };
 
 #endif                                 /*enum_acc_params*/
@@ -49,7 +50,8 @@ enum autoX_params
   autoX_params_AUTOX_SPEED_LIMIT_2_3,
   autoX_params_AUTOX_SPEED_LIMIT_3_4,
   autoX_params_AUTOX_SPEED_LIMIT_4_5,
-  autoX_params_AUTOX_TPS_START_LIMIT
+  autoX_params_AUTOX_TPS_START_LIMIT,
+  autoX_params_AUTOX_END_GEAR
 };
 
 #endif                                 /*enum_autoX_params*/

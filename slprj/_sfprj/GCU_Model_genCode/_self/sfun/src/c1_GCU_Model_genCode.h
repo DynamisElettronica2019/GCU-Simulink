@@ -155,6 +155,9 @@ typedef struct {
   uint8_T c1_tp_SCAN_ADC;
   uint8_T c1_c_tp_WAIT;
   uint8_T c1_tp_SCAN;
+  uint8_T c1_tp_ANTISTALL_ENABLE;
+  uint8_T c1_tp_DISABLE;
+  uint8_T c1_tp_ENABLE;
   uint8_T c1_is_active_c1_GCU_Model_genCode;
   uint8_T c1_is_MODES;
   uint8_T c1_is_active_MODES;
@@ -182,6 +185,8 @@ typedef struct {
   uint8_T c1_is_active_START_ENGINE;
   uint8_T c1_is_SCAN_ADC;
   uint8_T c1_is_active_SCAN_ADC;
+  uint8_T c1_is_ANTISTALL_ENABLE;
+  uint8_T c1_is_active_ANTISTALL_ENABLE;
   uint8_T c1_lastShift;
   uint16_T c1_lastAacCom;
   uint16_T c1_lastShiftCom;
@@ -223,11 +228,12 @@ typedef struct {
   uint8_T c1_lastCom;
   uint8_T c1_startCounter;
   uint16_T c1_timerCounter;
+  real_T c1_b_counterWait;
   uint8_T c1_doSetSimStateSideEffects;
   const mxArray *c1_setSimStateSideEffectsInfo;
   void *c1_dataSetLogObjVector[3];
-  uint8_T c1_sdiLoggedStatesBuffer[67];
-  uint8_T c1_sdiLoggedDataBuffer[61];
+  uint8_T c1_sdiLoggedStatesBuffer[70];
+  uint8_T c1_sdiLoggedDataBuffer[64];
   sdiBlockID_t c1_sdiBlockInfo;
   SignalExportStruct c1_SignalExportProp;
   SignalExportStruct c1_b_SignalExportProp;
@@ -316,6 +322,11 @@ typedef struct {
   SignalExportStruct c1_jd_SignalExportProp;
   SignalExportStruct c1_kd_SignalExportProp;
   SignalExportStruct c1_ld_SignalExportProp;
+  SignalExportStruct c1_md_SignalExportProp;
+  SignalExportStruct c1_nd_SignalExportProp;
+  SignalExportStruct c1_od_SignalExportProp;
+  SignalExportStruct c1_pd_SignalExportProp;
+  SignalExportStruct c1_qd_SignalExportProp;
   rtwCAPI_ModelMappingInfo c1_testPointMappingInfo;
   void *c1_testPointAddrMap[3];
   void *c1_fEmlrtCtx;
@@ -333,6 +344,8 @@ typedef struct {
   int32_T (*c1_timings)[24];
   uint16_T (*c1_autoXCom)[2];
   int32_T (*c1_autoX_parameters)[16];
+  uint8_T *c1_stopAntiStallCom;
+  uint8_T *c1_antiStallEnable;
 } SFc1_GCU_Model_genCodeInstanceStruct;
 
 #endif                                 /*typedef_SFc1_GCU_Model_genCodeInstanceStruct*/

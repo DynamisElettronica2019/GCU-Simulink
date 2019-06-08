@@ -16,4 +16,6 @@
 
 #define DEF_TPS_START_LIMIT 50
 
+#define DEF_END_GEAR 5
+
  #endif  

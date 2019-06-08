@@ -13,5 +13,6 @@ classdef autoX_params < Simulink.IntEnumType
     AUTOX_SPEED_LIMIT_3_4  (9)
     AUTOX_SPEED_LIMIT_4_5  (10)
     AUTOX_TPS_START_LIMIT  (11)
+    AUTOX_END_GEAR         (12)
  end    
 end
