@@ -7,7 +7,7 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   45 \
+    NumChartData   47 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
@@ -200,6 +200,20 @@
       Description  "StateIsActive"\
       SFName       ""\
       Path         "SCAN_ADC"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_ANTISTALL_ENABLE"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "ANTISTALL_ENABLE"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_active_ANTISTALL_ENABLE"\
+      Description  "StateIsActive"\
+      SFName       ""\
+      Path         "ANTISTALL_ENABLE"\
       SrcLocation  ""\
     }\
     ChartData {\

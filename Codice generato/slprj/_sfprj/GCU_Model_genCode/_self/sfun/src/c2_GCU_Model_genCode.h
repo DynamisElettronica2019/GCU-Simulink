@@ -38,7 +38,7 @@ typedef struct {
   uint16_T c2_GEAR_COMMAND_NEUTRAL_UP;
   uint16_T c2_GEAR_COMMAND_DOWN;
   uint16_T c2_c_STOP_COM;
-  uint8_T c2_ACC_CLUTCH_NOISE_LEVEL;
+  uint8_T c2_CLUTCH_NOISE_LEVEL;
   uint16_T c2_d_STOP_COM;
   uint16_T c2_e_STOP_COM;
   uint8_T c2_doSetSimStateSideEffects;
@@ -63,6 +63,8 @@ typedef struct {
   uint16_T *c2_mapTarget;
   uint16_T *c2_rpmLimiterTarget;
   uint16_T (*c2_autoXCommand)[2];
+  uint8_T *c2_stopAntiStallCom;
+  uint8_T *c2_RPMUpdateCounter;
   uint8_T *c2_map;
 } SFc2_GCU_Model_genCodeInstanceStruct;
 
