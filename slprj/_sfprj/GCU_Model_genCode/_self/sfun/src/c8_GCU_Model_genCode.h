@@ -38,7 +38,6 @@ typedef struct {
   uint8_T *c8_enable;
   uint8_T *c8_stop;
   int32_T (*c8_antiStall_parameters)[8];
-  real_T *c8_data;
   uint16_T *c8_rpm;
   real_T *c8_deltarpm;
   uint16_T *c8_antiStallFb;

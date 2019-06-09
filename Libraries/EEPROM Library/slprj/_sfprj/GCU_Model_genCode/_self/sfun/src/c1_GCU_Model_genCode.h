@@ -82,6 +82,25 @@ typedef enum acc_values c1_acc_values;
 
 #endif                                 /*typedef_c1_acc_values*/
 
+#ifndef enum_anti_stall_params
+#define enum_anti_stall_params
+
+enum anti_stall_params
+{
+  anti_stall_params_RPM_THRESHOLD = 0, /* Default value */
+  anti_stall_params_RPM_DELTA_THRESHOLD,
+  anti_stall_params_GEAR_THRESHOLD
+};
+
+#endif                                 /*enum_anti_stall_params*/
+
+#ifndef typedef_c1_anti_stall_params
+#define typedef_c1_anti_stall_params
+
+typedef enum anti_stall_params c1_anti_stall_params;
+
+#endif                                 /*typedef_c1_anti_stall_params*/
+
 #ifndef typedef_SFc1_GCU_Model_genCodeInstanceStruct
 #define typedef_SFc1_GCU_Model_genCodeInstanceStruct
 
@@ -235,7 +254,7 @@ typedef struct {
   const mxArray *c1_setSimStateSideEffectsInfo;
   void *c1_dataSetLogObjVector[3];
   uint8_T c1_sdiLoggedStatesBuffer[70];
-  uint8_T c1_sdiLoggedDataBuffer[64];
+  uint8_T c1_sdiLoggedDataBuffer[65];
   sdiBlockID_t c1_sdiBlockInfo;
   SignalExportStruct c1_SignalExportProp;
   SignalExportStruct c1_b_SignalExportProp;
@@ -348,6 +367,7 @@ typedef struct {
   int32_T (*c1_autoX_parameters)[16];
   uint8_T *c1_stopAntiStallCom;
   uint8_T *c1_antiStallEnable;
+  int32_T (*c1_antiStall_parameters)[8];
 } SFc1_GCU_Model_genCodeInstanceStruct;
 
 #endif                                 /*typedef_SFc1_GCU_Model_genCodeInstanceStruct*/
