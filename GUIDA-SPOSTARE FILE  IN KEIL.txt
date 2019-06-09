@@ -5,3 +5,4 @@
 -pin_defines.h che si trova su simulink fa riferimento ai pin della Nucleo, questo file va inserito nei progetti keil
  e bisogna modificare le define in modo che facciano riferimento ai pin giusti. ATTENZIONE: modificare solo il nome dei pin,
  non aggiungere nè togliere define dal .h se non come indicato dai commenti presenti dentro il file
+s
