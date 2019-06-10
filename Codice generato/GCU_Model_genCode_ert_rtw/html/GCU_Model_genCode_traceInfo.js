@@ -447,6 +447,8 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["GCU_Model_genCode:1823"] = {rtwname: "<Root>/autoXParameters"};
 	this.rtwnameHashMap["<Root>/antiStallParameters"] = {sid: "GCU_Model_genCode:1944"};
 	this.sidHashMap["GCU_Model_genCode:1944"] = {rtwname: "<Root>/antiStallParameters"};
+	this.rtwnameHashMap["<Root>/antiStallState"] = {sid: "GCU_Model_genCode:2029"};
+	this.sidHashMap["GCU_Model_genCode:2029"] = {rtwname: "<Root>/antiStallState"};
 	this.rtwnameHashMap["<S1>/AccelerationRoutine"] = {sid: "GCU_Model_genCode:2008"};
 	this.sidHashMap["GCU_Model_genCode:2008"] = {rtwname: "<S1>/AccelerationRoutine"};
 	this.rtwnameHashMap["<S1>/PackCanUart"] = {sid: "GCU_Model_genCode:2009"};
@@ -767,6 +769,8 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["GCU_Model_genCode:1483"] = {rtwname: "<S5>/eepromTrigger"};
 	this.rtwnameHashMap["<S5>/antiStallFb"] = {sid: "GCU_Model_genCode:1983"};
 	this.sidHashMap["GCU_Model_genCode:1983"] = {rtwname: "<S5>/antiStallFb"};
+	this.rtwnameHashMap["<S5>/antiStallstate"] = {sid: "GCU_Model_genCode:2028"};
+	this.sidHashMap["GCU_Model_genCode:2028"] = {rtwname: "<S5>/antiStallstate"};
 	this.rtwnameHashMap["<S6>/BuzzerInit"] = {sid: "GCU_Model_genCode:1848"};
 	this.sidHashMap["GCU_Model_genCode:1848"] = {rtwname: "<S6>/BuzzerInit"};
 	this.rtwnameHashMap["<S6>/CAN_Start"] = {sid: "GCU_Model_genCode:1391"};
@@ -1813,6 +1817,8 @@ function RTW_rtwnameSIDMap() {
 	this.sidHashMap["GCU_Model_genCode:1951"] = {rtwname: "<S34>/antiStallActivation"};
 	this.rtwnameHashMap["<S34>/antiStallFb"] = {sid: "GCU_Model_genCode:1982"};
 	this.sidHashMap["GCU_Model_genCode:1982"] = {rtwname: "<S34>/antiStallFb"};
+	this.rtwnameHashMap["<S34>/antiStallState"] = {sid: "GCU_Model_genCode:2027"};
+	this.sidHashMap["GCU_Model_genCode:2027"] = {rtwname: "<S34>/antiStallState"};
 	this.rtwnameHashMap["<S35>/buzzerOn"] = {sid: "GCU_Model_genCode:1847:84"};
 	this.sidHashMap["GCU_Model_genCode:1847:84"] = {rtwname: "<S35>/buzzerOn"};
 	this.rtwnameHashMap["<S35>/buzzerOff"] = {sid: "GCU_Model_genCode:1847:85"};

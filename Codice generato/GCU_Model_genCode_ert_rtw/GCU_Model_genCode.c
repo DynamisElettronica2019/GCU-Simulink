@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.288
+ * Model version                  : 1.292
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Sun Jun  9 17:13:37 2019
+ * C/C++ source code generated on : Mon Jun 10 19:32:48 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -3961,27 +3961,47 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
 
   /* End of Chart: '<S34>/timeCounter' */
 
+  /* Outport: '<Root>/antiStallState' incorporates:
+   *  Chart: '<S34>/antiStallLogic'
+   */
+  rtY.antiStallState = 0.0;
+
   /* Chart: '<S34>/antiStallLogic' incorporates:
    *  Constant: '<S34>/Constant'
    *  DiscreteTransferFcn: '<S34>/Discrete Transfer Fcn'
    *  Product: '<S34>/Divide'
    *  Product: '<S34>/Multiply'
    */
-  if ((rtDW.antiStallEnable == 1) && (rtDW.RateTransition30 == 0)) {
-    if (rtDW.RateTransition_d >= getAntiStallParam(GEAR_THRESHOLD, UnitDelay3))
-    {
-      if (rtDW.RateTransition1_c[0] <= getAntiStallParam(RPM_THRESHOLD,
-           UnitDelay3)) {
-        i = getAntiStallParam(RPM_DELTA_THRESHOLD, UnitDelay3);
-        if (i <= MIN_int32_T) {
-          i = MAX_int32_T;
-        } else {
-          i = -i;
-        }
+  if (rtDW.antiStallEnable == 1) {
+    /* Outport: '<Root>/antiStallState' */
+    rtY.antiStallState = 1.0;
+    if (rtDW.RateTransition30 == 0) {
+      /* Outport: '<Root>/antiStallState' */
+      rtY.antiStallState = 2.0;
+      if (rtDW.RateTransition_d >= getAntiStallParam(GEAR_THRESHOLD, UnitDelay3))
+      {
+        /* Outport: '<Root>/antiStallState' */
+        rtY.antiStallState = 3.0;
+        if (rtDW.RateTransition1_c[0] <= getAntiStallParam(RPM_THRESHOLD,
+             UnitDelay3)) {
+          /* Outport: '<Root>/antiStallState' */
+          rtY.antiStallState = 4.0;
+          i = getAntiStallParam(RPM_DELTA_THRESHOLD, UnitDelay3);
+          if (i <= MIN_int32_T) {
+            i = MAX_int32_T;
+          } else {
+            i = -i;
+          }
 
-        if ((DiscreteTransferFcn_tmp + -rtDW.DiscreteTransferFcn_states) * 10.0 /
-            rtDW.deltaTime <= i) {
-          rtDW.antiStallFb = (uint16_T)ANTISTALL_ON;
+          if ((DiscreteTransferFcn_tmp + -rtDW.DiscreteTransferFcn_states) *
+              10.0 / rtDW.deltaTime <= i) {
+            rtDW.antiStallFb = (uint16_T)ANTISTALL_ON;
+
+            /* Outport: '<Root>/antiStallState' */
+            rtY.antiStallState = 5.0;
+          } else {
+            rtDW.antiStallFb = (uint16_T)ANTISTALL_OFF;
+          }
         } else {
           rtDW.antiStallFb = (uint16_T)ANTISTALL_OFF;
         }
@@ -3994,8 +4014,6 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
   } else {
     rtDW.antiStallFb = (uint16_T)ANTISTALL_OFF;
   }
-
-  /* End of Chart: '<S34>/antiStallLogic' */
 
   /* Update for DiscreteTransferFcn: '<S34>/Discrete Transfer Fcn' */
   rtDW.DiscreteTransferFcn_states = DiscreteTransferFcn_tmp;

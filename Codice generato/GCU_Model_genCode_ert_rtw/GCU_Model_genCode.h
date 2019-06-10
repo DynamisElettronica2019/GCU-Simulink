@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.288
+ * Model version                  : 1.292
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Sun Jun  9 17:13:37 2019
+ * C/C++ source code generated on : Mon Jun 10 19:32:48 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -477,6 +477,7 @@ typedef struct {
   int32_T accParameters[16];           /* '<Root>/accParameters' */
   int32_T autoXParameters[16];         /* '<Root>/autoXParameters' */
   int32_T antiStallParameters[8];      /* '<Root>/antiStallParameters' */
+  real_T antiStallState;               /* '<Root>/antiStallState' */
 } ExtY;
 
 /* Real-time Model Data Structure */
