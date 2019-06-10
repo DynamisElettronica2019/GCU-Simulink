@@ -82,6 +82,25 @@ typedef enum acc_values c1_acc_values;
 
 #endif                                 /*typedef_c1_acc_values*/
 
+#ifndef enum_anti_stall_params
+#define enum_anti_stall_params
+
+enum anti_stall_params
+{
+  anti_stall_params_RPM_THRESHOLD = 0, /* Default value */
+  anti_stall_params_RPM_DELTA_THRESHOLD,
+  anti_stall_params_GEAR_THRESHOLD
+};
+
+#endif                                 /*enum_anti_stall_params*/
+
+#ifndef typedef_c1_anti_stall_params
+#define typedef_c1_anti_stall_params
+
+typedef enum anti_stall_params c1_anti_stall_params;
+
+#endif                                 /*typedef_c1_anti_stall_params*/
+
 #ifndef typedef_SFc1_GCU_Model_genCodeInstanceStruct
 #define typedef_SFc1_GCU_Model_genCodeInstanceStruct
 
@@ -158,6 +177,7 @@ typedef struct {
   uint8_T c1_c_tp_WAIT;
   uint8_T c1_tp_SCAN;
   uint8_T c1_tp_ANTISTALL_ENABLE;
+  uint8_T c1_tp_DISABLE;
   uint8_T c1_tp_ENABLE;
   uint8_T c1_is_active_c1_GCU_Model_genCode;
   uint8_T c1_is_MODES;
@@ -233,8 +253,8 @@ typedef struct {
   uint8_T c1_doSetSimStateSideEffects;
   const mxArray *c1_setSimStateSideEffectsInfo;
   void *c1_dataSetLogObjVector[3];
-  uint8_T c1_sdiLoggedStatesBuffer[69];
-  uint8_T c1_sdiLoggedDataBuffer[64];
+  uint8_T c1_sdiLoggedStatesBuffer[70];
+  uint8_T c1_sdiLoggedDataBuffer[66];
   sdiBlockID_t c1_sdiBlockInfo;
   SignalExportStruct c1_SignalExportProp;
   SignalExportStruct c1_b_SignalExportProp;
@@ -327,6 +347,7 @@ typedef struct {
   SignalExportStruct c1_nd_SignalExportProp;
   SignalExportStruct c1_od_SignalExportProp;
   SignalExportStruct c1_pd_SignalExportProp;
+  SignalExportStruct c1_qd_SignalExportProp;
   rtwCAPI_ModelMappingInfo c1_testPointMappingInfo;
   void *c1_testPointAddrMap[3];
   void *c1_fEmlrtCtx;
@@ -346,6 +367,8 @@ typedef struct {
   int32_T (*c1_autoX_parameters)[16];
   uint8_T *c1_stopAntiStallCom;
   uint8_T *c1_antiStallEnable;
+  int32_T (*c1_antiStall_parameters)[8];
+  uint16_T *c1_antiStallFb;
 } SFc1_GCU_Model_genCodeInstanceStruct;
 
 #endif                                 /*typedef_SFc1_GCU_Model_genCodeInstanceStruct*/

@@ -1,0 +1,40 @@
+%implements "chartSource" "C"
+%function ChartConfig(block, system) void
+  %createrecord chartConfiguration { ...
+          executeAtInitialization  1 ...
+  }
+  %return chartConfiguration
+%endfunction
+%function ChartDataMap(block, system) void
+  %createrecord ChartDataElements {\
+    NumChartData   3 \
+    ChartDataDefaults {\
+      RecordType   "ChartData"\
+      Dimensions   []\
+      IsTestPoint  0\
+    }\
+    ChartData {\
+      Name         "is_c9_GCU_Model_genCode"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         ""\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "rpm"\
+      Description  "ChartLocal"\
+      SFName       "rpm"\
+      Path         "rpm"\
+      SrcLocation  ""\
+      IsTestPoint  1\
+    }\
+    ChartData {\
+      Name         "count"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "count"\
+      SrcLocation  ""\
+    }\
+  }
+  %return ChartDataElements
+%endfunction

@@ -555,6 +555,69 @@ Header file
 </tr>
 
 </table>
+<p>
+Function: <a href="GCU_Model_genCode_c.html#fcn_GCU_Model_genCode_step7">GCU_Model_genCode_step7</a>
+</p>
+<table width="100%" class="AltRow" cellspacing="0">
+<tr class="even">
+<td width="25%" align="left" valign="top">
+Prototype
+</td>
+<td width="75%" align="left" valign="top">
+<b>
+void GCU_Model_genCode_step7(void)
+</b>
+
+</td>
+
+</tr>
+<tr class="odd">
+<td width="25%" align="left" valign="top">
+Description
+</td>
+<td width="75%" align="left" valign="top">
+Output entry point of generated code
+</td>
+
+</tr>
+<tr class="even">
+<td width="25%" align="left" valign="top">
+Timing
+</td>
+<td width="75%" align="left" valign="top">
+Must be called periodically, every 0.03 seconds
+</td>
+
+</tr>
+<tr class="odd">
+<td width="25%" align="left" valign="top">
+Arguments
+</td>
+<td width="75%" align="left" valign="top">
+None
+</td>
+
+</tr>
+<tr class="even">
+<td width="25%" align="left" valign="top">
+Return value
+</td>
+<td width="75%" align="left" valign="top">
+None
+</td>
+
+</tr>
+<tr class="odd">
+<td width="25%" align="left" valign="top">
+Header file
+</td>
+<td width="75%" align="left" valign="top">
+<a href="GCU_Model_genCode_h.html">GCU_Model_genCode.h</a>
+</td>
+
+</tr>
+
+</table>
 <h3>
 <a name="sec_Inports">
 Inports
@@ -807,13 +870,43 @@ uint8_T
 </tr>
 <tr class="odd">
 <td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('GCU_Model_genCode:1682')" name="code2model" class="code2model">&lt;Root&gt;/dataDebug</a>
+<a href="matlab:coder.internal.code2model('GCU_Model_genCode:1713')" name="code2model" class="code2model">&lt;Root&gt;/gearshiftTimings</a>
 </td>
 <td width="26%" align="left" valign="top">
-rtY.dataDebug
+rtY.gearshiftTimings
 </td>
 <td width="21%" align="left" valign="top">
-uint8_T
+int32_T
+</td>
+<td width="10%" align="right" valign="top">
+[1  24]
+</td>
+
+</tr>
+<tr class="even">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('GCU_Model_genCode:1714')" name="code2model" class="code2model">&lt;Root&gt;/accParameters</a>
+</td>
+<td width="26%" align="left" valign="top">
+rtY.accParameters
+</td>
+<td width="21%" align="left" valign="top">
+int32_T
+</td>
+<td width="10%" align="right" valign="top">
+[1  16]
+</td>
+
+</tr>
+<tr class="odd">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('GCU_Model_genCode:1823')" name="code2model" class="code2model">&lt;Root&gt;/autoXParameters</a>
+</td>
+<td width="26%" align="left" valign="top">
+rtY.autoXParameters
+</td>
+<td width="21%" align="left" valign="top">
+int32_T
 </td>
 <td width="10%" align="right" valign="top">
 [1  16]
@@ -822,13 +915,28 @@ uint8_T
 </tr>
 <tr class="even">
 <td width="42%" align="left" valign="top">
-<a href="matlab:coder.internal.code2model('GCU_Model_genCode:1684')" name="code2model" class="code2model">&lt;Root&gt;/eepromStateDebug</a>
+<a href="matlab:coder.internal.code2model('GCU_Model_genCode:1944')" name="code2model" class="code2model">&lt;Root&gt;/antiStallParameters</a>
 </td>
 <td width="26%" align="left" valign="top">
-rtY.eepromStateDebug
+rtY.antiStallParameters
 </td>
 <td width="21%" align="left" valign="top">
-uint8_T
+int32_T
+</td>
+<td width="10%" align="right" valign="top">
+[1  8]
+</td>
+
+</tr>
+<tr class="odd">
+<td width="42%" align="left" valign="top">
+<a href="matlab:coder.internal.code2model('GCU_Model_genCode:2029')" name="code2model" class="code2model">&lt;Root&gt;/antiStallState</a>
+</td>
+<td width="26%" align="left" valign="top">
+rtY.antiStallState
+</td>
+<td width="21%" align="left" valign="top">
+real_T
 </td>
 <td width="10%" align="right" valign="top">
 1

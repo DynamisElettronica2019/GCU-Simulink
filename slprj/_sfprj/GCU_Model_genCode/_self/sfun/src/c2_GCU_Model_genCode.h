@@ -64,6 +64,7 @@ typedef struct {
   uint16_T *c2_rpmLimiterTarget;
   uint16_T (*c2_autoXCommand)[2];
   uint8_T *c2_stopAntiStallCom;
+  uint8_T *c2_RPMUpdateCounter;
   uint8_T *c2_map;
 } SFc2_GCU_Model_genCodeInstanceStruct;
 
