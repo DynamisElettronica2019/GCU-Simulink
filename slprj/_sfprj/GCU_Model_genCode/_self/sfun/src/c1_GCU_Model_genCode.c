@@ -9112,6 +9112,7 @@ static void c1_UPSHIFTING(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
           c1_c_sdiStreamingWrapperFcn(chartInstance, 2, 50, 11U, 2);
           _SFD_CS_CALL(STATE_ACTIVE_TAG, 28U, chartInstance->c1_sfEvent);
           chartInstance->c1_tp_Default = 1U;
+          sf_call_output_fcn_call(chartInstance->S, 3, "Efi_unsetCut", 0);
           sf_call_output_fcn_call(chartInstance->S, 6, "Gearshift_rebound", 0);
         }
       }
@@ -9448,7 +9449,6 @@ static void c1_UP_START(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
         c1_c_sdiStreamingWrapperFcn(chartInstance, 2, 47, 10U, 1);
         _SFD_CS_CALL(STATE_ACTIVE_TAG, 25U, chartInstance->c1_sfEvent);
         chartInstance->c1_tp_CutOff = 1U;
-        sf_call_output_fcn_call(chartInstance->S, 3, "Efi_unsetCut", 0);
         sf_call_output_fcn_call(chartInstance->S, 7, "Gearshift_up_push", 0);
       }
     } else {
@@ -12798,10 +12798,10 @@ extern void utFree(void*);
 static void init_test_point_mapping_info(SimStruct *S);
 void sf_c1_GCU_Model_genCode_get_check_sum(mxArray *plhs[])
 {
-  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(2009304687U);
-  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(1435235927U);
-  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(3073033981U);
-  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(1337769775U);
+  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(2191623713U);
+  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(572814175U);
+  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(3263775191U);
+  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(1480199137U);
 }
 
 mxArray* sf_c1_GCU_Model_genCode_get_post_codegen_info(void);
@@ -16323,7 +16323,7 @@ static void chart_debug_initialize_data_addresses(SimStruct *S)
 
 static const char* sf_get_instance_specialization(void)
 {
-  return "seB97c4jlif5ElZb0RP2zWF";
+  return "s1OuBpPVosdFkxuYFSeyz3C";
 }
 
 static void sf_opaque_initialize_c1_GCU_Model_genCode(void *chartInstanceVar)
@@ -16493,10 +16493,10 @@ static void mdlSetWorkWidths_c1_GCU_Model_genCode(SimStruct *S)
   }
 
   ssSetOptions(S,ssGetOptions(S)|SS_OPTION_WORKS_WITH_CODE_REUSE);
-  ssSetChecksum0(S,(1897540091U));
-  ssSetChecksum1(S,(1778713839U));
-  ssSetChecksum2(S,(861598776U));
-  ssSetChecksum3(S,(2237715312U));
+  ssSetChecksum0(S,(2258228158U));
+  ssSetChecksum1(S,(3623732631U));
+  ssSetChecksum2(S,(2547390365U));
+  ssSetChecksum3(S,(4243984522U));
   ssSetmdlDerivatives(S, NULL);
   ssSetExplicitFCSSCtrl(S,1);
   ssSetStateSemanticsClassicAndSynchronous(S, true);
@@ -16663,10 +16663,10 @@ static rtwCAPI_ModelMappingStaticInfo testPointMappingStaticInfo = {
   "float",
 
   {
-    1897540091U,
-    1778713839U,
-    861598776U,
-    2237715312U
+    2258228158U,
+    3623732631U,
+    2547390365U,
+    4243984522U
   }
 };
 
