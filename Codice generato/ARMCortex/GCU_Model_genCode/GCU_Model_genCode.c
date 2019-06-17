@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.298
+ * Model version                  : 1.300
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Sun Jun 16 18:50:01 2019
+ * C/C++ source code generated on : Mon Jun 17 10:27:28 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -1686,13 +1686,6 @@ static void GEARSHIFT(void)
           if (rtDW.is_UP_REBOUND != IN_Default) {
             rtDW.is_UP_REBOUND = IN_Default;
 
-            /* Outputs for Function Call SubSystem: '<S39>/UnsetCut' */
-
-            /* S-Function (Efi_unsetCut): '<S55>/Efi UnSetCut' */
-            Efi_unsetCut_Outputs_wrapper();
-
-            /* End of Outputs for SubSystem: '<S39>/UnsetCut' */
-
             /* Outputs for Function Call SubSystem: '<S43>/Gearmotor_release' */
             Gearmotor_release();
 
@@ -1740,9 +1733,14 @@ static void GEARSHIFT(void)
           if (rtDW.is_UP_PUSH != IN_CutOff) {
             rtDW.is_UP_PUSH = IN_CutOff;
 
-            /* Outputs for Function Call SubSystem: '<S43>/Gearmotor_turnRight' */
+            /* Outputs for Function Call SubSystem: '<S39>/UnsetCut' */
 
-            /* send(Efi_unsetCut); */
+            /* S-Function (Efi_unsetCut): '<S55>/Efi UnSetCut' */
+            Efi_unsetCut_Outputs_wrapper();
+
+            /* End of Outputs for SubSystem: '<S39>/UnsetCut' */
+
+            /* Outputs for Function Call SubSystem: '<S43>/Gearmotor_turnRight' */
             Gearmotor_turnRight(&rtDW.Pin_In1, &Pin_In2, &rtDW.Pin_H,
                                 &rtDW.Gearmotor_turnRight_f);
 
