@@ -7,7 +7,7 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   47 \
+    NumChartData   53 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
@@ -81,6 +81,34 @@
       Description  "StateActiveChild"\
       SFName       ""\
       Path         "MODES.AUTOCROSS.LAUNCH.ACTIVE"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_ACCELERATION_PID"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "MODES.ACCELERATION_PID"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_LAUNCH"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "MODES.ACCELERATION_PID.LAUNCH"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_ACTIVE"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "MODES.ACCELERATION_PID.LAUNCH.ACTIVE"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_RELEASE"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "MODES.ACCELERATION_PID.LAUNCH.ACTIVE.RELEASE"\
       SrcLocation  ""\
     }\
     ChartData {\
@@ -307,6 +335,21 @@
       Description  "ChartLocal"\
       SFName       ""\
       Path         "MODES.AUTOCROSS.LAUNCH.autoX_dtRelease"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "autoXCounter"\
+      Description  "ChartLocal"\
+      SFName       "autoXCounter"\
+      Path         "MODES.ACCELERATION_PID.LAUNCH.autoXCounter"\
+      SrcLocation  ""\
+      IsTestPoint  1\
+    }\
+    ChartData {\
+      Name         "lastSlip"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "MODES.ACCELERATION_PID.LAUNCH.ACTIVE.RELEASE.lastSlip"\
       SrcLocation  ""\
     }\
     ChartData {\
