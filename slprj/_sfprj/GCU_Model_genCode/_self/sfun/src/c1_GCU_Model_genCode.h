@@ -365,7 +365,7 @@ typedef struct {
   int32_T (*c1_timings)[24];
   uint16_T (*c1_autoXCom)[2];
   int32_T (*c1_autoX_parameters)[16];
-  uint8_T *c1_stopAntiStallCom;
+  uint16_T (*c1_currSlip)[2];
   uint8_T *c1_antiStallEnable;
   int32_T (*c1_antiStall_parameters)[8];
   uint16_T *c1_antiStallFb;

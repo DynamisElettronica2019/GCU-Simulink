@@ -56,5 +56,8 @@
 #define ANTISTALL_ON        1
 #define ANTISTALL_OFF       0
 
+//Velocità di uscita da release
+#define RELEASE_END_SPEED 10
+
 
 #endif
