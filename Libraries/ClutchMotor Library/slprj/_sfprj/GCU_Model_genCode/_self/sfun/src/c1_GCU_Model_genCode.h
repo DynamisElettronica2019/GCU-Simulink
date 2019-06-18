@@ -5,51 +5,101 @@
 #include "rtw_modelmap.h"
 
 /* Type Definitions */
-#ifndef enum_aac_params
-#define enum_aac_params
+#ifndef enum_acc_params
+#define enum_acc_params
 
-enum aac_params
+enum acc_params
 {
-  aac_params_RAMP_START = 0,           /* Default value */
-  aac_params_RAMP_END,
-  aac_params_RAMP_TIME,
-  aac_params_RPM_LIMIT_1_2,
-  aac_params_RPM_LIMIT_2_3,
-  aac_params_RPM_LIMIT_3_4,
-  aac_params_RPM_LIMIT_4_5,
-  aac_params_SPEED_LIMIT_1_2,
-  aac_params_SPEED_LIMIT_2_3,
-  aac_params_SPEED_LIMIT_3_4,
-  aac_params_SPEED_LIMIT_4_5
+  acc_params_RAMP_START = 0,           /* Default value */
+  acc_params_RAMP_END,
+  acc_params_RAMP_TIME,
+  acc_params_RPM_LIMIT_1_2,
+  acc_params_RPM_LIMIT_2_3,
+  acc_params_RPM_LIMIT_3_4,
+  acc_params_RPM_LIMIT_4_5,
+  acc_params_SPEED_LIMIT_1_2,
+  acc_params_SPEED_LIMIT_2_3,
+  acc_params_SPEED_LIMIT_3_4,
+  acc_params_SPEED_LIMIT_4_5,
+  acc_params_TPS_START_LIMIT,
+  acc_params_END_GEAR
 };
 
-#endif                                 /*enum_aac_params*/
+#endif                                 /*enum_acc_params*/
 
-#ifndef typedef_c1_aac_params
-#define typedef_c1_aac_params
+#ifndef typedef_c1_acc_params
+#define typedef_c1_acc_params
 
-typedef enum aac_params c1_aac_params;
+typedef enum acc_params c1_acc_params;
 
-#endif                                 /*typedef_c1_aac_params*/
+#endif                                 /*typedef_c1_acc_params*/
 
-#ifndef enum_aac_values
-#define enum_aac_values
+#ifndef enum_autoX_params
+#define enum_autoX_params
 
-enum aac_values
+enum autoX_params
 {
-  aac_values_RPM = 0,                  /* Default value */
-  aac_values_WHEEL_SPEED,
-  aac_values_APPS
+  autoX_params_AUTOX_RAMP_START = 0,   /* Default value */
+  autoX_params_AUTOX_RAMP_END,
+  autoX_params_AUTOX_RAMP_TIME,
+  autoX_params_AUTOX_RPM_LIMIT_1_2,
+  autoX_params_AUTOX_RPM_LIMIT_2_3,
+  autoX_params_AUTOX_RPM_LIMIT_3_4,
+  autoX_params_AUTOX_RPM_LIMIT_4_5,
+  autoX_params_AUTOX_SPEED_LIMIT_1_2,
+  autoX_params_AUTOX_SPEED_LIMIT_2_3,
+  autoX_params_AUTOX_SPEED_LIMIT_3_4,
+  autoX_params_AUTOX_SPEED_LIMIT_4_5,
+  autoX_params_AUTOX_TPS_START_LIMIT,
+  autoX_params_AUTOX_END_GEAR
 };
 
-#endif                                 /*enum_aac_values*/
+#endif                                 /*enum_autoX_params*/
 
-#ifndef typedef_c1_aac_values
-#define typedef_c1_aac_values
+#ifndef typedef_c1_autoX_params
+#define typedef_c1_autoX_params
 
-typedef enum aac_values c1_aac_values;
+typedef enum autoX_params c1_autoX_params;
 
-#endif                                 /*typedef_c1_aac_values*/
+#endif                                 /*typedef_c1_autoX_params*/
+
+#ifndef enum_acc_values
+#define enum_acc_values
+
+enum acc_values
+{
+  acc_values_RPM = 0,                  /* Default value */
+  acc_values_WHEEL_SPEED,
+  acc_values_TPS
+};
+
+#endif                                 /*enum_acc_values*/
+
+#ifndef typedef_c1_acc_values
+#define typedef_c1_acc_values
+
+typedef enum acc_values c1_acc_values;
+
+#endif                                 /*typedef_c1_acc_values*/
+
+#ifndef enum_anti_stall_params
+#define enum_anti_stall_params
+
+enum anti_stall_params
+{
+  anti_stall_params_RPM_THRESHOLD = 0, /* Default value */
+  anti_stall_params_RPM_DELTA_THRESHOLD,
+  anti_stall_params_GEAR_THRESHOLD
+};
+
+#endif                                 /*enum_anti_stall_params*/
+
+#ifndef typedef_c1_anti_stall_params
+#define typedef_c1_anti_stall_params
+
+typedef enum anti_stall_params c1_anti_stall_params;
+
+#endif                                 /*typedef_c1_anti_stall_params*/
 
 #ifndef typedef_SFc1_GCU_Model_genCodeInstanceStruct
 #define typedef_SFc1_GCU_Model_genCodeInstanceStruct
@@ -60,12 +110,8 @@ typedef struct {
   uint32_T chartNumber;
   uint32_T instanceNumber;
   int32_T c1_sfEvent;
-  uint8_T c1_tp_SCAN_ADC;
-  uint8_T c1_tp_WAIT;
-  uint8_T c1_tp_SCAN;
   uint8_T c1_tp_MODES;
   uint8_T c1_tp_MANUAL_MODES;
-  uint8_T c1_tp_AUTOCROSS;
   uint8_T c1_tp_ENDURANCE;
   uint8_T c1_tp_SKIDPAD;
   uint8_T c1_tp_INIT;
@@ -78,7 +124,27 @@ typedef struct {
   uint8_T c1_tp_RUNNING;
   uint8_T c1_tp_RELEASING;
   uint8_T c1_tp_STOPPING;
-  uint8_T c1_tp_NotReady;
+  uint8_T c1_tp_DEFAULT;
+  uint8_T c1_tp_AUTOCROSS;
+  uint8_T c1_tp_LAUNCH;
+  uint8_T c1_b_tp_ACTIVE;
+  uint8_T c1_b_tp_START;
+  uint8_T c1_b_tp_READY;
+  uint8_T c1_b_tp_START_RELEASE;
+  uint8_T c1_b_tp_RUNNING;
+  uint8_T c1_b_tp_RELEASING;
+  uint8_T c1_b_tp_STOPPING;
+  uint8_T c1_b_tp_DEFAULT;
+  uint8_T c1_tp_ACCELERATION_PID;
+  uint8_T c1_b_tp_LAUNCH;
+  uint8_T c1_c_tp_ACTIVE;
+  uint8_T c1_c_tp_START;
+  uint8_T c1_c_tp_READY;
+  uint8_T c1_c_tp_RUNNING;
+  uint8_T c1_tp_RELEASE;
+  uint8_T c1_tp_WAIT;
+  uint8_T c1_c_tp_STOPPING;
+  uint8_T c1_c_tp_DEFAULT;
   uint8_T c1_tp_NEUTRAL_STATE;
   uint8_T c1_tp_NEUTRAL;
   uint8_T c1_tp_UNSET_NEUTRAL;
@@ -110,20 +176,34 @@ typedef struct {
   uint8_T c1_tp_DOWN_PUSH;
   uint8_T c1_tp_DOWN_REBOUND;
   uint8_T c1_tp_DOWN_END;
-  uint8_T c1_tp_START_ENGINE;
+  uint8_T c1_tp_EEPROM_TRIGGER;
   uint8_T c1_b_tp_WAIT;
-  uint8_T c1_b_tp_START;
+  uint8_T c1_tp_SEND;
+  uint8_T c1_tp_START_ENGINE;
+  uint8_T c1_c_tp_WAIT;
+  uint8_T c1_d_tp_START;
   uint8_T c1_tp_STOP;
-  uint8_T c1_tp_SENSORS;
+  uint8_T c1_tp_SCAN_ADC;
+  uint8_T c1_d_tp_WAIT;
+  uint8_T c1_tp_SCAN;
+  uint8_T c1_tp_ANTISTALL_ENABLE;
+  uint8_T c1_tp_DISABLE;
+  uint8_T c1_tp_ENABLE;
+  uint8_T c1_tp_Control;
   uint8_T c1_is_active_c1_GCU_Model_genCode;
-  uint8_T c1_is_SCAN_ADC;
-  uint8_T c1_is_active_SCAN_ADC;
   uint8_T c1_is_MODES;
   uint8_T c1_is_active_MODES;
   uint8_T c1_is_MANUAL_MODES;
   uint8_T c1_is_ACCELERATION;
   uint8_T c1_is_ACC;
   uint8_T c1_is_ACTIVE;
+  uint8_T c1_is_AUTOCROSS;
+  uint8_T c1_is_LAUNCH;
+  uint8_T c1_b_is_ACTIVE;
+  uint8_T c1_is_ACCELERATION_PID;
+  uint8_T c1_b_is_LAUNCH;
+  uint8_T c1_c_is_ACTIVE;
+  uint8_T c1_is_RELEASE;
   uint8_T c1_is_NEUTRAL_STATE;
   uint8_T c1_is_active_NEUTRAL_STATE;
   uint8_T c1_is_GEARSHIFT;
@@ -135,17 +215,19 @@ typedef struct {
   uint8_T c1_is_DOWNSHIFTING;
   uint8_T c1_is_DOWN_START;
   uint8_T c1_is_DOWN_BRAKE;
+  uint8_T c1_is_EEPROM_TRIGGER;
+  uint8_T c1_is_active_EEPROM_TRIGGER;
   uint8_T c1_is_START_ENGINE;
   uint8_T c1_is_active_START_ENGINE;
-  uint8_T c1_is_active_SENSORS;
+  uint8_T c1_is_SCAN_ADC;
+  uint8_T c1_is_active_SCAN_ADC;
+  uint8_T c1_is_ANTISTALL_ENABLE;
+  uint8_T c1_is_active_ANTISTALL_ENABLE;
   uint8_T c1_lastShift;
-  uint16_T c1_timerCounter;
   uint16_T c1_lastAacCom;
-  uint16_T c1_START_AAC_COM;
-  uint16_T c1_RELEASE_AAC_COM;
-  uint16_T c1_STOP_AAC_COM;
   uint16_T c1_lastShiftCom;
-  uint8_T c1_lastClutchCom;
+  uint16_T c1_lastAutoXCom;
+  uint16_T c1_buzzerCounter;
   uint16_T c1_GEAR_COMMAND_NEUTRAL_UP;
   uint16_T c1_GEAR_COMMAND_NEUTRAL_DOWN;
   uint16_T c1_GEAR_COMMAND_UP;
@@ -171,15 +253,29 @@ typedef struct {
   int32_T c1_DEF_SPEED_LIMIT_3_4;
   int32_T c1_DEF_SPEED_LIMIT_4_5;
   uint16_T c1_ACC_CODE;
+  uint16_T c1_AUTOX_WORK_RATE_ms;
+  uint16_T c1_autoXCounter;
+  real_T c1_autoX_clutchValue;
+  real_T c1_autoX_clutchStep;
+  int32_T c1_autoX_dtRelease;
+  uint16_T c1_b_AUTOX_WORK_RATE_ms;
+  uint16_T c1_b_autoXCounter;
+  real_T c1_b_autoX_clutchValue;
+  real_T c1_b_autoX_clutchStep;
+  int32_T c1_b_autoX_dtRelease;
+  uint16_T c1_lastSlip;
   int32_T c1_ticksCounter;
   real_T c1_data;
+  real_T c1_counterWait;
   uint8_T c1_lastCom;
   uint8_T c1_startCounter;
+  uint16_T c1_timerCounter;
+  real_T c1_b_counterWait;
   uint8_T c1_doSetSimStateSideEffects;
   const mxArray *c1_setSimStateSideEffectsInfo;
-  void *c1_dataSetLogObjVector[2];
-  uint8_T c1_sdiLoggedStatesBuffer[56];
-  uint8_T c1_sdiLoggedDataBuffer[55];
+  void *c1_dataSetLogObjVector[4];
+  uint8_T c1_sdiLoggedStatesBuffer[81];
+  uint8_T c1_sdiLoggedDataBuffer[78];
   sdiBlockID_t c1_sdiBlockInfo;
   SignalExportStruct c1_SignalExportProp;
   SignalExportStruct c1_b_SignalExportProp;
@@ -251,8 +347,46 @@ typedef struct {
   SignalExportStruct c1_rc_SignalExportProp;
   SignalExportStruct c1_sc_SignalExportProp;
   SignalExportStruct c1_tc_SignalExportProp;
+  SignalExportStruct c1_uc_SignalExportProp;
+  SignalExportStruct c1_vc_SignalExportProp;
+  SignalExportStruct c1_wc_SignalExportProp;
+  SignalExportStruct c1_xc_SignalExportProp;
+  SignalExportStruct c1_yc_SignalExportProp;
+  SignalExportStruct c1_ad_SignalExportProp;
+  SignalExportStruct c1_bd_SignalExportProp;
+  SignalExportStruct c1_cd_SignalExportProp;
+  SignalExportStruct c1_dd_SignalExportProp;
+  SignalExportStruct c1_ed_SignalExportProp;
+  SignalExportStruct c1_fd_SignalExportProp;
+  SignalExportStruct c1_gd_SignalExportProp;
+  SignalExportStruct c1_hd_SignalExportProp;
+  SignalExportStruct c1_id_SignalExportProp;
+  SignalExportStruct c1_jd_SignalExportProp;
+  SignalExportStruct c1_kd_SignalExportProp;
+  SignalExportStruct c1_ld_SignalExportProp;
+  SignalExportStruct c1_md_SignalExportProp;
+  SignalExportStruct c1_nd_SignalExportProp;
+  SignalExportStruct c1_od_SignalExportProp;
+  SignalExportStruct c1_pd_SignalExportProp;
+  SignalExportStruct c1_qd_SignalExportProp;
+  SignalExportStruct c1_rd_SignalExportProp;
+  SignalExportStruct c1_sd_SignalExportProp;
+  SignalExportStruct c1_td_SignalExportProp;
+  SignalExportStruct c1_ud_SignalExportProp;
+  SignalExportStruct c1_vd_SignalExportProp;
+  SignalExportStruct c1_wd_SignalExportProp;
+  SignalExportStruct c1_xd_SignalExportProp;
+  SignalExportStruct c1_yd_SignalExportProp;
+  SignalExportStruct c1_ae_SignalExportProp;
+  SignalExportStruct c1_be_SignalExportProp;
+  SignalExportStruct c1_ce_SignalExportProp;
+  SignalExportStruct c1_de_SignalExportProp;
+  SignalExportStruct c1_ee_SignalExportProp;
+  SignalExportStruct c1_fe_SignalExportProp;
+  SignalExportStruct c1_ge_SignalExportProp;
+  SignalExportStruct c1_he_SignalExportProp;
   rtwCAPI_ModelMappingInfo c1_testPointMappingInfo;
-  void *c1_testPointAddrMap[2];
+  void *c1_testPointAddrMap[4];
   void *c1_fEmlrtCtx;
   uint8_T *c1_currentGear;
   uint8_T *c1_clutchCurrVal;
@@ -260,14 +394,22 @@ typedef struct {
   uint16_T (*c1_shiftCom)[2];
   uint8_T *c1_startEngCom;
   uint16_T (*c1_aacCom)[2];
-  uint16_T (*c1_aac_externValues)[3];
-  uint8_T (*c1_clutchCom)[2];
+  uint16_T (*c1_acc_externValues)[3];
+  uint8_T *c1_clutchTarget;
   uint16_T (*c1_modeCom)[2];
-  uint16_T *c1_accFb;
-  int32_T (*c1_aac_parameters)[11];
-  int32_T (*c1_timings)[23];
-  uint16_T *c1_valCode;
-  uint16_T *c1_value;
+  uint16_T *c1_stateFb;
+  int32_T (*c1_acc_parameters)[16];
+  int32_T (*c1_timings)[24];
+  uint16_T (*c1_autoXCom)[2];
+  int32_T (*c1_autoX_parameters)[16];
+  uint16_T (*c1_currSlip)[2];
+  uint8_T *c1_antiStallEnable;
+  int32_T (*c1_antiStall_parameters)[8];
+  uint16_T *c1_antiStallFb;
+  real_T *c1_slipTarget;
+  real_T *c1_currentSlip;
+  real_T *c1_clutchVal;
+  real_T *c1_reset;
 } SFc1_GCU_Model_genCodeInstanceStruct;
 
 #endif                                 /*typedef_SFc1_GCU_Model_genCodeInstanceStruct*/

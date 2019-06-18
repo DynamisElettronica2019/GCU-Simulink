@@ -58,6 +58,7 @@
 
 //Velocità di uscita da release
 #define RELEASE_END_SPEED 10
+#define SLIP_TARGET 7
 
 
 #endif
