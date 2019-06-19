@@ -2,7 +2,7 @@
 ## Makefile generated for Simulink model 'GCU_Model_genCode'. 
 ## 
 ## Makefile     : GCU_Model_genCode.mk
-## Generated on : Sun Jun 16 17:22:53 2019
+## Generated on : Thu Jun 20 00:09:48 2019
 ## MATLAB Coder version: 4.0 (R2018a)
 ## 
 ## Build Info:
@@ -31,7 +31,7 @@ MATLAB_ROOT               = C:/PROGRA~1/MATLAB/R2018a
 MATLAB_BIN                = C:/PROGRA~1/MATLAB/R2018a/bin
 MATLAB_ARCH_BIN           = $(MATLAB_BIN)/win64
 MASTER_ANCHOR_DIR         = 
-START_DIR                 = C:/Users/sA/Desktop/git/2019/GCU_DO~1/GCU-SI~1/CODICE~1
+START_DIR                 = C:/Users/sA/Desktop/git/2019/GCU-SI~1/CODICE~1
 ARCH                      = win64
 SOLVER                    = 
 SOLVER_OBJ                = 
@@ -205,7 +205,7 @@ BUILD_TYPE = "Top-Level Standalone Executable"
 ## INCLUDE PATHS
 ###########################################################################
 
-INCLUDES_BUILDINFO = -I$(START_DIR) -I$(START_DIR)/ARMCortex/GCU_Model_genCode -IC:/Users/sA/Desktop/git/2019/GCU_dopo_er_compil/GCU-Simulink/Models -I$(MATLAB_ROOT)/extern/include -I$(MATLAB_ROOT)/simulink/include -I$(MATLAB_ROOT)/rtw/c/src -I$(MATLAB_ROOT)/rtw/c/src/ext_mode/common -I$(MATLAB_ROOT)/rtw/c/ert
+INCLUDES_BUILDINFO = -I$(START_DIR) -I$(START_DIR)/ARMCortex/GCU_Model_genCode -IC:/Users/sA/Desktop/git/2019/GCU-Simulink/Models -I$(MATLAB_ROOT)/extern/include -I$(MATLAB_ROOT)/simulink/include -I$(MATLAB_ROOT)/rtw/c/src -I$(MATLAB_ROOT)/rtw/c/src/ext_mode/common -I$(MATLAB_ROOT)/rtw/c/ert
 
 INCLUDES = $(INCLUDES_BUILDINFO)
 
@@ -215,7 +215,7 @@ INCLUDES = $(INCLUDES_BUILDINFO)
 
 DEFINES_BUILD_ARGS = -DCLASSIC_INTERFACE=0 -DALLOCATIONFCN=0 -DTERMFCN=0 -DONESTEPFCN=1 -DMAT_FILE=0 -DMULTI_INSTANCE_CODE=0 -DINTEGER_CODE=0 -DMT=1
 DEFINES_IMPLIED = -DTID01EQ=0
-DEFINES_STANDARD = -DMODEL=GCU_Model_genCode -DNUMST=8 -DNCSTATES=0 -DHAVESTDIO -DMODEL_HAS_DYNAMICALLY_LOADED_SFCNS=0
+DEFINES_STANDARD = -DMODEL=GCU_Model_genCode -DNUMST=7 -DNCSTATES=0 -DHAVESTDIO -DMODEL_HAS_DYNAMICALLY_LOADED_SFCNS=0
 
 DEFINES = $(DEFINES_BUILD_ARGS) $(DEFINES_IMPLIED) $(DEFINES_STANDARD)
 
@@ -357,83 +357,83 @@ $(PRODUCT) : $(OBJS) $(PREBUILT_OBJS) $(MAIN_OBJ)
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-%.obj : C:/Users/sA/Desktop/git/2019/GCU_DO~1/GCU-SI~1/LIBRAR~1/CANLIB~1/%.c
+%.obj : C:/Users/sA/Desktop/git/2019/GCU-SI~1/LIBRAR~1/CANLIB~1/%.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-%.obj : C:/Users/sA/Desktop/git/2019/GCU_DO~1/GCU-SI~1/LIBRAR~1/CANLIB~1/%.cpp
+%.obj : C:/Users/sA/Desktop/git/2019/GCU-SI~1/LIBRAR~1/CANLIB~1/%.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-%.obj : C:/Users/sA/Desktop/git/2019/GCU_DO~1/GCU-SI~1/LIBRAR~1/EEPROM~1/%.c
+%.obj : C:/Users/sA/Desktop/git/2019/GCU-SI~1/LIBRAR~1/EEPROM~1/%.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-%.obj : C:/Users/sA/Desktop/git/2019/GCU_DO~1/GCU-SI~1/LIBRAR~1/EEPROM~1/%.cpp
+%.obj : C:/Users/sA/Desktop/git/2019/GCU-SI~1/LIBRAR~1/EEPROM~1/%.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-%.obj : C:/Users/sA/Desktop/git/2019/GCU_DO~1/GCU-SI~1/LIBRAR~1/UARTLI~1/%.c
+%.obj : C:/Users/sA/Desktop/git/2019/GCU-SI~1/LIBRAR~1/UARTLI~1/%.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-%.obj : C:/Users/sA/Desktop/git/2019/GCU_DO~1/GCU-SI~1/LIBRAR~1/UARTLI~1/%.cpp
+%.obj : C:/Users/sA/Desktop/git/2019/GCU-SI~1/LIBRAR~1/UARTLI~1/%.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-%.obj : C:/Users/sA/Desktop/git/2019/GCU_DO~1/GCU-SI~1/LIBRAR~1/EFILIB~1/%.c
+%.obj : C:/Users/sA/Desktop/git/2019/GCU-SI~1/LIBRAR~1/EFILIB~1/%.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-%.obj : C:/Users/sA/Desktop/git/2019/GCU_DO~1/GCU-SI~1/LIBRAR~1/EFILIB~1/%.cpp
+%.obj : C:/Users/sA/Desktop/git/2019/GCU-SI~1/LIBRAR~1/EFILIB~1/%.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-%.obj : C:/Users/sA/Desktop/git/2019/GCU_DO~1/GCU-SI~1/LIBRAR~1/CLUTCH~1/%.c
+%.obj : C:/Users/sA/Desktop/git/2019/GCU-SI~1/LIBRAR~1/CLUTCH~1/%.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-%.obj : C:/Users/sA/Desktop/git/2019/GCU_DO~1/GCU-SI~1/LIBRAR~1/CLUTCH~1/%.cpp
+%.obj : C:/Users/sA/Desktop/git/2019/GCU-SI~1/LIBRAR~1/CLUTCH~1/%.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-%.obj : C:/Users/sA/Desktop/git/2019/GCU_DO~1/GCU-SI~1/LIBRAR~1/UTILIT~1/%.c
+%.obj : C:/Users/sA/Desktop/git/2019/GCU-SI~1/LIBRAR~1/UTILIT~1/%.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-%.obj : C:/Users/sA/Desktop/git/2019/GCU_DO~1/GCU-SI~1/LIBRAR~1/UTILIT~1/%.cpp
+%.obj : C:/Users/sA/Desktop/git/2019/GCU-SI~1/LIBRAR~1/UTILIT~1/%.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-%.obj : C:/Users/sA/Desktop/git/2019/GCU_DO~1/GCU-SI~1/LIBRAR~1/ENGINE~1/%.c
+%.obj : C:/Users/sA/Desktop/git/2019/GCU-SI~1/LIBRAR~1/ENGINE~1/%.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-%.obj : C:/Users/sA/Desktop/git/2019/GCU_DO~1/GCU-SI~1/LIBRAR~1/ENGINE~1/%.cpp
+%.obj : C:/Users/sA/Desktop/git/2019/GCU-SI~1/LIBRAR~1/ENGINE~1/%.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-%.obj : C:/Users/sA/Desktop/git/2019/GCU_DO~1/GCU-SI~1/LIBRAR~1/SENSOR~1/%.c
+%.obj : C:/Users/sA/Desktop/git/2019/GCU-SI~1/LIBRAR~1/SENSOR~1/%.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-%.obj : C:/Users/sA/Desktop/git/2019/GCU_DO~1/GCU-SI~1/LIBRAR~1/SENSOR~1/%.cpp
+%.obj : C:/Users/sA/Desktop/git/2019/GCU-SI~1/LIBRAR~1/SENSOR~1/%.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-%.obj : C:/Users/sA/Desktop/git/2019/GCU_DO~1/GCU-SI~1/LIBRAR~1/GEARMO~1/%.c
+%.obj : C:/Users/sA/Desktop/git/2019/GCU-SI~1/LIBRAR~1/GEARMO~1/%.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-%.obj : C:/Users/sA/Desktop/git/2019/GCU_DO~1/GCU-SI~1/LIBRAR~1/GEARMO~1/%.cpp
+%.obj : C:/Users/sA/Desktop/git/2019/GCU-SI~1/LIBRAR~1/GEARMO~1/%.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 
-%.obj : C:/Users/sA/Desktop/git/2019/GCU_DO~1/GCU-SI~1/LIBRAR~1/TIMERL~1/%.c
+%.obj : C:/Users/sA/Desktop/git/2019/GCU-SI~1/LIBRAR~1/TIMERL~1/%.c
 	$(CC) $(CFLAGS) -o "$@" "$<"
 
 
-%.obj : C:/Users/sA/Desktop/git/2019/GCU_DO~1/GCU-SI~1/LIBRAR~1/TIMERL~1/%.cpp
+%.obj : C:/Users/sA/Desktop/git/2019/GCU-SI~1/LIBRAR~1/TIMERL~1/%.cpp
 	$(CPP) $(CPPFLAGS) -o "$@" "$<"
 
 

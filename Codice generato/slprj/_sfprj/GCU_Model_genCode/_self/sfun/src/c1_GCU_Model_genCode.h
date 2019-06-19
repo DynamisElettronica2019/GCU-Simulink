@@ -142,6 +142,7 @@ typedef struct {
   uint8_T c1_c_tp_READY;
   uint8_T c1_c_tp_RUNNING;
   uint8_T c1_tp_RELEASE;
+  uint8_T c1_tp_Control;
   uint8_T c1_tp_WAIT;
   uint8_T c1_c_tp_STOPPING;
   uint8_T c1_c_tp_DEFAULT;
@@ -189,7 +190,6 @@ typedef struct {
   uint8_T c1_tp_ANTISTALL_ENABLE;
   uint8_T c1_tp_DISABLE;
   uint8_T c1_tp_ENABLE;
-  uint8_T c1_tp_Control;
   uint8_T c1_is_active_c1_GCU_Model_genCode;
   uint8_T c1_is_MODES;
   uint8_T c1_is_active_MODES;
@@ -275,7 +275,7 @@ typedef struct {
   const mxArray *c1_setSimStateSideEffectsInfo;
   void *c1_dataSetLogObjVector[4];
   uint8_T c1_sdiLoggedStatesBuffer[81];
-  uint8_T c1_sdiLoggedDataBuffer[78];
+  uint8_T c1_sdiLoggedDataBuffer[79];
   sdiBlockID_t c1_sdiBlockInfo;
   SignalExportStruct c1_SignalExportProp;
   SignalExportStruct c1_b_SignalExportProp;
@@ -406,6 +406,7 @@ typedef struct {
   uint8_T *c1_antiStallEnable;
   int32_T (*c1_antiStall_parameters)[8];
   uint16_T *c1_antiStallFb;
+  uint32_T (*c1_gearMotorCurent_1_2)[2];
   real_T *c1_slipTarget;
   real_T *c1_currentSlip;
   real_T *c1_clutchVal;

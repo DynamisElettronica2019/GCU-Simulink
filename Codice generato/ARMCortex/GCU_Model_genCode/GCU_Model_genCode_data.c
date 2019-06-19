@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.300
+ * Model version                  : 1.319
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Mon Jun 17 10:27:28 2019
+ * C/C++ source code generated on : Thu Jun 20 00:08:46 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -26,19 +26,18 @@ const ConstP rtConstP = {
   /* Expression: VoltageOffsetVector
    * Referenced by: '<S10>/OffSet'
    */
-  { 0.0, 0.0, 0.0, 0.0, -0.1, 0.0, 0.0, 0.0, 0.0 },
+  { 0.33, 0.33, 0.33, 0.33, -0.1, 0.0, 0.33 },
 
   /* Expression: ConversionGainVector
    * Referenced by: '<S10>/OffSet1'
    */
   { 37.878787878787875, 37.878787878787875, 37.878787878787875,
-    37.878787878787875, 100.0, 333.33333333333331, 414.89361702127661,
-    414.89361702127661, 37.878787878787875 },
+    37.878787878787875, 100.0, 333.33333333333331, 37.878787878787875 },
 
   /* Expression: ConversionOffsetVector
    * Referenced by: '<S10>/OffSet2'
    */
-  { 0.0, 0.0, 0.0, 0.0, -40.0, 0.0, -33.15, -33.15, 0.0 },
+  { 0.0, 0.0, 0.0, 0.0, -40.0, 0.0, 0.0 },
 
   /* Pooled Parameter (Expression: [uint16(0),uint16(100),uint16(200),uint16(300),uint16(400),uint16(500),uint16(600),uint16(700)])
    * Referenced by:

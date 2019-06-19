@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.300
+ * Model version                  : 1.319
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Mon Jun 17 10:27:28 2019
+ * C/C++ source code generated on : Thu Jun 20 00:08:46 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -38,11 +38,11 @@
 void rt_OneStep(void);
 void rt_OneStep(void)
 {
-  static boolean_T OverrunFlags[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };
+  static boolean_T OverrunFlags[7] = { 0, 0, 0, 0, 0, 0, 0 };
 
-  static boolean_T eventFlags[8] = { 0, 0, 0, 0, 0, 0, 0, 0 };/* Model has 8 rates */
+  static boolean_T eventFlags[7] = { 0, 0, 0, 0, 0, 0, 0 };/* Model has 7 rates */
 
-  static int_T taskCounter[8] = { 0, 0, 8, 6, 4, 2, 1, 0 };
+  static int_T taskCounter[7] = { 0, 0, 8, 6, 4, 2, 1 };
 
   int_T i;
 
@@ -64,7 +64,7 @@ void rt_OneStep(void)
    * following code checks whether any subrate overruns,
    * and also sets the rates that need to run this time step.
    */
-  for (i = 1; i < 8; i++) {
+  for (i = 1; i < 7; i++) {
     if (taskCounter[i] == 0) {
       if (eventFlags[i]) {
         OverrunFlags[0] = false;
@@ -109,11 +109,6 @@ void rt_OneStep(void)
     taskCounter[6]= 0;
   }
 
-  taskCounter[7]++;
-  if (taskCounter[7] == 300) {
-    taskCounter[7]= 0;
-  }
-
   /* Set model inputs associated with base rate here */
 
   /* Step the model for base rate */
@@ -125,7 +120,7 @@ void rt_OneStep(void)
   OverrunFlags[0] = false;
 
   /* Step the model for any subrate */
-  for (i = 1; i < 8; i++) {
+  for (i = 1; i < 7; i++) {
     /* If task "i" is running, don't run any lower priority task */
     if (OverrunFlags[i]) {
       return;
@@ -170,12 +165,6 @@ void rt_OneStep(void)
 
        case 6 :
         GCU_Model_genCode_step6();
-
-        /* Get model outputs here */
-        break;
-
-       case 7 :
-        GCU_Model_genCode_step7();
 
         /* Get model outputs here */
         break;

@@ -1018,7 +1018,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 5 };
+          static int sRelationalopType[] = { 5, 5 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(1,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -1046,7 +1046,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 5 };
+          static int sRelationalopType[] = { 5, 5 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(4,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
