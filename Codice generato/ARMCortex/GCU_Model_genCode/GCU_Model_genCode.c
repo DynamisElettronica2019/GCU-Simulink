@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.319
+ * Model version                  : 1.320
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Thu Jun 20 00:08:46 2019
+ * C/C++ source code generated on : Thu Jun 20 17:32:14 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -1535,7 +1535,7 @@ static void GEARSHIFT(void)
         if (rtDW.clutchCurrVal < 81) {
           if (rtDW.is_DOWN_BRAKE != IN_ChangeClutch) {
             rtDW.is_DOWN_BRAKE = IN_ChangeClutch;
-            Clutch_setValue(80);
+            Clutch_setValue(0);
 
             /* Outputs for Function Call SubSystem: '<S43>/Gearmotor_brake' */
             Gearmotor_brake(&rtDW.Pin_In1, &Pin_In2, &rtDW.Pin_H,
@@ -4949,7 +4949,10 @@ void GCU_Model_genCode_step4(void)     /* Sample time: [0.001s, 0.0006s] */
 {
   real_T rtb_Multiply4[9];
   real_T rtb_Sum1[7];
+  real_T rtb_y;
   uint32_T CastToDouble_f[7];
+  uint32_T CastToDouble1;
+  uint32_T CastToDouble2;
   int32_T i;
 
   /* S-Function (fcncallgen): '<Root>/Function_Call_Generator1' incorporates:
@@ -4992,6 +4995,44 @@ void GCU_Model_genCode_step4(void)     /* Sample time: [0.001s, 0.0006s] */
 
   /* End of DataTypeConversion: '<S10>/Cast To Double' */
 
+  /* MATLAB Function: '<S71>/f_T_lt' incorporates:
+   *  Constant: '<S71>/Constant10'
+   *  Constant: '<S71>/Constant5'
+   *  Constant: '<S71>/Constant6'
+   *  Constant: '<S71>/Constant7'
+   *  Constant: '<S71>/Constant8'
+   *  Constant: '<S71>/Constant9'
+   *  UnitDelay: '<S10>/Unit Delay'
+   */
+  rtb_y = (((rtDW.UnitDelay_DSTATE - 25.0) * 0.00329 + 1.0) /
+           ((rtDW.UnitDelay_DSTATE - 25.0) * 0.00418 + 1.0) * 0.97 +
+           ((rtDW.UnitDelay_DSTATE - 25.0) * 0.00343 + 1.0) /
+           ((rtDW.UnitDelay_DSTATE - 25.0) * 0.00401 + 1.0)) / 2.0;
+
+  /* DataTypeConversion: '<S10>/Cast To Double1' incorporates:
+   *  Constant: '<S71>/Constant'
+   *  Constant: '<S71>/Constant1'
+   *  Constant: '<S71>/Constant3'
+   *  Product: '<S71>/Divide1'
+   *  Product: '<S71>/Multiply'
+   *  Product: '<S71>/Multiply1'
+   *  Sum: '<S71>/Sum'
+   */
+  CastToDouble1 = (uint32_T)((rtb_Multiply4[6] / 470.0 - 0.00017) *
+    (10.001700289049138 * rtb_y));
+
+  /* DataTypeConversion: '<S10>/Cast To Double2' incorporates:
+   *  Constant: '<S71>/Constant'
+   *  Constant: '<S71>/Constant2'
+   *  Constant: '<S71>/Constant4'
+   *  Product: '<S71>/Divide'
+   *  Product: '<S71>/Multiply2'
+   *  Product: '<S71>/Multiply3'
+   *  Sum: '<S71>/Sum1'
+   */
+  CastToDouble2 = (uint32_T)((0.0021276595744680851 * rtb_Multiply4[7] - 0.00017)
+    * (rtb_y * 10.001700289049138));
+
   /* S-Function (Read_oil_sensor): '<S10>/Read_oil_sensor' */
   Read_oil_sensor_Outputs_wrapper(&rtDW.Read_oil_sensor);
 
@@ -5000,67 +5041,38 @@ void GCU_Model_genCode_step4(void)     /* Sample time: [0.001s, 0.0006s] */
 
   /* End of Outputs for S-Function (fcncallgen): '<Root>/Function_Call_Generator1' */
 
-  /* Outport: '<Root>/adc_data_vector' incorporates:
-   *  DataTypeConversion: '<S10>/Cast To Double1'
-   *  DataTypeConversion: '<S10>/Cast To Double2'
-   *  Product: '<S71>/Multiply1'
-   *  Product: '<S71>/Multiply2'
-   */
+  /* Outport: '<Root>/adc_data_vector' */
   for (i = 0; i < 7; i++) {
     rtY.adc_data_vector[i] = CastToDouble_f[i];
   }
 
-  /* S-Function (fcncallgen): '<Root>/Function_Call_Generator1' incorporates:
-   *  SubSystem: '<Root>/update_ADC_data'
-   */
-  rtY.adc_data_vector[7] = 0U;
-  rtY.adc_data_vector[8] = 0U;
+  rtY.adc_data_vector[7] = CastToDouble1;
+  rtY.adc_data_vector[8] = CastToDouble2;
 
   /* End of Outport: '<Root>/adc_data_vector' */
-  /* End of Outputs for S-Function (fcncallgen): '<Root>/Function_Call_Generator1' */
 
-  /* RateTransition: '<Root>/Rate Transition18' incorporates:
-   *  DataTypeConversion: '<S10>/Cast To Double1'
-   *  DataTypeConversion: '<S10>/Cast To Double2'
-   *  Product: '<S71>/Multiply1'
-   *  Product: '<S71>/Multiply2'
-   */
+  /* RateTransition: '<Root>/Rate Transition18' */
   if (!(rtDW.RateTransition18_semaphoreTaken != 0)) {
     for (i = 0; i < 7; i++) {
       rtDW.RateTransition18_Buffer0[i] = CastToDouble_f[i];
     }
 
-    /* S-Function (fcncallgen): '<Root>/Function_Call_Generator1' incorporates:
-     *  SubSystem: '<Root>/update_ADC_data'
-     */
-    rtDW.RateTransition18_Buffer0[7] = 0U;
-    rtDW.RateTransition18_Buffer0[8] = 0U;
-
-    /* End of Outputs for S-Function (fcncallgen): '<Root>/Function_Call_Generator1' */
+    rtDW.RateTransition18_Buffer0[7] = CastToDouble1;
+    rtDW.RateTransition18_Buffer0[8] = CastToDouble2;
   }
 
   /* End of RateTransition: '<Root>/Rate Transition18' */
 
-  /* Update for RateTransition: '<Root>/Rate Transition9' incorporates:
-   *  DataTypeConversion: '<S10>/Cast To Double1'
-   *  DataTypeConversion: '<S10>/Cast To Double2'
-   *  Product: '<S71>/Multiply1'
-   *  Product: '<S71>/Multiply2'
-   */
+  /* Update for RateTransition: '<Root>/Rate Transition9' */
   for (i = 0; i < 7; i++) {
     rtDW.RateTransition9_Buffer[i + (rtDW.RateTransition9_ActiveBufIdx == 0) * 9]
       = CastToDouble_f[i];
   }
 
-  /* S-Function (fcncallgen): '<Root>/Function_Call_Generator1' incorporates:
-   *  SubSystem: '<Root>/update_ADC_data'
-   */
   rtDW.RateTransition9_Buffer[7 + (rtDW.RateTransition9_ActiveBufIdx == 0) * 9] =
-    0U;
+    CastToDouble1;
   rtDW.RateTransition9_Buffer[8 + (rtDW.RateTransition9_ActiveBufIdx == 0) * 9] =
-    0U;
-
-  /* End of Outputs for S-Function (fcncallgen): '<Root>/Function_Call_Generator1' */
+    CastToDouble2;
   rtDW.RateTransition9_ActiveBufIdx = (int8_T)(rtDW.RateTransition9_ActiveBufIdx
     == 0);
 
@@ -5069,26 +5081,16 @@ void GCU_Model_genCode_step4(void)     /* Sample time: [0.001s, 0.0006s] */
   /* Update for RateTransition: '<Root>/Rate Transition27' */
   rtDW.RateTransition27_Buffer0 = rtDW.Read_oil_sensor;
 
-  /* Update for RateTransition: '<Root>/Rate Transition35' incorporates:
-   *  DataTypeConversion: '<S10>/Cast To Double1'
-   *  DataTypeConversion: '<S10>/Cast To Double2'
-   *  Product: '<S71>/Multiply1'
-   *  Product: '<S71>/Multiply2'
-   */
+  /* Update for RateTransition: '<Root>/Rate Transition35' */
   for (i = 0; i < 7; i++) {
     rtDW.RateTransition35_Buffer[i + (rtDW.RateTransition35_ActiveBufIdx == 0) *
       9] = CastToDouble_f[i];
   }
 
-  /* S-Function (fcncallgen): '<Root>/Function_Call_Generator1' incorporates:
-   *  SubSystem: '<Root>/update_ADC_data'
-   */
   rtDW.RateTransition35_Buffer[7 + (rtDW.RateTransition35_ActiveBufIdx == 0) * 9]
-    = 0U;
+    = CastToDouble1;
   rtDW.RateTransition35_Buffer[8 + (rtDW.RateTransition35_ActiveBufIdx == 0) * 9]
-    = 0U;
-
-  /* End of Outputs for S-Function (fcncallgen): '<Root>/Function_Call_Generator1' */
+    = CastToDouble2;
   rtDW.RateTransition35_ActiveBufIdx = (int8_T)
     (rtDW.RateTransition35_ActiveBufIdx == 0);
 
@@ -5143,7 +5145,7 @@ void GCU_Model_genCode_step5(void)     /* Sample time: [0.001s, 0.0008s] */
    *  Lookup_n-D: '<S2>/1-D Lookup Table1'
    */
   uDLookupTable2_tmp = look1_iu16lu64n48_binlcse(rtDW.RateTransition22,
-    rtConstP.pooled7, rtConstP.pooled6, 7U);
+    rtConstP.pooled8, rtConstP.pooled7, 7U);
   rtDW.uDLookupTable2 = uDLookupTable2_tmp;
 
   /* Lookup_n-D: '<S2>/1-D Lookup Table1' */

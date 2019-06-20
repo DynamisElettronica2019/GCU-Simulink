@@ -34,27 +34,27 @@ R_IS = 470; %%Ohm
 % f_T_lt = (f_T_m3sig + f_T_p3sig*lt_k) / 2;
 
 %%Test condition
-I1_Lx = 0; %%A
-I2_Lx = 0; %%A
+I1_Lx = 10; %%A
+I2_Lx = 10; %%A
 I1_L0 = 0; %%A
 I2_L0 = 0; %%A
 
 %%sperimental IS value for H_bridge 1
-I1_ISx = 0;
+I1_ISx = 1;
 %%sperimental IS value for H_bridge 2
-I2_ISx = 0;
+I2_ISx = 1;
 %%sperimental IS offset value for H_bridge 1
-IS1_offset = 0; %%A
+IS1_offset = 170e-6; %%A
 %%sperimental IS offset value for H_bridge 2
-IS2_offset = 0; %%A
+IS2_offset = 170e-6; %%A
 %%dk1_ILIS specific for H-bridge 1 @T=T_amb @I_L = X A
 dk1_ILIS_amb = (I1_Lx - I1_L0) / (I1_ISx - IS1_offset);
 %%dk2_ILIS specific for h_brisge 2 @T=T_amb @I_L = X A
 dk2_ILIS_amb = (I2_Lx - I2_L0) / (I2_ISx - IS2_offset);
 
 %%dkILIS for 1 and 2, after offset, temperature and lifetime compensation
-dk1_ILIS_T = dk1_ILIS_amb * f_T_lt;
-dk2_ILIS_T = dk2_ILIS_amb * f_T_lt;
+% dk1_ILIS_T = dk1_ILIS_amb * f_T_lt;
+% dk2_ILIS_T = dk2_ILIS_amb * f_T_lt;
 
 
 %%conversion
