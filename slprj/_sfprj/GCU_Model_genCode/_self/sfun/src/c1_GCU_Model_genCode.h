@@ -63,25 +63,6 @@ typedef enum autoX_params c1_autoX_params;
 
 #endif                                 /*typedef_c1_autoX_params*/
 
-#ifndef enum_acc_values
-#define enum_acc_values
-
-enum acc_values
-{
-  acc_values_RPM = 0,                  /* Default value */
-  acc_values_WHEEL_SPEED,
-  acc_values_TPS
-};
-
-#endif                                 /*enum_acc_values*/
-
-#ifndef typedef_c1_acc_values
-#define typedef_c1_acc_values
-
-typedef enum acc_values c1_acc_values;
-
-#endif                                 /*typedef_c1_acc_values*/
-
 #ifndef enum_anti_stall_params
 #define enum_anti_stall_params
 
@@ -275,7 +256,7 @@ typedef struct {
   const mxArray *c1_setSimStateSideEffectsInfo;
   void *c1_dataSetLogObjVector[4];
   uint8_T c1_sdiLoggedStatesBuffer[81];
-  uint8_T c1_sdiLoggedDataBuffer[79];
+  uint8_T c1_sdiLoggedDataBuffer[83];
   sdiBlockID_t c1_sdiBlockInfo;
   SignalExportStruct c1_SignalExportProp;
   SignalExportStruct c1_b_SignalExportProp;
@@ -388,13 +369,11 @@ typedef struct {
   rtwCAPI_ModelMappingInfo c1_testPointMappingInfo;
   void *c1_testPointAddrMap[4];
   void *c1_fEmlrtCtx;
-  uint8_T *c1_currentGear;
   uint8_T *c1_clutchCurrVal;
   uint16_T (*c1_lastModeCom)[2];
   uint16_T (*c1_shiftCom)[2];
   uint8_T *c1_startEngCom;
   uint16_T (*c1_aacCom)[2];
-  uint16_T (*c1_acc_externValues)[3];
   uint8_T *c1_clutchTarget;
   uint16_T (*c1_modeCom)[2];
   uint16_T *c1_stateFb;
@@ -402,11 +381,17 @@ typedef struct {
   int32_T (*c1_timings)[24];
   uint16_T (*c1_autoXCom)[2];
   int32_T (*c1_autoX_parameters)[16];
-  uint16_T (*c1_currSlip)[2];
+  uint8_T *c1_slipUpdateCounter;
   uint8_T *c1_antiStallEnable;
   int32_T (*c1_antiStall_parameters)[8];
   uint16_T *c1_antiStallFb;
   uint32_T (*c1_gearMotorCurent_1_2)[2];
+  uint16_T *c1_currGear;
+  uint16_T *c1_currTps;
+  uint16_T *c1_currRpm;
+  uint16_T *c1_currVhSpeed;
+  uint16_T *c1_currSlip;
+  uint16_T *c1_currSlipTarget;
   real_T *c1_slipTarget;
   real_T *c1_currentSlip;
   real_T *c1_clutchVal;

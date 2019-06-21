@@ -2,24 +2,28 @@
 #define __c2_GCU_Model_genCode_h__
 
 /* Type Definitions */
-#ifndef enum_acc_values
-#define enum_acc_values
+#ifndef enum_can_data
+#define enum_can_data
 
-enum acc_values
+enum can_data
 {
-  acc_values_RPM = 0,                  /* Default value */
-  acc_values_WHEEL_SPEED,
-  acc_values_TPS
+  can_data_RPM = 0,                    /* Default value */
+  can_data_VH_SPEED,
+  can_data_TPS,
+  can_data_SLIP,
+  can_data_SLIP_TARGET,
+  can_data_GEAR_ADbits,
+  can_data_GEAR
 };
 
-#endif                                 /*enum_acc_values*/
+#endif                                 /*enum_can_data*/
 
-#ifndef typedef_c2_acc_values
-#define typedef_c2_acc_values
+#ifndef typedef_c2_can_data
+#define typedef_c2_can_data
 
-typedef enum acc_values c2_acc_values;
+typedef enum can_data c2_can_data;
 
-#endif                                 /*typedef_c2_acc_values*/
+#endif                                 /*typedef_c2_can_data*/
 
 #ifndef typedef_SFc2_GCU_Model_genCodeInstanceStruct
 #define typedef_SFc2_GCU_Model_genCodeInstanceStruct
@@ -64,8 +68,9 @@ typedef struct {
   uint16_T *c2_rpmLimiterTarget;
   uint16_T (*c2_autoXCommand)[2];
   uint8_T *c2_stopAntiStallCom;
-  uint8_T *c2_RPMUpdateCounter;
-  uint16_T (*c2_currSlip)[2];
+  uint8_T *c2_rpmUpdateCounter;
+  uint8_T *c2_slipUpdateCounter;
+  uint16_T (*c2_canData_ValuesArray)[7];
   uint8_T *c2_map;
 } SFc2_GCU_Model_genCodeInstanceStruct;
 
