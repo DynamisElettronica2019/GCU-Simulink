@@ -71,6 +71,7 @@ typedef struct {
   uint8_T *c2_rpmUpdateCounter;
   uint8_T *c2_slipUpdateCounter;
   uint16_T (*c2_canData_ValuesArray)[7];
+  uint16_T *c2_pidSubMode;
   uint8_T *c2_map;
 } SFc2_GCU_Model_genCodeInstanceStruct;
 
