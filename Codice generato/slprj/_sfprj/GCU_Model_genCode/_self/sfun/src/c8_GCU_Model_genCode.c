@@ -875,7 +875,7 @@ static void init_simulink_io_address(SFc8_GCU_Model_genCodeInstanceStruct
     (chartInstance->S, 4);
   chartInstance->c8_antiStallFb = (uint16_T *)ssGetOutputPortSignal_wrapper
     (chartInstance->S, 1);
-  chartInstance->c8_currGear = (uint8_T *)ssGetInputPortSignal_wrapper
+  chartInstance->c8_currGear = (uint16_T *)ssGetInputPortSignal_wrapper
     (chartInstance->S, 5);
   chartInstance->c8_antiStallState = (real_T *)ssGetOutputPortSignal_wrapper
     (chartInstance->S, 2);
@@ -908,10 +908,10 @@ extern void utFree(void*);
 
 void sf_c8_GCU_Model_genCode_get_check_sum(mxArray *plhs[])
 {
-  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(3032290800U);
-  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(2963614062U);
-  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(1486345909U);
-  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(1562096906U);
+  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(1858913453U);
+  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(3174934722U);
+  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(365140305U);
+  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(2783185648U);
 }
 
 mxArray* sf_c8_GCU_Model_genCode_get_post_codegen_info(void);
@@ -1042,7 +1042,7 @@ mxArray *sf_c8_GCU_Model_genCode_get_autoinheritance_info(void)
 
       mxArray *mxType = mxCreateStructMatrix(1,1,sizeof(typeFields)/sizeof
         (typeFields[0]),typeFields);
-      mxSetField(mxType,0,"base",mxCreateDoubleScalar(3));
+      mxSetField(mxType,0,"base",mxCreateDoubleScalar(5));
       mxSetField(mxType,0,"fixpt",mxCreateDoubleMatrix(0,0,mxREAL));
       mxSetField(mxType,0,"isFixedPointType",mxCreateDoubleScalar(0));
       mxSetField(mxData,5,"type",mxType);
@@ -1456,8 +1456,8 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
           (MexFcnForType)c8_d_sf_marshallOut,(MexInFcnForType)NULL);
         _SFD_SET_DATA_COMPILED_PROPS(4,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c8_d_sf_marshallOut,(MexInFcnForType)NULL);
-        _SFD_SET_DATA_COMPILED_PROPS(5,SF_UINT8,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c8_b_sf_marshallOut,(MexInFcnForType)NULL);
+        _SFD_SET_DATA_COMPILED_PROPS(5,SF_UINT16,0,NULL,0,0,0,0.0,1.0,0,0,
+          (MexFcnForType)c8_e_sf_marshallOut,(MexInFcnForType)NULL);
         _SFD_SET_DATA_COMPILED_PROPS(6,SF_UINT16,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c8_e_sf_marshallOut,(MexInFcnForType)c8_b_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(7,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
@@ -1507,7 +1507,7 @@ static void chart_debug_initialize_data_addresses(SimStruct *S)
 
 static const char* sf_get_instance_specialization(void)
 {
-  return "s3AgCfBKfl4CbKXixcOcfoH";
+  return "sgpdZVeOo8sLpXWZF9gUjxE";
 }
 
 static void sf_opaque_initialize_c8_GCU_Model_genCode(void *chartInstanceVar)
@@ -1658,10 +1658,10 @@ static void mdlSetWorkWidths_c8_GCU_Model_genCode(SimStruct *S)
   }
 
   ssSetOptions(S,ssGetOptions(S)|SS_OPTION_WORKS_WITH_CODE_REUSE);
-  ssSetChecksum0(S,(67037061U));
-  ssSetChecksum1(S,(3115373792U));
-  ssSetChecksum2(S,(2267001132U));
-  ssSetChecksum3(S,(1743087694U));
+  ssSetChecksum0(S,(3891197481U));
+  ssSetChecksum1(S,(1232249855U));
+  ssSetChecksum2(S,(2341303075U));
+  ssSetChecksum3(S,(1881093223U));
   ssSetmdlDerivatives(S, NULL);
   ssSetExplicitFCSSCtrl(S,1);
   ssSetStateSemanticsClassicAndSynchronous(S, true);

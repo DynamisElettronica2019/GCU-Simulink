@@ -14,10 +14,10 @@
       IsTestPoint  0\
     }\
     ChartData {\
-      Name         "lastRPMUpdate"\
+      Name         "last_rpmUpdate"\
       Description  "ChartLocal"\
       SFName       ""\
-      Path         "lastRPMUpdate"\
+      Path         "last_rpmUpdate"\
       SrcLocation  ""\
     }\
     ChartData {\
