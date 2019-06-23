@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.346
+ * Model version                  : 1.349
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Sun Jun 23 11:37:59 2019
+ * C/C++ source code generated on : Mon Jun 24 00:52:14 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -592,8 +592,8 @@ extern "C" {
 #endif
 
   extern void ClutchMotor_setPWMRegister_Start_wrapper(void);
-  extern void ClutchMotor_setPWMRegister_Outputs_wrapper(const uint16_T
-    *pwmValue);
+  extern void ClutchMotor_setPWMRegister_Outputs_wrapper(const real_T
+    *percentage);
   extern void ClutchMotor_setPWMRegister_Terminate_wrapper(void);
 
 #ifdef __cplusplus
@@ -866,10 +866,11 @@ static void Evaluate_Request(const eepromRequest *rtu_outputRequest, const
   int32_T rtu_accInitialParameters[13], const int32_T
   rtu_gearshiftInitialTimings[23], const int32_T rtu_autoXInitialParameters[13],
   const int32_T rtu_antiStallInitialParameters[3], uint8_T *rty_writeResult,
-  uint8_T *rty_readResult, uint8_T *rty_wpState, uint8_T rty_dataRead[19],
-  int32_T rty_gearshiftTimings[24], int32_T rty_accParameters[16], int32_T
-  rty_autoXParameters[16], int32_T rty_antiStallParameters[8],
-  DW_Evaluate_Request *localDW);
+  uint8_T *rty_readResult, uint8_T *rty_wpState, int32_T rty_gearshiftTimings[24],
+  int32_T rty_accParameters[16], int32_T rty_autoXParameters[16], int32_T
+  rty_antiStallParameters[8], uint8_T *rty_dataRead, uint8_T *rty_dataRead_i,
+  uint8_T *rty_dataRead_d, uint8_T rty_dataRead_l[16], DW_Evaluate_Request
+  *localDW);
 static void MODESACCELERATION_PIDL_Init(DW_MODESACCELERATION_PIDLAUNCH0 *localDW);
 static void MODESACCELERATION_PI_Enable(DW_MODESACCELERATION_PIDLAUNCH0 *localDW);
 static void MODESACCELERATION_PIDLAUNCH(RT_MODEL * const rtM, real_T
@@ -951,7 +952,7 @@ static void shiftArray_hs(const int32_T array[13], real_T nValues);
 static void shiftArray(const int32_T array[3], real_T nValues);
 static void shiftArray_h(const int32_T array[23], real_T nValues);
 static void updateOutput(void);
-static void testIndex(void);
+static void testIndex(uint8_T *page, uint8_T *cell, uint8_T *dataSize);
 static int32_T getAntiStallParam(anti_stall_params b_index, const int32_T
   UnitDelay3[8]);
 static void sendAutoXCommand(uint16_T com);
@@ -1136,30 +1137,25 @@ static void Evaluate_Request(const eepromRequest *rtu_outputRequest, const
   int32_T rtu_accInitialParameters[13], const int32_T
   rtu_gearshiftInitialTimings[23], const int32_T rtu_autoXInitialParameters[13],
   const int32_T rtu_antiStallInitialParameters[3], uint8_T *rty_writeResult,
-  uint8_T *rty_readResult, uint8_T *rty_wpState, uint8_T rty_dataRead[19],
-  int32_T rty_gearshiftTimings[24], int32_T rty_accParameters[16], int32_T
-  rty_autoXParameters[16], int32_T rty_antiStallParameters[8],
-  DW_Evaluate_Request *localDW)
+  uint8_T *rty_readResult, uint8_T *rty_wpState, int32_T rty_gearshiftTimings[24],
+  int32_T rty_accParameters[16], int32_T rty_autoXParameters[16], int32_T
+  rty_antiStallParameters[8], uint8_T *rty_dataRead, uint8_T *rty_dataRead_i,
+  uint8_T *rty_dataRead_d, uint8_T rty_dataRead_l[16], DW_Evaluate_Request
+  *localDW)
 {
   uint16_T data_16bit[8];
   int32_T i;
+  int32_T qY;
   uint8_T tmp;
-  uint32_T qY;
-
-  /* SignalConversion: '<S25>/TmpSignal ConversionAtBus SelectorOutport2' */
-  localDW->page = rtu_outputRequest->page;
-
-  /* SignalConversion: '<S25>/TmpSignal ConversionAtBus SelectorOutport3' */
-  localDW->cell = rtu_outputRequest->cell;
-
-  /* SignalConversion: '<S25>/TmpSignal ConversionAtBus SelectorOutport4' */
-  localDW->dataSize = rtu_outputRequest->dataSize;
 
   /* If: '<S25>/If' incorporates:
    *  Constant: '<S25>/Constant'
    *  Constant: '<S25>/Constant1'
    *  Constant: '<S25>/Constant2'
    *  Constant: '<S25>/Constant3'
+   *  Inport: '<S28>/cell'
+   *  Inport: '<S28>/dataSize'
+   *  Inport: '<S28>/page'
    */
   if (rtu_outputRequest->operation == 87) {
     /* Outputs for IfAction SubSystem: '<S25>/Write' incorporates:
@@ -1167,19 +1163,39 @@ static void Evaluate_Request(const eepromRequest *rtu_outputRequest, const
      */
 
     /* S-Function (Eeprom_write): '<S29>/Eeprom_write' */
-    Eeprom_write_Outputs_wrapper(&localDW->page, &localDW->cell,
-      &localDW->dataSize, &rtu_outputRequest->data[0], rty_writeResult,
-      rty_wpState);
+    Eeprom_write_Outputs_wrapper(&rtu_outputRequest->page,
+      &rtu_outputRequest->cell, &rtu_outputRequest->dataSize,
+      &rtu_outputRequest->data[0], rty_writeResult, rty_wpState);
 
     /* End of Outputs for SubSystem: '<S25>/Write' */
   } else if (rtu_outputRequest->operation == 82) {
     /* Outputs for IfAction SubSystem: '<S25>/Read' incorporates:
      *  ActionPort: '<S28>/Action Port'
      */
+    *rty_dataRead = rtu_outputRequest->page;
+    *rty_dataRead_i = rtu_outputRequest->cell;
+    *rty_dataRead_d = rtu_outputRequest->dataSize;
 
-    /* S-Function (Eeprom_read): '<S28>/Eeprom_read' */
-    Eeprom_read_Outputs_wrapper(&localDW->page, &localDW->cell,
-      &localDW->dataSize, rty_readResult, &localDW->Eeprom_read_o2_e[0]);
+    /* S-Function (Eeprom_read): '<S28>/Eeprom_read' incorporates:
+     *  Inport: '<S28>/cell'
+     *  Inport: '<S28>/dataSize'
+     *  Inport: '<S28>/page'
+     */
+    Eeprom_read_Outputs_wrapper(rty_dataRead, rty_dataRead_i, rty_dataRead_d,
+      rty_readResult, &rty_dataRead_l[0]);
+
+    /* SignalConversion: '<S28>/TmpSignal ConversionAtsendEepromUARTInport1' */
+    localDW->TmpSignalConversionAtsendEeprom[0] = *rty_dataRead;
+    localDW->TmpSignalConversionAtsendEeprom[1] = *rty_dataRead_i;
+    localDW->TmpSignalConversionAtsendEeprom[2] = *rty_dataRead_d;
+    for (i = 0; i < 16; i++) {
+      localDW->TmpSignalConversionAtsendEeprom[i + 3] = rty_dataRead_l[i];
+    }
+
+    /* End of SignalConversion: '<S28>/TmpSignal ConversionAtsendEepromUARTInport1' */
+
+    /* S-Function (sendEepromUART): '<S28>/sendEepromUART' */
+    sendEepromUART_Outputs_wrapper(&localDW->TmpSignalConversionAtsendEeprom[0]);
 
     /* End of Outputs for SubSystem: '<S25>/Read' */
   } else if (rtu_outputRequest->operation == 76) {
@@ -1187,8 +1203,9 @@ static void Evaluate_Request(const eepromRequest *rtu_outputRequest, const
      *  ActionPort: '<S27>/Action Port'
      */
     /* S-Function (Eeprom_read): '<S27>/Eeprom_read' */
-    Eeprom_read_Outputs_wrapper(&localDW->page, &localDW->cell,
-      &localDW->dataSize, &localDW->Eeprom_read_o1, &localDW->Eeprom_read_o2[0]);
+    Eeprom_read_Outputs_wrapper(&rtu_outputRequest->page,
+      &rtu_outputRequest->cell, &rtu_outputRequest->dataSize,
+      &localDW->Eeprom_read_o1, &localDW->Eeprom_read_o2[0]);
 
     /* Chart: '<S27>/updateValues' */
     if (localDW->Eeprom_read_o1 != localDW->HAL_ERROR) {
@@ -1198,82 +1215,43 @@ static void Evaluate_Request(const eepromRequest *rtu_outputRequest, const
           8) + localDW->Eeprom_read_o2[((i + 1) << 1) - 1]);
       }
 
-      if ((localDW->page == 1) || (localDW->page == 2) || (localDW->page == 3))
-      {
-        if (localDW->page > 31) {
-          tmp = MAX_uint8_T;
-        } else {
-          tmp = (uint8_T)(localDW->page << 3);
-        }
-
-        qY = tmp - /*MW:OvSatOk*/ 7U;
-        if (qY > tmp) {
-          qY = 0U;
+      if ((rtu_outputRequest->page == 1) || (rtu_outputRequest->page == 2) ||
+          (rtu_outputRequest->page == 3)) {
+        tmp = (uint8_T)(rtu_outputRequest->page << 3);
+        qY = (int32_T)(tmp - /*MW:OvSatOk*/ 7U);
+        if ((uint32_T)qY > tmp) {
+          qY = 0;
         }
 
         for (i = 0; i < 8; i++) {
           localDW->gearshiftTimings[(i + (uint8_T)qY) - 1] = data_16bit[i];
         }
-      } else if ((localDW->page == 5) || (localDW->page == 6)) {
-        qY = localDW->page - /*MW:OvSatOk*/ 4U;
-        if (qY > localDW->page) {
-          qY = 0U;
-        }
-
-        if ((uint8_T)qY > 31) {
-          tmp = MAX_uint8_T;
-        } else {
-          tmp = (uint8_T)((uint8_T)qY << 3);
-        }
-
-        qY = tmp - /*MW:OvSatOk*/ 7U;
-        if (qY > tmp) {
-          qY = 0U;
+      } else if ((rtu_outputRequest->page == 5) || (rtu_outputRequest->page == 6))
+      {
+        tmp = (uint8_T)((uint8_T)(rtu_outputRequest->page - 4U) << 3);
+        qY = (int32_T)(tmp - /*MW:OvSatOk*/ 7U);
+        if ((uint32_T)qY > tmp) {
+          qY = 0;
         }
 
         for (i = 0; i < 8; i++) {
           localDW->accParameters[(i + (uint8_T)qY) - 1] = data_16bit[i];
         }
-      } else if ((localDW->page == 8) || (localDW->page == 9)) {
-        qY = localDW->page - /*MW:OvSatOk*/ 7U;
-        if (qY > localDW->page) {
-          qY = 0U;
-        }
-
-        if ((uint8_T)qY > 31) {
-          tmp = MAX_uint8_T;
-        } else {
-          tmp = (uint8_T)((uint8_T)qY << 3);
-        }
-
-        qY = tmp - /*MW:OvSatOk*/ 7U;
-        if (qY > tmp) {
-          qY = 0U;
+      } else if ((rtu_outputRequest->page == 8) || (rtu_outputRequest->page == 9))
+      {
+        tmp = (uint8_T)((uint8_T)(rtu_outputRequest->page - 7U) << 3);
+        qY = (int32_T)(tmp - /*MW:OvSatOk*/ 7U);
+        if ((uint32_T)qY > tmp) {
+          qY = 0;
         }
 
         for (i = 0; i < 8; i++) {
           localDW->autoXParameters[(i + (uint8_T)qY) - 1] = data_16bit[i];
         }
       } else {
-        if (localDW->page == 11) {
-          qY = localDW->page - /*MW:OvSatOk*/ 10U;
-          if (qY > localDW->page) {
-            qY = 0U;
-          }
-
-          if ((uint8_T)qY > 31) {
-            tmp = MAX_uint8_T;
-          } else {
-            tmp = (uint8_T)((uint8_T)qY << 3);
-          }
-
-          qY = tmp - /*MW:OvSatOk*/ 7U;
-          if (qY > tmp) {
-            qY = 0U;
-          }
-
+        if (rtu_outputRequest->page == 11) {
           for (i = 0; i < 8; i++) {
-            localDW->antiStallParameters[(i + (uint8_T)qY) - 1] = data_16bit[i];
+            localDW->antiStallParameters[i] = data_16bit[i];
           }
         }
       }
@@ -1365,27 +1343,6 @@ static void Evaluate_Request(const eepromRequest *rtu_outputRequest, const
   }
 
   /* End of If: '<S25>/If' */
-
-  /* SignalConversion: '<S25>/TmpSignal ConversionAtsendEepromUARTInport1' */
-  localDW->TmpSignalConversionAtsendEeprom[0] = localDW->page;
-  localDW->TmpSignalConversionAtsendEeprom[1] = localDW->cell;
-  localDW->TmpSignalConversionAtsendEeprom[2] = localDW->dataSize;
-  for (i = 0; i < 16; i++) {
-    localDW->TmpSignalConversionAtsendEeprom[i + 3] = localDW->
-      Eeprom_read_o2_e[i];
-  }
-
-  /* End of SignalConversion: '<S25>/TmpSignal ConversionAtsendEepromUARTInport1' */
-
-  /* S-Function (sendEepromUART): '<S25>/sendEepromUART' */
-  sendEepromUART_Outputs_wrapper(&localDW->TmpSignalConversionAtsendEeprom[0]);
-
-  /* SignalConversion: '<S25>/OutportBufferFordataRead' */
-  for (i = 0; i < 19; i++) {
-    rty_dataRead[i] = localDW->TmpSignalConversionAtsendEeprom[i];
-  }
-
-  /* End of SignalConversion: '<S25>/OutportBufferFordataRead' */
 }
 
 /* System initialize for function-call system: '<S42>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.pidControl' */
@@ -1463,11 +1420,8 @@ static void MODESACCELERATION_PIDLAUNCH(RT_MODEL * const rtM, real_T
 
   /* Sum: '<S62>/Minus' incorporates:
    *  Constant: '<S62>/Constant'
-   *  Constant: '<S62>/Constant2'
-   *  DataTypeConversion: '<S62>/Cast'
-   *  Product: '<S62>/Multiply'
    */
-  localDW->Minus = (uint16_T)(2000 - (uint16_T)(20.0 * *rty_clutchVal));
+  localDW->Minus = 100.0 - *rty_clutchVal;
 
   /* S-Function (ClutchMotor_setPWMRegister): '<S62>/ClutchMotor SetPWMRegister' */
   ClutchMotor_setPWMRegister_Outputs_wrapper(&localDW->Minus);
@@ -1570,11 +1524,8 @@ static void MODESACCELERATION_PIDLAUN_g(RT_MODEL * const rtM, real_T
 
   /* Sum: '<S63>/Minus' incorporates:
    *  Constant: '<S63>/Constant'
-   *  Constant: '<S63>/Constant2'
-   *  DataTypeConversion: '<S63>/Cast'
-   *  Product: '<S63>/Multiply'
    */
-  localDW->Minus = (uint16_T)(2000 - (uint16_T)(20.0 * *rty_clutchVal));
+  localDW->Minus = 100.0 - *rty_clutchVal;
 
   /* S-Function (ClutchMotor_setPWMRegister): '<S63>/ClutchMotor SetPWMRegister' */
   ClutchMotor_setPWMRegister_Outputs_wrapper(&localDW->Minus);
@@ -1677,11 +1628,8 @@ static void MODESACCELERATION_PIDLAUN_m(RT_MODEL * const rtM, real_T
 
   /* Sum: '<S64>/Minus' incorporates:
    *  Constant: '<S64>/Constant'
-   *  Constant: '<S64>/Constant2'
-   *  DataTypeConversion: '<S64>/Cast'
-   *  Product: '<S64>/Multiply'
    */
-  localDW->Minus = (uint16_T)(2000 - (uint16_T)(20.0 * *rty_clutchVal));
+  localDW->Minus = 100.0 - *rty_clutchVal;
 
   /* S-Function (ClutchMotor_setPWMRegister): '<S64>/ClutchMotor SetPWMRegister' */
   ClutchMotor_setPWMRegister_Outputs_wrapper(&localDW->Minus);
@@ -1784,11 +1732,8 @@ static void MODESACCELERATION_PIDLAUN_k(RT_MODEL * const rtM, real_T
 
   /* Sum: '<S65>/Minus' incorporates:
    *  Constant: '<S65>/Constant'
-   *  Constant: '<S65>/Constant2'
-   *  DataTypeConversion: '<S65>/Cast'
-   *  Product: '<S65>/Multiply'
    */
-  localDW->Minus = (uint16_T)(2000 - (uint16_T)(20.0 * *rty_clutchVal));
+  localDW->Minus = 100.0 - *rty_clutchVal;
 
   /* S-Function (ClutchMotor_setPWMRegister): '<S65>/ClutchMotor SetPWMRegister' */
   ClutchMotor_setPWMRegister_Outputs_wrapper(&localDW->Minus);
@@ -1891,11 +1836,8 @@ static void MODESACCELERATION_PIDLAU_gp(RT_MODEL * const rtM, real_T
 
   /* Sum: '<S66>/Minus' incorporates:
    *  Constant: '<S66>/Constant'
-   *  Constant: '<S66>/Constant2'
-   *  DataTypeConversion: '<S66>/Cast'
-   *  Product: '<S66>/Multiply'
    */
-  localDW->Minus = (uint16_T)(2000 - (uint16_T)(20.0 * *rty_clutchVal));
+  localDW->Minus = 100.0 - *rty_clutchVal;
 
   /* S-Function (ClutchMotor_setPWMRegister): '<S66>/ClutchMotor SetPWMRegister' */
   ClutchMotor_setPWMRegister_Outputs_wrapper(&localDW->Minus);
@@ -1998,11 +1940,8 @@ static void MODESACCELERATION_PIDLAUN_i(RT_MODEL * const rtM, real_T
 
   /* Sum: '<S67>/Minus' incorporates:
    *  Constant: '<S67>/Constant'
-   *  Constant: '<S67>/Constant2'
-   *  DataTypeConversion: '<S67>/Cast'
-   *  Product: '<S67>/Multiply'
    */
-  localDW->Minus = (uint16_T)(2000 - (uint16_T)(20.0 * *rty_clutchVal));
+  localDW->Minus = 100.0 - *rty_clutchVal;
 
   /* S-Function (ClutchMotor_setPWMRegister): '<S67>/ClutchMotor SetPWMRegister' */
   ClutchMotor_setPWMRegister_Outputs_wrapper(&localDW->Minus);
@@ -2105,11 +2044,8 @@ static void MODESACCELERATION_PIDLAUN_n(RT_MODEL * const rtM, real_T
 
   /* Sum: '<S68>/Minus' incorporates:
    *  Constant: '<S68>/Constant'
-   *  Constant: '<S68>/Constant2'
-   *  DataTypeConversion: '<S68>/Cast'
-   *  Product: '<S68>/Multiply'
    */
-  localDW->Minus = (uint16_T)(2000 - (uint16_T)(20.0 * *rty_clutchVal));
+  localDW->Minus = 100.0 - *rty_clutchVal;
 
   /* S-Function (ClutchMotor_setPWMRegister): '<S68>/ClutchMotor SetPWMRegister' */
   ClutchMotor_setPWMRegister_Outputs_wrapper(&localDW->Minus);
@@ -2212,11 +2148,8 @@ static void MODESACCELERATION_PIDLAUN_b(RT_MODEL * const rtM, real_T
 
   /* Sum: '<S69>/Minus' incorporates:
    *  Constant: '<S69>/Constant'
-   *  Constant: '<S69>/Constant2'
-   *  DataTypeConversion: '<S69>/Cast'
-   *  Product: '<S69>/Multiply'
    */
-  localDW->Minus = (uint16_T)(2000 - (uint16_T)(20.0 * *rty_clutchVal));
+  localDW->Minus = 100.0 - *rty_clutchVal;
 
   /* S-Function (ClutchMotor_setPWMRegister): '<S69>/ClutchMotor SetPWMRegister' */
   ClutchMotor_setPWMRegister_Outputs_wrapper(&localDW->Minus);
@@ -2319,11 +2252,8 @@ static void MODESACCELERATION_PIDLAU_bj(RT_MODEL * const rtM, real_T
 
   /* Sum: '<S70>/Minus' incorporates:
    *  Constant: '<S70>/Constant'
-   *  Constant: '<S70>/Constant2'
-   *  DataTypeConversion: '<S70>/Cast'
-   *  Product: '<S70>/Multiply'
    */
-  localDW->Minus = (uint16_T)(2000 - (uint16_T)(20.0 * *rty_clutchVal));
+  localDW->Minus = 100.0 - *rty_clutchVal;
 
   /* S-Function (ClutchMotor_setPWMRegister): '<S70>/ClutchMotor SetPWMRegister' */
   ClutchMotor_setPWMRegister_Outputs_wrapper(&localDW->Minus);
@@ -6111,7 +6041,7 @@ static void updateOutput(void)
 }
 
 /* Function for Chart: '<S3>/EEPROM_OutputRequest' */
-static void testIndex(void)
+static void testIndex(uint8_T *page, uint8_T *cell, uint8_T *dataSize)
 {
   if (rtDW.RateTransition1 != rtDW.lastEvaluatedIndex) {
     updateOutput();
@@ -6120,9 +6050,9 @@ static void testIndex(void)
     Evaluate_Request(&rtDW.outputRequest, rtDW.load_accParameters,
                      rtDW.load_default_timings, rtDW.load_accParameters1,
                      rtDW.load_antiStall_default, &rtDW.Eeprom_write_o1,
-                     &rtDW.Eeprom_read_o1, &rtDW.Eeprom_write_o2,
-                     rtDW.OutportBufferFordataRead, rtDW.Merge, rtDW.Merge1,
-                     rtDW.Merge2, rtDW.Merge3, &rtDW.Evaluate_Request_l);
+                     &rtDW.Eeprom_read_o1, &rtDW.Eeprom_write_o2, rtDW.Merge,
+                     rtDW.Merge1, rtDW.Merge2, rtDW.Merge3, page, cell, dataSize,
+                     rtDW.Eeprom_read_o2, &rtDW.Evaluate_Request_l);
 
     /* End of Outputs for SubSystem: '<S3>/Evaluate_Request' */
     if (rtDW.outputRequest.operation == 87) {
@@ -6335,6 +6265,8 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
   uint8_T rtb_RateTransition33;
   uint8_T Merge_b;
   int32_T UnitDelay3[8];
+  uint8_T cell;
+  uint8_T dataSize;
   int32_T i;
   uint8_T tmp[16];
   int32_T i_0;
@@ -6664,9 +6596,9 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
                                  rtDW.load_accParameters1,
                                  rtDW.load_antiStall_default,
                                  &rtDW.Eeprom_write_o1, &rtDW.Eeprom_read_o1,
-                                 &rtDW.Eeprom_write_o2,
-                                 rtDW.OutportBufferFordataRead, rtDW.Merge,
-                                 rtDW.Merge1, rtDW.Merge2, rtDW.Merge3,
+                                 &rtDW.Eeprom_write_o2, rtDW.Merge, rtDW.Merge1,
+                                 rtDW.Merge2, rtDW.Merge3, &Merge_b, &cell,
+                                 &dataSize, rtDW.Eeprom_read_o2,
                                  &rtDW.Evaluate_Request_l);
 
                 /* End of Outputs for SubSystem: '<S3>/Evaluate_Request' */
@@ -6692,9 +6624,9 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
                                  rtDW.load_accParameters1,
                                  rtDW.load_antiStall_default,
                                  &rtDW.Eeprom_write_o1, &rtDW.Eeprom_read_o1,
-                                 &rtDW.Eeprom_write_o2,
-                                 rtDW.OutportBufferFordataRead, rtDW.Merge,
-                                 rtDW.Merge1, rtDW.Merge2, rtDW.Merge3,
+                                 &rtDW.Eeprom_write_o2, rtDW.Merge, rtDW.Merge1,
+                                 rtDW.Merge2, rtDW.Merge3, &Merge_b, &cell,
+                                 &dataSize, rtDW.Eeprom_read_o2,
                                  &rtDW.Evaluate_Request_l);
 
                 /* End of Outputs for SubSystem: '<S3>/Evaluate_Request' */
@@ -6717,9 +6649,9 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
                                  rtDW.load_accParameters1,
                                  rtDW.load_antiStall_default,
                                  &rtDW.Eeprom_write_o1, &rtDW.Eeprom_read_o1,
-                                 &rtDW.Eeprom_write_o2,
-                                 rtDW.OutportBufferFordataRead, rtDW.Merge,
-                                 rtDW.Merge1, rtDW.Merge2, rtDW.Merge3,
+                                 &rtDW.Eeprom_write_o2, rtDW.Merge, rtDW.Merge1,
+                                 rtDW.Merge2, rtDW.Merge3, &Merge_b, &cell,
+                                 &dataSize, rtDW.Eeprom_read_o2,
                                  &rtDW.Evaluate_Request_l);
 
                 /* End of Outputs for SubSystem: '<S3>/Evaluate_Request' */
@@ -6751,10 +6683,10 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
                                    rtDW.load_accParameters1,
                                    rtDW.load_antiStall_default,
                                    &rtDW.Eeprom_write_o1, &rtDW.Eeprom_read_o1,
-                                   &rtDW.Eeprom_write_o2,
-                                   rtDW.OutportBufferFordataRead, rtDW.Merge,
+                                   &rtDW.Eeprom_write_o2, rtDW.Merge,
                                    rtDW.Merge1, rtDW.Merge2, rtDW.Merge3,
-                                   &rtDW.Evaluate_Request_l);
+                                   &Merge_b, &cell, &dataSize,
+                                   rtDW.Eeprom_read_o2, &rtDW.Evaluate_Request_l);
 
                   /* End of Outputs for SubSystem: '<S3>/Evaluate_Request' */
                   if ((uint32_T)i > 255U) {
@@ -6788,10 +6720,10 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
                                    rtDW.load_accParameters1,
                                    rtDW.load_antiStall_default,
                                    &rtDW.Eeprom_write_o1, &rtDW.Eeprom_read_o1,
-                                   &rtDW.Eeprom_write_o2,
-                                   rtDW.OutportBufferFordataRead, rtDW.Merge,
+                                   &rtDW.Eeprom_write_o2, rtDW.Merge,
                                    rtDW.Merge1, rtDW.Merge2, rtDW.Merge3,
-                                   &rtDW.Evaluate_Request_l);
+                                   &Merge_b, &cell, &dataSize,
+                                   rtDW.Eeprom_read_o2, &rtDW.Evaluate_Request_l);
 
                   /* End of Outputs for SubSystem: '<S3>/Evaluate_Request' */
                   if ((uint32_T)i > 255U) {
@@ -6825,10 +6757,10 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
                                    rtDW.load_accParameters1,
                                    rtDW.load_antiStall_default,
                                    &rtDW.Eeprom_write_o1, &rtDW.Eeprom_read_o1,
-                                   &rtDW.Eeprom_write_o2,
-                                   rtDW.OutportBufferFordataRead, rtDW.Merge,
+                                   &rtDW.Eeprom_write_o2, rtDW.Merge,
                                    rtDW.Merge1, rtDW.Merge2, rtDW.Merge3,
-                                   &rtDW.Evaluate_Request_l);
+                                   &Merge_b, &cell, &dataSize,
+                                   rtDW.Eeprom_read_o2, &rtDW.Evaluate_Request_l);
 
                   /* End of Outputs for SubSystem: '<S3>/Evaluate_Request' */
                   if ((uint32_T)i > 255U) {
@@ -6861,10 +6793,10 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
                                    rtDW.load_accParameters1,
                                    rtDW.load_antiStall_default,
                                    &rtDW.Eeprom_write_o1, &rtDW.Eeprom_read_o1,
-                                   &rtDW.Eeprom_write_o2,
-                                   rtDW.OutportBufferFordataRead, rtDW.Merge,
+                                   &rtDW.Eeprom_write_o2, rtDW.Merge,
                                    rtDW.Merge1, rtDW.Merge2, rtDW.Merge3,
-                                   &rtDW.Evaluate_Request_l);
+                                   &Merge_b, &cell, &dataSize,
+                                   rtDW.Eeprom_read_o2, &rtDW.Evaluate_Request_l);
 
                   /* End of Outputs for SubSystem: '<S3>/Evaluate_Request' */
                   i = (int32_T)(rtDW.counter + 1U);
@@ -6900,10 +6832,10 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
                                    rtDW.load_accParameters1,
                                    rtDW.load_antiStall_default,
                                    &rtDW.Eeprom_write_o1, &rtDW.Eeprom_read_o1,
-                                   &rtDW.Eeprom_write_o2,
-                                   rtDW.OutportBufferFordataRead, rtDW.Merge,
+                                   &rtDW.Eeprom_write_o2, rtDW.Merge,
                                    rtDW.Merge1, rtDW.Merge2, rtDW.Merge3,
-                                   &rtDW.Evaluate_Request_l);
+                                   &Merge_b, &cell, &dataSize,
+                                   rtDW.Eeprom_read_o2, &rtDW.Evaluate_Request_l);
 
                   /* End of Outputs for SubSystem: '<S3>/Evaluate_Request' */
                   i = (int32_T)(rtDW.counter + 1U);
@@ -6938,10 +6870,10 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
                                    rtDW.load_accParameters1,
                                    rtDW.load_antiStall_default,
                                    &rtDW.Eeprom_write_o1, &rtDW.Eeprom_read_o1,
-                                   &rtDW.Eeprom_write_o2,
-                                   rtDW.OutportBufferFordataRead, rtDW.Merge,
+                                   &rtDW.Eeprom_write_o2, rtDW.Merge,
                                    rtDW.Merge1, rtDW.Merge2, rtDW.Merge3,
-                                   &rtDW.Evaluate_Request_l);
+                                   &Merge_b, &cell, &dataSize,
+                                   rtDW.Eeprom_read_o2, &rtDW.Evaluate_Request_l);
 
                   /* End of Outputs for SubSystem: '<S3>/Evaluate_Request' */
                   i = (int32_T)(rtDW.counter + 1U);
@@ -6965,10 +6897,10 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
                                    rtDW.load_accParameters1,
                                    rtDW.load_antiStall_default,
                                    &rtDW.Eeprom_write_o1, &rtDW.Eeprom_read_o1,
-                                   &rtDW.Eeprom_write_o2,
-                                   rtDW.OutportBufferFordataRead, rtDW.Merge,
+                                   &rtDW.Eeprom_write_o2, rtDW.Merge,
                                    rtDW.Merge1, rtDW.Merge2, rtDW.Merge3,
-                                   &rtDW.Evaluate_Request_l);
+                                   &Merge_b, &cell, &dataSize,
+                                   rtDW.Eeprom_read_o2, &rtDW.Evaluate_Request_l);
 
                   /* End of Outputs for SubSystem: '<S3>/Evaluate_Request' */
                   i = (int32_T)(rtDW.counter + 1U);
@@ -7000,10 +6932,10 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
                                    rtDW.load_accParameters1,
                                    rtDW.load_antiStall_default,
                                    &rtDW.Eeprom_write_o1, &rtDW.Eeprom_read_o1,
-                                   &rtDW.Eeprom_write_o2,
-                                   rtDW.OutportBufferFordataRead, rtDW.Merge,
+                                   &rtDW.Eeprom_write_o2, rtDW.Merge,
                                    rtDW.Merge1, rtDW.Merge2, rtDW.Merge3,
-                                   &rtDW.Evaluate_Request_l);
+                                   &Merge_b, &cell, &dataSize,
+                                   rtDW.Eeprom_read_o2, &rtDW.Evaluate_Request_l);
 
                   /* End of Outputs for SubSystem: '<S3>/Evaluate_Request' */
                   i = (int32_T)(rtDW.counter + 1U);
@@ -7032,9 +6964,9 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
                                  rtDW.load_accParameters1,
                                  rtDW.load_antiStall_default,
                                  &rtDW.Eeprom_write_o1, &rtDW.Eeprom_read_o1,
-                                 &rtDW.Eeprom_write_o2,
-                                 rtDW.OutportBufferFordataRead, rtDW.Merge,
-                                 rtDW.Merge1, rtDW.Merge2, rtDW.Merge3,
+                                 &rtDW.Eeprom_write_o2, rtDW.Merge, rtDW.Merge1,
+                                 rtDW.Merge2, rtDW.Merge3, &Merge_b, &cell,
+                                 &dataSize, rtDW.Eeprom_read_o2,
                                  &rtDW.Evaluate_Request_l);
 
                 /* End of Outputs for SubSystem: '<S3>/Evaluate_Request' */
@@ -7067,10 +6999,10 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
                                    rtDW.load_accParameters1,
                                    rtDW.load_antiStall_default,
                                    &rtDW.Eeprom_write_o1, &rtDW.Eeprom_read_o1,
-                                   &rtDW.Eeprom_write_o2,
-                                   rtDW.OutportBufferFordataRead, rtDW.Merge,
+                                   &rtDW.Eeprom_write_o2, rtDW.Merge,
                                    rtDW.Merge1, rtDW.Merge2, rtDW.Merge3,
-                                   &rtDW.Evaluate_Request_l);
+                                   &Merge_b, &cell, &dataSize,
+                                   rtDW.Eeprom_read_o2, &rtDW.Evaluate_Request_l);
 
                   /* End of Outputs for SubSystem: '<S3>/Evaluate_Request' */
                   if ((uint32_T)i > 255U) {
@@ -7088,7 +7020,7 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
                    rtDW.HAL_ERROR)) {
                 rtDW.is_c6_GCU_Model_genCode = IN_RELOAD;
               } else {
-                testIndex();
+                testIndex(&Merge_b, &cell, &dataSize);
               }
               break;
 
@@ -7107,9 +7039,9 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
                                  rtDW.load_accParameters1,
                                  rtDW.load_antiStall_default,
                                  &rtDW.Eeprom_write_o1, &rtDW.Eeprom_read_o1,
-                                 &rtDW.Eeprom_write_o2,
-                                 rtDW.OutportBufferFordataRead, rtDW.Merge,
-                                 rtDW.Merge1, rtDW.Merge2, rtDW.Merge3,
+                                 &rtDW.Eeprom_write_o2, rtDW.Merge, rtDW.Merge1,
+                                 rtDW.Merge2, rtDW.Merge3, &Merge_b, &cell,
+                                 &dataSize, rtDW.Eeprom_read_o2,
                                  &rtDW.Evaluate_Request_l);
 
                 /* End of Outputs for SubSystem: '<S3>/Evaluate_Request' */
@@ -7184,8 +7116,8 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
     if (rtDW.RateTransition30 == 0) {
       /* Outport: '<Root>/antiStallState' */
       rtY.antiStallState = 2.0;
-      if (rtDW.RateTransition36[6] >= getAntiStallParam(GEAR_THRESHOLD,
-           UnitDelay3)) {
+      if ((rtDW.RateTransition36[1] < 20) && (rtDW.RateTransition36[6] >=
+           getAntiStallParam(GEAR_THRESHOLD, UnitDelay3))) {
         /* Outport: '<Root>/antiStallState' */
         rtY.antiStallState = 3.0;
         if (i <= getAntiStallParam(RPM_THRESHOLD, UnitDelay3)) {
@@ -7278,13 +7210,6 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
 
   /* Outport: '<Root>/wpState' */
   rtY.wpState = rtDW.Eeprom_write_o2;
-
-  /* Outport: '<Root>/dataRead' */
-  for (i = 0; i < 19; i++) {
-    rtY.dataRead[i] = rtDW.OutportBufferFordataRead[i];
-  }
-
-  /* End of Outport: '<Root>/dataRead' */
 
   /* Outport: '<Root>/gearshiftTimings' */
   memcpy(&rtY.gearshiftTimings[0], &rtDW.Merge[0], 24U * sizeof(int32_T));

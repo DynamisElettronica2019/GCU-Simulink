@@ -44,6 +44,7 @@ typedef struct {
   uint16_T *c8_currGear;
   real_T *c8_antiStallState;
   uint8_T *c8_antiStallClutchVal;
+  uint16_T *c8_currVhSpeed;
   uint8_T *c8_Inport;
 } SFc8_GCU_Model_genCodeInstanceStruct;
 

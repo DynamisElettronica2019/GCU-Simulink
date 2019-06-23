@@ -33,12 +33,15 @@ extern TIM_HandleTypeDef hClutchTim;
  * Output function
  *
  */
-void ClutchMotor_setPWMRegister_Outputs_wrapper(const uint16_T *pwmValue)
+void ClutchMotor_setPWMRegister_Outputs_wrapper(const real_T *percentage)
 {
 /* %%%-SFUNWIZ_wrapper_Outputs_Changes_BEGIN --- EDIT HERE TO _END */
 #if !defined(MATLAB_MEX_FILE)  
-
-  hClutchTim.Instance->CCR_CLUTCH = (uint32_t) pwmValue;
+  int pwmValue;
+  
+  pwmValue = (hClutchTim.Init.Period)*(0.05 + (double)(*percentage)/((double)2000));
+  
+  hClutchTim.Instance->CCR_CLUTCH = pwmValue;
   
 #endif
 /* %%%-SFUNWIZ_wrapper_Outputs_Changes_END --- EDIT HERE TO _BEGIN */

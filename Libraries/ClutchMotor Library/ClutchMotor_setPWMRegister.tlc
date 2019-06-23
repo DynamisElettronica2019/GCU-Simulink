@@ -1,5 +1,5 @@
 %% File : ClutchMotor_setPWMRegister.tlc
-%% Created : Tue Jun 18 20:47:50 2019
+%% Created : Mon Jun 24 00:34:41 2019
 %%
 %% Description: 
 %%   Simulink Coder wrapper functions interface generated for 
@@ -30,7 +30,7 @@
 
     extern void ClutchMotor_setPWMRegister_Start_wrapper(void);
 
-    extern void ClutchMotor_setPWMRegister_Outputs_wrapper(const uint16_T *pwmValue);
+    extern void ClutchMotor_setPWMRegister_Outputs_wrapper(const real_T *percentage);
 
     extern void ClutchMotor_setPWMRegister_Terminate_wrapper(void);
 

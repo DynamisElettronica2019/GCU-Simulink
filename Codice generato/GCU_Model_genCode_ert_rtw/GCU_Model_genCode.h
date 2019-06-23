@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.346
+ * Model version                  : 1.349
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Sun Jun 23 11:37:59 2019
+ * C/C++ source code generated on : Mon Jun 24 00:52:14 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -172,22 +172,18 @@ typedef struct {
   uint16_T accParameters[16];          /* '<S27>/updateValues' */
   uint16_T autoXParameters[16];        /* '<S27>/updateValues' */
   uint16_T antiStallParameters[8];     /* '<S27>/updateValues' */
-  uint8_T TmpSignalConversionAtsendEeprom[19];
   uint8_T Eeprom_read_o2[16];          /* '<S27>/Eeprom_read' */
-  uint8_T Eeprom_read_o2_e[16];        /* '<S28>/Eeprom_read' */
-  uint8_T page;
-  uint8_T cell;
-  uint8_T dataSize;
+  uint8_T TmpSignalConversionAtsendEeprom[19];
   uint8_T Eeprom_read_o1;              /* '<S27>/Eeprom_read' */
   uint8_T HAL_ERROR;                   /* '<S27>/updateValues' */
 } DW_Evaluate_Request;
 
 /* Block signals and states (default storage) for system '<S42>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.pidControl' */
 typedef struct {
+  real_T Minus;                        /* '<S62>/Minus' */
   real_T Integrator_DSTATE;            /* '<S72>/Integrator' */
   real_T Integrator_PREV_U;            /* '<S72>/Integrator' */
   uint32_T MODESACCELERATION_PIDLAUNCH0A_i;/* '<S42>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.pidControl' */
-  uint16_T Minus;                      /* '<S62>/Minus' */
   int8_T Integrator_PrevResetState;    /* '<S72>/Integrator' */
   uint8_T Integrator_SYSTEM_ENABLE;    /* '<S72>/Integrator' */
   boolean_T MODESACCELERATION_PIDLAUNCH0A_c;/* '<S42>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.pidControl' */
@@ -195,10 +191,10 @@ typedef struct {
 
 /* Block signals and states (default storage) for system '<S42>/MODES.ACCELERATION_PID.LAUNCH1.ACTIVE.pidControl' */
 typedef struct {
+  real_T Minus;                        /* '<S63>/Minus' */
   real_T Integrator_DSTATE;            /* '<S73>/Integrator' */
   real_T Integrator_PREV_U;            /* '<S73>/Integrator' */
   uint32_T MODESACCELERATION_PIDLAUNCH1A_m;/* '<S42>/MODES.ACCELERATION_PID.LAUNCH1.ACTIVE.pidControl' */
-  uint16_T Minus;                      /* '<S63>/Minus' */
   int8_T Integrator_PrevResetState;    /* '<S73>/Integrator' */
   uint8_T Integrator_SYSTEM_ENABLE;    /* '<S73>/Integrator' */
   boolean_T MODESACCELERATION_PIDLAUNCH1A_i;/* '<S42>/MODES.ACCELERATION_PID.LAUNCH1.ACTIVE.pidControl' */
@@ -206,10 +202,10 @@ typedef struct {
 
 /* Block signals and states (default storage) for system '<S42>/MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.pidControl' */
 typedef struct {
+  real_T Minus;                        /* '<S64>/Minus' */
   real_T Integrator_DSTATE;            /* '<S74>/Integrator' */
   real_T Integrator_PREV_U;            /* '<S74>/Integrator' */
   uint32_T MODESACCELERATION_PIDLAUNCH2A_b;/* '<S42>/MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.pidControl' */
-  uint16_T Minus;                      /* '<S64>/Minus' */
   int8_T Integrator_PrevResetState;    /* '<S74>/Integrator' */
   uint8_T Integrator_SYSTEM_ENABLE;    /* '<S74>/Integrator' */
   boolean_T MODESACCELERATION_PIDLAUNCH2A_o;/* '<S42>/MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.pidControl' */
@@ -217,10 +213,10 @@ typedef struct {
 
 /* Block signals and states (default storage) for system '<S42>/MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.pidControl' */
 typedef struct {
+  real_T Minus;                        /* '<S65>/Minus' */
   real_T Integrator_DSTATE;            /* '<S75>/Integrator' */
   real_T Integrator_PREV_U;            /* '<S75>/Integrator' */
   uint32_T MODESACCELERATION_PIDLAUNCH3A_n;/* '<S42>/MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.pidControl' */
-  uint16_T Minus;                      /* '<S65>/Minus' */
   int8_T Integrator_PrevResetState;    /* '<S75>/Integrator' */
   uint8_T Integrator_SYSTEM_ENABLE;    /* '<S75>/Integrator' */
   boolean_T MODESACCELERATION_PIDLAUNCH3A_o;/* '<S42>/MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.pidControl' */
@@ -228,10 +224,10 @@ typedef struct {
 
 /* Block signals and states (default storage) for system '<S42>/MODES.ACCELERATION_PID.LAUNCH4.ACTIVE.pidControl' */
 typedef struct {
+  real_T Minus;                        /* '<S66>/Minus' */
   real_T Integrator_DSTATE;            /* '<S76>/Integrator' */
   real_T Integrator_PREV_U;            /* '<S76>/Integrator' */
   uint32_T MODESACCELERATION_PIDLAUNCH4A_l;/* '<S42>/MODES.ACCELERATION_PID.LAUNCH4.ACTIVE.pidControl' */
-  uint16_T Minus;                      /* '<S66>/Minus' */
   int8_T Integrator_PrevResetState;    /* '<S76>/Integrator' */
   uint8_T Integrator_SYSTEM_ENABLE;    /* '<S76>/Integrator' */
   boolean_T MODESACCELERATION_PIDLAUNCH4A_f;/* '<S42>/MODES.ACCELERATION_PID.LAUNCH4.ACTIVE.pidControl' */
@@ -239,10 +235,10 @@ typedef struct {
 
 /* Block signals and states (default storage) for system '<S42>/MODES.ACCELERATION_PID.LAUNCH5.ACTIVE.pidControl' */
 typedef struct {
+  real_T Minus;                        /* '<S67>/Minus' */
   real_T Integrator_DSTATE;            /* '<S77>/Integrator' */
   real_T Integrator_PREV_U;            /* '<S77>/Integrator' */
   uint32_T MODESACCELERATION_PIDLAUNCH5A_m;/* '<S42>/MODES.ACCELERATION_PID.LAUNCH5.ACTIVE.pidControl' */
-  uint16_T Minus;                      /* '<S67>/Minus' */
   int8_T Integrator_PrevResetState;    /* '<S77>/Integrator' */
   uint8_T Integrator_SYSTEM_ENABLE;    /* '<S77>/Integrator' */
   boolean_T MODESACCELERATION_PIDLAUNCH5A_f;/* '<S42>/MODES.ACCELERATION_PID.LAUNCH5.ACTIVE.pidControl' */
@@ -250,10 +246,10 @@ typedef struct {
 
 /* Block signals and states (default storage) for system '<S42>/MODES.ACCELERATION_PID.LAUNCH6.ACTIVE.pidControl' */
 typedef struct {
+  real_T Minus;                        /* '<S68>/Minus' */
   real_T Integrator_DSTATE;            /* '<S78>/Integrator' */
   real_T Integrator_PREV_U;            /* '<S78>/Integrator' */
   uint32_T MODESACCELERATION_PIDLAUNCH6A_j;/* '<S42>/MODES.ACCELERATION_PID.LAUNCH6.ACTIVE.pidControl' */
-  uint16_T Minus;                      /* '<S68>/Minus' */
   int8_T Integrator_PrevResetState;    /* '<S78>/Integrator' */
   uint8_T Integrator_SYSTEM_ENABLE;    /* '<S78>/Integrator' */
   boolean_T MODESACCELERATION_PIDLAUNCH6A_l;/* '<S42>/MODES.ACCELERATION_PID.LAUNCH6.ACTIVE.pidControl' */
@@ -261,10 +257,10 @@ typedef struct {
 
 /* Block signals and states (default storage) for system '<S42>/MODES.ACCELERATION_PID.LAUNCH7.ACTIVE.pidControl' */
 typedef struct {
+  real_T Minus;                        /* '<S69>/Minus' */
   real_T Integrator_DSTATE;            /* '<S79>/Integrator' */
   real_T Integrator_PREV_U;            /* '<S79>/Integrator' */
   uint32_T MODESACCELERATION_PIDLAUNCH7A_f;/* '<S42>/MODES.ACCELERATION_PID.LAUNCH7.ACTIVE.pidControl' */
-  uint16_T Minus;                      /* '<S69>/Minus' */
   int8_T Integrator_PrevResetState;    /* '<S79>/Integrator' */
   uint8_T Integrator_SYSTEM_ENABLE;    /* '<S79>/Integrator' */
   boolean_T MODESACCELERATION_PIDLAUNCH7A_k;/* '<S42>/MODES.ACCELERATION_PID.LAUNCH7.ACTIVE.pidControl' */
@@ -272,10 +268,10 @@ typedef struct {
 
 /* Block signals and states (default storage) for system '<S42>/MODES.ACCELERATION_PID.LAUNCH8.ACTIVE.pidControl' */
 typedef struct {
+  real_T Minus;                        /* '<S70>/Minus' */
   real_T Integrator_DSTATE;            /* '<S80>/Integrator' */
   real_T Integrator_PREV_U;            /* '<S80>/Integrator' */
   uint32_T MODESACCELERATION_PIDLAUNCH8A_k;/* '<S42>/MODES.ACCELERATION_PID.LAUNCH8.ACTIVE.pidControl' */
-  uint16_T Minus;                      /* '<S70>/Minus' */
   int8_T Integrator_PrevResetState;    /* '<S80>/Integrator' */
   uint8_T Integrator_SYSTEM_ENABLE;    /* '<S80>/Integrator' */
   boolean_T MODESACCELERATION_PIDLAUNCH8A_e;/* '<S42>/MODES.ACCELERATION_PID.LAUNCH8.ACTIVE.pidControl' */
@@ -446,7 +442,7 @@ typedef struct {
   volatile int8_T RateTransition18_semaphoreTaken;/* '<Root>/Rate Transition18' */
   uint8_T MultiportSwitch[10];         /* '<Root>/Multiport Switch' */
   uint8_T PackCanUart[10];             /* '<S7>/PackCanUart' */
-  uint8_T OutportBufferFordataRead[19];
+  uint8_T Eeprom_read_o2[16];          /* '<S28>/Eeprom_read' */
   uint8_T PackCANMsg[8];               /* '<S20>/PackCANMsg' */
   uint8_T PackCANMsg_f[8];             /* '<S19>/PackCANMsg' */
   uint8_T PackCANMsg_l[8];             /* '<S22>/PackCANMsg' */
@@ -623,7 +619,7 @@ typedef struct {
   uint8_T readResult;                  /* '<Root>/readResult' */
   uint8_T writeResult;                 /* '<Root>/writeResult' */
   uint8_T wpState;                     /* '<Root>/wpState' */
-  uint8_T dataRead[19];                /* '<Root>/dataRead' */
+  uint8_T dataRead;                    /* '<Root>/dataRead' */
   int32_T gearshiftTimings[24];        /* '<Root>/gearshiftTimings' */
   int32_T accParameters[16];           /* '<Root>/accParameters' */
   int32_T autoXParameters[16];         /* '<Root>/autoXParameters' */

@@ -26,7 +26,7 @@
  * | See matlabroot/simulink/src/sfuntmpl_doc.c for a more detailed template |
  *  ------------------------------------------------------------------------- 
  *
- * Created: Tue Jun 18 20:47:50 2019
+ * Created: Mon Jun 24 00:34:41 2019
  */
 
 #define S_FUNCTION_LEVEL 2
@@ -35,10 +35,10 @@
 /* %%%-SFUNWIZ_defines_Changes_BEGIN --- EDIT HERE TO _END */
 #define NUM_INPUTS            1
 /* Input Port  0 */
-#define IN_PORT_0_NAME        pwmValue
+#define IN_PORT_0_NAME        percentage
 #define INPUT_0_WIDTH         1
 #define INPUT_DIMS_0_COL      1
-#define INPUT_0_DTYPE         uint16_T
+#define INPUT_0_DTYPE         real_T
 #define INPUT_0_COMPLEX       COMPLEX_NO
 #define IN_0_FRAME_BASED      FRAME_NO
 #define IN_0_BUS_BASED        0
@@ -74,7 +74,7 @@
 /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
 #include "simstruc.h"
 
-extern void ClutchMotor_setPWMRegister_Outputs_wrapper(const uint16_T *pwmValue);
+extern void ClutchMotor_setPWMRegister_Outputs_wrapper(const real_T *percentage);
 /*====================*
  * S-function methods *
  *====================*/
@@ -101,7 +101,7 @@ static void mdlInitializeSizes(SimStruct *S)
 
     if (!ssSetNumInputPorts(S, NUM_INPUTS)) return;
     ssSetInputPortWidth(S, 0, INPUT_0_WIDTH);
-    ssSetInputPortDataType(S, 0, SS_UINT16);
+    ssSetInputPortDataType(S, 0, SS_DOUBLE);
     ssSetInputPortComplexSignal(S, 0, INPUT_0_COMPLEX);
     ssSetInputPortDirectFeedThrough(S, 0, INPUT_0_FEEDTHROUGH);
     ssSetInputPortRequiredContiguous(S, 0, 1); /*direct input signal access*/
@@ -171,9 +171,9 @@ static void mdlStart(SimStruct *S)
  */
 static void mdlOutputs(SimStruct *S, int_T tid)
 {
-    const uint16_T *pwmValue = (uint16_T *) ssGetInputPortRealSignal(S, 0);
+    const real_T *percentage = (real_T *) ssGetInputPortRealSignal(S, 0);
 
-    ClutchMotor_setPWMRegister_Outputs_wrapper(pwmValue);
+    ClutchMotor_setPWMRegister_Outputs_wrapper(percentage);
 
 }
 
