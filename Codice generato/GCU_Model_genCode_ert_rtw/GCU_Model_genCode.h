@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.344
+ * Model version                  : 1.346
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Sun Jun 23 10:55:23 2019
+ * C/C++ source code generated on : Sun Jun 23 11:37:59 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -122,13 +122,13 @@ typedef enum {
 #define DEFINED_TYPEDEF_FOR_can_data_
 
 typedef enum {
-  RPM = 0,                             /* Default value */
-  VH_SPEED,
-  TPS,
-  SLIP,
-  SLIP_TARGET,
-  GEAR_ADbits,
-  GEAR
+  RPM_INDEX = 0,                       /* Default value */
+  VH_SPEED_INDEX,
+  TPS_INDEX,
+  SLIP_INDEX,
+  SLIP_TARGET_INDEX,
+  GEAR_ADbits_INDEX,
+  GEAR_INDEX
 } can_data;
 
 #endif

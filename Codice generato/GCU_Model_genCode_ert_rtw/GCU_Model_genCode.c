@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.344
+ * Model version                  : 1.346
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Sun Jun 23 10:55:23 2019
+ * C/C++ source code generated on : Sun Jun 23 11:37:59 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -7371,9 +7371,9 @@ void GCU_Model_genCode_step2(void)     /* Sample time: [0.001s, 0.0002s] */
 
   /* Chart: '<S4>/MessageEvaluation1' */
   if (rtDW.UnpackCanUart_o1 == EFI_GEAR_RPM_TPS_PH2O_ID) {
-    rtDW.canData_ValuesArray[GEAR] = rtDW.UnpackCanUart_o2;
-    rtDW.canData_ValuesArray[RPM] = rtDW.UnpackCanUart_o3;
-    rtDW.canData_ValuesArray[TPS] = (uint16_T)(0.39216 * (real_T)
+    rtDW.canData_ValuesArray[(uint8_T)GEAR_INDEX] = rtDW.UnpackCanUart_o2;
+    rtDW.canData_ValuesArray[(uint8_T)RPM_INDEX] = rtDW.UnpackCanUart_o3;
+    rtDW.canData_ValuesArray[(uint8_T)TPS_INDEX] = (uint16_T)(0.39216 * (real_T)
       rtDW.UnpackCanUart_o4);
     if (rtDW.rpmUpdateCounter >= 255) {
       rtDW.rpmUpdateCounter = 0U;
@@ -7390,11 +7390,11 @@ void GCU_Model_genCode_step2(void)     /* Sample time: [0.001s, 0.0002s] */
   } else if (rtDW.UnpackCanUart_o1 == SW_GEARSHIFT_ID) {
     sendShiftCommand(rtDW.UnpackCanUart_o2);
   } else if (rtDW.UnpackCanUart_o1 == EFI_TRACTION_CONTROL_ID) {
-    rtDW.canData_ValuesArray[VH_SPEED] = (uint16_T)(0.1 * (real_T)
+    rtDW.canData_ValuesArray[(uint8_T)VH_SPEED_INDEX] = (uint16_T)(0.1 * (real_T)
       rtDW.UnpackCanUart_o2);
-    rtDW.canData_ValuesArray[SLIP_TARGET] = (uint16_T)(0.1 * (real_T)
-      rtDW.UnpackCanUart_o3);
-    rtDW.canData_ValuesArray[GEAR_ADbits] = rtDW.UnpackCanUart_o5;
+    rtDW.canData_ValuesArray[(uint8_T)SLIP_TARGET_INDEX] = (uint16_T)(0.1 *
+      (real_T)rtDW.UnpackCanUart_o3);
+    rtDW.canData_ValuesArray[(uint8_T)GEAR_ADbits_INDEX] = rtDW.UnpackCanUart_o5;
     if (rtDW.slipUpdateCounter >= 255) {
       rtDW.slipUpdateCounter = 0U;
     } else {
@@ -7406,7 +7406,7 @@ void GCU_Model_genCode_step2(void)     /* Sample time: [0.001s, 0.0002s] */
       rtDW.slipUpdateCounter = (uint8_T)i;
     }
 
-    rtDW.canData_ValuesArray[SLIP] = (uint16_T)(0.1 * (real_T)
+    rtDW.canData_ValuesArray[(uint8_T)SLIP_INDEX] = (uint16_T)(0.1 * (real_T)
       rtDW.UnpackCanUart_o4);
   } else if (rtDW.UnpackCanUart_o1 == SW_CLUTCH_MODE_MAP_GCU_ID) {
     tmp = rtDW.UnpackCanUart_o2;

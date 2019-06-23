@@ -29,11 +29,11 @@
 <tr name="9" id="9">
 <td><a id="l9" class='ln'>9</a></td><td><span class="ct"> *</span></td></tr>
 <tr name="10" id="10">
-<td><a id="l10" class='ln'>10</a></td><td><span class="ct"> * Model version                  : 1.344</span></td></tr>
+<td><a id="l10" class='ln'>10</a></td><td><span class="ct"> * Model version                  : 1.346</span></td></tr>
 <tr name="11" id="11">
 <td><a id="l11" class='ln'>11</a></td><td><span class="ct"> * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018</span></td></tr>
 <tr name="12" id="12">
-<td><a id="l12" class='ln'>12</a></td><td><span class="ct"> * C/C++ source code generated on : Sun Jun 23 10:55:23 2019</span></td></tr>
+<td><a id="l12" class='ln'>12</a></td><td><span class="ct"> * C/C++ source code generated on : Sun Jun 23 11:37:59 2019</span></td></tr>
 <tr name="13" id="13">
 <td><a id="l13" class='ln'>13</a></td><td><span class="ct"> *</span></td></tr>
 <tr name="14" id="14">
@@ -14757,11 +14757,11 @@
 <tr name="7373" id="7373">
 <td><a id="l7373" class='ln'>7373</a></td><td>  <span class="kw">if</span> (<a id="7373c7" class="tk">rtDW</a>.<a id="7373c12" class="tk">UnpackCanUart_o1</a> <a id="7373c29" class="tk">==</a> <a id="7373c32" class="tk">EFI_GEAR_RPM_TPS_PH2O_ID</a>) <span class="br">{</span></td></tr>
 <tr name="7374" id="7374">
-<td><a id="l7374" class='ln'>7374</a></td><td>    <a id="7374c5" class="tk">rtDW</a>.<a id="7374c10" class="tk">canData_ValuesArray</a>[<a id="7374c30" class="tk">GEAR</a>] = <a id="7374c38" class="tk">rtDW</a>.<a id="7374c43" class="tk">UnpackCanUart_o2</a>;</td></tr>
+<td><a id="l7374" class='ln'>7374</a></td><td>    <a id="7374c5" class="tk">rtDW</a>.<a id="7374c10" class="tk">canData_ValuesArray</a>[(<a id="7374c31" class="tk">uint8_T</a>)<a id="7374c39" class="tk">GEAR_INDEX</a>] = <a id="7374c53" class="tk">rtDW</a>.<a id="7374c58" class="tk">UnpackCanUart_o2</a>;</td></tr>
 <tr name="7375" id="7375">
-<td><a id="l7375" class='ln'>7375</a></td><td>    <a id="7375c5" class="tk">rtDW</a>.<a id="7375c10" class="tk">canData_ValuesArray</a>[<a id="7375c30" class="tk">RPM</a>] = <a id="7375c37" class="tk">rtDW</a>.<a id="7375c42" class="tk">UnpackCanUart_o3</a>;</td></tr>
+<td><a id="l7375" class='ln'>7375</a></td><td>    <a id="7375c5" class="tk">rtDW</a>.<a id="7375c10" class="tk">canData_ValuesArray</a>[(<a id="7375c31" class="tk">uint8_T</a>)<a id="7375c39" class="tk">RPM_INDEX</a>] = <a id="7375c52" class="tk">rtDW</a>.<a id="7375c57" class="tk">UnpackCanUart_o3</a>;</td></tr>
 <tr name="7376" id="7376">
-<td><a id="l7376" class='ln'>7376</a></td><td>    <a id="7376c5" class="tk">rtDW</a>.<a id="7376c10" class="tk">canData_ValuesArray</a>[<a id="7376c30" class="tk">TPS</a>] = (<a id="7376c38" class="tk">uint16_T</a>)(0.39216 <a id="7376c56" class="tk">*</a> (<a id="7376c59" class="tk">real_T</a>)</td></tr>
+<td><a id="l7376" class='ln'>7376</a></td><td>    <a id="7376c5" class="tk">rtDW</a>.<a id="7376c10" class="tk">canData_ValuesArray</a>[(<a id="7376c31" class="tk">uint8_T</a>)<a id="7376c39" class="tk">TPS_INDEX</a>] = (<a id="7376c53" class="tk">uint16_T</a>)(0.39216 <a id="7376c71" class="tk">*</a> (<a id="7376c74" class="tk">real_T</a>)</td></tr>
 <tr name="7377" id="7377">
 <td><a id="l7377" class='ln'>7377</a></td><td>      <a id="7377c7" class="tk">rtDW</a>.<a id="7377c12" class="tk">UnpackCanUart_o4</a>);</td></tr>
 <tr name="7378" id="7378">
@@ -14795,15 +14795,15 @@
 <tr name="7392" id="7392">
 <td><a id="l7392" class='ln'>7392</a></td><td>  <span class="br">}</span> <span class="kw">else</span> <span class="kw">if</span> (<a id="7392c14" class="tk">rtDW</a>.<a id="7392c19" class="tk">UnpackCanUart_o1</a> <a id="7392c36" class="tk">==</a> <a id="7392c39" class="tk">EFI_TRACTION_CONTROL_ID</a>) <span class="br">{</span></td></tr>
 <tr name="7393" id="7393">
-<td><a id="l7393" class='ln'>7393</a></td><td>    <a id="7393c5" class="tk">rtDW</a>.<a id="7393c10" class="tk">canData_ValuesArray</a>[<a id="7393c30" class="tk">VH_SPEED</a>] = (<a id="7393c43" class="tk">uint16_T</a>)(0.1 <a id="7393c57" class="tk">*</a> (<a id="7393c60" class="tk">real_T</a>)</td></tr>
+<td><a id="l7393" class='ln'>7393</a></td><td>    <a id="7393c5" class="tk">rtDW</a>.<a id="7393c10" class="tk">canData_ValuesArray</a>[(<a id="7393c31" class="tk">uint8_T</a>)<a id="7393c39" class="tk">VH_SPEED_INDEX</a>] = (<a id="7393c58" class="tk">uint16_T</a>)(0.1 <a id="7393c72" class="tk">*</a> (<a id="7393c75" class="tk">real_T</a>)</td></tr>
 <tr name="7394" id="7394">
 <td><a id="l7394" class='ln'>7394</a></td><td>      <a id="7394c7" class="tk">rtDW</a>.<a id="7394c12" class="tk">UnpackCanUart_o2</a>);</td></tr>
 <tr name="7395" id="7395">
-<td><a id="l7395" class='ln'>7395</a></td><td>    <a id="7395c5" class="tk">rtDW</a>.<a id="7395c10" class="tk">canData_ValuesArray</a>[<a id="7395c30" class="tk">SLIP_TARGET</a>] = (<a id="7395c46" class="tk">uint16_T</a>)(0.1 <a id="7395c60" class="tk">*</a> (<a id="7395c63" class="tk">real_T</a>)</td></tr>
+<td><a id="l7395" class='ln'>7395</a></td><td>    <a id="7395c5" class="tk">rtDW</a>.<a id="7395c10" class="tk">canData_ValuesArray</a>[(<a id="7395c31" class="tk">uint8_T</a>)<a id="7395c39" class="tk">SLIP_TARGET_INDEX</a>] = (<a id="7395c61" class="tk">uint16_T</a>)(0.1 <a id="7395c75" class="tk">*</a></td></tr>
 <tr name="7396" id="7396">
-<td><a id="l7396" class='ln'>7396</a></td><td>      <a id="7396c7" class="tk">rtDW</a>.<a id="7396c12" class="tk">UnpackCanUart_o3</a>);</td></tr>
+<td><a id="l7396" class='ln'>7396</a></td><td>      (<a id="7396c8" class="tk">real_T</a>)<a id="7396c15" class="tk">rtDW</a>.<a id="7396c20" class="tk">UnpackCanUart_o3</a>);</td></tr>
 <tr name="7397" id="7397">
-<td><a id="l7397" class='ln'>7397</a></td><td>    <a id="7397c5" class="tk">rtDW</a>.<a id="7397c10" class="tk">canData_ValuesArray</a>[<a id="7397c30" class="tk">GEAR_ADbits</a>] = <a id="7397c45" class="tk">rtDW</a>.<a id="7397c50" class="tk">UnpackCanUart_o5</a>;</td></tr>
+<td><a id="l7397" class='ln'>7397</a></td><td>    <a id="7397c5" class="tk">rtDW</a>.<a id="7397c10" class="tk">canData_ValuesArray</a>[(<a id="7397c31" class="tk">uint8_T</a>)<a id="7397c39" class="tk">GEAR_ADbits_INDEX</a>] = <a id="7397c60" class="tk">rtDW</a>.<a id="7397c65" class="tk">UnpackCanUart_o5</a>;</td></tr>
 <tr name="7398" id="7398">
 <td><a id="l7398" class='ln'>7398</a></td><td>    <span class="kw">if</span> (<a id="7398c9" class="tk">rtDW</a>.<a id="7398c14" class="tk">slipUpdateCounter</a> <a id="7398c32" class="tk">&gt;=</a> 255) <span class="br">{</span></td></tr>
 <tr name="7399" id="7399">
@@ -14827,7 +14827,7 @@
 <tr name="7408" id="7408">
 <td><a id="l7408" class='ln'>7408</a></td><td></td></tr>
 <tr name="7409" id="7409">
-<td><a id="l7409" class='ln'>7409</a></td><td>    <a id="7409c5" class="tk">rtDW</a>.<a id="7409c10" class="tk">canData_ValuesArray</a>[<a id="7409c30" class="tk">SLIP</a>] = (<a id="7409c39" class="tk">uint16_T</a>)(0.1 <a id="7409c53" class="tk">*</a> (<a id="7409c56" class="tk">real_T</a>)</td></tr>
+<td><a id="l7409" class='ln'>7409</a></td><td>    <a id="7409c5" class="tk">rtDW</a>.<a id="7409c10" class="tk">canData_ValuesArray</a>[(<a id="7409c31" class="tk">uint8_T</a>)<a id="7409c39" class="tk">SLIP_INDEX</a>] = (<a id="7409c54" class="tk">uint16_T</a>)(0.1 <a id="7409c68" class="tk">*</a> (<a id="7409c71" class="tk">real_T</a>)</td></tr>
 <tr name="7410" id="7410">
 <td><a id="l7410" class='ln'>7410</a></td><td>      <a id="7410c7" class="tk">rtDW</a>.<a id="7410c12" class="tk">UnpackCanUart_o4</a>);</td></tr>
 <tr name="7411" id="7411">

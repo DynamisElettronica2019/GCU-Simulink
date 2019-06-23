@@ -41,7 +41,7 @@ typedef struct {
   real_T *c8_rpm;
   real_T *c8_deltarpm;
   uint16_T *c8_antiStallFb;
-  uint8_T *c8_currGear;
+  uint16_T *c8_currGear;
   real_T *c8_antiStallState;
   uint8_T *c8_antiStallClutchVal;
   uint8_T *c8_Inport;
