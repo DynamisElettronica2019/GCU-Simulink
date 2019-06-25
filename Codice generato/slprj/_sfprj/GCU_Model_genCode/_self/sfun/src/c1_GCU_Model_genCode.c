@@ -465,35 +465,45 @@ static const mxArray *c1_h_sf_marshallOut(void *chartInstanceVoid, void
 static const mxArray *c1_i_sf_marshallOut(void *chartInstanceVoid, void
   *c1_inData);
 static const mxArray *c1_e_emlrt_marshallOut
-  (SFc1_GCU_Model_genCodeInstanceStruct *chartInstance, const real_T c1_u);
+  (SFc1_GCU_Model_genCodeInstanceStruct *chartInstance, const uint32_T c1_u);
 static const mxArray *c1_j_sf_marshallOut(void *chartInstanceVoid, void
   *c1_inData);
-static real_T c1_i_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
-  *chartInstance, const mxArray *c1_b_aac_clutchValue, const char_T
-  *c1_identifier);
-static real_T c1_j_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
+static uint32_T c1_i_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
+  *chartInstance, const mxArray *c1_b_pidCounter, const char_T *c1_identifier);
+static uint32_T c1_j_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   *chartInstance, const mxArray *c1_u, const emlrtMsgIdentifier *c1_parentId);
 static void c1_e_sf_marshallIn(void *chartInstanceVoid, const mxArray
   *c1_mxArrayInData, const char_T *c1_varName, void *c1_outData);
+static const mxArray *c1_f_emlrt_marshallOut
+  (SFc1_GCU_Model_genCodeInstanceStruct *chartInstance, const real_T c1_u);
 static const mxArray *c1_k_sf_marshallOut(void *chartInstanceVoid, void
   *c1_inData);
-static c1_acc_params c1_k_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct *
-  chartInstance, const mxArray *c1_u, const emlrtMsgIdentifier *c1_parentId);
+static real_T c1_k_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
+  *chartInstance, const mxArray *c1_b_aac_clutchValue, const char_T
+  *c1_identifier);
+static real_T c1_l_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
+  *chartInstance, const mxArray *c1_u, const emlrtMsgIdentifier *c1_parentId);
 static void c1_f_sf_marshallIn(void *chartInstanceVoid, const mxArray
   *c1_mxArrayInData, const char_T *c1_varName, void *c1_outData);
 static const mxArray *c1_l_sf_marshallOut(void *chartInstanceVoid, void
   *c1_inData);
-static c1_autoX_params c1_l_emlrt_marshallIn
-  (SFc1_GCU_Model_genCodeInstanceStruct *chartInstance, const mxArray *c1_u,
-   const emlrtMsgIdentifier *c1_parentId);
+static c1_acc_params c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct *
+  chartInstance, const mxArray *c1_u, const emlrtMsgIdentifier *c1_parentId);
 static void c1_g_sf_marshallIn(void *chartInstanceVoid, const mxArray
   *c1_mxArrayInData, const char_T *c1_varName, void *c1_outData);
-static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
+static const mxArray *c1_m_sf_marshallOut(void *chartInstanceVoid, void
+  *c1_inData);
+static c1_autoX_params c1_n_emlrt_marshallIn
+  (SFc1_GCU_Model_genCodeInstanceStruct *chartInstance, const mxArray *c1_u,
+   const emlrtMsgIdentifier *c1_parentId);
+static void c1_h_sf_marshallIn(void *chartInstanceVoid, const mxArray
+  *c1_mxArrayInData, const char_T *c1_varName, void *c1_outData);
+static void c1_o_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   *chartInstance, const mxArray *c1_u);
-static const mxArray *c1_n_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
+static const mxArray *c1_p_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   *chartInstance, const mxArray *c1_b_setSimStateSideEffectsInfo, const char_T
   *c1_identifier);
-static const mxArray *c1_o_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
+static const mxArray *c1_q_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   *chartInstance, const mxArray *c1_u, const emlrtMsgIdentifier *c1_parentId);
 static const mxArray *sf_get_hover_data_for_msg
   (SFc1_GCU_Model_genCodeInstanceStruct *chartInstance, int32_T c1_ssid);
@@ -554,23 +564,23 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
     385U, 383U, 13U, 479U, 482U, 483U, 494U, 929U, 932U, 930U, 940U, 946U, 944U,
     1069U, 1070U, 1072U };
 
-  uint32_T c1_c[180] = { 123U, 834U, 443U, 485U, 524U, 680U, 715U, 799U, 833U,
+  uint32_T c1_c[181] = { 123U, 834U, 443U, 485U, 524U, 680U, 715U, 799U, 833U,
     837U, 925U, 1044U, 1060U, 1067U, 1073U, 1083U, 1085U, 1183U, 1184U, 1185U,
-    1186U, 1187U, 1188U, 1189U, 1191U, 627U, 681U, 1043U, 1063U, 643U, 644U,
-    645U, 646U, 631U, 632U, 633U, 634U, 537U, 550U, 561U, 563U, 564U, 698U, 699U,
-    700U, 702U, 704U, 705U, 706U, 707U, 708U, 709U, 710U, 754U, 568U, 569U, 957U,
-    958U, 959U, 960U, 961U, 1031U, 1032U, 1093U, 1094U, 1095U, 1096U, 1097U,
-    1174U, 1182U, 1176U, 1177U, 1180U, 1149U, 1150U, 1200U, 1201U, 1202U, 1203U,
-    1204U, 1225U, 1253U, 1254U, 1255U, 1256U, 1261U, 1262U, 1273U, 1274U, 1275U,
-    1276U, 1277U, 1298U, 1326U, 1327U, 1328U, 1329U, 1334U, 1335U, 1345U, 1346U,
-    1347U, 1348U, 1349U, 1370U, 1398U, 1399U, 1400U, 1401U, 1406U, 1407U, 1413U,
-    1414U, 1415U, 1416U, 1417U, 1438U, 1466U, 1467U, 1468U, 1469U, 1474U, 1475U,
-    1481U, 1482U, 1483U, 1484U, 1485U, 1506U, 1534U, 1535U, 1536U, 1537U, 1542U,
-    1543U, 1549U, 1550U, 1551U, 1552U, 1553U, 1574U, 1602U, 1603U, 1604U, 1605U,
-    1610U, 1611U, 1617U, 1618U, 1619U, 1620U, 1621U, 1642U, 1670U, 1671U, 1672U,
-    1673U, 1678U, 1679U, 1685U, 1686U, 1687U, 1688U, 1689U, 1710U, 1738U, 1739U,
-    1740U, 1741U, 1746U, 1747U, 45U, 437U, 164U, 501U, 950U, 484U, 488U, 938U,
-    1068U };
+    1186U, 1187U, 1188U, 1189U, 1191U, 1839U, 627U, 681U, 1043U, 1063U, 643U,
+    644U, 645U, 646U, 631U, 632U, 633U, 634U, 537U, 550U, 561U, 563U, 564U, 698U,
+    699U, 700U, 702U, 704U, 705U, 706U, 707U, 708U, 709U, 710U, 754U, 568U, 569U,
+    957U, 958U, 959U, 960U, 961U, 1031U, 1032U, 1093U, 1094U, 1095U, 1096U,
+    1097U, 1174U, 1182U, 1176U, 1177U, 1180U, 1149U, 1150U, 1200U, 1201U, 1202U,
+    1203U, 1204U, 1225U, 1253U, 1254U, 1255U, 1256U, 1261U, 1262U, 1273U, 1274U,
+    1275U, 1276U, 1277U, 1298U, 1326U, 1327U, 1328U, 1329U, 1334U, 1335U, 1345U,
+    1346U, 1347U, 1348U, 1349U, 1370U, 1398U, 1399U, 1400U, 1401U, 1406U, 1407U,
+    1413U, 1414U, 1415U, 1416U, 1417U, 1438U, 1466U, 1467U, 1468U, 1469U, 1474U,
+    1475U, 1481U, 1482U, 1483U, 1484U, 1485U, 1506U, 1534U, 1535U, 1536U, 1537U,
+    1542U, 1543U, 1549U, 1550U, 1551U, 1552U, 1553U, 1574U, 1602U, 1603U, 1604U,
+    1605U, 1610U, 1611U, 1617U, 1618U, 1619U, 1620U, 1621U, 1642U, 1670U, 1671U,
+    1672U, 1673U, 1678U, 1679U, 1685U, 1686U, 1687U, 1688U, 1689U, 1710U, 1738U,
+    1739U, 1740U, 1741U, 1746U, 1747U, 45U, 437U, 164U, 501U, 950U, 484U, 488U,
+    938U, 1068U };
 
   const char * c1_d[6] = { "None", "ACCELERATION", "ACCELERATION_PID",
     "AUTOCROSS", "INIT", "MANUAL_MODES" };
@@ -1165,6 +1175,8 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
 
   int32_T c1_qk[1] = { 1 };
 
+  int32_T c1_rk[1] = { 1 };
+
   chartInstance->c1_sdiBlockInfo.mdlRefFullPath = "";
   chartInstance->c1_sdiBlockInfo.SimStruct = (void *)chartInstance->S;
   chartInstance->c1_sdiBlockInfo.blkPath = "";
@@ -1173,7 +1185,7 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_sdiBlockInfo.sdiRuntime = NULL;
   sdi_database_initialize(&chartInstance->c1_sdiBlockInfo, c1_b, (uint8_T *)
     &chartInstance->c1_sdiLoggedStatesBuffer[0U], 153, c1_c, (uint8_T *)
-    &chartInstance->c1_sdiLoggedDataBuffer[0U], 180);
+    &chartInstance->c1_sdiLoggedDataBuffer[0U], 181);
   if (chartInstance->c1_sdiLoggedStatesBuffer[1U] & 1) {
     sdi_register_child_activity_signal(&chartInstance->c1_sdiBlockInfo, "MODES",
       "MODES", 6, c1_d, c1_e, sizeof(uint8_T), 1, 418U);
@@ -4014,7 +4026,7 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   }
 
   chartInstance->c1_hg_SignalExportProp.logName = "";
-  chartInstance->c1_hg_SignalExportProp.signalName = "lastAacCom";
+  chartInstance->c1_hg_SignalExportProp.signalName = "pidCounter";
   chartInstance->c1_hg_SignalExportProp.useCustomName = 0;
   chartInstance->c1_hg_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_hg_SignalExportProp.decimate = 0;
@@ -4022,12 +4034,12 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_hg_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[25U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "lastAacCom", "MODES", 1, c1_ei, 1, 5, 0, 0,
-      &chartInstance->c1_hg_SignalExportProp, "", 627U);
+      "pidCounter", "", 1, c1_ei, 1, 7, 0, 0,
+      &chartInstance->c1_hg_SignalExportProp, "", 1839U);
   }
 
   chartInstance->c1_ig_SignalExportProp.logName = "";
-  chartInstance->c1_ig_SignalExportProp.signalName = "lastShiftCom";
+  chartInstance->c1_ig_SignalExportProp.signalName = "lastAacCom";
   chartInstance->c1_ig_SignalExportProp.useCustomName = 0;
   chartInstance->c1_ig_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_ig_SignalExportProp.decimate = 0;
@@ -4035,12 +4047,12 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_ig_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[26U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "lastShiftCom", "MODES", 1, c1_fi, 1, 5, 0, 0,
-      &chartInstance->c1_ig_SignalExportProp, "", 681U);
+      "lastAacCom", "MODES", 1, c1_fi, 1, 5, 0, 0,
+      &chartInstance->c1_ig_SignalExportProp, "", 627U);
   }
 
   chartInstance->c1_jg_SignalExportProp.logName = "";
-  chartInstance->c1_jg_SignalExportProp.signalName = "lastAutoXCom";
+  chartInstance->c1_jg_SignalExportProp.signalName = "lastShiftCom";
   chartInstance->c1_jg_SignalExportProp.useCustomName = 0;
   chartInstance->c1_jg_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_jg_SignalExportProp.decimate = 0;
@@ -4048,12 +4060,12 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_jg_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[27U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "lastAutoXCom", "MODES", 1, c1_gi, 1, 5, 0, 0,
-      &chartInstance->c1_jg_SignalExportProp, "", 1043U);
+      "lastShiftCom", "MODES", 1, c1_gi, 1, 5, 0, 0,
+      &chartInstance->c1_jg_SignalExportProp, "", 681U);
   }
 
   chartInstance->c1_kg_SignalExportProp.logName = "";
-  chartInstance->c1_kg_SignalExportProp.signalName = "buzzerCounter";
+  chartInstance->c1_kg_SignalExportProp.signalName = "lastAutoXCom";
   chartInstance->c1_kg_SignalExportProp.useCustomName = 0;
   chartInstance->c1_kg_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_kg_SignalExportProp.decimate = 0;
@@ -4061,25 +4073,25 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_kg_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[28U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "buzzerCounter", "MODES", 1, c1_hi, 1, 5, 0, 0,
-      &chartInstance->c1_kg_SignalExportProp, "", 1063U);
+      "lastAutoXCom", "MODES", 1, c1_hi, 1, 5, 0, 0,
+      &chartInstance->c1_kg_SignalExportProp, "", 1043U);
   }
 
   chartInstance->c1_lg_SignalExportProp.logName = "";
-  chartInstance->c1_lg_SignalExportProp.signalName = "aacCounter";
+  chartInstance->c1_lg_SignalExportProp.signalName = "buzzerCounter";
   chartInstance->c1_lg_SignalExportProp.useCustomName = 0;
   chartInstance->c1_lg_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_lg_SignalExportProp.decimate = 0;
   chartInstance->c1_lg_SignalExportProp.maxPoints = 5000U;
   chartInstance->c1_lg_SignalExportProp.decimation = 1U;
-  if (chartInstance->c1_sdiLoggedDataBuffer[38U]) {
+  if (chartInstance->c1_sdiLoggedDataBuffer[29U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "aacCounter", "MODES/ACCELERATION/ACC", 1, c1_ii, 1, 5, 0, 0,
-      &chartInstance->c1_lg_SignalExportProp, "", 550U);
+      "buzzerCounter", "MODES", 1, c1_ii, 1, 5, 0, 0,
+      &chartInstance->c1_lg_SignalExportProp, "", 1063U);
   }
 
   chartInstance->c1_mg_SignalExportProp.logName = "";
-  chartInstance->c1_mg_SignalExportProp.signalName = "aac_clutchValue";
+  chartInstance->c1_mg_SignalExportProp.signalName = "aacCounter";
   chartInstance->c1_mg_SignalExportProp.useCustomName = 0;
   chartInstance->c1_mg_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_mg_SignalExportProp.decimate = 0;
@@ -4087,12 +4099,12 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_mg_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[39U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "aac_clutchValue", "MODES/ACCELERATION/ACC", 1, c1_ji, 1, 0, 0, 0,
-      &chartInstance->c1_mg_SignalExportProp, "", 561U);
+      "aacCounter", "MODES/ACCELERATION/ACC", 1, c1_ji, 1, 5, 0, 0,
+      &chartInstance->c1_mg_SignalExportProp, "", 550U);
   }
 
   chartInstance->c1_ng_SignalExportProp.logName = "";
-  chartInstance->c1_ng_SignalExportProp.signalName = "aac_clutchStep";
+  chartInstance->c1_ng_SignalExportProp.signalName = "aac_clutchValue";
   chartInstance->c1_ng_SignalExportProp.useCustomName = 0;
   chartInstance->c1_ng_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_ng_SignalExportProp.decimate = 0;
@@ -4100,12 +4112,12 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_ng_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[40U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "aac_clutchStep", "MODES/ACCELERATION/ACC", 1, c1_ki, 1, 0, 0, 0,
-      &chartInstance->c1_ng_SignalExportProp, "", 563U);
+      "aac_clutchValue", "MODES/ACCELERATION/ACC", 1, c1_ki, 1, 0, 0, 0,
+      &chartInstance->c1_ng_SignalExportProp, "", 561U);
   }
 
   chartInstance->c1_og_SignalExportProp.logName = "";
-  chartInstance->c1_og_SignalExportProp.signalName = "aac_dtRelease";
+  chartInstance->c1_og_SignalExportProp.signalName = "aac_clutchStep";
   chartInstance->c1_og_SignalExportProp.useCustomName = 0;
   chartInstance->c1_og_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_og_SignalExportProp.decimate = 0;
@@ -4113,25 +4125,25 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_og_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[41U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "aac_dtRelease", "MODES/ACCELERATION/ACC", 1, c1_li, 1, 6, 0, 0,
-      &chartInstance->c1_og_SignalExportProp, "", 564U);
+      "aac_clutchStep", "MODES/ACCELERATION/ACC", 1, c1_li, 1, 0, 0, 0,
+      &chartInstance->c1_og_SignalExportProp, "", 563U);
   }
 
   chartInstance->c1_pg_SignalExportProp.logName = "";
-  chartInstance->c1_pg_SignalExportProp.signalName = "autoXCounter";
+  chartInstance->c1_pg_SignalExportProp.signalName = "aac_dtRelease";
   chartInstance->c1_pg_SignalExportProp.useCustomName = 0;
   chartInstance->c1_pg_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_pg_SignalExportProp.decimate = 0;
   chartInstance->c1_pg_SignalExportProp.maxPoints = 5000U;
   chartInstance->c1_pg_SignalExportProp.decimation = 1U;
-  if (chartInstance->c1_sdiLoggedDataBuffer[57U]) {
+  if (chartInstance->c1_sdiLoggedDataBuffer[42U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoXCounter", "MODES/AUTOCROSS/LAUNCH", 1, c1_mi, 1, 5, 0, 0,
-      &chartInstance->c1_pg_SignalExportProp, "", 958U);
+      "aac_dtRelease", "MODES/ACCELERATION/ACC", 1, c1_mi, 1, 6, 0, 0,
+      &chartInstance->c1_pg_SignalExportProp, "", 564U);
   }
 
   chartInstance->c1_qg_SignalExportProp.logName = "";
-  chartInstance->c1_qg_SignalExportProp.signalName = "autoX_clutchValue";
+  chartInstance->c1_qg_SignalExportProp.signalName = "autoXCounter";
   chartInstance->c1_qg_SignalExportProp.useCustomName = 0;
   chartInstance->c1_qg_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_qg_SignalExportProp.decimate = 0;
@@ -4139,12 +4151,12 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_qg_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[58U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoX_clutchValue", "MODES/AUTOCROSS/LAUNCH", 1, c1_ni, 1, 0, 0, 0,
-      &chartInstance->c1_qg_SignalExportProp, "", 959U);
+      "autoXCounter", "MODES/AUTOCROSS/LAUNCH", 1, c1_ni, 1, 5, 0, 0,
+      &chartInstance->c1_qg_SignalExportProp, "", 958U);
   }
 
   chartInstance->c1_rg_SignalExportProp.logName = "";
-  chartInstance->c1_rg_SignalExportProp.signalName = "autoX_clutchStep";
+  chartInstance->c1_rg_SignalExportProp.signalName = "autoX_clutchValue";
   chartInstance->c1_rg_SignalExportProp.useCustomName = 0;
   chartInstance->c1_rg_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_rg_SignalExportProp.decimate = 0;
@@ -4152,12 +4164,12 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_rg_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[59U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoX_clutchStep", "MODES/AUTOCROSS/LAUNCH", 1, c1_oi, 1, 0, 0, 0,
-      &chartInstance->c1_rg_SignalExportProp, "", 960U);
+      "autoX_clutchValue", "MODES/AUTOCROSS/LAUNCH", 1, c1_oi, 1, 0, 0, 0,
+      &chartInstance->c1_rg_SignalExportProp, "", 959U);
   }
 
   chartInstance->c1_sg_SignalExportProp.logName = "";
-  chartInstance->c1_sg_SignalExportProp.signalName = "autoX_dtRelease";
+  chartInstance->c1_sg_SignalExportProp.signalName = "autoX_clutchStep";
   chartInstance->c1_sg_SignalExportProp.useCustomName = 0;
   chartInstance->c1_sg_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_sg_SignalExportProp.decimate = 0;
@@ -4165,25 +4177,25 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_sg_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[60U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoX_dtRelease", "MODES/AUTOCROSS/LAUNCH", 1, c1_pi, 1, 6, 0, 0,
-      &chartInstance->c1_sg_SignalExportProp, "", 961U);
+      "autoX_clutchStep", "MODES/AUTOCROSS/LAUNCH", 1, c1_pi, 1, 0, 0, 0,
+      &chartInstance->c1_sg_SignalExportProp, "", 960U);
   }
 
   chartInstance->c1_tg_SignalExportProp.logName = "";
-  chartInstance->c1_tg_SignalExportProp.signalName = "autoXCounter";
+  chartInstance->c1_tg_SignalExportProp.signalName = "autoX_dtRelease";
   chartInstance->c1_tg_SignalExportProp.useCustomName = 0;
   chartInstance->c1_tg_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_tg_SignalExportProp.decimate = 0;
   chartInstance->c1_tg_SignalExportProp.maxPoints = 5000U;
   chartInstance->c1_tg_SignalExportProp.decimation = 1U;
-  if (chartInstance->c1_sdiLoggedDataBuffer[64U]) {
+  if (chartInstance->c1_sdiLoggedDataBuffer[61U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoXCounter", "MODES/ACCELERATION_PID/LAUNCH0", 1, c1_qi, 1, 5, 0, 0,
-      &chartInstance->c1_tg_SignalExportProp, "", 1094U);
+      "autoX_dtRelease", "MODES/AUTOCROSS/LAUNCH", 1, c1_qi, 1, 6, 0, 0,
+      &chartInstance->c1_tg_SignalExportProp, "", 961U);
   }
 
   chartInstance->c1_ug_SignalExportProp.logName = "";
-  chartInstance->c1_ug_SignalExportProp.signalName = "autoX_clutchValue";
+  chartInstance->c1_ug_SignalExportProp.signalName = "autoXCounter";
   chartInstance->c1_ug_SignalExportProp.useCustomName = 0;
   chartInstance->c1_ug_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_ug_SignalExportProp.decimate = 0;
@@ -4191,12 +4203,12 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_ug_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[65U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoX_clutchValue", "MODES/ACCELERATION_PID/LAUNCH0", 1, c1_ri, 1, 0, 0,
-      0, &chartInstance->c1_ug_SignalExportProp, "", 1095U);
+      "autoXCounter", "MODES/ACCELERATION_PID/LAUNCH0", 1, c1_ri, 1, 5, 0, 0,
+      &chartInstance->c1_ug_SignalExportProp, "", 1094U);
   }
 
   chartInstance->c1_vg_SignalExportProp.logName = "";
-  chartInstance->c1_vg_SignalExportProp.signalName = "autoX_clutchStep";
+  chartInstance->c1_vg_SignalExportProp.signalName = "autoX_clutchValue";
   chartInstance->c1_vg_SignalExportProp.useCustomName = 0;
   chartInstance->c1_vg_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_vg_SignalExportProp.decimate = 0;
@@ -4204,12 +4216,12 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_vg_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[66U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoX_clutchStep", "MODES/ACCELERATION_PID/LAUNCH0", 1, c1_si, 1, 0, 0, 0,
-      &chartInstance->c1_vg_SignalExportProp, "", 1096U);
+      "autoX_clutchValue", "MODES/ACCELERATION_PID/LAUNCH0", 1, c1_si, 1, 0, 0,
+      0, &chartInstance->c1_vg_SignalExportProp, "", 1095U);
   }
 
   chartInstance->c1_wg_SignalExportProp.logName = "";
-  chartInstance->c1_wg_SignalExportProp.signalName = "autoX_dtRelease";
+  chartInstance->c1_wg_SignalExportProp.signalName = "autoX_clutchStep";
   chartInstance->c1_wg_SignalExportProp.useCustomName = 0;
   chartInstance->c1_wg_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_wg_SignalExportProp.decimate = 0;
@@ -4217,12 +4229,12 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_wg_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[67U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoX_dtRelease", "MODES/ACCELERATION_PID/LAUNCH0", 1, c1_ti, 1, 6, 0, 0,
-      &chartInstance->c1_wg_SignalExportProp, "", 1097U);
+      "autoX_clutchStep", "MODES/ACCELERATION_PID/LAUNCH0", 1, c1_ti, 1, 0, 0, 0,
+      &chartInstance->c1_wg_SignalExportProp, "", 1096U);
   }
 
   chartInstance->c1_xg_SignalExportProp.logName = "";
-  chartInstance->c1_xg_SignalExportProp.signalName = "lastSlip";
+  chartInstance->c1_xg_SignalExportProp.signalName = "autoX_dtRelease";
   chartInstance->c1_xg_SignalExportProp.useCustomName = 0;
   chartInstance->c1_xg_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_xg_SignalExportProp.decimate = 0;
@@ -4230,25 +4242,25 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_xg_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[68U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "lastSlip", "MODES/ACCELERATION_PID/LAUNCH0/ACTIVE/RELEASE", 1, c1_ui, 1,
-      5, 0, 0, &chartInstance->c1_xg_SignalExportProp, "", 1174U);
+      "autoX_dtRelease", "MODES/ACCELERATION_PID/LAUNCH0", 1, c1_ui, 1, 6, 0, 0,
+      &chartInstance->c1_xg_SignalExportProp, "", 1097U);
   }
 
   chartInstance->c1_yg_SignalExportProp.logName = "";
-  chartInstance->c1_yg_SignalExportProp.signalName = "autoXCounter";
+  chartInstance->c1_yg_SignalExportProp.signalName = "lastSlip";
   chartInstance->c1_yg_SignalExportProp.useCustomName = 0;
   chartInstance->c1_yg_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_yg_SignalExportProp.decimate = 0;
   chartInstance->c1_yg_SignalExportProp.maxPoints = 5000U;
   chartInstance->c1_yg_SignalExportProp.decimation = 1U;
-  if (chartInstance->c1_sdiLoggedDataBuffer[76U]) {
+  if (chartInstance->c1_sdiLoggedDataBuffer[69U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoXCounter", "MODES/ACCELERATION_PID/LAUNCH1", 1, c1_vi, 1, 5, 0, 0,
-      &chartInstance->c1_yg_SignalExportProp, "", 1201U);
+      "lastSlip", "MODES/ACCELERATION_PID/LAUNCH0/ACTIVE/RELEASE", 1, c1_vi, 1,
+      5, 0, 0, &chartInstance->c1_yg_SignalExportProp, "", 1174U);
   }
 
   chartInstance->c1_ah_SignalExportProp.logName = "";
-  chartInstance->c1_ah_SignalExportProp.signalName = "autoX_clutchValue";
+  chartInstance->c1_ah_SignalExportProp.signalName = "autoXCounter";
   chartInstance->c1_ah_SignalExportProp.useCustomName = 0;
   chartInstance->c1_ah_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_ah_SignalExportProp.decimate = 0;
@@ -4256,12 +4268,12 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_ah_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[77U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoX_clutchValue", "MODES/ACCELERATION_PID/LAUNCH1", 1, c1_wi, 1, 0, 0,
-      0, &chartInstance->c1_ah_SignalExportProp, "", 1202U);
+      "autoXCounter", "MODES/ACCELERATION_PID/LAUNCH1", 1, c1_wi, 1, 5, 0, 0,
+      &chartInstance->c1_ah_SignalExportProp, "", 1201U);
   }
 
   chartInstance->c1_bh_SignalExportProp.logName = "";
-  chartInstance->c1_bh_SignalExportProp.signalName = "autoX_clutchStep";
+  chartInstance->c1_bh_SignalExportProp.signalName = "autoX_clutchValue";
   chartInstance->c1_bh_SignalExportProp.useCustomName = 0;
   chartInstance->c1_bh_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_bh_SignalExportProp.decimate = 0;
@@ -4269,12 +4281,12 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_bh_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[78U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoX_clutchStep", "MODES/ACCELERATION_PID/LAUNCH1", 1, c1_xi, 1, 0, 0, 0,
-      &chartInstance->c1_bh_SignalExportProp, "", 1203U);
+      "autoX_clutchValue", "MODES/ACCELERATION_PID/LAUNCH1", 1, c1_xi, 1, 0, 0,
+      0, &chartInstance->c1_bh_SignalExportProp, "", 1202U);
   }
 
   chartInstance->c1_ch_SignalExportProp.logName = "";
-  chartInstance->c1_ch_SignalExportProp.signalName = "autoX_dtRelease";
+  chartInstance->c1_ch_SignalExportProp.signalName = "autoX_clutchStep";
   chartInstance->c1_ch_SignalExportProp.useCustomName = 0;
   chartInstance->c1_ch_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_ch_SignalExportProp.decimate = 0;
@@ -4282,12 +4294,12 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_ch_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[79U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoX_dtRelease", "MODES/ACCELERATION_PID/LAUNCH1", 1, c1_yi, 1, 6, 0, 0,
-      &chartInstance->c1_ch_SignalExportProp, "", 1204U);
+      "autoX_clutchStep", "MODES/ACCELERATION_PID/LAUNCH1", 1, c1_yi, 1, 0, 0, 0,
+      &chartInstance->c1_ch_SignalExportProp, "", 1203U);
   }
 
   chartInstance->c1_dh_SignalExportProp.logName = "";
-  chartInstance->c1_dh_SignalExportProp.signalName = "lastSlip";
+  chartInstance->c1_dh_SignalExportProp.signalName = "autoX_dtRelease";
   chartInstance->c1_dh_SignalExportProp.useCustomName = 0;
   chartInstance->c1_dh_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_dh_SignalExportProp.decimate = 0;
@@ -4295,25 +4307,25 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_dh_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[80U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "lastSlip", "MODES/ACCELERATION_PID/LAUNCH1/ACTIVE/RELEASE", 1, c1_aj, 1,
-      5, 0, 0, &chartInstance->c1_dh_SignalExportProp, "", 1225U);
+      "autoX_dtRelease", "MODES/ACCELERATION_PID/LAUNCH1", 1, c1_aj, 1, 6, 0, 0,
+      &chartInstance->c1_dh_SignalExportProp, "", 1204U);
   }
 
   chartInstance->c1_eh_SignalExportProp.logName = "";
-  chartInstance->c1_eh_SignalExportProp.signalName = "autoXCounter";
+  chartInstance->c1_eh_SignalExportProp.signalName = "lastSlip";
   chartInstance->c1_eh_SignalExportProp.useCustomName = 0;
   chartInstance->c1_eh_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_eh_SignalExportProp.decimate = 0;
   chartInstance->c1_eh_SignalExportProp.maxPoints = 5000U;
   chartInstance->c1_eh_SignalExportProp.decimation = 1U;
-  if (chartInstance->c1_sdiLoggedDataBuffer[88U]) {
+  if (chartInstance->c1_sdiLoggedDataBuffer[81U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoXCounter", "MODES/ACCELERATION_PID/LAUNCH2", 1, c1_bj, 1, 5, 0, 0,
-      &chartInstance->c1_eh_SignalExportProp, "", 1274U);
+      "lastSlip", "MODES/ACCELERATION_PID/LAUNCH1/ACTIVE/RELEASE", 1, c1_bj, 1,
+      5, 0, 0, &chartInstance->c1_eh_SignalExportProp, "", 1225U);
   }
 
   chartInstance->c1_fh_SignalExportProp.logName = "";
-  chartInstance->c1_fh_SignalExportProp.signalName = "autoX_clutchValue";
+  chartInstance->c1_fh_SignalExportProp.signalName = "autoXCounter";
   chartInstance->c1_fh_SignalExportProp.useCustomName = 0;
   chartInstance->c1_fh_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_fh_SignalExportProp.decimate = 0;
@@ -4321,12 +4333,12 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_fh_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[89U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoX_clutchValue", "MODES/ACCELERATION_PID/LAUNCH2", 1, c1_cj, 1, 0, 0,
-      0, &chartInstance->c1_fh_SignalExportProp, "", 1275U);
+      "autoXCounter", "MODES/ACCELERATION_PID/LAUNCH2", 1, c1_cj, 1, 5, 0, 0,
+      &chartInstance->c1_fh_SignalExportProp, "", 1274U);
   }
 
   chartInstance->c1_gh_SignalExportProp.logName = "";
-  chartInstance->c1_gh_SignalExportProp.signalName = "autoX_clutchStep";
+  chartInstance->c1_gh_SignalExportProp.signalName = "autoX_clutchValue";
   chartInstance->c1_gh_SignalExportProp.useCustomName = 0;
   chartInstance->c1_gh_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_gh_SignalExportProp.decimate = 0;
@@ -4334,12 +4346,12 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_gh_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[90U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoX_clutchStep", "MODES/ACCELERATION_PID/LAUNCH2", 1, c1_dj, 1, 0, 0, 0,
-      &chartInstance->c1_gh_SignalExportProp, "", 1276U);
+      "autoX_clutchValue", "MODES/ACCELERATION_PID/LAUNCH2", 1, c1_dj, 1, 0, 0,
+      0, &chartInstance->c1_gh_SignalExportProp, "", 1275U);
   }
 
   chartInstance->c1_hh_SignalExportProp.logName = "";
-  chartInstance->c1_hh_SignalExportProp.signalName = "autoX_dtRelease";
+  chartInstance->c1_hh_SignalExportProp.signalName = "autoX_clutchStep";
   chartInstance->c1_hh_SignalExportProp.useCustomName = 0;
   chartInstance->c1_hh_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_hh_SignalExportProp.decimate = 0;
@@ -4347,12 +4359,12 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_hh_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[91U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoX_dtRelease", "MODES/ACCELERATION_PID/LAUNCH2", 1, c1_ej, 1, 6, 0, 0,
-      &chartInstance->c1_hh_SignalExportProp, "", 1277U);
+      "autoX_clutchStep", "MODES/ACCELERATION_PID/LAUNCH2", 1, c1_ej, 1, 0, 0, 0,
+      &chartInstance->c1_hh_SignalExportProp, "", 1276U);
   }
 
   chartInstance->c1_ih_SignalExportProp.logName = "";
-  chartInstance->c1_ih_SignalExportProp.signalName = "lastSlip";
+  chartInstance->c1_ih_SignalExportProp.signalName = "autoX_dtRelease";
   chartInstance->c1_ih_SignalExportProp.useCustomName = 0;
   chartInstance->c1_ih_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_ih_SignalExportProp.decimate = 0;
@@ -4360,25 +4372,25 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_ih_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[92U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "lastSlip", "MODES/ACCELERATION_PID/LAUNCH2/ACTIVE/RELEASE", 1, c1_fj, 1,
-      5, 0, 0, &chartInstance->c1_ih_SignalExportProp, "", 1298U);
+      "autoX_dtRelease", "MODES/ACCELERATION_PID/LAUNCH2", 1, c1_fj, 1, 6, 0, 0,
+      &chartInstance->c1_ih_SignalExportProp, "", 1277U);
   }
 
   chartInstance->c1_jh_SignalExportProp.logName = "";
-  chartInstance->c1_jh_SignalExportProp.signalName = "autoXCounter";
+  chartInstance->c1_jh_SignalExportProp.signalName = "lastSlip";
   chartInstance->c1_jh_SignalExportProp.useCustomName = 0;
   chartInstance->c1_jh_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_jh_SignalExportProp.decimate = 0;
   chartInstance->c1_jh_SignalExportProp.maxPoints = 5000U;
   chartInstance->c1_jh_SignalExportProp.decimation = 1U;
-  if (chartInstance->c1_sdiLoggedDataBuffer[100U]) {
+  if (chartInstance->c1_sdiLoggedDataBuffer[93U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoXCounter", "MODES/ACCELERATION_PID/LAUNCH3", 1, c1_gj, 1, 5, 0, 0,
-      &chartInstance->c1_jh_SignalExportProp, "", 1346U);
+      "lastSlip", "MODES/ACCELERATION_PID/LAUNCH2/ACTIVE/RELEASE", 1, c1_gj, 1,
+      5, 0, 0, &chartInstance->c1_jh_SignalExportProp, "", 1298U);
   }
 
   chartInstance->c1_kh_SignalExportProp.logName = "";
-  chartInstance->c1_kh_SignalExportProp.signalName = "autoX_clutchValue";
+  chartInstance->c1_kh_SignalExportProp.signalName = "autoXCounter";
   chartInstance->c1_kh_SignalExportProp.useCustomName = 0;
   chartInstance->c1_kh_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_kh_SignalExportProp.decimate = 0;
@@ -4386,12 +4398,12 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_kh_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[101U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoX_clutchValue", "MODES/ACCELERATION_PID/LAUNCH3", 1, c1_hj, 1, 0, 0,
-      0, &chartInstance->c1_kh_SignalExportProp, "", 1347U);
+      "autoXCounter", "MODES/ACCELERATION_PID/LAUNCH3", 1, c1_hj, 1, 5, 0, 0,
+      &chartInstance->c1_kh_SignalExportProp, "", 1346U);
   }
 
   chartInstance->c1_lh_SignalExportProp.logName = "";
-  chartInstance->c1_lh_SignalExportProp.signalName = "autoX_clutchStep";
+  chartInstance->c1_lh_SignalExportProp.signalName = "autoX_clutchValue";
   chartInstance->c1_lh_SignalExportProp.useCustomName = 0;
   chartInstance->c1_lh_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_lh_SignalExportProp.decimate = 0;
@@ -4399,12 +4411,12 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_lh_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[102U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoX_clutchStep", "MODES/ACCELERATION_PID/LAUNCH3", 1, c1_ij, 1, 0, 0, 0,
-      &chartInstance->c1_lh_SignalExportProp, "", 1348U);
+      "autoX_clutchValue", "MODES/ACCELERATION_PID/LAUNCH3", 1, c1_ij, 1, 0, 0,
+      0, &chartInstance->c1_lh_SignalExportProp, "", 1347U);
   }
 
   chartInstance->c1_mh_SignalExportProp.logName = "";
-  chartInstance->c1_mh_SignalExportProp.signalName = "autoX_dtRelease";
+  chartInstance->c1_mh_SignalExportProp.signalName = "autoX_clutchStep";
   chartInstance->c1_mh_SignalExportProp.useCustomName = 0;
   chartInstance->c1_mh_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_mh_SignalExportProp.decimate = 0;
@@ -4412,12 +4424,12 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_mh_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[103U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoX_dtRelease", "MODES/ACCELERATION_PID/LAUNCH3", 1, c1_jj, 1, 6, 0, 0,
-      &chartInstance->c1_mh_SignalExportProp, "", 1349U);
+      "autoX_clutchStep", "MODES/ACCELERATION_PID/LAUNCH3", 1, c1_jj, 1, 0, 0, 0,
+      &chartInstance->c1_mh_SignalExportProp, "", 1348U);
   }
 
   chartInstance->c1_nh_SignalExportProp.logName = "";
-  chartInstance->c1_nh_SignalExportProp.signalName = "lastSlip";
+  chartInstance->c1_nh_SignalExportProp.signalName = "autoX_dtRelease";
   chartInstance->c1_nh_SignalExportProp.useCustomName = 0;
   chartInstance->c1_nh_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_nh_SignalExportProp.decimate = 0;
@@ -4425,25 +4437,25 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_nh_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[104U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "lastSlip", "MODES/ACCELERATION_PID/LAUNCH3/ACTIVE/RELEASE", 1, c1_kj, 1,
-      5, 0, 0, &chartInstance->c1_nh_SignalExportProp, "", 1370U);
+      "autoX_dtRelease", "MODES/ACCELERATION_PID/LAUNCH3", 1, c1_kj, 1, 6, 0, 0,
+      &chartInstance->c1_nh_SignalExportProp, "", 1349U);
   }
 
   chartInstance->c1_oh_SignalExportProp.logName = "";
-  chartInstance->c1_oh_SignalExportProp.signalName = "autoXCounter";
+  chartInstance->c1_oh_SignalExportProp.signalName = "lastSlip";
   chartInstance->c1_oh_SignalExportProp.useCustomName = 0;
   chartInstance->c1_oh_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_oh_SignalExportProp.decimate = 0;
   chartInstance->c1_oh_SignalExportProp.maxPoints = 5000U;
   chartInstance->c1_oh_SignalExportProp.decimation = 1U;
-  if (chartInstance->c1_sdiLoggedDataBuffer[112U]) {
+  if (chartInstance->c1_sdiLoggedDataBuffer[105U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoXCounter", "MODES/ACCELERATION_PID/LAUNCH4", 1, c1_lj, 1, 5, 0, 0,
-      &chartInstance->c1_oh_SignalExportProp, "", 1414U);
+      "lastSlip", "MODES/ACCELERATION_PID/LAUNCH3/ACTIVE/RELEASE", 1, c1_lj, 1,
+      5, 0, 0, &chartInstance->c1_oh_SignalExportProp, "", 1370U);
   }
 
   chartInstance->c1_ph_SignalExportProp.logName = "";
-  chartInstance->c1_ph_SignalExportProp.signalName = "autoX_clutchValue";
+  chartInstance->c1_ph_SignalExportProp.signalName = "autoXCounter";
   chartInstance->c1_ph_SignalExportProp.useCustomName = 0;
   chartInstance->c1_ph_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_ph_SignalExportProp.decimate = 0;
@@ -4451,12 +4463,12 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_ph_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[113U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoX_clutchValue", "MODES/ACCELERATION_PID/LAUNCH4", 1, c1_mj, 1, 0, 0,
-      0, &chartInstance->c1_ph_SignalExportProp, "", 1415U);
+      "autoXCounter", "MODES/ACCELERATION_PID/LAUNCH4", 1, c1_mj, 1, 5, 0, 0,
+      &chartInstance->c1_ph_SignalExportProp, "", 1414U);
   }
 
   chartInstance->c1_qh_SignalExportProp.logName = "";
-  chartInstance->c1_qh_SignalExportProp.signalName = "autoX_clutchStep";
+  chartInstance->c1_qh_SignalExportProp.signalName = "autoX_clutchValue";
   chartInstance->c1_qh_SignalExportProp.useCustomName = 0;
   chartInstance->c1_qh_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_qh_SignalExportProp.decimate = 0;
@@ -4464,12 +4476,12 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_qh_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[114U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoX_clutchStep", "MODES/ACCELERATION_PID/LAUNCH4", 1, c1_nj, 1, 0, 0, 0,
-      &chartInstance->c1_qh_SignalExportProp, "", 1416U);
+      "autoX_clutchValue", "MODES/ACCELERATION_PID/LAUNCH4", 1, c1_nj, 1, 0, 0,
+      0, &chartInstance->c1_qh_SignalExportProp, "", 1415U);
   }
 
   chartInstance->c1_rh_SignalExportProp.logName = "";
-  chartInstance->c1_rh_SignalExportProp.signalName = "autoX_dtRelease";
+  chartInstance->c1_rh_SignalExportProp.signalName = "autoX_clutchStep";
   chartInstance->c1_rh_SignalExportProp.useCustomName = 0;
   chartInstance->c1_rh_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_rh_SignalExportProp.decimate = 0;
@@ -4477,12 +4489,12 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_rh_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[115U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoX_dtRelease", "MODES/ACCELERATION_PID/LAUNCH4", 1, c1_oj, 1, 6, 0, 0,
-      &chartInstance->c1_rh_SignalExportProp, "", 1417U);
+      "autoX_clutchStep", "MODES/ACCELERATION_PID/LAUNCH4", 1, c1_oj, 1, 0, 0, 0,
+      &chartInstance->c1_rh_SignalExportProp, "", 1416U);
   }
 
   chartInstance->c1_sh_SignalExportProp.logName = "";
-  chartInstance->c1_sh_SignalExportProp.signalName = "lastSlip";
+  chartInstance->c1_sh_SignalExportProp.signalName = "autoX_dtRelease";
   chartInstance->c1_sh_SignalExportProp.useCustomName = 0;
   chartInstance->c1_sh_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_sh_SignalExportProp.decimate = 0;
@@ -4490,25 +4502,25 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_sh_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[116U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "lastSlip", "MODES/ACCELERATION_PID/LAUNCH4/ACTIVE/RELEASE", 1, c1_pj, 1,
-      5, 0, 0, &chartInstance->c1_sh_SignalExportProp, "", 1438U);
+      "autoX_dtRelease", "MODES/ACCELERATION_PID/LAUNCH4", 1, c1_pj, 1, 6, 0, 0,
+      &chartInstance->c1_sh_SignalExportProp, "", 1417U);
   }
 
   chartInstance->c1_th_SignalExportProp.logName = "";
-  chartInstance->c1_th_SignalExportProp.signalName = "autoXCounter";
+  chartInstance->c1_th_SignalExportProp.signalName = "lastSlip";
   chartInstance->c1_th_SignalExportProp.useCustomName = 0;
   chartInstance->c1_th_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_th_SignalExportProp.decimate = 0;
   chartInstance->c1_th_SignalExportProp.maxPoints = 5000U;
   chartInstance->c1_th_SignalExportProp.decimation = 1U;
-  if (chartInstance->c1_sdiLoggedDataBuffer[124U]) {
+  if (chartInstance->c1_sdiLoggedDataBuffer[117U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoXCounter", "MODES/ACCELERATION_PID/LAUNCH5", 1, c1_qj, 1, 5, 0, 0,
-      &chartInstance->c1_th_SignalExportProp, "", 1482U);
+      "lastSlip", "MODES/ACCELERATION_PID/LAUNCH4/ACTIVE/RELEASE", 1, c1_qj, 1,
+      5, 0, 0, &chartInstance->c1_th_SignalExportProp, "", 1438U);
   }
 
   chartInstance->c1_uh_SignalExportProp.logName = "";
-  chartInstance->c1_uh_SignalExportProp.signalName = "autoX_clutchValue";
+  chartInstance->c1_uh_SignalExportProp.signalName = "autoXCounter";
   chartInstance->c1_uh_SignalExportProp.useCustomName = 0;
   chartInstance->c1_uh_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_uh_SignalExportProp.decimate = 0;
@@ -4516,12 +4528,12 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_uh_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[125U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoX_clutchValue", "MODES/ACCELERATION_PID/LAUNCH5", 1, c1_rj, 1, 0, 0,
-      0, &chartInstance->c1_uh_SignalExportProp, "", 1483U);
+      "autoXCounter", "MODES/ACCELERATION_PID/LAUNCH5", 1, c1_rj, 1, 5, 0, 0,
+      &chartInstance->c1_uh_SignalExportProp, "", 1482U);
   }
 
   chartInstance->c1_vh_SignalExportProp.logName = "";
-  chartInstance->c1_vh_SignalExportProp.signalName = "autoX_clutchStep";
+  chartInstance->c1_vh_SignalExportProp.signalName = "autoX_clutchValue";
   chartInstance->c1_vh_SignalExportProp.useCustomName = 0;
   chartInstance->c1_vh_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_vh_SignalExportProp.decimate = 0;
@@ -4529,12 +4541,12 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_vh_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[126U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoX_clutchStep", "MODES/ACCELERATION_PID/LAUNCH5", 1, c1_sj, 1, 0, 0, 0,
-      &chartInstance->c1_vh_SignalExportProp, "", 1484U);
+      "autoX_clutchValue", "MODES/ACCELERATION_PID/LAUNCH5", 1, c1_sj, 1, 0, 0,
+      0, &chartInstance->c1_vh_SignalExportProp, "", 1483U);
   }
 
   chartInstance->c1_wh_SignalExportProp.logName = "";
-  chartInstance->c1_wh_SignalExportProp.signalName = "autoX_dtRelease";
+  chartInstance->c1_wh_SignalExportProp.signalName = "autoX_clutchStep";
   chartInstance->c1_wh_SignalExportProp.useCustomName = 0;
   chartInstance->c1_wh_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_wh_SignalExportProp.decimate = 0;
@@ -4542,12 +4554,12 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_wh_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[127U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoX_dtRelease", "MODES/ACCELERATION_PID/LAUNCH5", 1, c1_tj, 1, 6, 0, 0,
-      &chartInstance->c1_wh_SignalExportProp, "", 1485U);
+      "autoX_clutchStep", "MODES/ACCELERATION_PID/LAUNCH5", 1, c1_tj, 1, 0, 0, 0,
+      &chartInstance->c1_wh_SignalExportProp, "", 1484U);
   }
 
   chartInstance->c1_xh_SignalExportProp.logName = "";
-  chartInstance->c1_xh_SignalExportProp.signalName = "lastSlip";
+  chartInstance->c1_xh_SignalExportProp.signalName = "autoX_dtRelease";
   chartInstance->c1_xh_SignalExportProp.useCustomName = 0;
   chartInstance->c1_xh_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_xh_SignalExportProp.decimate = 0;
@@ -4555,25 +4567,25 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_xh_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[128U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "lastSlip", "MODES/ACCELERATION_PID/LAUNCH5/ACTIVE/RELEASE", 1, c1_uj, 1,
-      5, 0, 0, &chartInstance->c1_xh_SignalExportProp, "", 1506U);
+      "autoX_dtRelease", "MODES/ACCELERATION_PID/LAUNCH5", 1, c1_uj, 1, 6, 0, 0,
+      &chartInstance->c1_xh_SignalExportProp, "", 1485U);
   }
 
   chartInstance->c1_yh_SignalExportProp.logName = "";
-  chartInstance->c1_yh_SignalExportProp.signalName = "autoXCounter";
+  chartInstance->c1_yh_SignalExportProp.signalName = "lastSlip";
   chartInstance->c1_yh_SignalExportProp.useCustomName = 0;
   chartInstance->c1_yh_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_yh_SignalExportProp.decimate = 0;
   chartInstance->c1_yh_SignalExportProp.maxPoints = 5000U;
   chartInstance->c1_yh_SignalExportProp.decimation = 1U;
-  if (chartInstance->c1_sdiLoggedDataBuffer[136U]) {
+  if (chartInstance->c1_sdiLoggedDataBuffer[129U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoXCounter", "MODES/ACCELERATION_PID/LAUNCH6", 1, c1_vj, 1, 5, 0, 0,
-      &chartInstance->c1_yh_SignalExportProp, "", 1550U);
+      "lastSlip", "MODES/ACCELERATION_PID/LAUNCH5/ACTIVE/RELEASE", 1, c1_vj, 1,
+      5, 0, 0, &chartInstance->c1_yh_SignalExportProp, "", 1506U);
   }
 
   chartInstance->c1_ai_SignalExportProp.logName = "";
-  chartInstance->c1_ai_SignalExportProp.signalName = "autoX_clutchValue";
+  chartInstance->c1_ai_SignalExportProp.signalName = "autoXCounter";
   chartInstance->c1_ai_SignalExportProp.useCustomName = 0;
   chartInstance->c1_ai_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_ai_SignalExportProp.decimate = 0;
@@ -4581,12 +4593,12 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_ai_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[137U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoX_clutchValue", "MODES/ACCELERATION_PID/LAUNCH6", 1, c1_wj, 1, 0, 0,
-      0, &chartInstance->c1_ai_SignalExportProp, "", 1551U);
+      "autoXCounter", "MODES/ACCELERATION_PID/LAUNCH6", 1, c1_wj, 1, 5, 0, 0,
+      &chartInstance->c1_ai_SignalExportProp, "", 1550U);
   }
 
   chartInstance->c1_bi_SignalExportProp.logName = "";
-  chartInstance->c1_bi_SignalExportProp.signalName = "autoX_clutchStep";
+  chartInstance->c1_bi_SignalExportProp.signalName = "autoX_clutchValue";
   chartInstance->c1_bi_SignalExportProp.useCustomName = 0;
   chartInstance->c1_bi_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_bi_SignalExportProp.decimate = 0;
@@ -4594,12 +4606,12 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_bi_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[138U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoX_clutchStep", "MODES/ACCELERATION_PID/LAUNCH6", 1, c1_xj, 1, 0, 0, 0,
-      &chartInstance->c1_bi_SignalExportProp, "", 1552U);
+      "autoX_clutchValue", "MODES/ACCELERATION_PID/LAUNCH6", 1, c1_xj, 1, 0, 0,
+      0, &chartInstance->c1_bi_SignalExportProp, "", 1551U);
   }
 
   chartInstance->c1_ci_SignalExportProp.logName = "";
-  chartInstance->c1_ci_SignalExportProp.signalName = "autoX_dtRelease";
+  chartInstance->c1_ci_SignalExportProp.signalName = "autoX_clutchStep";
   chartInstance->c1_ci_SignalExportProp.useCustomName = 0;
   chartInstance->c1_ci_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_ci_SignalExportProp.decimate = 0;
@@ -4607,12 +4619,12 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_ci_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[139U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoX_dtRelease", "MODES/ACCELERATION_PID/LAUNCH6", 1, c1_yj, 1, 6, 0, 0,
-      &chartInstance->c1_ci_SignalExportProp, "", 1553U);
+      "autoX_clutchStep", "MODES/ACCELERATION_PID/LAUNCH6", 1, c1_yj, 1, 0, 0, 0,
+      &chartInstance->c1_ci_SignalExportProp, "", 1552U);
   }
 
   chartInstance->c1_di_SignalExportProp.logName = "";
-  chartInstance->c1_di_SignalExportProp.signalName = "lastSlip";
+  chartInstance->c1_di_SignalExportProp.signalName = "autoX_dtRelease";
   chartInstance->c1_di_SignalExportProp.useCustomName = 0;
   chartInstance->c1_di_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_di_SignalExportProp.decimate = 0;
@@ -4620,25 +4632,25 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_di_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[140U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "lastSlip", "MODES/ACCELERATION_PID/LAUNCH6/ACTIVE/RELEASE", 1, c1_ak, 1,
-      5, 0, 0, &chartInstance->c1_di_SignalExportProp, "", 1574U);
+      "autoX_dtRelease", "MODES/ACCELERATION_PID/LAUNCH6", 1, c1_ak, 1, 6, 0, 0,
+      &chartInstance->c1_di_SignalExportProp, "", 1553U);
   }
 
   chartInstance->c1_ei_SignalExportProp.logName = "";
-  chartInstance->c1_ei_SignalExportProp.signalName = "autoXCounter";
+  chartInstance->c1_ei_SignalExportProp.signalName = "lastSlip";
   chartInstance->c1_ei_SignalExportProp.useCustomName = 0;
   chartInstance->c1_ei_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_ei_SignalExportProp.decimate = 0;
   chartInstance->c1_ei_SignalExportProp.maxPoints = 5000U;
   chartInstance->c1_ei_SignalExportProp.decimation = 1U;
-  if (chartInstance->c1_sdiLoggedDataBuffer[148U]) {
+  if (chartInstance->c1_sdiLoggedDataBuffer[141U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoXCounter", "MODES/ACCELERATION_PID/LAUNCH7", 1, c1_bk, 1, 5, 0, 0,
-      &chartInstance->c1_ei_SignalExportProp, "", 1618U);
+      "lastSlip", "MODES/ACCELERATION_PID/LAUNCH6/ACTIVE/RELEASE", 1, c1_bk, 1,
+      5, 0, 0, &chartInstance->c1_ei_SignalExportProp, "", 1574U);
   }
 
   chartInstance->c1_fi_SignalExportProp.logName = "";
-  chartInstance->c1_fi_SignalExportProp.signalName = "autoX_clutchValue";
+  chartInstance->c1_fi_SignalExportProp.signalName = "autoXCounter";
   chartInstance->c1_fi_SignalExportProp.useCustomName = 0;
   chartInstance->c1_fi_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_fi_SignalExportProp.decimate = 0;
@@ -4646,12 +4658,12 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_fi_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[149U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoX_clutchValue", "MODES/ACCELERATION_PID/LAUNCH7", 1, c1_ck, 1, 0, 0,
-      0, &chartInstance->c1_fi_SignalExportProp, "", 1619U);
+      "autoXCounter", "MODES/ACCELERATION_PID/LAUNCH7", 1, c1_ck, 1, 5, 0, 0,
+      &chartInstance->c1_fi_SignalExportProp, "", 1618U);
   }
 
   chartInstance->c1_gi_SignalExportProp.logName = "";
-  chartInstance->c1_gi_SignalExportProp.signalName = "autoX_clutchStep";
+  chartInstance->c1_gi_SignalExportProp.signalName = "autoX_clutchValue";
   chartInstance->c1_gi_SignalExportProp.useCustomName = 0;
   chartInstance->c1_gi_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_gi_SignalExportProp.decimate = 0;
@@ -4659,12 +4671,12 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_gi_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[150U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoX_clutchStep", "MODES/ACCELERATION_PID/LAUNCH7", 1, c1_dk, 1, 0, 0, 0,
-      &chartInstance->c1_gi_SignalExportProp, "", 1620U);
+      "autoX_clutchValue", "MODES/ACCELERATION_PID/LAUNCH7", 1, c1_dk, 1, 0, 0,
+      0, &chartInstance->c1_gi_SignalExportProp, "", 1619U);
   }
 
   chartInstance->c1_hi_SignalExportProp.logName = "";
-  chartInstance->c1_hi_SignalExportProp.signalName = "autoX_dtRelease";
+  chartInstance->c1_hi_SignalExportProp.signalName = "autoX_clutchStep";
   chartInstance->c1_hi_SignalExportProp.useCustomName = 0;
   chartInstance->c1_hi_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_hi_SignalExportProp.decimate = 0;
@@ -4672,12 +4684,12 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_hi_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[151U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoX_dtRelease", "MODES/ACCELERATION_PID/LAUNCH7", 1, c1_ek, 1, 6, 0, 0,
-      &chartInstance->c1_hi_SignalExportProp, "", 1621U);
+      "autoX_clutchStep", "MODES/ACCELERATION_PID/LAUNCH7", 1, c1_ek, 1, 0, 0, 0,
+      &chartInstance->c1_hi_SignalExportProp, "", 1620U);
   }
 
   chartInstance->c1_ii_SignalExportProp.logName = "";
-  chartInstance->c1_ii_SignalExportProp.signalName = "lastSlip";
+  chartInstance->c1_ii_SignalExportProp.signalName = "autoX_dtRelease";
   chartInstance->c1_ii_SignalExportProp.useCustomName = 0;
   chartInstance->c1_ii_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_ii_SignalExportProp.decimate = 0;
@@ -4685,25 +4697,25 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_ii_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[152U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "lastSlip", "MODES/ACCELERATION_PID/LAUNCH7/ACTIVE/RELEASE", 1, c1_fk, 1,
-      5, 0, 0, &chartInstance->c1_ii_SignalExportProp, "", 1642U);
+      "autoX_dtRelease", "MODES/ACCELERATION_PID/LAUNCH7", 1, c1_fk, 1, 6, 0, 0,
+      &chartInstance->c1_ii_SignalExportProp, "", 1621U);
   }
 
   chartInstance->c1_ji_SignalExportProp.logName = "";
-  chartInstance->c1_ji_SignalExportProp.signalName = "autoXCounter";
+  chartInstance->c1_ji_SignalExportProp.signalName = "lastSlip";
   chartInstance->c1_ji_SignalExportProp.useCustomName = 0;
   chartInstance->c1_ji_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_ji_SignalExportProp.decimate = 0;
   chartInstance->c1_ji_SignalExportProp.maxPoints = 5000U;
   chartInstance->c1_ji_SignalExportProp.decimation = 1U;
-  if (chartInstance->c1_sdiLoggedDataBuffer[160U]) {
+  if (chartInstance->c1_sdiLoggedDataBuffer[153U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoXCounter", "MODES/ACCELERATION_PID/LAUNCH8", 1, c1_gk, 1, 5, 0, 0,
-      &chartInstance->c1_ji_SignalExportProp, "", 1686U);
+      "lastSlip", "MODES/ACCELERATION_PID/LAUNCH7/ACTIVE/RELEASE", 1, c1_gk, 1,
+      5, 0, 0, &chartInstance->c1_ji_SignalExportProp, "", 1642U);
   }
 
   chartInstance->c1_ki_SignalExportProp.logName = "";
-  chartInstance->c1_ki_SignalExportProp.signalName = "autoX_clutchValue";
+  chartInstance->c1_ki_SignalExportProp.signalName = "autoXCounter";
   chartInstance->c1_ki_SignalExportProp.useCustomName = 0;
   chartInstance->c1_ki_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_ki_SignalExportProp.decimate = 0;
@@ -4711,12 +4723,12 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_ki_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[161U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoX_clutchValue", "MODES/ACCELERATION_PID/LAUNCH8", 1, c1_hk, 1, 0, 0,
-      0, &chartInstance->c1_ki_SignalExportProp, "", 1687U);
+      "autoXCounter", "MODES/ACCELERATION_PID/LAUNCH8", 1, c1_hk, 1, 5, 0, 0,
+      &chartInstance->c1_ki_SignalExportProp, "", 1686U);
   }
 
   chartInstance->c1_li_SignalExportProp.logName = "";
-  chartInstance->c1_li_SignalExportProp.signalName = "autoX_clutchStep";
+  chartInstance->c1_li_SignalExportProp.signalName = "autoX_clutchValue";
   chartInstance->c1_li_SignalExportProp.useCustomName = 0;
   chartInstance->c1_li_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_li_SignalExportProp.decimate = 0;
@@ -4724,12 +4736,12 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_li_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[162U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoX_clutchStep", "MODES/ACCELERATION_PID/LAUNCH8", 1, c1_ik, 1, 0, 0, 0,
-      &chartInstance->c1_li_SignalExportProp, "", 1688U);
+      "autoX_clutchValue", "MODES/ACCELERATION_PID/LAUNCH8", 1, c1_ik, 1, 0, 0,
+      0, &chartInstance->c1_li_SignalExportProp, "", 1687U);
   }
 
   chartInstance->c1_mi_SignalExportProp.logName = "";
-  chartInstance->c1_mi_SignalExportProp.signalName = "autoX_dtRelease";
+  chartInstance->c1_mi_SignalExportProp.signalName = "autoX_clutchStep";
   chartInstance->c1_mi_SignalExportProp.useCustomName = 0;
   chartInstance->c1_mi_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_mi_SignalExportProp.decimate = 0;
@@ -4737,12 +4749,12 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_mi_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[163U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "autoX_dtRelease", "MODES/ACCELERATION_PID/LAUNCH8", 1, c1_jk, 1, 6, 0, 0,
-      &chartInstance->c1_mi_SignalExportProp, "", 1689U);
+      "autoX_clutchStep", "MODES/ACCELERATION_PID/LAUNCH8", 1, c1_jk, 1, 0, 0, 0,
+      &chartInstance->c1_mi_SignalExportProp, "", 1688U);
   }
 
   chartInstance->c1_ni_SignalExportProp.logName = "";
-  chartInstance->c1_ni_SignalExportProp.signalName = "lastSlip";
+  chartInstance->c1_ni_SignalExportProp.signalName = "autoX_dtRelease";
   chartInstance->c1_ni_SignalExportProp.useCustomName = 0;
   chartInstance->c1_ni_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_ni_SignalExportProp.decimate = 0;
@@ -4750,38 +4762,38 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_ni_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[164U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "lastSlip", "MODES/ACCELERATION_PID/LAUNCH8/ACTIVE/RELEASE", 1, c1_kk, 1,
-      5, 0, 0, &chartInstance->c1_ni_SignalExportProp, "", 1710U);
+      "autoX_dtRelease", "MODES/ACCELERATION_PID/LAUNCH8", 1, c1_kk, 1, 6, 0, 0,
+      &chartInstance->c1_ni_SignalExportProp, "", 1689U);
   }
 
   chartInstance->c1_oi_SignalExportProp.logName = "";
-  chartInstance->c1_oi_SignalExportProp.signalName = "ticksCounter";
+  chartInstance->c1_oi_SignalExportProp.signalName = "lastSlip";
   chartInstance->c1_oi_SignalExportProp.useCustomName = 0;
   chartInstance->c1_oi_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_oi_SignalExportProp.decimate = 0;
   chartInstance->c1_oi_SignalExportProp.maxPoints = 5000U;
   chartInstance->c1_oi_SignalExportProp.decimation = 1U;
-  if (chartInstance->c1_sdiLoggedDataBuffer[171U]) {
+  if (chartInstance->c1_sdiLoggedDataBuffer[165U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "ticksCounter", "GEARSHIFT", 1, c1_lk, 1, 6, 0, 0,
-      &chartInstance->c1_oi_SignalExportProp, "", 45U);
+      "lastSlip", "MODES/ACCELERATION_PID/LAUNCH8/ACTIVE/RELEASE", 1, c1_lk, 1,
+      5, 0, 0, &chartInstance->c1_oi_SignalExportProp, "", 1710U);
   }
 
   chartInstance->c1_pi_SignalExportProp.logName = "";
-  chartInstance->c1_pi_SignalExportProp.signalName = "counterWait";
+  chartInstance->c1_pi_SignalExportProp.signalName = "ticksCounter";
   chartInstance->c1_pi_SignalExportProp.useCustomName = 0;
   chartInstance->c1_pi_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_pi_SignalExportProp.decimate = 0;
   chartInstance->c1_pi_SignalExportProp.maxPoints = 5000U;
   chartInstance->c1_pi_SignalExportProp.decimation = 1U;
-  if (chartInstance->c1_sdiLoggedDataBuffer[175U]) {
+  if (chartInstance->c1_sdiLoggedDataBuffer[172U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "counterWait", "EEPROM_TRIGGER", 1, c1_mk, 1, 0, 0, 0,
-      &chartInstance->c1_pi_SignalExportProp, "", 950U);
+      "ticksCounter", "GEARSHIFT", 1, c1_mk, 1, 6, 0, 0,
+      &chartInstance->c1_pi_SignalExportProp, "", 45U);
   }
 
   chartInstance->c1_qi_SignalExportProp.logName = "";
-  chartInstance->c1_qi_SignalExportProp.signalName = "lastCom";
+  chartInstance->c1_qi_SignalExportProp.signalName = "counterWait";
   chartInstance->c1_qi_SignalExportProp.useCustomName = 0;
   chartInstance->c1_qi_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_qi_SignalExportProp.decimate = 0;
@@ -4789,12 +4801,12 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_qi_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[176U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "lastCom", "START_ENGINE", 1, c1_nk, 1, 3, 0, 0,
-      &chartInstance->c1_qi_SignalExportProp, "", 484U);
+      "counterWait", "EEPROM_TRIGGER", 1, c1_nk, 1, 0, 0, 0,
+      &chartInstance->c1_qi_SignalExportProp, "", 950U);
   }
 
   chartInstance->c1_ri_SignalExportProp.logName = "";
-  chartInstance->c1_ri_SignalExportProp.signalName = "startCounter";
+  chartInstance->c1_ri_SignalExportProp.signalName = "lastCom";
   chartInstance->c1_ri_SignalExportProp.useCustomName = 0;
   chartInstance->c1_ri_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_ri_SignalExportProp.decimate = 0;
@@ -4802,12 +4814,12 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_ri_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[177U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "startCounter", "START_ENGINE", 1, c1_ok, 1, 3, 0, 0,
-      &chartInstance->c1_ri_SignalExportProp, "", 488U);
+      "lastCom", "START_ENGINE", 1, c1_ok, 1, 3, 0, 0,
+      &chartInstance->c1_ri_SignalExportProp, "", 484U);
   }
 
   chartInstance->c1_si_SignalExportProp.logName = "";
-  chartInstance->c1_si_SignalExportProp.signalName = "timerCounter";
+  chartInstance->c1_si_SignalExportProp.signalName = "startCounter";
   chartInstance->c1_si_SignalExportProp.useCustomName = 0;
   chartInstance->c1_si_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_si_SignalExportProp.decimate = 0;
@@ -4815,12 +4827,12 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_si_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[178U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "timerCounter", "SCAN_ADC", 1, c1_pk, 1, 5, 0, 0,
-      &chartInstance->c1_si_SignalExportProp, "", 938U);
+      "startCounter", "START_ENGINE", 1, c1_pk, 1, 3, 0, 0,
+      &chartInstance->c1_si_SignalExportProp, "", 488U);
   }
 
   chartInstance->c1_ti_SignalExportProp.logName = "";
-  chartInstance->c1_ti_SignalExportProp.signalName = "counterWait";
+  chartInstance->c1_ti_SignalExportProp.signalName = "timerCounter";
   chartInstance->c1_ti_SignalExportProp.useCustomName = 0;
   chartInstance->c1_ti_SignalExportProp.limitDataPoints = 0;
   chartInstance->c1_ti_SignalExportProp.decimate = 0;
@@ -4828,8 +4840,21 @@ static void c1_sdiInitialize(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   chartInstance->c1_ti_SignalExportProp.decimation = 1U;
   if (chartInstance->c1_sdiLoggedDataBuffer[179U]) {
     sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
-      "counterWait", "ANTISTALL_ENABLE", 1, c1_qk, 1, 0, 0, 0,
-      &chartInstance->c1_ti_SignalExportProp, "", 1068U);
+      "timerCounter", "SCAN_ADC", 1, c1_qk, 1, 5, 0, 0,
+      &chartInstance->c1_ti_SignalExportProp, "", 938U);
+  }
+
+  chartInstance->c1_ui_SignalExportProp.logName = "";
+  chartInstance->c1_ui_SignalExportProp.signalName = "counterWait";
+  chartInstance->c1_ui_SignalExportProp.useCustomName = 0;
+  chartInstance->c1_ui_SignalExportProp.limitDataPoints = 0;
+  chartInstance->c1_ui_SignalExportProp.decimate = 0;
+  chartInstance->c1_ui_SignalExportProp.maxPoints = 5000U;
+  chartInstance->c1_ui_SignalExportProp.decimation = 1U;
+  if (chartInstance->c1_sdiLoggedDataBuffer[180U]) {
+    sdi_register_builtin_data_type_signal(&chartInstance->c1_sdiBlockInfo,
+      "counterWait", "ANTISTALL_ENABLE", 1, c1_rk, 1, 0, 0, 0,
+      &chartInstance->c1_ui_SignalExportProp, "", 1068U);
   }
 }
 
@@ -5750,70 +5775,70 @@ static void initialize_c1_GCU_Model_genCode(SFc1_GCU_Model_genCodeInstanceStruct
   chartInstance->c1_b_counterWait = 0.0;
   _SFD_DATA_RANGE_CHECK(chartInstance->c1_b_counterWait, 62U);
   chartInstance->c1_GEAR_COMMAND_NEUTRAL_UP = 50U;
-  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_GEAR_COMMAND_NEUTRAL_UP, 90U);
+  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_GEAR_COMMAND_NEUTRAL_UP, 91U);
   chartInstance->c1_GEAR_COMMAND_NEUTRAL_DOWN = 100U;
-  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_GEAR_COMMAND_NEUTRAL_DOWN, 89U);
+  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_GEAR_COMMAND_NEUTRAL_DOWN, 90U);
   chartInstance->c1_GEAR_COMMAND_UP = 400U;
-  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_GEAR_COMMAND_UP, 91U);
+  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_GEAR_COMMAND_UP, 92U);
   chartInstance->c1_GEAR_COMMAND_DOWN = 200U;
-  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_GEAR_COMMAND_DOWN, 88U);
+  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_GEAR_COMMAND_DOWN, 89U);
   chartInstance->c1_b_GEAR_COMMAND_NEUTRAL_UP = 50U;
-  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_b_GEAR_COMMAND_NEUTRAL_UP, 94U);
+  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_b_GEAR_COMMAND_NEUTRAL_UP, 95U);
   chartInstance->c1_b_GEAR_COMMAND_NEUTRAL_DOWN = 100U;
   _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_b_GEAR_COMMAND_NEUTRAL_DOWN,
-                        93U);
+                        94U);
   chartInstance->c1_b_GEAR_COMMAND_UP = 400U;
-  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_b_GEAR_COMMAND_UP, 95U);
+  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_b_GEAR_COMMAND_UP, 96U);
   chartInstance->c1_b_GEAR_COMMAND_DOWN = 200U;
-  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_b_GEAR_COMMAND_DOWN, 92U);
+  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_b_GEAR_COMMAND_DOWN, 93U);
   chartInstance->c1_AAC_WORK_RATE_ms = 25U;
-  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_AAC_WORK_RATE_ms, 96U);
+  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_AAC_WORK_RATE_ms, 97U);
   chartInstance->c1_DEF_RAMP_START = 50;
-  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_DEF_RAMP_START, 99U);
+  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_DEF_RAMP_START, 100U);
   chartInstance->c1_DEF_RAMP_END = 0;
-  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_DEF_RAMP_END, 98U);
+  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_DEF_RAMP_END, 99U);
   chartInstance->c1_DEF_RAMP_TIME = 250;
-  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_DEF_RAMP_TIME, 100U);
+  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_DEF_RAMP_TIME, 101U);
   chartInstance->c1_DEF_RPM_LIMIT_1_2 = 11000;
-  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_DEF_RPM_LIMIT_1_2, 101U);
+  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_DEF_RPM_LIMIT_1_2, 102U);
   chartInstance->c1_DEF_RPM_LIMIT_2_3 = 11000;
-  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_DEF_RPM_LIMIT_2_3, 102U);
+  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_DEF_RPM_LIMIT_2_3, 103U);
   chartInstance->c1_DEF_RPM_LIMIT_3_4 = 11000;
-  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_DEF_RPM_LIMIT_3_4, 103U);
+  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_DEF_RPM_LIMIT_3_4, 104U);
   chartInstance->c1_DEF_RPM_LIMIT_4_5 = 11000;
-  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_DEF_RPM_LIMIT_4_5, 104U);
+  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_DEF_RPM_LIMIT_4_5, 105U);
   chartInstance->c1_DEF_SPEED_LIMIT_1_2 = 46;
-  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_DEF_SPEED_LIMIT_1_2, 105U);
+  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_DEF_SPEED_LIMIT_1_2, 106U);
   chartInstance->c1_DEF_SPEED_LIMIT_2_3 = 61;
-  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_DEF_SPEED_LIMIT_2_3, 106U);
+  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_DEF_SPEED_LIMIT_2_3, 107U);
   chartInstance->c1_DEF_SPEED_LIMIT_3_4 = 77;
-  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_DEF_SPEED_LIMIT_3_4, 107U);
+  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_DEF_SPEED_LIMIT_3_4, 108U);
   chartInstance->c1_DEF_SPEED_LIMIT_4_5 = 113;
-  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_DEF_SPEED_LIMIT_4_5, 108U);
+  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_DEF_SPEED_LIMIT_4_5, 109U);
   chartInstance->c1_ACC_CODE = 1U;
-  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_ACC_CODE, 97U);
+  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_ACC_CODE, 98U);
   chartInstance->c1_AUTOX_WORK_RATE_ms = 25U;
-  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_AUTOX_WORK_RATE_ms, 109U);
+  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_AUTOX_WORK_RATE_ms, 110U);
   chartInstance->c1_b_AUTOX_WORK_RATE_ms = 25U;
-  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_b_AUTOX_WORK_RATE_ms, 110U);
+  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_b_AUTOX_WORK_RATE_ms, 111U);
   chartInstance->c1_c_AUTOX_WORK_RATE_ms = 25U;
-  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_c_AUTOX_WORK_RATE_ms, 111U);
+  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_c_AUTOX_WORK_RATE_ms, 112U);
   chartInstance->c1_d_AUTOX_WORK_RATE_ms = 25U;
-  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_d_AUTOX_WORK_RATE_ms, 112U);
+  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_d_AUTOX_WORK_RATE_ms, 113U);
   chartInstance->c1_e_AUTOX_WORK_RATE_ms = 25U;
-  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_e_AUTOX_WORK_RATE_ms, 113U);
+  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_e_AUTOX_WORK_RATE_ms, 114U);
   chartInstance->c1_f_AUTOX_WORK_RATE_ms = 25U;
-  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_f_AUTOX_WORK_RATE_ms, 114U);
+  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_f_AUTOX_WORK_RATE_ms, 115U);
   chartInstance->c1_g_AUTOX_WORK_RATE_ms = 25U;
-  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_g_AUTOX_WORK_RATE_ms, 115U);
+  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_g_AUTOX_WORK_RATE_ms, 116U);
   chartInstance->c1_h_AUTOX_WORK_RATE_ms = 25U;
-  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_h_AUTOX_WORK_RATE_ms, 116U);
+  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_h_AUTOX_WORK_RATE_ms, 117U);
   chartInstance->c1_i_AUTOX_WORK_RATE_ms = 25U;
-  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_i_AUTOX_WORK_RATE_ms, 117U);
+  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_i_AUTOX_WORK_RATE_ms, 118U);
   chartInstance->c1_j_AUTOX_WORK_RATE_ms = 25U;
-  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_j_AUTOX_WORK_RATE_ms, 118U);
+  _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_j_AUTOX_WORK_RATE_ms, 119U);
   chartInstance->c1_data = 0.0;
-  _SFD_DATA_RANGE_CHECK(chartInstance->c1_data, 119U);
+  _SFD_DATA_RANGE_CHECK(chartInstance->c1_data, 120U);
   if (!(sf_get_output_port_reusable(chartInstance->S, 1) != 0)) {
     *chartInstance->c1_clutchCurrVal = 0U;
     c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 0, 123U, (void *)
@@ -5846,6 +5871,13 @@ static void initialize_c1_GCU_Model_genCode(SFc1_GCU_Model_genCodeInstanceStruct
     c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 14, 1073U, (void *)
       chartInstance->c1_antiStallEnable);
     _SFD_DATA_RANGE_CHECK((real_T)*chartInstance->c1_antiStallEnable, 87U);
+  }
+
+  if (!(sf_get_output_port_reusable(chartInstance->S, 5) != 0)) {
+    *chartInstance->c1_pidCounter = 0U;
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 25, 1839U, (void *)
+      chartInstance->c1_pidCounter);
+    _SFD_DATA_RANGE_CHECK((real_T)*chartInstance->c1_pidCounter, 88U);
   }
 }
 
@@ -6912,11 +6944,11 @@ static const mxArray *get_sim_state_c1_GCU_Model_genCode
   const mxArray *c1_y = NULL;
   int32_T c1_i2;
   uint16_T c1_uv0[2];
-  uint16_T c1_hoistedGlobal;
+  uint8_T c1_hoistedGlobal;
   const mxArray *c1_b_y = NULL;
   uint8_T c1_b_hoistedGlobal;
   const mxArray *c1_c_y = NULL;
-  uint8_T c1_c_hoistedGlobal;
+  uint16_T c1_c_hoistedGlobal;
   const mxArray *c1_d_y = NULL;
   uint16_T c1_d_hoistedGlobal;
   const mxArray *c1_e_y = NULL;
@@ -6936,13 +6968,13 @@ static const mxArray *get_sim_state_c1_GCU_Model_genCode
   const mxArray *c1_l_y = NULL;
   uint16_T c1_l_hoistedGlobal;
   const mxArray *c1_m_y = NULL;
-  uint16_T c1_m_hoistedGlobal;
+  uint8_T c1_m_hoistedGlobal;
   const mxArray *c1_n_y = NULL;
-  uint8_T c1_n_hoistedGlobal;
+  int32_T c1_n_hoistedGlobal;
   const mxArray *c1_o_y = NULL;
-  int32_T c1_o_hoistedGlobal;
+  uint16_T c1_o_hoistedGlobal;
   const mxArray *c1_p_y = NULL;
-  uint16_T c1_p_hoistedGlobal;
+  uint8_T c1_p_hoistedGlobal;
   const mxArray *c1_q_y = NULL;
   uint8_T c1_q_hoistedGlobal;
   const mxArray *c1_r_y = NULL;
@@ -7056,12 +7088,10 @@ static const mxArray *get_sim_state_c1_GCU_Model_genCode
   const mxArray *c1_vc_y = NULL;
   uint8_T c1_vc_hoistedGlobal;
   const mxArray *c1_wc_y = NULL;
-  uint8_T c1_wc_hoistedGlobal;
-  const mxArray *c1_xc_y = NULL;
   c1_st = NULL;
   c1_st = NULL;
   c1_y = NULL;
-  sf_mex_assign(&c1_y, sf_mex_createcellmatrix(125, 1), false);
+  sf_mex_assign(&c1_y, sf_mex_createcellmatrix(126, 1), false);
   sf_mex_setcell(c1_y, 0, c1_b_emlrt_marshallOut(chartInstance,
     *chartInstance->c1_antiStallEnable));
   sf_mex_setcell(c1_y, 1, c1_b_emlrt_marshallOut(chartInstance,
@@ -7071,469 +7101,468 @@ static const mxArray *get_sim_state_c1_GCU_Model_genCode
   }
 
   sf_mex_setcell(c1_y, 2, c1_c_emlrt_marshallOut(chartInstance, c1_uv0));
-  sf_mex_setcell(c1_y, 3, c1_d_emlrt_marshallOut(chartInstance,
-    *chartInstance->c1_stateFb));
+  sf_mex_setcell(c1_y, 3, c1_e_emlrt_marshallOut(chartInstance,
+    *chartInstance->c1_pidCounter));
   sf_mex_setcell(c1_y, 4, c1_d_emlrt_marshallOut(chartInstance,
+    *chartInstance->c1_stateFb));
+  sf_mex_setcell(c1_y, 5, c1_d_emlrt_marshallOut(chartInstance,
     chartInstance->c1_aacCounter));
-  sf_mex_setcell(c1_y, 5, c1_e_emlrt_marshallOut(chartInstance,
+  sf_mex_setcell(c1_y, 6, c1_f_emlrt_marshallOut(chartInstance,
     chartInstance->c1_aac_clutchStep));
-  sf_mex_setcell(c1_y, 6, c1_e_emlrt_marshallOut(chartInstance,
+  sf_mex_setcell(c1_y, 7, c1_f_emlrt_marshallOut(chartInstance,
     chartInstance->c1_aac_clutchValue));
-  sf_mex_setcell(c1_y, 7, c1_emlrt_marshallOut(chartInstance,
+  sf_mex_setcell(c1_y, 8, c1_emlrt_marshallOut(chartInstance,
     chartInstance->c1_aac_dtRelease));
-  sf_mex_setcell(c1_y, 8, c1_d_emlrt_marshallOut(chartInstance,
-    chartInstance->c1_autoXCounter));
   sf_mex_setcell(c1_y, 9, c1_d_emlrt_marshallOut(chartInstance,
-    chartInstance->c1_b_autoXCounter));
+    chartInstance->c1_autoXCounter));
   sf_mex_setcell(c1_y, 10, c1_d_emlrt_marshallOut(chartInstance,
-    chartInstance->c1_c_autoXCounter));
+    chartInstance->c1_b_autoXCounter));
   sf_mex_setcell(c1_y, 11, c1_d_emlrt_marshallOut(chartInstance,
-    chartInstance->c1_d_autoXCounter));
+    chartInstance->c1_c_autoXCounter));
   sf_mex_setcell(c1_y, 12, c1_d_emlrt_marshallOut(chartInstance,
-    chartInstance->c1_e_autoXCounter));
+    chartInstance->c1_d_autoXCounter));
   sf_mex_setcell(c1_y, 13, c1_d_emlrt_marshallOut(chartInstance,
-    chartInstance->c1_f_autoXCounter));
+    chartInstance->c1_e_autoXCounter));
   sf_mex_setcell(c1_y, 14, c1_d_emlrt_marshallOut(chartInstance,
-    chartInstance->c1_g_autoXCounter));
+    chartInstance->c1_f_autoXCounter));
   sf_mex_setcell(c1_y, 15, c1_d_emlrt_marshallOut(chartInstance,
-    chartInstance->c1_h_autoXCounter));
+    chartInstance->c1_g_autoXCounter));
   sf_mex_setcell(c1_y, 16, c1_d_emlrt_marshallOut(chartInstance,
-    chartInstance->c1_i_autoXCounter));
+    chartInstance->c1_h_autoXCounter));
   sf_mex_setcell(c1_y, 17, c1_d_emlrt_marshallOut(chartInstance,
+    chartInstance->c1_i_autoXCounter));
+  sf_mex_setcell(c1_y, 18, c1_d_emlrt_marshallOut(chartInstance,
     chartInstance->c1_j_autoXCounter));
-  sf_mex_setcell(c1_y, 18, c1_e_emlrt_marshallOut(chartInstance,
+  sf_mex_setcell(c1_y, 19, c1_f_emlrt_marshallOut(chartInstance,
     chartInstance->c1_autoX_clutchStep));
-  sf_mex_setcell(c1_y, 19, c1_e_emlrt_marshallOut(chartInstance,
+  sf_mex_setcell(c1_y, 20, c1_f_emlrt_marshallOut(chartInstance,
     chartInstance->c1_b_autoX_clutchStep));
-  sf_mex_setcell(c1_y, 20, c1_e_emlrt_marshallOut(chartInstance,
+  sf_mex_setcell(c1_y, 21, c1_f_emlrt_marshallOut(chartInstance,
     chartInstance->c1_c_autoX_clutchStep));
-  sf_mex_setcell(c1_y, 21, c1_e_emlrt_marshallOut(chartInstance,
+  sf_mex_setcell(c1_y, 22, c1_f_emlrt_marshallOut(chartInstance,
     chartInstance->c1_d_autoX_clutchStep));
-  sf_mex_setcell(c1_y, 22, c1_e_emlrt_marshallOut(chartInstance,
+  sf_mex_setcell(c1_y, 23, c1_f_emlrt_marshallOut(chartInstance,
     chartInstance->c1_e_autoX_clutchStep));
-  sf_mex_setcell(c1_y, 23, c1_e_emlrt_marshallOut(chartInstance,
+  sf_mex_setcell(c1_y, 24, c1_f_emlrt_marshallOut(chartInstance,
     chartInstance->c1_f_autoX_clutchStep));
-  sf_mex_setcell(c1_y, 24, c1_e_emlrt_marshallOut(chartInstance,
+  sf_mex_setcell(c1_y, 25, c1_f_emlrt_marshallOut(chartInstance,
     chartInstance->c1_g_autoX_clutchStep));
-  sf_mex_setcell(c1_y, 25, c1_e_emlrt_marshallOut(chartInstance,
+  sf_mex_setcell(c1_y, 26, c1_f_emlrt_marshallOut(chartInstance,
     chartInstance->c1_h_autoX_clutchStep));
-  sf_mex_setcell(c1_y, 26, c1_e_emlrt_marshallOut(chartInstance,
+  sf_mex_setcell(c1_y, 27, c1_f_emlrt_marshallOut(chartInstance,
     chartInstance->c1_i_autoX_clutchStep));
-  sf_mex_setcell(c1_y, 27, c1_e_emlrt_marshallOut(chartInstance,
+  sf_mex_setcell(c1_y, 28, c1_f_emlrt_marshallOut(chartInstance,
     chartInstance->c1_j_autoX_clutchStep));
-  sf_mex_setcell(c1_y, 28, c1_e_emlrt_marshallOut(chartInstance,
+  sf_mex_setcell(c1_y, 29, c1_f_emlrt_marshallOut(chartInstance,
     chartInstance->c1_autoX_clutchValue));
-  sf_mex_setcell(c1_y, 29, c1_e_emlrt_marshallOut(chartInstance,
+  sf_mex_setcell(c1_y, 30, c1_f_emlrt_marshallOut(chartInstance,
     chartInstance->c1_b_autoX_clutchValue));
-  sf_mex_setcell(c1_y, 30, c1_e_emlrt_marshallOut(chartInstance,
+  sf_mex_setcell(c1_y, 31, c1_f_emlrt_marshallOut(chartInstance,
     chartInstance->c1_c_autoX_clutchValue));
-  sf_mex_setcell(c1_y, 31, c1_e_emlrt_marshallOut(chartInstance,
+  sf_mex_setcell(c1_y, 32, c1_f_emlrt_marshallOut(chartInstance,
     chartInstance->c1_d_autoX_clutchValue));
-  sf_mex_setcell(c1_y, 32, c1_e_emlrt_marshallOut(chartInstance,
+  sf_mex_setcell(c1_y, 33, c1_f_emlrt_marshallOut(chartInstance,
     chartInstance->c1_e_autoX_clutchValue));
-  sf_mex_setcell(c1_y, 33, c1_e_emlrt_marshallOut(chartInstance,
+  sf_mex_setcell(c1_y, 34, c1_f_emlrt_marshallOut(chartInstance,
     chartInstance->c1_f_autoX_clutchValue));
-  sf_mex_setcell(c1_y, 34, c1_e_emlrt_marshallOut(chartInstance,
+  sf_mex_setcell(c1_y, 35, c1_f_emlrt_marshallOut(chartInstance,
     chartInstance->c1_g_autoX_clutchValue));
-  sf_mex_setcell(c1_y, 35, c1_e_emlrt_marshallOut(chartInstance,
+  sf_mex_setcell(c1_y, 36, c1_f_emlrt_marshallOut(chartInstance,
     chartInstance->c1_h_autoX_clutchValue));
-  sf_mex_setcell(c1_y, 36, c1_e_emlrt_marshallOut(chartInstance,
+  sf_mex_setcell(c1_y, 37, c1_f_emlrt_marshallOut(chartInstance,
     chartInstance->c1_i_autoX_clutchValue));
-  sf_mex_setcell(c1_y, 37, c1_e_emlrt_marshallOut(chartInstance,
+  sf_mex_setcell(c1_y, 38, c1_f_emlrt_marshallOut(chartInstance,
     chartInstance->c1_j_autoX_clutchValue));
-  sf_mex_setcell(c1_y, 38, c1_emlrt_marshallOut(chartInstance,
-    chartInstance->c1_autoX_dtRelease));
   sf_mex_setcell(c1_y, 39, c1_emlrt_marshallOut(chartInstance,
-    chartInstance->c1_b_autoX_dtRelease));
+    chartInstance->c1_autoX_dtRelease));
   sf_mex_setcell(c1_y, 40, c1_emlrt_marshallOut(chartInstance,
-    chartInstance->c1_c_autoX_dtRelease));
+    chartInstance->c1_b_autoX_dtRelease));
   sf_mex_setcell(c1_y, 41, c1_emlrt_marshallOut(chartInstance,
-    chartInstance->c1_d_autoX_dtRelease));
+    chartInstance->c1_c_autoX_dtRelease));
   sf_mex_setcell(c1_y, 42, c1_emlrt_marshallOut(chartInstance,
-    chartInstance->c1_e_autoX_dtRelease));
+    chartInstance->c1_d_autoX_dtRelease));
   sf_mex_setcell(c1_y, 43, c1_emlrt_marshallOut(chartInstance,
-    chartInstance->c1_f_autoX_dtRelease));
+    chartInstance->c1_e_autoX_dtRelease));
   sf_mex_setcell(c1_y, 44, c1_emlrt_marshallOut(chartInstance,
-    chartInstance->c1_g_autoX_dtRelease));
+    chartInstance->c1_f_autoX_dtRelease));
   sf_mex_setcell(c1_y, 45, c1_emlrt_marshallOut(chartInstance,
-    chartInstance->c1_h_autoX_dtRelease));
+    chartInstance->c1_g_autoX_dtRelease));
   sf_mex_setcell(c1_y, 46, c1_emlrt_marshallOut(chartInstance,
-    chartInstance->c1_i_autoX_dtRelease));
+    chartInstance->c1_h_autoX_dtRelease));
   sf_mex_setcell(c1_y, 47, c1_emlrt_marshallOut(chartInstance,
+    chartInstance->c1_i_autoX_dtRelease));
+  sf_mex_setcell(c1_y, 48, c1_emlrt_marshallOut(chartInstance,
     chartInstance->c1_j_autoX_dtRelease));
-  sf_mex_setcell(c1_y, 48, c1_d_emlrt_marshallOut(chartInstance,
+  sf_mex_setcell(c1_y, 49, c1_d_emlrt_marshallOut(chartInstance,
     chartInstance->c1_buzzerCounter));
-  sf_mex_setcell(c1_y, 49, c1_e_emlrt_marshallOut(chartInstance,
+  sf_mex_setcell(c1_y, 50, c1_f_emlrt_marshallOut(chartInstance,
     chartInstance->c1_counterWait));
-  sf_mex_setcell(c1_y, 50, c1_e_emlrt_marshallOut(chartInstance,
+  sf_mex_setcell(c1_y, 51, c1_f_emlrt_marshallOut(chartInstance,
     chartInstance->c1_b_counterWait));
-  sf_mex_setcell(c1_y, 51, c1_d_emlrt_marshallOut(chartInstance,
+  sf_mex_setcell(c1_y, 52, c1_d_emlrt_marshallOut(chartInstance,
     chartInstance->c1_lastAacCom));
-  c1_hoistedGlobal = chartInstance->c1_lastAutoXCom;
+  sf_mex_setcell(c1_y, 53, c1_d_emlrt_marshallOut(chartInstance,
+    chartInstance->c1_lastAutoXCom));
+  c1_hoistedGlobal = chartInstance->c1_lastCom;
   c1_b_y = NULL;
-  sf_mex_assign(&c1_b_y, sf_mex_create("y", &c1_hoistedGlobal, 5, 0U, 0U, 0U, 0),
+  sf_mex_assign(&c1_b_y, sf_mex_create("y", &c1_hoistedGlobal, 3, 0U, 0U, 0U, 0),
                 false);
-  sf_mex_setcell(c1_y, 52, c1_b_y);
-  c1_b_hoistedGlobal = chartInstance->c1_lastCom;
+  sf_mex_setcell(c1_y, 54, c1_b_y);
+  c1_b_hoistedGlobal = chartInstance->c1_lastShift;
   c1_c_y = NULL;
   sf_mex_assign(&c1_c_y, sf_mex_create("y", &c1_b_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 53, c1_c_y);
-  c1_c_hoistedGlobal = chartInstance->c1_lastShift;
+  sf_mex_setcell(c1_y, 55, c1_c_y);
+  c1_c_hoistedGlobal = chartInstance->c1_lastShiftCom;
   c1_d_y = NULL;
-  sf_mex_assign(&c1_d_y, sf_mex_create("y", &c1_c_hoistedGlobal, 3, 0U, 0U, 0U,
+  sf_mex_assign(&c1_d_y, sf_mex_create("y", &c1_c_hoistedGlobal, 5, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 54, c1_d_y);
-  c1_d_hoistedGlobal = chartInstance->c1_lastShiftCom;
+  sf_mex_setcell(c1_y, 56, c1_d_y);
+  c1_d_hoistedGlobal = chartInstance->c1_lastSlip;
   c1_e_y = NULL;
   sf_mex_assign(&c1_e_y, sf_mex_create("y", &c1_d_hoistedGlobal, 5, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 55, c1_e_y);
-  c1_e_hoistedGlobal = chartInstance->c1_lastSlip;
+  sf_mex_setcell(c1_y, 57, c1_e_y);
+  c1_e_hoistedGlobal = chartInstance->c1_b_lastSlip;
   c1_f_y = NULL;
   sf_mex_assign(&c1_f_y, sf_mex_create("y", &c1_e_hoistedGlobal, 5, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 56, c1_f_y);
-  c1_f_hoistedGlobal = chartInstance->c1_b_lastSlip;
+  sf_mex_setcell(c1_y, 58, c1_f_y);
+  c1_f_hoistedGlobal = chartInstance->c1_c_lastSlip;
   c1_g_y = NULL;
   sf_mex_assign(&c1_g_y, sf_mex_create("y", &c1_f_hoistedGlobal, 5, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 57, c1_g_y);
-  c1_g_hoistedGlobal = chartInstance->c1_c_lastSlip;
+  sf_mex_setcell(c1_y, 59, c1_g_y);
+  c1_g_hoistedGlobal = chartInstance->c1_d_lastSlip;
   c1_h_y = NULL;
   sf_mex_assign(&c1_h_y, sf_mex_create("y", &c1_g_hoistedGlobal, 5, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 58, c1_h_y);
-  c1_h_hoistedGlobal = chartInstance->c1_d_lastSlip;
+  sf_mex_setcell(c1_y, 60, c1_h_y);
+  c1_h_hoistedGlobal = chartInstance->c1_e_lastSlip;
   c1_i_y = NULL;
   sf_mex_assign(&c1_i_y, sf_mex_create("y", &c1_h_hoistedGlobal, 5, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 59, c1_i_y);
-  c1_i_hoistedGlobal = chartInstance->c1_e_lastSlip;
+  sf_mex_setcell(c1_y, 61, c1_i_y);
+  c1_i_hoistedGlobal = chartInstance->c1_f_lastSlip;
   c1_j_y = NULL;
   sf_mex_assign(&c1_j_y, sf_mex_create("y", &c1_i_hoistedGlobal, 5, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 60, c1_j_y);
-  c1_j_hoistedGlobal = chartInstance->c1_f_lastSlip;
+  sf_mex_setcell(c1_y, 62, c1_j_y);
+  c1_j_hoistedGlobal = chartInstance->c1_g_lastSlip;
   c1_k_y = NULL;
   sf_mex_assign(&c1_k_y, sf_mex_create("y", &c1_j_hoistedGlobal, 5, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 61, c1_k_y);
-  c1_k_hoistedGlobal = chartInstance->c1_g_lastSlip;
+  sf_mex_setcell(c1_y, 63, c1_k_y);
+  c1_k_hoistedGlobal = chartInstance->c1_h_lastSlip;
   c1_l_y = NULL;
   sf_mex_assign(&c1_l_y, sf_mex_create("y", &c1_k_hoistedGlobal, 5, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 62, c1_l_y);
-  c1_l_hoistedGlobal = chartInstance->c1_h_lastSlip;
+  sf_mex_setcell(c1_y, 64, c1_l_y);
+  c1_l_hoistedGlobal = chartInstance->c1_i_lastSlip;
   c1_m_y = NULL;
   sf_mex_assign(&c1_m_y, sf_mex_create("y", &c1_l_hoistedGlobal, 5, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 63, c1_m_y);
-  c1_m_hoistedGlobal = chartInstance->c1_i_lastSlip;
+  sf_mex_setcell(c1_y, 65, c1_m_y);
+  c1_m_hoistedGlobal = chartInstance->c1_startCounter;
   c1_n_y = NULL;
-  sf_mex_assign(&c1_n_y, sf_mex_create("y", &c1_m_hoistedGlobal, 5, 0U, 0U, 0U,
+  sf_mex_assign(&c1_n_y, sf_mex_create("y", &c1_m_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 64, c1_n_y);
-  c1_n_hoistedGlobal = chartInstance->c1_startCounter;
+  sf_mex_setcell(c1_y, 66, c1_n_y);
+  c1_n_hoistedGlobal = chartInstance->c1_ticksCounter;
   c1_o_y = NULL;
-  sf_mex_assign(&c1_o_y, sf_mex_create("y", &c1_n_hoistedGlobal, 3, 0U, 0U, 0U,
+  sf_mex_assign(&c1_o_y, sf_mex_create("y", &c1_n_hoistedGlobal, 6, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 65, c1_o_y);
-  c1_o_hoistedGlobal = chartInstance->c1_ticksCounter;
+  sf_mex_setcell(c1_y, 67, c1_o_y);
+  c1_o_hoistedGlobal = chartInstance->c1_timerCounter;
   c1_p_y = NULL;
-  sf_mex_assign(&c1_p_y, sf_mex_create("y", &c1_o_hoistedGlobal, 6, 0U, 0U, 0U,
+  sf_mex_assign(&c1_p_y, sf_mex_create("y", &c1_o_hoistedGlobal, 5, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 66, c1_p_y);
-  c1_p_hoistedGlobal = chartInstance->c1_timerCounter;
+  sf_mex_setcell(c1_y, 68, c1_p_y);
+  c1_p_hoistedGlobal = chartInstance->c1_is_active_c1_GCU_Model_genCode;
   c1_q_y = NULL;
-  sf_mex_assign(&c1_q_y, sf_mex_create("y", &c1_p_hoistedGlobal, 5, 0U, 0U, 0U,
+  sf_mex_assign(&c1_q_y, sf_mex_create("y", &c1_p_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 67, c1_q_y);
-  c1_q_hoistedGlobal = chartInstance->c1_is_active_c1_GCU_Model_genCode;
+  sf_mex_setcell(c1_y, 69, c1_q_y);
+  c1_q_hoistedGlobal = chartInstance->c1_is_active_GEARSHIFT;
   c1_r_y = NULL;
   sf_mex_assign(&c1_r_y, sf_mex_create("y", &c1_q_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 68, c1_r_y);
-  c1_r_hoistedGlobal = chartInstance->c1_is_active_GEARSHIFT;
+  sf_mex_setcell(c1_y, 70, c1_r_y);
+  c1_r_hoistedGlobal = chartInstance->c1_is_active_NEUTRAL_STATE;
   c1_s_y = NULL;
   sf_mex_assign(&c1_s_y, sf_mex_create("y", &c1_r_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 69, c1_s_y);
-  c1_s_hoistedGlobal = chartInstance->c1_is_active_NEUTRAL_STATE;
+  sf_mex_setcell(c1_y, 71, c1_s_y);
+  c1_s_hoistedGlobal = chartInstance->c1_is_active_MODES;
   c1_t_y = NULL;
   sf_mex_assign(&c1_t_y, sf_mex_create("y", &c1_s_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 70, c1_t_y);
-  c1_t_hoistedGlobal = chartInstance->c1_is_active_MODES;
+  sf_mex_setcell(c1_y, 72, c1_t_y);
+  c1_t_hoistedGlobal = chartInstance->c1_is_active_START_ENGINE;
   c1_u_y = NULL;
   sf_mex_assign(&c1_u_y, sf_mex_create("y", &c1_t_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 71, c1_u_y);
-  c1_u_hoistedGlobal = chartInstance->c1_is_active_START_ENGINE;
+  sf_mex_setcell(c1_y, 73, c1_u_y);
+  c1_u_hoistedGlobal = chartInstance->c1_is_active_SCAN_ADC;
   c1_v_y = NULL;
   sf_mex_assign(&c1_v_y, sf_mex_create("y", &c1_u_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 72, c1_v_y);
-  c1_v_hoistedGlobal = chartInstance->c1_is_active_SCAN_ADC;
+  sf_mex_setcell(c1_y, 74, c1_v_y);
+  c1_v_hoistedGlobal = chartInstance->c1_is_active_EEPROM_TRIGGER;
   c1_w_y = NULL;
   sf_mex_assign(&c1_w_y, sf_mex_create("y", &c1_v_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 73, c1_w_y);
-  c1_w_hoistedGlobal = chartInstance->c1_is_active_EEPROM_TRIGGER;
+  sf_mex_setcell(c1_y, 75, c1_w_y);
+  c1_w_hoistedGlobal = chartInstance->c1_is_active_ANTISTALL_ENABLE;
   c1_x_y = NULL;
   sf_mex_assign(&c1_x_y, sf_mex_create("y", &c1_w_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 74, c1_x_y);
-  c1_x_hoistedGlobal = chartInstance->c1_is_active_ANTISTALL_ENABLE;
+  sf_mex_setcell(c1_y, 76, c1_x_y);
+  c1_x_hoistedGlobal = chartInstance->c1_is_GEARSHIFT;
   c1_y_y = NULL;
   sf_mex_assign(&c1_y_y, sf_mex_create("y", &c1_x_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 75, c1_y_y);
-  c1_y_hoistedGlobal = chartInstance->c1_is_GEARSHIFT;
+  sf_mex_setcell(c1_y, 77, c1_y_y);
+  c1_y_hoistedGlobal = chartInstance->c1_is_UP_START;
   c1_ab_y = NULL;
   sf_mex_assign(&c1_ab_y, sf_mex_create("y", &c1_y_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 76, c1_ab_y);
-  c1_ab_hoistedGlobal = chartInstance->c1_is_UP_START;
+  sf_mex_setcell(c1_y, 78, c1_ab_y);
+  c1_ab_hoistedGlobal = chartInstance->c1_is_UP_PUSH;
   c1_bb_y = NULL;
   sf_mex_assign(&c1_bb_y, sf_mex_create("y", &c1_ab_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 77, c1_bb_y);
-  c1_bb_hoistedGlobal = chartInstance->c1_is_UP_PUSH;
+  sf_mex_setcell(c1_y, 79, c1_bb_y);
+  c1_bb_hoistedGlobal = chartInstance->c1_is_UP_REBOUND;
   c1_cb_y = NULL;
   sf_mex_assign(&c1_cb_y, sf_mex_create("y", &c1_bb_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 78, c1_cb_y);
-  c1_cb_hoistedGlobal = chartInstance->c1_is_UP_REBOUND;
+  sf_mex_setcell(c1_y, 80, c1_cb_y);
+  c1_cb_hoistedGlobal = chartInstance->c1_is_DOWN_START;
   c1_db_y = NULL;
   sf_mex_assign(&c1_db_y, sf_mex_create("y", &c1_cb_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 79, c1_db_y);
-  c1_db_hoistedGlobal = chartInstance->c1_is_DOWN_START;
+  sf_mex_setcell(c1_y, 81, c1_db_y);
+  c1_db_hoistedGlobal = chartInstance->c1_is_DOWN_BRAKE;
   c1_eb_y = NULL;
   sf_mex_assign(&c1_eb_y, sf_mex_create("y", &c1_db_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 80, c1_eb_y);
-  c1_eb_hoistedGlobal = chartInstance->c1_is_DOWN_BRAKE;
+  sf_mex_setcell(c1_y, 82, c1_eb_y);
+  c1_eb_hoistedGlobal = chartInstance->c1_is_NEUTRAL_STATE;
   c1_fb_y = NULL;
   sf_mex_assign(&c1_fb_y, sf_mex_create("y", &c1_eb_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 81, c1_fb_y);
-  c1_fb_hoistedGlobal = chartInstance->c1_is_NEUTRAL_STATE;
+  sf_mex_setcell(c1_y, 83, c1_fb_y);
+  c1_fb_hoistedGlobal = chartInstance->c1_is_MODES;
   c1_gb_y = NULL;
   sf_mex_assign(&c1_gb_y, sf_mex_create("y", &c1_fb_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 82, c1_gb_y);
-  c1_gb_hoistedGlobal = chartInstance->c1_is_MODES;
+  sf_mex_setcell(c1_y, 84, c1_gb_y);
+  c1_gb_hoistedGlobal = chartInstance->c1_is_ACC;
   c1_hb_y = NULL;
   sf_mex_assign(&c1_hb_y, sf_mex_create("y", &c1_gb_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 83, c1_hb_y);
-  c1_hb_hoistedGlobal = chartInstance->c1_is_ACC;
+  sf_mex_setcell(c1_y, 85, c1_hb_y);
+  c1_hb_hoistedGlobal = chartInstance->c1_is_START_ENGINE;
   c1_ib_y = NULL;
   sf_mex_assign(&c1_ib_y, sf_mex_create("y", &c1_hb_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 84, c1_ib_y);
-  c1_ib_hoistedGlobal = chartInstance->c1_is_START_ENGINE;
+  sf_mex_setcell(c1_y, 86, c1_ib_y);
+  c1_ib_hoistedGlobal = chartInstance->c1_is_ACTIVE;
   c1_jb_y = NULL;
   sf_mex_assign(&c1_jb_y, sf_mex_create("y", &c1_ib_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 85, c1_jb_y);
-  c1_jb_hoistedGlobal = chartInstance->c1_is_ACTIVE;
+  sf_mex_setcell(c1_y, 87, c1_jb_y);
+  c1_jb_hoistedGlobal = chartInstance->c1_is_UPSHIFTING;
   c1_kb_y = NULL;
   sf_mex_assign(&c1_kb_y, sf_mex_create("y", &c1_jb_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 86, c1_kb_y);
-  c1_kb_hoistedGlobal = chartInstance->c1_is_UPSHIFTING;
+  sf_mex_setcell(c1_y, 88, c1_kb_y);
+  c1_kb_hoistedGlobal = chartInstance->c1_is_DOWNSHIFTING;
   c1_lb_y = NULL;
   sf_mex_assign(&c1_lb_y, sf_mex_create("y", &c1_kb_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 87, c1_lb_y);
-  c1_lb_hoistedGlobal = chartInstance->c1_is_DOWNSHIFTING;
+  sf_mex_setcell(c1_y, 89, c1_lb_y);
+  c1_lb_hoistedGlobal = chartInstance->c1_is_MANUAL_MODES;
   c1_mb_y = NULL;
   sf_mex_assign(&c1_mb_y, sf_mex_create("y", &c1_lb_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 88, c1_mb_y);
-  c1_mb_hoistedGlobal = chartInstance->c1_is_MANUAL_MODES;
+  sf_mex_setcell(c1_y, 90, c1_mb_y);
+  c1_mb_hoistedGlobal = chartInstance->c1_is_ACCELERATION;
   c1_nb_y = NULL;
   sf_mex_assign(&c1_nb_y, sf_mex_create("y", &c1_mb_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 89, c1_nb_y);
-  c1_nb_hoistedGlobal = chartInstance->c1_is_ACCELERATION;
+  sf_mex_setcell(c1_y, 91, c1_nb_y);
+  c1_nb_hoistedGlobal = chartInstance->c1_is_SCAN_ADC;
   c1_ob_y = NULL;
   sf_mex_assign(&c1_ob_y, sf_mex_create("y", &c1_nb_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 90, c1_ob_y);
-  c1_ob_hoistedGlobal = chartInstance->c1_is_SCAN_ADC;
+  sf_mex_setcell(c1_y, 92, c1_ob_y);
+  c1_ob_hoistedGlobal = chartInstance->c1_is_EEPROM_TRIGGER;
   c1_pb_y = NULL;
   sf_mex_assign(&c1_pb_y, sf_mex_create("y", &c1_ob_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 91, c1_pb_y);
-  c1_pb_hoistedGlobal = chartInstance->c1_is_EEPROM_TRIGGER;
+  sf_mex_setcell(c1_y, 93, c1_pb_y);
+  c1_pb_hoistedGlobal = chartInstance->c1_is_AUTOCROSS;
   c1_qb_y = NULL;
   sf_mex_assign(&c1_qb_y, sf_mex_create("y", &c1_pb_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 92, c1_qb_y);
-  c1_qb_hoistedGlobal = chartInstance->c1_is_AUTOCROSS;
+  sf_mex_setcell(c1_y, 94, c1_qb_y);
+  c1_qb_hoistedGlobal = chartInstance->c1_is_LAUNCH;
   c1_rb_y = NULL;
   sf_mex_assign(&c1_rb_y, sf_mex_create("y", &c1_qb_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 93, c1_rb_y);
-  c1_rb_hoistedGlobal = chartInstance->c1_is_LAUNCH;
+  sf_mex_setcell(c1_y, 95, c1_rb_y);
+  c1_rb_hoistedGlobal = chartInstance->c1_b_is_ACTIVE;
   c1_sb_y = NULL;
   sf_mex_assign(&c1_sb_y, sf_mex_create("y", &c1_rb_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 94, c1_sb_y);
-  c1_sb_hoistedGlobal = chartInstance->c1_b_is_ACTIVE;
+  sf_mex_setcell(c1_y, 96, c1_sb_y);
+  c1_sb_hoistedGlobal = chartInstance->c1_is_ANTISTALL_ENABLE;
   c1_tb_y = NULL;
   sf_mex_assign(&c1_tb_y, sf_mex_create("y", &c1_sb_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 95, c1_tb_y);
-  c1_tb_hoistedGlobal = chartInstance->c1_is_ANTISTALL_ENABLE;
+  sf_mex_setcell(c1_y, 97, c1_tb_y);
+  c1_tb_hoistedGlobal = chartInstance->c1_is_LAUNCH0;
   c1_ub_y = NULL;
   sf_mex_assign(&c1_ub_y, sf_mex_create("y", &c1_tb_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 96, c1_ub_y);
-  c1_ub_hoistedGlobal = chartInstance->c1_is_LAUNCH0;
+  sf_mex_setcell(c1_y, 98, c1_ub_y);
+  c1_ub_hoistedGlobal = chartInstance->c1_c_is_ACTIVE;
   c1_vb_y = NULL;
   sf_mex_assign(&c1_vb_y, sf_mex_create("y", &c1_ub_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 97, c1_vb_y);
-  c1_vb_hoistedGlobal = chartInstance->c1_c_is_ACTIVE;
+  sf_mex_setcell(c1_y, 99, c1_vb_y);
+  c1_vb_hoistedGlobal = chartInstance->c1_is_ACCELERATION_PID;
   c1_wb_y = NULL;
   sf_mex_assign(&c1_wb_y, sf_mex_create("y", &c1_vb_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 98, c1_wb_y);
-  c1_wb_hoistedGlobal = chartInstance->c1_is_ACCELERATION_PID;
+  sf_mex_setcell(c1_y, 100, c1_wb_y);
+  c1_wb_hoistedGlobal = chartInstance->c1_is_RELEASE;
   c1_xb_y = NULL;
   sf_mex_assign(&c1_xb_y, sf_mex_create("y", &c1_wb_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 99, c1_xb_y);
-  c1_xb_hoistedGlobal = chartInstance->c1_is_RELEASE;
+  sf_mex_setcell(c1_y, 101, c1_xb_y);
+  c1_xb_hoistedGlobal = chartInstance->c1_is_LAUNCH1;
   c1_yb_y = NULL;
   sf_mex_assign(&c1_yb_y, sf_mex_create("y", &c1_xb_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 100, c1_yb_y);
-  c1_yb_hoistedGlobal = chartInstance->c1_is_LAUNCH1;
+  sf_mex_setcell(c1_y, 102, c1_yb_y);
+  c1_yb_hoistedGlobal = chartInstance->c1_d_is_ACTIVE;
   c1_ac_y = NULL;
   sf_mex_assign(&c1_ac_y, sf_mex_create("y", &c1_yb_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 101, c1_ac_y);
-  c1_ac_hoistedGlobal = chartInstance->c1_d_is_ACTIVE;
+  sf_mex_setcell(c1_y, 103, c1_ac_y);
+  c1_ac_hoistedGlobal = chartInstance->c1_b_is_RELEASE;
   c1_bc_y = NULL;
   sf_mex_assign(&c1_bc_y, sf_mex_create("y", &c1_ac_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 102, c1_bc_y);
-  c1_bc_hoistedGlobal = chartInstance->c1_b_is_RELEASE;
+  sf_mex_setcell(c1_y, 104, c1_bc_y);
+  c1_bc_hoistedGlobal = chartInstance->c1_is_LAUNCH2;
   c1_cc_y = NULL;
   sf_mex_assign(&c1_cc_y, sf_mex_create("y", &c1_bc_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 103, c1_cc_y);
-  c1_cc_hoistedGlobal = chartInstance->c1_is_LAUNCH2;
+  sf_mex_setcell(c1_y, 105, c1_cc_y);
+  c1_cc_hoistedGlobal = chartInstance->c1_e_is_ACTIVE;
   c1_dc_y = NULL;
   sf_mex_assign(&c1_dc_y, sf_mex_create("y", &c1_cc_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 104, c1_dc_y);
-  c1_dc_hoistedGlobal = chartInstance->c1_e_is_ACTIVE;
+  sf_mex_setcell(c1_y, 106, c1_dc_y);
+  c1_dc_hoistedGlobal = chartInstance->c1_c_is_RELEASE;
   c1_ec_y = NULL;
   sf_mex_assign(&c1_ec_y, sf_mex_create("y", &c1_dc_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 105, c1_ec_y);
-  c1_ec_hoistedGlobal = chartInstance->c1_c_is_RELEASE;
+  sf_mex_setcell(c1_y, 107, c1_ec_y);
+  c1_ec_hoistedGlobal = chartInstance->c1_is_LAUNCH3;
   c1_fc_y = NULL;
   sf_mex_assign(&c1_fc_y, sf_mex_create("y", &c1_ec_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 106, c1_fc_y);
-  c1_fc_hoistedGlobal = chartInstance->c1_is_LAUNCH3;
+  sf_mex_setcell(c1_y, 108, c1_fc_y);
+  c1_fc_hoistedGlobal = chartInstance->c1_f_is_ACTIVE;
   c1_gc_y = NULL;
   sf_mex_assign(&c1_gc_y, sf_mex_create("y", &c1_fc_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 107, c1_gc_y);
-  c1_gc_hoistedGlobal = chartInstance->c1_f_is_ACTIVE;
+  sf_mex_setcell(c1_y, 109, c1_gc_y);
+  c1_gc_hoistedGlobal = chartInstance->c1_d_is_RELEASE;
   c1_hc_y = NULL;
   sf_mex_assign(&c1_hc_y, sf_mex_create("y", &c1_gc_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 108, c1_hc_y);
-  c1_hc_hoistedGlobal = chartInstance->c1_d_is_RELEASE;
+  sf_mex_setcell(c1_y, 110, c1_hc_y);
+  c1_hc_hoistedGlobal = chartInstance->c1_is_LAUNCH4;
   c1_ic_y = NULL;
   sf_mex_assign(&c1_ic_y, sf_mex_create("y", &c1_hc_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 109, c1_ic_y);
-  c1_ic_hoistedGlobal = chartInstance->c1_is_LAUNCH4;
+  sf_mex_setcell(c1_y, 111, c1_ic_y);
+  c1_ic_hoistedGlobal = chartInstance->c1_g_is_ACTIVE;
   c1_jc_y = NULL;
   sf_mex_assign(&c1_jc_y, sf_mex_create("y", &c1_ic_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 110, c1_jc_y);
-  c1_jc_hoistedGlobal = chartInstance->c1_g_is_ACTIVE;
+  sf_mex_setcell(c1_y, 112, c1_jc_y);
+  c1_jc_hoistedGlobal = chartInstance->c1_e_is_RELEASE;
   c1_kc_y = NULL;
   sf_mex_assign(&c1_kc_y, sf_mex_create("y", &c1_jc_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 111, c1_kc_y);
-  c1_kc_hoistedGlobal = chartInstance->c1_e_is_RELEASE;
+  sf_mex_setcell(c1_y, 113, c1_kc_y);
+  c1_kc_hoistedGlobal = chartInstance->c1_is_LAUNCH5;
   c1_lc_y = NULL;
   sf_mex_assign(&c1_lc_y, sf_mex_create("y", &c1_kc_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 112, c1_lc_y);
-  c1_lc_hoistedGlobal = chartInstance->c1_is_LAUNCH5;
+  sf_mex_setcell(c1_y, 114, c1_lc_y);
+  c1_lc_hoistedGlobal = chartInstance->c1_h_is_ACTIVE;
   c1_mc_y = NULL;
   sf_mex_assign(&c1_mc_y, sf_mex_create("y", &c1_lc_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 113, c1_mc_y);
-  c1_mc_hoistedGlobal = chartInstance->c1_h_is_ACTIVE;
+  sf_mex_setcell(c1_y, 115, c1_mc_y);
+  c1_mc_hoistedGlobal = chartInstance->c1_f_is_RELEASE;
   c1_nc_y = NULL;
   sf_mex_assign(&c1_nc_y, sf_mex_create("y", &c1_mc_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 114, c1_nc_y);
-  c1_nc_hoistedGlobal = chartInstance->c1_f_is_RELEASE;
+  sf_mex_setcell(c1_y, 116, c1_nc_y);
+  c1_nc_hoistedGlobal = chartInstance->c1_is_LAUNCH6;
   c1_oc_y = NULL;
   sf_mex_assign(&c1_oc_y, sf_mex_create("y", &c1_nc_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 115, c1_oc_y);
-  c1_oc_hoistedGlobal = chartInstance->c1_is_LAUNCH6;
+  sf_mex_setcell(c1_y, 117, c1_oc_y);
+  c1_oc_hoistedGlobal = chartInstance->c1_i_is_ACTIVE;
   c1_pc_y = NULL;
   sf_mex_assign(&c1_pc_y, sf_mex_create("y", &c1_oc_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 116, c1_pc_y);
-  c1_pc_hoistedGlobal = chartInstance->c1_i_is_ACTIVE;
+  sf_mex_setcell(c1_y, 118, c1_pc_y);
+  c1_pc_hoistedGlobal = chartInstance->c1_g_is_RELEASE;
   c1_qc_y = NULL;
   sf_mex_assign(&c1_qc_y, sf_mex_create("y", &c1_pc_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 117, c1_qc_y);
-  c1_qc_hoistedGlobal = chartInstance->c1_g_is_RELEASE;
+  sf_mex_setcell(c1_y, 119, c1_qc_y);
+  c1_qc_hoistedGlobal = chartInstance->c1_is_LAUNCH7;
   c1_rc_y = NULL;
   sf_mex_assign(&c1_rc_y, sf_mex_create("y", &c1_qc_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 118, c1_rc_y);
-  c1_rc_hoistedGlobal = chartInstance->c1_is_LAUNCH7;
+  sf_mex_setcell(c1_y, 120, c1_rc_y);
+  c1_rc_hoistedGlobal = chartInstance->c1_j_is_ACTIVE;
   c1_sc_y = NULL;
   sf_mex_assign(&c1_sc_y, sf_mex_create("y", &c1_rc_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 119, c1_sc_y);
-  c1_sc_hoistedGlobal = chartInstance->c1_j_is_ACTIVE;
+  sf_mex_setcell(c1_y, 121, c1_sc_y);
+  c1_sc_hoistedGlobal = chartInstance->c1_h_is_RELEASE;
   c1_tc_y = NULL;
   sf_mex_assign(&c1_tc_y, sf_mex_create("y", &c1_sc_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 120, c1_tc_y);
-  c1_tc_hoistedGlobal = chartInstance->c1_h_is_RELEASE;
+  sf_mex_setcell(c1_y, 122, c1_tc_y);
+  c1_tc_hoistedGlobal = chartInstance->c1_is_LAUNCH8;
   c1_uc_y = NULL;
   sf_mex_assign(&c1_uc_y, sf_mex_create("y", &c1_tc_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 121, c1_uc_y);
-  c1_uc_hoistedGlobal = chartInstance->c1_is_LAUNCH8;
+  sf_mex_setcell(c1_y, 123, c1_uc_y);
+  c1_uc_hoistedGlobal = chartInstance->c1_k_is_ACTIVE;
   c1_vc_y = NULL;
   sf_mex_assign(&c1_vc_y, sf_mex_create("y", &c1_uc_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 122, c1_vc_y);
-  c1_vc_hoistedGlobal = chartInstance->c1_k_is_ACTIVE;
+  sf_mex_setcell(c1_y, 124, c1_vc_y);
+  c1_vc_hoistedGlobal = chartInstance->c1_i_is_RELEASE;
   c1_wc_y = NULL;
   sf_mex_assign(&c1_wc_y, sf_mex_create("y", &c1_vc_hoistedGlobal, 3, 0U, 0U, 0U,
     0), false);
-  sf_mex_setcell(c1_y, 123, c1_wc_y);
-  c1_wc_hoistedGlobal = chartInstance->c1_i_is_RELEASE;
-  c1_xc_y = NULL;
-  sf_mex_assign(&c1_xc_y, sf_mex_create("y", &c1_wc_hoistedGlobal, 3, 0U, 0U, 0U,
-    0), false);
-  sf_mex_setcell(c1_y, 124, c1_xc_y);
+  sf_mex_setcell(c1_y, 125, c1_wc_y);
   sf_mex_assign(&c1_st, c1_y, false);
   return c1_st;
 }
@@ -7541,7 +7570,7 @@ static const mxArray *get_sim_state_c1_GCU_Model_genCode
 static void set_sim_state_c1_GCU_Model_genCode
   (SFc1_GCU_Model_genCodeInstanceStruct *chartInstance, const mxArray *c1_st)
 {
-  c1_m_emlrt_marshallIn(chartInstance, sf_mex_dup(c1_st));
+  c1_o_emlrt_marshallIn(chartInstance, sf_mex_dup(c1_st));
   chartInstance->c1_doSetSimStateSideEffects = 1U;
   c1_update_debugger_state_c1_GCU_Model_genCode(chartInstance);
   sf_mex_destroy(&c1_st);
@@ -8643,19 +8672,19 @@ static void c1_enter_internal_c1_GCU_Model_genCode
   _SFD_CS_CALL(STATE_ACTIVE_TAG, 34U, chartInstance->c1_sfEvent);
   chartInstance->c1_tp_MODES = 1U;
   chartInstance->c1_lastAacCom = 0U;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 25, 627U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 26, 627U, (void *)
     &chartInstance->c1_lastAacCom);
   _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastAacCom, 1U);
   chartInstance->c1_lastShiftCom = 0U;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 26, 681U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 27, 681U, (void *)
     &chartInstance->c1_lastShiftCom);
   _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastShiftCom, 3U);
   chartInstance->c1_lastAutoXCom = 0U;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 27, 1043U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 28, 1043U, (void *)
     &chartInstance->c1_lastAutoXCom);
   _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastAutoXCom, 2U);
   chartInstance->c1_buzzerCounter = 0U;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 28, 1063U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 29, 1063U, (void *)
     &chartInstance->c1_buzzerCounter);
   _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_buzzerCounter, 0U);
   _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 78U, chartInstance->c1_sfEvent);
@@ -8706,7 +8735,7 @@ static void c1_enter_internal_c1_GCU_Model_genCode
   _SFD_CS_CALL(STATE_ACTIVE_TAG, 7U, chartInstance->c1_sfEvent);
   chartInstance->c1_tp_GEARSHIFT = 1U;
   chartInstance->c1_ticksCounter = 0;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 171, 45U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 172, 45U, (void *)
     &chartInstance->c1_ticksCounter);
   _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_ticksCounter, 57U);
   _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 0U, chartInstance->c1_sfEvent);
@@ -8731,7 +8760,7 @@ static void c1_enter_internal_c1_GCU_Model_genCode
     _SFD_CS_CALL(STATE_ACTIVE_TAG, 21U, chartInstance->c1_sfEvent);
     chartInstance->c1_b_tp_INIT = 1U;
     chartInstance->c1_ticksCounter = 0;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 171, 45U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 172, 45U, (void *)
       &chartInstance->c1_ticksCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_ticksCounter, 57U);
   }
@@ -8742,11 +8771,11 @@ static void c1_enter_internal_c1_GCU_Model_genCode
   _SFD_CS_CALL(STATE_ACTIVE_TAG, 184U, chartInstance->c1_sfEvent);
   chartInstance->c1_tp_START_ENGINE = 1U;
   chartInstance->c1_lastCom = 0U;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 176, 484U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 177, 484U, (void *)
     &chartInstance->c1_lastCom);
   _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastCom, 59U);
   chartInstance->c1_startCounter = 0U;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 177, 488U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 178, 488U, (void *)
     &chartInstance->c1_startCounter);
   _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_startCounter, 60U);
   _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 95U, chartInstance->c1_sfEvent);
@@ -8770,7 +8799,7 @@ static void c1_enter_internal_c1_GCU_Model_genCode
     _SFD_CS_CALL(STATE_ACTIVE_TAG, 180U, chartInstance->c1_sfEvent);
     chartInstance->c1_tp_SCAN_ADC = 1U;
     chartInstance->c1_timerCounter = 0U;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 178, 938U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 179, 938U, (void *)
       &chartInstance->c1_timerCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_timerCounter, 61U);
     sf_call_output_fcn_enable(chartInstance->S, 25, "ScanADC", 0);
@@ -8805,7 +8834,7 @@ static void c1_enter_internal_c1_GCU_Model_genCode
   _SFD_CS_CALL(STATE_ACTIVE_TAG, 4U, chartInstance->c1_sfEvent);
   chartInstance->c1_tp_EEPROM_TRIGGER = 1U;
   chartInstance->c1_counterWait = 0.0;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 175, 950U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 176, 950U, (void *)
     &chartInstance->c1_counterWait);
   _SFD_DATA_RANGE_CHECK(chartInstance->c1_counterWait, 58U);
   _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 150U, chartInstance->c1_sfEvent);
@@ -8822,7 +8851,7 @@ static void c1_enter_internal_c1_GCU_Model_genCode
     _SFD_CS_CALL(STATE_ACTIVE_TAG, 6U, chartInstance->c1_sfEvent);
     chartInstance->c1_j_tp_WAIT = 1U;
     chartInstance->c1_counterWait = 1.0;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 175, 950U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 176, 950U, (void *)
       &chartInstance->c1_counterWait);
     _SFD_DATA_RANGE_CHECK(chartInstance->c1_counterWait, 58U);
   }
@@ -8833,7 +8862,7 @@ static void c1_enter_internal_c1_GCU_Model_genCode
   _SFD_CS_CALL(STATE_ACTIVE_TAG, 0U, chartInstance->c1_sfEvent);
   chartInstance->c1_tp_ANTISTALL_ENABLE = 1U;
   chartInstance->c1_b_counterWait = 0.0;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 179, 1068U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 180, 1068U, (void *)
     &chartInstance->c1_b_counterWait);
   _SFD_DATA_RANGE_CHECK(chartInstance->c1_b_counterWait, 62U);
   _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 184U, chartInstance->c1_sfEvent);
@@ -8967,7 +8996,7 @@ static void c1_c1_GCU_Model_genCode(SFc1_GCU_Model_genCodeInstanceStruct
           _SFD_CS_CALL(STATE_ACTIVE_TAG, 183U, chartInstance->c1_sfEvent);
           chartInstance->c1_l_tp_WAIT = 1U;
           chartInstance->c1_timerCounter = 0U;
-          c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 178, 938U, (void *)
+          c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 179, 938U, (void *)
             &chartInstance->c1_timerCounter);
           _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_timerCounter, 61U);
         }
@@ -9033,7 +9062,7 @@ static void c1_c1_GCU_Model_genCode(SFc1_GCU_Model_genCodeInstanceStruct
           }
 
           chartInstance->c1_timerCounter = (uint16_T)c1_i12;
-          c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 178, 938U, (void *)
+          c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 179, 938U, (void *)
             &chartInstance->c1_timerCounter);
           _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_timerCounter, 61U);
         }
@@ -9085,7 +9114,7 @@ static void c1_c1_GCU_Model_genCode(SFc1_GCU_Model_genCodeInstanceStruct
           _SFD_CS_CALL(STATE_ACTIVE_TAG, 6U, chartInstance->c1_sfEvent);
           chartInstance->c1_j_tp_WAIT = 1U;
           chartInstance->c1_counterWait = 1.0;
-          c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 175, 950U, (void *)
+          c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 176, 950U, (void *)
             &chartInstance->c1_counterWait);
           _SFD_DATA_RANGE_CHECK(chartInstance->c1_counterWait, 58U);
         }
@@ -9129,7 +9158,7 @@ static void c1_c1_GCU_Model_genCode(SFc1_GCU_Model_genCodeInstanceStruct
           _SFD_CS_CALL(STATE_ENTER_DURING_FUNCTION_TAG, 6U,
                        chartInstance->c1_sfEvent);
           chartInstance->c1_counterWait++;
-          c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 175, 950U, (void *)
+          c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 176, 950U, (void *)
             &chartInstance->c1_counterWait);
           _SFD_DATA_RANGE_CHECK(chartInstance->c1_counterWait, 58U);
         }
@@ -9497,7 +9526,7 @@ static void c1_MANUAL_MODES(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
               _SFD_CS_CALL(STATE_ACTIVE_TAG, 47U, chartInstance->c1_sfEvent);
               chartInstance->c1_tp_ACCELERATION_PID = 1U;
               chartInstance->c1_lastAutoXCom = (*chartInstance->c1_autoXCom)[0];
-              c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 27, 1043U, (void *)
+              c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 28, 1043U, (void *)
                 &chartInstance->c1_lastAutoXCom);
               _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastAutoXCom, 2U);
               (*chartInstance->c1_lastModeCom)[0] = (*chartInstance->c1_modeCom)
@@ -9886,7 +9915,7 @@ static void c1_INIT(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
             _SFD_CS_CALL(STATE_ACTIVE_TAG, 35U, chartInstance->c1_sfEvent);
             chartInstance->c1_tp_ACCELERATION = 1U;
             chartInstance->c1_lastAacCom = (*chartInstance->c1_aacCom)[0];
-            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 25, 627U, (void *)
+            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 26, 627U, (void *)
               &chartInstance->c1_lastAacCom);
             _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastAacCom, 1U);
             (*chartInstance->c1_lastModeCom)[0] = (*chartInstance->c1_modeCom)[0];
@@ -9948,7 +9977,7 @@ static void c1_INIT(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
               _SFD_CS_CALL(STATE_ACTIVE_TAG, 47U, chartInstance->c1_sfEvent);
               chartInstance->c1_tp_ACCELERATION_PID = 1U;
               chartInstance->c1_lastAutoXCom = (*chartInstance->c1_autoXCom)[0];
-              c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 27, 1043U, (void *)
+              c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 28, 1043U, (void *)
                 &chartInstance->c1_lastAutoXCom);
               _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastAutoXCom, 2U);
               (*chartInstance->c1_lastModeCom)[0] = (*chartInstance->c1_modeCom)
@@ -10061,7 +10090,7 @@ static void c1_INIT(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
     }
 
     chartInstance->c1_buzzerCounter = (uint16_T)c1_i20;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 28, 1063U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 29, 1063U, (void *)
       &chartInstance->c1_buzzerCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_buzzerCounter, 0U);
   }
@@ -10075,7 +10104,7 @@ static void c1_enter_atomic_ACCELERATION(SFc1_GCU_Model_genCodeInstanceStruct
   int32_T c1_i31;
   int32_T c1_i32;
   chartInstance->c1_lastAacCom = (*chartInstance->c1_aacCom)[0];
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 25, 627U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 26, 627U, (void *)
     &chartInstance->c1_lastAacCom);
   _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastAacCom, 1U);
   (*chartInstance->c1_lastModeCom)[0] = (*chartInstance->c1_modeCom)[0];
@@ -10361,7 +10390,7 @@ static void c1_ACCELERATION(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
               _SFD_CS_CALL(STATE_ACTIVE_TAG, 47U, chartInstance->c1_sfEvent);
               chartInstance->c1_tp_ACCELERATION_PID = 1U;
               chartInstance->c1_lastAutoXCom = (*chartInstance->c1_autoXCom)[0];
-              c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 27, 1043U, (void *)
+              c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 28, 1043U, (void *)
                 &chartInstance->c1_lastAutoXCom);
               _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastAutoXCom, 2U);
               (*chartInstance->c1_lastModeCom)[0] = (*chartInstance->c1_modeCom)
@@ -10678,7 +10707,7 @@ static void c1_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
   if (c1_out) {
     _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 100U, chartInstance->c1_sfEvent);
     chartInstance->c1_lastAacCom = (*chartInstance->c1_aacCom)[0];
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 25, 627U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 26, 627U, (void *)
       &chartInstance->c1_lastAacCom);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastAacCom, 1U);
     c1_u0 = chartInstance->c1_lastAacCom;
@@ -10751,7 +10780,7 @@ static void c1_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
         if (c1_d_out) {
           _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 101U, chartInstance->c1_sfEvent);
           chartInstance->c1_lastAacCom = (*chartInstance->c1_aacCom)[0];
-          c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 25, 627U, (void *)
+          c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 26, 627U, (void *)
             &chartInstance->c1_lastAacCom);
           _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastAacCom, 1U);
           chartInstance->c1_tp_READY = 0U;
@@ -10794,7 +10823,7 @@ static void c1_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
             _SFD_DATA_RANGE_CHECK((real_T)*chartInstance->c1_stateFb, 86U);
             chartInstance->c1_aac_clutchValue = (real_T)c1_getAacParam
               (chartInstance, acc_params_RAMP_START);
-            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 39, 561U, (void *)
+            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 40, 561U, (void *)
               &chartInstance->c1_aac_clutchValue);
             _SFD_DATA_RANGE_CHECK(chartInstance->c1_aac_clutchValue, 6U);
             c1_d0 = chartInstance->c1_aac_clutchValue;
@@ -10820,7 +10849,7 @@ static void c1_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
             chartInstance->c1_aac_dtRelease = c1_div_nzp_s32(chartInstance,
               c1_getAacParam(chartInstance, acc_params_RAMP_TIME), (int32_T)
               c1_const_AAC_WORK_RATE_ms, 547U, 196, 1);
-            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 41, 564U, (void *)
+            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 42, 564U, (void *)
               &chartInstance->c1_aac_dtRelease);
             _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_aac_dtRelease, 7U);
             c1_q0 = c1_getAacParam(chartInstance, acc_params_RAMP_START);
@@ -10856,11 +10885,11 @@ static void c1_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
             CV_SATURATION_EVAL(4, 42, 2, 0, c1_d_covSaturation);
             chartInstance->c1_aac_clutchStep = (real_T)(int32_T)c1_i40 / (real_T)
               c1_getAacParam(chartInstance, acc_params_RAMP_TIME);
-            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 40, 563U, (void *)
+            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 41, 563U, (void *)
               &chartInstance->c1_aac_clutchStep);
             _SFD_DATA_RANGE_CHECK(chartInstance->c1_aac_clutchStep, 5U);
             chartInstance->c1_aacCounter = c1_const_AAC_WORK_RATE_ms;
-            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 38, 550U, (void *)
+            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 39, 550U, (void *)
               &chartInstance->c1_aacCounter);
             _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_aacCounter, 4U);
           }
@@ -10923,7 +10952,7 @@ static void c1_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
         }
 
         chartInstance->c1_aacCounter = (uint16_T)c1_i38;
-        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 38, 550U, (void *)
+        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 39, 550U, (void *)
           &chartInstance->c1_aacCounter);
         _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_aacCounter, 4U);
         c1_checkShift(chartInstance);
@@ -11220,7 +11249,7 @@ static void c1_START(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
     }
 
     chartInstance->c1_aacCounter = (uint16_T)c1_i41;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 38, 550U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 39, 550U, (void *)
       &chartInstance->c1_aacCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_aacCounter, 4U);
   }
@@ -11237,7 +11266,7 @@ static void c1_enter_atomic_READY(SFc1_GCU_Model_genCodeInstanceStruct
     chartInstance->c1_stateFb);
   _SFD_DATA_RANGE_CHECK((real_T)*chartInstance->c1_stateFb, 86U);
   chartInstance->c1_aacCounter = c1_const_AAC_WORK_RATE_ms;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 38, 550U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 39, 550U, (void *)
     &chartInstance->c1_aacCounter);
   _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_aacCounter, 4U);
   c1_u2 = chartInstance->c1_aacCounter;
@@ -11301,7 +11330,7 @@ static void c1_START_RELEASE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
       _SFD_CS_CALL(STATE_ACTIVE_TAG, 39U, chartInstance->c1_sfEvent);
       chartInstance->c1_tp_RELEASING = 1U;
       chartInstance->c1_aac_clutchValue -= chartInstance->c1_aac_clutchStep;
-      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 39, 561U, (void *)
+      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 40, 561U, (void *)
         &chartInstance->c1_aac_clutchValue);
       _SFD_DATA_RANGE_CHECK(chartInstance->c1_aac_clutchValue, 6U);
       c1_d1 = chartInstance->c1_aac_clutchValue;
@@ -11341,11 +11370,11 @@ static void c1_START_RELEASE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
 
       CV_SATURATION_EVAL(4, 39, 0, 0, c1_c_covSaturation);
       chartInstance->c1_aac_dtRelease = c1_qY;
-      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 41, 564U, (void *)
+      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 42, 564U, (void *)
         &chartInstance->c1_aac_dtRelease);
       _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_aac_dtRelease, 7U);
       chartInstance->c1_aacCounter = c1_const_AAC_WORK_RATE_ms;
-      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 38, 550U, (void *)
+      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 39, 550U, (void *)
         &chartInstance->c1_aacCounter);
       _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_aacCounter, 4U);
     }
@@ -11368,7 +11397,7 @@ static void c1_START_RELEASE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
     }
 
     chartInstance->c1_aacCounter = (uint16_T)c1_i42;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 38, 550U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 39, 550U, (void *)
       &chartInstance->c1_aacCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_aacCounter, 4U);
   }
@@ -11454,7 +11483,7 @@ static void c1_RELEASING(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
         _SFD_CS_CALL(STATE_ACTIVE_TAG, 40U, chartInstance->c1_sfEvent);
         chartInstance->c1_tp_RUNNING = 1U;
         chartInstance->c1_aacCounter = c1_const_AAC_WORK_RATE_ms;
-        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 38, 550U, (void *)
+        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 39, 550U, (void *)
           &chartInstance->c1_aacCounter);
         _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_aacCounter, 4U);
         c1_u4 = chartInstance->c1_aacCounter;
@@ -11512,7 +11541,7 @@ static void c1_RELEASING(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
         _SFD_CS_CALL(STATE_ACTIVE_TAG, 39U, chartInstance->c1_sfEvent);
         chartInstance->c1_tp_RELEASING = 1U;
         chartInstance->c1_aac_clutchValue -= chartInstance->c1_aac_clutchStep;
-        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 39, 561U, (void *)
+        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 40, 561U, (void *)
           &chartInstance->c1_aac_clutchValue);
         _SFD_DATA_RANGE_CHECK(chartInstance->c1_aac_clutchValue, 6U);
         c1_d2 = chartInstance->c1_aac_clutchValue;
@@ -11552,11 +11581,11 @@ static void c1_RELEASING(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
 
         CV_SATURATION_EVAL(4, 39, 0, 0, c1_d_covSaturation);
         chartInstance->c1_aac_dtRelease = c1_qY;
-        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 41, 564U, (void *)
+        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 42, 564U, (void *)
           &chartInstance->c1_aac_dtRelease);
         _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_aac_dtRelease, 7U);
         chartInstance->c1_aacCounter = c1_const_AAC_WORK_RATE_ms;
-        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 38, 550U, (void *)
+        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 39, 550U, (void *)
           &chartInstance->c1_aacCounter);
         _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_aacCounter, 4U);
       }
@@ -11580,7 +11609,7 @@ static void c1_RELEASING(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
     }
 
     chartInstance->c1_aacCounter = (uint16_T)c1_i43;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 38, 550U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 39, 550U, (void *)
       &chartInstance->c1_aacCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_aacCounter, 4U);
   }
@@ -11608,7 +11637,7 @@ static void c1_DEFAULT(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
   if (c1_out) {
     _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 121U, chartInstance->c1_sfEvent);
     chartInstance->c1_lastAacCom = (*chartInstance->c1_aacCom)[0];
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 25, 627U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 26, 627U, (void *)
       &chartInstance->c1_lastAacCom);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastAacCom, 1U);
     c1_u7 = chartInstance->c1_lastAacCom;
@@ -11631,19 +11660,19 @@ static void c1_DEFAULT(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
     _SFD_CS_CALL(STATE_ACTIVE_TAG, 36U, chartInstance->c1_sfEvent);
     chartInstance->c1_tp_ACC = 1U;
     chartInstance->c1_aacCounter = 0U;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 38, 550U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 39, 550U, (void *)
       &chartInstance->c1_aacCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_aacCounter, 4U);
     chartInstance->c1_aac_clutchValue = 0.0;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 39, 561U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 40, 561U, (void *)
       &chartInstance->c1_aac_clutchValue);
     _SFD_DATA_RANGE_CHECK(chartInstance->c1_aac_clutchValue, 6U);
     chartInstance->c1_aac_clutchStep = 0.0;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 40, 563U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 41, 563U, (void *)
       &chartInstance->c1_aac_clutchStep);
     _SFD_DATA_RANGE_CHECK(chartInstance->c1_aac_clutchStep, 5U);
     chartInstance->c1_aac_dtRelease = 0;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 41, 564U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 42, 564U, (void *)
       &chartInstance->c1_aac_dtRelease);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_aac_dtRelease, 7U);
     chartInstance->c1_is_ACC = c1_IN_ACTIVE;
@@ -11682,7 +11711,7 @@ static void c1_DEFAULT(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
         chartInstance->c1_stateFb);
       _SFD_DATA_RANGE_CHECK((real_T)*chartInstance->c1_stateFb, 86U);
       chartInstance->c1_aacCounter = c1_const_AAC_WORK_RATE_ms;
-      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 38, 550U, (void *)
+      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 39, 550U, (void *)
         &chartInstance->c1_aacCounter);
       _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_aacCounter, 4U);
       c1_u8 = chartInstance->c1_aacCounter;
@@ -11946,7 +11975,7 @@ static void c1_AUTOCROSS(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
               _SFD_CS_CALL(STATE_ACTIVE_TAG, 47U, chartInstance->c1_sfEvent);
               chartInstance->c1_tp_ACCELERATION_PID = 1U;
               chartInstance->c1_lastAutoXCom = (*chartInstance->c1_autoXCom)[0];
-              c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 27, 1043U, (void *)
+              c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 28, 1043U, (void *)
                 &chartInstance->c1_lastAutoXCom);
               _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastAutoXCom, 2U);
               (*chartInstance->c1_lastModeCom)[0] = (*chartInstance->c1_modeCom)
@@ -12264,7 +12293,7 @@ static void c1_b_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
   if (c1_out) {
     _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 155U, chartInstance->c1_sfEvent);
     chartInstance->c1_lastAutoXCom = (*chartInstance->c1_autoXCom)[0];
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 27, 1043U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 28, 1043U, (void *)
       &chartInstance->c1_lastAutoXCom);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastAutoXCom, 2U);
     c1_u9 = chartInstance->c1_lastAutoXCom;
@@ -12340,7 +12369,7 @@ static void c1_b_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
         if (c1_d_out) {
           _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 162U, chartInstance->c1_sfEvent);
           chartInstance->c1_lastAutoXCom = (*chartInstance->c1_autoXCom)[0];
-          c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 27, 1043U, (void *)
+          c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 28, 1043U, (void *)
             &chartInstance->c1_lastAutoXCom);
           _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastAutoXCom, 2U);
           chartInstance->c1_b_tp_READY = 0U;
@@ -12383,7 +12412,7 @@ static void c1_b_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
             _SFD_DATA_RANGE_CHECK((real_T)*chartInstance->c1_stateFb, 86U);
             chartInstance->c1_autoX_clutchValue = (real_T)c1_getAutoXParam
               (chartInstance, autoX_params_AUTOX_RAMP_START);
-            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 58, 959U, (void *)
+            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 59, 959U, (void *)
               &chartInstance->c1_autoX_clutchValue);
             _SFD_DATA_RANGE_CHECK(chartInstance->c1_autoX_clutchValue, 10U);
             c1_d3 = chartInstance->c1_autoX_clutchValue;
@@ -12409,7 +12438,7 @@ static void c1_b_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
             chartInstance->c1_autoX_dtRelease = c1_div_nzp_s32(chartInstance,
               c1_getAutoXParam(chartInstance, autoX_params_AUTOX_RAMP_TIME),
               (int32_T)c1_const_AUTOX_WORK_RATE_ms, 1001U, 198, 1);
-            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 60, 961U, (void *)
+            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 61, 961U, (void *)
               &chartInstance->c1_autoX_dtRelease);
             _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_autoX_dtRelease, 11U);
             c1_q0 = c1_getAutoXParam(chartInstance,
@@ -12447,11 +12476,11 @@ static void c1_b_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
             chartInstance->c1_autoX_clutchStep = (real_T)(int32_T)c1_i52 /
               (real_T)c1_getAutoXParam(chartInstance,
               autoX_params_AUTOX_RAMP_TIME);
-            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 59, 960U, (void *)
+            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 60, 960U, (void *)
               &chartInstance->c1_autoX_clutchStep);
             _SFD_DATA_RANGE_CHECK(chartInstance->c1_autoX_clutchStep, 9U);
             chartInstance->c1_autoXCounter = c1_const_AUTOX_WORK_RATE_ms;
-            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 57, 958U, (void *)
+            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 58, 958U, (void *)
               &chartInstance->c1_autoXCounter);
             _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_autoXCounter, 8U);
           }
@@ -12514,7 +12543,7 @@ static void c1_b_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
         }
 
         chartInstance->c1_autoXCounter = (uint16_T)c1_i50;
-        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 57, 958U, (void *)
+        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 58, 958U, (void *)
           &chartInstance->c1_autoXCounter);
         _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_autoXCounter, 8U);
         c1_checkShift(chartInstance);
@@ -12812,7 +12841,7 @@ static void c1_b_START(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
     }
 
     chartInstance->c1_autoXCounter = (uint16_T)c1_i53;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 57, 958U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 58, 958U, (void *)
       &chartInstance->c1_autoXCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_autoXCounter, 8U);
   }
@@ -12829,7 +12858,7 @@ static void c1_b_enter_atomic_READY(SFc1_GCU_Model_genCodeInstanceStruct
     chartInstance->c1_stateFb);
   _SFD_DATA_RANGE_CHECK((real_T)*chartInstance->c1_stateFb, 86U);
   chartInstance->c1_autoXCounter = c1_const_AUTOX_WORK_RATE_ms;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 57, 958U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 58, 958U, (void *)
     &chartInstance->c1_autoXCounter);
   _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_autoXCounter, 8U);
   c1_u11 = chartInstance->c1_autoXCounter;
@@ -12894,7 +12923,7 @@ static void c1_b_START_RELEASE(SFc1_GCU_Model_genCodeInstanceStruct
       _SFD_CS_CALL(STATE_ACTIVE_TAG, 162U, chartInstance->c1_sfEvent);
       chartInstance->c1_b_tp_RELEASING = 1U;
       chartInstance->c1_autoX_clutchValue -= chartInstance->c1_autoX_clutchStep;
-      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 58, 959U, (void *)
+      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 59, 959U, (void *)
         &chartInstance->c1_autoX_clutchValue);
       _SFD_DATA_RANGE_CHECK(chartInstance->c1_autoX_clutchValue, 10U);
       c1_d4 = chartInstance->c1_autoX_clutchValue;
@@ -12934,11 +12963,11 @@ static void c1_b_START_RELEASE(SFc1_GCU_Model_genCodeInstanceStruct
 
       CV_SATURATION_EVAL(4, 162, 0, 0, c1_c_covSaturation);
       chartInstance->c1_autoX_dtRelease = c1_qY;
-      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 60, 961U, (void *)
+      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 61, 961U, (void *)
         &chartInstance->c1_autoX_dtRelease);
       _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_autoX_dtRelease, 11U);
       chartInstance->c1_autoXCounter = c1_const_AUTOX_WORK_RATE_ms;
-      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 57, 958U, (void *)
+      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 58, 958U, (void *)
         &chartInstance->c1_autoXCounter);
       _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_autoXCounter, 8U);
     }
@@ -12962,7 +12991,7 @@ static void c1_b_START_RELEASE(SFc1_GCU_Model_genCodeInstanceStruct
     }
 
     chartInstance->c1_autoXCounter = (uint16_T)c1_i54;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 57, 958U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 58, 958U, (void *)
       &chartInstance->c1_autoXCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_autoXCounter, 8U);
   }
@@ -13048,7 +13077,7 @@ static void c1_b_RELEASING(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
         _SFD_CS_CALL(STATE_ACTIVE_TAG, 163U, chartInstance->c1_sfEvent);
         chartInstance->c1_b_tp_RUNNING = 1U;
         chartInstance->c1_autoXCounter = c1_const_AUTOX_WORK_RATE_ms;
-        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 57, 958U, (void *)
+        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 58, 958U, (void *)
           &chartInstance->c1_autoXCounter);
         _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_autoXCounter, 8U);
         c1_u13 = chartInstance->c1_autoXCounter;
@@ -13108,7 +13137,7 @@ static void c1_b_RELEASING(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
         chartInstance->c1_b_tp_RELEASING = 1U;
         chartInstance->c1_autoX_clutchValue -=
           chartInstance->c1_autoX_clutchStep;
-        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 58, 959U, (void *)
+        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 59, 959U, (void *)
           &chartInstance->c1_autoX_clutchValue);
         _SFD_DATA_RANGE_CHECK(chartInstance->c1_autoX_clutchValue, 10U);
         c1_d5 = chartInstance->c1_autoX_clutchValue;
@@ -13148,11 +13177,11 @@ static void c1_b_RELEASING(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
 
         CV_SATURATION_EVAL(4, 162, 0, 0, c1_d_covSaturation);
         chartInstance->c1_autoX_dtRelease = c1_qY;
-        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 60, 961U, (void *)
+        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 61, 961U, (void *)
           &chartInstance->c1_autoX_dtRelease);
         _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_autoX_dtRelease, 11U);
         chartInstance->c1_autoXCounter = c1_const_AUTOX_WORK_RATE_ms;
-        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 57, 958U, (void *)
+        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 58, 958U, (void *)
           &chartInstance->c1_autoXCounter);
         _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_autoXCounter, 8U);
       }
@@ -13177,7 +13206,7 @@ static void c1_b_RELEASING(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
     }
 
     chartInstance->c1_autoXCounter = (uint16_T)c1_i55;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 57, 958U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 58, 958U, (void *)
       &chartInstance->c1_autoXCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_autoXCounter, 8U);
   }
@@ -13205,7 +13234,7 @@ static void c1_b_DEFAULT(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
   if (c1_out) {
     _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 154U, chartInstance->c1_sfEvent);
     chartInstance->c1_lastAutoXCom = (*chartInstance->c1_autoXCom)[0];
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 27, 1043U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 28, 1043U, (void *)
       &chartInstance->c1_lastAutoXCom);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastAutoXCom, 2U);
     c1_u16 = chartInstance->c1_lastAutoXCom;
@@ -13228,19 +13257,19 @@ static void c1_b_DEFAULT(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
     _SFD_CS_CALL(STATE_ACTIVE_TAG, 159U, chartInstance->c1_sfEvent);
     chartInstance->c1_tp_LAUNCH = 1U;
     chartInstance->c1_autoXCounter = 0U;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 57, 958U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 58, 958U, (void *)
       &chartInstance->c1_autoXCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_autoXCounter, 8U);
     chartInstance->c1_autoX_clutchValue = 0.0;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 58, 959U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 59, 959U, (void *)
       &chartInstance->c1_autoX_clutchValue);
     _SFD_DATA_RANGE_CHECK(chartInstance->c1_autoX_clutchValue, 10U);
     chartInstance->c1_autoX_clutchStep = 0.0;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 59, 960U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 60, 960U, (void *)
       &chartInstance->c1_autoX_clutchStep);
     _SFD_DATA_RANGE_CHECK(chartInstance->c1_autoX_clutchStep, 9U);
     chartInstance->c1_autoX_dtRelease = 0;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 60, 961U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 61, 961U, (void *)
       &chartInstance->c1_autoX_dtRelease);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_autoX_dtRelease, 11U);
     chartInstance->c1_is_LAUNCH = c1_IN_ACTIVE;
@@ -13279,7 +13308,7 @@ static void c1_b_DEFAULT(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
         chartInstance->c1_stateFb);
       _SFD_DATA_RANGE_CHECK((real_T)*chartInstance->c1_stateFb, 86U);
       chartInstance->c1_autoXCounter = c1_const_AUTOX_WORK_RATE_ms;
-      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 57, 958U, (void *)
+      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 58, 958U, (void *)
         &chartInstance->c1_autoXCounter);
       _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_autoXCounter, 8U);
       c1_u17 = chartInstance->c1_autoXCounter;
@@ -13308,7 +13337,7 @@ static void c1_enter_atomic_ACCELERATION_PID
   int32_T c1_i57;
   int32_T c1_i58;
   chartInstance->c1_lastAutoXCom = (*chartInstance->c1_autoXCom)[0];
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 27, 1043U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 28, 1043U, (void *)
     &chartInstance->c1_lastAutoXCom);
   _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastAutoXCom, 2U);
   (*chartInstance->c1_lastModeCom)[0] = (*chartInstance->c1_modeCom)[0];
@@ -14225,19 +14254,19 @@ static void c1_enter_atomic_LAUNCH0(SFc1_GCU_Model_genCodeInstanceStruct
   *chartInstance)
 {
   chartInstance->c1_b_autoXCounter = 0U;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 64, 1094U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 65, 1094U, (void *)
     &chartInstance->c1_b_autoXCounter);
   _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_b_autoXCounter, 12U);
   chartInstance->c1_b_autoX_clutchValue = 0.0;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 65, 1095U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 66, 1095U, (void *)
     &chartInstance->c1_b_autoX_clutchValue);
   _SFD_DATA_RANGE_CHECK(chartInstance->c1_b_autoX_clutchValue, 14U);
   chartInstance->c1_b_autoX_clutchStep = 0.0;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 66, 1096U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 67, 1096U, (void *)
     &chartInstance->c1_b_autoX_clutchStep);
   _SFD_DATA_RANGE_CHECK(chartInstance->c1_b_autoX_clutchStep, 13U);
   chartInstance->c1_b_autoX_dtRelease = 0;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 67, 1097U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 68, 1097U, (void *)
     &chartInstance->c1_b_autoX_dtRelease);
   _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_b_autoX_dtRelease, 15U);
 }
@@ -14377,7 +14406,7 @@ static void c1_enter_internal_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct
       chartInstance->c1_stateFb);
     _SFD_DATA_RANGE_CHECK((real_T)*chartInstance->c1_stateFb, 86U);
     chartInstance->c1_b_autoXCounter = c1_const_AUTOX_WORK_RATE_ms;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 64, 1094U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 65, 1094U, (void *)
       &chartInstance->c1_b_autoXCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_b_autoXCounter, 12U);
     c1_u18 = chartInstance->c1_b_autoXCounter;
@@ -14417,7 +14446,7 @@ static void c1_c_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
   if (c1_out) {
     _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 186U, chartInstance->c1_sfEvent);
     chartInstance->c1_lastAutoXCom = (*chartInstance->c1_autoXCom)[0];
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 27, 1043U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 28, 1043U, (void *)
       &chartInstance->c1_lastAutoXCom);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastAutoXCom, 2U);
     c1_u19 = chartInstance->c1_lastAutoXCom;
@@ -14515,7 +14544,7 @@ static void c1_c_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
           _SFD_CS_CALL(STATE_ACTIVE_TAG, 55U, chartInstance->c1_sfEvent);
           chartInstance->c1_c_tp_RUNNING = 1U;
           chartInstance->c1_b_autoXCounter = c1_const_AUTOX_WORK_RATE_ms;
-          c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 64, 1094U, (void *)
+          c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 65, 1094U, (void *)
             &chartInstance->c1_b_autoXCounter);
           _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_b_autoXCounter, 12U);
           c1_u20 = chartInstance->c1_b_autoXCounter;
@@ -14581,7 +14610,7 @@ static void c1_c_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
           if (c1_d_out) {
             _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 212U, chartInstance->c1_sfEvent);
             chartInstance->c1_lastSlip = *chartInstance->c1_slipUpdateCounter;
-            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 68, 1174U, (void *)
+            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 69, 1174U, (void *)
               &chartInstance->c1_lastSlip);
             _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastSlip, 16U);
             chartInstance->c1_tp_WAIT = 0U;
@@ -14909,7 +14938,7 @@ static void c1_c_START(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
     }
 
     chartInstance->c1_b_autoXCounter = (uint16_T)c1_i59;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 64, 1094U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 65, 1094U, (void *)
       &chartInstance->c1_b_autoXCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_b_autoXCounter, 12U);
   }
@@ -14926,7 +14955,7 @@ static void c1_c_enter_atomic_READY(SFc1_GCU_Model_genCodeInstanceStruct
     chartInstance->c1_stateFb);
   _SFD_DATA_RANGE_CHECK((real_T)*chartInstance->c1_stateFb, 86U);
   chartInstance->c1_b_autoXCounter = c1_const_AUTOX_WORK_RATE_ms;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 64, 1094U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 65, 1094U, (void *)
     &chartInstance->c1_b_autoXCounter);
   _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_b_autoXCounter, 12U);
   c1_u23 = chartInstance->c1_b_autoXCounter;
@@ -14969,32 +14998,32 @@ static void c1_READY(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
     c1_b_temp = c1_temp;
     if (c1_b_temp) {
       c1_index = autoX_params_AUTOX_TPS_START_LIMIT;
-      _SFD_SET_DATA_VALUE_PTR(162U, (void *)&c1_i61);
-      _SFD_SET_DATA_VALUE_PTR(124U, (void *)&c1_index);
+      _SFD_SET_DATA_VALUE_PTR(165U, (void *)&c1_i61);
+      _SFD_SET_DATA_VALUE_PTR(139U, (void *)&c1_index);
       _SFD_CS_CALL(FUNCTION_ACTIVE_TAG, 60U, chartInstance->c1_sfEvent);
       _SFD_SYMBOL_SCOPE_PUSH(2U, 0U);
-      _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("index", &c1_index, c1_l_sf_marshallOut,
-        c1_g_sf_marshallIn);
+      _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("index", &c1_index, c1_m_sf_marshallOut,
+        c1_h_sf_marshallIn);
       _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("param", &c1_i61, c1_sf_marshallOut,
         c1_sf_marshallIn);
       _SFD_CS_CALL(STATE_ENTER_DURING_FUNCTION_TAG, 60U,
                    chartInstance->c1_sfEvent);
       c1_i61 = 0;
-      _SFD_DATA_RANGE_CHECK((real_T)c1_i61, 162U);
+      _SFD_DATA_RANGE_CHECK((real_T)c1_i61, 165U);
       _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 205U, chartInstance->c1_sfEvent);
       _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 206U, chartInstance->c1_sfEvent);
       c1_i61 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
         (sfGlobalDebugInstanceStruct, chartInstance->S, 1155U, 9, 16, 72U,
          (int32_T)c1_index, 0, 15)];
-      _SFD_DATA_RANGE_CHECK((real_T)c1_i61, 162U);
+      _SFD_DATA_RANGE_CHECK((real_T)c1_i61, 165U);
       c1_param = c1_i61;
       sf_mex_printf("%s =\\n", "param");
       sf_mex_call_debug(sfGlobalDebugInstanceStruct, "disp", 0U, 1U, 12,
                         c1_param);
       _SFD_SYMBOL_SCOPE_POP();
       _SFD_CS_CALL(FUNCTION_INACTIVE_TAG, 60U, chartInstance->c1_sfEvent);
-      _SFD_UNSET_DATA_VALUE_PTR(162U);
-      _SFD_UNSET_DATA_VALUE_PTR(124U);
+      _SFD_UNSET_DATA_VALUE_PTR(165U);
+      _SFD_UNSET_DATA_VALUE_PTR(139U);
       _SFD_CS_CALL(EXIT_OUT_OF_FUNCTION_TAG, 60U, chartInstance->c1_sfEvent);
       c1_b_temp = _SFD_CCP_CALL(5U, 193U, 2, (boolean_T)CV_RELATIONAL_EVAL(5U,
         193U, 1, (real_T)*chartInstance->c1_currTps, (real_T)c1_i61, 0, 5U,
@@ -15005,7 +15034,7 @@ static void c1_READY(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
     if (c1_b_out) {
       _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 193U, chartInstance->c1_sfEvent);
       chartInstance->c1_lastAutoXCom = (*chartInstance->c1_autoXCom)[0];
-      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 27, 1043U, (void *)
+      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 28, 1043U, (void *)
         &chartInstance->c1_lastAutoXCom);
       _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastAutoXCom, 2U);
       *chartInstance->c1_stateFb = (uint16_T)AUTOX_GO;
@@ -15039,7 +15068,7 @@ static void c1_READY(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
         _SFD_CS_CALL(STATE_ACTIVE_TAG, 52U, chartInstance->c1_sfEvent);
         chartInstance->c1_tp_RELEASE = 1U;
         chartInstance->c1_lastSlip = 0U;
-        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 68, 1174U, (void *)
+        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 69, 1174U, (void *)
           &chartInstance->c1_lastSlip);
         _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastSlip, 16U);
         c1_pidControl(chartInstance, (real_T)*chartInstance->c1_currSlipTarget,
@@ -15115,7 +15144,7 @@ static void c1_READY(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
     }
 
     chartInstance->c1_b_autoXCounter = (uint16_T)c1_i60;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 64, 1094U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 65, 1094U, (void *)
       &chartInstance->c1_b_autoXCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_b_autoXCounter, 12U);
     c1_checkShift(chartInstance);
@@ -15166,19 +15195,19 @@ static void c1_enter_atomic_LAUNCH1(SFc1_GCU_Model_genCodeInstanceStruct
   *chartInstance)
 {
   chartInstance->c1_c_autoXCounter = 0U;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 76, 1201U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 77, 1201U, (void *)
     &chartInstance->c1_c_autoXCounter);
   _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_c_autoXCounter, 17U);
   chartInstance->c1_c_autoX_clutchValue = 0.0;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 77, 1202U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 78, 1202U, (void *)
     &chartInstance->c1_c_autoX_clutchValue);
   _SFD_DATA_RANGE_CHECK(chartInstance->c1_c_autoX_clutchValue, 19U);
   chartInstance->c1_c_autoX_clutchStep = 0.0;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 78, 1203U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 79, 1203U, (void *)
     &chartInstance->c1_c_autoX_clutchStep);
   _SFD_DATA_RANGE_CHECK(chartInstance->c1_c_autoX_clutchStep, 18U);
   chartInstance->c1_c_autoX_dtRelease = 0;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 79, 1204U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 80, 1204U, (void *)
     &chartInstance->c1_c_autoX_dtRelease);
   _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_c_autoX_dtRelease, 20U);
 }
@@ -15319,7 +15348,7 @@ static void c1_b_enter_internal_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct
       chartInstance->c1_stateFb);
     _SFD_DATA_RANGE_CHECK((real_T)*chartInstance->c1_stateFb, 86U);
     chartInstance->c1_c_autoXCounter = c1_const_AUTOX_WORK_RATE_ms;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 76, 1201U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 77, 1201U, (void *)
       &chartInstance->c1_c_autoXCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_c_autoXCounter, 17U);
     c1_u24 = chartInstance->c1_c_autoXCounter;
@@ -15339,12 +15368,16 @@ static void c1_d_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
   uint16_T c1_u25;
   boolean_T c1_c_out;
   boolean_T c1_d_out;
-  real_T c1_d7;
+  uint32_T c1_q0;
+  int8_T c1_i62;
   boolean_T c1_covSaturation;
+  uint32_T c1_qY;
   uint16_T c1_u26;
-  uint8_T c1_u27;
-  uint16_T c1_u28;
+  uint16_T c1_u27;
   boolean_T c1_b_covSaturation;
+  real_T c1_d7;
+  boolean_T c1_c_covSaturation;
+  uint8_T c1_u28;
   _SFD_CT_CALL(TRANSITION_BEFORE_PROCESSING_TAG, 216U, chartInstance->c1_sfEvent);
   c1_temp = _SFD_CCP_CALL(5U, 216U, 0, (boolean_T)CV_RELATIONAL_EVAL(5U, 216U, 0,
     (real_T)(*chartInstance->c1_autoXCom)[0], (real_T)
@@ -15359,7 +15392,7 @@ static void c1_d_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
   if (c1_out) {
     _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 216U, chartInstance->c1_sfEvent);
     chartInstance->c1_lastAutoXCom = (*chartInstance->c1_autoXCom)[0];
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 27, 1043U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 28, 1043U, (void *)
       &chartInstance->c1_lastAutoXCom);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastAutoXCom, 2U);
     c1_u25 = chartInstance->c1_lastAutoXCom;
@@ -15457,23 +15490,23 @@ static void c1_d_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
           _SFD_CS_CALL(STATE_ACTIVE_TAG, 67U, chartInstance->c1_sfEvent);
           chartInstance->c1_d_tp_RUNNING = 1U;
           chartInstance->c1_c_autoXCounter = c1_const_AUTOX_WORK_RATE_ms;
-          c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 76, 1201U, (void *)
+          c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 77, 1201U, (void *)
             &chartInstance->c1_c_autoXCounter);
           _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_c_autoXCounter, 17U);
           c1_u26 = chartInstance->c1_c_autoXCounter;
           sf_mex_printf("%s =\\n", "autoXCounter");
           sf_mex_call_debug(sfGlobalDebugInstanceStruct, "disp", 0U, 1U, 11,
                             c1_u26);
-          c1_u28 = *chartInstance->c1_currGear;
+          c1_u27 = *chartInstance->c1_currGear;
           c1_b_covSaturation = false;
-          if (c1_u28 > 255) {
+          if (c1_u27 > 255) {
             c1_b_covSaturation = true;
-            c1_u28 = 255U;
+            c1_u27 = 255U;
             _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1224U, 64U, 8U);
           }
 
           CV_SATURATION_EVAL(4, 67, 0, 0, c1_b_covSaturation);
-          chartInstance->c1_lastShift = (uint8_T)c1_u28;
+          chartInstance->c1_lastShift = (uint8_T)c1_u27;
           c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 6, 715U, (void *)
             &chartInstance->c1_lastShift);
           _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastShift, 63U);
@@ -15523,9 +15556,30 @@ static void c1_d_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
           if (c1_d_out) {
             _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 226U, chartInstance->c1_sfEvent);
             chartInstance->c1_b_lastSlip = *chartInstance->c1_slipUpdateCounter;
-            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 80, 1225U, (void *)
+            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 81, 1225U, (void *)
               &chartInstance->c1_b_lastSlip);
             _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_b_lastSlip, 21U);
+            c1_q0 = *chartInstance->c1_pidCounter;
+            c1_i62 = 1;
+            if (c1_i62 < 0) {
+              c1_covSaturation = true;
+              c1_i62 = 0;
+              _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1228U, 61U, 12U);
+            }
+
+            CV_SATURATION_EVAL(5, 226, 0, 0, c1_covSaturation);
+            c1_qY = c1_q0 + (uint32_T)c1_i62;
+            c1_covSaturation = false;
+            if (c1_qY < c1_q0) {
+              c1_covSaturation = true;
+              c1_qY = MAX_uint32_T;
+              _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1228U, 61U, 12U);
+            }
+
+            *chartInstance->c1_pidCounter = c1_qY;
+            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 25, 1839U, (void *)
+              chartInstance->c1_pidCounter);
+            _SFD_DATA_RANGE_CHECK((real_T)*chartInstance->c1_pidCounter, 88U);
             chartInstance->c1_b_tp_WAIT = 0U;
             chartInstance->c1_b_is_RELEASE = c1_IN_NO_ACTIVE_CHILD;
             c1_sdiStreamingWrapperFcn(chartInstance, 4, 27, 1230U, (int32_T)
@@ -15552,25 +15606,25 @@ static void c1_d_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
               c1_d7 = c1_b_pidControl(chartInstance, (real_T)
                 *chartInstance->c1_currSlipTarget, (real_T)
                 *chartInstance->c1_currSlip, 0.0);
-              c1_covSaturation = false;
+              c1_c_covSaturation = false;
               if (c1_d7 < 256.0) {
                 if (c1_d7 >= 0.0) {
-                  c1_u27 = (uint8_T)c1_d7;
+                  c1_u28 = (uint8_T)c1_d7;
                 } else {
-                  c1_covSaturation = true;
-                  c1_u27 = 0U;
+                  c1_c_covSaturation = true;
+                  c1_u28 = 0U;
                   _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1230U, 32U, 10U);
                 }
               } else if (c1_d7 >= 256.0) {
-                c1_covSaturation = true;
-                c1_u27 = MAX_uint8_T;
+                c1_c_covSaturation = true;
+                c1_u28 = MAX_uint8_T;
                 _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1230U, 32U, 10U);
               } else {
-                c1_u27 = 0U;
+                c1_u28 = 0U;
               }
 
-              CV_SATURATION_EVAL(4, 65, 0, 0, c1_covSaturation);
-              *chartInstance->c1_clutchCurrVal = c1_u27;
+              CV_SATURATION_EVAL(4, 65, 0, 0, c1_c_covSaturation);
+              *chartInstance->c1_clutchCurrVal = c1_u28;
               c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 0, 123U, (void *)
                 chartInstance->c1_clutchCurrVal);
               _SFD_DATA_RANGE_CHECK_MIN_MAX((real_T)
@@ -15790,7 +15844,7 @@ static void c1_d_exit_internal_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct
 static void c1_d_START(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
 {
   boolean_T c1_out;
-  int32_T c1_i62;
+  int32_T c1_i63;
   boolean_T c1_covSaturation;
   _SFD_CT_CALL(TRANSITION_BEFORE_PROCESSING_TAG, 221U, chartInstance->c1_sfEvent);
   c1_out = (CV_TRANSITION_EVAL(221U, (int32_T)_SFD_CCP_CALL(5U, 221U, 0,
@@ -15834,24 +15888,24 @@ static void c1_d_START(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
     }
   } else {
     _SFD_CS_CALL(STATE_ENTER_DURING_FUNCTION_TAG, 68U, chartInstance->c1_sfEvent);
-    c1_i62 = c1__s32_minus__(chartInstance, (int32_T)
+    c1_i63 = c1__s32_minus__(chartInstance, (int32_T)
       chartInstance->c1_c_autoXCounter, 1, 1222U, 165, 1);
     c1_covSaturation = false;
-    if (c1_i62 < 0) {
+    if (c1_i63 < 0) {
       c1_covSaturation = true;
-      c1_i62 = 0;
+      c1_i63 = 0;
       _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1222U, 165U, 1U);
     } else {
-      if (c1_i62 > 65535) {
-        c1_i62 = 65535;
+      if (c1_i63 > 65535) {
+        c1_i63 = 65535;
         _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1222U, 165U, 1U);
       }
 
       CV_SATURATION_EVAL(4, 68, 0, 0, c1_covSaturation);
     }
 
-    chartInstance->c1_c_autoXCounter = (uint16_T)c1_i62;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 76, 1201U, (void *)
+    chartInstance->c1_c_autoXCounter = (uint16_T)c1_i63;
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 77, 1201U, (void *)
       &chartInstance->c1_c_autoXCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_c_autoXCounter, 17U);
   }
@@ -15868,7 +15922,7 @@ static void c1_d_enter_atomic_READY(SFc1_GCU_Model_genCodeInstanceStruct
     chartInstance->c1_stateFb);
   _SFD_DATA_RANGE_CHECK((real_T)*chartInstance->c1_stateFb, 86U);
   chartInstance->c1_c_autoXCounter = c1_const_AUTOX_WORK_RATE_ms;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 76, 1201U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 77, 1201U, (void *)
     &chartInstance->c1_c_autoXCounter);
   _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_c_autoXCounter, 17U);
   c1_u29 = chartInstance->c1_c_autoXCounter;
@@ -15881,13 +15935,13 @@ static void c1_d_enter_atomic_READY(SFc1_GCU_Model_genCodeInstanceStruct
 static void c1_b_READY(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
 {
   boolean_T c1_out;
-  int32_T c1_i63;
+  int32_T c1_i64;
   boolean_T c1_covSaturation;
   boolean_T c1_temp;
   boolean_T c1_b_temp;
   c1_autoX_params c1_index;
   boolean_T c1_b_out;
-  int32_T c1_i64;
+  int32_T c1_i65;
   int32_T c1_param;
   _SFD_CT_CALL(TRANSITION_BEFORE_PROCESSING_TAG, 222U, chartInstance->c1_sfEvent);
   c1_out = (CV_TRANSITION_EVAL(222U, (int32_T)_SFD_CCP_CALL(5U, 222U, 0,
@@ -15911,43 +15965,43 @@ static void c1_b_READY(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
     c1_b_temp = c1_temp;
     if (c1_b_temp) {
       c1_index = autoX_params_AUTOX_TPS_START_LIMIT;
-      _SFD_SET_DATA_VALUE_PTR(160U, (void *)&c1_i64);
-      _SFD_SET_DATA_VALUE_PTR(140U, (void *)&c1_index);
+      _SFD_SET_DATA_VALUE_PTR(161U, (void *)&c1_i65);
+      _SFD_SET_DATA_VALUE_PTR(124U, (void *)&c1_index);
       _SFD_CS_CALL(FUNCTION_ACTIVE_TAG, 72U, chartInstance->c1_sfEvent);
       _SFD_SYMBOL_SCOPE_PUSH(2U, 0U);
-      _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("index", &c1_index, c1_l_sf_marshallOut,
-        c1_g_sf_marshallIn);
-      _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("param", &c1_i64, c1_sf_marshallOut,
+      _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("index", &c1_index, c1_m_sf_marshallOut,
+        c1_h_sf_marshallIn);
+      _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("param", &c1_i65, c1_sf_marshallOut,
         c1_sf_marshallIn);
       _SFD_CS_CALL(STATE_ENTER_DURING_FUNCTION_TAG, 72U,
                    chartInstance->c1_sfEvent);
-      c1_i64 = 0;
-      _SFD_DATA_RANGE_CHECK((real_T)c1_i64, 160U);
+      c1_i65 = 0;
+      _SFD_DATA_RANGE_CHECK((real_T)c1_i65, 161U);
       _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 238U, chartInstance->c1_sfEvent);
       _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 239U, chartInstance->c1_sfEvent);
-      c1_i64 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
+      c1_i65 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
         (sfGlobalDebugInstanceStruct, chartInstance->S, 1267U, 9, 16, 72U,
          (int32_T)c1_index, 0, 15)];
-      _SFD_DATA_RANGE_CHECK((real_T)c1_i64, 160U);
-      c1_param = c1_i64;
+      _SFD_DATA_RANGE_CHECK((real_T)c1_i65, 161U);
+      c1_param = c1_i65;
       sf_mex_printf("%s =\\n", "param");
       sf_mex_call_debug(sfGlobalDebugInstanceStruct, "disp", 0U, 1U, 12,
                         c1_param);
       _SFD_SYMBOL_SCOPE_POP();
       _SFD_CS_CALL(FUNCTION_INACTIVE_TAG, 72U, chartInstance->c1_sfEvent);
-      _SFD_UNSET_DATA_VALUE_PTR(160U);
-      _SFD_UNSET_DATA_VALUE_PTR(140U);
+      _SFD_UNSET_DATA_VALUE_PTR(161U);
+      _SFD_UNSET_DATA_VALUE_PTR(124U);
       _SFD_CS_CALL(EXIT_OUT_OF_FUNCTION_TAG, 72U, chartInstance->c1_sfEvent);
       c1_b_temp = _SFD_CCP_CALL(5U, 223U, 2, (boolean_T)CV_RELATIONAL_EVAL(5U,
-        223U, 1, (real_T)*chartInstance->c1_currTps, (real_T)c1_i64, 0, 5U,
-        *chartInstance->c1_currTps >= c1_i64) != 0U, chartInstance->c1_sfEvent);
+        223U, 1, (real_T)*chartInstance->c1_currTps, (real_T)c1_i65, 0, 5U,
+        *chartInstance->c1_currTps >= c1_i65) != 0U, chartInstance->c1_sfEvent);
     }
 
     c1_b_out = (CV_TRANSITION_EVAL(223U, (int32_T)c1_b_temp) != 0);
     if (c1_b_out) {
       _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 223U, chartInstance->c1_sfEvent);
       chartInstance->c1_lastAutoXCom = (*chartInstance->c1_autoXCom)[0];
-      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 27, 1043U, (void *)
+      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 28, 1043U, (void *)
         &chartInstance->c1_lastAutoXCom);
       _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastAutoXCom, 2U);
       *chartInstance->c1_stateFb = (uint16_T)AUTOX_GO;
@@ -15981,7 +16035,7 @@ static void c1_b_READY(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
         _SFD_CS_CALL(STATE_ACTIVE_TAG, 64U, chartInstance->c1_sfEvent);
         chartInstance->c1_b_tp_RELEASE = 1U;
         chartInstance->c1_b_lastSlip = 0U;
-        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 80, 1225U, (void *)
+        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 81, 1225U, (void *)
           &chartInstance->c1_b_lastSlip);
         _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_b_lastSlip, 21U);
         c1_b_pidControl(chartInstance, (real_T)*chartInstance->c1_currSlipTarget,
@@ -16040,24 +16094,24 @@ static void c1_b_READY(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
     }
   } else {
     _SFD_CS_CALL(STATE_ENTER_DURING_FUNCTION_TAG, 63U, chartInstance->c1_sfEvent);
-    c1_i63 = c1__s32_minus__(chartInstance, (int32_T)
+    c1_i64 = c1__s32_minus__(chartInstance, (int32_T)
       chartInstance->c1_c_autoXCounter, 1, 1223U, 138, 1);
     c1_covSaturation = false;
-    if (c1_i63 < 0) {
+    if (c1_i64 < 0) {
       c1_covSaturation = true;
-      c1_i63 = 0;
+      c1_i64 = 0;
       _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1223U, 138U, 1U);
     } else {
-      if (c1_i63 > 65535) {
-        c1_i63 = 65535;
+      if (c1_i64 > 65535) {
+        c1_i64 = 65535;
         _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1223U, 138U, 1U);
       }
 
       CV_SATURATION_EVAL(4, 63, 0, 0, c1_covSaturation);
     }
 
-    chartInstance->c1_c_autoXCounter = (uint16_T)c1_i63;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 76, 1201U, (void *)
+    chartInstance->c1_c_autoXCounter = (uint16_T)c1_i64;
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 77, 1201U, (void *)
       &chartInstance->c1_c_autoXCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_c_autoXCounter, 17U);
     c1_checkShift(chartInstance);
@@ -16108,19 +16162,19 @@ static void c1_enter_atomic_LAUNCH2(SFc1_GCU_Model_genCodeInstanceStruct
   *chartInstance)
 {
   chartInstance->c1_d_autoXCounter = 0U;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 88, 1274U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 89, 1274U, (void *)
     &chartInstance->c1_d_autoXCounter);
   _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_d_autoXCounter, 22U);
   chartInstance->c1_d_autoX_clutchValue = 0.0;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 89, 1275U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 90, 1275U, (void *)
     &chartInstance->c1_d_autoX_clutchValue);
   _SFD_DATA_RANGE_CHECK(chartInstance->c1_d_autoX_clutchValue, 24U);
   chartInstance->c1_d_autoX_clutchStep = 0.0;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 90, 1276U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 91, 1276U, (void *)
     &chartInstance->c1_d_autoX_clutchStep);
   _SFD_DATA_RANGE_CHECK(chartInstance->c1_d_autoX_clutchStep, 23U);
   chartInstance->c1_d_autoX_dtRelease = 0;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 91, 1277U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 92, 1277U, (void *)
     &chartInstance->c1_d_autoX_dtRelease);
   _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_d_autoX_dtRelease, 25U);
 }
@@ -16262,7 +16316,7 @@ static void c1_c_enter_internal_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct
       chartInstance->c1_stateFb);
     _SFD_DATA_RANGE_CHECK((real_T)*chartInstance->c1_stateFb, 86U);
     chartInstance->c1_d_autoXCounter = c1_const_AUTOX_WORK_RATE_ms;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 88, 1274U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 89, 1274U, (void *)
       &chartInstance->c1_d_autoXCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_d_autoXCounter, 22U);
     c1_u30 = chartInstance->c1_d_autoXCounter;
@@ -16302,7 +16356,7 @@ static void c1_e_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
   if (c1_out) {
     _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 241U, chartInstance->c1_sfEvent);
     chartInstance->c1_lastAutoXCom = (*chartInstance->c1_autoXCom)[0];
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 27, 1043U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 28, 1043U, (void *)
       &chartInstance->c1_lastAutoXCom);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastAutoXCom, 2U);
     c1_u31 = chartInstance->c1_lastAutoXCom;
@@ -16400,7 +16454,7 @@ static void c1_e_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
           _SFD_CS_CALL(STATE_ACTIVE_TAG, 79U, chartInstance->c1_sfEvent);
           chartInstance->c1_e_tp_RUNNING = 1U;
           chartInstance->c1_d_autoXCounter = c1_const_AUTOX_WORK_RATE_ms;
-          c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 88, 1274U, (void *)
+          c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 89, 1274U, (void *)
             &chartInstance->c1_d_autoXCounter);
           _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_d_autoXCounter, 22U);
           c1_u32 = chartInstance->c1_d_autoXCounter;
@@ -16466,7 +16520,7 @@ static void c1_e_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
           if (c1_d_out) {
             _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 251U, chartInstance->c1_sfEvent);
             chartInstance->c1_c_lastSlip = *chartInstance->c1_slipUpdateCounter;
-            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 92, 1298U, (void *)
+            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 93, 1298U, (void *)
               &chartInstance->c1_c_lastSlip);
             _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_c_lastSlip, 26U);
             chartInstance->c1_c_tp_WAIT = 0U;
@@ -16733,7 +16787,7 @@ static void c1_e_exit_internal_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct
 static void c1_e_START(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
 {
   boolean_T c1_out;
-  int32_T c1_i65;
+  int32_T c1_i66;
   boolean_T c1_covSaturation;
   _SFD_CT_CALL(TRANSITION_BEFORE_PROCESSING_TAG, 246U, chartInstance->c1_sfEvent);
   c1_out = (CV_TRANSITION_EVAL(246U, (int32_T)_SFD_CCP_CALL(5U, 246U, 0,
@@ -16777,24 +16831,24 @@ static void c1_e_START(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
     }
   } else {
     _SFD_CS_CALL(STATE_ENTER_DURING_FUNCTION_TAG, 80U, chartInstance->c1_sfEvent);
-    c1_i65 = c1__s32_minus__(chartInstance, (int32_T)
+    c1_i66 = c1__s32_minus__(chartInstance, (int32_T)
       chartInstance->c1_d_autoXCounter, 1, 1295U, 165, 1);
     c1_covSaturation = false;
-    if (c1_i65 < 0) {
+    if (c1_i66 < 0) {
       c1_covSaturation = true;
-      c1_i65 = 0;
+      c1_i66 = 0;
       _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1295U, 165U, 1U);
     } else {
-      if (c1_i65 > 65535) {
-        c1_i65 = 65535;
+      if (c1_i66 > 65535) {
+        c1_i66 = 65535;
         _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1295U, 165U, 1U);
       }
 
       CV_SATURATION_EVAL(4, 80, 0, 0, c1_covSaturation);
     }
 
-    chartInstance->c1_d_autoXCounter = (uint16_T)c1_i65;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 88, 1274U, (void *)
+    chartInstance->c1_d_autoXCounter = (uint16_T)c1_i66;
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 89, 1274U, (void *)
       &chartInstance->c1_d_autoXCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_d_autoXCounter, 22U);
   }
@@ -16811,7 +16865,7 @@ static void c1_e_enter_atomic_READY(SFc1_GCU_Model_genCodeInstanceStruct
     chartInstance->c1_stateFb);
   _SFD_DATA_RANGE_CHECK((real_T)*chartInstance->c1_stateFb, 86U);
   chartInstance->c1_d_autoXCounter = c1_const_AUTOX_WORK_RATE_ms;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 88, 1274U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 89, 1274U, (void *)
     &chartInstance->c1_d_autoXCounter);
   _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_d_autoXCounter, 22U);
   c1_u35 = chartInstance->c1_d_autoXCounter;
@@ -16824,13 +16878,13 @@ static void c1_e_enter_atomic_READY(SFc1_GCU_Model_genCodeInstanceStruct
 static void c1_c_READY(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
 {
   boolean_T c1_out;
-  int32_T c1_i66;
+  int32_T c1_i67;
   boolean_T c1_covSaturation;
   boolean_T c1_temp;
   boolean_T c1_b_temp;
   c1_autoX_params c1_index;
   boolean_T c1_b_out;
-  int32_T c1_i67;
+  int32_T c1_i68;
   int32_T c1_param;
   _SFD_CT_CALL(TRANSITION_BEFORE_PROCESSING_TAG, 247U, chartInstance->c1_sfEvent);
   c1_out = (CV_TRANSITION_EVAL(247U, (int32_T)_SFD_CCP_CALL(5U, 247U, 0,
@@ -16854,43 +16908,43 @@ static void c1_c_READY(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
     c1_b_temp = c1_temp;
     if (c1_b_temp) {
       c1_index = autoX_params_AUTOX_TPS_START_LIMIT;
-      _SFD_SET_DATA_VALUE_PTR(171U, (void *)&c1_i67);
-      _SFD_SET_DATA_VALUE_PTR(139U, (void *)&c1_index);
+      _SFD_SET_DATA_VALUE_PTR(171U, (void *)&c1_i68);
+      _SFD_SET_DATA_VALUE_PTR(140U, (void *)&c1_index);
       _SFD_CS_CALL(FUNCTION_ACTIVE_TAG, 84U, chartInstance->c1_sfEvent);
       _SFD_SYMBOL_SCOPE_PUSH(2U, 0U);
-      _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("index", &c1_index, c1_l_sf_marshallOut,
-        c1_g_sf_marshallIn);
-      _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("param", &c1_i67, c1_sf_marshallOut,
+      _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("index", &c1_index, c1_m_sf_marshallOut,
+        c1_h_sf_marshallIn);
+      _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("param", &c1_i68, c1_sf_marshallOut,
         c1_sf_marshallIn);
       _SFD_CS_CALL(STATE_ENTER_DURING_FUNCTION_TAG, 84U,
                    chartInstance->c1_sfEvent);
-      c1_i67 = 0;
-      _SFD_DATA_RANGE_CHECK((real_T)c1_i67, 171U);
+      c1_i68 = 0;
+      _SFD_DATA_RANGE_CHECK((real_T)c1_i68, 171U);
       _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 263U, chartInstance->c1_sfEvent);
       _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 264U, chartInstance->c1_sfEvent);
-      c1_i67 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
+      c1_i68 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
         (sfGlobalDebugInstanceStruct, chartInstance->S, 1340U, 9, 16, 72U,
          (int32_T)c1_index, 0, 15)];
-      _SFD_DATA_RANGE_CHECK((real_T)c1_i67, 171U);
-      c1_param = c1_i67;
+      _SFD_DATA_RANGE_CHECK((real_T)c1_i68, 171U);
+      c1_param = c1_i68;
       sf_mex_printf("%s =\\n", "param");
       sf_mex_call_debug(sfGlobalDebugInstanceStruct, "disp", 0U, 1U, 12,
                         c1_param);
       _SFD_SYMBOL_SCOPE_POP();
       _SFD_CS_CALL(FUNCTION_INACTIVE_TAG, 84U, chartInstance->c1_sfEvent);
       _SFD_UNSET_DATA_VALUE_PTR(171U);
-      _SFD_UNSET_DATA_VALUE_PTR(139U);
+      _SFD_UNSET_DATA_VALUE_PTR(140U);
       _SFD_CS_CALL(EXIT_OUT_OF_FUNCTION_TAG, 84U, chartInstance->c1_sfEvent);
       c1_b_temp = _SFD_CCP_CALL(5U, 248U, 2, (boolean_T)CV_RELATIONAL_EVAL(5U,
-        248U, 1, (real_T)*chartInstance->c1_currTps, (real_T)c1_i67, 0, 5U,
-        *chartInstance->c1_currTps >= c1_i67) != 0U, chartInstance->c1_sfEvent);
+        248U, 1, (real_T)*chartInstance->c1_currTps, (real_T)c1_i68, 0, 5U,
+        *chartInstance->c1_currTps >= c1_i68) != 0U, chartInstance->c1_sfEvent);
     }
 
     c1_b_out = (CV_TRANSITION_EVAL(248U, (int32_T)c1_b_temp) != 0);
     if (c1_b_out) {
       _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 248U, chartInstance->c1_sfEvent);
       chartInstance->c1_lastAutoXCom = (*chartInstance->c1_autoXCom)[0];
-      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 27, 1043U, (void *)
+      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 28, 1043U, (void *)
         &chartInstance->c1_lastAutoXCom);
       _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastAutoXCom, 2U);
       *chartInstance->c1_stateFb = (uint16_T)AUTOX_GO;
@@ -16924,7 +16978,7 @@ static void c1_c_READY(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
         _SFD_CS_CALL(STATE_ACTIVE_TAG, 76U, chartInstance->c1_sfEvent);
         chartInstance->c1_c_tp_RELEASE = 1U;
         chartInstance->c1_c_lastSlip = 0U;
-        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 92, 1298U, (void *)
+        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 93, 1298U, (void *)
           &chartInstance->c1_c_lastSlip);
         _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_c_lastSlip, 26U);
         c1_c_pidControl(chartInstance, (real_T)*chartInstance->c1_currSlipTarget,
@@ -16983,24 +17037,24 @@ static void c1_c_READY(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
     }
   } else {
     _SFD_CS_CALL(STATE_ENTER_DURING_FUNCTION_TAG, 75U, chartInstance->c1_sfEvent);
-    c1_i66 = c1__s32_minus__(chartInstance, (int32_T)
+    c1_i67 = c1__s32_minus__(chartInstance, (int32_T)
       chartInstance->c1_d_autoXCounter, 1, 1296U, 138, 1);
     c1_covSaturation = false;
-    if (c1_i66 < 0) {
+    if (c1_i67 < 0) {
       c1_covSaturation = true;
-      c1_i66 = 0;
+      c1_i67 = 0;
       _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1296U, 138U, 1U);
     } else {
-      if (c1_i66 > 65535) {
-        c1_i66 = 65535;
+      if (c1_i67 > 65535) {
+        c1_i67 = 65535;
         _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1296U, 138U, 1U);
       }
 
       CV_SATURATION_EVAL(4, 75, 0, 0, c1_covSaturation);
     }
 
-    chartInstance->c1_d_autoXCounter = (uint16_T)c1_i66;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 88, 1274U, (void *)
+    chartInstance->c1_d_autoXCounter = (uint16_T)c1_i67;
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 89, 1274U, (void *)
       &chartInstance->c1_d_autoXCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_d_autoXCounter, 22U);
     c1_checkShift(chartInstance);
@@ -17051,19 +17105,19 @@ static void c1_enter_atomic_LAUNCH3(SFc1_GCU_Model_genCodeInstanceStruct
   *chartInstance)
 {
   chartInstance->c1_e_autoXCounter = 0U;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 100, 1346U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 101, 1346U, (void *)
     &chartInstance->c1_e_autoXCounter);
   _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_e_autoXCounter, 27U);
   chartInstance->c1_e_autoX_clutchValue = 0.0;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 101, 1347U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 102, 1347U, (void *)
     &chartInstance->c1_e_autoX_clutchValue);
   _SFD_DATA_RANGE_CHECK(chartInstance->c1_e_autoX_clutchValue, 29U);
   chartInstance->c1_e_autoX_clutchStep = 0.0;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 102, 1348U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 103, 1348U, (void *)
     &chartInstance->c1_e_autoX_clutchStep);
   _SFD_DATA_RANGE_CHECK(chartInstance->c1_e_autoX_clutchStep, 28U);
   chartInstance->c1_e_autoX_dtRelease = 0;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 103, 1349U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 104, 1349U, (void *)
     &chartInstance->c1_e_autoX_dtRelease);
   _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_e_autoX_dtRelease, 30U);
 }
@@ -17254,7 +17308,7 @@ static void c1_d_enter_internal_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct
       chartInstance->c1_stateFb);
     _SFD_DATA_RANGE_CHECK((real_T)*chartInstance->c1_stateFb, 86U);
     chartInstance->c1_e_autoXCounter = c1_const_AUTOX_WORK_RATE_ms;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 100, 1346U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 101, 1346U, (void *)
       &chartInstance->c1_e_autoXCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_e_autoXCounter, 27U);
     c1_u36 = chartInstance->c1_e_autoXCounter;
@@ -17294,7 +17348,7 @@ static void c1_f_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
   if (c1_out) {
     _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 267U, chartInstance->c1_sfEvent);
     chartInstance->c1_lastAutoXCom = (*chartInstance->c1_autoXCom)[0];
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 27, 1043U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 28, 1043U, (void *)
       &chartInstance->c1_lastAutoXCom);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastAutoXCom, 2U);
     c1_u37 = chartInstance->c1_lastAutoXCom;
@@ -17392,7 +17446,7 @@ static void c1_f_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
           _SFD_CS_CALL(STATE_ACTIVE_TAG, 91U, chartInstance->c1_sfEvent);
           chartInstance->c1_f_tp_RUNNING = 1U;
           chartInstance->c1_e_autoXCounter = c1_const_AUTOX_WORK_RATE_ms;
-          c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 100, 1346U, (void *)
+          c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 101, 1346U, (void *)
             &chartInstance->c1_e_autoXCounter);
           _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_e_autoXCounter, 27U);
           c1_u38 = chartInstance->c1_e_autoXCounter;
@@ -17458,7 +17512,7 @@ static void c1_f_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
           if (c1_d_out) {
             _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 277U, chartInstance->c1_sfEvent);
             chartInstance->c1_d_lastSlip = *chartInstance->c1_slipUpdateCounter;
-            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 104, 1370U, (void *)
+            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 105, 1370U, (void *)
               &chartInstance->c1_d_lastSlip);
             _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_d_lastSlip, 31U);
             chartInstance->c1_d_tp_WAIT = 0U;
@@ -17725,7 +17779,7 @@ static void c1_f_exit_internal_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct
 static void c1_f_START(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
 {
   boolean_T c1_out;
-  int32_T c1_i68;
+  int32_T c1_i69;
   boolean_T c1_covSaturation;
   _SFD_CT_CALL(TRANSITION_BEFORE_PROCESSING_TAG, 272U, chartInstance->c1_sfEvent);
   c1_out = (CV_TRANSITION_EVAL(272U, (int32_T)_SFD_CCP_CALL(5U, 272U, 0,
@@ -17769,24 +17823,24 @@ static void c1_f_START(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
     }
   } else {
     _SFD_CS_CALL(STATE_ENTER_DURING_FUNCTION_TAG, 92U, chartInstance->c1_sfEvent);
-    c1_i68 = c1__s32_minus__(chartInstance, (int32_T)
+    c1_i69 = c1__s32_minus__(chartInstance, (int32_T)
       chartInstance->c1_e_autoXCounter, 1, 1367U, 165, 1);
     c1_covSaturation = false;
-    if (c1_i68 < 0) {
+    if (c1_i69 < 0) {
       c1_covSaturation = true;
-      c1_i68 = 0;
+      c1_i69 = 0;
       _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1367U, 165U, 1U);
     } else {
-      if (c1_i68 > 65535) {
-        c1_i68 = 65535;
+      if (c1_i69 > 65535) {
+        c1_i69 = 65535;
         _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1367U, 165U, 1U);
       }
 
       CV_SATURATION_EVAL(4, 92, 0, 0, c1_covSaturation);
     }
 
-    chartInstance->c1_e_autoXCounter = (uint16_T)c1_i68;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 100, 1346U, (void *)
+    chartInstance->c1_e_autoXCounter = (uint16_T)c1_i69;
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 101, 1346U, (void *)
       &chartInstance->c1_e_autoXCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_e_autoXCounter, 27U);
   }
@@ -17803,7 +17857,7 @@ static void c1_f_enter_atomic_READY(SFc1_GCU_Model_genCodeInstanceStruct
     chartInstance->c1_stateFb);
   _SFD_DATA_RANGE_CHECK((real_T)*chartInstance->c1_stateFb, 86U);
   chartInstance->c1_e_autoXCounter = c1_const_AUTOX_WORK_RATE_ms;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 100, 1346U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 101, 1346U, (void *)
     &chartInstance->c1_e_autoXCounter);
   _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_e_autoXCounter, 27U);
   c1_u41 = chartInstance->c1_e_autoXCounter;
@@ -17816,13 +17870,13 @@ static void c1_f_enter_atomic_READY(SFc1_GCU_Model_genCodeInstanceStruct
 static void c1_d_READY(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
 {
   boolean_T c1_out;
-  int32_T c1_i69;
+  int32_T c1_i70;
   boolean_T c1_covSaturation;
   boolean_T c1_temp;
   boolean_T c1_b_temp;
   c1_autoX_params c1_index;
   boolean_T c1_b_out;
-  int32_T c1_i70;
+  int32_T c1_i71;
   int32_T c1_param;
   _SFD_CT_CALL(TRANSITION_BEFORE_PROCESSING_TAG, 273U, chartInstance->c1_sfEvent);
   c1_out = (CV_TRANSITION_EVAL(273U, (int32_T)_SFD_CCP_CALL(5U, 273U, 0,
@@ -17846,43 +17900,43 @@ static void c1_d_READY(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
     c1_b_temp = c1_temp;
     if (c1_b_temp) {
       c1_index = autoX_params_AUTOX_TPS_START_LIMIT;
-      _SFD_SET_DATA_VALUE_PTR(165U, (void *)&c1_i70);
-      _SFD_SET_DATA_VALUE_PTR(128U, (void *)&c1_index);
+      _SFD_SET_DATA_VALUE_PTR(172U, (void *)&c1_i71);
+      _SFD_SET_DATA_VALUE_PTR(130U, (void *)&c1_index);
       _SFD_CS_CALL(FUNCTION_ACTIVE_TAG, 96U, chartInstance->c1_sfEvent);
       _SFD_SYMBOL_SCOPE_PUSH(2U, 0U);
-      _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("index", &c1_index, c1_l_sf_marshallOut,
-        c1_g_sf_marshallIn);
-      _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("param", &c1_i70, c1_sf_marshallOut,
+      _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("index", &c1_index, c1_m_sf_marshallOut,
+        c1_h_sf_marshallIn);
+      _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("param", &c1_i71, c1_sf_marshallOut,
         c1_sf_marshallIn);
       _SFD_CS_CALL(STATE_ENTER_DURING_FUNCTION_TAG, 96U,
                    chartInstance->c1_sfEvent);
-      c1_i70 = 0;
-      _SFD_DATA_RANGE_CHECK((real_T)c1_i70, 165U);
+      c1_i71 = 0;
+      _SFD_DATA_RANGE_CHECK((real_T)c1_i71, 172U);
       _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 289U, chartInstance->c1_sfEvent);
       _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 290U, chartInstance->c1_sfEvent);
-      c1_i70 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
+      c1_i71 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
         (sfGlobalDebugInstanceStruct, chartInstance->S, 1412U, 9, 16, 72U,
          (int32_T)c1_index, 0, 15)];
-      _SFD_DATA_RANGE_CHECK((real_T)c1_i70, 165U);
-      c1_param = c1_i70;
+      _SFD_DATA_RANGE_CHECK((real_T)c1_i71, 172U);
+      c1_param = c1_i71;
       sf_mex_printf("%s =\\n", "param");
       sf_mex_call_debug(sfGlobalDebugInstanceStruct, "disp", 0U, 1U, 12,
                         c1_param);
       _SFD_SYMBOL_SCOPE_POP();
       _SFD_CS_CALL(FUNCTION_INACTIVE_TAG, 96U, chartInstance->c1_sfEvent);
-      _SFD_UNSET_DATA_VALUE_PTR(165U);
-      _SFD_UNSET_DATA_VALUE_PTR(128U);
+      _SFD_UNSET_DATA_VALUE_PTR(172U);
+      _SFD_UNSET_DATA_VALUE_PTR(130U);
       _SFD_CS_CALL(EXIT_OUT_OF_FUNCTION_TAG, 96U, chartInstance->c1_sfEvent);
       c1_b_temp = _SFD_CCP_CALL(5U, 274U, 2, (boolean_T)CV_RELATIONAL_EVAL(5U,
-        274U, 1, (real_T)*chartInstance->c1_currTps, (real_T)c1_i70, 0, 5U,
-        *chartInstance->c1_currTps >= c1_i70) != 0U, chartInstance->c1_sfEvent);
+        274U, 1, (real_T)*chartInstance->c1_currTps, (real_T)c1_i71, 0, 5U,
+        *chartInstance->c1_currTps >= c1_i71) != 0U, chartInstance->c1_sfEvent);
     }
 
     c1_b_out = (CV_TRANSITION_EVAL(274U, (int32_T)c1_b_temp) != 0);
     if (c1_b_out) {
       _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 274U, chartInstance->c1_sfEvent);
       chartInstance->c1_lastAutoXCom = (*chartInstance->c1_autoXCom)[0];
-      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 27, 1043U, (void *)
+      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 28, 1043U, (void *)
         &chartInstance->c1_lastAutoXCom);
       _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastAutoXCom, 2U);
       *chartInstance->c1_stateFb = (uint16_T)AUTOX_GO;
@@ -17916,7 +17970,7 @@ static void c1_d_READY(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
         _SFD_CS_CALL(STATE_ACTIVE_TAG, 88U, chartInstance->c1_sfEvent);
         chartInstance->c1_d_tp_RELEASE = 1U;
         chartInstance->c1_d_lastSlip = 0U;
-        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 104, 1370U, (void *)
+        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 105, 1370U, (void *)
           &chartInstance->c1_d_lastSlip);
         _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_d_lastSlip, 31U);
         c1_d_pidControl(chartInstance, (real_T)*chartInstance->c1_currSlipTarget,
@@ -17975,24 +18029,24 @@ static void c1_d_READY(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
     }
   } else {
     _SFD_CS_CALL(STATE_ENTER_DURING_FUNCTION_TAG, 87U, chartInstance->c1_sfEvent);
-    c1_i69 = c1__s32_minus__(chartInstance, (int32_T)
+    c1_i70 = c1__s32_minus__(chartInstance, (int32_T)
       chartInstance->c1_e_autoXCounter, 1, 1368U, 138, 1);
     c1_covSaturation = false;
-    if (c1_i69 < 0) {
+    if (c1_i70 < 0) {
       c1_covSaturation = true;
-      c1_i69 = 0;
+      c1_i70 = 0;
       _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1368U, 138U, 1U);
     } else {
-      if (c1_i69 > 65535) {
-        c1_i69 = 65535;
+      if (c1_i70 > 65535) {
+        c1_i70 = 65535;
         _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1368U, 138U, 1U);
       }
 
       CV_SATURATION_EVAL(4, 87, 0, 0, c1_covSaturation);
     }
 
-    chartInstance->c1_e_autoXCounter = (uint16_T)c1_i69;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 100, 1346U, (void *)
+    chartInstance->c1_e_autoXCounter = (uint16_T)c1_i70;
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 101, 1346U, (void *)
       &chartInstance->c1_e_autoXCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_e_autoXCounter, 27U);
     c1_checkShift(chartInstance);
@@ -18043,19 +18097,19 @@ static void c1_enter_atomic_LAUNCH4(SFc1_GCU_Model_genCodeInstanceStruct
   *chartInstance)
 {
   chartInstance->c1_f_autoXCounter = 0U;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 112, 1414U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 113, 1414U, (void *)
     &chartInstance->c1_f_autoXCounter);
   _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_f_autoXCounter, 32U);
   chartInstance->c1_f_autoX_clutchValue = 0.0;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 113, 1415U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 114, 1415U, (void *)
     &chartInstance->c1_f_autoX_clutchValue);
   _SFD_DATA_RANGE_CHECK(chartInstance->c1_f_autoX_clutchValue, 34U);
   chartInstance->c1_f_autoX_clutchStep = 0.0;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 114, 1416U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 115, 1416U, (void *)
     &chartInstance->c1_f_autoX_clutchStep);
   _SFD_DATA_RANGE_CHECK(chartInstance->c1_f_autoX_clutchStep, 33U);
   chartInstance->c1_f_autoX_dtRelease = 0;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 115, 1417U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 116, 1417U, (void *)
     &chartInstance->c1_f_autoX_dtRelease);
   _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_f_autoX_dtRelease, 35U);
 }
@@ -18247,7 +18301,7 @@ static void c1_e_enter_internal_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct
       chartInstance->c1_stateFb);
     _SFD_DATA_RANGE_CHECK((real_T)*chartInstance->c1_stateFb, 86U);
     chartInstance->c1_f_autoXCounter = c1_const_AUTOX_WORK_RATE_ms;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 112, 1414U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 113, 1414U, (void *)
       &chartInstance->c1_f_autoXCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_f_autoXCounter, 32U);
     c1_u42 = chartInstance->c1_f_autoXCounter;
@@ -18287,7 +18341,7 @@ static void c1_g_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
   if (c1_out) {
     _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 291U, chartInstance->c1_sfEvent);
     chartInstance->c1_lastAutoXCom = (*chartInstance->c1_autoXCom)[0];
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 27, 1043U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 28, 1043U, (void *)
       &chartInstance->c1_lastAutoXCom);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastAutoXCom, 2U);
     c1_u43 = chartInstance->c1_lastAutoXCom;
@@ -18385,7 +18439,7 @@ static void c1_g_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
           _SFD_CS_CALL(STATE_ACTIVE_TAG, 103U, chartInstance->c1_sfEvent);
           chartInstance->c1_g_tp_RUNNING = 1U;
           chartInstance->c1_f_autoXCounter = c1_const_AUTOX_WORK_RATE_ms;
-          c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 112, 1414U, (void *)
+          c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 113, 1414U, (void *)
             &chartInstance->c1_f_autoXCounter);
           _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_f_autoXCounter, 32U);
           c1_u44 = chartInstance->c1_f_autoXCounter;
@@ -18451,7 +18505,7 @@ static void c1_g_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
           if (c1_d_out) {
             _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 301U, chartInstance->c1_sfEvent);
             chartInstance->c1_e_lastSlip = *chartInstance->c1_slipUpdateCounter;
-            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 116, 1438U, (void *)
+            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 117, 1438U, (void *)
               &chartInstance->c1_e_lastSlip);
             _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_e_lastSlip, 36U);
             chartInstance->c1_e_tp_WAIT = 0U;
@@ -18718,7 +18772,7 @@ static void c1_g_exit_internal_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct
 static void c1_g_START(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
 {
   boolean_T c1_out;
-  int32_T c1_i71;
+  int32_T c1_i72;
   boolean_T c1_covSaturation;
   _SFD_CT_CALL(TRANSITION_BEFORE_PROCESSING_TAG, 296U, chartInstance->c1_sfEvent);
   c1_out = (CV_TRANSITION_EVAL(296U, (int32_T)_SFD_CCP_CALL(5U, 296U, 0,
@@ -18763,24 +18817,24 @@ static void c1_g_START(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
   } else {
     _SFD_CS_CALL(STATE_ENTER_DURING_FUNCTION_TAG, 104U,
                  chartInstance->c1_sfEvent);
-    c1_i71 = c1__s32_minus__(chartInstance, (int32_T)
+    c1_i72 = c1__s32_minus__(chartInstance, (int32_T)
       chartInstance->c1_f_autoXCounter, 1, 1435U, 165, 1);
     c1_covSaturation = false;
-    if (c1_i71 < 0) {
+    if (c1_i72 < 0) {
       c1_covSaturation = true;
-      c1_i71 = 0;
+      c1_i72 = 0;
       _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1435U, 165U, 1U);
     } else {
-      if (c1_i71 > 65535) {
-        c1_i71 = 65535;
+      if (c1_i72 > 65535) {
+        c1_i72 = 65535;
         _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1435U, 165U, 1U);
       }
 
       CV_SATURATION_EVAL(4, 104, 0, 0, c1_covSaturation);
     }
 
-    chartInstance->c1_f_autoXCounter = (uint16_T)c1_i71;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 112, 1414U, (void *)
+    chartInstance->c1_f_autoXCounter = (uint16_T)c1_i72;
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 113, 1414U, (void *)
       &chartInstance->c1_f_autoXCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_f_autoXCounter, 32U);
   }
@@ -18797,7 +18851,7 @@ static void c1_g_enter_atomic_READY(SFc1_GCU_Model_genCodeInstanceStruct
     chartInstance->c1_stateFb);
   _SFD_DATA_RANGE_CHECK((real_T)*chartInstance->c1_stateFb, 86U);
   chartInstance->c1_f_autoXCounter = c1_const_AUTOX_WORK_RATE_ms;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 112, 1414U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 113, 1414U, (void *)
     &chartInstance->c1_f_autoXCounter);
   _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_f_autoXCounter, 32U);
   c1_u47 = chartInstance->c1_f_autoXCounter;
@@ -18810,13 +18864,13 @@ static void c1_g_enter_atomic_READY(SFc1_GCU_Model_genCodeInstanceStruct
 static void c1_e_READY(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
 {
   boolean_T c1_out;
-  int32_T c1_i72;
+  int32_T c1_i73;
   boolean_T c1_covSaturation;
   boolean_T c1_temp;
   boolean_T c1_b_temp;
   c1_autoX_params c1_index;
   boolean_T c1_b_out;
-  int32_T c1_i73;
+  int32_T c1_i74;
   int32_T c1_param;
   _SFD_CT_CALL(TRANSITION_BEFORE_PROCESSING_TAG, 297U, chartInstance->c1_sfEvent);
   c1_out = (CV_TRANSITION_EVAL(297U, (int32_T)_SFD_CCP_CALL(5U, 297U, 0,
@@ -18840,43 +18894,43 @@ static void c1_e_READY(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
     c1_b_temp = c1_temp;
     if (c1_b_temp) {
       c1_index = autoX_params_AUTOX_TPS_START_LIMIT;
-      _SFD_SET_DATA_VALUE_PTR(169U, (void *)&c1_i73);
-      _SFD_SET_DATA_VALUE_PTR(120U, (void *)&c1_index);
+      _SFD_SET_DATA_VALUE_PTR(179U, (void *)&c1_i74);
+      _SFD_SET_DATA_VALUE_PTR(121U, (void *)&c1_index);
       _SFD_CS_CALL(FUNCTION_ACTIVE_TAG, 108U, chartInstance->c1_sfEvent);
       _SFD_SYMBOL_SCOPE_PUSH(2U, 0U);
-      _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("index", &c1_index, c1_l_sf_marshallOut,
-        c1_g_sf_marshallIn);
-      _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("param", &c1_i73, c1_sf_marshallOut,
+      _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("index", &c1_index, c1_m_sf_marshallOut,
+        c1_h_sf_marshallIn);
+      _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("param", &c1_i74, c1_sf_marshallOut,
         c1_sf_marshallIn);
       _SFD_CS_CALL(STATE_ENTER_DURING_FUNCTION_TAG, 108U,
                    chartInstance->c1_sfEvent);
-      c1_i73 = 0;
-      _SFD_DATA_RANGE_CHECK((real_T)c1_i73, 169U);
+      c1_i74 = 0;
+      _SFD_DATA_RANGE_CHECK((real_T)c1_i74, 179U);
       _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 313U, chartInstance->c1_sfEvent);
       _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 314U, chartInstance->c1_sfEvent);
-      c1_i73 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
+      c1_i74 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
         (sfGlobalDebugInstanceStruct, chartInstance->S, 1480U, 9, 16, 72U,
          (int32_T)c1_index, 0, 15)];
-      _SFD_DATA_RANGE_CHECK((real_T)c1_i73, 169U);
-      c1_param = c1_i73;
+      _SFD_DATA_RANGE_CHECK((real_T)c1_i74, 179U);
+      c1_param = c1_i74;
       sf_mex_printf("%s =\\n", "param");
       sf_mex_call_debug(sfGlobalDebugInstanceStruct, "disp", 0U, 1U, 12,
                         c1_param);
       _SFD_SYMBOL_SCOPE_POP();
       _SFD_CS_CALL(FUNCTION_INACTIVE_TAG, 108U, chartInstance->c1_sfEvent);
-      _SFD_UNSET_DATA_VALUE_PTR(169U);
-      _SFD_UNSET_DATA_VALUE_PTR(120U);
+      _SFD_UNSET_DATA_VALUE_PTR(179U);
+      _SFD_UNSET_DATA_VALUE_PTR(121U);
       _SFD_CS_CALL(EXIT_OUT_OF_FUNCTION_TAG, 108U, chartInstance->c1_sfEvent);
       c1_b_temp = _SFD_CCP_CALL(5U, 298U, 2, (boolean_T)CV_RELATIONAL_EVAL(5U,
-        298U, 1, (real_T)*chartInstance->c1_currTps, (real_T)c1_i73, 0, 5U,
-        *chartInstance->c1_currTps >= c1_i73) != 0U, chartInstance->c1_sfEvent);
+        298U, 1, (real_T)*chartInstance->c1_currTps, (real_T)c1_i74, 0, 5U,
+        *chartInstance->c1_currTps >= c1_i74) != 0U, chartInstance->c1_sfEvent);
     }
 
     c1_b_out = (CV_TRANSITION_EVAL(298U, (int32_T)c1_b_temp) != 0);
     if (c1_b_out) {
       _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 298U, chartInstance->c1_sfEvent);
       chartInstance->c1_lastAutoXCom = (*chartInstance->c1_autoXCom)[0];
-      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 27, 1043U, (void *)
+      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 28, 1043U, (void *)
         &chartInstance->c1_lastAutoXCom);
       _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastAutoXCom, 2U);
       *chartInstance->c1_stateFb = (uint16_T)AUTOX_GO;
@@ -18910,7 +18964,7 @@ static void c1_e_READY(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
         _SFD_CS_CALL(STATE_ACTIVE_TAG, 100U, chartInstance->c1_sfEvent);
         chartInstance->c1_e_tp_RELEASE = 1U;
         chartInstance->c1_e_lastSlip = 0U;
-        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 116, 1438U, (void *)
+        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 117, 1438U, (void *)
           &chartInstance->c1_e_lastSlip);
         _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_e_lastSlip, 36U);
         c1_e_pidControl(chartInstance, (real_T)*chartInstance->c1_currSlipTarget,
@@ -18969,24 +19023,24 @@ static void c1_e_READY(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
     }
   } else {
     _SFD_CS_CALL(STATE_ENTER_DURING_FUNCTION_TAG, 99U, chartInstance->c1_sfEvent);
-    c1_i72 = c1__s32_minus__(chartInstance, (int32_T)
+    c1_i73 = c1__s32_minus__(chartInstance, (int32_T)
       chartInstance->c1_f_autoXCounter, 1, 1436U, 138, 1);
     c1_covSaturation = false;
-    if (c1_i72 < 0) {
+    if (c1_i73 < 0) {
       c1_covSaturation = true;
-      c1_i72 = 0;
+      c1_i73 = 0;
       _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1436U, 138U, 1U);
     } else {
-      if (c1_i72 > 65535) {
-        c1_i72 = 65535;
+      if (c1_i73 > 65535) {
+        c1_i73 = 65535;
         _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1436U, 138U, 1U);
       }
 
       CV_SATURATION_EVAL(4, 99, 0, 0, c1_covSaturation);
     }
 
-    chartInstance->c1_f_autoXCounter = (uint16_T)c1_i72;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 112, 1414U, (void *)
+    chartInstance->c1_f_autoXCounter = (uint16_T)c1_i73;
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 113, 1414U, (void *)
       &chartInstance->c1_f_autoXCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_f_autoXCounter, 32U);
     c1_checkShift(chartInstance);
@@ -19037,19 +19091,19 @@ static void c1_enter_atomic_LAUNCH5(SFc1_GCU_Model_genCodeInstanceStruct
   *chartInstance)
 {
   chartInstance->c1_g_autoXCounter = 0U;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 124, 1482U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 125, 1482U, (void *)
     &chartInstance->c1_g_autoXCounter);
   _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_g_autoXCounter, 37U);
   chartInstance->c1_g_autoX_clutchValue = 0.0;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 125, 1483U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 126, 1483U, (void *)
     &chartInstance->c1_g_autoX_clutchValue);
   _SFD_DATA_RANGE_CHECK(chartInstance->c1_g_autoX_clutchValue, 39U);
   chartInstance->c1_g_autoX_clutchStep = 0.0;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 126, 1484U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 127, 1484U, (void *)
     &chartInstance->c1_g_autoX_clutchStep);
   _SFD_DATA_RANGE_CHECK(chartInstance->c1_g_autoX_clutchStep, 38U);
   chartInstance->c1_g_autoX_dtRelease = 0;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 127, 1485U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 128, 1485U, (void *)
     &chartInstance->c1_g_autoX_dtRelease);
   _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_g_autoX_dtRelease, 40U);
 }
@@ -19243,7 +19297,7 @@ static void c1_f_enter_internal_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct
       chartInstance->c1_stateFb);
     _SFD_DATA_RANGE_CHECK((real_T)*chartInstance->c1_stateFb, 86U);
     chartInstance->c1_g_autoXCounter = c1_const_AUTOX_WORK_RATE_ms;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 124, 1482U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 125, 1482U, (void *)
       &chartInstance->c1_g_autoXCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_g_autoXCounter, 37U);
     c1_u48 = chartInstance->c1_g_autoXCounter;
@@ -19283,7 +19337,7 @@ static void c1_h_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
   if (c1_out) {
     _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 315U, chartInstance->c1_sfEvent);
     chartInstance->c1_lastAutoXCom = (*chartInstance->c1_autoXCom)[0];
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 27, 1043U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 28, 1043U, (void *)
       &chartInstance->c1_lastAutoXCom);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastAutoXCom, 2U);
     c1_u49 = chartInstance->c1_lastAutoXCom;
@@ -19383,7 +19437,7 @@ static void c1_h_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
           _SFD_CS_CALL(STATE_ACTIVE_TAG, 115U, chartInstance->c1_sfEvent);
           chartInstance->c1_h_tp_RUNNING = 1U;
           chartInstance->c1_g_autoXCounter = c1_const_AUTOX_WORK_RATE_ms;
-          c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 124, 1482U, (void *)
+          c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 125, 1482U, (void *)
             &chartInstance->c1_g_autoXCounter);
           _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_g_autoXCounter, 37U);
           c1_u50 = chartInstance->c1_g_autoXCounter;
@@ -19449,7 +19503,7 @@ static void c1_h_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
           if (c1_d_out) {
             _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 325U, chartInstance->c1_sfEvent);
             chartInstance->c1_f_lastSlip = *chartInstance->c1_slipUpdateCounter;
-            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 128, 1506U, (void *)
+            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 129, 1506U, (void *)
               &chartInstance->c1_f_lastSlip);
             _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_f_lastSlip, 41U);
             chartInstance->c1_f_tp_WAIT = 0U;
@@ -19716,7 +19770,7 @@ static void c1_h_exit_internal_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct
 static void c1_h_START(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
 {
   boolean_T c1_out;
-  int32_T c1_i74;
+  int32_T c1_i75;
   boolean_T c1_covSaturation;
   _SFD_CT_CALL(TRANSITION_BEFORE_PROCESSING_TAG, 320U, chartInstance->c1_sfEvent);
   c1_out = (CV_TRANSITION_EVAL(320U, (int32_T)_SFD_CCP_CALL(5U, 320U, 0,
@@ -19761,24 +19815,24 @@ static void c1_h_START(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
   } else {
     _SFD_CS_CALL(STATE_ENTER_DURING_FUNCTION_TAG, 116U,
                  chartInstance->c1_sfEvent);
-    c1_i74 = c1__s32_minus__(chartInstance, (int32_T)
+    c1_i75 = c1__s32_minus__(chartInstance, (int32_T)
       chartInstance->c1_g_autoXCounter, 1, 1503U, 165, 1);
     c1_covSaturation = false;
-    if (c1_i74 < 0) {
+    if (c1_i75 < 0) {
       c1_covSaturation = true;
-      c1_i74 = 0;
+      c1_i75 = 0;
       _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1503U, 165U, 1U);
     } else {
-      if (c1_i74 > 65535) {
-        c1_i74 = 65535;
+      if (c1_i75 > 65535) {
+        c1_i75 = 65535;
         _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1503U, 165U, 1U);
       }
 
       CV_SATURATION_EVAL(4, 116, 0, 0, c1_covSaturation);
     }
 
-    chartInstance->c1_g_autoXCounter = (uint16_T)c1_i74;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 124, 1482U, (void *)
+    chartInstance->c1_g_autoXCounter = (uint16_T)c1_i75;
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 125, 1482U, (void *)
       &chartInstance->c1_g_autoXCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_g_autoXCounter, 37U);
   }
@@ -19795,7 +19849,7 @@ static void c1_h_enter_atomic_READY(SFc1_GCU_Model_genCodeInstanceStruct
     chartInstance->c1_stateFb);
   _SFD_DATA_RANGE_CHECK((real_T)*chartInstance->c1_stateFb, 86U);
   chartInstance->c1_g_autoXCounter = c1_const_AUTOX_WORK_RATE_ms;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 124, 1482U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 125, 1482U, (void *)
     &chartInstance->c1_g_autoXCounter);
   _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_g_autoXCounter, 37U);
   c1_u53 = chartInstance->c1_g_autoXCounter;
@@ -19808,13 +19862,13 @@ static void c1_h_enter_atomic_READY(SFc1_GCU_Model_genCodeInstanceStruct
 static void c1_f_READY(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
 {
   boolean_T c1_out;
-  int32_T c1_i75;
+  int32_T c1_i76;
   boolean_T c1_covSaturation;
   boolean_T c1_temp;
   boolean_T c1_b_temp;
   c1_autoX_params c1_index;
   boolean_T c1_b_out;
-  int32_T c1_i76;
+  int32_T c1_i77;
   int32_T c1_param;
   _SFD_CT_CALL(TRANSITION_BEFORE_PROCESSING_TAG, 321U, chartInstance->c1_sfEvent);
   c1_out = (CV_TRANSITION_EVAL(321U, (int32_T)_SFD_CCP_CALL(5U, 321U, 0,
@@ -19838,43 +19892,43 @@ static void c1_f_READY(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
     c1_b_temp = c1_temp;
     if (c1_b_temp) {
       c1_index = autoX_params_AUTOX_TPS_START_LIMIT;
-      _SFD_SET_DATA_VALUE_PTR(164U, (void *)&c1_i76);
-      _SFD_SET_DATA_VALUE_PTR(126U, (void *)&c1_index);
+      _SFD_SET_DATA_VALUE_PTR(166U, (void *)&c1_i77);
+      _SFD_SET_DATA_VALUE_PTR(127U, (void *)&c1_index);
       _SFD_CS_CALL(FUNCTION_ACTIVE_TAG, 120U, chartInstance->c1_sfEvent);
       _SFD_SYMBOL_SCOPE_PUSH(2U, 0U);
-      _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("index", &c1_index, c1_l_sf_marshallOut,
-        c1_g_sf_marshallIn);
-      _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("param", &c1_i76, c1_sf_marshallOut,
+      _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("index", &c1_index, c1_m_sf_marshallOut,
+        c1_h_sf_marshallIn);
+      _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("param", &c1_i77, c1_sf_marshallOut,
         c1_sf_marshallIn);
       _SFD_CS_CALL(STATE_ENTER_DURING_FUNCTION_TAG, 120U,
                    chartInstance->c1_sfEvent);
-      c1_i76 = 0;
-      _SFD_DATA_RANGE_CHECK((real_T)c1_i76, 164U);
+      c1_i77 = 0;
+      _SFD_DATA_RANGE_CHECK((real_T)c1_i77, 166U);
       _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 337U, chartInstance->c1_sfEvent);
       _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 338U, chartInstance->c1_sfEvent);
-      c1_i76 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
+      c1_i77 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
         (sfGlobalDebugInstanceStruct, chartInstance->S, 1548U, 9, 16, 72U,
          (int32_T)c1_index, 0, 15)];
-      _SFD_DATA_RANGE_CHECK((real_T)c1_i76, 164U);
-      c1_param = c1_i76;
+      _SFD_DATA_RANGE_CHECK((real_T)c1_i77, 166U);
+      c1_param = c1_i77;
       sf_mex_printf("%s =\\n", "param");
       sf_mex_call_debug(sfGlobalDebugInstanceStruct, "disp", 0U, 1U, 12,
                         c1_param);
       _SFD_SYMBOL_SCOPE_POP();
       _SFD_CS_CALL(FUNCTION_INACTIVE_TAG, 120U, chartInstance->c1_sfEvent);
-      _SFD_UNSET_DATA_VALUE_PTR(164U);
-      _SFD_UNSET_DATA_VALUE_PTR(126U);
+      _SFD_UNSET_DATA_VALUE_PTR(166U);
+      _SFD_UNSET_DATA_VALUE_PTR(127U);
       _SFD_CS_CALL(EXIT_OUT_OF_FUNCTION_TAG, 120U, chartInstance->c1_sfEvent);
       c1_b_temp = _SFD_CCP_CALL(5U, 322U, 2, (boolean_T)CV_RELATIONAL_EVAL(5U,
-        322U, 1, (real_T)*chartInstance->c1_currTps, (real_T)c1_i76, 0, 5U,
-        *chartInstance->c1_currTps >= c1_i76) != 0U, chartInstance->c1_sfEvent);
+        322U, 1, (real_T)*chartInstance->c1_currTps, (real_T)c1_i77, 0, 5U,
+        *chartInstance->c1_currTps >= c1_i77) != 0U, chartInstance->c1_sfEvent);
     }
 
     c1_b_out = (CV_TRANSITION_EVAL(322U, (int32_T)c1_b_temp) != 0);
     if (c1_b_out) {
       _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 322U, chartInstance->c1_sfEvent);
       chartInstance->c1_lastAutoXCom = (*chartInstance->c1_autoXCom)[0];
-      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 27, 1043U, (void *)
+      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 28, 1043U, (void *)
         &chartInstance->c1_lastAutoXCom);
       _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastAutoXCom, 2U);
       *chartInstance->c1_stateFb = (uint16_T)AUTOX_GO;
@@ -19908,7 +19962,7 @@ static void c1_f_READY(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
         _SFD_CS_CALL(STATE_ACTIVE_TAG, 112U, chartInstance->c1_sfEvent);
         chartInstance->c1_f_tp_RELEASE = 1U;
         chartInstance->c1_f_lastSlip = 0U;
-        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 128, 1506U, (void *)
+        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 129, 1506U, (void *)
           &chartInstance->c1_f_lastSlip);
         _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_f_lastSlip, 41U);
         c1_f_pidControl(chartInstance, (real_T)*chartInstance->c1_currSlipTarget,
@@ -19968,24 +20022,24 @@ static void c1_f_READY(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
   } else {
     _SFD_CS_CALL(STATE_ENTER_DURING_FUNCTION_TAG, 111U,
                  chartInstance->c1_sfEvent);
-    c1_i75 = c1__s32_minus__(chartInstance, (int32_T)
+    c1_i76 = c1__s32_minus__(chartInstance, (int32_T)
       chartInstance->c1_g_autoXCounter, 1, 1504U, 138, 1);
     c1_covSaturation = false;
-    if (c1_i75 < 0) {
+    if (c1_i76 < 0) {
       c1_covSaturation = true;
-      c1_i75 = 0;
+      c1_i76 = 0;
       _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1504U, 138U, 1U);
     } else {
-      if (c1_i75 > 65535) {
-        c1_i75 = 65535;
+      if (c1_i76 > 65535) {
+        c1_i76 = 65535;
         _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1504U, 138U, 1U);
       }
 
       CV_SATURATION_EVAL(4, 111, 0, 0, c1_covSaturation);
     }
 
-    chartInstance->c1_g_autoXCounter = (uint16_T)c1_i75;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 124, 1482U, (void *)
+    chartInstance->c1_g_autoXCounter = (uint16_T)c1_i76;
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 125, 1482U, (void *)
       &chartInstance->c1_g_autoXCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_g_autoXCounter, 37U);
     c1_checkShift(chartInstance);
@@ -20036,19 +20090,19 @@ static void c1_enter_atomic_LAUNCH6(SFc1_GCU_Model_genCodeInstanceStruct
   *chartInstance)
 {
   chartInstance->c1_h_autoXCounter = 0U;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 136, 1550U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 137, 1550U, (void *)
     &chartInstance->c1_h_autoXCounter);
   _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_h_autoXCounter, 42U);
   chartInstance->c1_h_autoX_clutchValue = 0.0;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 137, 1551U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 138, 1551U, (void *)
     &chartInstance->c1_h_autoX_clutchValue);
   _SFD_DATA_RANGE_CHECK(chartInstance->c1_h_autoX_clutchValue, 44U);
   chartInstance->c1_h_autoX_clutchStep = 0.0;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 138, 1552U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 139, 1552U, (void *)
     &chartInstance->c1_h_autoX_clutchStep);
   _SFD_DATA_RANGE_CHECK(chartInstance->c1_h_autoX_clutchStep, 43U);
   chartInstance->c1_h_autoX_dtRelease = 0;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 139, 1553U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 140, 1553U, (void *)
     &chartInstance->c1_h_autoX_dtRelease);
   _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_h_autoX_dtRelease, 45U);
 }
@@ -20243,7 +20297,7 @@ static void c1_g_enter_internal_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct
       chartInstance->c1_stateFb);
     _SFD_DATA_RANGE_CHECK((real_T)*chartInstance->c1_stateFb, 86U);
     chartInstance->c1_h_autoXCounter = c1_const_AUTOX_WORK_RATE_ms;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 136, 1550U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 137, 1550U, (void *)
       &chartInstance->c1_h_autoXCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_h_autoXCounter, 42U);
     c1_u54 = chartInstance->c1_h_autoXCounter;
@@ -20283,7 +20337,7 @@ static void c1_i_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
   if (c1_out) {
     _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 339U, chartInstance->c1_sfEvent);
     chartInstance->c1_lastAutoXCom = (*chartInstance->c1_autoXCom)[0];
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 27, 1043U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 28, 1043U, (void *)
       &chartInstance->c1_lastAutoXCom);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastAutoXCom, 2U);
     c1_u55 = chartInstance->c1_lastAutoXCom;
@@ -20383,7 +20437,7 @@ static void c1_i_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
           _SFD_CS_CALL(STATE_ACTIVE_TAG, 127U, chartInstance->c1_sfEvent);
           chartInstance->c1_i_tp_RUNNING = 1U;
           chartInstance->c1_h_autoXCounter = c1_const_AUTOX_WORK_RATE_ms;
-          c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 136, 1550U, (void *)
+          c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 137, 1550U, (void *)
             &chartInstance->c1_h_autoXCounter);
           _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_h_autoXCounter, 42U);
           c1_u56 = chartInstance->c1_h_autoXCounter;
@@ -20449,7 +20503,7 @@ static void c1_i_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
           if (c1_d_out) {
             _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 349U, chartInstance->c1_sfEvent);
             chartInstance->c1_g_lastSlip = *chartInstance->c1_slipUpdateCounter;
-            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 140, 1574U, (void *)
+            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 141, 1574U, (void *)
               &chartInstance->c1_g_lastSlip);
             _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_g_lastSlip, 46U);
             chartInstance->c1_g_tp_WAIT = 0U;
@@ -20716,7 +20770,7 @@ static void c1_i_exit_internal_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct
 static void c1_i_START(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
 {
   boolean_T c1_out;
-  int32_T c1_i77;
+  int32_T c1_i78;
   boolean_T c1_covSaturation;
   _SFD_CT_CALL(TRANSITION_BEFORE_PROCESSING_TAG, 344U, chartInstance->c1_sfEvent);
   c1_out = (CV_TRANSITION_EVAL(344U, (int32_T)_SFD_CCP_CALL(5U, 344U, 0,
@@ -20761,24 +20815,24 @@ static void c1_i_START(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
   } else {
     _SFD_CS_CALL(STATE_ENTER_DURING_FUNCTION_TAG, 128U,
                  chartInstance->c1_sfEvent);
-    c1_i77 = c1__s32_minus__(chartInstance, (int32_T)
+    c1_i78 = c1__s32_minus__(chartInstance, (int32_T)
       chartInstance->c1_h_autoXCounter, 1, 1571U, 165, 1);
     c1_covSaturation = false;
-    if (c1_i77 < 0) {
+    if (c1_i78 < 0) {
       c1_covSaturation = true;
-      c1_i77 = 0;
+      c1_i78 = 0;
       _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1571U, 165U, 1U);
     } else {
-      if (c1_i77 > 65535) {
-        c1_i77 = 65535;
+      if (c1_i78 > 65535) {
+        c1_i78 = 65535;
         _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1571U, 165U, 1U);
       }
 
       CV_SATURATION_EVAL(4, 128, 0, 0, c1_covSaturation);
     }
 
-    chartInstance->c1_h_autoXCounter = (uint16_T)c1_i77;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 136, 1550U, (void *)
+    chartInstance->c1_h_autoXCounter = (uint16_T)c1_i78;
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 137, 1550U, (void *)
       &chartInstance->c1_h_autoXCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_h_autoXCounter, 42U);
   }
@@ -20795,7 +20849,7 @@ static void c1_i_enter_atomic_READY(SFc1_GCU_Model_genCodeInstanceStruct
     chartInstance->c1_stateFb);
   _SFD_DATA_RANGE_CHECK((real_T)*chartInstance->c1_stateFb, 86U);
   chartInstance->c1_h_autoXCounter = c1_const_AUTOX_WORK_RATE_ms;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 136, 1550U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 137, 1550U, (void *)
     &chartInstance->c1_h_autoXCounter);
   _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_h_autoXCounter, 42U);
   c1_u59 = chartInstance->c1_h_autoXCounter;
@@ -20808,13 +20862,13 @@ static void c1_i_enter_atomic_READY(SFc1_GCU_Model_genCodeInstanceStruct
 static void c1_g_READY(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
 {
   boolean_T c1_out;
-  int32_T c1_i78;
+  int32_T c1_i79;
   boolean_T c1_covSaturation;
   boolean_T c1_temp;
   boolean_T c1_b_temp;
   c1_autoX_params c1_index;
   boolean_T c1_b_out;
-  int32_T c1_i79;
+  int32_T c1_i80;
   int32_T c1_param;
   _SFD_CT_CALL(TRANSITION_BEFORE_PROCESSING_TAG, 345U, chartInstance->c1_sfEvent);
   c1_out = (CV_TRANSITION_EVAL(345U, (int32_T)_SFD_CCP_CALL(5U, 345U, 0,
@@ -20838,43 +20892,43 @@ static void c1_g_READY(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
     c1_b_temp = c1_temp;
     if (c1_b_temp) {
       c1_index = autoX_params_AUTOX_TPS_START_LIMIT;
-      _SFD_SET_DATA_VALUE_PTR(166U, (void *)&c1_i79);
-      _SFD_SET_DATA_VALUE_PTR(121U, (void *)&c1_index);
+      _SFD_SET_DATA_VALUE_PTR(173U, (void *)&c1_i80);
+      _SFD_SET_DATA_VALUE_PTR(141U, (void *)&c1_index);
       _SFD_CS_CALL(FUNCTION_ACTIVE_TAG, 132U, chartInstance->c1_sfEvent);
       _SFD_SYMBOL_SCOPE_PUSH(2U, 0U);
-      _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("index", &c1_index, c1_l_sf_marshallOut,
-        c1_g_sf_marshallIn);
-      _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("param", &c1_i79, c1_sf_marshallOut,
+      _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("index", &c1_index, c1_m_sf_marshallOut,
+        c1_h_sf_marshallIn);
+      _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("param", &c1_i80, c1_sf_marshallOut,
         c1_sf_marshallIn);
       _SFD_CS_CALL(STATE_ENTER_DURING_FUNCTION_TAG, 132U,
                    chartInstance->c1_sfEvent);
-      c1_i79 = 0;
-      _SFD_DATA_RANGE_CHECK((real_T)c1_i79, 166U);
+      c1_i80 = 0;
+      _SFD_DATA_RANGE_CHECK((real_T)c1_i80, 173U);
       _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 361U, chartInstance->c1_sfEvent);
       _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 362U, chartInstance->c1_sfEvent);
-      c1_i79 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
+      c1_i80 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
         (sfGlobalDebugInstanceStruct, chartInstance->S, 1616U, 9, 16, 72U,
          (int32_T)c1_index, 0, 15)];
-      _SFD_DATA_RANGE_CHECK((real_T)c1_i79, 166U);
-      c1_param = c1_i79;
+      _SFD_DATA_RANGE_CHECK((real_T)c1_i80, 173U);
+      c1_param = c1_i80;
       sf_mex_printf("%s =\\n", "param");
       sf_mex_call_debug(sfGlobalDebugInstanceStruct, "disp", 0U, 1U, 12,
                         c1_param);
       _SFD_SYMBOL_SCOPE_POP();
       _SFD_CS_CALL(FUNCTION_INACTIVE_TAG, 132U, chartInstance->c1_sfEvent);
-      _SFD_UNSET_DATA_VALUE_PTR(166U);
-      _SFD_UNSET_DATA_VALUE_PTR(121U);
+      _SFD_UNSET_DATA_VALUE_PTR(173U);
+      _SFD_UNSET_DATA_VALUE_PTR(141U);
       _SFD_CS_CALL(EXIT_OUT_OF_FUNCTION_TAG, 132U, chartInstance->c1_sfEvent);
       c1_b_temp = _SFD_CCP_CALL(5U, 346U, 2, (boolean_T)CV_RELATIONAL_EVAL(5U,
-        346U, 1, (real_T)*chartInstance->c1_currTps, (real_T)c1_i79, 0, 5U,
-        *chartInstance->c1_currTps >= c1_i79) != 0U, chartInstance->c1_sfEvent);
+        346U, 1, (real_T)*chartInstance->c1_currTps, (real_T)c1_i80, 0, 5U,
+        *chartInstance->c1_currTps >= c1_i80) != 0U, chartInstance->c1_sfEvent);
     }
 
     c1_b_out = (CV_TRANSITION_EVAL(346U, (int32_T)c1_b_temp) != 0);
     if (c1_b_out) {
       _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 346U, chartInstance->c1_sfEvent);
       chartInstance->c1_lastAutoXCom = (*chartInstance->c1_autoXCom)[0];
-      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 27, 1043U, (void *)
+      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 28, 1043U, (void *)
         &chartInstance->c1_lastAutoXCom);
       _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastAutoXCom, 2U);
       *chartInstance->c1_stateFb = (uint16_T)AUTOX_GO;
@@ -20908,7 +20962,7 @@ static void c1_g_READY(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
         _SFD_CS_CALL(STATE_ACTIVE_TAG, 124U, chartInstance->c1_sfEvent);
         chartInstance->c1_g_tp_RELEASE = 1U;
         chartInstance->c1_g_lastSlip = 0U;
-        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 140, 1574U, (void *)
+        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 141, 1574U, (void *)
           &chartInstance->c1_g_lastSlip);
         _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_g_lastSlip, 46U);
         c1_g_pidControl(chartInstance, (real_T)*chartInstance->c1_currSlipTarget,
@@ -20968,24 +21022,24 @@ static void c1_g_READY(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
   } else {
     _SFD_CS_CALL(STATE_ENTER_DURING_FUNCTION_TAG, 123U,
                  chartInstance->c1_sfEvent);
-    c1_i78 = c1__s32_minus__(chartInstance, (int32_T)
+    c1_i79 = c1__s32_minus__(chartInstance, (int32_T)
       chartInstance->c1_h_autoXCounter, 1, 1572U, 138, 1);
     c1_covSaturation = false;
-    if (c1_i78 < 0) {
+    if (c1_i79 < 0) {
       c1_covSaturation = true;
-      c1_i78 = 0;
+      c1_i79 = 0;
       _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1572U, 138U, 1U);
     } else {
-      if (c1_i78 > 65535) {
-        c1_i78 = 65535;
+      if (c1_i79 > 65535) {
+        c1_i79 = 65535;
         _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1572U, 138U, 1U);
       }
 
       CV_SATURATION_EVAL(4, 123, 0, 0, c1_covSaturation);
     }
 
-    chartInstance->c1_h_autoXCounter = (uint16_T)c1_i78;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 136, 1550U, (void *)
+    chartInstance->c1_h_autoXCounter = (uint16_T)c1_i79;
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 137, 1550U, (void *)
       &chartInstance->c1_h_autoXCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_h_autoXCounter, 42U);
     c1_checkShift(chartInstance);
@@ -21036,19 +21090,19 @@ static void c1_enter_atomic_LAUNCH7(SFc1_GCU_Model_genCodeInstanceStruct
   *chartInstance)
 {
   chartInstance->c1_i_autoXCounter = 0U;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 148, 1618U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 149, 1618U, (void *)
     &chartInstance->c1_i_autoXCounter);
   _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_i_autoXCounter, 47U);
   chartInstance->c1_i_autoX_clutchValue = 0.0;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 149, 1619U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 150, 1619U, (void *)
     &chartInstance->c1_i_autoX_clutchValue);
   _SFD_DATA_RANGE_CHECK(chartInstance->c1_i_autoX_clutchValue, 49U);
   chartInstance->c1_i_autoX_clutchStep = 0.0;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 150, 1620U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 151, 1620U, (void *)
     &chartInstance->c1_i_autoX_clutchStep);
   _SFD_DATA_RANGE_CHECK(chartInstance->c1_i_autoX_clutchStep, 48U);
   chartInstance->c1_i_autoX_dtRelease = 0;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 151, 1621U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 152, 1621U, (void *)
     &chartInstance->c1_i_autoX_dtRelease);
   _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_i_autoX_dtRelease, 50U);
 }
@@ -21244,7 +21298,7 @@ static void c1_h_enter_internal_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct
       chartInstance->c1_stateFb);
     _SFD_DATA_RANGE_CHECK((real_T)*chartInstance->c1_stateFb, 86U);
     chartInstance->c1_i_autoXCounter = c1_const_AUTOX_WORK_RATE_ms;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 148, 1618U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 149, 1618U, (void *)
       &chartInstance->c1_i_autoXCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_i_autoXCounter, 47U);
     c1_u60 = chartInstance->c1_i_autoXCounter;
@@ -21284,7 +21338,7 @@ static void c1_j_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
   if (c1_out) {
     _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 363U, chartInstance->c1_sfEvent);
     chartInstance->c1_lastAutoXCom = (*chartInstance->c1_autoXCom)[0];
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 27, 1043U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 28, 1043U, (void *)
       &chartInstance->c1_lastAutoXCom);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastAutoXCom, 2U);
     c1_u61 = chartInstance->c1_lastAutoXCom;
@@ -21384,7 +21438,7 @@ static void c1_j_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
           _SFD_CS_CALL(STATE_ACTIVE_TAG, 139U, chartInstance->c1_sfEvent);
           chartInstance->c1_j_tp_RUNNING = 1U;
           chartInstance->c1_i_autoXCounter = c1_const_AUTOX_WORK_RATE_ms;
-          c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 148, 1618U, (void *)
+          c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 149, 1618U, (void *)
             &chartInstance->c1_i_autoXCounter);
           _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_i_autoXCounter, 47U);
           c1_u62 = chartInstance->c1_i_autoXCounter;
@@ -21450,7 +21504,7 @@ static void c1_j_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
           if (c1_d_out) {
             _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 373U, chartInstance->c1_sfEvent);
             chartInstance->c1_h_lastSlip = *chartInstance->c1_slipUpdateCounter;
-            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 152, 1642U, (void *)
+            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 153, 1642U, (void *)
               &chartInstance->c1_h_lastSlip);
             _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_h_lastSlip, 51U);
             chartInstance->c1_h_tp_WAIT = 0U;
@@ -21717,7 +21771,7 @@ static void c1_j_exit_internal_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct
 static void c1_j_START(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
 {
   boolean_T c1_out;
-  int32_T c1_i80;
+  int32_T c1_i81;
   boolean_T c1_covSaturation;
   _SFD_CT_CALL(TRANSITION_BEFORE_PROCESSING_TAG, 368U, chartInstance->c1_sfEvent);
   c1_out = (CV_TRANSITION_EVAL(368U, (int32_T)_SFD_CCP_CALL(5U, 368U, 0,
@@ -21762,24 +21816,24 @@ static void c1_j_START(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
   } else {
     _SFD_CS_CALL(STATE_ENTER_DURING_FUNCTION_TAG, 140U,
                  chartInstance->c1_sfEvent);
-    c1_i80 = c1__s32_minus__(chartInstance, (int32_T)
+    c1_i81 = c1__s32_minus__(chartInstance, (int32_T)
       chartInstance->c1_i_autoXCounter, 1, 1639U, 165, 1);
     c1_covSaturation = false;
-    if (c1_i80 < 0) {
+    if (c1_i81 < 0) {
       c1_covSaturation = true;
-      c1_i80 = 0;
+      c1_i81 = 0;
       _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1639U, 165U, 1U);
     } else {
-      if (c1_i80 > 65535) {
-        c1_i80 = 65535;
+      if (c1_i81 > 65535) {
+        c1_i81 = 65535;
         _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1639U, 165U, 1U);
       }
 
       CV_SATURATION_EVAL(4, 140, 0, 0, c1_covSaturation);
     }
 
-    chartInstance->c1_i_autoXCounter = (uint16_T)c1_i80;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 148, 1618U, (void *)
+    chartInstance->c1_i_autoXCounter = (uint16_T)c1_i81;
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 149, 1618U, (void *)
       &chartInstance->c1_i_autoXCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_i_autoXCounter, 47U);
   }
@@ -21796,7 +21850,7 @@ static void c1_j_enter_atomic_READY(SFc1_GCU_Model_genCodeInstanceStruct
     chartInstance->c1_stateFb);
   _SFD_DATA_RANGE_CHECK((real_T)*chartInstance->c1_stateFb, 86U);
   chartInstance->c1_i_autoXCounter = c1_const_AUTOX_WORK_RATE_ms;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 148, 1618U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 149, 1618U, (void *)
     &chartInstance->c1_i_autoXCounter);
   _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_i_autoXCounter, 47U);
   c1_u65 = chartInstance->c1_i_autoXCounter;
@@ -21809,13 +21863,13 @@ static void c1_j_enter_atomic_READY(SFc1_GCU_Model_genCodeInstanceStruct
 static void c1_h_READY(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
 {
   boolean_T c1_out;
-  int32_T c1_i81;
+  int32_T c1_i82;
   boolean_T c1_covSaturation;
   boolean_T c1_temp;
   boolean_T c1_b_temp;
   c1_autoX_params c1_index;
   boolean_T c1_b_out;
-  int32_T c1_i82;
+  int32_T c1_i83;
   int32_T c1_param;
   _SFD_CT_CALL(TRANSITION_BEFORE_PROCESSING_TAG, 369U, chartInstance->c1_sfEvent);
   c1_out = (CV_TRANSITION_EVAL(369U, (int32_T)_SFD_CCP_CALL(5U, 369U, 0,
@@ -21839,43 +21893,43 @@ static void c1_h_READY(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
     c1_b_temp = c1_temp;
     if (c1_b_temp) {
       c1_index = autoX_params_AUTOX_TPS_START_LIMIT;
-      _SFD_SET_DATA_VALUE_PTR(172U, (void *)&c1_i82);
-      _SFD_SET_DATA_VALUE_PTR(130U, (void *)&c1_index);
+      _SFD_SET_DATA_VALUE_PTR(180U, (void *)&c1_i83);
+      _SFD_SET_DATA_VALUE_PTR(125U, (void *)&c1_index);
       _SFD_CS_CALL(FUNCTION_ACTIVE_TAG, 144U, chartInstance->c1_sfEvent);
       _SFD_SYMBOL_SCOPE_PUSH(2U, 0U);
-      _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("index", &c1_index, c1_l_sf_marshallOut,
-        c1_g_sf_marshallIn);
-      _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("param", &c1_i82, c1_sf_marshallOut,
+      _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("index", &c1_index, c1_m_sf_marshallOut,
+        c1_h_sf_marshallIn);
+      _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("param", &c1_i83, c1_sf_marshallOut,
         c1_sf_marshallIn);
       _SFD_CS_CALL(STATE_ENTER_DURING_FUNCTION_TAG, 144U,
                    chartInstance->c1_sfEvent);
-      c1_i82 = 0;
-      _SFD_DATA_RANGE_CHECK((real_T)c1_i82, 172U);
+      c1_i83 = 0;
+      _SFD_DATA_RANGE_CHECK((real_T)c1_i83, 180U);
       _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 385U, chartInstance->c1_sfEvent);
       _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 386U, chartInstance->c1_sfEvent);
-      c1_i82 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
+      c1_i83 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
         (sfGlobalDebugInstanceStruct, chartInstance->S, 1684U, 9, 16, 72U,
          (int32_T)c1_index, 0, 15)];
-      _SFD_DATA_RANGE_CHECK((real_T)c1_i82, 172U);
-      c1_param = c1_i82;
+      _SFD_DATA_RANGE_CHECK((real_T)c1_i83, 180U);
+      c1_param = c1_i83;
       sf_mex_printf("%s =\\n", "param");
       sf_mex_call_debug(sfGlobalDebugInstanceStruct, "disp", 0U, 1U, 12,
                         c1_param);
       _SFD_SYMBOL_SCOPE_POP();
       _SFD_CS_CALL(FUNCTION_INACTIVE_TAG, 144U, chartInstance->c1_sfEvent);
-      _SFD_UNSET_DATA_VALUE_PTR(172U);
-      _SFD_UNSET_DATA_VALUE_PTR(130U);
+      _SFD_UNSET_DATA_VALUE_PTR(180U);
+      _SFD_UNSET_DATA_VALUE_PTR(125U);
       _SFD_CS_CALL(EXIT_OUT_OF_FUNCTION_TAG, 144U, chartInstance->c1_sfEvent);
       c1_b_temp = _SFD_CCP_CALL(5U, 370U, 2, (boolean_T)CV_RELATIONAL_EVAL(5U,
-        370U, 1, (real_T)*chartInstance->c1_currTps, (real_T)c1_i82, 0, 5U,
-        *chartInstance->c1_currTps >= c1_i82) != 0U, chartInstance->c1_sfEvent);
+        370U, 1, (real_T)*chartInstance->c1_currTps, (real_T)c1_i83, 0, 5U,
+        *chartInstance->c1_currTps >= c1_i83) != 0U, chartInstance->c1_sfEvent);
     }
 
     c1_b_out = (CV_TRANSITION_EVAL(370U, (int32_T)c1_b_temp) != 0);
     if (c1_b_out) {
       _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 370U, chartInstance->c1_sfEvent);
       chartInstance->c1_lastAutoXCom = (*chartInstance->c1_autoXCom)[0];
-      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 27, 1043U, (void *)
+      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 28, 1043U, (void *)
         &chartInstance->c1_lastAutoXCom);
       _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastAutoXCom, 2U);
       *chartInstance->c1_stateFb = (uint16_T)AUTOX_GO;
@@ -21909,7 +21963,7 @@ static void c1_h_READY(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
         _SFD_CS_CALL(STATE_ACTIVE_TAG, 136U, chartInstance->c1_sfEvent);
         chartInstance->c1_h_tp_RELEASE = 1U;
         chartInstance->c1_h_lastSlip = 0U;
-        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 152, 1642U, (void *)
+        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 153, 1642U, (void *)
           &chartInstance->c1_h_lastSlip);
         _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_h_lastSlip, 51U);
         c1_h_pidControl(chartInstance, (real_T)*chartInstance->c1_currSlipTarget,
@@ -21969,24 +22023,24 @@ static void c1_h_READY(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
   } else {
     _SFD_CS_CALL(STATE_ENTER_DURING_FUNCTION_TAG, 135U,
                  chartInstance->c1_sfEvent);
-    c1_i81 = c1__s32_minus__(chartInstance, (int32_T)
+    c1_i82 = c1__s32_minus__(chartInstance, (int32_T)
       chartInstance->c1_i_autoXCounter, 1, 1640U, 138, 1);
     c1_covSaturation = false;
-    if (c1_i81 < 0) {
+    if (c1_i82 < 0) {
       c1_covSaturation = true;
-      c1_i81 = 0;
+      c1_i82 = 0;
       _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1640U, 138U, 1U);
     } else {
-      if (c1_i81 > 65535) {
-        c1_i81 = 65535;
+      if (c1_i82 > 65535) {
+        c1_i82 = 65535;
         _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1640U, 138U, 1U);
       }
 
       CV_SATURATION_EVAL(4, 135, 0, 0, c1_covSaturation);
     }
 
-    chartInstance->c1_i_autoXCounter = (uint16_T)c1_i81;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 148, 1618U, (void *)
+    chartInstance->c1_i_autoXCounter = (uint16_T)c1_i82;
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 149, 1618U, (void *)
       &chartInstance->c1_i_autoXCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_i_autoXCounter, 47U);
     c1_checkShift(chartInstance);
@@ -22037,19 +22091,19 @@ static void c1_enter_atomic_LAUNCH8(SFc1_GCU_Model_genCodeInstanceStruct
   *chartInstance)
 {
   chartInstance->c1_j_autoXCounter = 0U;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 160, 1686U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 161, 1686U, (void *)
     &chartInstance->c1_j_autoXCounter);
   _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_j_autoXCounter, 52U);
   chartInstance->c1_j_autoX_clutchValue = 0.0;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 161, 1687U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 162, 1687U, (void *)
     &chartInstance->c1_j_autoX_clutchValue);
   _SFD_DATA_RANGE_CHECK(chartInstance->c1_j_autoX_clutchValue, 54U);
   chartInstance->c1_j_autoX_clutchStep = 0.0;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 162, 1688U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 163, 1688U, (void *)
     &chartInstance->c1_j_autoX_clutchStep);
   _SFD_DATA_RANGE_CHECK(chartInstance->c1_j_autoX_clutchStep, 53U);
   chartInstance->c1_j_autoX_dtRelease = 0;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 163, 1689U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 164, 1689U, (void *)
     &chartInstance->c1_j_autoX_dtRelease);
   _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_j_autoX_dtRelease, 55U);
 }
@@ -22246,7 +22300,7 @@ static void c1_i_enter_internal_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct
       chartInstance->c1_stateFb);
     _SFD_DATA_RANGE_CHECK((real_T)*chartInstance->c1_stateFb, 86U);
     chartInstance->c1_j_autoXCounter = c1_const_AUTOX_WORK_RATE_ms;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 160, 1686U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 161, 1686U, (void *)
       &chartInstance->c1_j_autoXCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_j_autoXCounter, 52U);
     c1_u66 = chartInstance->c1_j_autoXCounter;
@@ -22286,7 +22340,7 @@ static void c1_k_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
   if (c1_out) {
     _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 387U, chartInstance->c1_sfEvent);
     chartInstance->c1_lastAutoXCom = (*chartInstance->c1_autoXCom)[0];
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 27, 1043U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 28, 1043U, (void *)
       &chartInstance->c1_lastAutoXCom);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastAutoXCom, 2U);
     c1_u67 = chartInstance->c1_lastAutoXCom;
@@ -22386,7 +22440,7 @@ static void c1_k_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
           _SFD_CS_CALL(STATE_ACTIVE_TAG, 151U, chartInstance->c1_sfEvent);
           chartInstance->c1_k_tp_RUNNING = 1U;
           chartInstance->c1_j_autoXCounter = c1_const_AUTOX_WORK_RATE_ms;
-          c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 160, 1686U, (void *)
+          c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 161, 1686U, (void *)
             &chartInstance->c1_j_autoXCounter);
           _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_j_autoXCounter, 52U);
           c1_u68 = chartInstance->c1_j_autoXCounter;
@@ -22452,7 +22506,7 @@ static void c1_k_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
           if (c1_d_out) {
             _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 397U, chartInstance->c1_sfEvent);
             chartInstance->c1_i_lastSlip = *chartInstance->c1_slipUpdateCounter;
-            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 164, 1710U, (void *)
+            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 165, 1710U, (void *)
               &chartInstance->c1_i_lastSlip);
             _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_i_lastSlip, 56U);
             chartInstance->c1_i_tp_WAIT = 0U;
@@ -22719,7 +22773,7 @@ static void c1_k_exit_internal_ACTIVE(SFc1_GCU_Model_genCodeInstanceStruct
 static void c1_k_START(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
 {
   boolean_T c1_out;
-  int32_T c1_i83;
+  int32_T c1_i84;
   boolean_T c1_covSaturation;
   _SFD_CT_CALL(TRANSITION_BEFORE_PROCESSING_TAG, 392U, chartInstance->c1_sfEvent);
   c1_out = (CV_TRANSITION_EVAL(392U, (int32_T)_SFD_CCP_CALL(5U, 392U, 0,
@@ -22764,24 +22818,24 @@ static void c1_k_START(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
   } else {
     _SFD_CS_CALL(STATE_ENTER_DURING_FUNCTION_TAG, 152U,
                  chartInstance->c1_sfEvent);
-    c1_i83 = c1__s32_minus__(chartInstance, (int32_T)
+    c1_i84 = c1__s32_minus__(chartInstance, (int32_T)
       chartInstance->c1_j_autoXCounter, 1, 1707U, 165, 1);
     c1_covSaturation = false;
-    if (c1_i83 < 0) {
+    if (c1_i84 < 0) {
       c1_covSaturation = true;
-      c1_i83 = 0;
+      c1_i84 = 0;
       _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1707U, 165U, 1U);
     } else {
-      if (c1_i83 > 65535) {
-        c1_i83 = 65535;
+      if (c1_i84 > 65535) {
+        c1_i84 = 65535;
         _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1707U, 165U, 1U);
       }
 
       CV_SATURATION_EVAL(4, 152, 0, 0, c1_covSaturation);
     }
 
-    chartInstance->c1_j_autoXCounter = (uint16_T)c1_i83;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 160, 1686U, (void *)
+    chartInstance->c1_j_autoXCounter = (uint16_T)c1_i84;
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 161, 1686U, (void *)
       &chartInstance->c1_j_autoXCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_j_autoXCounter, 52U);
   }
@@ -22798,7 +22852,7 @@ static void c1_k_enter_atomic_READY(SFc1_GCU_Model_genCodeInstanceStruct
     chartInstance->c1_stateFb);
   _SFD_DATA_RANGE_CHECK((real_T)*chartInstance->c1_stateFb, 86U);
   chartInstance->c1_j_autoXCounter = c1_const_AUTOX_WORK_RATE_ms;
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 160, 1686U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 161, 1686U, (void *)
     &chartInstance->c1_j_autoXCounter);
   _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_j_autoXCounter, 52U);
   c1_u71 = chartInstance->c1_j_autoXCounter;
@@ -22811,13 +22865,13 @@ static void c1_k_enter_atomic_READY(SFc1_GCU_Model_genCodeInstanceStruct
 static void c1_i_READY(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
 {
   boolean_T c1_out;
-  int32_T c1_i84;
+  int32_T c1_i85;
   boolean_T c1_covSaturation;
   boolean_T c1_temp;
   boolean_T c1_b_temp;
   c1_autoX_params c1_index;
   boolean_T c1_b_out;
-  int32_T c1_i85;
+  int32_T c1_i86;
   int32_T c1_param;
   _SFD_CT_CALL(TRANSITION_BEFORE_PROCESSING_TAG, 393U, chartInstance->c1_sfEvent);
   c1_out = (CV_TRANSITION_EVAL(393U, (int32_T)_SFD_CCP_CALL(5U, 393U, 0,
@@ -22841,43 +22895,43 @@ static void c1_i_READY(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
     c1_b_temp = c1_temp;
     if (c1_b_temp) {
       c1_index = autoX_params_AUTOX_TPS_START_LIMIT;
-      _SFD_SET_DATA_VALUE_PTR(161U, (void *)&c1_i85);
-      _SFD_SET_DATA_VALUE_PTR(135U, (void *)&c1_index);
+      _SFD_SET_DATA_VALUE_PTR(162U, (void *)&c1_i86);
+      _SFD_SET_DATA_VALUE_PTR(131U, (void *)&c1_index);
       _SFD_CS_CALL(FUNCTION_ACTIVE_TAG, 156U, chartInstance->c1_sfEvent);
       _SFD_SYMBOL_SCOPE_PUSH(2U, 0U);
-      _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("index", &c1_index, c1_l_sf_marshallOut,
-        c1_g_sf_marshallIn);
-      _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("param", &c1_i85, c1_sf_marshallOut,
+      _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("index", &c1_index, c1_m_sf_marshallOut,
+        c1_h_sf_marshallIn);
+      _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("param", &c1_i86, c1_sf_marshallOut,
         c1_sf_marshallIn);
       _SFD_CS_CALL(STATE_ENTER_DURING_FUNCTION_TAG, 156U,
                    chartInstance->c1_sfEvent);
-      c1_i85 = 0;
-      _SFD_DATA_RANGE_CHECK((real_T)c1_i85, 161U);
+      c1_i86 = 0;
+      _SFD_DATA_RANGE_CHECK((real_T)c1_i86, 162U);
       _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 409U, chartInstance->c1_sfEvent);
       _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 410U, chartInstance->c1_sfEvent);
-      c1_i85 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
+      c1_i86 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
         (sfGlobalDebugInstanceStruct, chartInstance->S, 1752U, 9, 16, 72U,
          (int32_T)c1_index, 0, 15)];
-      _SFD_DATA_RANGE_CHECK((real_T)c1_i85, 161U);
-      c1_param = c1_i85;
+      _SFD_DATA_RANGE_CHECK((real_T)c1_i86, 162U);
+      c1_param = c1_i86;
       sf_mex_printf("%s =\\n", "param");
       sf_mex_call_debug(sfGlobalDebugInstanceStruct, "disp", 0U, 1U, 12,
                         c1_param);
       _SFD_SYMBOL_SCOPE_POP();
       _SFD_CS_CALL(FUNCTION_INACTIVE_TAG, 156U, chartInstance->c1_sfEvent);
-      _SFD_UNSET_DATA_VALUE_PTR(161U);
-      _SFD_UNSET_DATA_VALUE_PTR(135U);
+      _SFD_UNSET_DATA_VALUE_PTR(162U);
+      _SFD_UNSET_DATA_VALUE_PTR(131U);
       _SFD_CS_CALL(EXIT_OUT_OF_FUNCTION_TAG, 156U, chartInstance->c1_sfEvent);
       c1_b_temp = _SFD_CCP_CALL(5U, 394U, 2, (boolean_T)CV_RELATIONAL_EVAL(5U,
-        394U, 1, (real_T)*chartInstance->c1_currTps, (real_T)c1_i85, 0, 5U,
-        *chartInstance->c1_currTps >= c1_i85) != 0U, chartInstance->c1_sfEvent);
+        394U, 1, (real_T)*chartInstance->c1_currTps, (real_T)c1_i86, 0, 5U,
+        *chartInstance->c1_currTps >= c1_i86) != 0U, chartInstance->c1_sfEvent);
     }
 
     c1_b_out = (CV_TRANSITION_EVAL(394U, (int32_T)c1_b_temp) != 0);
     if (c1_b_out) {
       _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 394U, chartInstance->c1_sfEvent);
       chartInstance->c1_lastAutoXCom = (*chartInstance->c1_autoXCom)[0];
-      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 27, 1043U, (void *)
+      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 28, 1043U, (void *)
         &chartInstance->c1_lastAutoXCom);
       _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastAutoXCom, 2U);
       *chartInstance->c1_stateFb = (uint16_T)AUTOX_GO;
@@ -22911,7 +22965,7 @@ static void c1_i_READY(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
         _SFD_CS_CALL(STATE_ACTIVE_TAG, 148U, chartInstance->c1_sfEvent);
         chartInstance->c1_i_tp_RELEASE = 1U;
         chartInstance->c1_i_lastSlip = 0U;
-        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 164, 1710U, (void *)
+        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 165, 1710U, (void *)
           &chartInstance->c1_i_lastSlip);
         _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_i_lastSlip, 56U);
         c1_i_pidControl(chartInstance, (real_T)*chartInstance->c1_currSlipTarget,
@@ -22971,24 +23025,24 @@ static void c1_i_READY(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
   } else {
     _SFD_CS_CALL(STATE_ENTER_DURING_FUNCTION_TAG, 147U,
                  chartInstance->c1_sfEvent);
-    c1_i84 = c1__s32_minus__(chartInstance, (int32_T)
+    c1_i85 = c1__s32_minus__(chartInstance, (int32_T)
       chartInstance->c1_j_autoXCounter, 1, 1708U, 138, 1);
     c1_covSaturation = false;
-    if (c1_i84 < 0) {
+    if (c1_i85 < 0) {
       c1_covSaturation = true;
-      c1_i84 = 0;
+      c1_i85 = 0;
       _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1708U, 138U, 1U);
     } else {
-      if (c1_i84 > 65535) {
-        c1_i84 = 65535;
+      if (c1_i85 > 65535) {
+        c1_i85 = 65535;
         _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1708U, 138U, 1U);
       }
 
       CV_SATURATION_EVAL(4, 147, 0, 0, c1_covSaturation);
     }
 
-    chartInstance->c1_j_autoXCounter = (uint16_T)c1_i84;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 160, 1686U, (void *)
+    chartInstance->c1_j_autoXCounter = (uint16_T)c1_i85;
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 161, 1686U, (void *)
       &chartInstance->c1_j_autoXCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_j_autoXCounter, 52U);
     c1_checkShift(chartInstance);
@@ -23062,7 +23116,7 @@ static void c1_c_DEFAULT(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
   if (c1_out) {
     _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 185U, chartInstance->c1_sfEvent);
     chartInstance->c1_lastAutoXCom = (*chartInstance->c1_autoXCom)[0];
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 27, 1043U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 28, 1043U, (void *)
       &chartInstance->c1_lastAutoXCom);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastAutoXCom, 2U);
     c1_u72 = chartInstance->c1_lastAutoXCom;
@@ -24294,7 +24348,7 @@ static void c1_UPSHIFTING(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
 
       CV_SATURATION_EVAL(4, 23, 0, 0, c1_covSaturation);
       chartInstance->c1_ticksCounter = c1_qY;
-      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 171, 45U, (void *)
+      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 172, 45U, (void *)
         &chartInstance->c1_ticksCounter);
       _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_ticksCounter, 57U);
     }
@@ -24346,7 +24400,7 @@ static void c1_UPSHIFTING(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
         _SFD_CS_CALL(STATE_ACTIVE_TAG, 27U, chartInstance->c1_sfEvent);
         chartInstance->c1_tp_UP_REBOUND = 1U;
         chartInstance->c1_ticksCounter = c1_Gearshift_getTime(chartInstance);
-        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 171, 45U, (void *)
+        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 172, 45U, (void *)
           &chartInstance->c1_ticksCounter);
         _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_ticksCounter, 57U);
       }
@@ -24415,7 +24469,7 @@ static void c1_UPSHIFTING(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
 
       CV_SATURATION_EVAL(4, 24, 0, 0, c1_b_covSaturation);
       chartInstance->c1_ticksCounter = c1_b_qY;
-      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 171, 45U, (void *)
+      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 172, 45U, (void *)
         &chartInstance->c1_ticksCounter);
       _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_ticksCounter, 57U);
       switch (chartInstance->c1_is_UP_PUSH) {
@@ -24493,7 +24547,7 @@ static void c1_UPSHIFTING(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
         _SFD_CS_CALL(STATE_ACTIVE_TAG, 23U, chartInstance->c1_sfEvent);
         chartInstance->c1_tp_UP_BRAKE = 1U;
         chartInstance->c1_ticksCounter = c1_Gearshift_getTime(chartInstance);
-        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 171, 45U, (void *)
+        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 172, 45U, (void *)
           &chartInstance->c1_ticksCounter);
         _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_ticksCounter, 57U);
         sf_call_output_fcn_call(chartInstance->S, 9, "Gearshift_brake", 0);
@@ -24518,7 +24572,7 @@ static void c1_UPSHIFTING(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
 
       CV_SATURATION_EVAL(4, 27, 0, 0, c1_c_covSaturation);
       chartInstance->c1_ticksCounter = c1_c_qY;
-      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 171, 45U, (void *)
+      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 172, 45U, (void *)
         &chartInstance->c1_ticksCounter);
       _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_ticksCounter, 57U);
       switch (chartInstance->c1_is_UP_REBOUND) {
@@ -24701,7 +24755,7 @@ static void c1_UP_START(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
       _SFD_CS_CALL(STATE_ACTIVE_TAG, 24U, chartInstance->c1_sfEvent);
       chartInstance->c1_tp_UP_PUSH = 1U;
       chartInstance->c1_ticksCounter = c1_Gearshift_getTime(chartInstance);
-      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 171, 45U, (void *)
+      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 172, 45U, (void *)
         &chartInstance->c1_ticksCounter);
       _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_ticksCounter, 57U);
     }
@@ -24769,7 +24823,7 @@ static void c1_UP_START(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
 
     CV_SATURATION_EVAL(4, 30, 1, 0, c1_covSaturation);
     chartInstance->c1_ticksCounter = c1_qY;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 171, 45U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 172, 45U, (void *)
       &chartInstance->c1_ticksCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_ticksCounter, 57U);
     switch (chartInstance->c1_is_UP_START) {
@@ -24932,7 +24986,7 @@ static void c1_IDLE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
 
       CV_SATURATION_EVAL(4, 30, 0, 0, c1_covSaturation);
       chartInstance->c1_ticksCounter = c1_qY;
-      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 171, 45U, (void *)
+      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 172, 45U, (void *)
         &chartInstance->c1_ticksCounter);
       _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_ticksCounter, 57U);
     }
@@ -25035,7 +25089,7 @@ static void c1_IDLE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
         _SFD_CS_CALL(STATE_ACTIVE_TAG, 14U, chartInstance->c1_sfEvent);
         chartInstance->c1_tp_DOWN_START = 1U;
         chartInstance->c1_ticksCounter = c1_Gearshift_getTime(chartInstance);
-        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 171, 45U, (void *)
+        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 172, 45U, (void *)
           &chartInstance->c1_ticksCounter);
         _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_ticksCounter, 57U);
       }
@@ -25240,7 +25294,7 @@ static void c1_DOWNSHIFTING(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
 
       CV_SATURATION_EVAL(4, 9, 0, 0, c1_covSaturation);
       chartInstance->c1_ticksCounter = c1_qY;
-      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 171, 45U, (void *)
+      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 172, 45U, (void *)
         &chartInstance->c1_ticksCounter);
       _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_ticksCounter, 57U);
       switch (chartInstance->c1_is_DOWN_BRAKE) {
@@ -25318,7 +25372,7 @@ static void c1_DOWNSHIFTING(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
         _SFD_CS_CALL(STATE_ACTIVE_TAG, 13U, chartInstance->c1_sfEvent);
         chartInstance->c1_tp_DOWN_REBOUND = 1U;
         chartInstance->c1_ticksCounter = c1_Gearshift_getTime(chartInstance);
-        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 171, 45U, (void *)
+        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 172, 45U, (void *)
           &chartInstance->c1_ticksCounter);
         _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_ticksCounter, 57U);
         sf_call_output_fcn_call(chartInstance->S, 6, "Gearshift_rebound", 0);
@@ -25343,7 +25397,7 @@ static void c1_DOWNSHIFTING(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
 
       CV_SATURATION_EVAL(4, 12, 0, 0, c1_b_covSaturation);
       chartInstance->c1_ticksCounter = c1_b_qY;
-      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 171, 45U, (void *)
+      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 172, 45U, (void *)
         &chartInstance->c1_ticksCounter);
       _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_ticksCounter, 57U);
     }
@@ -25389,7 +25443,7 @@ static void c1_DOWNSHIFTING(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
         _SFD_CS_CALL(STATE_ACTIVE_TAG, 9U, chartInstance->c1_sfEvent);
         chartInstance->c1_tp_DOWN_BRAKE = 1U;
         chartInstance->c1_ticksCounter = c1_Gearshift_getTime(chartInstance);
-        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 171, 45U, (void *)
+        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 172, 45U, (void *)
           &chartInstance->c1_ticksCounter);
         _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_ticksCounter, 57U);
       }
@@ -25460,7 +25514,7 @@ static void c1_DOWNSHIFTING(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
 
       CV_SATURATION_EVAL(4, 13, 0, 0, c1_c_covSaturation);
       chartInstance->c1_ticksCounter = c1_c_qY;
-      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 171, 45U, (void *)
+      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 172, 45U, (void *)
         &chartInstance->c1_ticksCounter);
       _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_ticksCounter, 57U);
     }
@@ -25541,7 +25595,7 @@ static void c1_DOWN_START(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
       _SFD_CS_CALL(STATE_ACTIVE_TAG, 12U, chartInstance->c1_sfEvent);
       chartInstance->c1_tp_DOWN_PUSH = 1U;
       chartInstance->c1_ticksCounter = c1_Gearshift_getTime(chartInstance);
-      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 171, 45U, (void *)
+      c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 172, 45U, (void *)
         &chartInstance->c1_ticksCounter);
       _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_ticksCounter, 57U);
       sf_call_output_fcn_call(chartInstance->S, 8, "Gearshift_down_push", 0);
@@ -25565,7 +25619,7 @@ static void c1_DOWN_START(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
 
     CV_SATURATION_EVAL(4, 14, 0, 0, c1_covSaturation);
     chartInstance->c1_ticksCounter = c1_qY;
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 171, 45U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 172, 45U, (void *)
       &chartInstance->c1_ticksCounter);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_ticksCounter, 57U);
     switch (chartInstance->c1_is_DOWN_START) {
@@ -25710,7 +25764,7 @@ static void c1_START_ENGINE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
   boolean_T c1_b_out;
   boolean_T c1_c_out;
   boolean_T c1_d_out;
-  int32_T c1_i86;
+  int32_T c1_i87;
   boolean_T c1_e_out;
   boolean_T c1_covSaturation;
   boolean_T guard1 = false;
@@ -25797,11 +25851,11 @@ static void c1_START_ENGINE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
             sf_call_output_fcn_call(chartInstance->S, 11, "EngineControl_start",
               0);
             chartInstance->c1_lastCom = *chartInstance->c1_startEngCom;
-            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 176, 484U, (void *)
+            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 177, 484U, (void *)
               &chartInstance->c1_lastCom);
             _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastCom, 59U);
             chartInstance->c1_startCounter = 100U;
-            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 177, 488U, (void *)
+            c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 178, 488U, (void *)
               &chartInstance->c1_startCounter);
             _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_startCounter, 60U);
           }
@@ -25815,24 +25869,24 @@ static void c1_START_ENGINE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
       if (guard1) {
         _SFD_CS_CALL(STATE_ENTER_DURING_FUNCTION_TAG, 185U,
                      chartInstance->c1_sfEvent);
-        c1_i86 = c1__s32_minus__(chartInstance, (int32_T)
+        c1_i87 = c1__s32_minus__(chartInstance, (int32_T)
           chartInstance->c1_startCounter, 1, 482U, 120, 1);
         c1_covSaturation = false;
-        if (c1_i86 < 0) {
+        if (c1_i87 < 0) {
           c1_covSaturation = true;
-          c1_i86 = 0;
+          c1_i87 = 0;
           _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 482U, 120U, 1U);
         } else {
-          if (c1_i86 > 255) {
-            c1_i86 = 255;
+          if (c1_i87 > 255) {
+            c1_i87 = 255;
             _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 482U, 120U, 1U);
           }
 
           CV_SATURATION_EVAL(4, 185, 0, 0, c1_covSaturation);
         }
 
-        chartInstance->c1_startCounter = (uint8_T)c1_i86;
-        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 177, 488U, (void *)
+        chartInstance->c1_startCounter = (uint8_T)c1_i87;
+        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 178, 488U, (void *)
           &chartInstance->c1_startCounter);
         _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_startCounter, 60U);
       }
@@ -25878,11 +25932,11 @@ static void c1_START_ENGINE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
         chartInstance->c1_l_tp_START = 1U;
         sf_call_output_fcn_call(chartInstance->S, 11, "EngineControl_start", 0);
         chartInstance->c1_lastCom = *chartInstance->c1_startEngCom;
-        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 176, 484U, (void *)
+        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 177, 484U, (void *)
           &chartInstance->c1_lastCom);
         _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastCom, 59U);
         chartInstance->c1_startCounter = 100U;
-        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 177, 488U, (void *)
+        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 178, 488U, (void *)
           &chartInstance->c1_startCounter);
         _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_startCounter, 60U);
       }
@@ -25931,11 +25985,11 @@ static void c1_START_ENGINE(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
         chartInstance->c1_l_tp_START = 1U;
         sf_call_output_fcn_call(chartInstance->S, 11, "EngineControl_start", 0);
         chartInstance->c1_lastCom = *chartInstance->c1_startEngCom;
-        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 176, 484U, (void *)
+        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 177, 484U, (void *)
           &chartInstance->c1_lastCom);
         _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastCom, 59U);
         chartInstance->c1_startCounter = 100U;
-        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 177, 488U, (void *)
+        c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 178, 488U, (void *)
           &chartInstance->c1_startCounter);
         _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_startCounter, 60U);
       }
@@ -26069,7 +26123,7 @@ static void c1_checkShift(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
     _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 123U, chartInstance->c1_sfEvent);
     _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 124U, chartInstance->c1_sfEvent);
     chartInstance->c1_lastShiftCom = (*chartInstance->c1_shiftCom)[0];
-    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 26, 681U, (void *)
+    c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 27, 681U, (void *)
       &chartInstance->c1_lastShiftCom);
     _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastShiftCom, 3U);
     _SFD_CT_CALL(TRANSITION_BEFORE_PROCESSING_TAG, 80U,
@@ -26239,16 +26293,16 @@ static void c1_aacCheckShift(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
   int32_T c1_q1;
   boolean_T c1_covSaturation;
   int32_T c1_qY;
-  int32_T c1_i87;
+  int32_T c1_i88;
   boolean_T c1_b_out;
   int32_T c1_b_q0;
   int32_T c1_b_q1;
   boolean_T c1_b_covSaturation;
   int32_T c1_b_qY;
-  int32_T c1_i88;
+  int32_T c1_i89;
   boolean_T c1_c_out;
   int32_T c1_previousEvent;
-  int32_T c1_i89;
+  int32_T c1_i90;
   boolean_T c1_c_covSaturation;
   _SFD_CS_CALL(FUNCTION_ACTIVE_TAG, 43U, chartInstance->c1_sfEvent);
   _SFD_SYMBOL_SCOPE_PUSH(0U, 0U);
@@ -26282,13 +26336,13 @@ static void c1_aacCheckShift(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
     }
 
     CV_SATURATION_EVAL(5, 114, 0, 0, c1_covSaturation);
-    c1_i87 = (*chartInstance->c1_acc_parameters)[sf_array_bounds_check
+    c1_i88 = (*chartInstance->c1_acc_parameters)[sf_array_bounds_check
       (sfGlobalDebugInstanceStruct, chartInstance->S, 605U, 12, 14, 69U, c1_qY,
        0, 15)];
     c1_b_out = (CV_TRANSITION_EVAL(114U, (int32_T)_SFD_CCP_CALL(5U, 114U, 0,
       (boolean_T)CV_RELATIONAL_EVAL(5U, 114U, 0, (real_T)
-      *chartInstance->c1_currRpm, (real_T)c1_i87, 0, 5U,
-      *chartInstance->c1_currRpm >= c1_i87) != 0U, chartInstance->c1_sfEvent))
+      *chartInstance->c1_currRpm, (real_T)c1_i88, 0, 5U,
+      *chartInstance->c1_currRpm >= c1_i88) != 0U, chartInstance->c1_sfEvent))
                 != 0);
     if (c1_b_out) {
       _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 114U, chartInstance->c1_sfEvent);
@@ -26312,13 +26366,13 @@ static void c1_aacCheckShift(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
       }
 
       CV_SATURATION_EVAL(5, 117, 0, 0, c1_b_covSaturation);
-      c1_i88 = (*chartInstance->c1_acc_parameters)[sf_array_bounds_check
+      c1_i89 = (*chartInstance->c1_acc_parameters)[sf_array_bounds_check
         (sfGlobalDebugInstanceStruct, chartInstance->S, 611U, 16, 14, 69U,
          c1_b_qY, 0, 15)];
       c1_c_out = (CV_TRANSITION_EVAL(117U, (int32_T)_SFD_CCP_CALL(5U, 117U, 0,
         (boolean_T)CV_RELATIONAL_EVAL(5U, 117U, 0, (real_T)
-        *chartInstance->c1_currVhSpeed, (real_T)c1_i88, 0, 5U,
-        *chartInstance->c1_currVhSpeed >= c1_i88) != 0U,
+        *chartInstance->c1_currVhSpeed, (real_T)c1_i89, 0, 5U,
+        *chartInstance->c1_currVhSpeed >= c1_i89) != 0U,
         chartInstance->c1_sfEvent)) != 0);
       if (c1_c_out) {
         _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 117U, chartInstance->c1_sfEvent);
@@ -26335,23 +26389,23 @@ static void c1_aacCheckShift(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance
         _SFD_CE_CALL(EVENT_AFTER_BROADCAST_TAG, c1_event_GearshiftUp,
                      chartInstance->c1_sfEvent);
         chartInstance->c1_sfEvent = c1_previousEvent;
-        c1_i89 = c1__s32_add__(chartInstance, (int32_T)
+        c1_i90 = c1__s32_add__(chartInstance, (int32_T)
           chartInstance->c1_lastShift, 1, 615U, 53, 1);
         c1_c_covSaturation = false;
-        if (c1_i89 < 0) {
+        if (c1_i90 < 0) {
           c1_c_covSaturation = true;
-          c1_i89 = 0;
+          c1_i90 = 0;
           _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 615U, 53U, 1U);
         } else {
-          if (c1_i89 > 255) {
-            c1_i89 = 255;
+          if (c1_i90 > 255) {
+            c1_i90 = 255;
             _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 615U, 53U, 1U);
           }
 
           CV_SATURATION_EVAL(5, 119, 0, 0, c1_c_covSaturation);
         }
 
-        chartInstance->c1_lastShift = (uint8_T)c1_i89;
+        chartInstance->c1_lastShift = (uint8_T)c1_i90;
         c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 6, 715U, (void *)
           &chartInstance->c1_lastShift);
         _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastShift, 63U);
@@ -26375,30 +26429,30 @@ static int32_T c1_getAacParam(SFc1_GCU_Model_genCodeInstanceStruct
 {
   int32_T c1_param;
   int32_T c1_b_param;
-  _SFD_SET_DATA_VALUE_PTR(176U, (void *)&c1_param);
-  _SFD_SET_DATA_VALUE_PTR(127U, (void *)&c1_index);
+  _SFD_SET_DATA_VALUE_PTR(178U, (void *)&c1_param);
+  _SFD_SET_DATA_VALUE_PTR(126U, (void *)&c1_index);
   _SFD_CS_CALL(FUNCTION_ACTIVE_TAG, 45U, chartInstance->c1_sfEvent);
   _SFD_SYMBOL_SCOPE_PUSH(2U, 0U);
-  _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("index", &c1_index, c1_k_sf_marshallOut,
-    c1_f_sf_marshallIn);
+  _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("index", &c1_index, c1_l_sf_marshallOut,
+    c1_g_sf_marshallIn);
   _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("param", &c1_param, c1_sf_marshallOut,
     c1_sf_marshallIn);
   _SFD_CS_CALL(STATE_ENTER_DURING_FUNCTION_TAG, 45U, chartInstance->c1_sfEvent);
   c1_param = 0;
-  _SFD_DATA_RANGE_CHECK((real_T)c1_param, 176U);
+  _SFD_DATA_RANGE_CHECK((real_T)c1_param, 178U);
   _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 108U, chartInstance->c1_sfEvent);
   _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 109U, chartInstance->c1_sfEvent);
   c1_param = (*chartInstance->c1_acc_parameters)[sf_array_bounds_check
     (sfGlobalDebugInstanceStruct, chartInstance->S, 571U, 9, 14, 69U, (int32_T)
      c1_index, 0, 15)];
-  _SFD_DATA_RANGE_CHECK((real_T)c1_param, 176U);
+  _SFD_DATA_RANGE_CHECK((real_T)c1_param, 178U);
   c1_b_param = c1_param;
   sf_mex_printf("%s =\\n", "param");
   sf_mex_call_debug(sfGlobalDebugInstanceStruct, "disp", 0U, 1U, 12, c1_b_param);
   _SFD_SYMBOL_SCOPE_POP();
   _SFD_CS_CALL(FUNCTION_INACTIVE_TAG, 45U, chartInstance->c1_sfEvent);
-  _SFD_UNSET_DATA_VALUE_PTR(176U);
-  _SFD_UNSET_DATA_VALUE_PTR(127U);
+  _SFD_UNSET_DATA_VALUE_PTR(178U);
+  _SFD_UNSET_DATA_VALUE_PTR(126U);
   _SFD_CS_CALL(EXIT_OUT_OF_FUNCTION_TAG, 45U, chartInstance->c1_sfEvent);
   return c1_param;
 }
@@ -26411,16 +26465,16 @@ static void c1_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
   int32_T c1_q1;
   boolean_T c1_covSaturation;
   int32_T c1_qY;
-  int32_T c1_i90;
+  int32_T c1_i91;
   boolean_T c1_b_out;
   int32_T c1_b_q0;
   int32_T c1_b_q1;
   boolean_T c1_b_covSaturation;
   int32_T c1_b_qY;
-  int32_T c1_i91;
+  int32_T c1_i92;
   boolean_T c1_c_out;
   int32_T c1_previousEvent;
-  int32_T c1_i92;
+  int32_T c1_i93;
   boolean_T c1_c_covSaturation;
   _SFD_CS_CALL(FUNCTION_ACTIVE_TAG, 166U, chartInstance->c1_sfEvent);
   _SFD_SYMBOL_SCOPE_PUSH(0U, 0U);
@@ -26454,13 +26508,13 @@ static void c1_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
     }
 
     CV_SATURATION_EVAL(5, 171, 0, 0, c1_covSaturation);
-    c1_i90 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
+    c1_i91 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
       (sfGlobalDebugInstanceStruct, chartInstance->S, 1019U, 12, 16, 72U, c1_qY,
        0, 15)];
     c1_b_out = (CV_TRANSITION_EVAL(171U, (int32_T)_SFD_CCP_CALL(5U, 171U, 0,
       (boolean_T)CV_RELATIONAL_EVAL(5U, 171U, 0, (real_T)
-      *chartInstance->c1_currRpm, (real_T)c1_i90, 0, 5U,
-      *chartInstance->c1_currRpm >= c1_i90) != 0U, chartInstance->c1_sfEvent))
+      *chartInstance->c1_currRpm, (real_T)c1_i91, 0, 5U,
+      *chartInstance->c1_currRpm >= c1_i91) != 0U, chartInstance->c1_sfEvent))
                 != 0);
     if (c1_b_out) {
       _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 171U, chartInstance->c1_sfEvent);
@@ -26485,13 +26539,13 @@ static void c1_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
       }
 
       CV_SATURATION_EVAL(5, 174, 0, 0, c1_b_covSaturation);
-      c1_i91 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
+      c1_i92 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
         (sfGlobalDebugInstanceStruct, chartInstance->S, 1022U, 16, 16, 72U,
          c1_b_qY, 0, 15)];
       c1_c_out = (CV_TRANSITION_EVAL(174U, (int32_T)_SFD_CCP_CALL(5U, 174U, 0,
         (boolean_T)CV_RELATIONAL_EVAL(5U, 174U, 0, (real_T)
-        *chartInstance->c1_currVhSpeed, (real_T)c1_i91, 0, 5U,
-        *chartInstance->c1_currVhSpeed >= c1_i91) != 0U,
+        *chartInstance->c1_currVhSpeed, (real_T)c1_i92, 0, 5U,
+        *chartInstance->c1_currVhSpeed >= c1_i92) != 0U,
         chartInstance->c1_sfEvent)) != 0);
       if (c1_c_out) {
         _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 174U, chartInstance->c1_sfEvent);
@@ -26508,23 +26562,23 @@ static void c1_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
         _SFD_CE_CALL(EVENT_AFTER_BROADCAST_TAG, c1_event_GearshiftUp,
                      chartInstance->c1_sfEvent);
         chartInstance->c1_sfEvent = c1_previousEvent;
-        c1_i92 = c1__s32_add__(chartInstance, (int32_T)
+        c1_i93 = c1__s32_add__(chartInstance, (int32_T)
           chartInstance->c1_lastShift, 1, 1024U, 53, 1);
         c1_c_covSaturation = false;
-        if (c1_i92 < 0) {
+        if (c1_i93 < 0) {
           c1_c_covSaturation = true;
-          c1_i92 = 0;
+          c1_i93 = 0;
           _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1024U, 53U, 1U);
         } else {
-          if (c1_i92 > 255) {
-            c1_i92 = 255;
+          if (c1_i93 > 255) {
+            c1_i93 = 255;
             _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1024U, 53U, 1U);
           }
 
           CV_SATURATION_EVAL(5, 176, 0, 0, c1_c_covSaturation);
         }
 
-        chartInstance->c1_lastShift = (uint8_T)c1_i92;
+        chartInstance->c1_lastShift = (uint8_T)c1_i93;
         c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 6, 715U, (void *)
           &chartInstance->c1_lastShift);
         _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastShift, 63U);
@@ -26548,30 +26602,30 @@ static int32_T c1_getAutoXParam(SFc1_GCU_Model_genCodeInstanceStruct
 {
   int32_T c1_param;
   int32_T c1_b_param;
-  _SFD_SET_DATA_VALUE_PTR(178U, (void *)&c1_param);
-  _SFD_SET_DATA_VALUE_PTR(136U, (void *)&c1_index);
+  _SFD_SET_DATA_VALUE_PTR(160U, (void *)&c1_param);
+  _SFD_SET_DATA_VALUE_PTR(133U, (void *)&c1_index);
   _SFD_CS_CALL(FUNCTION_ACTIVE_TAG, 168U, chartInstance->c1_sfEvent);
   _SFD_SYMBOL_SCOPE_PUSH(2U, 0U);
-  _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("index", &c1_index, c1_l_sf_marshallOut,
-    c1_g_sf_marshallIn);
+  _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("index", &c1_index, c1_m_sf_marshallOut,
+    c1_h_sf_marshallIn);
   _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("param", &c1_param, c1_sf_marshallOut,
     c1_sf_marshallIn);
   _SFD_CS_CALL(STATE_ENTER_DURING_FUNCTION_TAG, 168U, chartInstance->c1_sfEvent);
   c1_param = 0;
-  _SFD_DATA_RANGE_CHECK((real_T)c1_param, 178U);
+  _SFD_DATA_RANGE_CHECK((real_T)c1_param, 160U);
   _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 177U, chartInstance->c1_sfEvent);
   _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 178U, chartInstance->c1_sfEvent);
   c1_param = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
     (sfGlobalDebugInstanceStruct, chartInstance->S, 1037U, 9, 16, 72U, (int32_T)
      c1_index, 0, 15)];
-  _SFD_DATA_RANGE_CHECK((real_T)c1_param, 178U);
+  _SFD_DATA_RANGE_CHECK((real_T)c1_param, 160U);
   c1_b_param = c1_param;
   sf_mex_printf("%s =\\n", "param");
   sf_mex_call_debug(sfGlobalDebugInstanceStruct, "disp", 0U, 1U, 12, c1_b_param);
   _SFD_SYMBOL_SCOPE_POP();
   _SFD_CS_CALL(FUNCTION_INACTIVE_TAG, 168U, chartInstance->c1_sfEvent);
-  _SFD_UNSET_DATA_VALUE_PTR(178U);
-  _SFD_UNSET_DATA_VALUE_PTR(136U);
+  _SFD_UNSET_DATA_VALUE_PTR(160U);
+  _SFD_UNSET_DATA_VALUE_PTR(133U);
   _SFD_CS_CALL(EXIT_OUT_OF_FUNCTION_TAG, 168U, chartInstance->c1_sfEvent);
   return c1_param;
 }
@@ -26584,16 +26638,16 @@ static void c1_b_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
   int32_T c1_q1;
   boolean_T c1_covSaturation;
   int32_T c1_qY;
-  int32_T c1_i93;
+  int32_T c1_i94;
   boolean_T c1_b_out;
   int32_T c1_b_q0;
   int32_T c1_b_q1;
   boolean_T c1_b_covSaturation;
   int32_T c1_b_qY;
-  int32_T c1_i94;
+  int32_T c1_i95;
   boolean_T c1_c_out;
   int32_T c1_previousEvent;
-  int32_T c1_i95;
+  int32_T c1_i96;
   boolean_T c1_c_covSaturation;
   _SFD_CS_CALL(FUNCTION_ACTIVE_TAG, 57U, chartInstance->c1_sfEvent);
   _SFD_SYMBOL_SCOPE_PUSH(0U, 0U);
@@ -26627,13 +26681,13 @@ static void c1_b_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
     }
 
     CV_SATURATION_EVAL(5, 199, 0, 0, c1_covSaturation);
-    c1_i93 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
+    c1_i94 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
       (sfGlobalDebugInstanceStruct, chartInstance->S, 1138U, 12, 16, 72U, c1_qY,
        0, 15)];
     c1_b_out = (CV_TRANSITION_EVAL(199U, (int32_T)_SFD_CCP_CALL(5U, 199U, 0,
       (boolean_T)CV_RELATIONAL_EVAL(5U, 199U, 0, (real_T)
-      *chartInstance->c1_currRpm, (real_T)c1_i93, 0, 5U,
-      *chartInstance->c1_currRpm >= c1_i93) != 0U, chartInstance->c1_sfEvent))
+      *chartInstance->c1_currRpm, (real_T)c1_i94, 0, 5U,
+      *chartInstance->c1_currRpm >= c1_i94) != 0U, chartInstance->c1_sfEvent))
                 != 0);
     if (c1_b_out) {
       _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 199U, chartInstance->c1_sfEvent);
@@ -26658,13 +26712,13 @@ static void c1_b_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
       }
 
       CV_SATURATION_EVAL(5, 202, 0, 0, c1_b_covSaturation);
-      c1_i94 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
+      c1_i95 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
         (sfGlobalDebugInstanceStruct, chartInstance->S, 1141U, 16, 16, 72U,
          c1_b_qY, 0, 15)];
       c1_c_out = (CV_TRANSITION_EVAL(202U, (int32_T)_SFD_CCP_CALL(5U, 202U, 0,
         (boolean_T)CV_RELATIONAL_EVAL(5U, 202U, 0, (real_T)
-        *chartInstance->c1_currVhSpeed, (real_T)c1_i94, 0, 5U,
-        *chartInstance->c1_currVhSpeed >= c1_i94) != 0U,
+        *chartInstance->c1_currVhSpeed, (real_T)c1_i95, 0, 5U,
+        *chartInstance->c1_currVhSpeed >= c1_i95) != 0U,
         chartInstance->c1_sfEvent)) != 0);
       if (c1_c_out) {
         _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 202U, chartInstance->c1_sfEvent);
@@ -26681,23 +26735,23 @@ static void c1_b_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
         _SFD_CE_CALL(EVENT_AFTER_BROADCAST_TAG, c1_event_GearshiftUp,
                      chartInstance->c1_sfEvent);
         chartInstance->c1_sfEvent = c1_previousEvent;
-        c1_i95 = c1__s32_add__(chartInstance, (int32_T)
+        c1_i96 = c1__s32_add__(chartInstance, (int32_T)
           chartInstance->c1_lastShift, 1, 1143U, 53, 1);
         c1_c_covSaturation = false;
-        if (c1_i95 < 0) {
+        if (c1_i96 < 0) {
           c1_c_covSaturation = true;
-          c1_i95 = 0;
+          c1_i96 = 0;
           _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1143U, 53U, 1U);
         } else {
-          if (c1_i95 > 255) {
-            c1_i95 = 255;
+          if (c1_i96 > 255) {
+            c1_i96 = 255;
             _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1143U, 53U, 1U);
           }
 
           CV_SATURATION_EVAL(5, 204, 0, 0, c1_c_covSaturation);
         }
 
-        chartInstance->c1_lastShift = (uint8_T)c1_i95;
+        chartInstance->c1_lastShift = (uint8_T)c1_i96;
         c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 6, 715U, (void *)
           &chartInstance->c1_lastShift);
         _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastShift, 63U);
@@ -26720,20 +26774,20 @@ static real_T c1_pidControl(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance,
   real_T c1_j_slipTarget, real_T c1_j_currentSlip, real_T c1_j_reset)
 {
   real_T c1_j_clutchVal;
-  _SFD_SET_DATA_VALUE_PTR(175U, (void *)&c1_j_clutchVal);
-  _SFD_SET_DATA_VALUE_PTR(151U, (void *)&c1_j_reset);
-  _SFD_SET_DATA_VALUE_PTR(143U, (void *)&c1_j_currentSlip);
-  _SFD_SET_DATA_VALUE_PTR(137U, (void *)&c1_j_slipTarget);
+  _SFD_SET_DATA_VALUE_PTR(164U, (void *)&c1_j_clutchVal);
+  _SFD_SET_DATA_VALUE_PTR(154U, (void *)&c1_j_reset);
+  _SFD_SET_DATA_VALUE_PTR(144U, (void *)&c1_j_currentSlip);
+  _SFD_SET_DATA_VALUE_PTR(135U, (void *)&c1_j_slipTarget);
   _SFD_CS_CALL(FUNCTION_ACTIVE_TAG, 58U, chartInstance->c1_sfEvent);
   _SFD_SYMBOL_SCOPE_PUSH(4U, 0U);
   _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("slipTarget", &c1_j_slipTarget,
-    c1_j_sf_marshallOut, c1_e_sf_marshallIn);
+    c1_k_sf_marshallOut, c1_f_sf_marshallIn);
   _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("currentSlip", &c1_j_currentSlip,
-    c1_j_sf_marshallOut, c1_e_sf_marshallIn);
-  _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("reset", &c1_j_reset, c1_j_sf_marshallOut,
-    c1_e_sf_marshallIn);
+    c1_k_sf_marshallOut, c1_f_sf_marshallIn);
+  _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("reset", &c1_j_reset, c1_k_sf_marshallOut,
+    c1_f_sf_marshallIn);
   _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("clutchVal", &c1_j_clutchVal,
-    c1_j_sf_marshallOut, c1_e_sf_marshallIn);
+    c1_k_sf_marshallOut, c1_f_sf_marshallIn);
   _SFD_CS_CALL(STATE_ENTER_DURING_FUNCTION_TAG, 58U, chartInstance->c1_sfEvent);
   *chartInstance->c1_slipTarget = c1_j_slipTarget;
   *chartInstance->c1_currentSlip = c1_j_currentSlip;
@@ -26742,10 +26796,10 @@ static real_T c1_pidControl(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance,
   c1_j_clutchVal = *chartInstance->c1_clutchVal;
   _SFD_SYMBOL_SCOPE_POP();
   _SFD_CS_CALL(FUNCTION_INACTIVE_TAG, 58U, chartInstance->c1_sfEvent);
-  _SFD_UNSET_DATA_VALUE_PTR(175U);
-  _SFD_UNSET_DATA_VALUE_PTR(151U);
-  _SFD_UNSET_DATA_VALUE_PTR(143U);
-  _SFD_UNSET_DATA_VALUE_PTR(137U);
+  _SFD_UNSET_DATA_VALUE_PTR(164U);
+  _SFD_UNSET_DATA_VALUE_PTR(154U);
+  _SFD_UNSET_DATA_VALUE_PTR(144U);
+  _SFD_UNSET_DATA_VALUE_PTR(135U);
   _SFD_CS_CALL(EXIT_OUT_OF_FUNCTION_TAG, 58U, chartInstance->c1_sfEvent);
   return c1_j_clutchVal;
 }
@@ -26758,16 +26812,16 @@ static void c1_c_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
   int32_T c1_q1;
   boolean_T c1_covSaturation;
   int32_T c1_qY;
-  int32_T c1_i96;
+  int32_T c1_i97;
   boolean_T c1_b_out;
   int32_T c1_b_q0;
   int32_T c1_b_q1;
   boolean_T c1_b_covSaturation;
   int32_T c1_b_qY;
-  int32_T c1_i97;
+  int32_T c1_i98;
   boolean_T c1_c_out;
   int32_T c1_previousEvent;
-  int32_T c1_i98;
+  int32_T c1_i99;
   boolean_T c1_c_covSaturation;
   _SFD_CS_CALL(FUNCTION_ACTIVE_TAG, 69U, chartInstance->c1_sfEvent);
   _SFD_SYMBOL_SCOPE_PUSH(0U, 0U);
@@ -26801,13 +26855,13 @@ static void c1_c_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
     }
 
     CV_SATURATION_EVAL(5, 232, 0, 0, c1_covSaturation);
-    c1_i96 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
+    c1_i97 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
       (sfGlobalDebugInstanceStruct, chartInstance->S, 1247U, 12, 16, 72U, c1_qY,
        0, 15)];
     c1_b_out = (CV_TRANSITION_EVAL(232U, (int32_T)_SFD_CCP_CALL(5U, 232U, 0,
       (boolean_T)CV_RELATIONAL_EVAL(5U, 232U, 0, (real_T)
-      *chartInstance->c1_currRpm, (real_T)c1_i96, 0, 5U,
-      *chartInstance->c1_currRpm >= c1_i96) != 0U, chartInstance->c1_sfEvent))
+      *chartInstance->c1_currRpm, (real_T)c1_i97, 0, 5U,
+      *chartInstance->c1_currRpm >= c1_i97) != 0U, chartInstance->c1_sfEvent))
                 != 0);
     if (c1_b_out) {
       _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 232U, chartInstance->c1_sfEvent);
@@ -26832,13 +26886,13 @@ static void c1_c_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
       }
 
       CV_SATURATION_EVAL(5, 235, 0, 0, c1_b_covSaturation);
-      c1_i97 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
+      c1_i98 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
         (sfGlobalDebugInstanceStruct, chartInstance->S, 1250U, 16, 16, 72U,
          c1_b_qY, 0, 15)];
       c1_c_out = (CV_TRANSITION_EVAL(235U, (int32_T)_SFD_CCP_CALL(5U, 235U, 0,
         (boolean_T)CV_RELATIONAL_EVAL(5U, 235U, 0, (real_T)
-        *chartInstance->c1_currVhSpeed, (real_T)c1_i97, 0, 5U,
-        *chartInstance->c1_currVhSpeed >= c1_i97) != 0U,
+        *chartInstance->c1_currVhSpeed, (real_T)c1_i98, 0, 5U,
+        *chartInstance->c1_currVhSpeed >= c1_i98) != 0U,
         chartInstance->c1_sfEvent)) != 0);
       if (c1_c_out) {
         _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 235U, chartInstance->c1_sfEvent);
@@ -26855,23 +26909,23 @@ static void c1_c_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
         _SFD_CE_CALL(EVENT_AFTER_BROADCAST_TAG, c1_event_GearshiftUp,
                      chartInstance->c1_sfEvent);
         chartInstance->c1_sfEvent = c1_previousEvent;
-        c1_i98 = c1__s32_add__(chartInstance, (int32_T)
+        c1_i99 = c1__s32_add__(chartInstance, (int32_T)
           chartInstance->c1_lastShift, 1, 1252U, 53, 1);
         c1_c_covSaturation = false;
-        if (c1_i98 < 0) {
+        if (c1_i99 < 0) {
           c1_c_covSaturation = true;
-          c1_i98 = 0;
+          c1_i99 = 0;
           _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1252U, 53U, 1U);
         } else {
-          if (c1_i98 > 255) {
-            c1_i98 = 255;
+          if (c1_i99 > 255) {
+            c1_i99 = 255;
             _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1252U, 53U, 1U);
           }
 
           CV_SATURATION_EVAL(5, 237, 0, 0, c1_c_covSaturation);
         }
 
-        chartInstance->c1_lastShift = (uint8_T)c1_i98;
+        chartInstance->c1_lastShift = (uint8_T)c1_i99;
         c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 6, 715U, (void *)
           &chartInstance->c1_lastShift);
         _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastShift, 63U);
@@ -26895,20 +26949,20 @@ static real_T c1_b_pidControl(SFc1_GCU_Model_genCodeInstanceStruct
   c1_j_reset)
 {
   real_T c1_j_clutchVal;
-  _SFD_SET_DATA_VALUE_PTR(170U, (void *)&c1_j_clutchVal);
-  _SFD_SET_DATA_VALUE_PTR(157U, (void *)&c1_j_reset);
-  _SFD_SET_DATA_VALUE_PTR(141U, (void *)&c1_j_currentSlip);
-  _SFD_SET_DATA_VALUE_PTR(125U, (void *)&c1_j_slipTarget);
+  _SFD_SET_DATA_VALUE_PTR(163U, (void *)&c1_j_clutchVal);
+  _SFD_SET_DATA_VALUE_PTR(156U, (void *)&c1_j_reset);
+  _SFD_SET_DATA_VALUE_PTR(143U, (void *)&c1_j_currentSlip);
+  _SFD_SET_DATA_VALUE_PTR(138U, (void *)&c1_j_slipTarget);
   _SFD_CS_CALL(FUNCTION_ACTIVE_TAG, 70U, chartInstance->c1_sfEvent);
   _SFD_SYMBOL_SCOPE_PUSH(4U, 0U);
   _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("slipTarget", &c1_j_slipTarget,
-    c1_j_sf_marshallOut, c1_e_sf_marshallIn);
+    c1_k_sf_marshallOut, c1_f_sf_marshallIn);
   _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("currentSlip", &c1_j_currentSlip,
-    c1_j_sf_marshallOut, c1_e_sf_marshallIn);
-  _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("reset", &c1_j_reset, c1_j_sf_marshallOut,
-    c1_e_sf_marshallIn);
+    c1_k_sf_marshallOut, c1_f_sf_marshallIn);
+  _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("reset", &c1_j_reset, c1_k_sf_marshallOut,
+    c1_f_sf_marshallIn);
   _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("clutchVal", &c1_j_clutchVal,
-    c1_j_sf_marshallOut, c1_e_sf_marshallIn);
+    c1_k_sf_marshallOut, c1_f_sf_marshallIn);
   _SFD_CS_CALL(STATE_ENTER_DURING_FUNCTION_TAG, 70U, chartInstance->c1_sfEvent);
   *chartInstance->c1_b_slipTarget = c1_j_slipTarget;
   *chartInstance->c1_b_currentSlip = c1_j_currentSlip;
@@ -26917,10 +26971,10 @@ static real_T c1_b_pidControl(SFc1_GCU_Model_genCodeInstanceStruct
   c1_j_clutchVal = *chartInstance->c1_b_clutchVal;
   _SFD_SYMBOL_SCOPE_POP();
   _SFD_CS_CALL(FUNCTION_INACTIVE_TAG, 70U, chartInstance->c1_sfEvent);
-  _SFD_UNSET_DATA_VALUE_PTR(170U);
-  _SFD_UNSET_DATA_VALUE_PTR(157U);
-  _SFD_UNSET_DATA_VALUE_PTR(141U);
-  _SFD_UNSET_DATA_VALUE_PTR(125U);
+  _SFD_UNSET_DATA_VALUE_PTR(163U);
+  _SFD_UNSET_DATA_VALUE_PTR(156U);
+  _SFD_UNSET_DATA_VALUE_PTR(143U);
+  _SFD_UNSET_DATA_VALUE_PTR(138U);
   _SFD_CS_CALL(EXIT_OUT_OF_FUNCTION_TAG, 70U, chartInstance->c1_sfEvent);
   return c1_j_clutchVal;
 }
@@ -26933,16 +26987,16 @@ static void c1_d_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
   int32_T c1_q1;
   boolean_T c1_covSaturation;
   int32_T c1_qY;
-  int32_T c1_i99;
+  int32_T c1_i100;
   boolean_T c1_b_out;
   int32_T c1_b_q0;
   int32_T c1_b_q1;
   boolean_T c1_b_covSaturation;
   int32_T c1_b_qY;
-  int32_T c1_i100;
+  int32_T c1_i101;
   boolean_T c1_c_out;
   int32_T c1_previousEvent;
-  int32_T c1_i101;
+  int32_T c1_i102;
   boolean_T c1_c_covSaturation;
   _SFD_CS_CALL(FUNCTION_ACTIVE_TAG, 81U, chartInstance->c1_sfEvent);
   _SFD_SYMBOL_SCOPE_PUSH(0U, 0U);
@@ -26976,13 +27030,13 @@ static void c1_d_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
     }
 
     CV_SATURATION_EVAL(5, 257, 0, 0, c1_covSaturation);
-    c1_i99 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
+    c1_i100 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
       (sfGlobalDebugInstanceStruct, chartInstance->S, 1320U, 12, 16, 72U, c1_qY,
        0, 15)];
     c1_b_out = (CV_TRANSITION_EVAL(257U, (int32_T)_SFD_CCP_CALL(5U, 257U, 0,
       (boolean_T)CV_RELATIONAL_EVAL(5U, 257U, 0, (real_T)
-      *chartInstance->c1_currRpm, (real_T)c1_i99, 0, 5U,
-      *chartInstance->c1_currRpm >= c1_i99) != 0U, chartInstance->c1_sfEvent))
+      *chartInstance->c1_currRpm, (real_T)c1_i100, 0, 5U,
+      *chartInstance->c1_currRpm >= c1_i100) != 0U, chartInstance->c1_sfEvent))
                 != 0);
     if (c1_b_out) {
       _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 257U, chartInstance->c1_sfEvent);
@@ -27007,13 +27061,13 @@ static void c1_d_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
       }
 
       CV_SATURATION_EVAL(5, 260, 0, 0, c1_b_covSaturation);
-      c1_i100 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
+      c1_i101 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
         (sfGlobalDebugInstanceStruct, chartInstance->S, 1323U, 16, 16, 72U,
          c1_b_qY, 0, 15)];
       c1_c_out = (CV_TRANSITION_EVAL(260U, (int32_T)_SFD_CCP_CALL(5U, 260U, 0,
         (boolean_T)CV_RELATIONAL_EVAL(5U, 260U, 0, (real_T)
-        *chartInstance->c1_currVhSpeed, (real_T)c1_i100, 0, 5U,
-        *chartInstance->c1_currVhSpeed >= c1_i100) != 0U,
+        *chartInstance->c1_currVhSpeed, (real_T)c1_i101, 0, 5U,
+        *chartInstance->c1_currVhSpeed >= c1_i101) != 0U,
         chartInstance->c1_sfEvent)) != 0);
       if (c1_c_out) {
         _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 260U, chartInstance->c1_sfEvent);
@@ -27030,23 +27084,23 @@ static void c1_d_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
         _SFD_CE_CALL(EVENT_AFTER_BROADCAST_TAG, c1_event_GearshiftUp,
                      chartInstance->c1_sfEvent);
         chartInstance->c1_sfEvent = c1_previousEvent;
-        c1_i101 = c1__s32_add__(chartInstance, (int32_T)
+        c1_i102 = c1__s32_add__(chartInstance, (int32_T)
           chartInstance->c1_lastShift, 1, 1325U, 53, 1);
         c1_c_covSaturation = false;
-        if (c1_i101 < 0) {
+        if (c1_i102 < 0) {
           c1_c_covSaturation = true;
-          c1_i101 = 0;
+          c1_i102 = 0;
           _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1325U, 53U, 1U);
         } else {
-          if (c1_i101 > 255) {
-            c1_i101 = 255;
+          if (c1_i102 > 255) {
+            c1_i102 = 255;
             _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1325U, 53U, 1U);
           }
 
           CV_SATURATION_EVAL(5, 262, 0, 0, c1_c_covSaturation);
         }
 
-        chartInstance->c1_lastShift = (uint8_T)c1_i101;
+        chartInstance->c1_lastShift = (uint8_T)c1_i102;
         c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 6, 715U, (void *)
           &chartInstance->c1_lastShift);
         _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastShift, 63U);
@@ -27070,20 +27124,20 @@ static real_T c1_c_pidControl(SFc1_GCU_Model_genCodeInstanceStruct
   c1_j_reset)
 {
   real_T c1_j_clutchVal;
-  _SFD_SET_DATA_VALUE_PTR(163U, (void *)&c1_j_clutchVal);
-  _SFD_SET_DATA_VALUE_PTR(153U, (void *)&c1_j_reset);
-  _SFD_SET_DATA_VALUE_PTR(142U, (void *)&c1_j_currentSlip);
-  _SFD_SET_DATA_VALUE_PTR(134U, (void *)&c1_j_slipTarget);
+  _SFD_SET_DATA_VALUE_PTR(167U, (void *)&c1_j_clutchVal);
+  _SFD_SET_DATA_VALUE_PTR(151U, (void *)&c1_j_reset);
+  _SFD_SET_DATA_VALUE_PTR(149U, (void *)&c1_j_currentSlip);
+  _SFD_SET_DATA_VALUE_PTR(137U, (void *)&c1_j_slipTarget);
   _SFD_CS_CALL(FUNCTION_ACTIVE_TAG, 82U, chartInstance->c1_sfEvent);
   _SFD_SYMBOL_SCOPE_PUSH(4U, 0U);
   _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("slipTarget", &c1_j_slipTarget,
-    c1_j_sf_marshallOut, c1_e_sf_marshallIn);
+    c1_k_sf_marshallOut, c1_f_sf_marshallIn);
   _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("currentSlip", &c1_j_currentSlip,
-    c1_j_sf_marshallOut, c1_e_sf_marshallIn);
-  _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("reset", &c1_j_reset, c1_j_sf_marshallOut,
-    c1_e_sf_marshallIn);
+    c1_k_sf_marshallOut, c1_f_sf_marshallIn);
+  _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("reset", &c1_j_reset, c1_k_sf_marshallOut,
+    c1_f_sf_marshallIn);
   _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("clutchVal", &c1_j_clutchVal,
-    c1_j_sf_marshallOut, c1_e_sf_marshallIn);
+    c1_k_sf_marshallOut, c1_f_sf_marshallIn);
   _SFD_CS_CALL(STATE_ENTER_DURING_FUNCTION_TAG, 82U, chartInstance->c1_sfEvent);
   *chartInstance->c1_c_slipTarget = c1_j_slipTarget;
   *chartInstance->c1_c_currentSlip = c1_j_currentSlip;
@@ -27092,10 +27146,10 @@ static real_T c1_c_pidControl(SFc1_GCU_Model_genCodeInstanceStruct
   c1_j_clutchVal = *chartInstance->c1_c_clutchVal;
   _SFD_SYMBOL_SCOPE_POP();
   _SFD_CS_CALL(FUNCTION_INACTIVE_TAG, 82U, chartInstance->c1_sfEvent);
-  _SFD_UNSET_DATA_VALUE_PTR(163U);
-  _SFD_UNSET_DATA_VALUE_PTR(153U);
-  _SFD_UNSET_DATA_VALUE_PTR(142U);
-  _SFD_UNSET_DATA_VALUE_PTR(134U);
+  _SFD_UNSET_DATA_VALUE_PTR(167U);
+  _SFD_UNSET_DATA_VALUE_PTR(151U);
+  _SFD_UNSET_DATA_VALUE_PTR(149U);
+  _SFD_UNSET_DATA_VALUE_PTR(137U);
   _SFD_CS_CALL(EXIT_OUT_OF_FUNCTION_TAG, 82U, chartInstance->c1_sfEvent);
   return c1_j_clutchVal;
 }
@@ -27108,16 +27162,16 @@ static void c1_e_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
   int32_T c1_q1;
   boolean_T c1_covSaturation;
   int32_T c1_qY;
-  int32_T c1_i102;
+  int32_T c1_i103;
   boolean_T c1_b_out;
   int32_T c1_b_q0;
   int32_T c1_b_q1;
   boolean_T c1_b_covSaturation;
   int32_T c1_b_qY;
-  int32_T c1_i103;
+  int32_T c1_i104;
   boolean_T c1_c_out;
   int32_T c1_previousEvent;
-  int32_T c1_i104;
+  int32_T c1_i105;
   boolean_T c1_c_covSaturation;
   _SFD_CS_CALL(FUNCTION_ACTIVE_TAG, 93U, chartInstance->c1_sfEvent);
   _SFD_SYMBOL_SCOPE_PUSH(0U, 0U);
@@ -27151,13 +27205,13 @@ static void c1_e_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
     }
 
     CV_SATURATION_EVAL(5, 283, 0, 0, c1_covSaturation);
-    c1_i102 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
+    c1_i103 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
       (sfGlobalDebugInstanceStruct, chartInstance->S, 1392U, 12, 16, 72U, c1_qY,
        0, 15)];
     c1_b_out = (CV_TRANSITION_EVAL(283U, (int32_T)_SFD_CCP_CALL(5U, 283U, 0,
       (boolean_T)CV_RELATIONAL_EVAL(5U, 283U, 0, (real_T)
-      *chartInstance->c1_currRpm, (real_T)c1_i102, 0, 5U,
-      *chartInstance->c1_currRpm >= c1_i102) != 0U, chartInstance->c1_sfEvent))
+      *chartInstance->c1_currRpm, (real_T)c1_i103, 0, 5U,
+      *chartInstance->c1_currRpm >= c1_i103) != 0U, chartInstance->c1_sfEvent))
                 != 0);
     if (c1_b_out) {
       _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 283U, chartInstance->c1_sfEvent);
@@ -27182,13 +27236,13 @@ static void c1_e_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
       }
 
       CV_SATURATION_EVAL(5, 286, 0, 0, c1_b_covSaturation);
-      c1_i103 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
+      c1_i104 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
         (sfGlobalDebugInstanceStruct, chartInstance->S, 1395U, 16, 16, 72U,
          c1_b_qY, 0, 15)];
       c1_c_out = (CV_TRANSITION_EVAL(286U, (int32_T)_SFD_CCP_CALL(5U, 286U, 0,
         (boolean_T)CV_RELATIONAL_EVAL(5U, 286U, 0, (real_T)
-        *chartInstance->c1_currVhSpeed, (real_T)c1_i103, 0, 5U,
-        *chartInstance->c1_currVhSpeed >= c1_i103) != 0U,
+        *chartInstance->c1_currVhSpeed, (real_T)c1_i104, 0, 5U,
+        *chartInstance->c1_currVhSpeed >= c1_i104) != 0U,
         chartInstance->c1_sfEvent)) != 0);
       if (c1_c_out) {
         _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 286U, chartInstance->c1_sfEvent);
@@ -27205,23 +27259,23 @@ static void c1_e_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
         _SFD_CE_CALL(EVENT_AFTER_BROADCAST_TAG, c1_event_GearshiftUp,
                      chartInstance->c1_sfEvent);
         chartInstance->c1_sfEvent = c1_previousEvent;
-        c1_i104 = c1__s32_add__(chartInstance, (int32_T)
+        c1_i105 = c1__s32_add__(chartInstance, (int32_T)
           chartInstance->c1_lastShift, 1, 1397U, 53, 1);
         c1_c_covSaturation = false;
-        if (c1_i104 < 0) {
+        if (c1_i105 < 0) {
           c1_c_covSaturation = true;
-          c1_i104 = 0;
+          c1_i105 = 0;
           _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1397U, 53U, 1U);
         } else {
-          if (c1_i104 > 255) {
-            c1_i104 = 255;
+          if (c1_i105 > 255) {
+            c1_i105 = 255;
             _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1397U, 53U, 1U);
           }
 
           CV_SATURATION_EVAL(5, 288, 0, 0, c1_c_covSaturation);
         }
 
-        chartInstance->c1_lastShift = (uint8_T)c1_i104;
+        chartInstance->c1_lastShift = (uint8_T)c1_i105;
         c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 6, 715U, (void *)
           &chartInstance->c1_lastShift);
         _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastShift, 63U);
@@ -27245,20 +27299,20 @@ static real_T c1_d_pidControl(SFc1_GCU_Model_genCodeInstanceStruct
   c1_j_reset)
 {
   real_T c1_j_clutchVal;
-  _SFD_SET_DATA_VALUE_PTR(179U, (void *)&c1_j_clutchVal);
-  _SFD_SET_DATA_VALUE_PTR(155U, (void *)&c1_j_reset);
-  _SFD_SET_DATA_VALUE_PTR(145U, (void *)&c1_j_currentSlip);
-  _SFD_SET_DATA_VALUE_PTR(122U, (void *)&c1_j_slipTarget);
+  _SFD_SET_DATA_VALUE_PTR(175U, (void *)&c1_j_clutchVal);
+  _SFD_SET_DATA_VALUE_PTR(159U, (void *)&c1_j_reset);
+  _SFD_SET_DATA_VALUE_PTR(142U, (void *)&c1_j_currentSlip);
+  _SFD_SET_DATA_VALUE_PTR(134U, (void *)&c1_j_slipTarget);
   _SFD_CS_CALL(FUNCTION_ACTIVE_TAG, 94U, chartInstance->c1_sfEvent);
   _SFD_SYMBOL_SCOPE_PUSH(4U, 0U);
   _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("slipTarget", &c1_j_slipTarget,
-    c1_j_sf_marshallOut, c1_e_sf_marshallIn);
+    c1_k_sf_marshallOut, c1_f_sf_marshallIn);
   _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("currentSlip", &c1_j_currentSlip,
-    c1_j_sf_marshallOut, c1_e_sf_marshallIn);
-  _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("reset", &c1_j_reset, c1_j_sf_marshallOut,
-    c1_e_sf_marshallIn);
+    c1_k_sf_marshallOut, c1_f_sf_marshallIn);
+  _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("reset", &c1_j_reset, c1_k_sf_marshallOut,
+    c1_f_sf_marshallIn);
   _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("clutchVal", &c1_j_clutchVal,
-    c1_j_sf_marshallOut, c1_e_sf_marshallIn);
+    c1_k_sf_marshallOut, c1_f_sf_marshallIn);
   _SFD_CS_CALL(STATE_ENTER_DURING_FUNCTION_TAG, 94U, chartInstance->c1_sfEvent);
   *chartInstance->c1_d_slipTarget = c1_j_slipTarget;
   *chartInstance->c1_d_currentSlip = c1_j_currentSlip;
@@ -27267,10 +27321,10 @@ static real_T c1_d_pidControl(SFc1_GCU_Model_genCodeInstanceStruct
   c1_j_clutchVal = *chartInstance->c1_d_clutchVal;
   _SFD_SYMBOL_SCOPE_POP();
   _SFD_CS_CALL(FUNCTION_INACTIVE_TAG, 94U, chartInstance->c1_sfEvent);
-  _SFD_UNSET_DATA_VALUE_PTR(179U);
-  _SFD_UNSET_DATA_VALUE_PTR(155U);
-  _SFD_UNSET_DATA_VALUE_PTR(145U);
-  _SFD_UNSET_DATA_VALUE_PTR(122U);
+  _SFD_UNSET_DATA_VALUE_PTR(175U);
+  _SFD_UNSET_DATA_VALUE_PTR(159U);
+  _SFD_UNSET_DATA_VALUE_PTR(142U);
+  _SFD_UNSET_DATA_VALUE_PTR(134U);
   _SFD_CS_CALL(EXIT_OUT_OF_FUNCTION_TAG, 94U, chartInstance->c1_sfEvent);
   return c1_j_clutchVal;
 }
@@ -27283,16 +27337,16 @@ static void c1_f_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
   int32_T c1_q1;
   boolean_T c1_covSaturation;
   int32_T c1_qY;
-  int32_T c1_i105;
+  int32_T c1_i106;
   boolean_T c1_b_out;
   int32_T c1_b_q0;
   int32_T c1_b_q1;
   boolean_T c1_b_covSaturation;
   int32_T c1_b_qY;
-  int32_T c1_i106;
+  int32_T c1_i107;
   boolean_T c1_c_out;
   int32_T c1_previousEvent;
-  int32_T c1_i107;
+  int32_T c1_i108;
   boolean_T c1_c_covSaturation;
   _SFD_CS_CALL(FUNCTION_ACTIVE_TAG, 105U, chartInstance->c1_sfEvent);
   _SFD_SYMBOL_SCOPE_PUSH(0U, 0U);
@@ -27326,13 +27380,13 @@ static void c1_f_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
     }
 
     CV_SATURATION_EVAL(5, 307, 0, 0, c1_covSaturation);
-    c1_i105 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
+    c1_i106 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
       (sfGlobalDebugInstanceStruct, chartInstance->S, 1460U, 12, 16, 72U, c1_qY,
        0, 15)];
     c1_b_out = (CV_TRANSITION_EVAL(307U, (int32_T)_SFD_CCP_CALL(5U, 307U, 0,
       (boolean_T)CV_RELATIONAL_EVAL(5U, 307U, 0, (real_T)
-      *chartInstance->c1_currRpm, (real_T)c1_i105, 0, 5U,
-      *chartInstance->c1_currRpm >= c1_i105) != 0U, chartInstance->c1_sfEvent))
+      *chartInstance->c1_currRpm, (real_T)c1_i106, 0, 5U,
+      *chartInstance->c1_currRpm >= c1_i106) != 0U, chartInstance->c1_sfEvent))
                 != 0);
     if (c1_b_out) {
       _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 307U, chartInstance->c1_sfEvent);
@@ -27357,13 +27411,13 @@ static void c1_f_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
       }
 
       CV_SATURATION_EVAL(5, 310, 0, 0, c1_b_covSaturation);
-      c1_i106 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
+      c1_i107 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
         (sfGlobalDebugInstanceStruct, chartInstance->S, 1463U, 16, 16, 72U,
          c1_b_qY, 0, 15)];
       c1_c_out = (CV_TRANSITION_EVAL(310U, (int32_T)_SFD_CCP_CALL(5U, 310U, 0,
         (boolean_T)CV_RELATIONAL_EVAL(5U, 310U, 0, (real_T)
-        *chartInstance->c1_currVhSpeed, (real_T)c1_i106, 0, 5U,
-        *chartInstance->c1_currVhSpeed >= c1_i106) != 0U,
+        *chartInstance->c1_currVhSpeed, (real_T)c1_i107, 0, 5U,
+        *chartInstance->c1_currVhSpeed >= c1_i107) != 0U,
         chartInstance->c1_sfEvent)) != 0);
       if (c1_c_out) {
         _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 310U, chartInstance->c1_sfEvent);
@@ -27380,23 +27434,23 @@ static void c1_f_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
         _SFD_CE_CALL(EVENT_AFTER_BROADCAST_TAG, c1_event_GearshiftUp,
                      chartInstance->c1_sfEvent);
         chartInstance->c1_sfEvent = c1_previousEvent;
-        c1_i107 = c1__s32_add__(chartInstance, (int32_T)
+        c1_i108 = c1__s32_add__(chartInstance, (int32_T)
           chartInstance->c1_lastShift, 1, 1465U, 53, 1);
         c1_c_covSaturation = false;
-        if (c1_i107 < 0) {
+        if (c1_i108 < 0) {
           c1_c_covSaturation = true;
-          c1_i107 = 0;
+          c1_i108 = 0;
           _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1465U, 53U, 1U);
         } else {
-          if (c1_i107 > 255) {
-            c1_i107 = 255;
+          if (c1_i108 > 255) {
+            c1_i108 = 255;
             _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1465U, 53U, 1U);
           }
 
           CV_SATURATION_EVAL(5, 312, 0, 0, c1_c_covSaturation);
         }
 
-        chartInstance->c1_lastShift = (uint8_T)c1_i107;
+        chartInstance->c1_lastShift = (uint8_T)c1_i108;
         c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 6, 715U, (void *)
           &chartInstance->c1_lastShift);
         _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastShift, 63U);
@@ -27421,19 +27475,19 @@ static real_T c1_e_pidControl(SFc1_GCU_Model_genCodeInstanceStruct
 {
   real_T c1_j_clutchVal;
   _SFD_SET_DATA_VALUE_PTR(177U, (void *)&c1_j_clutchVal);
-  _SFD_SET_DATA_VALUE_PTR(150U, (void *)&c1_j_reset);
-  _SFD_SET_DATA_VALUE_PTR(148U, (void *)&c1_j_currentSlip);
-  _SFD_SET_DATA_VALUE_PTR(138U, (void *)&c1_j_slipTarget);
+  _SFD_SET_DATA_VALUE_PTR(152U, (void *)&c1_j_reset);
+  _SFD_SET_DATA_VALUE_PTR(150U, (void *)&c1_j_currentSlip);
+  _SFD_SET_DATA_VALUE_PTR(128U, (void *)&c1_j_slipTarget);
   _SFD_CS_CALL(FUNCTION_ACTIVE_TAG, 106U, chartInstance->c1_sfEvent);
   _SFD_SYMBOL_SCOPE_PUSH(4U, 0U);
   _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("slipTarget", &c1_j_slipTarget,
-    c1_j_sf_marshallOut, c1_e_sf_marshallIn);
+    c1_k_sf_marshallOut, c1_f_sf_marshallIn);
   _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("currentSlip", &c1_j_currentSlip,
-    c1_j_sf_marshallOut, c1_e_sf_marshallIn);
-  _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("reset", &c1_j_reset, c1_j_sf_marshallOut,
-    c1_e_sf_marshallIn);
+    c1_k_sf_marshallOut, c1_f_sf_marshallIn);
+  _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("reset", &c1_j_reset, c1_k_sf_marshallOut,
+    c1_f_sf_marshallIn);
   _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("clutchVal", &c1_j_clutchVal,
-    c1_j_sf_marshallOut, c1_e_sf_marshallIn);
+    c1_k_sf_marshallOut, c1_f_sf_marshallIn);
   _SFD_CS_CALL(STATE_ENTER_DURING_FUNCTION_TAG, 106U, chartInstance->c1_sfEvent);
   *chartInstance->c1_e_slipTarget = c1_j_slipTarget;
   *chartInstance->c1_e_currentSlip = c1_j_currentSlip;
@@ -27443,9 +27497,9 @@ static real_T c1_e_pidControl(SFc1_GCU_Model_genCodeInstanceStruct
   _SFD_SYMBOL_SCOPE_POP();
   _SFD_CS_CALL(FUNCTION_INACTIVE_TAG, 106U, chartInstance->c1_sfEvent);
   _SFD_UNSET_DATA_VALUE_PTR(177U);
+  _SFD_UNSET_DATA_VALUE_PTR(152U);
   _SFD_UNSET_DATA_VALUE_PTR(150U);
-  _SFD_UNSET_DATA_VALUE_PTR(148U);
-  _SFD_UNSET_DATA_VALUE_PTR(138U);
+  _SFD_UNSET_DATA_VALUE_PTR(128U);
   _SFD_CS_CALL(EXIT_OUT_OF_FUNCTION_TAG, 106U, chartInstance->c1_sfEvent);
   return c1_j_clutchVal;
 }
@@ -27458,16 +27512,16 @@ static void c1_g_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
   int32_T c1_q1;
   boolean_T c1_covSaturation;
   int32_T c1_qY;
-  int32_T c1_i108;
+  int32_T c1_i109;
   boolean_T c1_b_out;
   int32_T c1_b_q0;
   int32_T c1_b_q1;
   boolean_T c1_b_covSaturation;
   int32_T c1_b_qY;
-  int32_T c1_i109;
+  int32_T c1_i110;
   boolean_T c1_c_out;
   int32_T c1_previousEvent;
-  int32_T c1_i110;
+  int32_T c1_i111;
   boolean_T c1_c_covSaturation;
   _SFD_CS_CALL(FUNCTION_ACTIVE_TAG, 117U, chartInstance->c1_sfEvent);
   _SFD_SYMBOL_SCOPE_PUSH(0U, 0U);
@@ -27501,13 +27555,13 @@ static void c1_g_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
     }
 
     CV_SATURATION_EVAL(5, 331, 0, 0, c1_covSaturation);
-    c1_i108 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
+    c1_i109 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
       (sfGlobalDebugInstanceStruct, chartInstance->S, 1528U, 12, 16, 72U, c1_qY,
        0, 15)];
     c1_b_out = (CV_TRANSITION_EVAL(331U, (int32_T)_SFD_CCP_CALL(5U, 331U, 0,
       (boolean_T)CV_RELATIONAL_EVAL(5U, 331U, 0, (real_T)
-      *chartInstance->c1_currRpm, (real_T)c1_i108, 0, 5U,
-      *chartInstance->c1_currRpm >= c1_i108) != 0U, chartInstance->c1_sfEvent))
+      *chartInstance->c1_currRpm, (real_T)c1_i109, 0, 5U,
+      *chartInstance->c1_currRpm >= c1_i109) != 0U, chartInstance->c1_sfEvent))
                 != 0);
     if (c1_b_out) {
       _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 331U, chartInstance->c1_sfEvent);
@@ -27532,13 +27586,13 @@ static void c1_g_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
       }
 
       CV_SATURATION_EVAL(5, 334, 0, 0, c1_b_covSaturation);
-      c1_i109 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
+      c1_i110 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
         (sfGlobalDebugInstanceStruct, chartInstance->S, 1531U, 16, 16, 72U,
          c1_b_qY, 0, 15)];
       c1_c_out = (CV_TRANSITION_EVAL(334U, (int32_T)_SFD_CCP_CALL(5U, 334U, 0,
         (boolean_T)CV_RELATIONAL_EVAL(5U, 334U, 0, (real_T)
-        *chartInstance->c1_currVhSpeed, (real_T)c1_i109, 0, 5U,
-        *chartInstance->c1_currVhSpeed >= c1_i109) != 0U,
+        *chartInstance->c1_currVhSpeed, (real_T)c1_i110, 0, 5U,
+        *chartInstance->c1_currVhSpeed >= c1_i110) != 0U,
         chartInstance->c1_sfEvent)) != 0);
       if (c1_c_out) {
         _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 334U, chartInstance->c1_sfEvent);
@@ -27555,23 +27609,23 @@ static void c1_g_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
         _SFD_CE_CALL(EVENT_AFTER_BROADCAST_TAG, c1_event_GearshiftUp,
                      chartInstance->c1_sfEvent);
         chartInstance->c1_sfEvent = c1_previousEvent;
-        c1_i110 = c1__s32_add__(chartInstance, (int32_T)
+        c1_i111 = c1__s32_add__(chartInstance, (int32_T)
           chartInstance->c1_lastShift, 1, 1533U, 53, 1);
         c1_c_covSaturation = false;
-        if (c1_i110 < 0) {
+        if (c1_i111 < 0) {
           c1_c_covSaturation = true;
-          c1_i110 = 0;
+          c1_i111 = 0;
           _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1533U, 53U, 1U);
         } else {
-          if (c1_i110 > 255) {
-            c1_i110 = 255;
+          if (c1_i111 > 255) {
+            c1_i111 = 255;
             _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1533U, 53U, 1U);
           }
 
           CV_SATURATION_EVAL(5, 336, 0, 0, c1_c_covSaturation);
         }
 
-        chartInstance->c1_lastShift = (uint8_T)c1_i110;
+        chartInstance->c1_lastShift = (uint8_T)c1_i111;
         c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 6, 715U, (void *)
           &chartInstance->c1_lastShift);
         _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastShift, 63U);
@@ -27595,20 +27649,20 @@ static real_T c1_f_pidControl(SFc1_GCU_Model_genCodeInstanceStruct
   c1_j_reset)
 {
   real_T c1_j_clutchVal;
-  _SFD_SET_DATA_VALUE_PTR(159U, (void *)&c1_j_clutchVal);
+  _SFD_SET_DATA_VALUE_PTR(170U, (void *)&c1_j_clutchVal);
   _SFD_SET_DATA_VALUE_PTR(158U, (void *)&c1_j_reset);
-  _SFD_SET_DATA_VALUE_PTR(146U, (void *)&c1_j_currentSlip);
-  _SFD_SET_DATA_VALUE_PTR(131U, (void *)&c1_j_slipTarget);
+  _SFD_SET_DATA_VALUE_PTR(148U, (void *)&c1_j_currentSlip);
+  _SFD_SET_DATA_VALUE_PTR(132U, (void *)&c1_j_slipTarget);
   _SFD_CS_CALL(FUNCTION_ACTIVE_TAG, 118U, chartInstance->c1_sfEvent);
   _SFD_SYMBOL_SCOPE_PUSH(4U, 0U);
   _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("slipTarget", &c1_j_slipTarget,
-    c1_j_sf_marshallOut, c1_e_sf_marshallIn);
+    c1_k_sf_marshallOut, c1_f_sf_marshallIn);
   _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("currentSlip", &c1_j_currentSlip,
-    c1_j_sf_marshallOut, c1_e_sf_marshallIn);
-  _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("reset", &c1_j_reset, c1_j_sf_marshallOut,
-    c1_e_sf_marshallIn);
+    c1_k_sf_marshallOut, c1_f_sf_marshallIn);
+  _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("reset", &c1_j_reset, c1_k_sf_marshallOut,
+    c1_f_sf_marshallIn);
   _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("clutchVal", &c1_j_clutchVal,
-    c1_j_sf_marshallOut, c1_e_sf_marshallIn);
+    c1_k_sf_marshallOut, c1_f_sf_marshallIn);
   _SFD_CS_CALL(STATE_ENTER_DURING_FUNCTION_TAG, 118U, chartInstance->c1_sfEvent);
   *chartInstance->c1_f_slipTarget = c1_j_slipTarget;
   *chartInstance->c1_f_currentSlip = c1_j_currentSlip;
@@ -27617,10 +27671,10 @@ static real_T c1_f_pidControl(SFc1_GCU_Model_genCodeInstanceStruct
   c1_j_clutchVal = *chartInstance->c1_f_clutchVal;
   _SFD_SYMBOL_SCOPE_POP();
   _SFD_CS_CALL(FUNCTION_INACTIVE_TAG, 118U, chartInstance->c1_sfEvent);
-  _SFD_UNSET_DATA_VALUE_PTR(159U);
+  _SFD_UNSET_DATA_VALUE_PTR(170U);
   _SFD_UNSET_DATA_VALUE_PTR(158U);
-  _SFD_UNSET_DATA_VALUE_PTR(146U);
-  _SFD_UNSET_DATA_VALUE_PTR(131U);
+  _SFD_UNSET_DATA_VALUE_PTR(148U);
+  _SFD_UNSET_DATA_VALUE_PTR(132U);
   _SFD_CS_CALL(EXIT_OUT_OF_FUNCTION_TAG, 118U, chartInstance->c1_sfEvent);
   return c1_j_clutchVal;
 }
@@ -27633,16 +27687,16 @@ static void c1_h_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
   int32_T c1_q1;
   boolean_T c1_covSaturation;
   int32_T c1_qY;
-  int32_T c1_i111;
+  int32_T c1_i112;
   boolean_T c1_b_out;
   int32_T c1_b_q0;
   int32_T c1_b_q1;
   boolean_T c1_b_covSaturation;
   int32_T c1_b_qY;
-  int32_T c1_i112;
+  int32_T c1_i113;
   boolean_T c1_c_out;
   int32_T c1_previousEvent;
-  int32_T c1_i113;
+  int32_T c1_i114;
   boolean_T c1_c_covSaturation;
   _SFD_CS_CALL(FUNCTION_ACTIVE_TAG, 129U, chartInstance->c1_sfEvent);
   _SFD_SYMBOL_SCOPE_PUSH(0U, 0U);
@@ -27676,13 +27730,13 @@ static void c1_h_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
     }
 
     CV_SATURATION_EVAL(5, 355, 0, 0, c1_covSaturation);
-    c1_i111 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
+    c1_i112 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
       (sfGlobalDebugInstanceStruct, chartInstance->S, 1596U, 12, 16, 72U, c1_qY,
        0, 15)];
     c1_b_out = (CV_TRANSITION_EVAL(355U, (int32_T)_SFD_CCP_CALL(5U, 355U, 0,
       (boolean_T)CV_RELATIONAL_EVAL(5U, 355U, 0, (real_T)
-      *chartInstance->c1_currRpm, (real_T)c1_i111, 0, 5U,
-      *chartInstance->c1_currRpm >= c1_i111) != 0U, chartInstance->c1_sfEvent))
+      *chartInstance->c1_currRpm, (real_T)c1_i112, 0, 5U,
+      *chartInstance->c1_currRpm >= c1_i112) != 0U, chartInstance->c1_sfEvent))
                 != 0);
     if (c1_b_out) {
       _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 355U, chartInstance->c1_sfEvent);
@@ -27707,13 +27761,13 @@ static void c1_h_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
       }
 
       CV_SATURATION_EVAL(5, 358, 0, 0, c1_b_covSaturation);
-      c1_i112 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
+      c1_i113 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
         (sfGlobalDebugInstanceStruct, chartInstance->S, 1599U, 16, 16, 72U,
          c1_b_qY, 0, 15)];
       c1_c_out = (CV_TRANSITION_EVAL(358U, (int32_T)_SFD_CCP_CALL(5U, 358U, 0,
         (boolean_T)CV_RELATIONAL_EVAL(5U, 358U, 0, (real_T)
-        *chartInstance->c1_currVhSpeed, (real_T)c1_i112, 0, 5U,
-        *chartInstance->c1_currVhSpeed >= c1_i112) != 0U,
+        *chartInstance->c1_currVhSpeed, (real_T)c1_i113, 0, 5U,
+        *chartInstance->c1_currVhSpeed >= c1_i113) != 0U,
         chartInstance->c1_sfEvent)) != 0);
       if (c1_c_out) {
         _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 358U, chartInstance->c1_sfEvent);
@@ -27730,23 +27784,23 @@ static void c1_h_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
         _SFD_CE_CALL(EVENT_AFTER_BROADCAST_TAG, c1_event_GearshiftUp,
                      chartInstance->c1_sfEvent);
         chartInstance->c1_sfEvent = c1_previousEvent;
-        c1_i113 = c1__s32_add__(chartInstance, (int32_T)
+        c1_i114 = c1__s32_add__(chartInstance, (int32_T)
           chartInstance->c1_lastShift, 1, 1601U, 53, 1);
         c1_c_covSaturation = false;
-        if (c1_i113 < 0) {
+        if (c1_i114 < 0) {
           c1_c_covSaturation = true;
-          c1_i113 = 0;
+          c1_i114 = 0;
           _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1601U, 53U, 1U);
         } else {
-          if (c1_i113 > 255) {
-            c1_i113 = 255;
+          if (c1_i114 > 255) {
+            c1_i114 = 255;
             _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1601U, 53U, 1U);
           }
 
           CV_SATURATION_EVAL(5, 360, 0, 0, c1_c_covSaturation);
         }
 
-        chartInstance->c1_lastShift = (uint8_T)c1_i113;
+        chartInstance->c1_lastShift = (uint8_T)c1_i114;
         c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 6, 715U, (void *)
           &chartInstance->c1_lastShift);
         _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastShift, 63U);
@@ -27770,20 +27824,20 @@ static real_T c1_g_pidControl(SFc1_GCU_Model_genCodeInstanceStruct
   c1_j_reset)
 {
   real_T c1_j_clutchVal;
-  _SFD_SET_DATA_VALUE_PTR(174U, (void *)&c1_j_clutchVal);
-  _SFD_SET_DATA_VALUE_PTR(152U, (void *)&c1_j_reset);
-  _SFD_SET_DATA_VALUE_PTR(147U, (void *)&c1_j_currentSlip);
-  _SFD_SET_DATA_VALUE_PTR(123U, (void *)&c1_j_slipTarget);
+  _SFD_SET_DATA_VALUE_PTR(169U, (void *)&c1_j_clutchVal);
+  _SFD_SET_DATA_VALUE_PTR(155U, (void *)&c1_j_reset);
+  _SFD_SET_DATA_VALUE_PTR(146U, (void *)&c1_j_currentSlip);
+  _SFD_SET_DATA_VALUE_PTR(122U, (void *)&c1_j_slipTarget);
   _SFD_CS_CALL(FUNCTION_ACTIVE_TAG, 130U, chartInstance->c1_sfEvent);
   _SFD_SYMBOL_SCOPE_PUSH(4U, 0U);
   _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("slipTarget", &c1_j_slipTarget,
-    c1_j_sf_marshallOut, c1_e_sf_marshallIn);
+    c1_k_sf_marshallOut, c1_f_sf_marshallIn);
   _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("currentSlip", &c1_j_currentSlip,
-    c1_j_sf_marshallOut, c1_e_sf_marshallIn);
-  _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("reset", &c1_j_reset, c1_j_sf_marshallOut,
-    c1_e_sf_marshallIn);
+    c1_k_sf_marshallOut, c1_f_sf_marshallIn);
+  _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("reset", &c1_j_reset, c1_k_sf_marshallOut,
+    c1_f_sf_marshallIn);
   _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("clutchVal", &c1_j_clutchVal,
-    c1_j_sf_marshallOut, c1_e_sf_marshallIn);
+    c1_k_sf_marshallOut, c1_f_sf_marshallIn);
   _SFD_CS_CALL(STATE_ENTER_DURING_FUNCTION_TAG, 130U, chartInstance->c1_sfEvent);
   *chartInstance->c1_g_slipTarget = c1_j_slipTarget;
   *chartInstance->c1_g_currentSlip = c1_j_currentSlip;
@@ -27792,10 +27846,10 @@ static real_T c1_g_pidControl(SFc1_GCU_Model_genCodeInstanceStruct
   c1_j_clutchVal = *chartInstance->c1_g_clutchVal;
   _SFD_SYMBOL_SCOPE_POP();
   _SFD_CS_CALL(FUNCTION_INACTIVE_TAG, 130U, chartInstance->c1_sfEvent);
-  _SFD_UNSET_DATA_VALUE_PTR(174U);
-  _SFD_UNSET_DATA_VALUE_PTR(152U);
-  _SFD_UNSET_DATA_VALUE_PTR(147U);
-  _SFD_UNSET_DATA_VALUE_PTR(123U);
+  _SFD_UNSET_DATA_VALUE_PTR(169U);
+  _SFD_UNSET_DATA_VALUE_PTR(155U);
+  _SFD_UNSET_DATA_VALUE_PTR(146U);
+  _SFD_UNSET_DATA_VALUE_PTR(122U);
   _SFD_CS_CALL(EXIT_OUT_OF_FUNCTION_TAG, 130U, chartInstance->c1_sfEvent);
   return c1_j_clutchVal;
 }
@@ -27808,16 +27862,16 @@ static void c1_i_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
   int32_T c1_q1;
   boolean_T c1_covSaturation;
   int32_T c1_qY;
-  int32_T c1_i114;
+  int32_T c1_i115;
   boolean_T c1_b_out;
   int32_T c1_b_q0;
   int32_T c1_b_q1;
   boolean_T c1_b_covSaturation;
   int32_T c1_b_qY;
-  int32_T c1_i115;
+  int32_T c1_i116;
   boolean_T c1_c_out;
   int32_T c1_previousEvent;
-  int32_T c1_i116;
+  int32_T c1_i117;
   boolean_T c1_c_covSaturation;
   _SFD_CS_CALL(FUNCTION_ACTIVE_TAG, 141U, chartInstance->c1_sfEvent);
   _SFD_SYMBOL_SCOPE_PUSH(0U, 0U);
@@ -27851,13 +27905,13 @@ static void c1_i_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
     }
 
     CV_SATURATION_EVAL(5, 379, 0, 0, c1_covSaturation);
-    c1_i114 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
+    c1_i115 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
       (sfGlobalDebugInstanceStruct, chartInstance->S, 1664U, 12, 16, 72U, c1_qY,
        0, 15)];
     c1_b_out = (CV_TRANSITION_EVAL(379U, (int32_T)_SFD_CCP_CALL(5U, 379U, 0,
       (boolean_T)CV_RELATIONAL_EVAL(5U, 379U, 0, (real_T)
-      *chartInstance->c1_currRpm, (real_T)c1_i114, 0, 5U,
-      *chartInstance->c1_currRpm >= c1_i114) != 0U, chartInstance->c1_sfEvent))
+      *chartInstance->c1_currRpm, (real_T)c1_i115, 0, 5U,
+      *chartInstance->c1_currRpm >= c1_i115) != 0U, chartInstance->c1_sfEvent))
                 != 0);
     if (c1_b_out) {
       _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 379U, chartInstance->c1_sfEvent);
@@ -27882,13 +27936,13 @@ static void c1_i_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
       }
 
       CV_SATURATION_EVAL(5, 382, 0, 0, c1_b_covSaturation);
-      c1_i115 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
+      c1_i116 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
         (sfGlobalDebugInstanceStruct, chartInstance->S, 1667U, 16, 16, 72U,
          c1_b_qY, 0, 15)];
       c1_c_out = (CV_TRANSITION_EVAL(382U, (int32_T)_SFD_CCP_CALL(5U, 382U, 0,
         (boolean_T)CV_RELATIONAL_EVAL(5U, 382U, 0, (real_T)
-        *chartInstance->c1_currVhSpeed, (real_T)c1_i115, 0, 5U,
-        *chartInstance->c1_currVhSpeed >= c1_i115) != 0U,
+        *chartInstance->c1_currVhSpeed, (real_T)c1_i116, 0, 5U,
+        *chartInstance->c1_currVhSpeed >= c1_i116) != 0U,
         chartInstance->c1_sfEvent)) != 0);
       if (c1_c_out) {
         _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 382U, chartInstance->c1_sfEvent);
@@ -27905,23 +27959,23 @@ static void c1_i_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
         _SFD_CE_CALL(EVENT_AFTER_BROADCAST_TAG, c1_event_GearshiftUp,
                      chartInstance->c1_sfEvent);
         chartInstance->c1_sfEvent = c1_previousEvent;
-        c1_i116 = c1__s32_add__(chartInstance, (int32_T)
+        c1_i117 = c1__s32_add__(chartInstance, (int32_T)
           chartInstance->c1_lastShift, 1, 1669U, 53, 1);
         c1_c_covSaturation = false;
-        if (c1_i116 < 0) {
+        if (c1_i117 < 0) {
           c1_c_covSaturation = true;
-          c1_i116 = 0;
+          c1_i117 = 0;
           _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1669U, 53U, 1U);
         } else {
-          if (c1_i116 > 255) {
-            c1_i116 = 255;
+          if (c1_i117 > 255) {
+            c1_i117 = 255;
             _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1669U, 53U, 1U);
           }
 
           CV_SATURATION_EVAL(5, 384, 0, 0, c1_c_covSaturation);
         }
 
-        chartInstance->c1_lastShift = (uint8_T)c1_i116;
+        chartInstance->c1_lastShift = (uint8_T)c1_i117;
         c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 6, 715U, (void *)
           &chartInstance->c1_lastShift);
         _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastShift, 63U);
@@ -27945,20 +27999,20 @@ static real_T c1_h_pidControl(SFc1_GCU_Model_genCodeInstanceStruct
   c1_j_reset)
 {
   real_T c1_j_clutchVal;
-  _SFD_SET_DATA_VALUE_PTR(168U, (void *)&c1_j_clutchVal);
-  _SFD_SET_DATA_VALUE_PTR(156U, (void *)&c1_j_reset);
-  _SFD_SET_DATA_VALUE_PTR(149U, (void *)&c1_j_currentSlip);
-  _SFD_SET_DATA_VALUE_PTR(132U, (void *)&c1_j_slipTarget);
+  _SFD_SET_DATA_VALUE_PTR(176U, (void *)&c1_j_clutchVal);
+  _SFD_SET_DATA_VALUE_PTR(157U, (void *)&c1_j_reset);
+  _SFD_SET_DATA_VALUE_PTR(145U, (void *)&c1_j_currentSlip);
+  _SFD_SET_DATA_VALUE_PTR(136U, (void *)&c1_j_slipTarget);
   _SFD_CS_CALL(FUNCTION_ACTIVE_TAG, 142U, chartInstance->c1_sfEvent);
   _SFD_SYMBOL_SCOPE_PUSH(4U, 0U);
   _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("slipTarget", &c1_j_slipTarget,
-    c1_j_sf_marshallOut, c1_e_sf_marshallIn);
+    c1_k_sf_marshallOut, c1_f_sf_marshallIn);
   _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("currentSlip", &c1_j_currentSlip,
-    c1_j_sf_marshallOut, c1_e_sf_marshallIn);
-  _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("reset", &c1_j_reset, c1_j_sf_marshallOut,
-    c1_e_sf_marshallIn);
+    c1_k_sf_marshallOut, c1_f_sf_marshallIn);
+  _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("reset", &c1_j_reset, c1_k_sf_marshallOut,
+    c1_f_sf_marshallIn);
   _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("clutchVal", &c1_j_clutchVal,
-    c1_j_sf_marshallOut, c1_e_sf_marshallIn);
+    c1_k_sf_marshallOut, c1_f_sf_marshallIn);
   _SFD_CS_CALL(STATE_ENTER_DURING_FUNCTION_TAG, 142U, chartInstance->c1_sfEvent);
   *chartInstance->c1_h_slipTarget = c1_j_slipTarget;
   *chartInstance->c1_h_currentSlip = c1_j_currentSlip;
@@ -27967,10 +28021,10 @@ static real_T c1_h_pidControl(SFc1_GCU_Model_genCodeInstanceStruct
   c1_j_clutchVal = *chartInstance->c1_h_clutchVal;
   _SFD_SYMBOL_SCOPE_POP();
   _SFD_CS_CALL(FUNCTION_INACTIVE_TAG, 142U, chartInstance->c1_sfEvent);
-  _SFD_UNSET_DATA_VALUE_PTR(168U);
-  _SFD_UNSET_DATA_VALUE_PTR(156U);
-  _SFD_UNSET_DATA_VALUE_PTR(149U);
-  _SFD_UNSET_DATA_VALUE_PTR(132U);
+  _SFD_UNSET_DATA_VALUE_PTR(176U);
+  _SFD_UNSET_DATA_VALUE_PTR(157U);
+  _SFD_UNSET_DATA_VALUE_PTR(145U);
+  _SFD_UNSET_DATA_VALUE_PTR(136U);
   _SFD_CS_CALL(EXIT_OUT_OF_FUNCTION_TAG, 142U, chartInstance->c1_sfEvent);
   return c1_j_clutchVal;
 }
@@ -27983,16 +28037,16 @@ static void c1_j_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
   int32_T c1_q1;
   boolean_T c1_covSaturation;
   int32_T c1_qY;
-  int32_T c1_i117;
+  int32_T c1_i118;
   boolean_T c1_b_out;
   int32_T c1_b_q0;
   int32_T c1_b_q1;
   boolean_T c1_b_covSaturation;
   int32_T c1_b_qY;
-  int32_T c1_i118;
+  int32_T c1_i119;
   boolean_T c1_c_out;
   int32_T c1_previousEvent;
-  int32_T c1_i119;
+  int32_T c1_i120;
   boolean_T c1_c_covSaturation;
   _SFD_CS_CALL(FUNCTION_ACTIVE_TAG, 153U, chartInstance->c1_sfEvent);
   _SFD_SYMBOL_SCOPE_PUSH(0U, 0U);
@@ -28026,13 +28080,13 @@ static void c1_j_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
     }
 
     CV_SATURATION_EVAL(5, 403, 0, 0, c1_covSaturation);
-    c1_i117 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
+    c1_i118 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
       (sfGlobalDebugInstanceStruct, chartInstance->S, 1732U, 12, 16, 72U, c1_qY,
        0, 15)];
     c1_b_out = (CV_TRANSITION_EVAL(403U, (int32_T)_SFD_CCP_CALL(5U, 403U, 0,
       (boolean_T)CV_RELATIONAL_EVAL(5U, 403U, 0, (real_T)
-      *chartInstance->c1_currRpm, (real_T)c1_i117, 0, 5U,
-      *chartInstance->c1_currRpm >= c1_i117) != 0U, chartInstance->c1_sfEvent))
+      *chartInstance->c1_currRpm, (real_T)c1_i118, 0, 5U,
+      *chartInstance->c1_currRpm >= c1_i118) != 0U, chartInstance->c1_sfEvent))
                 != 0);
     if (c1_b_out) {
       _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 403U, chartInstance->c1_sfEvent);
@@ -28057,13 +28111,13 @@ static void c1_j_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
       }
 
       CV_SATURATION_EVAL(5, 406, 0, 0, c1_b_covSaturation);
-      c1_i118 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
+      c1_i119 = (*chartInstance->c1_autoX_parameters)[sf_array_bounds_check
         (sfGlobalDebugInstanceStruct, chartInstance->S, 1735U, 16, 16, 72U,
          c1_b_qY, 0, 15)];
       c1_c_out = (CV_TRANSITION_EVAL(406U, (int32_T)_SFD_CCP_CALL(5U, 406U, 0,
         (boolean_T)CV_RELATIONAL_EVAL(5U, 406U, 0, (real_T)
-        *chartInstance->c1_currVhSpeed, (real_T)c1_i118, 0, 5U,
-        *chartInstance->c1_currVhSpeed >= c1_i118) != 0U,
+        *chartInstance->c1_currVhSpeed, (real_T)c1_i119, 0, 5U,
+        *chartInstance->c1_currVhSpeed >= c1_i119) != 0U,
         chartInstance->c1_sfEvent)) != 0);
       if (c1_c_out) {
         _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 406U, chartInstance->c1_sfEvent);
@@ -28080,23 +28134,23 @@ static void c1_j_autoXCheckShift(SFc1_GCU_Model_genCodeInstanceStruct
         _SFD_CE_CALL(EVENT_AFTER_BROADCAST_TAG, c1_event_GearshiftUp,
                      chartInstance->c1_sfEvent);
         chartInstance->c1_sfEvent = c1_previousEvent;
-        c1_i119 = c1__s32_add__(chartInstance, (int32_T)
+        c1_i120 = c1__s32_add__(chartInstance, (int32_T)
           chartInstance->c1_lastShift, 1, 1737U, 53, 1);
         c1_c_covSaturation = false;
-        if (c1_i119 < 0) {
+        if (c1_i120 < 0) {
           c1_c_covSaturation = true;
-          c1_i119 = 0;
+          c1_i120 = 0;
           _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1737U, 53U, 1U);
         } else {
-          if (c1_i119 > 255) {
-            c1_i119 = 255;
+          if (c1_i120 > 255) {
+            c1_i120 = 255;
             _SFD_OVERFLOW_DETECTION(SFDB_SATURATE, 1737U, 53U, 1U);
           }
 
           CV_SATURATION_EVAL(5, 408, 0, 0, c1_c_covSaturation);
         }
 
-        chartInstance->c1_lastShift = (uint8_T)c1_i119;
+        chartInstance->c1_lastShift = (uint8_T)c1_i120;
         c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 6, 715U, (void *)
           &chartInstance->c1_lastShift);
         _SFD_DATA_RANGE_CHECK((real_T)chartInstance->c1_lastShift, 63U);
@@ -28120,20 +28174,20 @@ static real_T c1_i_pidControl(SFc1_GCU_Model_genCodeInstanceStruct
   c1_j_reset)
 {
   real_T c1_j_clutchVal;
-  _SFD_SET_DATA_VALUE_PTR(173U, (void *)&c1_j_clutchVal);
-  _SFD_SET_DATA_VALUE_PTR(154U, (void *)&c1_j_reset);
-  _SFD_SET_DATA_VALUE_PTR(144U, (void *)&c1_j_currentSlip);
-  _SFD_SET_DATA_VALUE_PTR(133U, (void *)&c1_j_slipTarget);
+  _SFD_SET_DATA_VALUE_PTR(174U, (void *)&c1_j_clutchVal);
+  _SFD_SET_DATA_VALUE_PTR(153U, (void *)&c1_j_reset);
+  _SFD_SET_DATA_VALUE_PTR(147U, (void *)&c1_j_currentSlip);
+  _SFD_SET_DATA_VALUE_PTR(129U, (void *)&c1_j_slipTarget);
   _SFD_CS_CALL(FUNCTION_ACTIVE_TAG, 154U, chartInstance->c1_sfEvent);
   _SFD_SYMBOL_SCOPE_PUSH(4U, 0U);
   _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("slipTarget", &c1_j_slipTarget,
-    c1_j_sf_marshallOut, c1_e_sf_marshallIn);
+    c1_k_sf_marshallOut, c1_f_sf_marshallIn);
   _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("currentSlip", &c1_j_currentSlip,
-    c1_j_sf_marshallOut, c1_e_sf_marshallIn);
-  _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("reset", &c1_j_reset, c1_j_sf_marshallOut,
-    c1_e_sf_marshallIn);
+    c1_k_sf_marshallOut, c1_f_sf_marshallIn);
+  _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("reset", &c1_j_reset, c1_k_sf_marshallOut,
+    c1_f_sf_marshallIn);
   _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("clutchVal", &c1_j_clutchVal,
-    c1_j_sf_marshallOut, c1_e_sf_marshallIn);
+    c1_k_sf_marshallOut, c1_f_sf_marshallIn);
   _SFD_CS_CALL(STATE_ENTER_DURING_FUNCTION_TAG, 154U, chartInstance->c1_sfEvent);
   *chartInstance->c1_i_slipTarget = c1_j_slipTarget;
   *chartInstance->c1_i_currentSlip = c1_j_currentSlip;
@@ -28142,10 +28196,10 @@ static real_T c1_i_pidControl(SFc1_GCU_Model_genCodeInstanceStruct
   c1_j_clutchVal = *chartInstance->c1_i_clutchVal;
   _SFD_SYMBOL_SCOPE_POP();
   _SFD_CS_CALL(FUNCTION_INACTIVE_TAG, 154U, chartInstance->c1_sfEvent);
-  _SFD_UNSET_DATA_VALUE_PTR(173U);
-  _SFD_UNSET_DATA_VALUE_PTR(154U);
-  _SFD_UNSET_DATA_VALUE_PTR(144U);
-  _SFD_UNSET_DATA_VALUE_PTR(133U);
+  _SFD_UNSET_DATA_VALUE_PTR(174U);
+  _SFD_UNSET_DATA_VALUE_PTR(153U);
+  _SFD_UNSET_DATA_VALUE_PTR(147U);
+  _SFD_UNSET_DATA_VALUE_PTR(129U);
   _SFD_CS_CALL(EXIT_OUT_OF_FUNCTION_TAG, 154U, chartInstance->c1_sfEvent);
   return c1_j_clutchVal;
 }
@@ -28175,14 +28229,14 @@ static int32_T c1_Gearshift_getTime(SFc1_GCU_Model_genCodeInstanceStruct
   int32_T c1_e_time;
   int32_T c1_f_time;
   int32_T c1_g_time;
-  _SFD_SET_DATA_VALUE_PTR(167U, (void *)&c1_time);
+  _SFD_SET_DATA_VALUE_PTR(168U, (void *)&c1_time);
   _SFD_CS_CALL(FUNCTION_ACTIVE_TAG, 19U, chartInstance->c1_sfEvent);
   _SFD_SYMBOL_SCOPE_PUSH(1U, 0U);
   _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("time", &c1_time, c1_sf_marshallOut,
     c1_sf_marshallIn);
   _SFD_CS_CALL(STATE_ENTER_DURING_FUNCTION_TAG, 19U, chartInstance->c1_sfEvent);
   c1_time = 0;
-  _SFD_DATA_RANGE_CHECK((real_T)c1_time, 167U);
+  _SFD_DATA_RANGE_CHECK((real_T)c1_time, 168U);
   _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 19U, chartInstance->c1_sfEvent);
   _SFD_CT_CALL(TRANSITION_BEFORE_PROCESSING_TAG, 20U, chartInstance->c1_sfEvent);
   c1_out = (CV_TRANSITION_EVAL(20U, (int32_T)_SFD_CCP_CALL(5U, 20U, 0,
@@ -28201,13 +28255,13 @@ static int32_T c1_Gearshift_getTime(SFc1_GCU_Model_genCodeInstanceStruct
       c1_time = (*chartInstance->c1_timings)[sf_array_bounds_check
         (sfGlobalDebugInstanceStruct, chartInstance->S, 276U, 14, 7, 70U,
          (int32_T)DEFAULT_NT_CLUTCH_DELAY, 0, 23)];
-      _SFD_DATA_RANGE_CHECK((real_T)c1_time, 167U);
+      _SFD_DATA_RANGE_CHECK((real_T)c1_time, 168U);
     } else {
       _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 36U, chartInstance->c1_sfEvent);
       c1_time = (*chartInstance->c1_timings)[sf_array_bounds_check
         (sfGlobalDebugInstanceStruct, chartInstance->S, 323U, 14, 7, 70U,
          (int32_T)DELAY, 0, 23)];
-      _SFD_DATA_RANGE_CHECK((real_T)c1_time, 167U);
+      _SFD_DATA_RANGE_CHECK((real_T)c1_time, 168U);
     }
   } else {
     _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 21U, chartInstance->c1_sfEvent);
@@ -28229,7 +28283,7 @@ static int32_T c1_Gearshift_getTime(SFc1_GCU_Model_genCodeInstanceStruct
         c1_time = (*chartInstance->c1_timings)[sf_array_bounds_check
           (sfGlobalDebugInstanceStruct, chartInstance->S, 364U, 14, 7, 70U,
            (int32_T)NT_CLUTCH_DELAY, 0, 23)];
-        _SFD_DATA_RANGE_CHECK((real_T)c1_time, 167U);
+        _SFD_DATA_RANGE_CHECK((real_T)c1_time, 168U);
         c1_b_time = c1_time;
         sf_mex_printf("%s =\\n", "time");
         sf_mex_call_debug(sfGlobalDebugInstanceStruct, "disp", 0U, 1U, 12,
@@ -28248,7 +28302,7 @@ static int32_T c1_Gearshift_getTime(SFc1_GCU_Model_genCodeInstanceStruct
           c1_time = (*chartInstance->c1_timings)[sf_array_bounds_check
             (sfGlobalDebugInstanceStruct, chartInstance->S, 366U, 14, 7, 70U,
              (int32_T)UP_PUSH_1_2, 0, 23)];
-          _SFD_DATA_RANGE_CHECK((real_T)c1_time, 167U);
+          _SFD_DATA_RANGE_CHECK((real_T)c1_time, 168U);
           c1_c_time = c1_time;
           sf_mex_printf("%s =\\n", "time");
           sf_mex_call_debug(sfGlobalDebugInstanceStruct, "disp", 0U, 1U, 12,
@@ -28267,7 +28321,7 @@ static int32_T c1_Gearshift_getTime(SFc1_GCU_Model_genCodeInstanceStruct
             c1_time = (*chartInstance->c1_timings)[sf_array_bounds_check
               (sfGlobalDebugInstanceStruct, chartInstance->S, 368U, 14, 7, 70U,
                (int32_T)UP_PUSH_2_3, 0, 23)];
-            _SFD_DATA_RANGE_CHECK((real_T)c1_time, 167U);
+            _SFD_DATA_RANGE_CHECK((real_T)c1_time, 168U);
             c1_d_time = c1_time;
             sf_mex_printf("%s =\\n", "time");
             sf_mex_call_debug(sfGlobalDebugInstanceStruct, "disp", 0U, 1U, 12,
@@ -28287,7 +28341,7 @@ static int32_T c1_Gearshift_getTime(SFc1_GCU_Model_genCodeInstanceStruct
               c1_time = (*chartInstance->c1_timings)[sf_array_bounds_check
                 (sfGlobalDebugInstanceStruct, chartInstance->S, 370U, 14, 7, 70U,
                  (int32_T)UP_PUSH_3_4, 0, 23)];
-              _SFD_DATA_RANGE_CHECK((real_T)c1_time, 167U);
+              _SFD_DATA_RANGE_CHECK((real_T)c1_time, 168U);
               c1_e_time = c1_time;
               sf_mex_printf("%s =\\n", "time");
               sf_mex_call_debug(sfGlobalDebugInstanceStruct, "disp", 0U, 1U, 12,
@@ -28309,7 +28363,7 @@ static int32_T c1_Gearshift_getTime(SFc1_GCU_Model_genCodeInstanceStruct
                 c1_time = (*chartInstance->c1_timings)[sf_array_bounds_check
                   (sfGlobalDebugInstanceStruct, chartInstance->S, 372U, 14, 7,
                    70U, (int32_T)UP_PUSH_4_5, 0, 23)];
-                _SFD_DATA_RANGE_CHECK((real_T)c1_time, 167U);
+                _SFD_DATA_RANGE_CHECK((real_T)c1_time, 168U);
                 c1_g_time = c1_time;
                 sf_mex_printf("%s =\\n", "time");
                 sf_mex_call_debug(sfGlobalDebugInstanceStruct, "disp", 0U, 1U,
@@ -28320,7 +28374,7 @@ static int32_T c1_Gearshift_getTime(SFc1_GCU_Model_genCodeInstanceStruct
                 c1_time = (*chartInstance->c1_timings)[sf_array_bounds_check
                   (sfGlobalDebugInstanceStruct, chartInstance->S, 357U, 14, 7,
                    70U, (int32_T)UP_PUSH_2_3, 0, 23)];
-                _SFD_DATA_RANGE_CHECK((real_T)c1_time, 167U);
+                _SFD_DATA_RANGE_CHECK((real_T)c1_time, 168U);
                 c1_f_time = c1_time;
                 sf_mex_printf("%s =\\n", "time");
                 sf_mex_call_debug(sfGlobalDebugInstanceStruct, "disp", 0U, 1U,
@@ -28350,13 +28404,13 @@ static int32_T c1_Gearshift_getTime(SFc1_GCU_Model_genCodeInstanceStruct
           c1_time = (*chartInstance->c1_timings)[sf_array_bounds_check
             (sfGlobalDebugInstanceStruct, chartInstance->S, 329U, 14, 7, 70U,
              (int32_T)NT_REBOUND_1_N, 0, 23)];
-          _SFD_DATA_RANGE_CHECK((real_T)c1_time, 167U);
+          _SFD_DATA_RANGE_CHECK((real_T)c1_time, 168U);
         } else {
           _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 38U, chartInstance->c1_sfEvent);
           c1_time = (*chartInstance->c1_timings)[sf_array_bounds_check
             (sfGlobalDebugInstanceStruct, chartInstance->S, 328U, 14, 7, 70U,
              (int32_T)UP_REBOUND, 0, 23)];
-          _SFD_DATA_RANGE_CHECK((real_T)c1_time, 167U);
+          _SFD_DATA_RANGE_CHECK((real_T)c1_time, 168U);
         }
       } else {
         _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 25U, chartInstance->c1_sfEvent);
@@ -28378,13 +28432,13 @@ static int32_T c1_Gearshift_getTime(SFc1_GCU_Model_genCodeInstanceStruct
             c1_time = (*chartInstance->c1_timings)[sf_array_bounds_check
               (sfGlobalDebugInstanceStruct, chartInstance->S, 335U, 14, 7, 70U,
                (int32_T)NT_BRAKE_1_N, 0, 23)];
-            _SFD_DATA_RANGE_CHECK((real_T)c1_time, 167U);
+            _SFD_DATA_RANGE_CHECK((real_T)c1_time, 168U);
           } else {
             _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 41U, chartInstance->c1_sfEvent);
             c1_time = (*chartInstance->c1_timings)[sf_array_bounds_check
               (sfGlobalDebugInstanceStruct, chartInstance->S, 334U, 14, 7, 70U,
                (int32_T)UP_BRAKE, 0, 23)];
-            _SFD_DATA_RANGE_CHECK((real_T)c1_time, 167U);
+            _SFD_DATA_RANGE_CHECK((real_T)c1_time, 168U);
           }
         } else {
           _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 27U, chartInstance->c1_sfEvent);
@@ -28399,7 +28453,7 @@ static int32_T c1_Gearshift_getTime(SFc1_GCU_Model_genCodeInstanceStruct
             c1_time = (*chartInstance->c1_timings)[sf_array_bounds_check
               (sfGlobalDebugInstanceStruct, chartInstance->S, 337U, 14, 7, 70U,
                (int32_T)CLUTCH, 0, 23)];
-            _SFD_DATA_RANGE_CHECK((real_T)c1_time, 167U);
+            _SFD_DATA_RANGE_CHECK((real_T)c1_time, 168U);
           } else {
             _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 29U, chartInstance->c1_sfEvent);
             _SFD_CT_CALL(TRANSITION_BEFORE_PROCESSING_TAG, 30U,
@@ -28413,7 +28467,7 @@ static int32_T c1_Gearshift_getTime(SFc1_GCU_Model_genCodeInstanceStruct
               c1_time = (*chartInstance->c1_timings)[sf_array_bounds_check
                 (sfGlobalDebugInstanceStruct, chartInstance->S, 339U, 14, 7, 70U,
                  (int32_T)DN_PUSH, 0, 23)];
-              _SFD_DATA_RANGE_CHECK((real_T)c1_time, 167U);
+              _SFD_DATA_RANGE_CHECK((real_T)c1_time, 168U);
             } else {
               _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 31U, chartInstance->c1_sfEvent);
               _SFD_CT_CALL(TRANSITION_BEFORE_PROCESSING_TAG, 32U,
@@ -28429,14 +28483,14 @@ static int32_T c1_Gearshift_getTime(SFc1_GCU_Model_genCodeInstanceStruct
                 c1_time = (*chartInstance->c1_timings)[sf_array_bounds_check
                   (sfGlobalDebugInstanceStruct, chartInstance->S, 341U, 14, 7,
                    70U, (int32_T)DN_REBOUND, 0, 23)];
-                _SFD_DATA_RANGE_CHECK((real_T)c1_time, 167U);
+                _SFD_DATA_RANGE_CHECK((real_T)c1_time, 168U);
               } else {
                 _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 33U,
                              chartInstance->c1_sfEvent);
                 c1_time = (*chartInstance->c1_timings)[sf_array_bounds_check
                   (sfGlobalDebugInstanceStruct, chartInstance->S, 270U, 14, 7,
                    70U, (int32_T)DN_BRAKE, 0, 23)];
-                _SFD_DATA_RANGE_CHECK((real_T)c1_time, 167U);
+                _SFD_DATA_RANGE_CHECK((real_T)c1_time, 168U);
               }
             }
           }
@@ -28447,7 +28501,7 @@ static int32_T c1_Gearshift_getTime(SFc1_GCU_Model_genCodeInstanceStruct
 
   _SFD_SYMBOL_SCOPE_POP();
   _SFD_CS_CALL(FUNCTION_INACTIVE_TAG, 19U, chartInstance->c1_sfEvent);
-  _SFD_UNSET_DATA_VALUE_PTR(167U);
+  _SFD_UNSET_DATA_VALUE_PTR(168U);
   _SFD_CS_CALL(EXIT_OUT_OF_FUNCTION_TAG, 19U, chartInstance->c1_sfEvent);
   return c1_time;
 }
@@ -28455,8 +28509,8 @@ static int32_T c1_Gearshift_getTime(SFc1_GCU_Model_genCodeInstanceStruct
 static void c1_Clutch_setValue(SFc1_GCU_Model_genCodeInstanceStruct
   *chartInstance, uint8_T c1_setValue)
 {
-  _SFD_DATA_RANGE_CHECK((real_T)c1_setValue, 129U);
-  _SFD_SET_DATA_VALUE_PTR(129U, (void *)&c1_setValue);
+  _SFD_DATA_RANGE_CHECK((real_T)c1_setValue, 123U);
+  _SFD_SET_DATA_VALUE_PTR(123U, (void *)&c1_setValue);
   _SFD_CS_CALL(FUNCTION_ACTIVE_TAG, 3U, chartInstance->c1_sfEvent);
   _SFD_SYMBOL_SCOPE_PUSH(1U, 0U);
   _SFD_SYMBOL_SCOPE_ADD_IMPORTABLE("setValue", &c1_setValue, c1_b_sf_marshallOut,
@@ -28472,7 +28526,7 @@ static void c1_Clutch_setValue(SFc1_GCU_Model_genCodeInstanceStruct
   sf_call_output_fcn_call(chartInstance->S, 0, "Clutch_set", 0);
   _SFD_SYMBOL_SCOPE_POP();
   _SFD_CS_CALL(FUNCTION_INACTIVE_TAG, 3U, chartInstance->c1_sfEvent);
-  _SFD_UNSET_DATA_VALUE_PTR(129U);
+  _SFD_UNSET_DATA_VALUE_PTR(123U);
   _SFD_CS_CALL(EXIT_OUT_OF_FUNCTION_TAG, 3U, chartInstance->c1_sfEvent);
 }
 
@@ -28520,10 +28574,10 @@ static int32_T c1_b_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   *chartInstance, const mxArray *c1_u, const emlrtMsgIdentifier *c1_parentId)
 {
   int32_T c1_y;
-  int32_T c1_i120;
+  int32_T c1_i121;
   (void)chartInstance;
-  sf_mex_import(c1_parentId, sf_mex_dup(c1_u), &c1_i120, 1, 6, 0U, 0, 0U, 0);
-  c1_y = c1_i120;
+  sf_mex_import(c1_parentId, sf_mex_dup(c1_u), &c1_i121, 1, 6, 0U, 0, 0U, 0);
+  c1_y = c1_i121;
   sf_mex_destroy(&c1_u);
   return c1_y;
 }
@@ -28637,15 +28691,15 @@ static const mxArray *c1_c_sf_marshallOut(void *chartInstanceVoid, void
   *c1_inData)
 {
   const mxArray *c1_mxArrayOutData;
-  int32_T c1_i121;
+  int32_T c1_i122;
   const mxArray *c1_y = NULL;
   uint16_T c1_u[2];
   SFc1_GCU_Model_genCodeInstanceStruct *chartInstance;
   chartInstance = (SFc1_GCU_Model_genCodeInstanceStruct *)chartInstanceVoid;
   c1_mxArrayOutData = NULL;
   c1_mxArrayOutData = NULL;
-  for (c1_i121 = 0; c1_i121 < 2; c1_i121++) {
-    c1_u[c1_i121] = (*(uint16_T (*)[2])c1_inData)[c1_i121];
+  for (c1_i122 = 0; c1_i122 < 2; c1_i122++) {
+    c1_u[c1_i122] = (*(uint16_T (*)[2])c1_inData)[c1_i122];
   }
 
   c1_y = NULL;
@@ -28672,11 +28726,11 @@ static void c1_f_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   uint16_T c1_y[2])
 {
   uint16_T c1_uv1[2];
-  int32_T c1_i122;
+  int32_T c1_i123;
   (void)chartInstance;
   sf_mex_import(c1_parentId, sf_mex_dup(c1_u), c1_uv1, 1, 5, 0U, 1, 0U, 1, 2);
-  for (c1_i122 = 0; c1_i122 < 2; c1_i122++) {
-    c1_y[c1_i122] = c1_uv1[c1_i122];
+  for (c1_i123 = 0; c1_i123 < 2; c1_i123++) {
+    c1_y[c1_i123] = c1_uv1[c1_i123];
   }
 
   sf_mex_destroy(&c1_u);
@@ -28689,7 +28743,7 @@ static void c1_c_sf_marshallIn(void *chartInstanceVoid, const mxArray
   const char_T *c1_identifier;
   emlrtMsgIdentifier c1_thisId;
   uint16_T c1_y[2];
-  int32_T c1_i123;
+  int32_T c1_i124;
   SFc1_GCU_Model_genCodeInstanceStruct *chartInstance;
   chartInstance = (SFc1_GCU_Model_genCodeInstanceStruct *)chartInstanceVoid;
   c1_b_lastModeCom = sf_mex_dup(c1_mxArrayInData);
@@ -28700,8 +28754,8 @@ static void c1_c_sf_marshallIn(void *chartInstanceVoid, const mxArray
   c1_f_emlrt_marshallIn(chartInstance, sf_mex_dup(c1_b_lastModeCom), &c1_thisId,
                         c1_y);
   sf_mex_destroy(&c1_b_lastModeCom);
-  for (c1_i123 = 0; c1_i123 < 2; c1_i123++) {
-    (*(uint16_T (*)[2])c1_outData)[c1_i123] = c1_y[c1_i123];
+  for (c1_i124 = 0; c1_i124 < 2; c1_i124++) {
+    (*(uint16_T (*)[2])c1_outData)[c1_i124] = c1_y[c1_i124];
   }
 
   sf_mex_destroy(&c1_mxArrayInData);
@@ -28711,15 +28765,15 @@ static const mxArray *c1_d_sf_marshallOut(void *chartInstanceVoid, void
   *c1_inData)
 {
   const mxArray *c1_mxArrayOutData;
-  int32_T c1_i124;
+  int32_T c1_i125;
   const mxArray *c1_y = NULL;
   uint16_T c1_u[2];
   SFc1_GCU_Model_genCodeInstanceStruct *chartInstance;
   chartInstance = (SFc1_GCU_Model_genCodeInstanceStruct *)chartInstanceVoid;
   c1_mxArrayOutData = NULL;
   c1_mxArrayOutData = NULL;
-  for (c1_i124 = 0; c1_i124 < 2; c1_i124++) {
-    c1_u[c1_i124] = (*(uint16_T (*)[2])c1_inData)[c1_i124];
+  for (c1_i125 = 0; c1_i125 < 2; c1_i125++) {
+    c1_u[c1_i125] = (*(uint16_T (*)[2])c1_inData)[c1_i125];
   }
 
   c1_y = NULL;
@@ -28806,15 +28860,15 @@ static const mxArray *c1_f_sf_marshallOut(void *chartInstanceVoid, void
   *c1_inData)
 {
   const mxArray *c1_mxArrayOutData;
-  int32_T c1_i125;
+  int32_T c1_i126;
   const mxArray *c1_y = NULL;
   int32_T c1_u[16];
   SFc1_GCU_Model_genCodeInstanceStruct *chartInstance;
   chartInstance = (SFc1_GCU_Model_genCodeInstanceStruct *)chartInstanceVoid;
   c1_mxArrayOutData = NULL;
   c1_mxArrayOutData = NULL;
-  for (c1_i125 = 0; c1_i125 < 16; c1_i125++) {
-    c1_u[c1_i125] = (*(int32_T (*)[16])c1_inData)[c1_i125];
+  for (c1_i126 = 0; c1_i126 < 16; c1_i126++) {
+    c1_u[c1_i126] = (*(int32_T (*)[16])c1_inData)[c1_i126];
   }
 
   c1_y = NULL;
@@ -28827,15 +28881,15 @@ static const mxArray *c1_g_sf_marshallOut(void *chartInstanceVoid, void
   *c1_inData)
 {
   const mxArray *c1_mxArrayOutData;
-  int32_T c1_i126;
+  int32_T c1_i127;
   const mxArray *c1_y = NULL;
   int32_T c1_u[24];
   SFc1_GCU_Model_genCodeInstanceStruct *chartInstance;
   chartInstance = (SFc1_GCU_Model_genCodeInstanceStruct *)chartInstanceVoid;
   c1_mxArrayOutData = NULL;
   c1_mxArrayOutData = NULL;
-  for (c1_i126 = 0; c1_i126 < 24; c1_i126++) {
-    c1_u[c1_i126] = (*(int32_T (*)[24])c1_inData)[c1_i126];
+  for (c1_i127 = 0; c1_i127 < 24; c1_i127++) {
+    c1_u[c1_i127] = (*(int32_T (*)[24])c1_inData)[c1_i127];
   }
 
   c1_y = NULL;
@@ -28848,15 +28902,15 @@ static const mxArray *c1_h_sf_marshallOut(void *chartInstanceVoid, void
   *c1_inData)
 {
   const mxArray *c1_mxArrayOutData;
-  int32_T c1_i127;
+  int32_T c1_i128;
   const mxArray *c1_y = NULL;
   int32_T c1_u[8];
   SFc1_GCU_Model_genCodeInstanceStruct *chartInstance;
   chartInstance = (SFc1_GCU_Model_genCodeInstanceStruct *)chartInstanceVoid;
   c1_mxArrayOutData = NULL;
   c1_mxArrayOutData = NULL;
-  for (c1_i127 = 0; c1_i127 < 8; c1_i127++) {
-    c1_u[c1_i127] = (*(int32_T (*)[8])c1_inData)[c1_i127];
+  for (c1_i128 = 0; c1_i128 < 8; c1_i128++) {
+    c1_u[c1_i128] = (*(int32_T (*)[8])c1_inData)[c1_i128];
   }
 
   c1_y = NULL;
@@ -28869,15 +28923,15 @@ static const mxArray *c1_i_sf_marshallOut(void *chartInstanceVoid, void
   *c1_inData)
 {
   const mxArray *c1_mxArrayOutData;
-  int32_T c1_i128;
+  int32_T c1_i129;
   const mxArray *c1_y = NULL;
   uint32_T c1_u[2];
   SFc1_GCU_Model_genCodeInstanceStruct *chartInstance;
   chartInstance = (SFc1_GCU_Model_genCodeInstanceStruct *)chartInstanceVoid;
   c1_mxArrayOutData = NULL;
   c1_mxArrayOutData = NULL;
-  for (c1_i128 = 0; c1_i128 < 2; c1_i128++) {
-    c1_u[c1_i128] = (*(uint32_T (*)[2])c1_inData)[c1_i128];
+  for (c1_i129 = 0; c1_i129 < 2; c1_i129++) {
+    c1_u[c1_i129] = (*(uint32_T (*)[2])c1_inData)[c1_i129];
   }
 
   c1_y = NULL;
@@ -28887,6 +28941,80 @@ static const mxArray *c1_i_sf_marshallOut(void *chartInstanceVoid, void
 }
 
 static const mxArray *c1_e_emlrt_marshallOut
+  (SFc1_GCU_Model_genCodeInstanceStruct *chartInstance, const uint32_T c1_u)
+{
+  const mxArray *c1_y = NULL;
+  (void)chartInstance;
+  c1_y = NULL;
+  sf_mex_assign(&c1_y, sf_mex_create("y", &c1_u, 7, 0U, 0U, 0U, 0), false);
+  return c1_y;
+}
+
+static const mxArray *c1_j_sf_marshallOut(void *chartInstanceVoid, void
+  *c1_inData)
+{
+  const mxArray *c1_mxArrayOutData;
+  uint32_T c1_u;
+  const mxArray *c1_y = NULL;
+  SFc1_GCU_Model_genCodeInstanceStruct *chartInstance;
+  chartInstance = (SFc1_GCU_Model_genCodeInstanceStruct *)chartInstanceVoid;
+  c1_mxArrayOutData = NULL;
+  c1_mxArrayOutData = NULL;
+  c1_u = *(uint32_T *)c1_inData;
+  c1_y = NULL;
+  sf_mex_assign(&c1_y, sf_mex_create("y", &c1_u, 7, 0U, 0U, 0U, 0), false);
+  sf_mex_assign(&c1_mxArrayOutData, c1_y, false);
+  return c1_mxArrayOutData;
+}
+
+static uint32_T c1_i_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
+  *chartInstance, const mxArray *c1_b_pidCounter, const char_T *c1_identifier)
+{
+  uint32_T c1_y;
+  emlrtMsgIdentifier c1_thisId;
+  c1_thisId.fIdentifier = (const char *)c1_identifier;
+  c1_thisId.fParent = NULL;
+  c1_thisId.bParentIsCell = false;
+  c1_y = c1_j_emlrt_marshallIn(chartInstance, sf_mex_dup(c1_b_pidCounter),
+    &c1_thisId);
+  sf_mex_destroy(&c1_b_pidCounter);
+  return c1_y;
+}
+
+static uint32_T c1_j_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
+  *chartInstance, const mxArray *c1_u, const emlrtMsgIdentifier *c1_parentId)
+{
+  uint32_T c1_y;
+  uint32_T c1_u75;
+  (void)chartInstance;
+  sf_mex_import(c1_parentId, sf_mex_dup(c1_u), &c1_u75, 1, 7, 0U, 0, 0U, 0);
+  c1_y = c1_u75;
+  sf_mex_destroy(&c1_u);
+  return c1_y;
+}
+
+static void c1_e_sf_marshallIn(void *chartInstanceVoid, const mxArray
+  *c1_mxArrayInData, const char_T *c1_varName, void *c1_outData)
+{
+  const mxArray *c1_b_pidCounter;
+  const char_T *c1_identifier;
+  emlrtMsgIdentifier c1_thisId;
+  uint32_T c1_y;
+  SFc1_GCU_Model_genCodeInstanceStruct *chartInstance;
+  chartInstance = (SFc1_GCU_Model_genCodeInstanceStruct *)chartInstanceVoid;
+  c1_b_pidCounter = sf_mex_dup(c1_mxArrayInData);
+  c1_identifier = c1_varName;
+  c1_thisId.fIdentifier = (const char *)c1_identifier;
+  c1_thisId.fParent = NULL;
+  c1_thisId.bParentIsCell = false;
+  c1_y = c1_j_emlrt_marshallIn(chartInstance, sf_mex_dup(c1_b_pidCounter),
+    &c1_thisId);
+  sf_mex_destroy(&c1_b_pidCounter);
+  *(uint32_T *)c1_outData = c1_y;
+  sf_mex_destroy(&c1_mxArrayInData);
+}
+
+static const mxArray *c1_f_emlrt_marshallOut
   (SFc1_GCU_Model_genCodeInstanceStruct *chartInstance, const real_T c1_u)
 {
   const mxArray *c1_y = NULL;
@@ -28896,7 +29024,7 @@ static const mxArray *c1_e_emlrt_marshallOut
   return c1_y;
 }
 
-static const mxArray *c1_j_sf_marshallOut(void *chartInstanceVoid, void
+static const mxArray *c1_k_sf_marshallOut(void *chartInstanceVoid, void
   *c1_inData)
 {
   const mxArray *c1_mxArrayOutData;
@@ -28913,7 +29041,7 @@ static const mxArray *c1_j_sf_marshallOut(void *chartInstanceVoid, void
   return c1_mxArrayOutData;
 }
 
-static real_T c1_i_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
+static real_T c1_k_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   *chartInstance, const mxArray *c1_b_aac_clutchValue, const char_T
   *c1_identifier)
 {
@@ -28922,13 +29050,13 @@ static real_T c1_i_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_thisId.fIdentifier = (const char *)c1_identifier;
   c1_thisId.fParent = NULL;
   c1_thisId.bParentIsCell = false;
-  c1_y = c1_j_emlrt_marshallIn(chartInstance, sf_mex_dup(c1_b_aac_clutchValue),
+  c1_y = c1_l_emlrt_marshallIn(chartInstance, sf_mex_dup(c1_b_aac_clutchValue),
     &c1_thisId);
   sf_mex_destroy(&c1_b_aac_clutchValue);
   return c1_y;
 }
 
-static real_T c1_j_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
+static real_T c1_l_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   *chartInstance, const mxArray *c1_u, const emlrtMsgIdentifier *c1_parentId)
 {
   real_T c1_y;
@@ -28940,7 +29068,7 @@ static real_T c1_j_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   return c1_y;
 }
 
-static void c1_e_sf_marshallIn(void *chartInstanceVoid, const mxArray
+static void c1_f_sf_marshallIn(void *chartInstanceVoid, const mxArray
   *c1_mxArrayInData, const char_T *c1_varName, void *c1_outData)
 {
   const mxArray *c1_b_aac_clutchValue;
@@ -28954,14 +29082,14 @@ static void c1_e_sf_marshallIn(void *chartInstanceVoid, const mxArray
   c1_thisId.fIdentifier = (const char *)c1_identifier;
   c1_thisId.fParent = NULL;
   c1_thisId.bParentIsCell = false;
-  c1_y = c1_j_emlrt_marshallIn(chartInstance, sf_mex_dup(c1_b_aac_clutchValue),
+  c1_y = c1_l_emlrt_marshallIn(chartInstance, sf_mex_dup(c1_b_aac_clutchValue),
     &c1_thisId);
   sf_mex_destroy(&c1_b_aac_clutchValue);
   *(real_T *)c1_outData = c1_y;
   sf_mex_destroy(&c1_mxArrayInData);
 }
 
-static const mxArray *c1_k_sf_marshallOut(void *chartInstanceVoid, void
+static const mxArray *c1_l_sf_marshallOut(void *chartInstanceVoid, void
   *c1_inData)
 {
   const mxArray *c1_mxArrayOutData;
@@ -28987,7 +29115,7 @@ static const mxArray *c1_k_sf_marshallOut(void *chartInstanceVoid, void
   return c1_mxArrayOutData;
 }
 
-static c1_acc_params c1_k_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct *
+static c1_acc_params c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct *
   chartInstance, const mxArray *c1_u, const emlrtMsgIdentifier *c1_parentId)
 {
   c1_acc_params c1_y;
@@ -28999,7 +29127,7 @@ static c1_acc_params c1_k_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct 
   return c1_y;
 }
 
-static void c1_f_sf_marshallIn(void *chartInstanceVoid, const mxArray
+static void c1_g_sf_marshallIn(void *chartInstanceVoid, const mxArray
   *c1_mxArrayInData, const char_T *c1_varName, void *c1_outData)
 {
   const mxArray *c1_index;
@@ -29013,13 +29141,13 @@ static void c1_f_sf_marshallIn(void *chartInstanceVoid, const mxArray
   c1_thisId.fIdentifier = (const char *)c1_identifier;
   c1_thisId.fParent = NULL;
   c1_thisId.bParentIsCell = false;
-  c1_y = c1_k_emlrt_marshallIn(chartInstance, sf_mex_dup(c1_index), &c1_thisId);
+  c1_y = c1_m_emlrt_marshallIn(chartInstance, sf_mex_dup(c1_index), &c1_thisId);
   sf_mex_destroy(&c1_index);
   *(c1_acc_params *)c1_outData = c1_y;
   sf_mex_destroy(&c1_mxArrayInData);
 }
 
-static const mxArray *c1_l_sf_marshallOut(void *chartInstanceVoid, void
+static const mxArray *c1_m_sf_marshallOut(void *chartInstanceVoid, void
   *c1_inData)
 {
   const mxArray *c1_mxArrayOutData;
@@ -29045,7 +29173,7 @@ static const mxArray *c1_l_sf_marshallOut(void *chartInstanceVoid, void
   return c1_mxArrayOutData;
 }
 
-static c1_autoX_params c1_l_emlrt_marshallIn
+static c1_autoX_params c1_n_emlrt_marshallIn
   (SFc1_GCU_Model_genCodeInstanceStruct *chartInstance, const mxArray *c1_u,
    const emlrtMsgIdentifier *c1_parentId)
 {
@@ -29058,7 +29186,7 @@ static c1_autoX_params c1_l_emlrt_marshallIn
   return c1_y;
 }
 
-static void c1_g_sf_marshallIn(void *chartInstanceVoid, const mxArray
+static void c1_h_sf_marshallIn(void *chartInstanceVoid, const mxArray
   *c1_mxArrayInData, const char_T *c1_varName, void *c1_outData)
 {
   const mxArray *c1_index;
@@ -29072,17 +29200,17 @@ static void c1_g_sf_marshallIn(void *chartInstanceVoid, const mxArray
   c1_thisId.fIdentifier = (const char *)c1_identifier;
   c1_thisId.fParent = NULL;
   c1_thisId.bParentIsCell = false;
-  c1_y = c1_l_emlrt_marshallIn(chartInstance, sf_mex_dup(c1_index), &c1_thisId);
+  c1_y = c1_n_emlrt_marshallIn(chartInstance, sf_mex_dup(c1_index), &c1_thisId);
   sf_mex_destroy(&c1_index);
   *(c1_autoX_params *)c1_outData = c1_y;
   sf_mex_destroy(&c1_mxArrayInData);
 }
 
-static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
+static void c1_o_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   *chartInstance, const mxArray *c1_u)
 {
   uint16_T c1_uv2[2];
-  int32_T c1_i129;
+  int32_T c1_i130;
   *chartInstance->c1_antiStallEnable = c1_c_emlrt_marshallIn(chartInstance,
     sf_mex_dup(sf_mex_getcell(c1_u, 0)), "antiStallEnable");
   c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 14, 1073U, (void *)
@@ -29093,308 +29221,312 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
     chartInstance->c1_clutchCurrVal);
   c1_e_emlrt_marshallIn(chartInstance, sf_mex_dup(sf_mex_getcell(c1_u, 2)),
                         "lastModeCom", c1_uv2);
-  for (c1_i129 = 0; c1_i129 < 2; c1_i129++) {
-    (*chartInstance->c1_lastModeCom)[c1_i129] = c1_uv2[c1_i129];
+  for (c1_i130 = 0; c1_i130 < 2; c1_i130++) {
+    (*chartInstance->c1_lastModeCom)[c1_i130] = c1_uv2[c1_i130];
   }
 
   c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 1, 834U, (void *)
     chartInstance->c1_lastModeCom);
+  *chartInstance->c1_pidCounter = c1_i_emlrt_marshallIn(chartInstance,
+    sf_mex_dup(sf_mex_getcell(c1_u, 3)), "pidCounter");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 25, 1839U, (void *)
+    chartInstance->c1_pidCounter);
   *chartInstance->c1_stateFb = c1_g_emlrt_marshallIn(chartInstance, sf_mex_dup
-    (sf_mex_getcell(c1_u, 3)), "stateFb");
+    (sf_mex_getcell(c1_u, 4)), "stateFb");
   c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 8, 833U, (void *)
     chartInstance->c1_stateFb);
   chartInstance->c1_aacCounter = c1_g_emlrt_marshallIn(chartInstance, sf_mex_dup
-    (sf_mex_getcell(c1_u, 4)), "aacCounter");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 38, 550U, (void *)
+    (sf_mex_getcell(c1_u, 5)), "aacCounter");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 39, 550U, (void *)
     &chartInstance->c1_aacCounter);
-  chartInstance->c1_aac_clutchStep = c1_i_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 5)), "aac_clutchStep");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 40, 563U, (void *)
+  chartInstance->c1_aac_clutchStep = c1_k_emlrt_marshallIn(chartInstance,
+    sf_mex_dup(sf_mex_getcell(c1_u, 6)), "aac_clutchStep");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 41, 563U, (void *)
     &chartInstance->c1_aac_clutchStep);
-  chartInstance->c1_aac_clutchValue = c1_i_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 6)), "aac_clutchValue");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 39, 561U, (void *)
+  chartInstance->c1_aac_clutchValue = c1_k_emlrt_marshallIn(chartInstance,
+    sf_mex_dup(sf_mex_getcell(c1_u, 7)), "aac_clutchValue");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 40, 561U, (void *)
     &chartInstance->c1_aac_clutchValue);
   chartInstance->c1_aac_dtRelease = c1_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 7)), "aac_dtRelease");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 41, 564U, (void *)
+    sf_mex_dup(sf_mex_getcell(c1_u, 8)), "aac_dtRelease");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 42, 564U, (void *)
     &chartInstance->c1_aac_dtRelease);
   chartInstance->c1_autoXCounter = c1_g_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 8)), "autoXCounter");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 57, 958U, (void *)
+    sf_mex_dup(sf_mex_getcell(c1_u, 9)), "autoXCounter");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 58, 958U, (void *)
     &chartInstance->c1_autoXCounter);
   chartInstance->c1_b_autoXCounter = c1_g_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 9)), "autoXCounter");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 64, 1094U, (void *)
+    sf_mex_dup(sf_mex_getcell(c1_u, 10)), "autoXCounter");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 65, 1094U, (void *)
     &chartInstance->c1_b_autoXCounter);
   chartInstance->c1_c_autoXCounter = c1_g_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 10)), "autoXCounter");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 76, 1201U, (void *)
+    sf_mex_dup(sf_mex_getcell(c1_u, 11)), "autoXCounter");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 77, 1201U, (void *)
     &chartInstance->c1_c_autoXCounter);
   chartInstance->c1_d_autoXCounter = c1_g_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 11)), "autoXCounter");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 88, 1274U, (void *)
+    sf_mex_dup(sf_mex_getcell(c1_u, 12)), "autoXCounter");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 89, 1274U, (void *)
     &chartInstance->c1_d_autoXCounter);
   chartInstance->c1_e_autoXCounter = c1_g_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 12)), "autoXCounter");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 100, 1346U, (void *)
+    sf_mex_dup(sf_mex_getcell(c1_u, 13)), "autoXCounter");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 101, 1346U, (void *)
     &chartInstance->c1_e_autoXCounter);
   chartInstance->c1_f_autoXCounter = c1_g_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 13)), "autoXCounter");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 112, 1414U, (void *)
+    sf_mex_dup(sf_mex_getcell(c1_u, 14)), "autoXCounter");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 113, 1414U, (void *)
     &chartInstance->c1_f_autoXCounter);
   chartInstance->c1_g_autoXCounter = c1_g_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 14)), "autoXCounter");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 124, 1482U, (void *)
+    sf_mex_dup(sf_mex_getcell(c1_u, 15)), "autoXCounter");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 125, 1482U, (void *)
     &chartInstance->c1_g_autoXCounter);
   chartInstance->c1_h_autoXCounter = c1_g_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 15)), "autoXCounter");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 136, 1550U, (void *)
+    sf_mex_dup(sf_mex_getcell(c1_u, 16)), "autoXCounter");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 137, 1550U, (void *)
     &chartInstance->c1_h_autoXCounter);
   chartInstance->c1_i_autoXCounter = c1_g_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 16)), "autoXCounter");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 148, 1618U, (void *)
+    sf_mex_dup(sf_mex_getcell(c1_u, 17)), "autoXCounter");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 149, 1618U, (void *)
     &chartInstance->c1_i_autoXCounter);
   chartInstance->c1_j_autoXCounter = c1_g_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 17)), "autoXCounter");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 160, 1686U, (void *)
+    sf_mex_dup(sf_mex_getcell(c1_u, 18)), "autoXCounter");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 161, 1686U, (void *)
     &chartInstance->c1_j_autoXCounter);
-  chartInstance->c1_autoX_clutchStep = c1_i_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 18)), "autoX_clutchStep");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 59, 960U, (void *)
-    &chartInstance->c1_autoX_clutchStep);
-  chartInstance->c1_b_autoX_clutchStep = c1_i_emlrt_marshallIn(chartInstance,
+  chartInstance->c1_autoX_clutchStep = c1_k_emlrt_marshallIn(chartInstance,
     sf_mex_dup(sf_mex_getcell(c1_u, 19)), "autoX_clutchStep");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 66, 1096U, (void *)
-    &chartInstance->c1_b_autoX_clutchStep);
-  chartInstance->c1_c_autoX_clutchStep = c1_i_emlrt_marshallIn(chartInstance,
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 60, 960U, (void *)
+    &chartInstance->c1_autoX_clutchStep);
+  chartInstance->c1_b_autoX_clutchStep = c1_k_emlrt_marshallIn(chartInstance,
     sf_mex_dup(sf_mex_getcell(c1_u, 20)), "autoX_clutchStep");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 78, 1203U, (void *)
-    &chartInstance->c1_c_autoX_clutchStep);
-  chartInstance->c1_d_autoX_clutchStep = c1_i_emlrt_marshallIn(chartInstance,
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 67, 1096U, (void *)
+    &chartInstance->c1_b_autoX_clutchStep);
+  chartInstance->c1_c_autoX_clutchStep = c1_k_emlrt_marshallIn(chartInstance,
     sf_mex_dup(sf_mex_getcell(c1_u, 21)), "autoX_clutchStep");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 90, 1276U, (void *)
-    &chartInstance->c1_d_autoX_clutchStep);
-  chartInstance->c1_e_autoX_clutchStep = c1_i_emlrt_marshallIn(chartInstance,
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 79, 1203U, (void *)
+    &chartInstance->c1_c_autoX_clutchStep);
+  chartInstance->c1_d_autoX_clutchStep = c1_k_emlrt_marshallIn(chartInstance,
     sf_mex_dup(sf_mex_getcell(c1_u, 22)), "autoX_clutchStep");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 102, 1348U, (void *)
-    &chartInstance->c1_e_autoX_clutchStep);
-  chartInstance->c1_f_autoX_clutchStep = c1_i_emlrt_marshallIn(chartInstance,
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 91, 1276U, (void *)
+    &chartInstance->c1_d_autoX_clutchStep);
+  chartInstance->c1_e_autoX_clutchStep = c1_k_emlrt_marshallIn(chartInstance,
     sf_mex_dup(sf_mex_getcell(c1_u, 23)), "autoX_clutchStep");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 114, 1416U, (void *)
-    &chartInstance->c1_f_autoX_clutchStep);
-  chartInstance->c1_g_autoX_clutchStep = c1_i_emlrt_marshallIn(chartInstance,
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 103, 1348U, (void *)
+    &chartInstance->c1_e_autoX_clutchStep);
+  chartInstance->c1_f_autoX_clutchStep = c1_k_emlrt_marshallIn(chartInstance,
     sf_mex_dup(sf_mex_getcell(c1_u, 24)), "autoX_clutchStep");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 126, 1484U, (void *)
-    &chartInstance->c1_g_autoX_clutchStep);
-  chartInstance->c1_h_autoX_clutchStep = c1_i_emlrt_marshallIn(chartInstance,
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 115, 1416U, (void *)
+    &chartInstance->c1_f_autoX_clutchStep);
+  chartInstance->c1_g_autoX_clutchStep = c1_k_emlrt_marshallIn(chartInstance,
     sf_mex_dup(sf_mex_getcell(c1_u, 25)), "autoX_clutchStep");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 138, 1552U, (void *)
-    &chartInstance->c1_h_autoX_clutchStep);
-  chartInstance->c1_i_autoX_clutchStep = c1_i_emlrt_marshallIn(chartInstance,
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 127, 1484U, (void *)
+    &chartInstance->c1_g_autoX_clutchStep);
+  chartInstance->c1_h_autoX_clutchStep = c1_k_emlrt_marshallIn(chartInstance,
     sf_mex_dup(sf_mex_getcell(c1_u, 26)), "autoX_clutchStep");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 150, 1620U, (void *)
-    &chartInstance->c1_i_autoX_clutchStep);
-  chartInstance->c1_j_autoX_clutchStep = c1_i_emlrt_marshallIn(chartInstance,
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 139, 1552U, (void *)
+    &chartInstance->c1_h_autoX_clutchStep);
+  chartInstance->c1_i_autoX_clutchStep = c1_k_emlrt_marshallIn(chartInstance,
     sf_mex_dup(sf_mex_getcell(c1_u, 27)), "autoX_clutchStep");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 162, 1688U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 151, 1620U, (void *)
+    &chartInstance->c1_i_autoX_clutchStep);
+  chartInstance->c1_j_autoX_clutchStep = c1_k_emlrt_marshallIn(chartInstance,
+    sf_mex_dup(sf_mex_getcell(c1_u, 28)), "autoX_clutchStep");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 163, 1688U, (void *)
     &chartInstance->c1_j_autoX_clutchStep);
-  chartInstance->c1_autoX_clutchValue = c1_i_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 28)), "autoX_clutchValue");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 58, 959U, (void *)
-    &chartInstance->c1_autoX_clutchValue);
-  chartInstance->c1_b_autoX_clutchValue = c1_i_emlrt_marshallIn(chartInstance,
+  chartInstance->c1_autoX_clutchValue = c1_k_emlrt_marshallIn(chartInstance,
     sf_mex_dup(sf_mex_getcell(c1_u, 29)), "autoX_clutchValue");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 65, 1095U, (void *)
-    &chartInstance->c1_b_autoX_clutchValue);
-  chartInstance->c1_c_autoX_clutchValue = c1_i_emlrt_marshallIn(chartInstance,
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 59, 959U, (void *)
+    &chartInstance->c1_autoX_clutchValue);
+  chartInstance->c1_b_autoX_clutchValue = c1_k_emlrt_marshallIn(chartInstance,
     sf_mex_dup(sf_mex_getcell(c1_u, 30)), "autoX_clutchValue");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 77, 1202U, (void *)
-    &chartInstance->c1_c_autoX_clutchValue);
-  chartInstance->c1_d_autoX_clutchValue = c1_i_emlrt_marshallIn(chartInstance,
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 66, 1095U, (void *)
+    &chartInstance->c1_b_autoX_clutchValue);
+  chartInstance->c1_c_autoX_clutchValue = c1_k_emlrt_marshallIn(chartInstance,
     sf_mex_dup(sf_mex_getcell(c1_u, 31)), "autoX_clutchValue");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 89, 1275U, (void *)
-    &chartInstance->c1_d_autoX_clutchValue);
-  chartInstance->c1_e_autoX_clutchValue = c1_i_emlrt_marshallIn(chartInstance,
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 78, 1202U, (void *)
+    &chartInstance->c1_c_autoX_clutchValue);
+  chartInstance->c1_d_autoX_clutchValue = c1_k_emlrt_marshallIn(chartInstance,
     sf_mex_dup(sf_mex_getcell(c1_u, 32)), "autoX_clutchValue");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 101, 1347U, (void *)
-    &chartInstance->c1_e_autoX_clutchValue);
-  chartInstance->c1_f_autoX_clutchValue = c1_i_emlrt_marshallIn(chartInstance,
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 90, 1275U, (void *)
+    &chartInstance->c1_d_autoX_clutchValue);
+  chartInstance->c1_e_autoX_clutchValue = c1_k_emlrt_marshallIn(chartInstance,
     sf_mex_dup(sf_mex_getcell(c1_u, 33)), "autoX_clutchValue");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 113, 1415U, (void *)
-    &chartInstance->c1_f_autoX_clutchValue);
-  chartInstance->c1_g_autoX_clutchValue = c1_i_emlrt_marshallIn(chartInstance,
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 102, 1347U, (void *)
+    &chartInstance->c1_e_autoX_clutchValue);
+  chartInstance->c1_f_autoX_clutchValue = c1_k_emlrt_marshallIn(chartInstance,
     sf_mex_dup(sf_mex_getcell(c1_u, 34)), "autoX_clutchValue");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 125, 1483U, (void *)
-    &chartInstance->c1_g_autoX_clutchValue);
-  chartInstance->c1_h_autoX_clutchValue = c1_i_emlrt_marshallIn(chartInstance,
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 114, 1415U, (void *)
+    &chartInstance->c1_f_autoX_clutchValue);
+  chartInstance->c1_g_autoX_clutchValue = c1_k_emlrt_marshallIn(chartInstance,
     sf_mex_dup(sf_mex_getcell(c1_u, 35)), "autoX_clutchValue");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 137, 1551U, (void *)
-    &chartInstance->c1_h_autoX_clutchValue);
-  chartInstance->c1_i_autoX_clutchValue = c1_i_emlrt_marshallIn(chartInstance,
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 126, 1483U, (void *)
+    &chartInstance->c1_g_autoX_clutchValue);
+  chartInstance->c1_h_autoX_clutchValue = c1_k_emlrt_marshallIn(chartInstance,
     sf_mex_dup(sf_mex_getcell(c1_u, 36)), "autoX_clutchValue");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 149, 1619U, (void *)
-    &chartInstance->c1_i_autoX_clutchValue);
-  chartInstance->c1_j_autoX_clutchValue = c1_i_emlrt_marshallIn(chartInstance,
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 138, 1551U, (void *)
+    &chartInstance->c1_h_autoX_clutchValue);
+  chartInstance->c1_i_autoX_clutchValue = c1_k_emlrt_marshallIn(chartInstance,
     sf_mex_dup(sf_mex_getcell(c1_u, 37)), "autoX_clutchValue");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 161, 1687U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 150, 1619U, (void *)
+    &chartInstance->c1_i_autoX_clutchValue);
+  chartInstance->c1_j_autoX_clutchValue = c1_k_emlrt_marshallIn(chartInstance,
+    sf_mex_dup(sf_mex_getcell(c1_u, 38)), "autoX_clutchValue");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 162, 1687U, (void *)
     &chartInstance->c1_j_autoX_clutchValue);
   chartInstance->c1_autoX_dtRelease = c1_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 38)), "autoX_dtRelease");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 60, 961U, (void *)
+    sf_mex_dup(sf_mex_getcell(c1_u, 39)), "autoX_dtRelease");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 61, 961U, (void *)
     &chartInstance->c1_autoX_dtRelease);
   chartInstance->c1_b_autoX_dtRelease = c1_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 39)), "autoX_dtRelease");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 67, 1097U, (void *)
+    sf_mex_dup(sf_mex_getcell(c1_u, 40)), "autoX_dtRelease");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 68, 1097U, (void *)
     &chartInstance->c1_b_autoX_dtRelease);
   chartInstance->c1_c_autoX_dtRelease = c1_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 40)), "autoX_dtRelease");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 79, 1204U, (void *)
+    sf_mex_dup(sf_mex_getcell(c1_u, 41)), "autoX_dtRelease");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 80, 1204U, (void *)
     &chartInstance->c1_c_autoX_dtRelease);
   chartInstance->c1_d_autoX_dtRelease = c1_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 41)), "autoX_dtRelease");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 91, 1277U, (void *)
+    sf_mex_dup(sf_mex_getcell(c1_u, 42)), "autoX_dtRelease");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 92, 1277U, (void *)
     &chartInstance->c1_d_autoX_dtRelease);
   chartInstance->c1_e_autoX_dtRelease = c1_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 42)), "autoX_dtRelease");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 103, 1349U, (void *)
+    sf_mex_dup(sf_mex_getcell(c1_u, 43)), "autoX_dtRelease");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 104, 1349U, (void *)
     &chartInstance->c1_e_autoX_dtRelease);
   chartInstance->c1_f_autoX_dtRelease = c1_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 43)), "autoX_dtRelease");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 115, 1417U, (void *)
+    sf_mex_dup(sf_mex_getcell(c1_u, 44)), "autoX_dtRelease");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 116, 1417U, (void *)
     &chartInstance->c1_f_autoX_dtRelease);
   chartInstance->c1_g_autoX_dtRelease = c1_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 44)), "autoX_dtRelease");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 127, 1485U, (void *)
+    sf_mex_dup(sf_mex_getcell(c1_u, 45)), "autoX_dtRelease");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 128, 1485U, (void *)
     &chartInstance->c1_g_autoX_dtRelease);
   chartInstance->c1_h_autoX_dtRelease = c1_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 45)), "autoX_dtRelease");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 139, 1553U, (void *)
+    sf_mex_dup(sf_mex_getcell(c1_u, 46)), "autoX_dtRelease");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 140, 1553U, (void *)
     &chartInstance->c1_h_autoX_dtRelease);
   chartInstance->c1_i_autoX_dtRelease = c1_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 46)), "autoX_dtRelease");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 151, 1621U, (void *)
+    sf_mex_dup(sf_mex_getcell(c1_u, 47)), "autoX_dtRelease");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 152, 1621U, (void *)
     &chartInstance->c1_i_autoX_dtRelease);
   chartInstance->c1_j_autoX_dtRelease = c1_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 47)), "autoX_dtRelease");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 163, 1689U, (void *)
+    sf_mex_dup(sf_mex_getcell(c1_u, 48)), "autoX_dtRelease");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 164, 1689U, (void *)
     &chartInstance->c1_j_autoX_dtRelease);
   chartInstance->c1_buzzerCounter = c1_g_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 48)), "buzzerCounter");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 28, 1063U, (void *)
+    sf_mex_dup(sf_mex_getcell(c1_u, 49)), "buzzerCounter");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 29, 1063U, (void *)
     &chartInstance->c1_buzzerCounter);
-  chartInstance->c1_counterWait = c1_i_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 49)), "counterWait");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 175, 950U, (void *)
-    &chartInstance->c1_counterWait);
-  chartInstance->c1_b_counterWait = c1_i_emlrt_marshallIn(chartInstance,
+  chartInstance->c1_counterWait = c1_k_emlrt_marshallIn(chartInstance,
     sf_mex_dup(sf_mex_getcell(c1_u, 50)), "counterWait");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 179, 1068U, (void *)
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 176, 950U, (void *)
+    &chartInstance->c1_counterWait);
+  chartInstance->c1_b_counterWait = c1_k_emlrt_marshallIn(chartInstance,
+    sf_mex_dup(sf_mex_getcell(c1_u, 51)), "counterWait");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 180, 1068U, (void *)
     &chartInstance->c1_b_counterWait);
   chartInstance->c1_lastAacCom = c1_g_emlrt_marshallIn(chartInstance, sf_mex_dup
-    (sf_mex_getcell(c1_u, 51)), "lastAacCom");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 25, 627U, (void *)
+    (sf_mex_getcell(c1_u, 52)), "lastAacCom");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 26, 627U, (void *)
     &chartInstance->c1_lastAacCom);
   chartInstance->c1_lastAutoXCom = c1_g_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 52)), "lastAutoXCom");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 27, 1043U, (void *)
+    sf_mex_dup(sf_mex_getcell(c1_u, 53)), "lastAutoXCom");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 28, 1043U, (void *)
     &chartInstance->c1_lastAutoXCom);
   chartInstance->c1_lastCom = c1_c_emlrt_marshallIn(chartInstance, sf_mex_dup
-    (sf_mex_getcell(c1_u, 53)), "lastCom");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 176, 484U, (void *)
+    (sf_mex_getcell(c1_u, 54)), "lastCom");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 177, 484U, (void *)
     &chartInstance->c1_lastCom);
   chartInstance->c1_lastShift = c1_c_emlrt_marshallIn(chartInstance, sf_mex_dup
-    (sf_mex_getcell(c1_u, 54)), "lastShift");
+    (sf_mex_getcell(c1_u, 55)), "lastShift");
   c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 6, 715U, (void *)
     &chartInstance->c1_lastShift);
   chartInstance->c1_lastShiftCom = c1_g_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 55)), "lastShiftCom");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 26, 681U, (void *)
+    sf_mex_dup(sf_mex_getcell(c1_u, 56)), "lastShiftCom");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 27, 681U, (void *)
     &chartInstance->c1_lastShiftCom);
   chartInstance->c1_lastSlip = c1_g_emlrt_marshallIn(chartInstance, sf_mex_dup
-    (sf_mex_getcell(c1_u, 56)), "lastSlip");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 68, 1174U, (void *)
+    (sf_mex_getcell(c1_u, 57)), "lastSlip");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 69, 1174U, (void *)
     &chartInstance->c1_lastSlip);
   chartInstance->c1_b_lastSlip = c1_g_emlrt_marshallIn(chartInstance, sf_mex_dup
-    (sf_mex_getcell(c1_u, 57)), "lastSlip");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 80, 1225U, (void *)
+    (sf_mex_getcell(c1_u, 58)), "lastSlip");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 81, 1225U, (void *)
     &chartInstance->c1_b_lastSlip);
   chartInstance->c1_c_lastSlip = c1_g_emlrt_marshallIn(chartInstance, sf_mex_dup
-    (sf_mex_getcell(c1_u, 58)), "lastSlip");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 92, 1298U, (void *)
+    (sf_mex_getcell(c1_u, 59)), "lastSlip");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 93, 1298U, (void *)
     &chartInstance->c1_c_lastSlip);
   chartInstance->c1_d_lastSlip = c1_g_emlrt_marshallIn(chartInstance, sf_mex_dup
-    (sf_mex_getcell(c1_u, 59)), "lastSlip");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 104, 1370U, (void *)
+    (sf_mex_getcell(c1_u, 60)), "lastSlip");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 105, 1370U, (void *)
     &chartInstance->c1_d_lastSlip);
   chartInstance->c1_e_lastSlip = c1_g_emlrt_marshallIn(chartInstance, sf_mex_dup
-    (sf_mex_getcell(c1_u, 60)), "lastSlip");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 116, 1438U, (void *)
+    (sf_mex_getcell(c1_u, 61)), "lastSlip");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 117, 1438U, (void *)
     &chartInstance->c1_e_lastSlip);
   chartInstance->c1_f_lastSlip = c1_g_emlrt_marshallIn(chartInstance, sf_mex_dup
-    (sf_mex_getcell(c1_u, 61)), "lastSlip");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 128, 1506U, (void *)
+    (sf_mex_getcell(c1_u, 62)), "lastSlip");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 129, 1506U, (void *)
     &chartInstance->c1_f_lastSlip);
   chartInstance->c1_g_lastSlip = c1_g_emlrt_marshallIn(chartInstance, sf_mex_dup
-    (sf_mex_getcell(c1_u, 62)), "lastSlip");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 140, 1574U, (void *)
+    (sf_mex_getcell(c1_u, 63)), "lastSlip");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 141, 1574U, (void *)
     &chartInstance->c1_g_lastSlip);
   chartInstance->c1_h_lastSlip = c1_g_emlrt_marshallIn(chartInstance, sf_mex_dup
-    (sf_mex_getcell(c1_u, 63)), "lastSlip");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 152, 1642U, (void *)
+    (sf_mex_getcell(c1_u, 64)), "lastSlip");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 153, 1642U, (void *)
     &chartInstance->c1_h_lastSlip);
   chartInstance->c1_i_lastSlip = c1_g_emlrt_marshallIn(chartInstance, sf_mex_dup
-    (sf_mex_getcell(c1_u, 64)), "lastSlip");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 164, 1710U, (void *)
+    (sf_mex_getcell(c1_u, 65)), "lastSlip");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 165, 1710U, (void *)
     &chartInstance->c1_i_lastSlip);
   chartInstance->c1_startCounter = c1_c_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 65)), "startCounter");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 177, 488U, (void *)
+    sf_mex_dup(sf_mex_getcell(c1_u, 66)), "startCounter");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 178, 488U, (void *)
     &chartInstance->c1_startCounter);
   chartInstance->c1_ticksCounter = c1_emlrt_marshallIn(chartInstance, sf_mex_dup
-    (sf_mex_getcell(c1_u, 66)), "ticksCounter");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 171, 45U, (void *)
+    (sf_mex_getcell(c1_u, 67)), "ticksCounter");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 172, 45U, (void *)
     &chartInstance->c1_ticksCounter);
   chartInstance->c1_timerCounter = c1_g_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 67)), "timerCounter");
-  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 178, 938U, (void *)
+    sf_mex_dup(sf_mex_getcell(c1_u, 68)), "timerCounter");
+  c1_d_sdiStreamingWrapperFcn(chartInstance, 0, 179, 938U, (void *)
     &chartInstance->c1_timerCounter);
   chartInstance->c1_is_active_c1_GCU_Model_genCode = c1_c_emlrt_marshallIn
-    (chartInstance, sf_mex_dup(sf_mex_getcell(c1_u, 68)),
+    (chartInstance, sf_mex_dup(sf_mex_getcell(c1_u, 69)),
      "is_active_c1_GCU_Model_genCode");
   chartInstance->c1_is_active_GEARSHIFT = c1_c_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 69)), "is_active_GEARSHIFT");
+    sf_mex_dup(sf_mex_getcell(c1_u, 70)), "is_active_GEARSHIFT");
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 114, 1U, (int32_T)
     (chartInstance->c1_is_active_GEARSHIFT == 1));
   chartInstance->c1_is_active_NEUTRAL_STATE = c1_c_emlrt_marshallIn
-    (chartInstance, sf_mex_dup(sf_mex_getcell(c1_u, 70)),
+    (chartInstance, sf_mex_dup(sf_mex_getcell(c1_u, 71)),
      "is_active_NEUTRAL_STATE");
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 109, 31U, (int32_T)
     (chartInstance->c1_is_active_NEUTRAL_STATE == 1));
   chartInstance->c1_is_active_MODES = c1_c_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 71)), "is_active_MODES");
+    sf_mex_dup(sf_mex_getcell(c1_u, 72)), "is_active_MODES");
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 1, 418U, (int32_T)
     (chartInstance->c1_is_active_MODES == 1));
   chartInstance->c1_is_active_START_ENGINE = c1_c_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 72)), "is_active_START_ENGINE");
+    sf_mex_dup(sf_mex_getcell(c1_u, 73)), "is_active_START_ENGINE");
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 140, 479U, (int32_T)
     (chartInstance->c1_is_active_START_ENGINE == 1));
   chartInstance->c1_is_active_SCAN_ADC = c1_c_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 73)), "is_active_SCAN_ADC");
+    sf_mex_dup(sf_mex_getcell(c1_u, 74)), "is_active_SCAN_ADC");
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 144, 929U, (int32_T)
     (chartInstance->c1_is_active_SCAN_ADC == 1));
   chartInstance->c1_is_active_EEPROM_TRIGGER = c1_c_emlrt_marshallIn
-    (chartInstance, sf_mex_dup(sf_mex_getcell(c1_u, 74)),
+    (chartInstance, sf_mex_dup(sf_mex_getcell(c1_u, 75)),
      "is_active_EEPROM_TRIGGER");
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 147, 940U, (int32_T)
     (chartInstance->c1_is_active_EEPROM_TRIGGER == 1));
   chartInstance->c1_is_active_ANTISTALL_ENABLE = c1_c_emlrt_marshallIn
-    (chartInstance, sf_mex_dup(sf_mex_getcell(c1_u, 75)),
+    (chartInstance, sf_mex_dup(sf_mex_getcell(c1_u, 76)),
      "is_active_ANTISTALL_ENABLE");
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 150, 1069U, (int32_T)
     (chartInstance->c1_is_active_ANTISTALL_ENABLE == 1));
   chartInstance->c1_is_GEARSHIFT = c1_c_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 76)), "is_GEARSHIFT");
+    sf_mex_dup(sf_mex_getcell(c1_u, 77)), "is_GEARSHIFT");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 114, 1U, (void *)
     &chartInstance->c1_is_GEARSHIFT);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 115, 697U, (int32_T)
@@ -29410,7 +29542,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 139, 13U, (int32_T)
     (chartInstance->c1_is_GEARSHIFT == 6));
   chartInstance->c1_is_UP_START = c1_c_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 77)), "is_UP_START");
+    sf_mex_dup(sf_mex_getcell(c1_u, 78)), "is_UP_START");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 136, 9U, (void *)
     &chartInstance->c1_is_UP_START);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 137, 385U, (int32_T)
@@ -29418,7 +29550,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 138, 383U, (int32_T)
     (chartInstance->c1_is_UP_START == 2));
   chartInstance->c1_is_UP_PUSH = c1_c_emlrt_marshallIn(chartInstance, sf_mex_dup
-    (sf_mex_getcell(c1_u, 78)), "is_UP_PUSH");
+    (sf_mex_getcell(c1_u, 79)), "is_UP_PUSH");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 130, 10U, (void *)
     &chartInstance->c1_is_UP_PUSH);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 131, 423U, (int32_T)
@@ -29426,7 +29558,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 132, 422U, (int32_T)
     (chartInstance->c1_is_UP_PUSH == 2));
   chartInstance->c1_is_UP_REBOUND = c1_c_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 79)), "is_UP_REBOUND");
+    sf_mex_dup(sf_mex_getcell(c1_u, 80)), "is_UP_REBOUND");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 133, 11U, (void *)
     &chartInstance->c1_is_UP_REBOUND);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 134, 390U, (int32_T)
@@ -29434,7 +29566,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 135, 391U, (int32_T)
     (chartInstance->c1_is_UP_REBOUND == 2));
   chartInstance->c1_is_DOWN_START = c1_c_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 80)), "is_DOWN_START");
+    sf_mex_dup(sf_mex_getcell(c1_u, 81)), "is_DOWN_START");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 121, 14U, (void *)
     &chartInstance->c1_is_DOWN_START);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 122, 398U, (int32_T)
@@ -29444,7 +29576,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 124, 399U, (int32_T)
     (chartInstance->c1_is_DOWN_START == 3));
   chartInstance->c1_is_DOWN_BRAKE = c1_c_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 81)), "is_DOWN_BRAKE");
+    sf_mex_dup(sf_mex_getcell(c1_u, 82)), "is_DOWN_BRAKE");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 116, 17U, (void *)
     &chartInstance->c1_is_DOWN_BRAKE);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 117, 410U, (int32_T)
@@ -29452,7 +29584,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 118, 409U, (int32_T)
     (chartInstance->c1_is_DOWN_BRAKE == 2));
   chartInstance->c1_is_NEUTRAL_STATE = c1_c_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 82)), "is_NEUTRAL_STATE");
+    sf_mex_dup(sf_mex_getcell(c1_u, 83)), "is_NEUTRAL_STATE");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 109, 31U, (void *)
     &chartInstance->c1_is_NEUTRAL_STATE);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 110, 36U, (int32_T)
@@ -29464,7 +29596,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 113, 35U, (int32_T)
     (chartInstance->c1_is_NEUTRAL_STATE == 4));
   chartInstance->c1_is_MODES = c1_c_emlrt_marshallIn(chartInstance, sf_mex_dup
-    (sf_mex_getcell(c1_u, 83)), "is_MODES");
+    (sf_mex_getcell(c1_u, 84)), "is_MODES");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 1, 418U, (void *)
     &chartInstance->c1_is_MODES);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 2, 820U, (int32_T)
@@ -29478,7 +29610,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 106, 727U, (int32_T)
     (chartInstance->c1_is_MODES == 5));
   chartInstance->c1_is_ACC = c1_c_emlrt_marshallIn(chartInstance, sf_mex_dup
-    (sf_mex_getcell(c1_u, 84)), "is_ACC");
+    (sf_mex_getcell(c1_u, 85)), "is_ACC");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 3, 434U, (void *)
     &chartInstance->c1_is_ACC);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 4, 538U, (int32_T)
@@ -29486,7 +29618,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 10, 515U, (int32_T)
     (chartInstance->c1_is_ACC == 2));
   chartInstance->c1_is_START_ENGINE = c1_c_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 85)), "is_START_ENGINE");
+    sf_mex_dup(sf_mex_getcell(c1_u, 86)), "is_START_ENGINE");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 140, 479U, (void *)
     &chartInstance->c1_is_START_ENGINE);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 141, 482U, (int32_T)
@@ -29496,7 +29628,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 143, 494U, (int32_T)
     (chartInstance->c1_is_START_ENGINE == 3));
   chartInstance->c1_is_ACTIVE = c1_c_emlrt_marshallIn(chartInstance, sf_mex_dup
-    (sf_mex_getcell(c1_u, 86)), "is_ACTIVE");
+    (sf_mex_getcell(c1_u, 87)), "is_ACTIVE");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 4, 538U, (void *)
     &chartInstance->c1_is_ACTIVE);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 5, 545U, (int32_T)
@@ -29510,7 +29642,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 9, 547U, (int32_T)
     (chartInstance->c1_is_ACTIVE == 5));
   chartInstance->c1_is_UPSHIFTING = c1_c_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 87)), "is_UPSHIFTING");
+    sf_mex_dup(sf_mex_getcell(c1_u, 88)), "is_UPSHIFTING");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 128, 693U, (void *)
     &chartInstance->c1_is_UPSHIFTING);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 129, 12U, (int32_T)
@@ -29522,7 +29654,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 136, 9U, (int32_T)
     (chartInstance->c1_is_UPSHIFTING == 4));
   chartInstance->c1_is_DOWNSHIFTING = c1_c_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 88)), "is_DOWNSHIFTING");
+    sf_mex_dup(sf_mex_getcell(c1_u, 89)), "is_DOWNSHIFTING");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 115, 697U, (void *)
     &chartInstance->c1_is_DOWNSHIFTING);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 116, 17U, (int32_T)
@@ -29534,7 +29666,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 121, 14U, (int32_T)
     (chartInstance->c1_is_DOWNSHIFTING == 4));
   chartInstance->c1_is_MANUAL_MODES = c1_c_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 89)), "is_MANUAL_MODES");
+    sf_mex_dup(sf_mex_getcell(c1_u, 90)), "is_MANUAL_MODES");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 106, 727U, (void *)
     &chartInstance->c1_is_MANUAL_MODES);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 107, 729U, (int32_T)
@@ -29542,7 +29674,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 108, 728U, (int32_T)
     (chartInstance->c1_is_MANUAL_MODES == 2));
   chartInstance->c1_is_ACCELERATION = c1_c_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 90)), "is_ACCELERATION");
+    sf_mex_dup(sf_mex_getcell(c1_u, 91)), "is_ACCELERATION");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 2, 820U, (void *)
     &chartInstance->c1_is_ACCELERATION);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 3, 434U, (int32_T)
@@ -29550,7 +29682,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 11, 821U, (int32_T)
     (chartInstance->c1_is_ACCELERATION == 2));
   chartInstance->c1_is_SCAN_ADC = c1_c_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 91)), "is_SCAN_ADC");
+    sf_mex_dup(sf_mex_getcell(c1_u, 92)), "is_SCAN_ADC");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 144, 929U, (void *)
     &chartInstance->c1_is_SCAN_ADC);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 145, 932U, (int32_T)
@@ -29558,7 +29690,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 146, 930U, (int32_T)
     (chartInstance->c1_is_SCAN_ADC == 2));
   chartInstance->c1_is_EEPROM_TRIGGER = c1_c_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 92)), "is_EEPROM_TRIGGER");
+    sf_mex_dup(sf_mex_getcell(c1_u, 93)), "is_EEPROM_TRIGGER");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 147, 940U, (void *)
     &chartInstance->c1_is_EEPROM_TRIGGER);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 148, 946U, (int32_T)
@@ -29566,7 +29698,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 149, 944U, (int32_T)
     (chartInstance->c1_is_EEPROM_TRIGGER == 2));
   chartInstance->c1_is_AUTOCROSS = c1_c_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 93)), "is_AUTOCROSS");
+    sf_mex_dup(sf_mex_getcell(c1_u, 94)), "is_AUTOCROSS");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 95, 951U, (void *)
     &chartInstance->c1_is_AUTOCROSS);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 96, 952U, (int32_T)
@@ -29574,7 +29706,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 97, 974U, (int32_T)
     (chartInstance->c1_is_AUTOCROSS == 2));
   chartInstance->c1_is_LAUNCH = c1_c_emlrt_marshallIn(chartInstance, sf_mex_dup
-    (sf_mex_getcell(c1_u, 94)), "is_LAUNCH");
+    (sf_mex_getcell(c1_u, 95)), "is_LAUNCH");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 97, 974U, (void *)
     &chartInstance->c1_is_LAUNCH);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 98, 985U, (int32_T)
@@ -29582,7 +29714,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 104, 1028U, (int32_T)
     (chartInstance->c1_is_LAUNCH == 2));
   chartInstance->c1_b_is_ACTIVE = c1_c_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 95)), "is_ACTIVE");
+    sf_mex_dup(sf_mex_getcell(c1_u, 96)), "is_ACTIVE");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 98, 985U, (void *)
     &chartInstance->c1_b_is_ACTIVE);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 99, 999U, (int32_T)
@@ -29596,7 +29728,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 103, 1001U, (int32_T)
     (chartInstance->c1_b_is_ACTIVE == 5));
   chartInstance->c1_is_ANTISTALL_ENABLE = c1_c_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 96)), "is_ANTISTALL_ENABLE");
+    sf_mex_dup(sf_mex_getcell(c1_u, 97)), "is_ANTISTALL_ENABLE");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 150, 1069U, (void *)
     &chartInstance->c1_is_ANTISTALL_ENABLE);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 151, 1070U, (int32_T)
@@ -29604,7 +29736,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 152, 1072U, (int32_T)
     (chartInstance->c1_is_ANTISTALL_ENABLE == 2));
   chartInstance->c1_is_LAUNCH0 = c1_c_emlrt_marshallIn(chartInstance, sf_mex_dup
-    (sf_mex_getcell(c1_u, 97)), "is_LAUNCH0");
+    (sf_mex_getcell(c1_u, 98)), "is_LAUNCH0");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 14, 1098U, (void *)
     &chartInstance->c1_is_LAUNCH0);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 15, 1106U, (int32_T)
@@ -29612,7 +29744,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 22, 1146U, (int32_T)
     (chartInstance->c1_is_LAUNCH0 == 2));
   chartInstance->c1_c_is_ACTIVE = c1_c_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 98)), "is_ACTIVE");
+    sf_mex_dup(sf_mex_getcell(c1_u, 99)), "is_ACTIVE");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 15, 1106U, (void *)
     &chartInstance->c1_c_is_ACTIVE);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 16, 1120U, (int32_T)
@@ -29624,7 +29756,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 21, 1119U, (int32_T)
     (chartInstance->c1_c_is_ACTIVE == 4));
   chartInstance->c1_is_ACCELERATION_PID = c1_c_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 99)), "is_ACCELERATION_PID");
+    sf_mex_dup(sf_mex_getcell(c1_u, 100)), "is_ACCELERATION_PID");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 12, 1157U, (void *)
     &chartInstance->c1_is_ACCELERATION_PID);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 13, 1091U, (int32_T)
@@ -29648,7 +29780,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 86, 1690U, (int32_T)
     (chartInstance->c1_is_ACCELERATION_PID == 10));
   chartInstance->c1_is_RELEASE = c1_c_emlrt_marshallIn(chartInstance, sf_mex_dup
-    (sf_mex_getcell(c1_u, 100)), "is_RELEASE");
+    (sf_mex_getcell(c1_u, 101)), "is_RELEASE");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 17, 1166U, (void *)
     &chartInstance->c1_is_RELEASE);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 18, 1181U, (int32_T)
@@ -29656,7 +29788,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 19, 1170U, (int32_T)
     (chartInstance->c1_is_RELEASE == 2));
   chartInstance->c1_is_LAUNCH1 = c1_c_emlrt_marshallIn(chartInstance, sf_mex_dup
-    (sf_mex_getcell(c1_u, 101)), "is_LAUNCH1");
+    (sf_mex_getcell(c1_u, 102)), "is_LAUNCH1");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 23, 1205U, (void *)
     &chartInstance->c1_is_LAUNCH1);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 24, 1213U, (int32_T)
@@ -29664,7 +29796,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 31, 1259U, (int32_T)
     (chartInstance->c1_is_LAUNCH1 == 2));
   chartInstance->c1_d_is_ACTIVE = c1_c_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 102)), "is_ACTIVE");
+    sf_mex_dup(sf_mex_getcell(c1_u, 103)), "is_ACTIVE");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 24, 1213U, (void *)
     &chartInstance->c1_d_is_ACTIVE);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 25, 1223U, (int32_T)
@@ -29676,7 +29808,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 30, 1222U, (int32_T)
     (chartInstance->c1_d_is_ACTIVE == 4));
   chartInstance->c1_b_is_RELEASE = c1_c_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 103)), "is_RELEASE");
+    sf_mex_dup(sf_mex_getcell(c1_u, 104)), "is_RELEASE");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 26, 1226U, (void *)
     &chartInstance->c1_b_is_RELEASE);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 27, 1230U, (int32_T)
@@ -29684,7 +29816,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 28, 1231U, (int32_T)
     (chartInstance->c1_b_is_RELEASE == 2));
   chartInstance->c1_is_LAUNCH2 = c1_c_emlrt_marshallIn(chartInstance, sf_mex_dup
-    (sf_mex_getcell(c1_u, 104)), "is_LAUNCH2");
+    (sf_mex_getcell(c1_u, 105)), "is_LAUNCH2");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 32, 1278U, (void *)
     &chartInstance->c1_is_LAUNCH2);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 33, 1286U, (int32_T)
@@ -29692,7 +29824,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 40, 1332U, (int32_T)
     (chartInstance->c1_is_LAUNCH2 == 2));
   chartInstance->c1_e_is_ACTIVE = c1_c_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 105)), "is_ACTIVE");
+    sf_mex_dup(sf_mex_getcell(c1_u, 106)), "is_ACTIVE");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 33, 1286U, (void *)
     &chartInstance->c1_e_is_ACTIVE);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 34, 1296U, (int32_T)
@@ -29704,7 +29836,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 39, 1295U, (int32_T)
     (chartInstance->c1_e_is_ACTIVE == 4));
   chartInstance->c1_c_is_RELEASE = c1_c_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 106)), "is_RELEASE");
+    sf_mex_dup(sf_mex_getcell(c1_u, 107)), "is_RELEASE");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 35, 1299U, (void *)
     &chartInstance->c1_c_is_RELEASE);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 36, 1303U, (int32_T)
@@ -29712,7 +29844,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 37, 1304U, (int32_T)
     (chartInstance->c1_c_is_RELEASE == 2));
   chartInstance->c1_is_LAUNCH3 = c1_c_emlrt_marshallIn(chartInstance, sf_mex_dup
-    (sf_mex_getcell(c1_u, 107)), "is_LAUNCH3");
+    (sf_mex_getcell(c1_u, 108)), "is_LAUNCH3");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 41, 1350U, (void *)
     &chartInstance->c1_is_LAUNCH3);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 42, 1358U, (int32_T)
@@ -29720,7 +29852,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 49, 1404U, (int32_T)
     (chartInstance->c1_is_LAUNCH3 == 2));
   chartInstance->c1_f_is_ACTIVE = c1_c_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 108)), "is_ACTIVE");
+    sf_mex_dup(sf_mex_getcell(c1_u, 109)), "is_ACTIVE");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 42, 1358U, (void *)
     &chartInstance->c1_f_is_ACTIVE);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 43, 1368U, (int32_T)
@@ -29732,7 +29864,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 48, 1367U, (int32_T)
     (chartInstance->c1_f_is_ACTIVE == 4));
   chartInstance->c1_d_is_RELEASE = c1_c_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 109)), "is_RELEASE");
+    sf_mex_dup(sf_mex_getcell(c1_u, 110)), "is_RELEASE");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 44, 1371U, (void *)
     &chartInstance->c1_d_is_RELEASE);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 45, 1375U, (int32_T)
@@ -29740,7 +29872,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 46, 1376U, (int32_T)
     (chartInstance->c1_d_is_RELEASE == 2));
   chartInstance->c1_is_LAUNCH4 = c1_c_emlrt_marshallIn(chartInstance, sf_mex_dup
-    (sf_mex_getcell(c1_u, 110)), "is_LAUNCH4");
+    (sf_mex_getcell(c1_u, 111)), "is_LAUNCH4");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 50, 1418U, (void *)
     &chartInstance->c1_is_LAUNCH4);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 51, 1426U, (int32_T)
@@ -29748,7 +29880,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 58, 1472U, (int32_T)
     (chartInstance->c1_is_LAUNCH4 == 2));
   chartInstance->c1_g_is_ACTIVE = c1_c_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 111)), "is_ACTIVE");
+    sf_mex_dup(sf_mex_getcell(c1_u, 112)), "is_ACTIVE");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 51, 1426U, (void *)
     &chartInstance->c1_g_is_ACTIVE);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 52, 1436U, (int32_T)
@@ -29760,7 +29892,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 57, 1435U, (int32_T)
     (chartInstance->c1_g_is_ACTIVE == 4));
   chartInstance->c1_e_is_RELEASE = c1_c_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 112)), "is_RELEASE");
+    sf_mex_dup(sf_mex_getcell(c1_u, 113)), "is_RELEASE");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 53, 1439U, (void *)
     &chartInstance->c1_e_is_RELEASE);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 54, 1443U, (int32_T)
@@ -29768,7 +29900,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 55, 1444U, (int32_T)
     (chartInstance->c1_e_is_RELEASE == 2));
   chartInstance->c1_is_LAUNCH5 = c1_c_emlrt_marshallIn(chartInstance, sf_mex_dup
-    (sf_mex_getcell(c1_u, 113)), "is_LAUNCH5");
+    (sf_mex_getcell(c1_u, 114)), "is_LAUNCH5");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 59, 1486U, (void *)
     &chartInstance->c1_is_LAUNCH5);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 60, 1494U, (int32_T)
@@ -29776,7 +29908,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 67, 1540U, (int32_T)
     (chartInstance->c1_is_LAUNCH5 == 2));
   chartInstance->c1_h_is_ACTIVE = c1_c_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 114)), "is_ACTIVE");
+    sf_mex_dup(sf_mex_getcell(c1_u, 115)), "is_ACTIVE");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 60, 1494U, (void *)
     &chartInstance->c1_h_is_ACTIVE);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 61, 1504U, (int32_T)
@@ -29788,7 +29920,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 66, 1503U, (int32_T)
     (chartInstance->c1_h_is_ACTIVE == 4));
   chartInstance->c1_f_is_RELEASE = c1_c_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 115)), "is_RELEASE");
+    sf_mex_dup(sf_mex_getcell(c1_u, 116)), "is_RELEASE");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 62, 1507U, (void *)
     &chartInstance->c1_f_is_RELEASE);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 63, 1511U, (int32_T)
@@ -29796,7 +29928,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 64, 1512U, (int32_T)
     (chartInstance->c1_f_is_RELEASE == 2));
   chartInstance->c1_is_LAUNCH6 = c1_c_emlrt_marshallIn(chartInstance, sf_mex_dup
-    (sf_mex_getcell(c1_u, 116)), "is_LAUNCH6");
+    (sf_mex_getcell(c1_u, 117)), "is_LAUNCH6");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 68, 1554U, (void *)
     &chartInstance->c1_is_LAUNCH6);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 69, 1562U, (int32_T)
@@ -29804,7 +29936,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 76, 1608U, (int32_T)
     (chartInstance->c1_is_LAUNCH6 == 2));
   chartInstance->c1_i_is_ACTIVE = c1_c_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 117)), "is_ACTIVE");
+    sf_mex_dup(sf_mex_getcell(c1_u, 118)), "is_ACTIVE");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 69, 1562U, (void *)
     &chartInstance->c1_i_is_ACTIVE);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 70, 1572U, (int32_T)
@@ -29816,7 +29948,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 75, 1571U, (int32_T)
     (chartInstance->c1_i_is_ACTIVE == 4));
   chartInstance->c1_g_is_RELEASE = c1_c_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 118)), "is_RELEASE");
+    sf_mex_dup(sf_mex_getcell(c1_u, 119)), "is_RELEASE");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 71, 1575U, (void *)
     &chartInstance->c1_g_is_RELEASE);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 72, 1579U, (int32_T)
@@ -29824,7 +29956,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 73, 1580U, (int32_T)
     (chartInstance->c1_g_is_RELEASE == 2));
   chartInstance->c1_is_LAUNCH7 = c1_c_emlrt_marshallIn(chartInstance, sf_mex_dup
-    (sf_mex_getcell(c1_u, 119)), "is_LAUNCH7");
+    (sf_mex_getcell(c1_u, 120)), "is_LAUNCH7");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 77, 1622U, (void *)
     &chartInstance->c1_is_LAUNCH7);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 78, 1630U, (int32_T)
@@ -29832,7 +29964,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 85, 1676U, (int32_T)
     (chartInstance->c1_is_LAUNCH7 == 2));
   chartInstance->c1_j_is_ACTIVE = c1_c_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 120)), "is_ACTIVE");
+    sf_mex_dup(sf_mex_getcell(c1_u, 121)), "is_ACTIVE");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 78, 1630U, (void *)
     &chartInstance->c1_j_is_ACTIVE);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 79, 1640U, (int32_T)
@@ -29844,7 +29976,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 84, 1639U, (int32_T)
     (chartInstance->c1_j_is_ACTIVE == 4));
   chartInstance->c1_h_is_RELEASE = c1_c_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 121)), "is_RELEASE");
+    sf_mex_dup(sf_mex_getcell(c1_u, 122)), "is_RELEASE");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 80, 1643U, (void *)
     &chartInstance->c1_h_is_RELEASE);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 81, 1647U, (int32_T)
@@ -29852,7 +29984,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 82, 1648U, (int32_T)
     (chartInstance->c1_h_is_RELEASE == 2));
   chartInstance->c1_is_LAUNCH8 = c1_c_emlrt_marshallIn(chartInstance, sf_mex_dup
-    (sf_mex_getcell(c1_u, 122)), "is_LAUNCH8");
+    (sf_mex_getcell(c1_u, 123)), "is_LAUNCH8");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 86, 1690U, (void *)
     &chartInstance->c1_is_LAUNCH8);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 87, 1698U, (int32_T)
@@ -29860,7 +29992,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 94, 1744U, (int32_T)
     (chartInstance->c1_is_LAUNCH8 == 2));
   chartInstance->c1_k_is_ACTIVE = c1_c_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 123)), "is_ACTIVE");
+    sf_mex_dup(sf_mex_getcell(c1_u, 124)), "is_ACTIVE");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 87, 1698U, (void *)
     &chartInstance->c1_k_is_ACTIVE);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 88, 1708U, (int32_T)
@@ -29872,7 +30004,7 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 93, 1707U, (int32_T)
     (chartInstance->c1_k_is_ACTIVE == 4));
   chartInstance->c1_i_is_RELEASE = c1_c_emlrt_marshallIn(chartInstance,
-    sf_mex_dup(sf_mex_getcell(c1_u, 124)), "is_RELEASE");
+    sf_mex_dup(sf_mex_getcell(c1_u, 125)), "is_RELEASE");
   c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 89, 1711U, (void *)
     &chartInstance->c1_i_is_RELEASE);
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 90, 1715U, (int32_T)
@@ -29880,12 +30012,12 @@ static void c1_m_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_sdiStreamingWrapperFcn(chartInstance, 4, 91, 1716U, (int32_T)
     (chartInstance->c1_i_is_RELEASE == 2));
   sf_mex_assign(&chartInstance->c1_setSimStateSideEffectsInfo,
-                c1_n_emlrt_marshallIn(chartInstance, sf_mex_dup(sf_mex_getcell
-    (c1_u, 125)), "setSimStateSideEffectsInfo"), true);
+                c1_p_emlrt_marshallIn(chartInstance, sf_mex_dup(sf_mex_getcell
+    (c1_u, 126)), "setSimStateSideEffectsInfo"), true);
   sf_mex_destroy(&c1_u);
 }
 
-static const mxArray *c1_n_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
+static const mxArray *c1_p_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   *chartInstance, const mxArray *c1_b_setSimStateSideEffectsInfo, const char_T
   *c1_identifier)
 {
@@ -29895,13 +30027,13 @@ static const mxArray *c1_n_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   c1_thisId.fIdentifier = (const char *)c1_identifier;
   c1_thisId.fParent = NULL;
   c1_thisId.bParentIsCell = false;
-  sf_mex_assign(&c1_y, c1_o_emlrt_marshallIn(chartInstance, sf_mex_dup
+  sf_mex_assign(&c1_y, c1_q_emlrt_marshallIn(chartInstance, sf_mex_dup
     (c1_b_setSimStateSideEffectsInfo), &c1_thisId), false);
   sf_mex_destroy(&c1_b_setSimStateSideEffectsInfo);
   return c1_y;
 }
 
-static const mxArray *c1_o_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
+static const mxArray *c1_q_emlrt_marshallIn(SFc1_GCU_Model_genCodeInstanceStruct
   *chartInstance, const mxArray *c1_u, const emlrtMsgIdentifier *c1_parentId)
 {
   const mxArray *c1_y = NULL;
@@ -30145,78 +30277,80 @@ static void init_simulink_io_address(SFc1_GCU_Model_genCodeInstanceStruct
     (chartInstance->S, 18);
   chartInstance->c1_pidSubMode = (uint16_T *)ssGetInputPortSignal_wrapper
     (chartInstance->S, 19);
-  chartInstance->c1_slipTarget = (real_T *)ssGetOutputPortSignal_wrapper
+  chartInstance->c1_pidCounter = (uint32_T *)ssGetOutputPortSignal_wrapper
     (chartInstance->S, 5);
-  chartInstance->c1_currentSlip = (real_T *)ssGetOutputPortSignal_wrapper
+  chartInstance->c1_slipTarget = (real_T *)ssGetOutputPortSignal_wrapper
     (chartInstance->S, 6);
+  chartInstance->c1_currentSlip = (real_T *)ssGetOutputPortSignal_wrapper
+    (chartInstance->S, 7);
   chartInstance->c1_clutchVal = (real_T *)ssGetInputPortSignal_wrapper
     (chartInstance->S, 20);
   chartInstance->c1_reset = (real_T *)ssGetOutputPortSignal_wrapper
-    (chartInstance->S, 7);
-  chartInstance->c1_b_slipTarget = (real_T *)ssGetOutputPortSignal_wrapper
     (chartInstance->S, 8);
-  chartInstance->c1_b_currentSlip = (real_T *)ssGetOutputPortSignal_wrapper
+  chartInstance->c1_b_slipTarget = (real_T *)ssGetOutputPortSignal_wrapper
     (chartInstance->S, 9);
+  chartInstance->c1_b_currentSlip = (real_T *)ssGetOutputPortSignal_wrapper
+    (chartInstance->S, 10);
   chartInstance->c1_b_clutchVal = (real_T *)ssGetInputPortSignal_wrapper
     (chartInstance->S, 21);
   chartInstance->c1_b_reset = (real_T *)ssGetOutputPortSignal_wrapper
-    (chartInstance->S, 10);
-  chartInstance->c1_c_slipTarget = (real_T *)ssGetOutputPortSignal_wrapper
     (chartInstance->S, 11);
-  chartInstance->c1_c_currentSlip = (real_T *)ssGetOutputPortSignal_wrapper
+  chartInstance->c1_c_slipTarget = (real_T *)ssGetOutputPortSignal_wrapper
     (chartInstance->S, 12);
+  chartInstance->c1_c_currentSlip = (real_T *)ssGetOutputPortSignal_wrapper
+    (chartInstance->S, 13);
   chartInstance->c1_c_clutchVal = (real_T *)ssGetInputPortSignal_wrapper
     (chartInstance->S, 22);
   chartInstance->c1_c_reset = (real_T *)ssGetOutputPortSignal_wrapper
-    (chartInstance->S, 13);
-  chartInstance->c1_d_slipTarget = (real_T *)ssGetOutputPortSignal_wrapper
     (chartInstance->S, 14);
-  chartInstance->c1_d_currentSlip = (real_T *)ssGetOutputPortSignal_wrapper
+  chartInstance->c1_d_slipTarget = (real_T *)ssGetOutputPortSignal_wrapper
     (chartInstance->S, 15);
+  chartInstance->c1_d_currentSlip = (real_T *)ssGetOutputPortSignal_wrapper
+    (chartInstance->S, 16);
   chartInstance->c1_d_clutchVal = (real_T *)ssGetInputPortSignal_wrapper
     (chartInstance->S, 23);
   chartInstance->c1_d_reset = (real_T *)ssGetOutputPortSignal_wrapper
-    (chartInstance->S, 16);
-  chartInstance->c1_e_slipTarget = (real_T *)ssGetOutputPortSignal_wrapper
     (chartInstance->S, 17);
-  chartInstance->c1_e_currentSlip = (real_T *)ssGetOutputPortSignal_wrapper
+  chartInstance->c1_e_slipTarget = (real_T *)ssGetOutputPortSignal_wrapper
     (chartInstance->S, 18);
+  chartInstance->c1_e_currentSlip = (real_T *)ssGetOutputPortSignal_wrapper
+    (chartInstance->S, 19);
   chartInstance->c1_e_clutchVal = (real_T *)ssGetInputPortSignal_wrapper
     (chartInstance->S, 24);
   chartInstance->c1_e_reset = (real_T *)ssGetOutputPortSignal_wrapper
-    (chartInstance->S, 19);
-  chartInstance->c1_f_slipTarget = (real_T *)ssGetOutputPortSignal_wrapper
     (chartInstance->S, 20);
-  chartInstance->c1_f_currentSlip = (real_T *)ssGetOutputPortSignal_wrapper
+  chartInstance->c1_f_slipTarget = (real_T *)ssGetOutputPortSignal_wrapper
     (chartInstance->S, 21);
+  chartInstance->c1_f_currentSlip = (real_T *)ssGetOutputPortSignal_wrapper
+    (chartInstance->S, 22);
   chartInstance->c1_f_clutchVal = (real_T *)ssGetInputPortSignal_wrapper
     (chartInstance->S, 25);
   chartInstance->c1_f_reset = (real_T *)ssGetOutputPortSignal_wrapper
-    (chartInstance->S, 22);
-  chartInstance->c1_g_slipTarget = (real_T *)ssGetOutputPortSignal_wrapper
     (chartInstance->S, 23);
-  chartInstance->c1_g_currentSlip = (real_T *)ssGetOutputPortSignal_wrapper
+  chartInstance->c1_g_slipTarget = (real_T *)ssGetOutputPortSignal_wrapper
     (chartInstance->S, 24);
+  chartInstance->c1_g_currentSlip = (real_T *)ssGetOutputPortSignal_wrapper
+    (chartInstance->S, 25);
   chartInstance->c1_g_clutchVal = (real_T *)ssGetInputPortSignal_wrapper
     (chartInstance->S, 26);
   chartInstance->c1_g_reset = (real_T *)ssGetOutputPortSignal_wrapper
-    (chartInstance->S, 25);
-  chartInstance->c1_h_slipTarget = (real_T *)ssGetOutputPortSignal_wrapper
     (chartInstance->S, 26);
-  chartInstance->c1_h_currentSlip = (real_T *)ssGetOutputPortSignal_wrapper
+  chartInstance->c1_h_slipTarget = (real_T *)ssGetOutputPortSignal_wrapper
     (chartInstance->S, 27);
+  chartInstance->c1_h_currentSlip = (real_T *)ssGetOutputPortSignal_wrapper
+    (chartInstance->S, 28);
   chartInstance->c1_h_clutchVal = (real_T *)ssGetInputPortSignal_wrapper
     (chartInstance->S, 27);
   chartInstance->c1_h_reset = (real_T *)ssGetOutputPortSignal_wrapper
-    (chartInstance->S, 28);
-  chartInstance->c1_i_slipTarget = (real_T *)ssGetOutputPortSignal_wrapper
     (chartInstance->S, 29);
-  chartInstance->c1_i_currentSlip = (real_T *)ssGetOutputPortSignal_wrapper
+  chartInstance->c1_i_slipTarget = (real_T *)ssGetOutputPortSignal_wrapper
     (chartInstance->S, 30);
+  chartInstance->c1_i_currentSlip = (real_T *)ssGetOutputPortSignal_wrapper
+    (chartInstance->S, 31);
   chartInstance->c1_i_clutchVal = (real_T *)ssGetInputPortSignal_wrapper
     (chartInstance->S, 28);
   chartInstance->c1_i_reset = (real_T *)ssGetOutputPortSignal_wrapper
-    (chartInstance->S, 31);
+    (chartInstance->S, 32);
 }
 
 /* SFunction Glue Code */
@@ -30243,10 +30377,10 @@ extern void utFree(void*);
 static void init_test_point_mapping_info(SimStruct *S);
 void sf_c1_GCU_Model_genCode_get_check_sum(mxArray *plhs[])
 {
-  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(964471740U);
-  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(1009879218U);
-  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(1300144076U);
-  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(4179796161U);
+  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(2651652759U);
+  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(771518444U);
+  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(3150777972U);
+  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(3592186737U);
 }
 
 mxArray* sf_c1_GCU_Model_genCode_get_post_codegen_info(void);
@@ -30260,7 +30394,7 @@ mxArray *sf_c1_GCU_Model_genCode_get_autoinheritance_info(void)
     autoinheritanceFields);
 
   {
-    mxArray *mxChecksum = mxCreateString("l8hdQC0PvBcln9xjEDU4cB");
+    mxArray *mxChecksum = mxCreateString("nV3alFnwbc09vzuFxZjzo");
     mxSetField(mxAutoinheritanceInfo,0,"checksum",mxChecksum);
   }
 
@@ -30676,7 +30810,7 @@ mxArray *sf_c1_GCU_Model_genCode_get_autoinheritance_info(void)
   {
     const char *dataFields[] = { "size", "type", "complexity" };
 
-    mxArray *mxData = mxCreateStructMatrix(1,4,3,dataFields);
+    mxArray *mxData = mxCreateStructMatrix(1,5,3,dataFields);
 
     {
       mxArray *mxSize = mxCreateDoubleMatrix(1,0,mxREAL);
@@ -30754,6 +30888,25 @@ mxArray *sf_c1_GCU_Model_genCode_get_autoinheritance_info(void)
     }
 
     mxSetField(mxData,3,"complexity",mxCreateDoubleScalar(0));
+
+    {
+      mxArray *mxSize = mxCreateDoubleMatrix(1,0,mxREAL);
+      double *pr = mxGetPr(mxSize);
+      mxSetField(mxData,4,"size",mxSize);
+    }
+
+    {
+      const char *typeFields[] = { "base", "fixpt", "isFixedPointType" };
+
+      mxArray *mxType = mxCreateStructMatrix(1,1,sizeof(typeFields)/sizeof
+        (typeFields[0]),typeFields);
+      mxSetField(mxType,0,"base",mxCreateDoubleScalar(7));
+      mxSetField(mxType,0,"fixpt",mxCreateDoubleMatrix(0,0,mxREAL));
+      mxSetField(mxType,0,"isFixedPointType",mxCreateDoubleScalar(0));
+      mxSetField(mxData,4,"type",mxType);
+    }
+
+    mxSetField(mxData,4,"complexity",mxCreateDoubleScalar(0));
     mxSetField(mxAutoinheritanceInfo,0,"outputs",mxData);
   }
 
@@ -30830,22 +30983,22 @@ static const mxArray *sf_get_sim_state_info_c1_GCU_Model_genCode(void)
 
   mxArray *mxInfo = mxCreateStructMatrix(1, 1, 2, infoFields);
   const char *infoEncStr[] = {
-    "100 S1x10'type','srcId','name','auxInfo'{{M[1],M[1073],T\"antiStallEnable\",},{M[1],M[123],T\"clutchCurrVal\",},{M[1],M[834],T\"lastModeCom\",},{M[1],M[833],T\"stateFb\",},{M[3],M[550],T\"aacCounter\",},{M[3],M[563],T\"aac_clutchStep\",},{M[3],M[561],T\"aac_clutchValue\",},{M[3],M[564],T\"aac_dtRelease\",},{M[3],M[958],T\"autoXCounter\",},{M[3],M[1094],T\"autoXCounter\",}}",
-    "100 S1x10'type','srcId','name','auxInfo'{{M[3],M[1201],T\"autoXCounter\",},{M[3],M[1274],T\"autoXCounter\",},{M[3],M[1346],T\"autoXCounter\",},{M[3],M[1414],T\"autoXCounter\",},{M[3],M[1482],T\"autoXCounter\",},{M[3],M[1550],T\"autoXCounter\",},{M[3],M[1618],T\"autoXCounter\",},{M[3],M[1686],T\"autoXCounter\",},{M[3],M[960],T\"autoX_clutchStep\",},{M[3],M[1096],T\"autoX_clutchStep\",}}",
-    "100 S1x10'type','srcId','name','auxInfo'{{M[3],M[1203],T\"autoX_clutchStep\",},{M[3],M[1276],T\"autoX_clutchStep\",},{M[3],M[1348],T\"autoX_clutchStep\",},{M[3],M[1416],T\"autoX_clutchStep\",},{M[3],M[1484],T\"autoX_clutchStep\",},{M[3],M[1552],T\"autoX_clutchStep\",},{M[3],M[1620],T\"autoX_clutchStep\",},{M[3],M[1688],T\"autoX_clutchStep\",},{M[3],M[959],T\"autoX_clutchValue\",},{M[3],M[1095],T\"autoX_clutchValue\",}}",
-    "100 S1x10'type','srcId','name','auxInfo'{{M[3],M[1202],T\"autoX_clutchValue\",},{M[3],M[1275],T\"autoX_clutchValue\",},{M[3],M[1347],T\"autoX_clutchValue\",},{M[3],M[1415],T\"autoX_clutchValue\",},{M[3],M[1483],T\"autoX_clutchValue\",},{M[3],M[1551],T\"autoX_clutchValue\",},{M[3],M[1619],T\"autoX_clutchValue\",},{M[3],M[1687],T\"autoX_clutchValue\",},{M[3],M[961],T\"autoX_dtRelease\",},{M[3],M[1097],T\"autoX_dtRelease\",}}",
-    "100 S1x10'type','srcId','name','auxInfo'{{M[3],M[1204],T\"autoX_dtRelease\",},{M[3],M[1277],T\"autoX_dtRelease\",},{M[3],M[1349],T\"autoX_dtRelease\",},{M[3],M[1417],T\"autoX_dtRelease\",},{M[3],M[1485],T\"autoX_dtRelease\",},{M[3],M[1553],T\"autoX_dtRelease\",},{M[3],M[1621],T\"autoX_dtRelease\",},{M[3],M[1689],T\"autoX_dtRelease\",},{M[3],M[1063],T\"buzzerCounter\",},{M[3],M[950],T\"counterWait\",}}",
-    "100 S1x10'type','srcId','name','auxInfo'{{M[3],M[1068],T\"counterWait\",},{M[3],M[627],T\"lastAacCom\",},{M[3],M[1043],T\"lastAutoXCom\",},{M[3],M[484],T\"lastCom\",},{M[3],M[715],T\"lastShift\",},{M[3],M[681],T\"lastShiftCom\",},{M[3],M[1174],T\"lastSlip\",},{M[3],M[1225],T\"lastSlip\",},{M[3],M[1298],T\"lastSlip\",},{M[3],M[1370],T\"lastSlip\",}}",
-    "100 S1x10'type','srcId','name','auxInfo'{{M[3],M[1438],T\"lastSlip\",},{M[3],M[1506],T\"lastSlip\",},{M[3],M[1574],T\"lastSlip\",},{M[3],M[1642],T\"lastSlip\",},{M[3],M[1710],T\"lastSlip\",},{M[3],M[488],T\"startCounter\",},{M[3],M[45],T\"ticksCounter\",},{M[3],M[938],T\"timerCounter\",},{M[8],M[0],T\"is_active_c1_GCU_Model_genCode\",},{M[8],M[1],T\"is_active_GEARSHIFT\",}}",
-    "100 S1x10'type','srcId','name','auxInfo'{{M[8],M[31],T\"is_active_NEUTRAL_STATE\",},{M[8],M[418],T\"is_active_MODES\",},{M[8],M[479],T\"is_active_START_ENGINE\",},{M[8],M[929],T\"is_active_SCAN_ADC\",},{M[8],M[940],T\"is_active_EEPROM_TRIGGER\",},{M[8],M[1069],T\"is_active_ANTISTALL_ENABLE\",},{M[9],M[1],T\"is_GEARSHIFT\",},{M[9],M[9],T\"is_UP_START\",},{M[9],M[10],T\"is_UP_PUSH\",},{M[9],M[11],T\"is_UP_REBOUND\",}}",
-    "100 S1x10'type','srcId','name','auxInfo'{{M[9],M[14],T\"is_DOWN_START\",},{M[9],M[17],T\"is_DOWN_BRAKE\",},{M[9],M[31],T\"is_NEUTRAL_STATE\",},{M[9],M[418],T\"is_MODES\",},{M[9],M[434],T\"is_ACC\",},{M[9],M[479],T\"is_START_ENGINE\",},{M[9],M[538],T\"is_ACTIVE\",},{M[9],M[693],T\"is_UPSHIFTING\",},{M[9],M[697],T\"is_DOWNSHIFTING\",},{M[9],M[727],T\"is_MANUAL_MODES\",}}",
-    "100 S1x10'type','srcId','name','auxInfo'{{M[9],M[820],T\"is_ACCELERATION\",},{M[9],M[929],T\"is_SCAN_ADC\",},{M[9],M[940],T\"is_EEPROM_TRIGGER\",},{M[9],M[951],T\"is_AUTOCROSS\",},{M[9],M[974],T\"is_LAUNCH\",},{M[9],M[985],T\"is_ACTIVE\",},{M[9],M[1069],T\"is_ANTISTALL_ENABLE\",},{M[9],M[1098],T\"is_LAUNCH0\",},{M[9],M[1106],T\"is_ACTIVE\",},{M[9],M[1157],T\"is_ACCELERATION_PID\",}}",
-    "100 S1x10'type','srcId','name','auxInfo'{{M[9],M[1166],T\"is_RELEASE\",},{M[9],M[1205],T\"is_LAUNCH1\",},{M[9],M[1213],T\"is_ACTIVE\",},{M[9],M[1226],T\"is_RELEASE\",},{M[9],M[1278],T\"is_LAUNCH2\",},{M[9],M[1286],T\"is_ACTIVE\",},{M[9],M[1299],T\"is_RELEASE\",},{M[9],M[1350],T\"is_LAUNCH3\",},{M[9],M[1358],T\"is_ACTIVE\",},{M[9],M[1371],T\"is_RELEASE\",}}",
-    "100 S1x10'type','srcId','name','auxInfo'{{M[9],M[1418],T\"is_LAUNCH4\",},{M[9],M[1426],T\"is_ACTIVE\",},{M[9],M[1439],T\"is_RELEASE\",},{M[9],M[1486],T\"is_LAUNCH5\",},{M[9],M[1494],T\"is_ACTIVE\",},{M[9],M[1507],T\"is_RELEASE\",},{M[9],M[1554],T\"is_LAUNCH6\",},{M[9],M[1562],T\"is_ACTIVE\",},{M[9],M[1575],T\"is_RELEASE\",},{M[9],M[1622],T\"is_LAUNCH7\",}}",
-    "100 S1x5'type','srcId','name','auxInfo'{{M[9],M[1630],T\"is_ACTIVE\",},{M[9],M[1643],T\"is_RELEASE\",},{M[9],M[1690],T\"is_LAUNCH8\",},{M[9],M[1698],T\"is_ACTIVE\",},{M[9],M[1711],T\"is_RELEASE\",}}"
+    "100 S1x10'type','srcId','name','auxInfo'{{M[1],M[1073],T\"antiStallEnable\",},{M[1],M[123],T\"clutchCurrVal\",},{M[1],M[834],T\"lastModeCom\",},{M[1],M[1839],T\"pidCounter\",},{M[1],M[833],T\"stateFb\",},{M[3],M[550],T\"aacCounter\",},{M[3],M[563],T\"aac_clutchStep\",},{M[3],M[561],T\"aac_clutchValue\",},{M[3],M[564],T\"aac_dtRelease\",},{M[3],M[958],T\"autoXCounter\",}}",
+    "100 S1x10'type','srcId','name','auxInfo'{{M[3],M[1094],T\"autoXCounter\",},{M[3],M[1201],T\"autoXCounter\",},{M[3],M[1274],T\"autoXCounter\",},{M[3],M[1346],T\"autoXCounter\",},{M[3],M[1414],T\"autoXCounter\",},{M[3],M[1482],T\"autoXCounter\",},{M[3],M[1550],T\"autoXCounter\",},{M[3],M[1618],T\"autoXCounter\",},{M[3],M[1686],T\"autoXCounter\",},{M[3],M[960],T\"autoX_clutchStep\",}}",
+    "100 S1x10'type','srcId','name','auxInfo'{{M[3],M[1096],T\"autoX_clutchStep\",},{M[3],M[1203],T\"autoX_clutchStep\",},{M[3],M[1276],T\"autoX_clutchStep\",},{M[3],M[1348],T\"autoX_clutchStep\",},{M[3],M[1416],T\"autoX_clutchStep\",},{M[3],M[1484],T\"autoX_clutchStep\",},{M[3],M[1552],T\"autoX_clutchStep\",},{M[3],M[1620],T\"autoX_clutchStep\",},{M[3],M[1688],T\"autoX_clutchStep\",},{M[3],M[959],T\"autoX_clutchValue\",}}",
+    "100 S1x10'type','srcId','name','auxInfo'{{M[3],M[1095],T\"autoX_clutchValue\",},{M[3],M[1202],T\"autoX_clutchValue\",},{M[3],M[1275],T\"autoX_clutchValue\",},{M[3],M[1347],T\"autoX_clutchValue\",},{M[3],M[1415],T\"autoX_clutchValue\",},{M[3],M[1483],T\"autoX_clutchValue\",},{M[3],M[1551],T\"autoX_clutchValue\",},{M[3],M[1619],T\"autoX_clutchValue\",},{M[3],M[1687],T\"autoX_clutchValue\",},{M[3],M[961],T\"autoX_dtRelease\",}}",
+    "100 S1x10'type','srcId','name','auxInfo'{{M[3],M[1097],T\"autoX_dtRelease\",},{M[3],M[1204],T\"autoX_dtRelease\",},{M[3],M[1277],T\"autoX_dtRelease\",},{M[3],M[1349],T\"autoX_dtRelease\",},{M[3],M[1417],T\"autoX_dtRelease\",},{M[3],M[1485],T\"autoX_dtRelease\",},{M[3],M[1553],T\"autoX_dtRelease\",},{M[3],M[1621],T\"autoX_dtRelease\",},{M[3],M[1689],T\"autoX_dtRelease\",},{M[3],M[1063],T\"buzzerCounter\",}}",
+    "100 S1x10'type','srcId','name','auxInfo'{{M[3],M[950],T\"counterWait\",},{M[3],M[1068],T\"counterWait\",},{M[3],M[627],T\"lastAacCom\",},{M[3],M[1043],T\"lastAutoXCom\",},{M[3],M[484],T\"lastCom\",},{M[3],M[715],T\"lastShift\",},{M[3],M[681],T\"lastShiftCom\",},{M[3],M[1174],T\"lastSlip\",},{M[3],M[1225],T\"lastSlip\",},{M[3],M[1298],T\"lastSlip\",}}",
+    "100 S1x10'type','srcId','name','auxInfo'{{M[3],M[1370],T\"lastSlip\",},{M[3],M[1438],T\"lastSlip\",},{M[3],M[1506],T\"lastSlip\",},{M[3],M[1574],T\"lastSlip\",},{M[3],M[1642],T\"lastSlip\",},{M[3],M[1710],T\"lastSlip\",},{M[3],M[488],T\"startCounter\",},{M[3],M[45],T\"ticksCounter\",},{M[3],M[938],T\"timerCounter\",},{M[8],M[0],T\"is_active_c1_GCU_Model_genCode\",}}",
+    "100 S1x10'type','srcId','name','auxInfo'{{M[8],M[1],T\"is_active_GEARSHIFT\",},{M[8],M[31],T\"is_active_NEUTRAL_STATE\",},{M[8],M[418],T\"is_active_MODES\",},{M[8],M[479],T\"is_active_START_ENGINE\",},{M[8],M[929],T\"is_active_SCAN_ADC\",},{M[8],M[940],T\"is_active_EEPROM_TRIGGER\",},{M[8],M[1069],T\"is_active_ANTISTALL_ENABLE\",},{M[9],M[1],T\"is_GEARSHIFT\",},{M[9],M[9],T\"is_UP_START\",},{M[9],M[10],T\"is_UP_PUSH\",}}",
+    "100 S1x10'type','srcId','name','auxInfo'{{M[9],M[11],T\"is_UP_REBOUND\",},{M[9],M[14],T\"is_DOWN_START\",},{M[9],M[17],T\"is_DOWN_BRAKE\",},{M[9],M[31],T\"is_NEUTRAL_STATE\",},{M[9],M[418],T\"is_MODES\",},{M[9],M[434],T\"is_ACC\",},{M[9],M[479],T\"is_START_ENGINE\",},{M[9],M[538],T\"is_ACTIVE\",},{M[9],M[693],T\"is_UPSHIFTING\",},{M[9],M[697],T\"is_DOWNSHIFTING\",}}",
+    "100 S1x10'type','srcId','name','auxInfo'{{M[9],M[727],T\"is_MANUAL_MODES\",},{M[9],M[820],T\"is_ACCELERATION\",},{M[9],M[929],T\"is_SCAN_ADC\",},{M[9],M[940],T\"is_EEPROM_TRIGGER\",},{M[9],M[951],T\"is_AUTOCROSS\",},{M[9],M[974],T\"is_LAUNCH\",},{M[9],M[985],T\"is_ACTIVE\",},{M[9],M[1069],T\"is_ANTISTALL_ENABLE\",},{M[9],M[1098],T\"is_LAUNCH0\",},{M[9],M[1106],T\"is_ACTIVE\",}}",
+    "100 S1x10'type','srcId','name','auxInfo'{{M[9],M[1157],T\"is_ACCELERATION_PID\",},{M[9],M[1166],T\"is_RELEASE\",},{M[9],M[1205],T\"is_LAUNCH1\",},{M[9],M[1213],T\"is_ACTIVE\",},{M[9],M[1226],T\"is_RELEASE\",},{M[9],M[1278],T\"is_LAUNCH2\",},{M[9],M[1286],T\"is_ACTIVE\",},{M[9],M[1299],T\"is_RELEASE\",},{M[9],M[1350],T\"is_LAUNCH3\",},{M[9],M[1358],T\"is_ACTIVE\",}}",
+    "100 S1x10'type','srcId','name','auxInfo'{{M[9],M[1371],T\"is_RELEASE\",},{M[9],M[1418],T\"is_LAUNCH4\",},{M[9],M[1426],T\"is_ACTIVE\",},{M[9],M[1439],T\"is_RELEASE\",},{M[9],M[1486],T\"is_LAUNCH5\",},{M[9],M[1494],T\"is_ACTIVE\",},{M[9],M[1507],T\"is_RELEASE\",},{M[9],M[1554],T\"is_LAUNCH6\",},{M[9],M[1562],T\"is_ACTIVE\",},{M[9],M[1575],T\"is_RELEASE\",}}",
+    "100 S1x6'type','srcId','name','auxInfo'{{M[9],M[1622],T\"is_LAUNCH7\",},{M[9],M[1630],T\"is_ACTIVE\",},{M[9],M[1643],T\"is_RELEASE\",},{M[9],M[1690],T\"is_LAUNCH8\",},{M[9],M[1698],T\"is_ACTIVE\",},{M[9],M[1711],T\"is_RELEASE\",}}"
   };
 
-  mxArray *mxVarInfo = sf_mex_decode_encoded_mx_struct_array(infoEncStr, 125, 10);
+  mxArray *mxVarInfo = sf_mex_decode_encoded_mx_struct_array(infoEncStr, 126, 10);
   mxArray *mxChecksum = mxCreateDoubleMatrix(1, 4, mxREAL);
   sf_c1_GCU_Model_genCode_get_check_sum(&mxChecksum);
   mxSetField(mxInfo, 0, infoFields[0], mxChecksum);
@@ -30877,7 +31030,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
            188,
            431,
            0,
-           180,
+           181,
            19,
            0,
            0,
@@ -30989,28 +31142,28 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
           _SFD_SET_DATA_PROPS(85,2,0,1,"lastModeCom");
           _SFD_SET_DATA_PROPS(86,2,0,1,"stateFb");
           _SFD_SET_DATA_PROPS(87,2,0,1,"antiStallEnable");
-          _SFD_SET_DATA_PROPS(88,7,0,0,"GEAR_COMMAND_DOWN");
-          _SFD_SET_DATA_PROPS(89,7,0,0,"GEAR_COMMAND_NEUTRAL_DOWN");
-          _SFD_SET_DATA_PROPS(90,7,0,0,"GEAR_COMMAND_NEUTRAL_UP");
-          _SFD_SET_DATA_PROPS(91,7,0,0,"GEAR_COMMAND_UP");
-          _SFD_SET_DATA_PROPS(92,7,0,0,"GEAR_COMMAND_DOWN");
-          _SFD_SET_DATA_PROPS(93,7,0,0,"GEAR_COMMAND_NEUTRAL_DOWN");
-          _SFD_SET_DATA_PROPS(94,7,0,0,"GEAR_COMMAND_NEUTRAL_UP");
-          _SFD_SET_DATA_PROPS(95,7,0,0,"GEAR_COMMAND_UP");
-          _SFD_SET_DATA_PROPS(96,7,0,0,"AAC_WORK_RATE_ms");
-          _SFD_SET_DATA_PROPS(97,7,0,0,"ACC_CODE");
-          _SFD_SET_DATA_PROPS(98,7,0,0,"DEF_RAMP_END");
-          _SFD_SET_DATA_PROPS(99,7,0,0,"DEF_RAMP_START");
-          _SFD_SET_DATA_PROPS(100,7,0,0,"DEF_RAMP_TIME");
-          _SFD_SET_DATA_PROPS(101,7,0,0,"DEF_RPM_LIMIT_1_2");
-          _SFD_SET_DATA_PROPS(102,7,0,0,"DEF_RPM_LIMIT_2_3");
-          _SFD_SET_DATA_PROPS(103,7,0,0,"DEF_RPM_LIMIT_3_4");
-          _SFD_SET_DATA_PROPS(104,7,0,0,"DEF_RPM_LIMIT_4_5");
-          _SFD_SET_DATA_PROPS(105,7,0,0,"DEF_SPEED_LIMIT_1_2");
-          _SFD_SET_DATA_PROPS(106,7,0,0,"DEF_SPEED_LIMIT_2_3");
-          _SFD_SET_DATA_PROPS(107,7,0,0,"DEF_SPEED_LIMIT_3_4");
-          _SFD_SET_DATA_PROPS(108,7,0,0,"DEF_SPEED_LIMIT_4_5");
-          _SFD_SET_DATA_PROPS(109,7,0,0,"AUTOX_WORK_RATE_ms");
+          _SFD_SET_DATA_PROPS(88,2,0,1,"pidCounter");
+          _SFD_SET_DATA_PROPS(89,7,0,0,"GEAR_COMMAND_DOWN");
+          _SFD_SET_DATA_PROPS(90,7,0,0,"GEAR_COMMAND_NEUTRAL_DOWN");
+          _SFD_SET_DATA_PROPS(91,7,0,0,"GEAR_COMMAND_NEUTRAL_UP");
+          _SFD_SET_DATA_PROPS(92,7,0,0,"GEAR_COMMAND_UP");
+          _SFD_SET_DATA_PROPS(93,7,0,0,"GEAR_COMMAND_DOWN");
+          _SFD_SET_DATA_PROPS(94,7,0,0,"GEAR_COMMAND_NEUTRAL_DOWN");
+          _SFD_SET_DATA_PROPS(95,7,0,0,"GEAR_COMMAND_NEUTRAL_UP");
+          _SFD_SET_DATA_PROPS(96,7,0,0,"GEAR_COMMAND_UP");
+          _SFD_SET_DATA_PROPS(97,7,0,0,"AAC_WORK_RATE_ms");
+          _SFD_SET_DATA_PROPS(98,7,0,0,"ACC_CODE");
+          _SFD_SET_DATA_PROPS(99,7,0,0,"DEF_RAMP_END");
+          _SFD_SET_DATA_PROPS(100,7,0,0,"DEF_RAMP_START");
+          _SFD_SET_DATA_PROPS(101,7,0,0,"DEF_RAMP_TIME");
+          _SFD_SET_DATA_PROPS(102,7,0,0,"DEF_RPM_LIMIT_1_2");
+          _SFD_SET_DATA_PROPS(103,7,0,0,"DEF_RPM_LIMIT_2_3");
+          _SFD_SET_DATA_PROPS(104,7,0,0,"DEF_RPM_LIMIT_3_4");
+          _SFD_SET_DATA_PROPS(105,7,0,0,"DEF_RPM_LIMIT_4_5");
+          _SFD_SET_DATA_PROPS(106,7,0,0,"DEF_SPEED_LIMIT_1_2");
+          _SFD_SET_DATA_PROPS(107,7,0,0,"DEF_SPEED_LIMIT_2_3");
+          _SFD_SET_DATA_PROPS(108,7,0,0,"DEF_SPEED_LIMIT_3_4");
+          _SFD_SET_DATA_PROPS(109,7,0,0,"DEF_SPEED_LIMIT_4_5");
           _SFD_SET_DATA_PROPS(110,7,0,0,"AUTOX_WORK_RATE_ms");
           _SFD_SET_DATA_PROPS(111,7,0,0,"AUTOX_WORK_RATE_ms");
           _SFD_SET_DATA_PROPS(112,7,0,0,"AUTOX_WORK_RATE_ms");
@@ -31020,8 +31173,8 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
           _SFD_SET_DATA_PROPS(116,7,0,0,"AUTOX_WORK_RATE_ms");
           _SFD_SET_DATA_PROPS(117,7,0,0,"AUTOX_WORK_RATE_ms");
           _SFD_SET_DATA_PROPS(118,7,0,0,"AUTOX_WORK_RATE_ms");
-          _SFD_SET_DATA_PROPS(119,7,0,0,"data");
-          _SFD_SET_DATA_PROPS(120,8,0,0,"");
+          _SFD_SET_DATA_PROPS(119,7,0,0,"AUTOX_WORK_RATE_ms");
+          _SFD_SET_DATA_PROPS(120,7,0,0,"data");
           _SFD_SET_DATA_PROPS(121,8,0,0,"");
           _SFD_SET_DATA_PROPS(122,8,0,0,"");
           _SFD_SET_DATA_PROPS(123,8,0,0,"");
@@ -31060,7 +31213,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
           _SFD_SET_DATA_PROPS(156,8,0,0,"");
           _SFD_SET_DATA_PROPS(157,8,0,0,"");
           _SFD_SET_DATA_PROPS(158,8,0,0,"");
-          _SFD_SET_DATA_PROPS(159,9,0,0,"");
+          _SFD_SET_DATA_PROPS(159,8,0,0,"");
           _SFD_SET_DATA_PROPS(160,9,0,0,"");
           _SFD_SET_DATA_PROPS(161,9,0,0,"");
           _SFD_SET_DATA_PROPS(162,9,0,0,"");
@@ -31081,6 +31234,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
           _SFD_SET_DATA_PROPS(177,9,0,0,"");
           _SFD_SET_DATA_PROPS(178,9,0,0,"");
           _SFD_SET_DATA_PROPS(179,9,0,0,"");
+          _SFD_SET_DATA_PROPS(180,9,0,0,"");
           _SFD_EVENT_SCOPE(0,0);
           _SFD_EVENT_SCOPE(1,0);
           _SFD_EVENT_SCOPE(2,0);
@@ -32884,7 +33038,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 5, 5, 5, 5 };
+          static int sRelationalopType[] = { 5, 5 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(79,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -32922,7 +33076,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0, 0 };
 
-          static int sRelationalopType[] = { 1, 1, 1, 1, 1, 1, 1, 1 };
+          static int sRelationalopType[] = { 1, 1, 1, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(143,2,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -32947,7 +33101,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0, 0 };
 
-          static int sRelationalopType[] = { 1, 1, 1, 1, 1, 1, 1, 1 };
+          static int sRelationalopType[] = { 1, 1, 1, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(181,2,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -32972,7 +33126,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0, 0 };
 
-          static int sRelationalopType[] = { 1, 1, 1, 1, 1, 1, 1, 1 };
+          static int sRelationalopType[] = { 1, 1, 1, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(213,2,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -32997,7 +33151,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0, 0 };
 
-          static int sRelationalopType[] = { 1, 1, 1, 1, 1, 1, 1, 1 };
+          static int sRelationalopType[] = { 1, 1, 1, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(144,2,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -33064,7 +33218,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 1, 1, 1, 1 };
+          static int sRelationalopType[] = { 1, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(127,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -33107,7 +33261,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 1, 1, 1, 1 };
+          static int sRelationalopType[] = { 1, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(123,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -33135,7 +33289,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 0, 0, 0, 0 };
+          static int sRelationalopType[] = { 0, 0 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(80,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -33163,7 +33317,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 0, 0, 0, 0 };
+          static int sRelationalopType[] = { 0, 0 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(83,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -33191,7 +33345,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 0, 0, 0, 0 };
+          static int sRelationalopType[] = { 0, 0 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(86,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -33219,7 +33373,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 0, 0, 0, 0 };
+          static int sRelationalopType[] = { 0, 0 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(89,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -33248,7 +33402,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 1, 1, 1, 1 };
+          static int sRelationalopType[] = { 1, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(100,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -33273,7 +33427,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0, 0 };
 
-          static int sRelationalopType[] = { 5, 1, 5, 1, 5, 1, 5, 1 };
+          static int sRelationalopType[] = { 5, 1, 5, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(111,2,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -33301,7 +33455,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 3, 3, 3, 3 };
+          static int sRelationalopType[] = { 3, 3 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(103,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -33326,7 +33480,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 3, 3, 3, 3 };
+          static int sRelationalopType[] = { 3, 3 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(106,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -33351,7 +33505,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0, 0 };
 
-          static int sRelationalopType[] = { 1, 5, 1, 5, 1, 5, 1, 5 };
+          static int sRelationalopType[] = { 1, 5, 1, 5 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(101,2,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -33376,7 +33530,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 3, 3, 3, 3 };
+          static int sRelationalopType[] = { 3, 3 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(102,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -33401,7 +33555,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0, 0 };
 
-          static int sRelationalopType[] = { 3, 3, 3, 3, 3, 3, 3, 3 };
+          static int sRelationalopType[] = { 3, 3, 3, 3 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(110,2,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -33428,7 +33582,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 3, 3, 3, 3 };
+          static int sRelationalopType[] = { 3, 3 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(104,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -33455,7 +33609,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 0, 0, 0, 0 };
+          static int sRelationalopType[] = { 0, 0 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(133,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -33492,7 +33646,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 5, 5, 5, 5 };
+          static int sRelationalopType[] = { 5, 5 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(114,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -33529,7 +33683,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 5, 5, 5, 5 };
+          static int sRelationalopType[] = { 5, 5 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(117,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -33570,7 +33724,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 1, 1, 1, 1 };
+          static int sRelationalopType[] = { 1, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(155,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -33595,7 +33749,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0, 0 };
 
-          static int sRelationalopType[] = { 5, 1, 5, 1, 5, 1, 5, 1 };
+          static int sRelationalopType[] = { 5, 1, 5, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(156,2,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -33623,7 +33777,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 3, 3, 3, 3 };
+          static int sRelationalopType[] = { 3, 3 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(160,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -33648,7 +33802,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 3, 3, 3, 3 };
+          static int sRelationalopType[] = { 3, 3 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(161,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -33673,7 +33827,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0, 0 };
 
-          static int sRelationalopType[] = { 1, 5, 1, 5, 1, 5, 1, 5 };
+          static int sRelationalopType[] = { 1, 5, 1, 5 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(162,2,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -33698,7 +33852,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 3, 3, 3, 3 };
+          static int sRelationalopType[] = { 3, 3 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(163,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -33723,7 +33877,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0, 0 };
 
-          static int sRelationalopType[] = { 3, 3, 3, 3, 3, 3, 3, 3 };
+          static int sRelationalopType[] = { 3, 3, 3, 3 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(164,2,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -33750,7 +33904,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 3, 3, 3, 3 };
+          static int sRelationalopType[] = { 3, 3 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(166,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -33777,7 +33931,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 0, 0, 0, 0 };
+          static int sRelationalopType[] = { 0, 0 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(168,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -33814,7 +33968,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 5, 5, 5, 5 };
+          static int sRelationalopType[] = { 5, 5 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(171,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -33851,7 +34005,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 5, 5, 5, 5 };
+          static int sRelationalopType[] = { 5, 5 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(174,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -33891,7 +34045,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 1, 1, 1, 1 };
+          static int sRelationalopType[] = { 1, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(185,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -33934,7 +34088,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 1, 1, 1, 1 };
+          static int sRelationalopType[] = { 1, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(186,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -33959,7 +34113,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0, 0 };
 
-          static int sRelationalopType[] = { 5, 1, 5, 1, 5, 1, 5, 1 };
+          static int sRelationalopType[] = { 5, 1, 5, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(187,2,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -33987,7 +34141,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 3, 3, 3, 3 };
+          static int sRelationalopType[] = { 3, 3 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(191,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -34012,7 +34166,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 3, 3, 3, 3 };
+          static int sRelationalopType[] = { 3, 3 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(192,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -34037,7 +34191,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0, 0 };
 
-          static int sRelationalopType[] = { 1, 5, 1, 5, 1, 5, 1, 5 };
+          static int sRelationalopType[] = { 1, 5, 1, 5 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(193,2,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -34075,7 +34229,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 1, 1, 1, 1 };
+          static int sRelationalopType[] = { 1, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(212,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -34103,7 +34257,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 0, 0, 0, 0 };
+          static int sRelationalopType[] = { 0, 0 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(196,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -34140,7 +34294,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 5, 5, 5, 5 };
+          static int sRelationalopType[] = { 5, 5 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(199,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -34177,7 +34331,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 5, 5, 5, 5 };
+          static int sRelationalopType[] = { 5, 5 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(202,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -34217,7 +34371,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 1, 1, 1, 1 };
+          static int sRelationalopType[] = { 1, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(216,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -34242,7 +34396,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0, 0 };
 
-          static int sRelationalopType[] = { 5, 1, 5, 1, 5, 1, 5, 1 };
+          static int sRelationalopType[] = { 5, 1, 5, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(217,2,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -34270,7 +34424,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 3, 3, 3, 3 };
+          static int sRelationalopType[] = { 3, 3 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(221,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -34295,7 +34449,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 3, 3, 3, 3 };
+          static int sRelationalopType[] = { 3, 3 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(222,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -34320,7 +34474,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0, 0 };
 
-          static int sRelationalopType[] = { 1, 5, 1, 5, 1, 5, 1, 5 };
+          static int sRelationalopType[] = { 1, 5, 1, 5 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(223,2,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -34352,13 +34506,22 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
         }
 
         {
+          static unsigned int sStartSaturateMap[] = { 61 };
+
+          static unsigned int sEndSaturateMap[] = { 73 };
+
+          _SFD_CV_INIT_TRANSITION_SATURATION(226,1,&(sStartSaturateMap[0]),
+            &(sEndSaturateMap[0]));
+        }
+
+        {
           static unsigned int sStartRelationalopMap[] = { 1 };
 
           static unsigned int sEndRelationalopMap[] = { 30 };
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 1, 1, 1, 1 };
+          static int sRelationalopType[] = { 1, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(226,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -34386,7 +34549,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 0, 0, 0, 0 };
+          static int sRelationalopType[] = { 0, 0 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(229,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -34423,7 +34586,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 5, 5, 5, 5 };
+          static int sRelationalopType[] = { 5, 5 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(232,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -34460,7 +34623,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 5, 5, 5, 5 };
+          static int sRelationalopType[] = { 5, 5 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(235,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -34500,7 +34663,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 1, 1, 1, 1 };
+          static int sRelationalopType[] = { 1, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(241,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -34525,7 +34688,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0, 0 };
 
-          static int sRelationalopType[] = { 5, 1, 5, 1, 5, 1, 5, 1 };
+          static int sRelationalopType[] = { 5, 1, 5, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(242,2,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -34553,7 +34716,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 3, 3, 3, 3 };
+          static int sRelationalopType[] = { 3, 3 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(246,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -34578,7 +34741,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 3, 3, 3, 3 };
+          static int sRelationalopType[] = { 3, 3 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(247,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -34603,7 +34766,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0, 0 };
 
-          static int sRelationalopType[] = { 1, 5, 1, 5, 1, 5, 1, 5 };
+          static int sRelationalopType[] = { 1, 5, 1, 5 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(248,2,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -34641,7 +34804,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 1, 1, 1, 1 };
+          static int sRelationalopType[] = { 1, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(251,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -34669,7 +34832,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 0, 0, 0, 0 };
+          static int sRelationalopType[] = { 0, 0 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(254,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -34706,7 +34869,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 5, 5, 5, 5 };
+          static int sRelationalopType[] = { 5, 5 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(257,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -34743,7 +34906,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 5, 5, 5, 5 };
+          static int sRelationalopType[] = { 5, 5 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(260,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -34783,7 +34946,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 1, 1, 1, 1 };
+          static int sRelationalopType[] = { 1, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(267,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -34808,7 +34971,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0, 0 };
 
-          static int sRelationalopType[] = { 5, 1, 5, 1, 5, 1, 5, 1 };
+          static int sRelationalopType[] = { 5, 1, 5, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(268,2,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -34836,7 +34999,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 3, 3, 3, 3 };
+          static int sRelationalopType[] = { 3, 3 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(272,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -34861,7 +35024,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 3, 3, 3, 3 };
+          static int sRelationalopType[] = { 3, 3 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(273,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -34886,7 +35049,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0, 0 };
 
-          static int sRelationalopType[] = { 1, 5, 1, 5, 1, 5, 1, 5 };
+          static int sRelationalopType[] = { 1, 5, 1, 5 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(274,2,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -34924,7 +35087,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 1, 1, 1, 1 };
+          static int sRelationalopType[] = { 1, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(277,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -34952,7 +35115,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 0, 0, 0, 0 };
+          static int sRelationalopType[] = { 0, 0 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(280,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -34989,7 +35152,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 5, 5, 5, 5 };
+          static int sRelationalopType[] = { 5, 5 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(283,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -35026,7 +35189,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 5, 5, 5, 5 };
+          static int sRelationalopType[] = { 5, 5 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(286,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -35066,7 +35229,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 1, 1, 1, 1 };
+          static int sRelationalopType[] = { 1, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(291,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -35091,7 +35254,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0, 0 };
 
-          static int sRelationalopType[] = { 5, 1, 5, 1, 5, 1, 5, 1 };
+          static int sRelationalopType[] = { 5, 1, 5, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(292,2,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -35119,7 +35282,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 3, 3, 3, 3 };
+          static int sRelationalopType[] = { 3, 3 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(296,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -35144,7 +35307,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 3, 3, 3, 3 };
+          static int sRelationalopType[] = { 3, 3 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(297,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -35169,7 +35332,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0, 0 };
 
-          static int sRelationalopType[] = { 1, 5, 1, 5, 1, 5, 1, 5 };
+          static int sRelationalopType[] = { 1, 5, 1, 5 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(298,2,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -35207,7 +35370,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 1, 1, 1, 1 };
+          static int sRelationalopType[] = { 1, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(301,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -35235,7 +35398,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 0, 0, 0, 0 };
+          static int sRelationalopType[] = { 0, 0 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(304,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -35272,7 +35435,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 5, 5, 5, 5 };
+          static int sRelationalopType[] = { 5, 5 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(307,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -35309,7 +35472,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 5, 5, 5, 5 };
+          static int sRelationalopType[] = { 5, 5 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(310,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -35349,7 +35512,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 1, 1, 1, 1 };
+          static int sRelationalopType[] = { 1, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(315,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -35374,7 +35537,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0, 0 };
 
-          static int sRelationalopType[] = { 5, 1, 5, 1, 5, 1, 5, 1 };
+          static int sRelationalopType[] = { 5, 1, 5, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(316,2,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -35402,7 +35565,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 3, 3, 3, 3 };
+          static int sRelationalopType[] = { 3, 3 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(320,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -35427,7 +35590,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 3, 3, 3, 3 };
+          static int sRelationalopType[] = { 3, 3 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(321,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -35452,7 +35615,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0, 0 };
 
-          static int sRelationalopType[] = { 1, 5, 1, 5, 1, 5, 1, 5 };
+          static int sRelationalopType[] = { 1, 5, 1, 5 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(322,2,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -35490,7 +35653,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 1, 1, 1, 1 };
+          static int sRelationalopType[] = { 1, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(325,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -35518,7 +35681,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 0, 0, 0, 0 };
+          static int sRelationalopType[] = { 0, 0 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(328,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -35555,7 +35718,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 5, 5, 5, 5 };
+          static int sRelationalopType[] = { 5, 5 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(331,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -35592,7 +35755,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 5, 5, 5, 5 };
+          static int sRelationalopType[] = { 5, 5 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(334,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -35632,7 +35795,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 1, 1, 1, 1 };
+          static int sRelationalopType[] = { 1, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(339,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -35657,7 +35820,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0, 0 };
 
-          static int sRelationalopType[] = { 5, 1, 5, 1, 5, 1, 5, 1 };
+          static int sRelationalopType[] = { 5, 1, 5, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(340,2,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -35685,7 +35848,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 3, 3, 3, 3 };
+          static int sRelationalopType[] = { 3, 3 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(344,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -35710,7 +35873,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 3, 3, 3, 3 };
+          static int sRelationalopType[] = { 3, 3 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(345,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -35735,7 +35898,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0, 0 };
 
-          static int sRelationalopType[] = { 1, 5, 1, 5, 1, 5, 1, 5 };
+          static int sRelationalopType[] = { 1, 5, 1, 5 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(346,2,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -35773,7 +35936,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 1, 1, 1, 1 };
+          static int sRelationalopType[] = { 1, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(349,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -35801,7 +35964,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 0, 0, 0, 0 };
+          static int sRelationalopType[] = { 0, 0 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(352,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -35838,7 +36001,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 5, 5, 5, 5 };
+          static int sRelationalopType[] = { 5, 5 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(355,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -35875,7 +36038,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 5, 5, 5, 5 };
+          static int sRelationalopType[] = { 5, 5 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(358,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -35915,7 +36078,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 1, 1, 1, 1 };
+          static int sRelationalopType[] = { 1, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(363,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -35940,7 +36103,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0, 0 };
 
-          static int sRelationalopType[] = { 5, 1, 5, 1, 5, 1, 5, 1 };
+          static int sRelationalopType[] = { 5, 1, 5, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(364,2,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -35968,7 +36131,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 3, 3, 3, 3 };
+          static int sRelationalopType[] = { 3, 3 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(368,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -35993,7 +36156,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 3, 3, 3, 3 };
+          static int sRelationalopType[] = { 3, 3 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(369,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -36018,7 +36181,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0, 0 };
 
-          static int sRelationalopType[] = { 1, 5, 1, 5, 1, 5, 1, 5 };
+          static int sRelationalopType[] = { 1, 5, 1, 5 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(370,2,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -36056,7 +36219,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 1, 1, 1, 1 };
+          static int sRelationalopType[] = { 1, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(373,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -36084,7 +36247,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 0, 0, 0, 0 };
+          static int sRelationalopType[] = { 0, 0 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(376,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -36121,7 +36284,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 5, 5, 5, 5 };
+          static int sRelationalopType[] = { 5, 5 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(379,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -36158,7 +36321,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 5, 5, 5, 5 };
+          static int sRelationalopType[] = { 5, 5 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(382,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -36198,7 +36361,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 1, 1, 1, 1 };
+          static int sRelationalopType[] = { 1, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(387,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -36223,7 +36386,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0, 0 };
 
-          static int sRelationalopType[] = { 5, 1, 5, 1, 5, 1, 5, 1 };
+          static int sRelationalopType[] = { 5, 1, 5, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(388,2,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -36251,7 +36414,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 3, 3, 3, 3 };
+          static int sRelationalopType[] = { 3, 3 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(392,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -36276,7 +36439,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 3, 3, 3, 3 };
+          static int sRelationalopType[] = { 3, 3 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(393,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -36301,7 +36464,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0, 0 };
 
-          static int sRelationalopType[] = { 1, 5, 1, 5, 1, 5, 1, 5 };
+          static int sRelationalopType[] = { 1, 5, 1, 5 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(394,2,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -36339,7 +36502,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 1, 1, 1, 1 };
+          static int sRelationalopType[] = { 1, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(397,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -36367,7 +36530,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 0, 0, 0, 0 };
+          static int sRelationalopType[] = { 0, 0 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(400,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -36404,7 +36567,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 5, 5, 5, 5 };
+          static int sRelationalopType[] = { 5, 5 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(403,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -36441,7 +36604,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 5, 5, 5, 5 };
+          static int sRelationalopType[] = { 5, 5 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(406,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -36516,7 +36679,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 1, 1, 1, 1 };
+          static int sRelationalopType[] = { 1, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(182,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -36563,7 +36726,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 2, 2, 2, 2 };
+          static int sRelationalopType[] = { 2, 2 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(2,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -36588,7 +36751,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 0, 0, 0, 0 };
+          static int sRelationalopType[] = { 0, 0 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(7,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -36629,7 +36792,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 0, 0, 0, 0 };
+          static int sRelationalopType[] = { 0, 0 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(12,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -36654,7 +36817,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 0, 0, 0, 0 };
+          static int sRelationalopType[] = { 0, 0 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(6,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -36679,7 +36842,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 0, 0, 0, 0 };
+          static int sRelationalopType[] = { 0, 0 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(4,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -36704,7 +36867,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 0, 0, 0, 0 };
+          static int sRelationalopType[] = { 0, 0 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(5,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -36771,7 +36934,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 0, 0, 0, 0 };
+          static int sRelationalopType[] = { 0, 0 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(9,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -36796,7 +36959,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 0, 0, 0, 0 };
+          static int sRelationalopType[] = { 0, 0 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(11,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -36821,7 +36984,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 0, 0, 0, 0 };
+          static int sRelationalopType[] = { 0, 0 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(10,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -36848,7 +37011,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 3, 3, 3, 3 };
+          static int sRelationalopType[] = { 3, 3 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(67,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -36875,7 +37038,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 3, 3, 3, 3 };
+          static int sRelationalopType[] = { 3, 3 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(69,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -36904,7 +37067,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 2, 2, 2, 2 };
+          static int sRelationalopType[] = { 2, 2 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(72,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -37009,7 +37172,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 0, 0, 0, 0 };
+          static int sRelationalopType[] = { 0, 0 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(46,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -37059,7 +37222,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 0, 0, 0, 0 };
+          static int sRelationalopType[] = { 0, 0 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(51,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -37101,7 +37264,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 0, 0, 0, 0 };
+          static int sRelationalopType[] = { 0, 0 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(54,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -37142,7 +37305,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 0, 0, 0, 0 };
+          static int sRelationalopType[] = { 0, 0 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(47,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -37189,7 +37352,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { -1 };
 
-          static int sRelationalopType[] = { 5, 5, 5, 5 };
+          static int sRelationalopType[] = { 5, 5 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(151,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -37218,7 +37381,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 1, 1, 1, 1 };
+          static int sRelationalopType[] = { 1, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(146,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -37243,8 +37406,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0, 0, 0 };
 
-          static int sRelationalopType[] = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-          };
+          static int sRelationalopType[] = { 1, 1, 1, 1, 1, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(93,3,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -37271,7 +37433,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 3, 3, 3, 3 };
+          static int sRelationalopType[] = { 3, 3 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(94,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -37312,7 +37474,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 1, 1, 1, 1 };
+          static int sRelationalopType[] = { 1, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(183,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -37337,7 +37499,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 1, 1, 1, 1 };
+          static int sRelationalopType[] = { 1, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(121,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -37364,7 +37526,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 1, 1, 1, 1 };
+          static int sRelationalopType[] = { 1, 1 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(154,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -37391,7 +37553,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 0, 0, 0, 0 };
+          static int sRelationalopType[] = { 0, 0 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(214,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -37416,7 +37578,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 0, 0, 0, 0 };
+          static int sRelationalopType[] = { 0, 0 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(420,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -37441,7 +37603,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 0, 0, 0, 0 };
+          static int sRelationalopType[] = { 0, 0 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(418,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -37466,7 +37628,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 0, 0, 0, 0 };
+          static int sRelationalopType[] = { 0, 0 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(240,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -37491,7 +37653,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 0, 0, 0, 0 };
+          static int sRelationalopType[] = { 0, 0 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(266,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -37516,7 +37678,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 0, 0, 0, 0 };
+          static int sRelationalopType[] = { 0, 0 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(412,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -37541,7 +37703,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 0, 0, 0, 0 };
+          static int sRelationalopType[] = { 0, 0 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(414,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -37566,7 +37728,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
 
           static int sRelationalopEps[] = { 0 };
 
-          static int sRelationalopType[] = { 0, 0, 0, 0 };
+          static int sRelationalopType[] = { 0, 0 };
 
           _SFD_CV_INIT_TRANSITION_RELATIONALOP(416,1,&(sStartRelationalopMap[0]),
             &(sEndRelationalopMap[0]),&(sRelationalopEps[0]),
@@ -37594,25 +37756,25 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
         _SFD_SET_DATA_COMPILED_PROPS(4,SF_UINT16,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_e_sf_marshallOut,(MexInFcnForType)c1_d_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(5,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(6,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(7,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_sf_marshallOut,(MexInFcnForType)c1_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(8,SF_UINT16,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_e_sf_marshallOut,(MexInFcnForType)c1_d_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(9,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(10,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(11,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_sf_marshallOut,(MexInFcnForType)c1_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(12,SF_UINT16,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_e_sf_marshallOut,(MexInFcnForType)c1_d_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(13,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(14,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(15,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_sf_marshallOut,(MexInFcnForType)c1_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(16,SF_UINT16,0,NULL,0,0,0,0.0,1.0,0,0,
@@ -37620,9 +37782,9 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
         _SFD_SET_DATA_COMPILED_PROPS(17,SF_UINT16,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_e_sf_marshallOut,(MexInFcnForType)c1_d_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(18,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(19,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(20,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_sf_marshallOut,(MexInFcnForType)c1_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(21,SF_UINT16,0,NULL,0,0,0,0.0,1.0,0,0,
@@ -37630,9 +37792,9 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
         _SFD_SET_DATA_COMPILED_PROPS(22,SF_UINT16,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_e_sf_marshallOut,(MexInFcnForType)c1_d_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(23,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(24,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(25,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_sf_marshallOut,(MexInFcnForType)c1_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(26,SF_UINT16,0,NULL,0,0,0,0.0,1.0,0,0,
@@ -37640,9 +37802,9 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
         _SFD_SET_DATA_COMPILED_PROPS(27,SF_UINT16,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_e_sf_marshallOut,(MexInFcnForType)c1_d_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(28,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(29,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(30,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_sf_marshallOut,(MexInFcnForType)c1_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(31,SF_UINT16,0,NULL,0,0,0,0.0,1.0,0,0,
@@ -37650,9 +37812,9 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
         _SFD_SET_DATA_COMPILED_PROPS(32,SF_UINT16,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_e_sf_marshallOut,(MexInFcnForType)c1_d_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(33,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(34,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(35,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_sf_marshallOut,(MexInFcnForType)c1_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(36,SF_UINT16,0,NULL,0,0,0,0.0,1.0,0,0,
@@ -37660,9 +37822,9 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
         _SFD_SET_DATA_COMPILED_PROPS(37,SF_UINT16,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_e_sf_marshallOut,(MexInFcnForType)c1_d_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(38,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(39,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(40,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_sf_marshallOut,(MexInFcnForType)c1_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(41,SF_UINT16,0,NULL,0,0,0,0.0,1.0,0,0,
@@ -37670,9 +37832,9 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
         _SFD_SET_DATA_COMPILED_PROPS(42,SF_UINT16,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_e_sf_marshallOut,(MexInFcnForType)c1_d_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(43,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(44,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(45,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_sf_marshallOut,(MexInFcnForType)c1_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(46,SF_UINT16,0,NULL,0,0,0,0.0,1.0,0,0,
@@ -37680,9 +37842,9 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
         _SFD_SET_DATA_COMPILED_PROPS(47,SF_UINT16,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_e_sf_marshallOut,(MexInFcnForType)c1_d_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(48,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(49,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(50,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_sf_marshallOut,(MexInFcnForType)c1_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(51,SF_UINT16,0,NULL,0,0,0,0.0,1.0,0,0,
@@ -37690,9 +37852,9 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
         _SFD_SET_DATA_COMPILED_PROPS(52,SF_UINT16,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_e_sf_marshallOut,(MexInFcnForType)c1_d_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(53,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(54,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(55,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_sf_marshallOut,(MexInFcnForType)c1_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(56,SF_UINT16,0,NULL,0,0,0,0.0,1.0,0,0,
@@ -37700,7 +37862,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
         _SFD_SET_DATA_COMPILED_PROPS(57,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_sf_marshallOut,(MexInFcnForType)c1_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(58,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(59,SF_UINT8,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_b_sf_marshallOut,(MexInFcnForType)c1_b_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(60,SF_UINT8,0,NULL,0,0,0,0.0,1.0,0,0,
@@ -37708,7 +37870,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
         _SFD_SET_DATA_COMPILED_PROPS(61,SF_UINT16,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_e_sf_marshallOut,(MexInFcnForType)c1_d_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(62,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(63,SF_UINT8,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_b_sf_marshallOut,(MexInFcnForType)c1_b_sf_marshallIn);
 
@@ -37824,8 +37986,8 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
           (MexFcnForType)c1_e_sf_marshallOut,(MexInFcnForType)c1_d_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(87,SF_UINT8,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_b_sf_marshallOut,(MexInFcnForType)c1_b_sf_marshallIn);
-        _SFD_SET_DATA_COMPILED_PROPS(88,SF_UINT16,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_e_sf_marshallOut,(MexInFcnForType)NULL);
+        _SFD_SET_DATA_COMPILED_PROPS(88,SF_UINT32,0,NULL,0,0,0,0.0,1.0,0,0,
+          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(89,SF_UINT16,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_e_sf_marshallOut,(MexInFcnForType)NULL);
         _SFD_SET_DATA_COMPILED_PROPS(90,SF_UINT16,0,NULL,0,0,0,0.0,1.0,0,0,
@@ -37844,8 +38006,8 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
           (MexFcnForType)c1_e_sf_marshallOut,(MexInFcnForType)NULL);
         _SFD_SET_DATA_COMPILED_PROPS(97,SF_UINT16,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_e_sf_marshallOut,(MexInFcnForType)NULL);
-        _SFD_SET_DATA_COMPILED_PROPS(98,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_sf_marshallOut,(MexInFcnForType)NULL);
+        _SFD_SET_DATA_COMPILED_PROPS(98,SF_UINT16,0,NULL,0,0,0,0.0,1.0,0,0,
+          (MexFcnForType)c1_e_sf_marshallOut,(MexInFcnForType)NULL);
         _SFD_SET_DATA_COMPILED_PROPS(99,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_sf_marshallOut,(MexInFcnForType)NULL);
         _SFD_SET_DATA_COMPILED_PROPS(100,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
@@ -37866,8 +38028,8 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
           (MexFcnForType)c1_sf_marshallOut,(MexInFcnForType)NULL);
         _SFD_SET_DATA_COMPILED_PROPS(108,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_sf_marshallOut,(MexInFcnForType)NULL);
-        _SFD_SET_DATA_COMPILED_PROPS(109,SF_UINT16,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_e_sf_marshallOut,(MexInFcnForType)NULL);
+        _SFD_SET_DATA_COMPILED_PROPS(109,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
+          (MexFcnForType)c1_sf_marshallOut,(MexInFcnForType)NULL);
         _SFD_SET_DATA_COMPILED_PROPS(110,SF_UINT16,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_e_sf_marshallOut,(MexInFcnForType)NULL);
         _SFD_SET_DATA_COMPILED_PROPS(111,SF_UINT16,0,NULL,0,0,0,0.0,1.0,0,0,
@@ -37886,88 +38048,88 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
           (MexFcnForType)c1_e_sf_marshallOut,(MexInFcnForType)NULL);
         _SFD_SET_DATA_COMPILED_PROPS(118,SF_UINT16,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_e_sf_marshallOut,(MexInFcnForType)NULL);
-        _SFD_SET_DATA_COMPILED_PROPS(119,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)NULL);
-        _SFD_SET_DATA_COMPILED_PROPS(120,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_l_sf_marshallOut,(MexInFcnForType)c1_g_sf_marshallIn);
+        _SFD_SET_DATA_COMPILED_PROPS(119,SF_UINT16,0,NULL,0,0,0,0.0,1.0,0,0,
+          (MexFcnForType)c1_e_sf_marshallOut,(MexInFcnForType)NULL);
+        _SFD_SET_DATA_COMPILED_PROPS(120,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)NULL);
         _SFD_SET_DATA_COMPILED_PROPS(121,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_l_sf_marshallOut,(MexInFcnForType)c1_g_sf_marshallIn);
+          (MexFcnForType)c1_m_sf_marshallOut,(MexInFcnForType)c1_h_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(122,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
-        _SFD_SET_DATA_COMPILED_PROPS(123,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
+        _SFD_SET_DATA_COMPILED_PROPS(123,SF_UINT8,0,NULL,0,0,0,0.0,1.0,0,0,
+          (MexFcnForType)c1_b_sf_marshallOut,(MexInFcnForType)c1_b_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(124,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_l_sf_marshallOut,(MexInFcnForType)c1_g_sf_marshallIn);
-        _SFD_SET_DATA_COMPILED_PROPS(125,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_m_sf_marshallOut,(MexInFcnForType)c1_h_sf_marshallIn);
+        _SFD_SET_DATA_COMPILED_PROPS(125,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
+          (MexFcnForType)c1_m_sf_marshallOut,(MexInFcnForType)c1_h_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(126,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_l_sf_marshallOut,(MexInFcnForType)c1_g_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(127,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
+          (MexFcnForType)c1_m_sf_marshallOut,(MexInFcnForType)c1_h_sf_marshallIn);
+        _SFD_SET_DATA_COMPILED_PROPS(128,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
-        _SFD_SET_DATA_COMPILED_PROPS(128,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_l_sf_marshallOut,(MexInFcnForType)c1_g_sf_marshallIn);
-        _SFD_SET_DATA_COMPILED_PROPS(129,SF_UINT8,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_b_sf_marshallOut,(MexInFcnForType)c1_b_sf_marshallIn);
+        _SFD_SET_DATA_COMPILED_PROPS(129,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(130,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_l_sf_marshallOut,(MexInFcnForType)c1_g_sf_marshallIn);
-        _SFD_SET_DATA_COMPILED_PROPS(131,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_m_sf_marshallOut,(MexInFcnForType)c1_h_sf_marshallIn);
+        _SFD_SET_DATA_COMPILED_PROPS(131,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
+          (MexFcnForType)c1_m_sf_marshallOut,(MexInFcnForType)c1_h_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(132,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
-        _SFD_SET_DATA_COMPILED_PROPS(133,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
+        _SFD_SET_DATA_COMPILED_PROPS(133,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
+          (MexFcnForType)c1_m_sf_marshallOut,(MexInFcnForType)c1_h_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(134,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
-        _SFD_SET_DATA_COMPILED_PROPS(135,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_l_sf_marshallOut,(MexInFcnForType)c1_g_sf_marshallIn);
-        _SFD_SET_DATA_COMPILED_PROPS(136,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_l_sf_marshallOut,(MexInFcnForType)c1_g_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
+        _SFD_SET_DATA_COMPILED_PROPS(135,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
+        _SFD_SET_DATA_COMPILED_PROPS(136,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(137,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(138,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(139,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_l_sf_marshallOut,(MexInFcnForType)c1_g_sf_marshallIn);
+          (MexFcnForType)c1_m_sf_marshallOut,(MexInFcnForType)c1_h_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(140,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_l_sf_marshallOut,(MexInFcnForType)c1_g_sf_marshallIn);
-        _SFD_SET_DATA_COMPILED_PROPS(141,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_m_sf_marshallOut,(MexInFcnForType)c1_h_sf_marshallIn);
+        _SFD_SET_DATA_COMPILED_PROPS(141,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
+          (MexFcnForType)c1_m_sf_marshallOut,(MexInFcnForType)c1_h_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(142,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(143,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(144,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(145,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(146,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(147,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(148,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(149,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(150,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(151,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(152,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(153,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(154,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(155,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(156,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(157,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(158,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(159,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(160,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_sf_marshallOut,(MexInFcnForType)c1_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(161,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
@@ -37975,40 +38137,41 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
         _SFD_SET_DATA_COMPILED_PROPS(162,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_sf_marshallOut,(MexInFcnForType)c1_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(163,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
-        _SFD_SET_DATA_COMPILED_PROPS(164,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_sf_marshallOut,(MexInFcnForType)c1_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
+        _SFD_SET_DATA_COMPILED_PROPS(164,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(165,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_sf_marshallOut,(MexInFcnForType)c1_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(166,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_sf_marshallOut,(MexInFcnForType)c1_sf_marshallIn);
-        _SFD_SET_DATA_COMPILED_PROPS(167,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
+        _SFD_SET_DATA_COMPILED_PROPS(167,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
+        _SFD_SET_DATA_COMPILED_PROPS(168,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_sf_marshallOut,(MexInFcnForType)c1_sf_marshallIn);
-        _SFD_SET_DATA_COMPILED_PROPS(168,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
-        _SFD_SET_DATA_COMPILED_PROPS(169,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_sf_marshallOut,(MexInFcnForType)c1_sf_marshallIn);
+        _SFD_SET_DATA_COMPILED_PROPS(169,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(170,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(171,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_sf_marshallOut,(MexInFcnForType)c1_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(172,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_sf_marshallOut,(MexInFcnForType)c1_sf_marshallIn);
-        _SFD_SET_DATA_COMPILED_PROPS(173,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
-        _SFD_SET_DATA_COMPILED_PROPS(174,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
-        _SFD_SET_DATA_COMPILED_PROPS(175,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
-        _SFD_SET_DATA_COMPILED_PROPS(176,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
+        _SFD_SET_DATA_COMPILED_PROPS(173,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_sf_marshallOut,(MexInFcnForType)c1_sf_marshallIn);
+        _SFD_SET_DATA_COMPILED_PROPS(174,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
+        _SFD_SET_DATA_COMPILED_PROPS(175,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
+        _SFD_SET_DATA_COMPILED_PROPS(176,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(177,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
+          (MexFcnForType)c1_k_sf_marshallOut,(MexInFcnForType)c1_f_sf_marshallIn);
         _SFD_SET_DATA_COMPILED_PROPS(178,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
           (MexFcnForType)c1_sf_marshallOut,(MexInFcnForType)c1_sf_marshallIn);
-        _SFD_SET_DATA_COMPILED_PROPS(179,SF_DOUBLE,0,NULL,0,0,0,0.0,1.0,0,0,
-          (MexFcnForType)c1_j_sf_marshallOut,(MexInFcnForType)c1_e_sf_marshallIn);
-        _SFD_SET_DATA_VALUE_PTR(120,(void *)(NULL));
+        _SFD_SET_DATA_COMPILED_PROPS(179,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
+          (MexFcnForType)c1_sf_marshallOut,(MexInFcnForType)c1_sf_marshallIn);
+        _SFD_SET_DATA_COMPILED_PROPS(180,SF_INT32,0,NULL,0,0,0,0.0,1.0,0,0,
+          (MexFcnForType)c1_sf_marshallOut,(MexInFcnForType)c1_sf_marshallIn);
         _SFD_SET_DATA_VALUE_PTR(121,(void *)(NULL));
         _SFD_SET_DATA_VALUE_PTR(122,(void *)(NULL));
         _SFD_SET_DATA_VALUE_PTR(123,(void *)(NULL));
@@ -38068,6 +38231,7 @@ static void chart_debug_initialization(SimStruct *S, unsigned int
         _SFD_SET_DATA_VALUE_PTR(177,(void *)(NULL));
         _SFD_SET_DATA_VALUE_PTR(178,(void *)(NULL));
         _SFD_SET_DATA_VALUE_PTR(179,(void *)(NULL));
+        _SFD_SET_DATA_VALUE_PTR(180,(void *)(NULL));
       }
     } else {
       sf_debug_reset_current_state_configuration(sfGlobalDebugInstanceStruct,
@@ -38112,58 +38276,59 @@ static void chart_debug_initialize_data_addresses(SimStruct *S)
         _SFD_SET_DATA_VALUE_PTR(81U, (void *)chartInstance->c1_currSlip);
         _SFD_SET_DATA_VALUE_PTR(82U, (void *)chartInstance->c1_currSlipTarget);
         _SFD_SET_DATA_VALUE_PTR(83U, (void *)chartInstance->c1_pidSubMode);
+        _SFD_SET_DATA_VALUE_PTR(88U, (void *)chartInstance->c1_pidCounter);
         _SFD_SET_DATA_VALUE_PTR(1U, (void *)&chartInstance->c1_lastAacCom);
         _SFD_SET_DATA_VALUE_PTR(3U, (void *)&chartInstance->c1_lastShiftCom);
         _SFD_SET_DATA_VALUE_PTR(2U, (void *)&chartInstance->c1_lastAutoXCom);
         _SFD_SET_DATA_VALUE_PTR(0U, (void *)&chartInstance->c1_buzzerCounter);
-        _SFD_SET_DATA_VALUE_PTR(90U, (void *)
+        _SFD_SET_DATA_VALUE_PTR(91U, (void *)
           &chartInstance->c1_GEAR_COMMAND_NEUTRAL_UP);
-        _SFD_SET_DATA_VALUE_PTR(89U, (void *)
+        _SFD_SET_DATA_VALUE_PTR(90U, (void *)
           &chartInstance->c1_GEAR_COMMAND_NEUTRAL_DOWN);
-        _SFD_SET_DATA_VALUE_PTR(91U, (void *)&chartInstance->c1_GEAR_COMMAND_UP);
-        _SFD_SET_DATA_VALUE_PTR(88U, (void *)
+        _SFD_SET_DATA_VALUE_PTR(92U, (void *)&chartInstance->c1_GEAR_COMMAND_UP);
+        _SFD_SET_DATA_VALUE_PTR(89U, (void *)
           &chartInstance->c1_GEAR_COMMAND_DOWN);
-        _SFD_SET_DATA_VALUE_PTR(94U, (void *)
-          &chartInstance->c1_b_GEAR_COMMAND_NEUTRAL_UP);
-        _SFD_SET_DATA_VALUE_PTR(93U, (void *)
-          &chartInstance->c1_b_GEAR_COMMAND_NEUTRAL_DOWN);
         _SFD_SET_DATA_VALUE_PTR(95U, (void *)
+          &chartInstance->c1_b_GEAR_COMMAND_NEUTRAL_UP);
+        _SFD_SET_DATA_VALUE_PTR(94U, (void *)
+          &chartInstance->c1_b_GEAR_COMMAND_NEUTRAL_DOWN);
+        _SFD_SET_DATA_VALUE_PTR(96U, (void *)
           &chartInstance->c1_b_GEAR_COMMAND_UP);
-        _SFD_SET_DATA_VALUE_PTR(92U, (void *)
+        _SFD_SET_DATA_VALUE_PTR(93U, (void *)
           &chartInstance->c1_b_GEAR_COMMAND_DOWN);
-        _SFD_SET_DATA_VALUE_PTR(96U, (void *)&chartInstance->c1_AAC_WORK_RATE_ms);
+        _SFD_SET_DATA_VALUE_PTR(97U, (void *)&chartInstance->c1_AAC_WORK_RATE_ms);
         _SFD_SET_DATA_VALUE_PTR(4U, (void *)&chartInstance->c1_aacCounter);
         _SFD_SET_DATA_VALUE_PTR(6U, (void *)&chartInstance->c1_aac_clutchValue);
         _SFD_SET_DATA_VALUE_PTR(5U, (void *)&chartInstance->c1_aac_clutchStep);
         _SFD_SET_DATA_VALUE_PTR(7U, (void *)&chartInstance->c1_aac_dtRelease);
-        _SFD_SET_DATA_VALUE_PTR(99U, (void *)&chartInstance->c1_DEF_RAMP_START);
-        _SFD_SET_DATA_VALUE_PTR(98U, (void *)&chartInstance->c1_DEF_RAMP_END);
-        _SFD_SET_DATA_VALUE_PTR(100U, (void *)&chartInstance->c1_DEF_RAMP_TIME);
-        _SFD_SET_DATA_VALUE_PTR(101U, (void *)
-          &chartInstance->c1_DEF_RPM_LIMIT_1_2);
+        _SFD_SET_DATA_VALUE_PTR(100U, (void *)&chartInstance->c1_DEF_RAMP_START);
+        _SFD_SET_DATA_VALUE_PTR(99U, (void *)&chartInstance->c1_DEF_RAMP_END);
+        _SFD_SET_DATA_VALUE_PTR(101U, (void *)&chartInstance->c1_DEF_RAMP_TIME);
         _SFD_SET_DATA_VALUE_PTR(102U, (void *)
-          &chartInstance->c1_DEF_RPM_LIMIT_2_3);
+          &chartInstance->c1_DEF_RPM_LIMIT_1_2);
         _SFD_SET_DATA_VALUE_PTR(103U, (void *)
-          &chartInstance->c1_DEF_RPM_LIMIT_3_4);
+          &chartInstance->c1_DEF_RPM_LIMIT_2_3);
         _SFD_SET_DATA_VALUE_PTR(104U, (void *)
-          &chartInstance->c1_DEF_RPM_LIMIT_4_5);
+          &chartInstance->c1_DEF_RPM_LIMIT_3_4);
         _SFD_SET_DATA_VALUE_PTR(105U, (void *)
-          &chartInstance->c1_DEF_SPEED_LIMIT_1_2);
+          &chartInstance->c1_DEF_RPM_LIMIT_4_5);
         _SFD_SET_DATA_VALUE_PTR(106U, (void *)
-          &chartInstance->c1_DEF_SPEED_LIMIT_2_3);
+          &chartInstance->c1_DEF_SPEED_LIMIT_1_2);
         _SFD_SET_DATA_VALUE_PTR(107U, (void *)
-          &chartInstance->c1_DEF_SPEED_LIMIT_3_4);
+          &chartInstance->c1_DEF_SPEED_LIMIT_2_3);
         _SFD_SET_DATA_VALUE_PTR(108U, (void *)
-          &chartInstance->c1_DEF_SPEED_LIMIT_4_5);
-        _SFD_SET_DATA_VALUE_PTR(97U, (void *)&chartInstance->c1_ACC_CODE);
+          &chartInstance->c1_DEF_SPEED_LIMIT_3_4);
         _SFD_SET_DATA_VALUE_PTR(109U, (void *)
+          &chartInstance->c1_DEF_SPEED_LIMIT_4_5);
+        _SFD_SET_DATA_VALUE_PTR(98U, (void *)&chartInstance->c1_ACC_CODE);
+        _SFD_SET_DATA_VALUE_PTR(110U, (void *)
           &chartInstance->c1_AUTOX_WORK_RATE_ms);
         _SFD_SET_DATA_VALUE_PTR(8U, (void *)&chartInstance->c1_autoXCounter);
         _SFD_SET_DATA_VALUE_PTR(10U, (void *)
           &chartInstance->c1_autoX_clutchValue);
         _SFD_SET_DATA_VALUE_PTR(9U, (void *)&chartInstance->c1_autoX_clutchStep);
         _SFD_SET_DATA_VALUE_PTR(11U, (void *)&chartInstance->c1_autoX_dtRelease);
-        _SFD_SET_DATA_VALUE_PTR(110U, (void *)
+        _SFD_SET_DATA_VALUE_PTR(111U, (void *)
           &chartInstance->c1_b_AUTOX_WORK_RATE_ms);
         _SFD_SET_DATA_VALUE_PTR(12U, (void *)&chartInstance->c1_b_autoXCounter);
         _SFD_SET_DATA_VALUE_PTR(14U, (void *)
@@ -38173,7 +38338,7 @@ static void chart_debug_initialize_data_addresses(SimStruct *S)
         _SFD_SET_DATA_VALUE_PTR(15U, (void *)
           &chartInstance->c1_b_autoX_dtRelease);
         _SFD_SET_DATA_VALUE_PTR(16U, (void *)&chartInstance->c1_lastSlip);
-        _SFD_SET_DATA_VALUE_PTR(111U, (void *)
+        _SFD_SET_DATA_VALUE_PTR(112U, (void *)
           &chartInstance->c1_c_AUTOX_WORK_RATE_ms);
         _SFD_SET_DATA_VALUE_PTR(17U, (void *)&chartInstance->c1_c_autoXCounter);
         _SFD_SET_DATA_VALUE_PTR(19U, (void *)
@@ -38183,7 +38348,7 @@ static void chart_debug_initialize_data_addresses(SimStruct *S)
         _SFD_SET_DATA_VALUE_PTR(20U, (void *)
           &chartInstance->c1_c_autoX_dtRelease);
         _SFD_SET_DATA_VALUE_PTR(21U, (void *)&chartInstance->c1_b_lastSlip);
-        _SFD_SET_DATA_VALUE_PTR(112U, (void *)
+        _SFD_SET_DATA_VALUE_PTR(113U, (void *)
           &chartInstance->c1_d_AUTOX_WORK_RATE_ms);
         _SFD_SET_DATA_VALUE_PTR(22U, (void *)&chartInstance->c1_d_autoXCounter);
         _SFD_SET_DATA_VALUE_PTR(24U, (void *)
@@ -38193,7 +38358,7 @@ static void chart_debug_initialize_data_addresses(SimStruct *S)
         _SFD_SET_DATA_VALUE_PTR(25U, (void *)
           &chartInstance->c1_d_autoX_dtRelease);
         _SFD_SET_DATA_VALUE_PTR(26U, (void *)&chartInstance->c1_c_lastSlip);
-        _SFD_SET_DATA_VALUE_PTR(113U, (void *)
+        _SFD_SET_DATA_VALUE_PTR(114U, (void *)
           &chartInstance->c1_e_AUTOX_WORK_RATE_ms);
         _SFD_SET_DATA_VALUE_PTR(27U, (void *)&chartInstance->c1_e_autoXCounter);
         _SFD_SET_DATA_VALUE_PTR(29U, (void *)
@@ -38203,7 +38368,7 @@ static void chart_debug_initialize_data_addresses(SimStruct *S)
         _SFD_SET_DATA_VALUE_PTR(30U, (void *)
           &chartInstance->c1_e_autoX_dtRelease);
         _SFD_SET_DATA_VALUE_PTR(31U, (void *)&chartInstance->c1_d_lastSlip);
-        _SFD_SET_DATA_VALUE_PTR(114U, (void *)
+        _SFD_SET_DATA_VALUE_PTR(115U, (void *)
           &chartInstance->c1_f_AUTOX_WORK_RATE_ms);
         _SFD_SET_DATA_VALUE_PTR(32U, (void *)&chartInstance->c1_f_autoXCounter);
         _SFD_SET_DATA_VALUE_PTR(34U, (void *)
@@ -38213,7 +38378,7 @@ static void chart_debug_initialize_data_addresses(SimStruct *S)
         _SFD_SET_DATA_VALUE_PTR(35U, (void *)
           &chartInstance->c1_f_autoX_dtRelease);
         _SFD_SET_DATA_VALUE_PTR(36U, (void *)&chartInstance->c1_e_lastSlip);
-        _SFD_SET_DATA_VALUE_PTR(115U, (void *)
+        _SFD_SET_DATA_VALUE_PTR(116U, (void *)
           &chartInstance->c1_g_AUTOX_WORK_RATE_ms);
         _SFD_SET_DATA_VALUE_PTR(37U, (void *)&chartInstance->c1_g_autoXCounter);
         _SFD_SET_DATA_VALUE_PTR(39U, (void *)
@@ -38223,7 +38388,7 @@ static void chart_debug_initialize_data_addresses(SimStruct *S)
         _SFD_SET_DATA_VALUE_PTR(40U, (void *)
           &chartInstance->c1_g_autoX_dtRelease);
         _SFD_SET_DATA_VALUE_PTR(41U, (void *)&chartInstance->c1_f_lastSlip);
-        _SFD_SET_DATA_VALUE_PTR(116U, (void *)
+        _SFD_SET_DATA_VALUE_PTR(117U, (void *)
           &chartInstance->c1_h_AUTOX_WORK_RATE_ms);
         _SFD_SET_DATA_VALUE_PTR(42U, (void *)&chartInstance->c1_h_autoXCounter);
         _SFD_SET_DATA_VALUE_PTR(44U, (void *)
@@ -38233,7 +38398,7 @@ static void chart_debug_initialize_data_addresses(SimStruct *S)
         _SFD_SET_DATA_VALUE_PTR(45U, (void *)
           &chartInstance->c1_h_autoX_dtRelease);
         _SFD_SET_DATA_VALUE_PTR(46U, (void *)&chartInstance->c1_g_lastSlip);
-        _SFD_SET_DATA_VALUE_PTR(117U, (void *)
+        _SFD_SET_DATA_VALUE_PTR(118U, (void *)
           &chartInstance->c1_i_AUTOX_WORK_RATE_ms);
         _SFD_SET_DATA_VALUE_PTR(47U, (void *)&chartInstance->c1_i_autoXCounter);
         _SFD_SET_DATA_VALUE_PTR(49U, (void *)
@@ -38243,7 +38408,7 @@ static void chart_debug_initialize_data_addresses(SimStruct *S)
         _SFD_SET_DATA_VALUE_PTR(50U, (void *)
           &chartInstance->c1_i_autoX_dtRelease);
         _SFD_SET_DATA_VALUE_PTR(51U, (void *)&chartInstance->c1_h_lastSlip);
-        _SFD_SET_DATA_VALUE_PTR(118U, (void *)
+        _SFD_SET_DATA_VALUE_PTR(119U, (void *)
           &chartInstance->c1_j_AUTOX_WORK_RATE_ms);
         _SFD_SET_DATA_VALUE_PTR(52U, (void *)&chartInstance->c1_j_autoXCounter);
         _SFD_SET_DATA_VALUE_PTR(54U, (void *)
@@ -38254,7 +38419,7 @@ static void chart_debug_initialize_data_addresses(SimStruct *S)
           &chartInstance->c1_j_autoX_dtRelease);
         _SFD_SET_DATA_VALUE_PTR(56U, (void *)&chartInstance->c1_i_lastSlip);
         _SFD_SET_DATA_VALUE_PTR(57U, (void *)&chartInstance->c1_ticksCounter);
-        _SFD_SET_DATA_VALUE_PTR(119U, (void *)&chartInstance->c1_data);
+        _SFD_SET_DATA_VALUE_PTR(120U, (void *)&chartInstance->c1_data);
         _SFD_SET_DATA_VALUE_PTR(58U, (void *)&chartInstance->c1_counterWait);
         _SFD_SET_DATA_VALUE_PTR(59U, (void *)&chartInstance->c1_lastCom);
         _SFD_SET_DATA_VALUE_PTR(60U, (void *)&chartInstance->c1_startCounter);
@@ -38267,7 +38432,7 @@ static void chart_debug_initialize_data_addresses(SimStruct *S)
 
 static const char* sf_get_instance_specialization(void)
 {
-  return "ssTNViIFmtenYqu3hkfk8jH";
+  return "souai9acL6b2HsyE1PJkqI";
 }
 
 static void sf_opaque_initialize_c1_GCU_Model_genCode(void *chartInstanceVar)
@@ -38443,12 +38608,12 @@ static void mdlSetWorkWidths_c1_GCU_Model_genCode(SimStruct *S)
       sf_mark_chart_expressionable_inputs(S,sf_get_instance_specialization(),
         infoStruct,1,20);
       sf_mark_chart_reusable_outputs(S,sf_get_instance_specialization(),
-        infoStruct,1,31);
+        infoStruct,1,32);
     }
 
     {
       unsigned int outPortIdx;
-      for (outPortIdx=1; outPortIdx<=31; ++outPortIdx) {
+      for (outPortIdx=1; outPortIdx<=32; ++outPortIdx) {
         ssSetOutputPortOptimizeInIR(S, outPortIdx, 1U);
       }
     }
@@ -38467,10 +38632,10 @@ static void mdlSetWorkWidths_c1_GCU_Model_genCode(SimStruct *S)
   }
 
   ssSetOptions(S,ssGetOptions(S)|SS_OPTION_WORKS_WITH_CODE_REUSE);
-  ssSetChecksum0(S,(4251591290U));
-  ssSetChecksum1(S,(3274016772U));
-  ssSetChecksum2(S,(387055492U));
-  ssSetChecksum3(S,(3913137035U));
+  ssSetChecksum0(S,(3623688680U));
+  ssSetChecksum1(S,(3059337060U));
+  ssSetChecksum2(S,(3284303775U));
+  ssSetChecksum3(S,(2587861940U));
   ssSetmdlDerivatives(S, NULL);
   ssSetExplicitFCSSCtrl(S,1);
   ssSetStateSemanticsClassicAndSynchronous(S, true);
@@ -38664,10 +38829,10 @@ static rtwCAPI_ModelMappingStaticInfo testPointMappingStaticInfo = {
   "float",
 
   {
-    4251591290U,
-    3274016772U,
-    387055492U,
-    3913137035U
+    3623688680U,
+    3059337060U,
+    3284303775U,
+    2587861940U
   }
 };
 
