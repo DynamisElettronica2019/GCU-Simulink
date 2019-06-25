@@ -7,7 +7,7 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   93 \
+    NumChartData   94 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
@@ -39,6 +39,13 @@
       Description  "StateIsActive"\
       SFName       ""\
       Path         "MODES"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_MANUAL_MODES"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "MODES.MANUAL_MODES"\
       SrcLocation  ""\
     }\
     ChartData {\

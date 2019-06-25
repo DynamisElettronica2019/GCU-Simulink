@@ -7,13 +7,13 @@
 
 enum can_data
 {
-  can_data_RPM = 0,                    /* Default value */
-  can_data_VH_SPEED,
-  can_data_TPS,
-  can_data_SLIP,
-  can_data_SLIP_TARGET,
-  can_data_GEAR_ADbits,
-  can_data_GEAR
+  can_data_RPM_INDEX = 0,              /* Default value */
+  can_data_VH_SPEED_INDEX,
+  can_data_TPS_INDEX,
+  can_data_SLIP_INDEX,
+  can_data_SLIP_TARGET_INDEX,
+  can_data_GEAR_ADbits_INDEX,
+  can_data_GEAR_INDEX
 };
 
 #endif                                 /*enum_can_data*/

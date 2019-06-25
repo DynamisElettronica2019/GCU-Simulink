@@ -9390,17 +9390,21 @@ static void c1_MANUAL_MODES(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
           c1_enter_atomic_MANUAL_MODES(chartInstance);
         }
 
-        chartInstance->c1_is_MANUAL_MODES = c1_IN_SKIDPAD;
-        c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 106, 727U, (void *)
-          &chartInstance->c1_is_MANUAL_MODES);
-        c1_sdiStreamingWrapperFcn(chartInstance, 4, 107, 729U, (int32_T)
-          (chartInstance->c1_is_MANUAL_MODES == 1));
-        c1_sdiStreamingWrapperFcn(chartInstance, 4, 108, 728U, (int32_T)
-          (chartInstance->c1_is_MANUAL_MODES == 2));
-        c1_c_sdiStreamingWrapperFcn(chartInstance, 2, 1, 418U, 3);
-        c1_c_sdiStreamingWrapperFcn(chartInstance, 2, 106, 727U, 2);
-        _SFD_CS_CALL(STATE_ACTIVE_TAG, 172U, chartInstance->c1_sfEvent);
-        chartInstance->c1_tp_SKIDPAD = 1U;
+        if (chartInstance->c1_is_MANUAL_MODES == c1_IN_SKIDPAD) {
+        } else {
+          chartInstance->c1_is_MANUAL_MODES = c1_IN_SKIDPAD;
+          c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 106, 727U, (void *)
+            &chartInstance->c1_is_MANUAL_MODES);
+          c1_sdiStreamingWrapperFcn(chartInstance, 4, 107, 729U, (int32_T)
+            (chartInstance->c1_is_MANUAL_MODES == 1));
+          c1_sdiStreamingWrapperFcn(chartInstance, 4, 108, 728U, (int32_T)
+            (chartInstance->c1_is_MANUAL_MODES == 2));
+          c1_c_sdiStreamingWrapperFcn(chartInstance, 2, 1, 418U, 3);
+          c1_c_sdiStreamingWrapperFcn(chartInstance, 2, 106, 727U, 2);
+          _SFD_CS_CALL(STATE_ACTIVE_TAG, 172U, chartInstance->c1_sfEvent);
+          chartInstance->c1_tp_SKIDPAD = 1U;
+          sf_call_output_fcn_call(chartInstance->S, 4, "Efi_setRPMLimiter", 0);
+        }
       } else {
         _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 140U, chartInstance->c1_sfEvent);
         _SFD_CT_CALL(TRANSITION_BEFORE_PROCESSING_TAG, 141U,
@@ -9644,13 +9648,20 @@ static void c1_exit_internal_MANUAL_MODES(SFc1_GCU_Model_genCodeInstanceStruct
 
    case c1_IN_SKIDPAD:
     CV_STATE_EVAL(170, 1, c1_IN_SKIDPAD);
-    chartInstance->c1_tp_SKIDPAD = 0U;
-    chartInstance->c1_is_MANUAL_MODES = c1_IN_NO_ACTIVE_CHILD;
-    c1_sdiStreamingWrapperFcn(chartInstance, 4, 107, 729U, (int32_T)
-      (chartInstance->c1_is_MANUAL_MODES == 1));
-    c1_sdiStreamingWrapperFcn(chartInstance, 4, 108, 728U, (int32_T)
-      (chartInstance->c1_is_MANUAL_MODES == 2));
-    _SFD_CS_CALL(STATE_INACTIVE_TAG, 172U, chartInstance->c1_sfEvent);
+    if (chartInstance->c1_is_MANUAL_MODES != c1_IN_SKIDPAD) {
+    } else {
+      chartInstance->c1_tp_SKIDPAD = 0U;
+      _SFD_CS_CALL(STATE_ENTER_EXIT_FUNCTION_TAG, 172U,
+                   chartInstance->c1_sfEvent);
+      sf_call_output_fcn_call(chartInstance->S, 5, "Efi_unsetRPMLimiter", 0);
+      _SFD_CS_CALL(EXIT_OUT_OF_FUNCTION_TAG, 172U, chartInstance->c1_sfEvent);
+      chartInstance->c1_is_MANUAL_MODES = c1_IN_NO_ACTIVE_CHILD;
+      c1_sdiStreamingWrapperFcn(chartInstance, 4, 107, 729U, (int32_T)
+        (chartInstance->c1_is_MANUAL_MODES == 1));
+      c1_sdiStreamingWrapperFcn(chartInstance, 4, 108, 728U, (int32_T)
+        (chartInstance->c1_is_MANUAL_MODES == 2));
+      _SFD_CS_CALL(STATE_INACTIVE_TAG, 172U, chartInstance->c1_sfEvent);
+    }
     break;
 
    default:
@@ -9820,17 +9831,21 @@ static void c1_INIT(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
           c1_checkClutch(chartInstance);
         }
 
-        chartInstance->c1_is_MANUAL_MODES = c1_IN_SKIDPAD;
-        c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 106, 727U, (void *)
-          &chartInstance->c1_is_MANUAL_MODES);
-        c1_sdiStreamingWrapperFcn(chartInstance, 4, 107, 729U, (int32_T)
-          (chartInstance->c1_is_MANUAL_MODES == 1));
-        c1_sdiStreamingWrapperFcn(chartInstance, 4, 108, 728U, (int32_T)
-          (chartInstance->c1_is_MANUAL_MODES == 2));
-        c1_c_sdiStreamingWrapperFcn(chartInstance, 2, 1, 418U, 3);
-        c1_c_sdiStreamingWrapperFcn(chartInstance, 2, 106, 727U, 2);
-        _SFD_CS_CALL(STATE_ACTIVE_TAG, 172U, chartInstance->c1_sfEvent);
-        chartInstance->c1_tp_SKIDPAD = 1U;
+        if (chartInstance->c1_is_MANUAL_MODES == c1_IN_SKIDPAD) {
+        } else {
+          chartInstance->c1_is_MANUAL_MODES = c1_IN_SKIDPAD;
+          c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 106, 727U, (void *)
+            &chartInstance->c1_is_MANUAL_MODES);
+          c1_sdiStreamingWrapperFcn(chartInstance, 4, 107, 729U, (int32_T)
+            (chartInstance->c1_is_MANUAL_MODES == 1));
+          c1_sdiStreamingWrapperFcn(chartInstance, 4, 108, 728U, (int32_T)
+            (chartInstance->c1_is_MANUAL_MODES == 2));
+          c1_c_sdiStreamingWrapperFcn(chartInstance, 2, 1, 418U, 3);
+          c1_c_sdiStreamingWrapperFcn(chartInstance, 2, 106, 727U, 2);
+          _SFD_CS_CALL(STATE_ACTIVE_TAG, 172U, chartInstance->c1_sfEvent);
+          chartInstance->c1_tp_SKIDPAD = 1U;
+          sf_call_output_fcn_call(chartInstance->S, 4, "Efi_setRPMLimiter", 0);
+        }
       } else {
         _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 140U, chartInstance->c1_sfEvent);
         _SFD_CT_CALL(TRANSITION_BEFORE_PROCESSING_TAG, 141U,
@@ -10239,17 +10254,21 @@ static void c1_ACCELERATION(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
           c1_enter_atomic_MANUAL_MODES(chartInstance);
         }
 
-        chartInstance->c1_is_MANUAL_MODES = c1_IN_SKIDPAD;
-        c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 106, 727U, (void *)
-          &chartInstance->c1_is_MANUAL_MODES);
-        c1_sdiStreamingWrapperFcn(chartInstance, 4, 107, 729U, (int32_T)
-          (chartInstance->c1_is_MANUAL_MODES == 1));
-        c1_sdiStreamingWrapperFcn(chartInstance, 4, 108, 728U, (int32_T)
-          (chartInstance->c1_is_MANUAL_MODES == 2));
-        c1_c_sdiStreamingWrapperFcn(chartInstance, 2, 1, 418U, 3);
-        c1_c_sdiStreamingWrapperFcn(chartInstance, 2, 106, 727U, 2);
-        _SFD_CS_CALL(STATE_ACTIVE_TAG, 172U, chartInstance->c1_sfEvent);
-        chartInstance->c1_tp_SKIDPAD = 1U;
+        if (chartInstance->c1_is_MANUAL_MODES == c1_IN_SKIDPAD) {
+        } else {
+          chartInstance->c1_is_MANUAL_MODES = c1_IN_SKIDPAD;
+          c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 106, 727U, (void *)
+            &chartInstance->c1_is_MANUAL_MODES);
+          c1_sdiStreamingWrapperFcn(chartInstance, 4, 107, 729U, (int32_T)
+            (chartInstance->c1_is_MANUAL_MODES == 1));
+          c1_sdiStreamingWrapperFcn(chartInstance, 4, 108, 728U, (int32_T)
+            (chartInstance->c1_is_MANUAL_MODES == 2));
+          c1_c_sdiStreamingWrapperFcn(chartInstance, 2, 1, 418U, 3);
+          c1_c_sdiStreamingWrapperFcn(chartInstance, 2, 106, 727U, 2);
+          _SFD_CS_CALL(STATE_ACTIVE_TAG, 172U, chartInstance->c1_sfEvent);
+          chartInstance->c1_tp_SKIDPAD = 1U;
+          sf_call_output_fcn_call(chartInstance->S, 4, "Efi_setRPMLimiter", 0);
+        }
       } else {
         _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 140U, chartInstance->c1_sfEvent);
         _SFD_CT_CALL(TRANSITION_BEFORE_PROCESSING_TAG, 141U,
@@ -11820,17 +11839,21 @@ static void c1_AUTOCROSS(SFc1_GCU_Model_genCodeInstanceStruct *chartInstance)
           c1_enter_atomic_MANUAL_MODES(chartInstance);
         }
 
-        chartInstance->c1_is_MANUAL_MODES = c1_IN_SKIDPAD;
-        c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 106, 727U, (void *)
-          &chartInstance->c1_is_MANUAL_MODES);
-        c1_sdiStreamingWrapperFcn(chartInstance, 4, 107, 729U, (int32_T)
-          (chartInstance->c1_is_MANUAL_MODES == 1));
-        c1_sdiStreamingWrapperFcn(chartInstance, 4, 108, 728U, (int32_T)
-          (chartInstance->c1_is_MANUAL_MODES == 2));
-        c1_c_sdiStreamingWrapperFcn(chartInstance, 2, 1, 418U, 3);
-        c1_c_sdiStreamingWrapperFcn(chartInstance, 2, 106, 727U, 2);
-        _SFD_CS_CALL(STATE_ACTIVE_TAG, 172U, chartInstance->c1_sfEvent);
-        chartInstance->c1_tp_SKIDPAD = 1U;
+        if (chartInstance->c1_is_MANUAL_MODES == c1_IN_SKIDPAD) {
+        } else {
+          chartInstance->c1_is_MANUAL_MODES = c1_IN_SKIDPAD;
+          c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 106, 727U, (void *)
+            &chartInstance->c1_is_MANUAL_MODES);
+          c1_sdiStreamingWrapperFcn(chartInstance, 4, 107, 729U, (int32_T)
+            (chartInstance->c1_is_MANUAL_MODES == 1));
+          c1_sdiStreamingWrapperFcn(chartInstance, 4, 108, 728U, (int32_T)
+            (chartInstance->c1_is_MANUAL_MODES == 2));
+          c1_c_sdiStreamingWrapperFcn(chartInstance, 2, 1, 418U, 3);
+          c1_c_sdiStreamingWrapperFcn(chartInstance, 2, 106, 727U, 2);
+          _SFD_CS_CALL(STATE_ACTIVE_TAG, 172U, chartInstance->c1_sfEvent);
+          chartInstance->c1_tp_SKIDPAD = 1U;
+          sf_call_output_fcn_call(chartInstance->S, 4, "Efi_setRPMLimiter", 0);
+        }
       } else {
         _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 140U, chartInstance->c1_sfEvent);
         _SFD_CT_CALL(TRANSITION_BEFORE_PROCESSING_TAG, 141U,
@@ -13477,17 +13500,21 @@ static void c1_ACCELERATION_PID(SFc1_GCU_Model_genCodeInstanceStruct
           c1_enter_atomic_MANUAL_MODES(chartInstance);
         }
 
-        chartInstance->c1_is_MANUAL_MODES = c1_IN_SKIDPAD;
-        c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 106, 727U, (void *)
-          &chartInstance->c1_is_MANUAL_MODES);
-        c1_sdiStreamingWrapperFcn(chartInstance, 4, 107, 729U, (int32_T)
-          (chartInstance->c1_is_MANUAL_MODES == 1));
-        c1_sdiStreamingWrapperFcn(chartInstance, 4, 108, 728U, (int32_T)
-          (chartInstance->c1_is_MANUAL_MODES == 2));
-        c1_c_sdiStreamingWrapperFcn(chartInstance, 2, 1, 418U, 3);
-        c1_c_sdiStreamingWrapperFcn(chartInstance, 2, 106, 727U, 2);
-        _SFD_CS_CALL(STATE_ACTIVE_TAG, 172U, chartInstance->c1_sfEvent);
-        chartInstance->c1_tp_SKIDPAD = 1U;
+        if (chartInstance->c1_is_MANUAL_MODES == c1_IN_SKIDPAD) {
+        } else {
+          chartInstance->c1_is_MANUAL_MODES = c1_IN_SKIDPAD;
+          c1_b_sdiStreamingWrapperFcn(chartInstance, 1, 106, 727U, (void *)
+            &chartInstance->c1_is_MANUAL_MODES);
+          c1_sdiStreamingWrapperFcn(chartInstance, 4, 107, 729U, (int32_T)
+            (chartInstance->c1_is_MANUAL_MODES == 1));
+          c1_sdiStreamingWrapperFcn(chartInstance, 4, 108, 728U, (int32_T)
+            (chartInstance->c1_is_MANUAL_MODES == 2));
+          c1_c_sdiStreamingWrapperFcn(chartInstance, 2, 1, 418U, 3);
+          c1_c_sdiStreamingWrapperFcn(chartInstance, 2, 106, 727U, 2);
+          _SFD_CS_CALL(STATE_ACTIVE_TAG, 172U, chartInstance->c1_sfEvent);
+          chartInstance->c1_tp_SKIDPAD = 1U;
+          sf_call_output_fcn_call(chartInstance->S, 4, "Efi_setRPMLimiter", 0);
+        }
       } else {
         _SFD_CT_CALL(TRANSITION_ACTIVE_TAG, 140U, chartInstance->c1_sfEvent);
         _SFD_CT_CALL(TRANSITION_BEFORE_PROCESSING_TAG, 141U,
@@ -30216,10 +30243,10 @@ extern void utFree(void*);
 static void init_test_point_mapping_info(SimStruct *S);
 void sf_c1_GCU_Model_genCode_get_check_sum(mxArray *plhs[])
 {
-  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(1115569519U);
-  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(1302870899U);
-  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(1673217680U);
-  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(2056174702U);
+  ((real_T *)mxGetPr((plhs[0])))[0] = (real_T)(964471740U);
+  ((real_T *)mxGetPr((plhs[0])))[1] = (real_T)(1009879218U);
+  ((real_T *)mxGetPr((plhs[0])))[2] = (real_T)(1300144076U);
+  ((real_T *)mxGetPr((plhs[0])))[3] = (real_T)(4179796161U);
 }
 
 mxArray* sf_c1_GCU_Model_genCode_get_post_codegen_info(void);
@@ -38239,7 +38266,7 @@ static void chart_debug_initialize_data_addresses(SimStruct *S)
 
 static const char* sf_get_instance_specialization(void)
 {
-  return "sMPiJMyhqtcccZWjfjERnQ";
+  return "ssTNViIFmtenYqu3hkfk8jH";
 }
 
 static void sf_opaque_initialize_c1_GCU_Model_genCode(void *chartInstanceVar)
@@ -38439,10 +38466,10 @@ static void mdlSetWorkWidths_c1_GCU_Model_genCode(SimStruct *S)
   }
 
   ssSetOptions(S,ssGetOptions(S)|SS_OPTION_WORKS_WITH_CODE_REUSE);
-  ssSetChecksum0(S,(2547650401U));
-  ssSetChecksum1(S,(2385331208U));
-  ssSetChecksum2(S,(3087386717U));
-  ssSetChecksum3(S,(1142400385U));
+  ssSetChecksum0(S,(4251591290U));
+  ssSetChecksum1(S,(3274016772U));
+  ssSetChecksum2(S,(387055492U));
+  ssSetChecksum3(S,(3913137035U));
   ssSetmdlDerivatives(S, NULL);
   ssSetExplicitFCSSCtrl(S,1);
   ssSetStateSemanticsClassicAndSynchronous(S, true);
@@ -38636,10 +38663,10 @@ static rtwCAPI_ModelMappingStaticInfo testPointMappingStaticInfo = {
   "float",
 
   {
-    2547650401U,
-    2385331208U,
-    3087386717U,
-    1142400385U
+    4251591290U,
+    3274016772U,
+    387055492U,
+    3913137035U
   }
 };
 
