@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.357
+ * Model version                  : 1.359
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Tue Jun 25 15:08:47 2019
+ * C/C++ source code generated on : Tue Jun 25 16:38:03 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -3544,6 +3544,17 @@ static void LAUNCH1(void)
               }
 
               rtDW.pidCounter = qY;
+              if (rtDW.pidCounter >= 9U) {
+                rtDW.pidCounter = 0U;
+              } else {
+                qY = rtDW.pidCounter + /*MW:OvSatOk*/ 1U;
+                if (qY < rtDW.pidCounter) {
+                  qY = MAX_uint32_T;
+                }
+
+                rtDW.pidCounter = qY;
+              }
+
               rtDW.is_RELEASE_k = 0;
               if (rtDW.is_RELEASE_k != IN_Control) {
                 rtDW.is_RELEASE_k = IN_Control;
@@ -7708,13 +7719,13 @@ void GCU_Model_genCode_step4(void)     /* Sample time: [0.001s, 0.0006s] */
 
   /* End of DataTypeConversion: '<S12>/Cast To Double' */
 
-  /* MATLAB Function: '<S100>/f_T_lt' incorporates:
-   *  Constant: '<S100>/Constant10'
-   *  Constant: '<S100>/Constant5'
-   *  Constant: '<S100>/Constant6'
-   *  Constant: '<S100>/Constant7'
-   *  Constant: '<S100>/Constant8'
-   *  Constant: '<S100>/Constant9'
+  /* MATLAB Function: '<S92>/f_T_lt' incorporates:
+   *  Constant: '<S92>/Constant10'
+   *  Constant: '<S92>/Constant5'
+   *  Constant: '<S92>/Constant6'
+   *  Constant: '<S92>/Constant7'
+   *  Constant: '<S92>/Constant8'
+   *  Constant: '<S92>/Constant9'
    *  UnitDelay: '<S12>/Unit Delay'
    */
   rtb_y = (((rtDW.UnitDelay_DSTATE - 25.0) * 0.00329 + 1.0) /
@@ -7723,25 +7734,25 @@ void GCU_Model_genCode_step4(void)     /* Sample time: [0.001s, 0.0006s] */
            ((rtDW.UnitDelay_DSTATE - 25.0) * 0.00401 + 1.0)) / 2.0;
 
   /* DataTypeConversion: '<S12>/Cast To Double1' incorporates:
-   *  Constant: '<S100>/Constant'
-   *  Constant: '<S100>/Constant1'
-   *  Constant: '<S100>/Constant3'
-   *  Product: '<S100>/Divide1'
-   *  Product: '<S100>/Multiply'
-   *  Product: '<S100>/Multiply1'
-   *  Sum: '<S100>/Sum'
+   *  Constant: '<S92>/Constant'
+   *  Constant: '<S92>/Constant1'
+   *  Constant: '<S92>/Constant3'
+   *  Product: '<S92>/Divide1'
+   *  Product: '<S92>/Multiply'
+   *  Product: '<S92>/Multiply1'
+   *  Sum: '<S92>/Sum'
    */
   CastToDouble1 = (uint32_T)((rtb_Multiply4[6] / 470.0 - 0.00017) *
     (10.001700289049138 * rtb_y));
 
   /* DataTypeConversion: '<S12>/Cast To Double2' incorporates:
-   *  Constant: '<S100>/Constant'
-   *  Constant: '<S100>/Constant2'
-   *  Constant: '<S100>/Constant4'
-   *  Product: '<S100>/Divide'
-   *  Product: '<S100>/Multiply2'
-   *  Product: '<S100>/Multiply3'
-   *  Sum: '<S100>/Sum1'
+   *  Constant: '<S92>/Constant'
+   *  Constant: '<S92>/Constant2'
+   *  Constant: '<S92>/Constant4'
+   *  Product: '<S92>/Divide'
+   *  Product: '<S92>/Multiply2'
+   *  Product: '<S92>/Multiply3'
+   *  Sum: '<S92>/Sum1'
    */
   CastToDouble2 = (uint32_T)((0.0021276595744680851 * rtb_Multiply4[7] - 0.00017)
     * (rtb_y * 10.001700289049138));
@@ -7848,8 +7859,8 @@ void GCU_Model_genCode_step5(void)     /* Sample time: [0.001s, 0.0008s] */
   /* RateTransition: '<Root>/Rate Transition28' */
   rtDW.RateTransition28 = rtDW.Read_oil_sensor;
 
-  /* RateTransition: '<Root>/Rate Transition31' */
-  rtDW.RateTransition31 = rtDW.antiStallFb;
+  /* RateTransition: '<Root>/Rate Transition39' */
+  rtDW.RateTransition39 = rtDW.pidCounter;
 
   /* S-Function (fcncallgen): '<Root>/Function_Call_Generator2' incorporates:
    *  SubSystem: '<Root>/CAN_Send'
@@ -7961,9 +7972,12 @@ void GCU_Model_genCode_step5(void)     /* Sample time: [0.001s, 0.0008s] */
   /* DataTypeConversion: '<S23>/Cast' */
   rtDW.Cast_l = rtDW.RateTransition20;
 
+  /* DataTypeConversion: '<S23>/Cast3' */
+  rtDW.Cast3_b = (uint16_T)rtDW.RateTransition39;
+
   /* S-Function (PackCANMsg): '<S23>/PackCANMsg' */
   PackCANMsg_Outputs_wrapper(&rtDW.Cast_l, &rtDW.RateTransition23,
-    &rtDW.RateTransition26, &rtDW.RateTransition31, &rtDW.PackCANMsg_ls[0]);
+    &rtDW.RateTransition26, &rtDW.Cast3_b, &rtDW.PackCANMsg_ls[0]);
 
   /* S-Function (sendCAN): '<S23>/sendCAN' */
   sendCAN_Outputs_wrapper(&rtDW.gcu_clutch_mode_map_sw_id, &rtDW.PackCANMsg_ls[0]);

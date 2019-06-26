@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.357
+ * Model version                  : 1.359
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Tue Jun 25 15:08:47 2019
+ * C/C++ source code generated on : Tue Jun 25 16:38:03 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -335,6 +335,7 @@ typedef struct {
   volatile uint32_T RateTransition9_Buffer[18];/* '<Root>/Rate Transition9' */
   volatile uint32_T RateTransition35_Buffer[18];/* '<Root>/Rate Transition35' */
   volatile uint32_T RateTransition18_Buffer0[9];/* '<Root>/Rate Transition18' */
+  uint32_T RateTransition39;           /* '<Root>/Rate Transition39' */
   uint32_T pidCounter;                 /* '<S5>/GCULogic' */
   uint16_T RateTransition2[2];         /* '<Root>/Rate Transition2' */
   uint16_T RateTransition4[2];         /* '<Root>/Rate Transition4' */
@@ -361,7 +362,6 @@ typedef struct {
   uint16_T RateTransition23;           /* '<Root>/Rate Transition23' */
   uint16_T RateTransition26;           /* '<Root>/Rate Transition26' */
   uint16_T RateTransition28;           /* '<Root>/Rate Transition28' */
-  uint16_T RateTransition31;           /* '<Root>/Rate Transition31' */
   uint16_T UnitDelay_b;                /* '<S5>/Unit Delay' */
   uint16_T stateFb;                    /* '<S5>/GCULogic' */
   uint16_T last_rpmValue;              /* '<S38>/timeCounter' */
@@ -392,6 +392,7 @@ typedef struct {
   uint16_T Cast2_e;                    /* '<S21>/Cast2' */
   uint16_T Cast3_p;                    /* '<S21>/Cast3' */
   uint16_T Cast_l;                     /* '<S23>/Cast' */
+  uint16_T Cast3_b;                    /* '<S23>/Cast3' */
   uint16_T Read_oil_sensor;            /* '<S12>/Read_oil_sensor' */
   uint16_T UnitDelay_DSTATE_o;         /* '<S5>/Unit Delay' */
   uint16_T UnitDelay_DSTATE_e;         /* '<S38>/Unit Delay' */
@@ -663,6 +664,7 @@ extern RT_MODEL *const rtM;
  *
  * Block '<Root>/Cast' : Unused code path elimination
  * Block '<S38>/Scope' : Unused code path elimination
+ * Block '<Root>/Rate Transition31' : Unused code path elimination
  * Block '<S2>/Cast' : Eliminate redundant data type conversion
  * Block '<S2>/Cast1' : Eliminate redundant data type conversion
  * Block '<S20>/Cast' : Eliminate redundant data type conversion
@@ -671,7 +673,6 @@ extern RT_MODEL *const rtM;
  * Block '<S20>/Cast3' : Eliminate redundant data type conversion
  * Block '<S23>/Cast1' : Eliminate redundant data type conversion
  * Block '<S23>/Cast2' : Eliminate redundant data type conversion
- * Block '<S23>/Cast3' : Eliminate redundant data type conversion
  * Block '<S24>/Cast' : Eliminate redundant data type conversion
  * Block '<S24>/Cast1' : Eliminate redundant data type conversion
  * Block '<S24>/Cast2' : Eliminate redundant data type conversion
@@ -685,7 +686,7 @@ extern RT_MODEL *const rtM;
  * Block '<S80>/Kb' : Eliminated nontunable gain of 1
  * Block '<S81>/Kb' : Eliminated nontunable gain of 1
  * Block '<S82>/Kb' : Eliminated nontunable gain of 1
- * Block '<S100>/Cast To Double11' : Eliminate redundant data type conversion
+ * Block '<S92>/Cast To Double11' : Eliminate redundant data type conversion
  */
 
 /*-
@@ -792,18 +793,10 @@ extern RT_MODEL *const rtM;
  * '<S87>'  : 'GCU_Model_genCode/Simulink_Acc_Debug/AccelerationRoutine'
  * '<S88>'  : 'GCU_Model_genCode/Simulink_Acc_Debug1/AccelerationRoutine'
  * '<S89>'  : 'GCU_Model_genCode/Subsystem/Subsystem'
- * '<S90>'  : 'GCU_Model_genCode/Subsystem/servo 1'
- * '<S91>'  : 'GCU_Model_genCode/Subsystem/Subsystem/LTI System'
- * '<S92>'  : 'GCU_Model_genCode/Subsystem/Subsystem/MATLAB Function'
- * '<S93>'  : 'GCU_Model_genCode/Subsystem/Subsystem/LTI System/IO Delay'
- * '<S94>'  : 'GCU_Model_genCode/Subsystem/Subsystem/LTI System/Input Delay'
- * '<S95>'  : 'GCU_Model_genCode/Subsystem/Subsystem/LTI System/Output Delay'
- * '<S96>'  : 'GCU_Model_genCode/Subsystem/servo 1/IO Delay'
- * '<S97>'  : 'GCU_Model_genCode/Subsystem/servo 1/Input Delay'
- * '<S98>'  : 'GCU_Model_genCode/Subsystem/servo 1/Output Delay'
- * '<S99>'  : 'GCU_Model_genCode/update_ADC_data/Mean Value'
- * '<S100>' : 'GCU_Model_genCode/update_ADC_data/Subsystem'
- * '<S101>' : 'GCU_Model_genCode/update_ADC_data/Subsystem/f_T_lt'
+ * '<S90>'  : 'GCU_Model_genCode/Subsystem/Subsystem/MATLAB Function'
+ * '<S91>'  : 'GCU_Model_genCode/update_ADC_data/Mean Value'
+ * '<S92>'  : 'GCU_Model_genCode/update_ADC_data/Subsystem'
+ * '<S93>'  : 'GCU_Model_genCode/update_ADC_data/Subsystem/f_T_lt'
  */
 #endif                                 /* RTW_HEADER_GCU_Model_genCode_h_ */
 
