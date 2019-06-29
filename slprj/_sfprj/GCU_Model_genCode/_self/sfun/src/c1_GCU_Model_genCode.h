@@ -400,7 +400,7 @@ typedef struct {
   const mxArray *c1_setSimStateSideEffectsInfo;
   void *c1_dataSetLogObjVector[12];
   uint8_T c1_sdiLoggedStatesBuffer[153];
-  uint8_T c1_sdiLoggedDataBuffer[180];
+  uint8_T c1_sdiLoggedDataBuffer[181];
   sdiBlockID_t c1_sdiBlockInfo;
   SignalExportStruct c1_SignalExportProp;
   SignalExportStruct c1_b_SignalExportProp;
@@ -622,6 +622,7 @@ typedef struct {
   SignalExportStruct c1_ri_SignalExportProp;
   SignalExportStruct c1_si_SignalExportProp;
   SignalExportStruct c1_ti_SignalExportProp;
+  SignalExportStruct c1_ui_SignalExportProp;
   rtwCAPI_ModelMappingInfo c1_testPointMappingInfo;
   void *c1_testPointAddrMap[12];
   void *c1_fEmlrtCtx;
@@ -649,6 +650,7 @@ typedef struct {
   uint16_T *c1_currSlip;
   uint16_T *c1_currSlipTarget;
   uint16_T *c1_pidSubMode;
+  uint32_T *c1_pidCounter;
   real_T *c1_slipTarget;
   real_T *c1_currentSlip;
   real_T *c1_clutchVal;
