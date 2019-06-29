@@ -815,7 +815,7 @@
 <tr name="402" id="402">
 <td><a id="l402" class='ln'>402</a></td><td>  <a id="402c3" class="tk">uint8_T</a> <a id="402c11" class="tk">c1_sdiLoggedStatesBuffer</a>[153];</td></tr>
 <tr name="403" id="403">
-<td><a id="l403" class='ln'>403</a></td><td>  <a id="403c3" class="tk">uint8_T</a> <a id="403c11" class="tk">c1_sdiLoggedDataBuffer</a>[180];</td></tr>
+<td><a id="l403" class='ln'>403</a></td><td>  <a id="403c3" class="tk">uint8_T</a> <a id="403c11" class="tk">c1_sdiLoggedDataBuffer</a>[181];</td></tr>
 <tr name="404" id="404">
 <td><a id="l404" class='ln'>404</a></td><td>  <a id="404c3" class="tk">sdiBlockID_t</a> <a id="404c16" class="tk">c1_sdiBlockInfo</a>;</td></tr>
 <tr name="405" id="405">
@@ -1259,175 +1259,179 @@
 <tr name="624" id="624">
 <td><a id="l624" class='ln'>624</a></td><td>  <a id="624c3" class="tk">SignalExportStruct</a> <a id="624c22" class="tk">c1_ti_SignalExportProp</a>;</td></tr>
 <tr name="625" id="625">
-<td><a id="l625" class='ln'>625</a></td><td>  <a id="625c3" class="tk">rtwCAPI_ModelMappingInfo</a> <a id="625c28" class="tk">c1_testPointMappingInfo</a>;</td></tr>
+<td><a id="l625" class='ln'>625</a></td><td>  <a id="625c3" class="tk">SignalExportStruct</a> <a id="625c22" class="tk">c1_ui_SignalExportProp</a>;</td></tr>
 <tr name="626" id="626">
-<td><a id="l626" class='ln'>626</a></td><td>  <span class="kw">void</span> <a id="626c8" class="tk">*</a><a id="626c9" class="tk">c1_testPointAddrMap</a>[12];</td></tr>
+<td><a id="l626" class='ln'>626</a></td><td>  <a id="626c3" class="tk">rtwCAPI_ModelMappingInfo</a> <a id="626c28" class="tk">c1_testPointMappingInfo</a>;</td></tr>
 <tr name="627" id="627">
-<td><a id="l627" class='ln'>627</a></td><td>  <span class="kw">void</span> <a id="627c8" class="tk">*</a><a id="627c9" class="tk">c1_fEmlrtCtx</a>;</td></tr>
+<td><a id="l627" class='ln'>627</a></td><td>  <span class="kw">void</span> <a id="627c8" class="tk">*</a><a id="627c9" class="tk">c1_testPointAddrMap</a>[12];</td></tr>
 <tr name="628" id="628">
-<td><a id="l628" class='ln'>628</a></td><td>  <a id="628c3" class="tk">uint8_T</a> <a id="628c11" class="tk">*</a><a id="628c12" class="tk">c1_clutchCurrVal</a>;</td></tr>
+<td><a id="l628" class='ln'>628</a></td><td>  <span class="kw">void</span> <a id="628c8" class="tk">*</a><a id="628c9" class="tk">c1_fEmlrtCtx</a>;</td></tr>
 <tr name="629" id="629">
-<td><a id="l629" class='ln'>629</a></td><td>  <a id="629c3" class="tk">uint16_T</a> (<a id="629c13" class="tk">*</a><a id="629c14" class="tk">c1_lastModeCom</a>)[2];</td></tr>
+<td><a id="l629" class='ln'>629</a></td><td>  <a id="629c3" class="tk">uint8_T</a> <a id="629c11" class="tk">*</a><a id="629c12" class="tk">c1_clutchCurrVal</a>;</td></tr>
 <tr name="630" id="630">
-<td><a id="l630" class='ln'>630</a></td><td>  <a id="630c3" class="tk">uint16_T</a> (<a id="630c13" class="tk">*</a><a id="630c14" class="tk">c1_shiftCom</a>)[2];</td></tr>
+<td><a id="l630" class='ln'>630</a></td><td>  <a id="630c3" class="tk">uint16_T</a> (<a id="630c13" class="tk">*</a><a id="630c14" class="tk">c1_lastModeCom</a>)[2];</td></tr>
 <tr name="631" id="631">
-<td><a id="l631" class='ln'>631</a></td><td>  <a id="631c3" class="tk">uint8_T</a> <a id="631c11" class="tk">*</a><a id="631c12" class="tk">c1_startEngCom</a>;</td></tr>
+<td><a id="l631" class='ln'>631</a></td><td>  <a id="631c3" class="tk">uint16_T</a> (<a id="631c13" class="tk">*</a><a id="631c14" class="tk">c1_shiftCom</a>)[2];</td></tr>
 <tr name="632" id="632">
-<td><a id="l632" class='ln'>632</a></td><td>  <a id="632c3" class="tk">uint16_T</a> (<a id="632c13" class="tk">*</a><a id="632c14" class="tk">c1_aacCom</a>)[2];</td></tr>
+<td><a id="l632" class='ln'>632</a></td><td>  <a id="632c3" class="tk">uint8_T</a> <a id="632c11" class="tk">*</a><a id="632c12" class="tk">c1_startEngCom</a>;</td></tr>
 <tr name="633" id="633">
-<td><a id="l633" class='ln'>633</a></td><td>  <a id="633c3" class="tk">uint8_T</a> <a id="633c11" class="tk">*</a><a id="633c12" class="tk">c1_clutchTarget</a>;</td></tr>
+<td><a id="l633" class='ln'>633</a></td><td>  <a id="633c3" class="tk">uint16_T</a> (<a id="633c13" class="tk">*</a><a id="633c14" class="tk">c1_aacCom</a>)[2];</td></tr>
 <tr name="634" id="634">
-<td><a id="l634" class='ln'>634</a></td><td>  <a id="634c3" class="tk">uint16_T</a> (<a id="634c13" class="tk">*</a><a id="634c14" class="tk">c1_modeCom</a>)[2];</td></tr>
+<td><a id="l634" class='ln'>634</a></td><td>  <a id="634c3" class="tk">uint8_T</a> <a id="634c11" class="tk">*</a><a id="634c12" class="tk">c1_clutchTarget</a>;</td></tr>
 <tr name="635" id="635">
-<td><a id="l635" class='ln'>635</a></td><td>  <a id="635c3" class="tk">uint16_T</a> <a id="635c12" class="tk">*</a><a id="635c13" class="tk">c1_stateFb</a>;</td></tr>
+<td><a id="l635" class='ln'>635</a></td><td>  <a id="635c3" class="tk">uint16_T</a> (<a id="635c13" class="tk">*</a><a id="635c14" class="tk">c1_modeCom</a>)[2];</td></tr>
 <tr name="636" id="636">
-<td><a id="l636" class='ln'>636</a></td><td>  <a id="636c3" class="tk">int32_T</a> (<a id="636c12" class="tk">*</a><a id="636c13" class="tk">c1_acc_parameters</a>)[16];</td></tr>
+<td><a id="l636" class='ln'>636</a></td><td>  <a id="636c3" class="tk">uint16_T</a> <a id="636c12" class="tk">*</a><a id="636c13" class="tk">c1_stateFb</a>;</td></tr>
 <tr name="637" id="637">
-<td><a id="l637" class='ln'>637</a></td><td>  <a id="637c3" class="tk">int32_T</a> (<a id="637c12" class="tk">*</a><a id="637c13" class="tk">c1_timings</a>)[24];</td></tr>
+<td><a id="l637" class='ln'>637</a></td><td>  <a id="637c3" class="tk">int32_T</a> (<a id="637c12" class="tk">*</a><a id="637c13" class="tk">c1_acc_parameters</a>)[16];</td></tr>
 <tr name="638" id="638">
-<td><a id="l638" class='ln'>638</a></td><td>  <a id="638c3" class="tk">uint16_T</a> (<a id="638c13" class="tk">*</a><a id="638c14" class="tk">c1_autoXCom</a>)[2];</td></tr>
+<td><a id="l638" class='ln'>638</a></td><td>  <a id="638c3" class="tk">int32_T</a> (<a id="638c12" class="tk">*</a><a id="638c13" class="tk">c1_timings</a>)[24];</td></tr>
 <tr name="639" id="639">
-<td><a id="l639" class='ln'>639</a></td><td>  <a id="639c3" class="tk">int32_T</a> (<a id="639c12" class="tk">*</a><a id="639c13" class="tk">c1_autoX_parameters</a>)[16];</td></tr>
+<td><a id="l639" class='ln'>639</a></td><td>  <a id="639c3" class="tk">uint16_T</a> (<a id="639c13" class="tk">*</a><a id="639c14" class="tk">c1_autoXCom</a>)[2];</td></tr>
 <tr name="640" id="640">
-<td><a id="l640" class='ln'>640</a></td><td>  <a id="640c3" class="tk">uint8_T</a> <a id="640c11" class="tk">*</a><a id="640c12" class="tk">c1_slipUpdateCounter</a>;</td></tr>
+<td><a id="l640" class='ln'>640</a></td><td>  <a id="640c3" class="tk">int32_T</a> (<a id="640c12" class="tk">*</a><a id="640c13" class="tk">c1_autoX_parameters</a>)[16];</td></tr>
 <tr name="641" id="641">
-<td><a id="l641" class='ln'>641</a></td><td>  <a id="641c3" class="tk">uint8_T</a> <a id="641c11" class="tk">*</a><a id="641c12" class="tk">c1_antiStallEnable</a>;</td></tr>
+<td><a id="l641" class='ln'>641</a></td><td>  <a id="641c3" class="tk">uint8_T</a> <a id="641c11" class="tk">*</a><a id="641c12" class="tk">c1_slipUpdateCounter</a>;</td></tr>
 <tr name="642" id="642">
-<td><a id="l642" class='ln'>642</a></td><td>  <a id="642c3" class="tk">int32_T</a> (<a id="642c12" class="tk">*</a><a id="642c13" class="tk">c1_antiStall_parameters</a>)[8];</td></tr>
+<td><a id="l642" class='ln'>642</a></td><td>  <a id="642c3" class="tk">uint8_T</a> <a id="642c11" class="tk">*</a><a id="642c12" class="tk">c1_antiStallEnable</a>;</td></tr>
 <tr name="643" id="643">
-<td><a id="l643" class='ln'>643</a></td><td>  <a id="643c3" class="tk">uint16_T</a> <a id="643c12" class="tk">*</a><a id="643c13" class="tk">c1_antiStallFb</a>;</td></tr>
+<td><a id="l643" class='ln'>643</a></td><td>  <a id="643c3" class="tk">int32_T</a> (<a id="643c12" class="tk">*</a><a id="643c13" class="tk">c1_antiStall_parameters</a>)[8];</td></tr>
 <tr name="644" id="644">
-<td><a id="l644" class='ln'>644</a></td><td>  <a id="644c3" class="tk">uint32_T</a> (<a id="644c13" class="tk">*</a><a id="644c14" class="tk">c1_gearMotorCurent_1_2</a>)[2];</td></tr>
+<td><a id="l644" class='ln'>644</a></td><td>  <a id="644c3" class="tk">uint16_T</a> <a id="644c12" class="tk">*</a><a id="644c13" class="tk">c1_antiStallFb</a>;</td></tr>
 <tr name="645" id="645">
-<td><a id="l645" class='ln'>645</a></td><td>  <a id="645c3" class="tk">uint16_T</a> <a id="645c12" class="tk">*</a><a id="645c13" class="tk">c1_currGear</a>;</td></tr>
+<td><a id="l645" class='ln'>645</a></td><td>  <a id="645c3" class="tk">uint32_T</a> (<a id="645c13" class="tk">*</a><a id="645c14" class="tk">c1_gearMotorCurent_1_2</a>)[2];</td></tr>
 <tr name="646" id="646">
-<td><a id="l646" class='ln'>646</a></td><td>  <a id="646c3" class="tk">uint16_T</a> <a id="646c12" class="tk">*</a><a id="646c13" class="tk">c1_currTps</a>;</td></tr>
+<td><a id="l646" class='ln'>646</a></td><td>  <a id="646c3" class="tk">uint16_T</a> <a id="646c12" class="tk">*</a><a id="646c13" class="tk">c1_currGear</a>;</td></tr>
 <tr name="647" id="647">
-<td><a id="l647" class='ln'>647</a></td><td>  <a id="647c3" class="tk">uint16_T</a> <a id="647c12" class="tk">*</a><a id="647c13" class="tk">c1_currRpm</a>;</td></tr>
+<td><a id="l647" class='ln'>647</a></td><td>  <a id="647c3" class="tk">uint16_T</a> <a id="647c12" class="tk">*</a><a id="647c13" class="tk">c1_currTps</a>;</td></tr>
 <tr name="648" id="648">
-<td><a id="l648" class='ln'>648</a></td><td>  <a id="648c3" class="tk">uint16_T</a> <a id="648c12" class="tk">*</a><a id="648c13" class="tk">c1_currVhSpeed</a>;</td></tr>
+<td><a id="l648" class='ln'>648</a></td><td>  <a id="648c3" class="tk">uint16_T</a> <a id="648c12" class="tk">*</a><a id="648c13" class="tk">c1_currRpm</a>;</td></tr>
 <tr name="649" id="649">
-<td><a id="l649" class='ln'>649</a></td><td>  <a id="649c3" class="tk">uint16_T</a> <a id="649c12" class="tk">*</a><a id="649c13" class="tk">c1_currSlip</a>;</td></tr>
+<td><a id="l649" class='ln'>649</a></td><td>  <a id="649c3" class="tk">uint16_T</a> <a id="649c12" class="tk">*</a><a id="649c13" class="tk">c1_currVhSpeed</a>;</td></tr>
 <tr name="650" id="650">
-<td><a id="l650" class='ln'>650</a></td><td>  <a id="650c3" class="tk">uint16_T</a> <a id="650c12" class="tk">*</a><a id="650c13" class="tk">c1_currSlipTarget</a>;</td></tr>
+<td><a id="l650" class='ln'>650</a></td><td>  <a id="650c3" class="tk">uint16_T</a> <a id="650c12" class="tk">*</a><a id="650c13" class="tk">c1_currSlip</a>;</td></tr>
 <tr name="651" id="651">
-<td><a id="l651" class='ln'>651</a></td><td>  <a id="651c3" class="tk">uint16_T</a> <a id="651c12" class="tk">*</a><a id="651c13" class="tk">c1_pidSubMode</a>;</td></tr>
+<td><a id="l651" class='ln'>651</a></td><td>  <a id="651c3" class="tk">uint16_T</a> <a id="651c12" class="tk">*</a><a id="651c13" class="tk">c1_currSlipTarget</a>;</td></tr>
 <tr name="652" id="652">
-<td><a id="l652" class='ln'>652</a></td><td>  <a id="652c3" class="tk">real_T</a> <a id="652c10" class="tk">*</a><a id="652c11" class="tk">c1_slipTarget</a>;</td></tr>
+<td><a id="l652" class='ln'>652</a></td><td>  <a id="652c3" class="tk">uint16_T</a> <a id="652c12" class="tk">*</a><a id="652c13" class="tk">c1_pidSubMode</a>;</td></tr>
 <tr name="653" id="653">
-<td><a id="l653" class='ln'>653</a></td><td>  <a id="653c3" class="tk">real_T</a> <a id="653c10" class="tk">*</a><a id="653c11" class="tk">c1_currentSlip</a>;</td></tr>
+<td><a id="l653" class='ln'>653</a></td><td>  <a id="653c3" class="tk">uint32_T</a> <a id="653c12" class="tk">*</a><a id="653c13" class="tk">c1_pidCounter</a>;</td></tr>
 <tr name="654" id="654">
-<td><a id="l654" class='ln'>654</a></td><td>  <a id="654c3" class="tk">real_T</a> <a id="654c10" class="tk">*</a><a id="654c11" class="tk">c1_clutchVal</a>;</td></tr>
+<td><a id="l654" class='ln'>654</a></td><td>  <a id="654c3" class="tk">real_T</a> <a id="654c10" class="tk">*</a><a id="654c11" class="tk">c1_slipTarget</a>;</td></tr>
 <tr name="655" id="655">
-<td><a id="l655" class='ln'>655</a></td><td>  <a id="655c3" class="tk">real_T</a> <a id="655c10" class="tk">*</a><a id="655c11" class="tk">c1_reset</a>;</td></tr>
+<td><a id="l655" class='ln'>655</a></td><td>  <a id="655c3" class="tk">real_T</a> <a id="655c10" class="tk">*</a><a id="655c11" class="tk">c1_currentSlip</a>;</td></tr>
 <tr name="656" id="656">
-<td><a id="l656" class='ln'>656</a></td><td>  <a id="656c3" class="tk">real_T</a> <a id="656c10" class="tk">*</a><a id="656c11" class="tk">c1_b_slipTarget</a>;</td></tr>
+<td><a id="l656" class='ln'>656</a></td><td>  <a id="656c3" class="tk">real_T</a> <a id="656c10" class="tk">*</a><a id="656c11" class="tk">c1_clutchVal</a>;</td></tr>
 <tr name="657" id="657">
-<td><a id="l657" class='ln'>657</a></td><td>  <a id="657c3" class="tk">real_T</a> <a id="657c10" class="tk">*</a><a id="657c11" class="tk">c1_b_currentSlip</a>;</td></tr>
+<td><a id="l657" class='ln'>657</a></td><td>  <a id="657c3" class="tk">real_T</a> <a id="657c10" class="tk">*</a><a id="657c11" class="tk">c1_reset</a>;</td></tr>
 <tr name="658" id="658">
-<td><a id="l658" class='ln'>658</a></td><td>  <a id="658c3" class="tk">real_T</a> <a id="658c10" class="tk">*</a><a id="658c11" class="tk">c1_b_clutchVal</a>;</td></tr>
+<td><a id="l658" class='ln'>658</a></td><td>  <a id="658c3" class="tk">real_T</a> <a id="658c10" class="tk">*</a><a id="658c11" class="tk">c1_b_slipTarget</a>;</td></tr>
 <tr name="659" id="659">
-<td><a id="l659" class='ln'>659</a></td><td>  <a id="659c3" class="tk">real_T</a> <a id="659c10" class="tk">*</a><a id="659c11" class="tk">c1_b_reset</a>;</td></tr>
+<td><a id="l659" class='ln'>659</a></td><td>  <a id="659c3" class="tk">real_T</a> <a id="659c10" class="tk">*</a><a id="659c11" class="tk">c1_b_currentSlip</a>;</td></tr>
 <tr name="660" id="660">
-<td><a id="l660" class='ln'>660</a></td><td>  <a id="660c3" class="tk">real_T</a> <a id="660c10" class="tk">*</a><a id="660c11" class="tk">c1_c_slipTarget</a>;</td></tr>
+<td><a id="l660" class='ln'>660</a></td><td>  <a id="660c3" class="tk">real_T</a> <a id="660c10" class="tk">*</a><a id="660c11" class="tk">c1_b_clutchVal</a>;</td></tr>
 <tr name="661" id="661">
-<td><a id="l661" class='ln'>661</a></td><td>  <a id="661c3" class="tk">real_T</a> <a id="661c10" class="tk">*</a><a id="661c11" class="tk">c1_c_currentSlip</a>;</td></tr>
+<td><a id="l661" class='ln'>661</a></td><td>  <a id="661c3" class="tk">real_T</a> <a id="661c10" class="tk">*</a><a id="661c11" class="tk">c1_b_reset</a>;</td></tr>
 <tr name="662" id="662">
-<td><a id="l662" class='ln'>662</a></td><td>  <a id="662c3" class="tk">real_T</a> <a id="662c10" class="tk">*</a><a id="662c11" class="tk">c1_c_clutchVal</a>;</td></tr>
+<td><a id="l662" class='ln'>662</a></td><td>  <a id="662c3" class="tk">real_T</a> <a id="662c10" class="tk">*</a><a id="662c11" class="tk">c1_c_slipTarget</a>;</td></tr>
 <tr name="663" id="663">
-<td><a id="l663" class='ln'>663</a></td><td>  <a id="663c3" class="tk">real_T</a> <a id="663c10" class="tk">*</a><a id="663c11" class="tk">c1_c_reset</a>;</td></tr>
+<td><a id="l663" class='ln'>663</a></td><td>  <a id="663c3" class="tk">real_T</a> <a id="663c10" class="tk">*</a><a id="663c11" class="tk">c1_c_currentSlip</a>;</td></tr>
 <tr name="664" id="664">
-<td><a id="l664" class='ln'>664</a></td><td>  <a id="664c3" class="tk">real_T</a> <a id="664c10" class="tk">*</a><a id="664c11" class="tk">c1_d_slipTarget</a>;</td></tr>
+<td><a id="l664" class='ln'>664</a></td><td>  <a id="664c3" class="tk">real_T</a> <a id="664c10" class="tk">*</a><a id="664c11" class="tk">c1_c_clutchVal</a>;</td></tr>
 <tr name="665" id="665">
-<td><a id="l665" class='ln'>665</a></td><td>  <a id="665c3" class="tk">real_T</a> <a id="665c10" class="tk">*</a><a id="665c11" class="tk">c1_d_currentSlip</a>;</td></tr>
+<td><a id="l665" class='ln'>665</a></td><td>  <a id="665c3" class="tk">real_T</a> <a id="665c10" class="tk">*</a><a id="665c11" class="tk">c1_c_reset</a>;</td></tr>
 <tr name="666" id="666">
-<td><a id="l666" class='ln'>666</a></td><td>  <a id="666c3" class="tk">real_T</a> <a id="666c10" class="tk">*</a><a id="666c11" class="tk">c1_d_clutchVal</a>;</td></tr>
+<td><a id="l666" class='ln'>666</a></td><td>  <a id="666c3" class="tk">real_T</a> <a id="666c10" class="tk">*</a><a id="666c11" class="tk">c1_d_slipTarget</a>;</td></tr>
 <tr name="667" id="667">
-<td><a id="l667" class='ln'>667</a></td><td>  <a id="667c3" class="tk">real_T</a> <a id="667c10" class="tk">*</a><a id="667c11" class="tk">c1_d_reset</a>;</td></tr>
+<td><a id="l667" class='ln'>667</a></td><td>  <a id="667c3" class="tk">real_T</a> <a id="667c10" class="tk">*</a><a id="667c11" class="tk">c1_d_currentSlip</a>;</td></tr>
 <tr name="668" id="668">
-<td><a id="l668" class='ln'>668</a></td><td>  <a id="668c3" class="tk">real_T</a> <a id="668c10" class="tk">*</a><a id="668c11" class="tk">c1_e_slipTarget</a>;</td></tr>
+<td><a id="l668" class='ln'>668</a></td><td>  <a id="668c3" class="tk">real_T</a> <a id="668c10" class="tk">*</a><a id="668c11" class="tk">c1_d_clutchVal</a>;</td></tr>
 <tr name="669" id="669">
-<td><a id="l669" class='ln'>669</a></td><td>  <a id="669c3" class="tk">real_T</a> <a id="669c10" class="tk">*</a><a id="669c11" class="tk">c1_e_currentSlip</a>;</td></tr>
+<td><a id="l669" class='ln'>669</a></td><td>  <a id="669c3" class="tk">real_T</a> <a id="669c10" class="tk">*</a><a id="669c11" class="tk">c1_d_reset</a>;</td></tr>
 <tr name="670" id="670">
-<td><a id="l670" class='ln'>670</a></td><td>  <a id="670c3" class="tk">real_T</a> <a id="670c10" class="tk">*</a><a id="670c11" class="tk">c1_e_clutchVal</a>;</td></tr>
+<td><a id="l670" class='ln'>670</a></td><td>  <a id="670c3" class="tk">real_T</a> <a id="670c10" class="tk">*</a><a id="670c11" class="tk">c1_e_slipTarget</a>;</td></tr>
 <tr name="671" id="671">
-<td><a id="l671" class='ln'>671</a></td><td>  <a id="671c3" class="tk">real_T</a> <a id="671c10" class="tk">*</a><a id="671c11" class="tk">c1_e_reset</a>;</td></tr>
+<td><a id="l671" class='ln'>671</a></td><td>  <a id="671c3" class="tk">real_T</a> <a id="671c10" class="tk">*</a><a id="671c11" class="tk">c1_e_currentSlip</a>;</td></tr>
 <tr name="672" id="672">
-<td><a id="l672" class='ln'>672</a></td><td>  <a id="672c3" class="tk">real_T</a> <a id="672c10" class="tk">*</a><a id="672c11" class="tk">c1_f_slipTarget</a>;</td></tr>
+<td><a id="l672" class='ln'>672</a></td><td>  <a id="672c3" class="tk">real_T</a> <a id="672c10" class="tk">*</a><a id="672c11" class="tk">c1_e_clutchVal</a>;</td></tr>
 <tr name="673" id="673">
-<td><a id="l673" class='ln'>673</a></td><td>  <a id="673c3" class="tk">real_T</a> <a id="673c10" class="tk">*</a><a id="673c11" class="tk">c1_f_currentSlip</a>;</td></tr>
+<td><a id="l673" class='ln'>673</a></td><td>  <a id="673c3" class="tk">real_T</a> <a id="673c10" class="tk">*</a><a id="673c11" class="tk">c1_e_reset</a>;</td></tr>
 <tr name="674" id="674">
-<td><a id="l674" class='ln'>674</a></td><td>  <a id="674c3" class="tk">real_T</a> <a id="674c10" class="tk">*</a><a id="674c11" class="tk">c1_f_clutchVal</a>;</td></tr>
+<td><a id="l674" class='ln'>674</a></td><td>  <a id="674c3" class="tk">real_T</a> <a id="674c10" class="tk">*</a><a id="674c11" class="tk">c1_f_slipTarget</a>;</td></tr>
 <tr name="675" id="675">
-<td><a id="l675" class='ln'>675</a></td><td>  <a id="675c3" class="tk">real_T</a> <a id="675c10" class="tk">*</a><a id="675c11" class="tk">c1_f_reset</a>;</td></tr>
+<td><a id="l675" class='ln'>675</a></td><td>  <a id="675c3" class="tk">real_T</a> <a id="675c10" class="tk">*</a><a id="675c11" class="tk">c1_f_currentSlip</a>;</td></tr>
 <tr name="676" id="676">
-<td><a id="l676" class='ln'>676</a></td><td>  <a id="676c3" class="tk">real_T</a> <a id="676c10" class="tk">*</a><a id="676c11" class="tk">c1_g_slipTarget</a>;</td></tr>
+<td><a id="l676" class='ln'>676</a></td><td>  <a id="676c3" class="tk">real_T</a> <a id="676c10" class="tk">*</a><a id="676c11" class="tk">c1_f_clutchVal</a>;</td></tr>
 <tr name="677" id="677">
-<td><a id="l677" class='ln'>677</a></td><td>  <a id="677c3" class="tk">real_T</a> <a id="677c10" class="tk">*</a><a id="677c11" class="tk">c1_g_currentSlip</a>;</td></tr>
+<td><a id="l677" class='ln'>677</a></td><td>  <a id="677c3" class="tk">real_T</a> <a id="677c10" class="tk">*</a><a id="677c11" class="tk">c1_f_reset</a>;</td></tr>
 <tr name="678" id="678">
-<td><a id="l678" class='ln'>678</a></td><td>  <a id="678c3" class="tk">real_T</a> <a id="678c10" class="tk">*</a><a id="678c11" class="tk">c1_g_clutchVal</a>;</td></tr>
+<td><a id="l678" class='ln'>678</a></td><td>  <a id="678c3" class="tk">real_T</a> <a id="678c10" class="tk">*</a><a id="678c11" class="tk">c1_g_slipTarget</a>;</td></tr>
 <tr name="679" id="679">
-<td><a id="l679" class='ln'>679</a></td><td>  <a id="679c3" class="tk">real_T</a> <a id="679c10" class="tk">*</a><a id="679c11" class="tk">c1_g_reset</a>;</td></tr>
+<td><a id="l679" class='ln'>679</a></td><td>  <a id="679c3" class="tk">real_T</a> <a id="679c10" class="tk">*</a><a id="679c11" class="tk">c1_g_currentSlip</a>;</td></tr>
 <tr name="680" id="680">
-<td><a id="l680" class='ln'>680</a></td><td>  <a id="680c3" class="tk">real_T</a> <a id="680c10" class="tk">*</a><a id="680c11" class="tk">c1_h_slipTarget</a>;</td></tr>
+<td><a id="l680" class='ln'>680</a></td><td>  <a id="680c3" class="tk">real_T</a> <a id="680c10" class="tk">*</a><a id="680c11" class="tk">c1_g_clutchVal</a>;</td></tr>
 <tr name="681" id="681">
-<td><a id="l681" class='ln'>681</a></td><td>  <a id="681c3" class="tk">real_T</a> <a id="681c10" class="tk">*</a><a id="681c11" class="tk">c1_h_currentSlip</a>;</td></tr>
+<td><a id="l681" class='ln'>681</a></td><td>  <a id="681c3" class="tk">real_T</a> <a id="681c10" class="tk">*</a><a id="681c11" class="tk">c1_g_reset</a>;</td></tr>
 <tr name="682" id="682">
-<td><a id="l682" class='ln'>682</a></td><td>  <a id="682c3" class="tk">real_T</a> <a id="682c10" class="tk">*</a><a id="682c11" class="tk">c1_h_clutchVal</a>;</td></tr>
+<td><a id="l682" class='ln'>682</a></td><td>  <a id="682c3" class="tk">real_T</a> <a id="682c10" class="tk">*</a><a id="682c11" class="tk">c1_h_slipTarget</a>;</td></tr>
 <tr name="683" id="683">
-<td><a id="l683" class='ln'>683</a></td><td>  <a id="683c3" class="tk">real_T</a> <a id="683c10" class="tk">*</a><a id="683c11" class="tk">c1_h_reset</a>;</td></tr>
+<td><a id="l683" class='ln'>683</a></td><td>  <a id="683c3" class="tk">real_T</a> <a id="683c10" class="tk">*</a><a id="683c11" class="tk">c1_h_currentSlip</a>;</td></tr>
 <tr name="684" id="684">
-<td><a id="l684" class='ln'>684</a></td><td>  <a id="684c3" class="tk">real_T</a> <a id="684c10" class="tk">*</a><a id="684c11" class="tk">c1_i_slipTarget</a>;</td></tr>
+<td><a id="l684" class='ln'>684</a></td><td>  <a id="684c3" class="tk">real_T</a> <a id="684c10" class="tk">*</a><a id="684c11" class="tk">c1_h_clutchVal</a>;</td></tr>
 <tr name="685" id="685">
-<td><a id="l685" class='ln'>685</a></td><td>  <a id="685c3" class="tk">real_T</a> <a id="685c10" class="tk">*</a><a id="685c11" class="tk">c1_i_currentSlip</a>;</td></tr>
+<td><a id="l685" class='ln'>685</a></td><td>  <a id="685c3" class="tk">real_T</a> <a id="685c10" class="tk">*</a><a id="685c11" class="tk">c1_h_reset</a>;</td></tr>
 <tr name="686" id="686">
-<td><a id="l686" class='ln'>686</a></td><td>  <a id="686c3" class="tk">real_T</a> <a id="686c10" class="tk">*</a><a id="686c11" class="tk">c1_i_clutchVal</a>;</td></tr>
+<td><a id="l686" class='ln'>686</a></td><td>  <a id="686c3" class="tk">real_T</a> <a id="686c10" class="tk">*</a><a id="686c11" class="tk">c1_i_slipTarget</a>;</td></tr>
 <tr name="687" id="687">
-<td><a id="l687" class='ln'>687</a></td><td>  <a id="687c3" class="tk">real_T</a> <a id="687c10" class="tk">*</a><a id="687c11" class="tk">c1_i_reset</a>;</td></tr>
+<td><a id="l687" class='ln'>687</a></td><td>  <a id="687c3" class="tk">real_T</a> <a id="687c10" class="tk">*</a><a id="687c11" class="tk">c1_i_currentSlip</a>;</td></tr>
 <tr name="688" id="688">
-<td><a id="l688" class='ln'>688</a></td><td><span class="br">}</span> <a id="688c3" class="tk">SFc1_GCU_Model_genCodeInstanceStruct</a>;</td></tr>
+<td><a id="l688" class='ln'>688</a></td><td>  <a id="688c3" class="tk">real_T</a> <a id="688c10" class="tk">*</a><a id="688c11" class="tk">c1_i_clutchVal</a>;</td></tr>
 <tr name="689" id="689">
-<td><a id="l689" class='ln'>689</a></td><td></td></tr>
+<td><a id="l689" class='ln'>689</a></td><td>  <a id="689c3" class="tk">real_T</a> <a id="689c10" class="tk">*</a><a id="689c11" class="tk">c1_i_reset</a>;</td></tr>
 <tr name="690" id="690">
-<td><a id="l690" class='ln'>690</a></td><td><span class="pp">#endif</span>                                 <span class="ct">/*typedef_SFc1_GCU_Model_genCodeInstanceStruct*/</span></td></tr>
+<td><a id="l690" class='ln'>690</a></td><td><span class="br">}</span> <a id="690c3" class="tk">SFc1_GCU_Model_genCodeInstanceStruct</a>;</td></tr>
 <tr name="691" id="691">
 <td><a id="l691" class='ln'>691</a></td><td></td></tr>
 <tr name="692" id="692">
-<td><a id="l692" class='ln'>692</a></td><td><span class="ct">/* Named Constants */</span></td></tr>
+<td><a id="l692" class='ln'>692</a></td><td><span class="pp">#endif</span>                                 <span class="ct">/*typedef_SFc1_GCU_Model_genCodeInstanceStruct*/</span></td></tr>
 <tr name="693" id="693">
 <td><a id="l693" class='ln'>693</a></td><td></td></tr>
 <tr name="694" id="694">
-<td><a id="l694" class='ln'>694</a></td><td><span class="ct">/* Variable Declarations */</span></td></tr>
+<td><a id="l694" class='ln'>694</a></td><td><span class="ct">/* Named Constants */</span></td></tr>
 <tr name="695" id="695">
-<td><a id="l695" class='ln'>695</a></td><td><span class="kw">extern</span> <span class="kw">struct</span> <a id="695c15" class="tk">SfDebugInstanceStruct</a> <a id="695c37" class="tk">*</a><a id="695c38" class="tk">sfGlobalDebugInstanceStruct</a>;</td></tr>
+<td><a id="l695" class='ln'>695</a></td><td></td></tr>
 <tr name="696" id="696">
-<td><a id="l696" class='ln'>696</a></td><td></td></tr>
+<td><a id="l696" class='ln'>696</a></td><td><span class="ct">/* Variable Declarations */</span></td></tr>
 <tr name="697" id="697">
-<td><a id="l697" class='ln'>697</a></td><td><span class="ct">/* Variable Definitions */</span></td></tr>
+<td><a id="l697" class='ln'>697</a></td><td><span class="kw">extern</span> <span class="kw">struct</span> <a id="697c15" class="tk">SfDebugInstanceStruct</a> <a id="697c37" class="tk">*</a><a id="697c38" class="tk">sfGlobalDebugInstanceStruct</a>;</td></tr>
 <tr name="698" id="698">
 <td><a id="l698" class='ln'>698</a></td><td></td></tr>
 <tr name="699" id="699">
-<td><a id="l699" class='ln'>699</a></td><td><span class="ct">/* Function Declarations */</span></td></tr>
+<td><a id="l699" class='ln'>699</a></td><td><span class="ct">/* Variable Definitions */</span></td></tr>
 <tr name="700" id="700">
-<td><a id="l700" class='ln'>700</a></td><td><span class="kw">extern</span> <span class="kw">const</span> <a id="700c14" class="tk">mxArray</a> <a id="700c22" class="tk">*</a><a id="700c23" class="tk">sf_c1_GCU_Model_genCode_get_eml_resolved_functions_info</a></td></tr>
+<td><a id="l700" class='ln'>700</a></td><td></td></tr>
 <tr name="701" id="701">
-<td><a id="l701" class='ln'>701</a></td><td>  (<span class="kw">void</span>);</td></tr>
+<td><a id="l701" class='ln'>701</a></td><td><span class="ct">/* Function Declarations */</span></td></tr>
 <tr name="702" id="702">
-<td><a id="l702" class='ln'>702</a></td><td></td></tr>
+<td><a id="l702" class='ln'>702</a></td><td><span class="kw">extern</span> <span class="kw">const</span> <a id="702c14" class="tk">mxArray</a> <a id="702c22" class="tk">*</a><a id="702c23" class="tk">sf_c1_GCU_Model_genCode_get_eml_resolved_functions_info</a></td></tr>
 <tr name="703" id="703">
-<td><a id="l703" class='ln'>703</a></td><td><span class="ct">/* Function Definitions */</span></td></tr>
+<td><a id="l703" class='ln'>703</a></td><td>  (<span class="kw">void</span>);</td></tr>
 <tr name="704" id="704">
-<td><a id="l704" class='ln'>704</a></td><td><span class="kw">extern</span> <span class="kw">void</span> <a id="704c13" class="tk">sf_c1_GCU_Model_genCode_get_check_sum</a>(<a id="704c51" class="tk">mxArray</a> <a id="704c59" class="tk">*</a><a id="704c60" class="tk">plhs</a>[]);</td></tr>
+<td><a id="l704" class='ln'>704</a></td><td></td></tr>
 <tr name="705" id="705">
-<td><a id="l705" class='ln'>705</a></td><td><span class="kw">extern</span> <span class="kw">void</span> <a id="705c13" class="tk">c1_GCU_Model_genCode_method_dispatcher</a>(<a id="705c52" class="tk">SimStruct</a> <a id="705c62" class="tk">*</a><a id="705c63" class="tk">S</a>, <a id="705c66" class="tk">int_T</a> <a id="705c72" class="tk">method</a>,</td></tr>
+<td><a id="l705" class='ln'>705</a></td><td><span class="ct">/* Function Definitions */</span></td></tr>
 <tr name="706" id="706">
-<td><a id="l706" class='ln'>706</a></td><td>  <span class="kw">void</span> <a id="706c8" class="tk">*</a><a id="706c9" class="tk">data</a>);</td></tr>
+<td><a id="l706" class='ln'>706</a></td><td><span class="kw">extern</span> <span class="kw">void</span> <a id="706c13" class="tk">sf_c1_GCU_Model_genCode_get_check_sum</a>(<a id="706c51" class="tk">mxArray</a> <a id="706c59" class="tk">*</a><a id="706c60" class="tk">plhs</a>[]);</td></tr>
 <tr name="707" id="707">
-<td><a id="l707" class='ln'>707</a></td><td></td></tr>
+<td><a id="l707" class='ln'>707</a></td><td><span class="kw">extern</span> <span class="kw">void</span> <a id="707c13" class="tk">c1_GCU_Model_genCode_method_dispatcher</a>(<a id="707c52" class="tk">SimStruct</a> <a id="707c62" class="tk">*</a><a id="707c63" class="tk">S</a>, <a id="707c66" class="tk">int_T</a> <a id="707c72" class="tk">method</a>,</td></tr>
 <tr name="708" id="708">
-<td><a id="l708" class='ln'>708</a></td><td><span class="pp">#endif</span></td></tr>
+<td><a id="l708" class='ln'>708</a></td><td>  <span class="kw">void</span> <a id="708c8" class="tk">*</a><a id="708c9" class="tk">data</a>);</td></tr>
 <tr name="709" id="709">
 <td><a id="l709" class='ln'>709</a></td><td></td></tr>
+<tr name="710" id="710">
+<td><a id="l710" class='ln'>710</a></td><td><span class="pp">#endif</span></td></tr>
+<tr name="711" id="711">
+<td><a id="l711" class='ln'>711</a></td><td></td></tr>
 </table>
 </pre>
 </body>

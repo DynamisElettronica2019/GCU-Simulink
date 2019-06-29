@@ -51,6 +51,7 @@
 #define AUTOX_DEFAULT       0
 #define AUTOX_READY         1
 #define AUTOX_GO            2
+#define AUTOX_PID           
 
 //Define dei comandi antistall
 #define ANTISTALL_ON        1

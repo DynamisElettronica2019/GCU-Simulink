@@ -46,7 +46,7 @@ I2_ISx = 225e-3/R_IS;
 %%sperimental IS offset value for H_bridge 1
 IS1_offset = 89.7143e-3/R_IS; %%A
 %%sperimental IS offset value for H_bridge 2
-IS2_offset = 64.2143/R_IS; %%A
+IS2_offset = 64.2143e-3/R_IS; %%A
 %%dk1_ILIS specific for H-bridge 1 @T=T_amb @I_L = X A
 dk1_ILIS_amb = (I1_Lx - I1_L0) / (I1_ISx - IS1_offset);
 %%dk2_ILIS specific for h_brisge 2 @T=T_amb @I_L = X A
