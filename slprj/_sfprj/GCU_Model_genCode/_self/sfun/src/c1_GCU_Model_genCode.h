@@ -673,8 +673,8 @@ typedef struct {
   real_T *c1_e_reset;
   real_T *c1_f_slipTarget;
   real_T *c1_f_currentSlip;
-  real_T *c1_f_reset;
   real_T *c1_f_clutchVal;
+  real_T *c1_f_reset;
   real_T *c1_g_slipTarget;
   real_T *c1_g_currentSlip;
   real_T *c1_g_reset;
@@ -685,8 +685,8 @@ typedef struct {
   real_T *c1_h_clutchVal;
   real_T *c1_i_slipTarget;
   real_T *c1_i_currentSlip;
-  real_T *c1_i_clutchVal;
   real_T *c1_i_reset;
+  real_T *c1_i_clutchVal;
 } SFc1_GCU_Model_genCodeInstanceStruct;
 
 #endif                                 /*typedef_SFc1_GCU_Model_genCodeInstanceStruct*/
