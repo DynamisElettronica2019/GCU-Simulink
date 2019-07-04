@@ -400,7 +400,7 @@ typedef struct {
   const mxArray *c1_setSimStateSideEffectsInfo;
   void *c1_dataSetLogObjVector[12];
   uint8_T c1_sdiLoggedStatesBuffer[153];
-  uint8_T c1_sdiLoggedDataBuffer[181];
+  uint8_T c1_sdiLoggedDataBuffer[186];
   sdiBlockID_t c1_sdiBlockInfo;
   SignalExportStruct c1_SignalExportProp;
   SignalExportStruct c1_b_SignalExportProp;
@@ -651,6 +651,8 @@ typedef struct {
   uint16_T *c1_currSlipTarget;
   uint16_T *c1_pidSubMode;
   uint32_T *c1_pidCounter;
+  real_T *c1_I1_L;
+  real_T *c1_I2_L;
   real_T *c1_slipTarget;
   real_T *c1_currentSlip;
   real_T *c1_clutchVal;
@@ -687,6 +689,9 @@ typedef struct {
   real_T *c1_i_currentSlip;
   real_T *c1_i_reset;
   real_T *c1_i_clutchVal;
+  boolean_T *c1_out;
+  real_T *c1_time;
+  real_T *c1_current;
 } SFc1_GCU_Model_genCodeInstanceStruct;
 
 #endif                                 /*typedef_SFc1_GCU_Model_genCodeInstanceStruct*/
