@@ -15,7 +15,7 @@
 #define SEND_SERIAL_DATA_PERIOD 50     //periodo di invio dei dati su seriale 
 #define SEND_CAN_DATA_PERIOD    10
 #define TOGGLE_LED_PERIOD       500   //periodo di accensione del led
-#define ADC_PERIOD              10           //periodo di campionamento dei sensori
+#define ADC_PERIOD              1          //periodo di campionamento dei sensori
 
 //Modalità di lettura dei dati di input
 #define UART_READ_MODE  1
