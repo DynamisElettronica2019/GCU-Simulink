@@ -238,11 +238,14 @@ typedef struct {
   uint8_T c1_l_tp_START;
   uint8_T c1_tp_STOP;
   uint8_T c1_tp_SCAN_ADC;
-  uint8_T c1_l_tp_WAIT;
   uint8_T c1_tp_SCAN;
   uint8_T c1_tp_ANTISTALL_ENABLE;
   uint8_T c1_tp_DISABLE;
   uint8_T c1_tp_ENABLE;
+  uint8_T c1_tp_CAN_ERROR_RESTART;
+  uint8_T c1_tp_NO_ERROR;
+  uint8_T c1_tp_RESTART;
+  uint8_T c1_tp_DELAY;
   uint8_T c1_is_active_c1_GCU_Model_genCode;
   uint8_T c1_is_MODES;
   uint8_T c1_is_active_MODES;
@@ -300,6 +303,8 @@ typedef struct {
   uint8_T c1_is_active_SCAN_ADC;
   uint8_T c1_is_ANTISTALL_ENABLE;
   uint8_T c1_is_active_ANTISTALL_ENABLE;
+  uint8_T c1_is_CAN_ERROR_RESTART;
+  uint8_T c1_is_active_CAN_ERROR_RESTART;
   uint8_T c1_lastShift;
   uint16_T c1_lastAacCom;
   uint16_T c1_lastShiftCom;
@@ -396,11 +401,14 @@ typedef struct {
   uint8_T c1_startCounter;
   uint16_T c1_timerCounter;
   real_T c1_b_counterWait;
+  uint16_T c1_b_lastCom;
+  uint16_T c1_delayCounter;
+  uint16_T c1_retryCount;
   uint8_T c1_doSetSimStateSideEffects;
   const mxArray *c1_setSimStateSideEffectsInfo;
   void *c1_dataSetLogObjVector[12];
-  uint8_T c1_sdiLoggedStatesBuffer[153];
-  uint8_T c1_sdiLoggedDataBuffer[181];
+  uint8_T c1_sdiLoggedStatesBuffer[156];
+  uint8_T c1_sdiLoggedDataBuffer[190];
   sdiBlockID_t c1_sdiBlockInfo;
   SignalExportStruct c1_SignalExportProp;
   SignalExportStruct c1_b_SignalExportProp;
@@ -623,6 +631,12 @@ typedef struct {
   SignalExportStruct c1_si_SignalExportProp;
   SignalExportStruct c1_ti_SignalExportProp;
   SignalExportStruct c1_ui_SignalExportProp;
+  SignalExportStruct c1_vi_SignalExportProp;
+  SignalExportStruct c1_wi_SignalExportProp;
+  SignalExportStruct c1_xi_SignalExportProp;
+  SignalExportStruct c1_yi_SignalExportProp;
+  SignalExportStruct c1_aj_SignalExportProp;
+  SignalExportStruct c1_bj_SignalExportProp;
   rtwCAPI_ModelMappingInfo c1_testPointMappingInfo;
   void *c1_testPointAddrMap[12];
   void *c1_fEmlrtCtx;
@@ -651,6 +665,9 @@ typedef struct {
   uint16_T *c1_currSlipTarget;
   uint16_T *c1_pidSubMode;
   uint32_T *c1_pidCounter;
+  real_T *c1_I1_L;
+  real_T *c1_I2_L;
+  uint16_T *c1_canErrorCom;
   real_T *c1_slipTarget;
   real_T *c1_currentSlip;
   real_T *c1_clutchVal;
@@ -673,8 +690,8 @@ typedef struct {
   real_T *c1_e_reset;
   real_T *c1_f_slipTarget;
   real_T *c1_f_currentSlip;
-  real_T *c1_f_reset;
   real_T *c1_f_clutchVal;
+  real_T *c1_f_reset;
   real_T *c1_g_slipTarget;
   real_T *c1_g_currentSlip;
   real_T *c1_g_reset;
@@ -685,8 +702,11 @@ typedef struct {
   real_T *c1_h_clutchVal;
   real_T *c1_i_slipTarget;
   real_T *c1_i_currentSlip;
-  real_T *c1_i_clutchVal;
   real_T *c1_i_reset;
+  real_T *c1_i_clutchVal;
+  boolean_T *c1_out;
+  real_T *c1_time;
+  real_T *c1_current;
 } SFc1_GCU_Model_genCodeInstanceStruct;
 
 #endif                                 /*typedef_SFc1_GCU_Model_genCodeInstanceStruct*/

@@ -7,7 +7,7 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   94 \
+    NumChartData   98 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
@@ -420,6 +420,20 @@
       SrcLocation  ""\
     }\
     ChartData {\
+      Name         "is_CAN_ERROR_RESTART"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "CAN_ERROR_RESTART"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_active_CAN_ERROR_RESTART"\
+      Description  "StateIsActive"\
+      SFName       ""\
+      Path         "CAN_ERROR_RESTART"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
       Name         "lastShift"\
       Description  "ChartLocal"\
       SFName       ""\
@@ -676,10 +690,24 @@
       SrcLocation  ""\
     }\
     ChartData {\
-      Name         "timerCounter"\
+      Name         "lastCom"\
       Description  "ChartLocal"\
       SFName       ""\
-      Path         "SCAN_ADC.timerCounter"\
+      Path         "CAN_ERROR_RESTART.lastCom"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "delayCounter"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "CAN_ERROR_RESTART.delayCounter"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "retryCount"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "CAN_ERROR_RESTART.retryCount"\
       SrcLocation  ""\
     }\
   }
