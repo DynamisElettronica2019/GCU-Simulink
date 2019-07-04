@@ -19,12 +19,13 @@
 
 
 /********************* STEERING WHEEL *********************/
-#define SW_FIRE_GCU_ID											0x204
-#define SW_GEARSHIFT_ID											0x200
+#define SW_FIRE_GCU_ID									0x204
+#define SW_GEARSHIFT_ID									0x200
 #define SW_CLUTCH_MODE_MAP_GCU_ID						0x201
-#define SW_OK_BUTTON_GCU_ID									0x202
-#define SW_TRACTION_LIMITER_GCU_ID					0x203
-#define SW_ACQUISITION_DCU_ID								0x400
+#define SW_OK_BUTTON_GCU_ID								0x202
+#define SW_TRACTION_LIMITER_GCU_ID                      0x203
+#define SW_CAN_ERROR_GCU_ID                             0x205
+#define SW_ACQUISITION_DCU_ID							0x400
 
 /************************** DCU ***************************/
 #define DCU_ACQUISITION_SW_ID								0x401

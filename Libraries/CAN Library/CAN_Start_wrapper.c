@@ -37,7 +37,7 @@ extern CAN_HandleTypeDef hcan_active;
 void CAN_Start_Outputs_wrapper(void)
 {
 /* %%%-SFUNWIZ_wrapper_Outputs_Changes_BEGIN --- EDIT HERE TO _END */
-  CAN_Filter_Setup_Outputs_wrapper();
+CAN_Filter_Setup_Outputs_wrapper();
     
   #if !defined(MATLAB_MEX_FILE)
   
