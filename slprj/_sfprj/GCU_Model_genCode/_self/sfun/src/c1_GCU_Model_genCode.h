@@ -227,8 +227,8 @@ typedef struct {
   uint8_T c1_tp_DOWN_BRAKE;
   uint8_T c1_e_tp_Default;
   uint8_T c1_b_tp_ChangeClutch;
-  uint8_T c1_tp_DOWN_PUSH;
   uint8_T c1_tp_DOWN_REBOUND;
+  uint8_T c1_tp_DOWN_PUSH;
   uint8_T c1_tp_DOWN_END;
   uint8_T c1_tp_EEPROM_TRIGGER;
   uint8_T c1_j_tp_WAIT;
@@ -238,7 +238,6 @@ typedef struct {
   uint8_T c1_l_tp_START;
   uint8_T c1_tp_STOP;
   uint8_T c1_tp_SCAN_ADC;
-  uint8_T c1_l_tp_WAIT;
   uint8_T c1_tp_SCAN;
   uint8_T c1_tp_ANTISTALL_ENABLE;
   uint8_T c1_tp_DISABLE;
@@ -399,7 +398,7 @@ typedef struct {
   uint8_T c1_doSetSimStateSideEffects;
   const mxArray *c1_setSimStateSideEffectsInfo;
   void *c1_dataSetLogObjVector[12];
-  uint8_T c1_sdiLoggedStatesBuffer[153];
+  uint8_T c1_sdiLoggedStatesBuffer[152];
   uint8_T c1_sdiLoggedDataBuffer[186];
   sdiBlockID_t c1_sdiBlockInfo;
   SignalExportStruct c1_SignalExportProp;
@@ -622,7 +621,6 @@ typedef struct {
   SignalExportStruct c1_ri_SignalExportProp;
   SignalExportStruct c1_si_SignalExportProp;
   SignalExportStruct c1_ti_SignalExportProp;
-  SignalExportStruct c1_ui_SignalExportProp;
   rtwCAPI_ModelMappingInfo c1_testPointMappingInfo;
   void *c1_testPointAddrMap[12];
   void *c1_fEmlrtCtx;
