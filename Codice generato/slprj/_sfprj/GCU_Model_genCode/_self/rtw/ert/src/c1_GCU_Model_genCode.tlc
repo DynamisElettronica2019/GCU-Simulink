@@ -7,7 +7,7 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   98 \
+    NumChartData   103 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
@@ -434,6 +434,27 @@
       SrcLocation  ""\
     }\
     ChartData {\
+      Name         "is_LAUNCH9"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "MODES.ACCELERATION_PID.LAUNCH9"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_ACTIVE"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "MODES.ACCELERATION_PID.LAUNCH9.ACTIVE"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_RELEASE"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "MODES.ACCELERATION_PID.LAUNCH9.ACTIVE.RELEASE"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
       Name         "lastShift"\
       Description  "ChartLocal"\
       SFName       ""\
@@ -644,6 +665,21 @@
       Description  "ChartLocal"\
       SFName       ""\
       Path         "MODES.ACCELERATION_PID.LAUNCH8.ACTIVE.RELEASE.lastSlip"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "autoXCounter"\
+      Description  "ChartLocal"\
+      SFName       "autoXCounter"\
+      Path         "MODES.ACCELERATION_PID.LAUNCH9.autoXCounter"\
+      SrcLocation  ""\
+      IsTestPoint  1\
+    }\
+    ChartData {\
+      Name         "lastSlip"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "MODES.ACCELERATION_PID.LAUNCH9.ACTIVE.RELEASE.lastSlip"\
       SrcLocation  ""\
     }\
     ChartData {\

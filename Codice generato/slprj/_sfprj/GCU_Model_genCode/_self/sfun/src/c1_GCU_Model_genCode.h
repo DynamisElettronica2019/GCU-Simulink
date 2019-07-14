@@ -247,6 +247,15 @@ typedef struct {
   uint8_T c1_tp_RESET;
   uint8_T c1_tp_DELAY;
   uint8_T c1_tp_RESTART;
+  uint8_T c1_tp_LAUNCH9;
+  uint8_T c1_l_tp_ACTIVE;
+  uint8_T c1_m_tp_START;
+  uint8_T c1_l_tp_READY;
+  uint8_T c1_l_tp_RUNNING;
+  uint8_T c1_j_tp_RELEASE;
+  uint8_T c1_j_tp_Control;
+  uint8_T c1_l_tp_WAIT;
+  uint8_T c1_l_tp_STOPPING;
   uint8_T c1_is_active_c1_GCU_Model_genCode;
   uint8_T c1_is_MODES;
   uint8_T c1_is_active_MODES;
@@ -306,6 +315,9 @@ typedef struct {
   uint8_T c1_is_active_ANTISTALL_ENABLE;
   uint8_T c1_is_CAN_ERROR_RESTART;
   uint8_T c1_is_active_CAN_ERROR_RESTART;
+  uint8_T c1_is_LAUNCH9;
+  uint8_T c1_l_is_ACTIVE;
+  uint8_T c1_j_is_RELEASE;
   uint8_T c1_lastShift;
   uint16_T c1_lastAacCom;
   uint16_T c1_lastShiftCom;
@@ -395,6 +407,12 @@ typedef struct {
   real_T c1_j_autoX_clutchStep;
   int32_T c1_j_autoX_dtRelease;
   uint16_T c1_i_lastSlip;
+  uint16_T c1_k_AUTOX_WORK_RATE_ms;
+  uint16_T c1_k_autoXCounter;
+  real_T c1_k_autoX_clutchValue;
+  real_T c1_k_autoX_clutchStep;
+  int32_T c1_k_autoX_dtRelease;
+  uint16_T c1_j_lastSlip;
   int32_T c1_ticksCounter;
   real_T c1_data;
   real_T c1_counterWait;
@@ -407,9 +425,9 @@ typedef struct {
   uint16_T c1_retryCount;
   uint8_T c1_doSetSimStateSideEffects;
   const mxArray *c1_setSimStateSideEffectsInfo;
-  void *c1_dataSetLogObjVector[12];
-  uint8_T c1_sdiLoggedStatesBuffer[157];
-  uint8_T c1_sdiLoggedDataBuffer[191];
+  void *c1_dataSetLogObjVector[13];
+  uint8_T c1_sdiLoggedStatesBuffer[166];
+  uint8_T c1_sdiLoggedDataBuffer[203];
   sdiBlockID_t c1_sdiBlockInfo;
   SignalExportStruct c1_SignalExportProp;
   SignalExportStruct c1_b_SignalExportProp;
@@ -639,8 +657,22 @@ typedef struct {
   SignalExportStruct c1_aj_SignalExportProp;
   SignalExportStruct c1_bj_SignalExportProp;
   SignalExportStruct c1_cj_SignalExportProp;
+  SignalExportStruct c1_dj_SignalExportProp;
+  SignalExportStruct c1_ej_SignalExportProp;
+  SignalExportStruct c1_fj_SignalExportProp;
+  SignalExportStruct c1_gj_SignalExportProp;
+  SignalExportStruct c1_hj_SignalExportProp;
+  SignalExportStruct c1_ij_SignalExportProp;
+  SignalExportStruct c1_jj_SignalExportProp;
+  SignalExportStruct c1_kj_SignalExportProp;
+  SignalExportStruct c1_lj_SignalExportProp;
+  SignalExportStruct c1_mj_SignalExportProp;
+  SignalExportStruct c1_nj_SignalExportProp;
+  SignalExportStruct c1_oj_SignalExportProp;
+  SignalExportStruct c1_pj_SignalExportProp;
+  SignalExportStruct c1_qj_SignalExportProp;
   rtwCAPI_ModelMappingInfo c1_testPointMappingInfo;
-  void *c1_testPointAddrMap[12];
+  void *c1_testPointAddrMap[13];
   void *c1_fEmlrtCtx;
   uint8_T *c1_clutchCurrVal;
   uint16_T (*c1_lastModeCom)[2];
@@ -710,6 +742,10 @@ typedef struct {
   real_T *c1_time;
   real_T *c1_current;
   boolean_T *c1_status;
+  real_T *c1_j_slipTarget;
+  real_T *c1_j_currentSlip;
+  real_T *c1_j_reset;
+  real_T *c1_j_clutchVal;
 } SFc1_GCU_Model_genCodeInstanceStruct;
 
 #endif                                 /*typedef_SFc1_GCU_Model_genCodeInstanceStruct*/
