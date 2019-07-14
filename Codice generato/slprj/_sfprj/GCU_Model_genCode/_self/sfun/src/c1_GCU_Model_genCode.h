@@ -244,8 +244,9 @@ typedef struct {
   uint8_T c1_tp_ENABLE;
   uint8_T c1_tp_CAN_ERROR_RESTART;
   uint8_T c1_tp_NO_ERROR;
-  uint8_T c1_tp_RESTART;
+  uint8_T c1_tp_RESET;
   uint8_T c1_tp_DELAY;
+  uint8_T c1_tp_RESTART;
   uint8_T c1_is_active_c1_GCU_Model_genCode;
   uint8_T c1_is_MODES;
   uint8_T c1_is_active_MODES;
@@ -407,8 +408,8 @@ typedef struct {
   uint8_T c1_doSetSimStateSideEffects;
   const mxArray *c1_setSimStateSideEffectsInfo;
   void *c1_dataSetLogObjVector[12];
-  uint8_T c1_sdiLoggedStatesBuffer[156];
-  uint8_T c1_sdiLoggedDataBuffer[190];
+  uint8_T c1_sdiLoggedStatesBuffer[157];
+  uint8_T c1_sdiLoggedDataBuffer[191];
   sdiBlockID_t c1_sdiBlockInfo;
   SignalExportStruct c1_SignalExportProp;
   SignalExportStruct c1_b_SignalExportProp;
@@ -637,6 +638,7 @@ typedef struct {
   SignalExportStruct c1_yi_SignalExportProp;
   SignalExportStruct c1_aj_SignalExportProp;
   SignalExportStruct c1_bj_SignalExportProp;
+  SignalExportStruct c1_cj_SignalExportProp;
   rtwCAPI_ModelMappingInfo c1_testPointMappingInfo;
   void *c1_testPointAddrMap[12];
   void *c1_fEmlrtCtx;
@@ -707,6 +709,7 @@ typedef struct {
   boolean_T *c1_out;
   real_T *c1_time;
   real_T *c1_current;
+  boolean_T *c1_status;
 } SFc1_GCU_Model_genCodeInstanceStruct;
 
 #endif                                 /*typedef_SFc1_GCU_Model_genCodeInstanceStruct*/

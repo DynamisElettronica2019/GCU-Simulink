@@ -635,21 +635,6 @@
       Name         "autoXCounter"\
       Description  "ChartLocal"\
       SFName       "autoXCounter"\
-      Path         "MODES.ACCELERATION_PID.LAUNCH7.autoXCounter"\
-      SrcLocation  ""\
-      IsTestPoint  1\
-    }\
-    ChartData {\
-      Name         "lastSlip"\
-      Description  "ChartLocal"\
-      SFName       ""\
-      Path         "MODES.ACCELERATION_PID.LAUNCH7.ACTIVE.RELEASE.lastSlip"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "autoXCounter"\
-      Description  "ChartLocal"\
-      SFName       "autoXCounter"\
       Path         "MODES.ACCELERATION_PID.LAUNCH8.autoXCounter"\
       SrcLocation  ""\
       IsTestPoint  1\
@@ -659,6 +644,21 @@
       Description  "ChartLocal"\
       SFName       ""\
       Path         "MODES.ACCELERATION_PID.LAUNCH8.ACTIVE.RELEASE.lastSlip"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "autoXCounter"\
+      Description  "ChartLocal"\
+      SFName       "autoXCounter"\
+      Path         "MODES.ACCELERATION_PID.LAUNCH7.autoXCounter"\
+      SrcLocation  ""\
+      IsTestPoint  1\
+    }\
+    ChartData {\
+      Name         "lastSlip"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "MODES.ACCELERATION_PID.LAUNCH7.ACTIVE.RELEASE.lastSlip"\
       SrcLocation  ""\
     }\
     ChartData {\
