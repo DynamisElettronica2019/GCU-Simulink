@@ -37,13 +37,9 @@ extern CAN_HandleTypeDef hcan_active;
 void CAN_Restart_Outputs_wrapper(void)
 {
 /* %%%-SFUNWIZ_wrapper_Outputs_Changes_BEGIN --- EDIT HERE TO _END */
-  #if !defined(MATLAB_MEX_FILE)
-  
-  HAL_CAN_Stop(&hcan_active);
-  HAL_CAN_DeInit(&hcan_active);
-  HAL_CAN_Init(&hcan_active);
-  CAN_Start_Outputs_wrapper();
-  #endif
+#if !defined(MATLAB_MEX_FILE)
+  hcan_active.Instance->MCR &= 0;
+#endif
 /* %%%-SFUNWIZ_wrapper_Outputs_Changes_END --- EDIT HERE TO _BEGIN */
 }
 
