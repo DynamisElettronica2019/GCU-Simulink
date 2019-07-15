@@ -245,27 +245,6 @@
       SrcLocation  ""\
     }\
     ChartData {\
-      Name         "is_LAUNCH7"\
-      Description  "StateActiveChild"\
-      SFName       ""\
-      Path         "MODES.ACCELERATION_PID.LAUNCH7"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "is_ACTIVE"\
-      Description  "StateActiveChild"\
-      SFName       ""\
-      Path         "MODES.ACCELERATION_PID.LAUNCH7.ACTIVE"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "is_RELEASE"\
-      Description  "StateActiveChild"\
-      SFName       ""\
-      Path         "MODES.ACCELERATION_PID.LAUNCH7.ACTIVE.RELEASE"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
       Name         "is_LAUNCH8"\
       Description  "StateActiveChild"\
       SFName       ""\
@@ -284,6 +263,48 @@
       Description  "StateActiveChild"\
       SFName       ""\
       Path         "MODES.ACCELERATION_PID.LAUNCH8.ACTIVE.RELEASE"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_LAUNCH9"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "MODES.ACCELERATION_PID.LAUNCH9"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_ACTIVE"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "MODES.ACCELERATION_PID.LAUNCH9.ACTIVE"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_RELEASE"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "MODES.ACCELERATION_PID.LAUNCH9.ACTIVE.RELEASE"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_LAUNCH7"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "MODES.ACCELERATION_PID.LAUNCH7"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_ACTIVE"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "MODES.ACCELERATION_PID.LAUNCH7.ACTIVE"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_RELEASE"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "MODES.ACCELERATION_PID.LAUNCH7.ACTIVE.RELEASE"\
       SrcLocation  ""\
     }\
     ChartData {\
@@ -420,38 +441,17 @@
       SrcLocation  ""\
     }\
     ChartData {\
-      Name         "is_CAN_ERROR_RESTART"\
+      Name         "is_RETRY_LOGIC"\
       Description  "StateActiveChild"\
       SFName       ""\
-      Path         "CAN_ERROR_RESTART"\
+      Path         "RETRY_LOGIC"\
       SrcLocation  ""\
     }\
     ChartData {\
-      Name         "is_active_CAN_ERROR_RESTART"\
+      Name         "is_active_RETRY_LOGIC"\
       Description  "StateIsActive"\
       SFName       ""\
-      Path         "CAN_ERROR_RESTART"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "is_LAUNCH9"\
-      Description  "StateActiveChild"\
-      SFName       ""\
-      Path         "MODES.ACCELERATION_PID.LAUNCH9"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "is_ACTIVE"\
-      Description  "StateActiveChild"\
-      SFName       ""\
-      Path         "MODES.ACCELERATION_PID.LAUNCH9.ACTIVE"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "is_RELEASE"\
-      Description  "StateActiveChild"\
-      SFName       ""\
-      Path         "MODES.ACCELERATION_PID.LAUNCH9.ACTIVE.RELEASE"\
+      Path         "RETRY_LOGIC"\
       SrcLocation  ""\
     }\
     ChartData {\
@@ -460,6 +460,14 @@
       SFName       ""\
       Path         "lastShift"\
       SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "lastTryShift"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "lastTryShift"\
+      SrcLocation  ""\
+      Dimensions   [1,2]\
     }\
     ChartData {\
       Name         "lastAacCom"\
@@ -698,6 +706,20 @@
       SrcLocation  ""\
     }\
     ChartData {\
+      Name         "delayCount"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "RETRY_LOGIC.delayCount"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "retryCount"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "RETRY_LOGIC.retryCount"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
       Name         "ticksCounter"\
       Description  "ChartLocal"\
       SFName       ""\
@@ -723,27 +745,6 @@
       Description  "ChartLocal"\
       SFName       ""\
       Path         "START_ENGINE.startCounter"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "lastCom"\
-      Description  "ChartLocal"\
-      SFName       ""\
-      Path         "CAN_ERROR_RESTART.lastCom"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "delayCounter"\
-      Description  "ChartLocal"\
-      SFName       ""\
-      Path         "CAN_ERROR_RESTART.delayCounter"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "retryCount"\
-      Description  "ChartLocal"\
-      SFName       ""\
-      Path         "CAN_ERROR_RESTART.retryCount"\
       SrcLocation  ""\
     }\
   }

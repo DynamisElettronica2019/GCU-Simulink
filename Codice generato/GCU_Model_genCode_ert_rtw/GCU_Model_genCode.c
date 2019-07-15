@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.385
+ * Model version                  : 1.389
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Sun Jul 14 14:19:42 2019
+ * C/C++ source code generated on : Mon Jul 15 17:30:28 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -56,7 +56,6 @@
 #define IN_CutOff                      ((uint8_T)1U)
 #define IN_DEFAULT                     ((uint8_T)2U)
 #define IN_DEFAULT_j                   ((uint8_T)1U)
-#define IN_DELAY                       ((uint8_T)1U)
 #define IN_DISABLE                     ((uint8_T)1U)
 #define IN_DOWNSHIFTING                ((uint8_T)1U)
 #define IN_DOWN_BRAKE                  ((uint8_T)1U)
@@ -65,11 +64,11 @@
 #define IN_DOWN_REBOUND                ((uint8_T)3U)
 #define IN_DOWN_START                  ((uint8_T)4U)
 #define IN_Default                     ((uint8_T)1U)
-#define IN_Default_h                   ((uint8_T)2U)
+#define IN_Default_e                   ((uint8_T)2U)
 #define IN_ENABLE                      ((uint8_T)2U)
 #define IN_ENDURANCE                   ((uint8_T)1U)
 #define IN_IDLE                        ((uint8_T)3U)
-#define IN_INIT_o                      ((uint8_T)4U)
+#define IN_INIT_k                      ((uint8_T)4U)
 #define IN_LAUNCH                      ((uint8_T)2U)
 #define IN_LAUNCH0                     ((uint8_T)2U)
 #define IN_LAUNCH1                     ((uint8_T)3U)
@@ -83,13 +82,13 @@
 #define IN_LAUNCH9                     ((uint8_T)11U)
 #define IN_MANUAL_MODES                ((uint8_T)5U)
 #define IN_NEUTRAL                     ((uint8_T)1U)
-#define IN_NO_ERROR                    ((uint8_T)2U)
 #define IN_NO_NEUTRAL                  ((uint8_T)2U)
+#define IN_NO_RETRY                    ((uint8_T)1U)
 #define IN_READY                       ((uint8_T)1U)
 #define IN_RELEASE                     ((uint8_T)2U)
 #define IN_RELEASING                   ((uint8_T)2U)
-#define IN_RESET                       ((uint8_T)3U)
-#define IN_RESTART                     ((uint8_T)4U)
+#define IN_RETRY_DOWN                  ((uint8_T)2U)
+#define IN_RETRY_UP                    ((uint8_T)3U)
 #define IN_RUNNING                     ((uint8_T)3U)
 #define IN_SCAN                        ((uint8_T)1U)
 #define IN_SEND                        ((uint8_T)1U)
@@ -97,11 +96,11 @@
 #define IN_SKIDPAD                     ((uint8_T)2U)
 #define IN_START                       ((uint8_T)4U)
 #define IN_START_RELEASE               ((uint8_T)5U)
-#define IN_START_j                     ((uint8_T)1U)
+#define IN_START_a                     ((uint8_T)1U)
 #define IN_STOP                        ((uint8_T)2U)
 #define IN_STOPPING                    ((uint8_T)2U)
 #define IN_SettingNeutral              ((uint8_T)2U)
-#define IN_SettingNeutral_e            ((uint8_T)3U)
+#define IN_SettingNeutral_d            ((uint8_T)3U)
 #define IN_UNSET_NEUTRAL               ((uint8_T)4U)
 #define IN_UPSHIFTING                  ((uint8_T)5U)
 #define IN_UP_BRAKE                    ((uint8_T)1U)
@@ -110,7 +109,8 @@
 #define IN_UP_REBOUND                  ((uint8_T)3U)
 #define IN_UP_START                    ((uint8_T)4U)
 #define IN_WAIT                        ((uint8_T)2U)
-#define IN_WAIT_n                      ((uint8_T)3U)
+#define IN_WAITING_RETRY               ((uint8_T)4U)
+#define IN_WAIT_i                      ((uint8_T)3U)
 #define event_GearshiftDown            (0)
 #define event_GearshiftSetNeutral      (1)
 #define event_GearshiftUp              (2)
@@ -285,6 +285,21 @@ extern "C" {
   extern void Efi_setMap_Start_wrapper(void);
   extern void Efi_setMap_Outputs_wrapper(const uint8_T *map);
   extern void Efi_setMap_Terminate_wrapper(void);
+
+#ifdef __cplusplus
+
+}
+#endif
+
+#ifdef __cplusplus
+
+extern "C" {
+
+#endif
+
+  extern void CAN_Restart_Start_wrapper(void);
+  extern void CAN_Restart_Outputs_wrapper(void);
+  extern void CAN_Restart_Terminate_wrapper(void);
 
 #ifdef __cplusplus
 
@@ -618,51 +633,6 @@ extern "C" {
 
 #endif
 
-  extern void CAN_Restart_Start_wrapper(void);
-  extern void CAN_Restart_Outputs_wrapper(void);
-  extern void CAN_Restart_Terminate_wrapper(void);
-
-#ifdef __cplusplus
-
-}
-#endif
-
-#ifdef __cplusplus
-
-extern "C" {
-
-#endif
-
-  extern void CAN_Reset_Start_wrapper(void);
-  extern void CAN_Reset_Outputs_wrapper(void);
-  extern void CAN_Reset_Terminate_wrapper(void);
-
-#ifdef __cplusplus
-
-}
-#endif
-
-#ifdef __cplusplus
-
-extern "C" {
-
-#endif
-
-  extern void CAN_checkStatus_Start_wrapper(void);
-  extern void CAN_checkStatus_Outputs_wrapper(boolean_T *status);
-  extern void CAN_checkStatus_Terminate_wrapper(void);
-
-#ifdef __cplusplus
-
-}
-#endif
-
-#ifdef __cplusplus
-
-extern "C" {
-
-#endif
-
   extern void load_accParameters_Start_wrapper(void);
   extern void load_accParameters_Outputs_wrapper(int32_T *accParameters);
   extern void load_accParameters_Terminate_wrapper(void);
@@ -929,24 +899,24 @@ static void MODESACCELERATION__o_Enable(DW_MODESACCELERATION_PIDLAUNCH6 *localDW
 static void MODESACCELERATION_PIDLAUN_n(RT_MODEL * const rtM, real_T
   rtu_slipTarget, real_T rtu_currentSlip, real_T rtu_reset, real_T
   *rty_clutchVal, DW_MODESACCELERATION_PIDLAUNCH6 *localDW);
-static void MODESACCELERATION_P_fr_Init(DW_MODESACCELERATION_PIDLAUNCH7 *localDW);
-static void MODESACCELERATION__d_Enable(DW_MODESACCELERATION_PIDLAUNCH7 *localDW);
+static void MODESACCELERATION_P_cz_Init(DW_MODESACCELERATION_PIDLAUNCH8 *localDW);
+static void MODESACCELERATION__g_Enable(DW_MODESACCELERATION_PIDLAUNCH8 *localDW);
 static void MODESACCELERATION_PIDLAUN_b(RT_MODEL * const rtM, real_T
   rtu_slipTarget, real_T rtu_currentSlip, real_T rtu_reset, real_T
-  *rty_clutchVal, DW_MODESACCELERATION_PIDLAUNCH7 *localDW);
-static void MODESACCELERATION_P_ep_Init(DW_MODESACCELERATION_PIDLAUNCH8 *localDW);
-static void MODESACCELERATION__l_Enable(DW_MODESACCELERATION_PIDLAUNCH8 *localDW);
-static void MODESACCELERATION_PIDLAU_bj(RT_MODEL * const rtM, real_T
-  rtu_slipTarget, real_T rtu_currentSlip, real_T rtu_reset, real_T
   *rty_clutchVal, DW_MODESACCELERATION_PIDLAUNCH8 *localDW);
-static void GEARSHIFTcheckCurrent(real_T rtu_time, real_T rtu_current, boolean_T
-  *rty_out, DW_GEARSHIFTcheckCurrent *localDW);
-static void SCAN_ADCScanADC(void);
 static void MODESACCELERATION_PI_i_Init(DW_MODESACCELERATION_PIDLAUNCH9 *localDW);
 static void MODESACCELERATION__b_Enable(DW_MODESACCELERATION_PIDLAUNCH9 *localDW);
 static void MODESACCELERATION_PIDLAUN_h(RT_MODEL * const rtM, real_T
   rtu_slipTarget, real_T rtu_currentSlip, real_T rtu_reset, real_T
   *rty_clutchVal, DW_MODESACCELERATION_PIDLAUNCH9 *localDW);
+static void MODESACCELERATION_PI_o_Init(DW_MODESACCELERATION_PIDLAUNCH7 *localDW);
+static void MODESACCELERATION_jt_Enable(DW_MODESACCELERATION_PIDLAUNCH7 *localDW);
+static void MODESACCELERATION_PIDLAU_bu(RT_MODEL * const rtM, real_T
+  rtu_slipTarget, real_T rtu_currentSlip, real_T rtu_reset, real_T
+  *rty_clutchVal, DW_MODESACCELERATION_PIDLAUNCH7 *localDW);
+static void GEARSHIFTcheckCurrent(real_T rtu_time, real_T rtu_current, boolean_T
+  *rty_out, DW_GEARSHIFTcheckCurrent *localDW);
+static void SCAN_ADCScanADC(void);
 static void Gearmotor_release(void);
 
 /* Forward declaration for local functions */
@@ -1250,88 +1220,88 @@ static uint16_T look1_iu16lu64n48_binlcse(uint16_T u0, const uint16_T bp0[],
   return y;
 }
 
-/* Output and update for function-call system: '<S44>/SetCut' */
+/* Output and update for function-call system: '<S45>/SetCut' */
 static void SetCut(void)
 {
-  /* S-Function (Efi_setCut): '<S58>/Efi SetCut' */
+  /* S-Function (Efi_setCut): '<S59>/Efi SetCut' */
   Efi_setCut_Outputs_wrapper();
 }
 
-/* Output and update for function-call system: '<S44>/UnsetCut' */
+/* Output and update for function-call system: '<S45>/UnsetCut' */
 static void UnsetCut(void)
 {
-  /* S-Function (Efi_unsetCut): '<S60>/Efi UnSetCut' */
+  /* S-Function (Efi_unsetCut): '<S61>/Efi UnSetCut' */
   Efi_unsetCut_Outputs_wrapper();
 }
 
-/* Output and update for function-call system: '<S44>/SetRPMLimiter' */
+/* Output and update for function-call system: '<S45>/SetRPMLimiter' */
 static void SetRPMLimiter(void)
 {
-  /* S-Function (Efi_setRPMLimiter): '<S59>/Efi SetRPMLimiter' */
+  /* S-Function (Efi_setRPMLimiter): '<S60>/Efi SetRPMLimiter' */
   Efi_setRPMLimiter_Outputs_wrapper();
 }
 
-/* Output and update for function-call system: '<S44>/UnsetRPMLimiter' */
+/* Output and update for function-call system: '<S45>/UnsetRPMLimiter' */
 static void UnsetRPMLimiter(void)
 {
-  /* S-Function (Efi_unsetRPMLimiter): '<S61>/Efi UnSetRPMLimiter' */
+  /* S-Function (Efi_unsetRPMLimiter): '<S62>/Efi UnSetRPMLimiter' */
   Efi_unsetRPMLimiter_Outputs_wrapper();
 }
 
-/* Output and update for function-call system: '<S48>/Gearmotor_release' */
+/* Output and update for function-call system: '<S49>/Gearmotor_release' */
 static void Gearmotor_release(void)
 {
-  /* S-Function (GearMotor_release): '<S108>/GearMotor Release' */
+  /* S-Function (GearMotor_release): '<S109>/GearMotor Release' */
   GearMotor_release_Outputs_wrapper(&rtDW.GearMotorRelease);
 
-  /* SignalConversion: '<S108>/OutportBufferForPin H' */
+  /* SignalConversion: '<S109>/OutportBufferForPin H' */
   rtDW.Pin_H = rtDW.GearMotorRelease;
 }
 
-/* Output and update for function-call system: '<S48>/Gearmotor_turnRight' */
+/* Output and update for function-call system: '<S49>/Gearmotor_turnRight' */
 static void Gearmotor_turnRight(uint8_T *rty_Pin_In1, uint8_T *rty_Pin_In2,
   uint8_T *rty_Pin_H, DW_Gearmotor_turnRight *localDW)
 {
-  /* S-Function (GearMotor_turnRight): '<S110>/GearMotor Turn Right' */
+  /* S-Function (GearMotor_turnRight): '<S111>/GearMotor Turn Right' */
   GearMotor_turnRight_Outputs_wrapper(&localDW->GearMotorTurnRight_o1,
     &localDW->GearMotorTurnRight_o2, &localDW->GearMotorTurnRight_o3);
 
-  /* SignalConversion: '<S110>/OutportBufferForPin_H' */
+  /* SignalConversion: '<S111>/OutportBufferForPin_H' */
   *rty_Pin_H = localDW->GearMotorTurnRight_o3;
 
-  /* SignalConversion: '<S110>/OutportBufferForPin_In1' */
+  /* SignalConversion: '<S111>/OutportBufferForPin_In1' */
   *rty_Pin_In1 = localDW->GearMotorTurnRight_o1;
 
-  /* SignalConversion: '<S110>/OutportBufferForPin_In2' */
+  /* SignalConversion: '<S111>/OutportBufferForPin_In2' */
   *rty_Pin_In2 = localDW->GearMotorTurnRight_o2;
 }
 
-/* Output and update for function-call system: '<S48>/Gearmotor_brake' */
+/* Output and update for function-call system: '<S49>/Gearmotor_brake' */
 static void Gearmotor_brake(uint8_T *rty_Pin_In1, uint8_T *rty_Pin_In2, uint8_T *
   rty_Pin_H, DW_Gearmotor_brake *localDW)
 {
-  /* S-Function (GearMotor_brake): '<S107>/GearMotor Brake' */
+  /* S-Function (GearMotor_brake): '<S108>/GearMotor Brake' */
   GearMotor_brake_Outputs_wrapper(&localDW->GearMotorBrake_o1,
     &localDW->GearMotorBrake_o2, &localDW->GearMotorBrake_o3);
 
-  /* SignalConversion: '<S107>/OutportBufferForPin_H' */
+  /* SignalConversion: '<S108>/OutportBufferForPin_H' */
   *rty_Pin_H = localDW->GearMotorBrake_o3;
 
-  /* SignalConversion: '<S107>/OutportBufferForPin_In1' */
+  /* SignalConversion: '<S108>/OutportBufferForPin_In1' */
   *rty_Pin_In1 = localDW->GearMotorBrake_o1;
 
-  /* SignalConversion: '<S107>/OutportBufferForPin_In2' */
+  /* SignalConversion: '<S108>/OutportBufferForPin_In2' */
   *rty_Pin_In2 = localDW->GearMotorBrake_o2;
 }
 
-/* Output and update for function-call system: '<S45>/EngineControl_Start' */
+/* Output and update for function-call system: '<S46>/EngineControl_Start' */
 static void EngineControl_Start(uint8_T *rty_engine_starter,
   DW_EngineControl_Start *localDW)
 {
-  /* S-Function (EngineControl_start): '<S62>/EngineControl Start' */
+  /* S-Function (EngineControl_start): '<S63>/EngineControl Start' */
   EngineControl_start_Outputs_wrapper(&localDW->EngineControlStart);
 
-  /* SignalConversion: '<S62>/OutportBufferForengine_starter' */
+  /* SignalConversion: '<S63>/OutportBufferForengine_starter' */
   *rty_engine_starter = localDW->EngineControlStart;
 }
 
@@ -1578,23 +1548,23 @@ static void Evaluate_Request(const eepromRequest *rtu_outputRequest, const
   /* End of If: '<S30>/If' */
 }
 
-/* System initialize for function-call system: '<S47>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.pidControl' */
+/* System initialize for function-call system: '<S48>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.pidControl' */
 static void MODESACCELERATION_PIDL_Init(DW_MODESACCELERATION_PIDLAUNCH0 *localDW)
 {
-  /* InitializeConditions for DiscreteIntegrator: '<S85>/Integrator' */
+  /* InitializeConditions for DiscreteIntegrator: '<S86>/Integrator' */
   localDW->Integrator_PrevResetState = 2;
 }
 
-/* Enable for function-call system: '<S47>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.pidControl' */
+/* Enable for function-call system: '<S48>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.pidControl' */
 static void MODESACCELERATION_PI_Enable(DW_MODESACCELERATION_PIDLAUNCH0 *localDW)
 {
   localDW->MODESACCELERATION_PIDLAUNCH0A_g = true;
 
-  /* Enable for DiscreteIntegrator: '<S85>/Integrator' */
+  /* Enable for DiscreteIntegrator: '<S86>/Integrator' */
   localDW->Integrator_SYSTEM_ENABLE = 1U;
 }
 
-/* Output and update for function-call system: '<S47>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.pidControl' */
+/* Output and update for function-call system: '<S48>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.pidControl' */
 static void MODESACCELERATION_PIDLAUNCH(RT_MODEL * const rtM, real_T
   rtu_slipTarget, real_T rtu_currentSlip, real_T rtu_reset, real_T
   *rty_clutchVal, DW_MODESACCELERATION_PIDLAUNCH0 *localDW)
@@ -1616,10 +1586,10 @@ static void MODESACCELERATION_PIDLAUNCH(RT_MODEL * const rtM, real_T
   localDW->MODESACCELERATION_PIDLAUNCH0A_e = rtM->Timing.clockTick1;
   localDW->MODESACCELERATION_PIDLAUNCH0A_g = false;
 
-  /* Sum: '<S71>/Sum1' */
+  /* Sum: '<S72>/Sum1' */
   rtb_IntegralGain = rtu_slipTarget - rtu_currentSlip;
 
-  /* DiscreteIntegrator: '<S85>/Integrator' */
+  /* DiscreteIntegrator: '<S86>/Integrator' */
   if (localDW->Integrator_SYSTEM_ENABLE != 0) {
     Integrator = localDW->Integrator_DSTATE;
   } else if ((rtu_reset > 0.0) && (localDW->Integrator_PrevResetState <= 0)) {
@@ -1630,14 +1600,14 @@ static void MODESACCELERATION_PIDLAUNCH(RT_MODEL * const rtM, real_T
       localDW->Integrator_PREV_U + localDW->Integrator_DSTATE;
   }
 
-  /* End of DiscreteIntegrator: '<S85>/Integrator' */
+  /* End of DiscreteIntegrator: '<S86>/Integrator' */
 
-  /* Sum: '<S85>/Sum' incorporates:
-   *  Gain: '<S85>/Proportional Gain'
+  /* Sum: '<S86>/Sum' incorporates:
+   *  Gain: '<S86>/Proportional Gain'
    */
   rtb_SignPreIntegrator = 0.0964482561209752 * rtb_IntegralGain + Integrator;
 
-  /* Saturate: '<S85>/Saturate' */
+  /* Saturate: '<S86>/Saturate' */
   if (rtb_SignPreIntegrator > 17.0) {
     rtb_ZeroGain = 17.0;
   } else if (rtb_SignPreIntegrator < -18.0) {
@@ -1646,25 +1616,25 @@ static void MODESACCELERATION_PIDLAUNCH(RT_MODEL * const rtM, real_T
     rtb_ZeroGain = rtb_SignPreIntegrator;
   }
 
-  /* End of Saturate: '<S85>/Saturate' */
+  /* End of Saturate: '<S86>/Saturate' */
 
-  /* Sum: '<S71>/Sum' incorporates:
-   *  Constant: '<S71>/Constant1'
+  /* Sum: '<S72>/Sum' incorporates:
+   *  Constant: '<S72>/Constant1'
    */
   *rty_clutchVal = 17.0 - rtb_ZeroGain;
 
-  /* Sum: '<S71>/Minus' incorporates:
-   *  Constant: '<S71>/Constant'
+  /* Sum: '<S72>/Minus' incorporates:
+   *  Constant: '<S72>/Constant'
    */
   localDW->Minus = 100.0 - *rty_clutchVal;
 
-  /* S-Function (ClutchMotor_setPWMRegister): '<S71>/ClutchMotor SetPWMRegister' */
+  /* S-Function (ClutchMotor_setPWMRegister): '<S72>/ClutchMotor SetPWMRegister' */
   ClutchMotor_setPWMRegister_Outputs_wrapper(&localDW->Minus);
 
-  /* Gain: '<S86>/ZeroGain' */
+  /* Gain: '<S87>/ZeroGain' */
   rtb_ZeroGain = 0.0 * rtb_SignPreIntegrator;
 
-  /* DeadZone: '<S86>/DeadZone' */
+  /* DeadZone: '<S87>/DeadZone' */
   if (rtb_SignPreIntegrator > 17.0) {
     rtb_SignPreIntegrator -= 17.0;
   } else if (rtb_SignPreIntegrator >= -18.0) {
@@ -1673,12 +1643,12 @@ static void MODESACCELERATION_PIDLAUNCH(RT_MODEL * const rtM, real_T
     rtb_SignPreIntegrator -= -18.0;
   }
 
-  /* End of DeadZone: '<S86>/DeadZone' */
+  /* End of DeadZone: '<S87>/DeadZone' */
 
-  /* RelationalOperator: '<S86>/NotEqual' */
+  /* RelationalOperator: '<S87>/NotEqual' */
   rtb_NotEqual = (rtb_ZeroGain != rtb_SignPreIntegrator);
 
-  /* Signum: '<S86>/SignDeltaU' */
+  /* Signum: '<S87>/SignDeltaU' */
   if (rtb_SignPreIntegrator < 0.0) {
     rtb_SignPreIntegrator = -1.0;
   } else if (rtb_SignPreIntegrator > 0.0) {
@@ -1689,12 +1659,12 @@ static void MODESACCELERATION_PIDLAUNCH(RT_MODEL * const rtM, real_T
     rtb_SignPreIntegrator = (rtNaN);
   }
 
-  /* End of Signum: '<S86>/SignDeltaU' */
+  /* End of Signum: '<S87>/SignDeltaU' */
 
-  /* Gain: '<S85>/Integral Gain' */
+  /* Gain: '<S86>/Integral Gain' */
   rtb_IntegralGain *= 2.61514139367693;
 
-  /* Update for DiscreteIntegrator: '<S85>/Integrator' */
+  /* Update for DiscreteIntegrator: '<S86>/Integrator' */
   localDW->Integrator_SYSTEM_ENABLE = 0U;
   localDW->Integrator_DSTATE = Integrator;
   if (rtu_reset > 0.0) {
@@ -1707,16 +1677,16 @@ static void MODESACCELERATION_PIDLAUNCH(RT_MODEL * const rtM, real_T
     localDW->Integrator_PrevResetState = 2;
   }
 
-  /* DataTypeConversion: '<S86>/DataTypeConv1' */
+  /* DataTypeConversion: '<S87>/DataTypeConv1' */
   if (rtb_SignPreIntegrator < 128.0) {
     rtb_SignPreIntegrator_0 = (int8_T)rtb_SignPreIntegrator;
   } else {
     rtb_SignPreIntegrator_0 = MAX_int8_T;
   }
 
-  /* End of DataTypeConversion: '<S86>/DataTypeConv1' */
+  /* End of DataTypeConversion: '<S87>/DataTypeConv1' */
 
-  /* Signum: '<S86>/SignPreIntegrator' */
+  /* Signum: '<S87>/SignPreIntegrator' */
   if (rtb_IntegralGain < 0.0) {
     Integrator = -1.0;
   } else if (rtb_IntegralGain > 0.0) {
@@ -1727,43 +1697,43 @@ static void MODESACCELERATION_PIDLAUNCH(RT_MODEL * const rtM, real_T
     Integrator = (rtNaN);
   }
 
-  /* End of Signum: '<S86>/SignPreIntegrator' */
+  /* End of Signum: '<S87>/SignPreIntegrator' */
 
-  /* Switch: '<S85>/Switch' incorporates:
-   *  DataTypeConversion: '<S86>/DataTypeConv2'
-   *  Logic: '<S86>/AND'
-   *  RelationalOperator: '<S86>/Equal'
+  /* Switch: '<S86>/Switch' incorporates:
+   *  DataTypeConversion: '<S87>/DataTypeConv2'
+   *  Logic: '<S87>/AND'
+   *  RelationalOperator: '<S87>/Equal'
    */
   if (rtb_NotEqual && (rtb_SignPreIntegrator_0 == (int8_T)Integrator)) {
-    /* Update for DiscreteIntegrator: '<S85>/Integrator' incorporates:
-     *  Constant: '<S85>/Constant'
+    /* Update for DiscreteIntegrator: '<S86>/Integrator' incorporates:
+     *  Constant: '<S86>/Constant'
      */
     localDW->Integrator_PREV_U = 0.0;
   } else {
-    /* Update for DiscreteIntegrator: '<S85>/Integrator' */
+    /* Update for DiscreteIntegrator: '<S86>/Integrator' */
     localDW->Integrator_PREV_U = rtb_IntegralGain;
   }
 
-  /* End of Switch: '<S85>/Switch' */
+  /* End of Switch: '<S86>/Switch' */
 }
 
-/* System initialize for function-call system: '<S47>/MODES.ACCELERATION_PID.LAUNCH1.ACTIVE.pidControl' */
+/* System initialize for function-call system: '<S48>/MODES.ACCELERATION_PID.LAUNCH1.ACTIVE.pidControl' */
 static void MODESACCELERATION_PI_d_Init(DW_MODESACCELERATION_PIDLAUNCH1 *localDW)
 {
-  /* InitializeConditions for DiscreteIntegrator: '<S87>/Integrator' */
+  /* InitializeConditions for DiscreteIntegrator: '<S88>/Integrator' */
   localDW->Integrator_PrevResetState = 2;
 }
 
-/* Enable for function-call system: '<S47>/MODES.ACCELERATION_PID.LAUNCH1.ACTIVE.pidControl' */
+/* Enable for function-call system: '<S48>/MODES.ACCELERATION_PID.LAUNCH1.ACTIVE.pidControl' */
 static void MODESACCELERATION__i_Enable(DW_MODESACCELERATION_PIDLAUNCH1 *localDW)
 {
   localDW->MODESACCELERATION_PIDLAUNCH1A_i = true;
 
-  /* Enable for DiscreteIntegrator: '<S87>/Integrator' */
+  /* Enable for DiscreteIntegrator: '<S88>/Integrator' */
   localDW->Integrator_SYSTEM_ENABLE = 1U;
 }
 
-/* Output and update for function-call system: '<S47>/MODES.ACCELERATION_PID.LAUNCH1.ACTIVE.pidControl' */
+/* Output and update for function-call system: '<S48>/MODES.ACCELERATION_PID.LAUNCH1.ACTIVE.pidControl' */
 static void MODESACCELERATION_PIDLAUN_g(RT_MODEL * const rtM, real_T
   rtu_slipTarget, real_T rtu_currentSlip, real_T rtu_reset, real_T
   *rty_clutchVal, DW_MODESACCELERATION_PIDLAUNCH1 *localDW)
@@ -1785,10 +1755,10 @@ static void MODESACCELERATION_PIDLAUN_g(RT_MODEL * const rtM, real_T
   localDW->MODESACCELERATION_PIDLAUNCH1A_m = rtM->Timing.clockTick1;
   localDW->MODESACCELERATION_PIDLAUNCH1A_i = false;
 
-  /* Sum: '<S72>/Sum1' */
+  /* Sum: '<S73>/Sum1' */
   rtb_IntegralGain = rtu_slipTarget - rtu_currentSlip;
 
-  /* DiscreteIntegrator: '<S87>/Integrator' */
+  /* DiscreteIntegrator: '<S88>/Integrator' */
   if (localDW->Integrator_SYSTEM_ENABLE != 0) {
     Integrator = localDW->Integrator_DSTATE;
   } else if ((rtu_reset > 0.0) && (localDW->Integrator_PrevResetState <= 0)) {
@@ -1799,14 +1769,14 @@ static void MODESACCELERATION_PIDLAUN_g(RT_MODEL * const rtM, real_T
       localDW->Integrator_PREV_U + localDW->Integrator_DSTATE;
   }
 
-  /* End of DiscreteIntegrator: '<S87>/Integrator' */
+  /* End of DiscreteIntegrator: '<S88>/Integrator' */
 
-  /* Sum: '<S87>/Sum' incorporates:
-   *  Gain: '<S87>/Proportional Gain'
+  /* Sum: '<S88>/Sum' incorporates:
+   *  Gain: '<S88>/Proportional Gain'
    */
   rtb_SignPreIntegrator = 0.1 * rtb_IntegralGain + Integrator;
 
-  /* Saturate: '<S87>/Saturate' */
+  /* Saturate: '<S88>/Saturate' */
   if (rtb_SignPreIntegrator > 17.0) {
     rtb_ZeroGain = 17.0;
   } else if (rtb_SignPreIntegrator < -18.0) {
@@ -1815,25 +1785,25 @@ static void MODESACCELERATION_PIDLAUN_g(RT_MODEL * const rtM, real_T
     rtb_ZeroGain = rtb_SignPreIntegrator;
   }
 
-  /* End of Saturate: '<S87>/Saturate' */
+  /* End of Saturate: '<S88>/Saturate' */
 
-  /* Sum: '<S72>/Sum' incorporates:
-   *  Constant: '<S72>/Constant1'
+  /* Sum: '<S73>/Sum' incorporates:
+   *  Constant: '<S73>/Constant1'
    */
   *rty_clutchVal = 17.0 - rtb_ZeroGain;
 
-  /* Sum: '<S72>/Minus' incorporates:
-   *  Constant: '<S72>/Constant'
+  /* Sum: '<S73>/Minus' incorporates:
+   *  Constant: '<S73>/Constant'
    */
   localDW->Minus = 100.0 - *rty_clutchVal;
 
-  /* S-Function (ClutchMotor_setPWMRegister): '<S72>/ClutchMotor SetPWMRegister' */
+  /* S-Function (ClutchMotor_setPWMRegister): '<S73>/ClutchMotor SetPWMRegister' */
   ClutchMotor_setPWMRegister_Outputs_wrapper(&localDW->Minus);
 
-  /* Gain: '<S88>/ZeroGain' */
+  /* Gain: '<S89>/ZeroGain' */
   rtb_ZeroGain = 0.0 * rtb_SignPreIntegrator;
 
-  /* DeadZone: '<S88>/DeadZone' */
+  /* DeadZone: '<S89>/DeadZone' */
   if (rtb_SignPreIntegrator > 17.0) {
     rtb_SignPreIntegrator -= 17.0;
   } else if (rtb_SignPreIntegrator >= -18.0) {
@@ -1842,12 +1812,12 @@ static void MODESACCELERATION_PIDLAUN_g(RT_MODEL * const rtM, real_T
     rtb_SignPreIntegrator -= -18.0;
   }
 
-  /* End of DeadZone: '<S88>/DeadZone' */
+  /* End of DeadZone: '<S89>/DeadZone' */
 
-  /* RelationalOperator: '<S88>/NotEqual' */
+  /* RelationalOperator: '<S89>/NotEqual' */
   rtb_NotEqual = (rtb_ZeroGain != rtb_SignPreIntegrator);
 
-  /* Signum: '<S88>/SignDeltaU' */
+  /* Signum: '<S89>/SignDeltaU' */
   if (rtb_SignPreIntegrator < 0.0) {
     rtb_SignPreIntegrator = -1.0;
   } else if (rtb_SignPreIntegrator > 0.0) {
@@ -1858,12 +1828,12 @@ static void MODESACCELERATION_PIDLAUN_g(RT_MODEL * const rtM, real_T
     rtb_SignPreIntegrator = (rtNaN);
   }
 
-  /* End of Signum: '<S88>/SignDeltaU' */
+  /* End of Signum: '<S89>/SignDeltaU' */
 
-  /* Gain: '<S87>/Integral Gain' */
+  /* Gain: '<S88>/Integral Gain' */
   rtb_IntegralGain *= 9.79580592329006;
 
-  /* Update for DiscreteIntegrator: '<S87>/Integrator' */
+  /* Update for DiscreteIntegrator: '<S88>/Integrator' */
   localDW->Integrator_SYSTEM_ENABLE = 0U;
   localDW->Integrator_DSTATE = Integrator;
   if (rtu_reset > 0.0) {
@@ -1876,16 +1846,16 @@ static void MODESACCELERATION_PIDLAUN_g(RT_MODEL * const rtM, real_T
     localDW->Integrator_PrevResetState = 2;
   }
 
-  /* DataTypeConversion: '<S88>/DataTypeConv1' */
+  /* DataTypeConversion: '<S89>/DataTypeConv1' */
   if (rtb_SignPreIntegrator < 128.0) {
     rtb_SignPreIntegrator_n = (int8_T)rtb_SignPreIntegrator;
   } else {
     rtb_SignPreIntegrator_n = MAX_int8_T;
   }
 
-  /* End of DataTypeConversion: '<S88>/DataTypeConv1' */
+  /* End of DataTypeConversion: '<S89>/DataTypeConv1' */
 
-  /* Signum: '<S88>/SignPreIntegrator' */
+  /* Signum: '<S89>/SignPreIntegrator' */
   if (rtb_IntegralGain < 0.0) {
     Integrator = -1.0;
   } else if (rtb_IntegralGain > 0.0) {
@@ -1896,43 +1866,43 @@ static void MODESACCELERATION_PIDLAUN_g(RT_MODEL * const rtM, real_T
     Integrator = (rtNaN);
   }
 
-  /* End of Signum: '<S88>/SignPreIntegrator' */
+  /* End of Signum: '<S89>/SignPreIntegrator' */
 
-  /* Switch: '<S87>/Switch' incorporates:
-   *  DataTypeConversion: '<S88>/DataTypeConv2'
-   *  Logic: '<S88>/AND'
-   *  RelationalOperator: '<S88>/Equal'
+  /* Switch: '<S88>/Switch' incorporates:
+   *  DataTypeConversion: '<S89>/DataTypeConv2'
+   *  Logic: '<S89>/AND'
+   *  RelationalOperator: '<S89>/Equal'
    */
   if (rtb_NotEqual && (rtb_SignPreIntegrator_n == (int8_T)Integrator)) {
-    /* Update for DiscreteIntegrator: '<S87>/Integrator' incorporates:
-     *  Constant: '<S87>/Constant'
+    /* Update for DiscreteIntegrator: '<S88>/Integrator' incorporates:
+     *  Constant: '<S88>/Constant'
      */
     localDW->Integrator_PREV_U = 0.0;
   } else {
-    /* Update for DiscreteIntegrator: '<S87>/Integrator' */
+    /* Update for DiscreteIntegrator: '<S88>/Integrator' */
     localDW->Integrator_PREV_U = rtb_IntegralGain;
   }
 
-  /* End of Switch: '<S87>/Switch' */
+  /* End of Switch: '<S88>/Switch' */
 }
 
-/* System initialize for function-call system: '<S47>/MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.pidControl' */
+/* System initialize for function-call system: '<S48>/MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.pidControl' */
 static void MODESACCELERATION_PI_e_Init(DW_MODESACCELERATION_PIDLAUNCH2 *localDW)
 {
-  /* InitializeConditions for DiscreteIntegrator: '<S89>/Integrator' */
+  /* InitializeConditions for DiscreteIntegrator: '<S90>/Integrator' */
   localDW->Integrator_PrevResetState = 2;
 }
 
-/* Enable for function-call system: '<S47>/MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.pidControl' */
+/* Enable for function-call system: '<S48>/MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.pidControl' */
 static void MODESACCELERATION_ik_Enable(DW_MODESACCELERATION_PIDLAUNCH2 *localDW)
 {
   localDW->MODESACCELERATION_PIDLAUNCH2A_f = true;
 
-  /* Enable for DiscreteIntegrator: '<S89>/Integrator' */
+  /* Enable for DiscreteIntegrator: '<S90>/Integrator' */
   localDW->Integrator_SYSTEM_ENABLE = 1U;
 }
 
-/* Output and update for function-call system: '<S47>/MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.pidControl' */
+/* Output and update for function-call system: '<S48>/MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.pidControl' */
 static void MODESACCELERATION_PIDLAUN_o(RT_MODEL * const rtM, real_T
   rtu_slipTarget, real_T rtu_currentSlip, real_T rtu_reset, real_T
   *rty_clutchVal, DW_MODESACCELERATION_PIDLAUNCH2 *localDW)
@@ -1954,10 +1924,10 @@ static void MODESACCELERATION_PIDLAUN_o(RT_MODEL * const rtM, real_T
   localDW->MODESACCELERATION_PIDLAUNCH2A_n = rtM->Timing.clockTick1;
   localDW->MODESACCELERATION_PIDLAUNCH2A_f = false;
 
-  /* Sum: '<S73>/Sum1' */
+  /* Sum: '<S74>/Sum1' */
   rtb_IntegralGain = rtu_slipTarget - rtu_currentSlip;
 
-  /* DiscreteIntegrator: '<S89>/Integrator' */
+  /* DiscreteIntegrator: '<S90>/Integrator' */
   if (localDW->Integrator_SYSTEM_ENABLE != 0) {
     Integrator = localDW->Integrator_DSTATE;
   } else if ((rtu_reset > 0.0) && (localDW->Integrator_PrevResetState <= 0)) {
@@ -1968,14 +1938,14 @@ static void MODESACCELERATION_PIDLAUN_o(RT_MODEL * const rtM, real_T
       localDW->Integrator_PREV_U + localDW->Integrator_DSTATE;
   }
 
-  /* End of DiscreteIntegrator: '<S89>/Integrator' */
+  /* End of DiscreteIntegrator: '<S90>/Integrator' */
 
-  /* Sum: '<S89>/Sum' incorporates:
-   *  Gain: '<S89>/Proportional Gain'
+  /* Sum: '<S90>/Sum' incorporates:
+   *  Gain: '<S90>/Proportional Gain'
    */
   rtb_SignPreIntegrator = 0.1 * rtb_IntegralGain + Integrator;
 
-  /* Saturate: '<S89>/Saturate' */
+  /* Saturate: '<S90>/Saturate' */
   if (rtb_SignPreIntegrator > 17.0) {
     rtb_ZeroGain = 17.0;
   } else if (rtb_SignPreIntegrator < -18.0) {
@@ -1984,25 +1954,25 @@ static void MODESACCELERATION_PIDLAUN_o(RT_MODEL * const rtM, real_T
     rtb_ZeroGain = rtb_SignPreIntegrator;
   }
 
-  /* End of Saturate: '<S89>/Saturate' */
+  /* End of Saturate: '<S90>/Saturate' */
 
-  /* Sum: '<S73>/Sum' incorporates:
-   *  Constant: '<S73>/Constant1'
+  /* Sum: '<S74>/Sum' incorporates:
+   *  Constant: '<S74>/Constant1'
    */
   *rty_clutchVal = 17.0 - rtb_ZeroGain;
 
-  /* Sum: '<S73>/Minus' incorporates:
-   *  Constant: '<S73>/Constant'
+  /* Sum: '<S74>/Minus' incorporates:
+   *  Constant: '<S74>/Constant'
    */
   localDW->Minus = 100.0 - *rty_clutchVal;
 
-  /* S-Function (ClutchMotor_setPWMRegister): '<S73>/ClutchMotor SetPWMRegister' */
+  /* S-Function (ClutchMotor_setPWMRegister): '<S74>/ClutchMotor SetPWMRegister' */
   ClutchMotor_setPWMRegister_Outputs_wrapper(&localDW->Minus);
 
-  /* Gain: '<S90>/ZeroGain' */
+  /* Gain: '<S91>/ZeroGain' */
   rtb_ZeroGain = 0.0 * rtb_SignPreIntegrator;
 
-  /* DeadZone: '<S90>/DeadZone' */
+  /* DeadZone: '<S91>/DeadZone' */
   if (rtb_SignPreIntegrator > 17.0) {
     rtb_SignPreIntegrator -= 17.0;
   } else if (rtb_SignPreIntegrator >= -18.0) {
@@ -2011,12 +1981,12 @@ static void MODESACCELERATION_PIDLAUN_o(RT_MODEL * const rtM, real_T
     rtb_SignPreIntegrator -= -18.0;
   }
 
-  /* End of DeadZone: '<S90>/DeadZone' */
+  /* End of DeadZone: '<S91>/DeadZone' */
 
-  /* RelationalOperator: '<S90>/NotEqual' */
+  /* RelationalOperator: '<S91>/NotEqual' */
   rtb_NotEqual = (rtb_ZeroGain != rtb_SignPreIntegrator);
 
-  /* Signum: '<S90>/SignDeltaU' */
+  /* Signum: '<S91>/SignDeltaU' */
   if (rtb_SignPreIntegrator < 0.0) {
     rtb_SignPreIntegrator = -1.0;
   } else if (rtb_SignPreIntegrator > 0.0) {
@@ -2027,12 +1997,12 @@ static void MODESACCELERATION_PIDLAUN_o(RT_MODEL * const rtM, real_T
     rtb_SignPreIntegrator = (rtNaN);
   }
 
-  /* End of Signum: '<S90>/SignDeltaU' */
+  /* End of Signum: '<S91>/SignDeltaU' */
 
-  /* Gain: '<S89>/Integral Gain' */
+  /* Gain: '<S90>/Integral Gain' */
   rtb_IntegralGain *= 15.0;
 
-  /* Update for DiscreteIntegrator: '<S89>/Integrator' */
+  /* Update for DiscreteIntegrator: '<S90>/Integrator' */
   localDW->Integrator_SYSTEM_ENABLE = 0U;
   localDW->Integrator_DSTATE = Integrator;
   if (rtu_reset > 0.0) {
@@ -2045,16 +2015,16 @@ static void MODESACCELERATION_PIDLAUN_o(RT_MODEL * const rtM, real_T
     localDW->Integrator_PrevResetState = 2;
   }
 
-  /* DataTypeConversion: '<S90>/DataTypeConv1' */
+  /* DataTypeConversion: '<S91>/DataTypeConv1' */
   if (rtb_SignPreIntegrator < 128.0) {
     rtb_SignPreIntegrator_h = (int8_T)rtb_SignPreIntegrator;
   } else {
     rtb_SignPreIntegrator_h = MAX_int8_T;
   }
 
-  /* End of DataTypeConversion: '<S90>/DataTypeConv1' */
+  /* End of DataTypeConversion: '<S91>/DataTypeConv1' */
 
-  /* Signum: '<S90>/SignPreIntegrator' */
+  /* Signum: '<S91>/SignPreIntegrator' */
   if (rtb_IntegralGain < 0.0) {
     Integrator = -1.0;
   } else if (rtb_IntegralGain > 0.0) {
@@ -2065,43 +2035,43 @@ static void MODESACCELERATION_PIDLAUN_o(RT_MODEL * const rtM, real_T
     Integrator = (rtNaN);
   }
 
-  /* End of Signum: '<S90>/SignPreIntegrator' */
+  /* End of Signum: '<S91>/SignPreIntegrator' */
 
-  /* Switch: '<S89>/Switch' incorporates:
-   *  DataTypeConversion: '<S90>/DataTypeConv2'
-   *  Logic: '<S90>/AND'
-   *  RelationalOperator: '<S90>/Equal'
+  /* Switch: '<S90>/Switch' incorporates:
+   *  DataTypeConversion: '<S91>/DataTypeConv2'
+   *  Logic: '<S91>/AND'
+   *  RelationalOperator: '<S91>/Equal'
    */
   if (rtb_NotEqual && (rtb_SignPreIntegrator_h == (int8_T)Integrator)) {
-    /* Update for DiscreteIntegrator: '<S89>/Integrator' incorporates:
-     *  Constant: '<S89>/Constant'
+    /* Update for DiscreteIntegrator: '<S90>/Integrator' incorporates:
+     *  Constant: '<S90>/Constant'
      */
     localDW->Integrator_PREV_U = 0.0;
   } else {
-    /* Update for DiscreteIntegrator: '<S89>/Integrator' */
+    /* Update for DiscreteIntegrator: '<S90>/Integrator' */
     localDW->Integrator_PREV_U = rtb_IntegralGain;
   }
 
-  /* End of Switch: '<S89>/Switch' */
+  /* End of Switch: '<S90>/Switch' */
 }
 
-/* System initialize for function-call system: '<S47>/MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.pidControl' */
+/* System initialize for function-call system: '<S48>/MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.pidControl' */
 static void MODESACCELERATION_PI_g_Init(DW_MODESACCELERATION_PIDLAUNCH3 *localDW)
 {
-  /* InitializeConditions for DiscreteIntegrator: '<S91>/Integrator' */
+  /* InitializeConditions for DiscreteIntegrator: '<S92>/Integrator' */
   localDW->Integrator_PrevResetState = 2;
 }
 
-/* Enable for function-call system: '<S47>/MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.pidControl' */
+/* Enable for function-call system: '<S48>/MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.pidControl' */
 static void MODESACCELERATION__p_Enable(DW_MODESACCELERATION_PIDLAUNCH3 *localDW)
 {
   localDW->MODESACCELERATION_PIDLAUNCH3A_b = true;
 
-  /* Enable for DiscreteIntegrator: '<S91>/Integrator' */
+  /* Enable for DiscreteIntegrator: '<S92>/Integrator' */
   localDW->Integrator_SYSTEM_ENABLE = 1U;
 }
 
-/* Output and update for function-call system: '<S47>/MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.pidControl' */
+/* Output and update for function-call system: '<S48>/MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.pidControl' */
 static void MODESACCELERATION_PIDLAU_gq(RT_MODEL * const rtM, real_T
   rtu_slipTarget, real_T rtu_currentSlip, real_T rtu_reset, real_T
   *rty_clutchVal, DW_MODESACCELERATION_PIDLAUNCH3 *localDW)
@@ -2123,10 +2093,10 @@ static void MODESACCELERATION_PIDLAU_gq(RT_MODEL * const rtM, real_T
   localDW->MODESACCELERATION_PIDLAUNCH3A_j = rtM->Timing.clockTick1;
   localDW->MODESACCELERATION_PIDLAUNCH3A_b = false;
 
-  /* Sum: '<S74>/Sum1' */
+  /* Sum: '<S75>/Sum1' */
   rtb_IntegralGain = rtu_slipTarget - rtu_currentSlip;
 
-  /* DiscreteIntegrator: '<S91>/Integrator' */
+  /* DiscreteIntegrator: '<S92>/Integrator' */
   if (localDW->Integrator_SYSTEM_ENABLE != 0) {
     Integrator = localDW->Integrator_DSTATE;
   } else if ((rtu_reset > 0.0) && (localDW->Integrator_PrevResetState <= 0)) {
@@ -2137,14 +2107,14 @@ static void MODESACCELERATION_PIDLAU_gq(RT_MODEL * const rtM, real_T
       localDW->Integrator_PREV_U + localDW->Integrator_DSTATE;
   }
 
-  /* End of DiscreteIntegrator: '<S91>/Integrator' */
+  /* End of DiscreteIntegrator: '<S92>/Integrator' */
 
-  /* Sum: '<S91>/Sum' incorporates:
-   *  Gain: '<S91>/Proportional Gain'
+  /* Sum: '<S92>/Sum' incorporates:
+   *  Gain: '<S92>/Proportional Gain'
    */
   rtb_SignPreIntegrator = 0.2 * rtb_IntegralGain + Integrator;
 
-  /* Saturate: '<S91>/Saturate' */
+  /* Saturate: '<S92>/Saturate' */
   if (rtb_SignPreIntegrator > 17.0) {
     rtb_ZeroGain = 17.0;
   } else if (rtb_SignPreIntegrator < -18.0) {
@@ -2153,25 +2123,25 @@ static void MODESACCELERATION_PIDLAU_gq(RT_MODEL * const rtM, real_T
     rtb_ZeroGain = rtb_SignPreIntegrator;
   }
 
-  /* End of Saturate: '<S91>/Saturate' */
+  /* End of Saturate: '<S92>/Saturate' */
 
-  /* Sum: '<S74>/Sum' incorporates:
-   *  Constant: '<S74>/Constant1'
+  /* Sum: '<S75>/Sum' incorporates:
+   *  Constant: '<S75>/Constant1'
    */
   *rty_clutchVal = 17.0 - rtb_ZeroGain;
 
-  /* Sum: '<S74>/Minus' incorporates:
-   *  Constant: '<S74>/Constant'
+  /* Sum: '<S75>/Minus' incorporates:
+   *  Constant: '<S75>/Constant'
    */
   localDW->Minus = 100.0 - *rty_clutchVal;
 
-  /* S-Function (ClutchMotor_setPWMRegister): '<S74>/ClutchMotor SetPWMRegister' */
+  /* S-Function (ClutchMotor_setPWMRegister): '<S75>/ClutchMotor SetPWMRegister' */
   ClutchMotor_setPWMRegister_Outputs_wrapper(&localDW->Minus);
 
-  /* Gain: '<S92>/ZeroGain' */
+  /* Gain: '<S93>/ZeroGain' */
   rtb_ZeroGain = 0.0 * rtb_SignPreIntegrator;
 
-  /* DeadZone: '<S92>/DeadZone' */
+  /* DeadZone: '<S93>/DeadZone' */
   if (rtb_SignPreIntegrator > 17.0) {
     rtb_SignPreIntegrator -= 17.0;
   } else if (rtb_SignPreIntegrator >= -18.0) {
@@ -2180,12 +2150,12 @@ static void MODESACCELERATION_PIDLAU_gq(RT_MODEL * const rtM, real_T
     rtb_SignPreIntegrator -= -18.0;
   }
 
-  /* End of DeadZone: '<S92>/DeadZone' */
+  /* End of DeadZone: '<S93>/DeadZone' */
 
-  /* RelationalOperator: '<S92>/NotEqual' */
+  /* RelationalOperator: '<S93>/NotEqual' */
   rtb_NotEqual = (rtb_ZeroGain != rtb_SignPreIntegrator);
 
-  /* Signum: '<S92>/SignDeltaU' */
+  /* Signum: '<S93>/SignDeltaU' */
   if (rtb_SignPreIntegrator < 0.0) {
     rtb_SignPreIntegrator = -1.0;
   } else if (rtb_SignPreIntegrator > 0.0) {
@@ -2196,12 +2166,12 @@ static void MODESACCELERATION_PIDLAU_gq(RT_MODEL * const rtM, real_T
     rtb_SignPreIntegrator = (rtNaN);
   }
 
-  /* End of Signum: '<S92>/SignDeltaU' */
+  /* End of Signum: '<S93>/SignDeltaU' */
 
-  /* Gain: '<S91>/Integral Gain' */
+  /* Gain: '<S92>/Integral Gain' */
   rtb_IntegralGain *= 9.79580592329006;
 
-  /* Update for DiscreteIntegrator: '<S91>/Integrator' */
+  /* Update for DiscreteIntegrator: '<S92>/Integrator' */
   localDW->Integrator_SYSTEM_ENABLE = 0U;
   localDW->Integrator_DSTATE = Integrator;
   if (rtu_reset > 0.0) {
@@ -2214,16 +2184,16 @@ static void MODESACCELERATION_PIDLAU_gq(RT_MODEL * const rtM, real_T
     localDW->Integrator_PrevResetState = 2;
   }
 
-  /* DataTypeConversion: '<S92>/DataTypeConv1' */
+  /* DataTypeConversion: '<S93>/DataTypeConv1' */
   if (rtb_SignPreIntegrator < 128.0) {
     rtb_SignPreIntegrator_f = (int8_T)rtb_SignPreIntegrator;
   } else {
     rtb_SignPreIntegrator_f = MAX_int8_T;
   }
 
-  /* End of DataTypeConversion: '<S92>/DataTypeConv1' */
+  /* End of DataTypeConversion: '<S93>/DataTypeConv1' */
 
-  /* Signum: '<S92>/SignPreIntegrator' */
+  /* Signum: '<S93>/SignPreIntegrator' */
   if (rtb_IntegralGain < 0.0) {
     Integrator = -1.0;
   } else if (rtb_IntegralGain > 0.0) {
@@ -2234,43 +2204,43 @@ static void MODESACCELERATION_PIDLAU_gq(RT_MODEL * const rtM, real_T
     Integrator = (rtNaN);
   }
 
-  /* End of Signum: '<S92>/SignPreIntegrator' */
+  /* End of Signum: '<S93>/SignPreIntegrator' */
 
-  /* Switch: '<S91>/Switch' incorporates:
-   *  DataTypeConversion: '<S92>/DataTypeConv2'
-   *  Logic: '<S92>/AND'
-   *  RelationalOperator: '<S92>/Equal'
+  /* Switch: '<S92>/Switch' incorporates:
+   *  DataTypeConversion: '<S93>/DataTypeConv2'
+   *  Logic: '<S93>/AND'
+   *  RelationalOperator: '<S93>/Equal'
    */
   if (rtb_NotEqual && (rtb_SignPreIntegrator_f == (int8_T)Integrator)) {
-    /* Update for DiscreteIntegrator: '<S91>/Integrator' incorporates:
-     *  Constant: '<S91>/Constant'
+    /* Update for DiscreteIntegrator: '<S92>/Integrator' incorporates:
+     *  Constant: '<S92>/Constant'
      */
     localDW->Integrator_PREV_U = 0.0;
   } else {
-    /* Update for DiscreteIntegrator: '<S91>/Integrator' */
+    /* Update for DiscreteIntegrator: '<S92>/Integrator' */
     localDW->Integrator_PREV_U = rtb_IntegralGain;
   }
 
-  /* End of Switch: '<S91>/Switch' */
+  /* End of Switch: '<S92>/Switch' */
 }
 
-/* System initialize for function-call system: '<S47>/MODES.ACCELERATION_PID.LAUNCH4.ACTIVE.pidControl' */
+/* System initialize for function-call system: '<S48>/MODES.ACCELERATION_PID.LAUNCH4.ACTIVE.pidControl' */
 static void MODESACCELERATION_PI_f_Init(DW_MODESACCELERATION_PIDLAUNCH4 *localDW)
 {
-  /* InitializeConditions for DiscreteIntegrator: '<S93>/Integrator' */
+  /* InitializeConditions for DiscreteIntegrator: '<S94>/Integrator' */
   localDW->Integrator_PrevResetState = 2;
 }
 
-/* Enable for function-call system: '<S47>/MODES.ACCELERATION_PID.LAUNCH4.ACTIVE.pidControl' */
+/* Enable for function-call system: '<S48>/MODES.ACCELERATION_PID.LAUNCH4.ACTIVE.pidControl' */
 static void MODESACCELERATION__k_Enable(DW_MODESACCELERATION_PIDLAUNCH4 *localDW)
 {
   localDW->MODESACCELERATION_PIDLAUNCH4A_j = true;
 
-  /* Enable for DiscreteIntegrator: '<S93>/Integrator' */
+  /* Enable for DiscreteIntegrator: '<S94>/Integrator' */
   localDW->Integrator_SYSTEM_ENABLE = 1U;
 }
 
-/* Output and update for function-call system: '<S47>/MODES.ACCELERATION_PID.LAUNCH4.ACTIVE.pidControl' */
+/* Output and update for function-call system: '<S48>/MODES.ACCELERATION_PID.LAUNCH4.ACTIVE.pidControl' */
 static void MODESACCELERATION_PIDLAUN_k(RT_MODEL * const rtM, real_T
   rtu_slipTarget, real_T rtu_currentSlip, real_T rtu_reset, real_T
   *rty_clutchVal, DW_MODESACCELERATION_PIDLAUNCH4 *localDW)
@@ -2292,10 +2262,10 @@ static void MODESACCELERATION_PIDLAUN_k(RT_MODEL * const rtM, real_T
   localDW->MODESACCELERATION_PIDLAUNCH4A_o = rtM->Timing.clockTick1;
   localDW->MODESACCELERATION_PIDLAUNCH4A_j = false;
 
-  /* Sum: '<S75>/Sum1' */
+  /* Sum: '<S76>/Sum1' */
   rtb_IntegralGain = rtu_slipTarget - rtu_currentSlip;
 
-  /* DiscreteIntegrator: '<S93>/Integrator' */
+  /* DiscreteIntegrator: '<S94>/Integrator' */
   if (localDW->Integrator_SYSTEM_ENABLE != 0) {
     Integrator = localDW->Integrator_DSTATE;
   } else if ((rtu_reset > 0.0) && (localDW->Integrator_PrevResetState <= 0)) {
@@ -2306,14 +2276,14 @@ static void MODESACCELERATION_PIDLAUN_k(RT_MODEL * const rtM, real_T
       localDW->Integrator_PREV_U + localDW->Integrator_DSTATE;
   }
 
-  /* End of DiscreteIntegrator: '<S93>/Integrator' */
+  /* End of DiscreteIntegrator: '<S94>/Integrator' */
 
-  /* Sum: '<S93>/Sum' incorporates:
-   *  Gain: '<S93>/Proportional Gain'
+  /* Sum: '<S94>/Sum' incorporates:
+   *  Gain: '<S94>/Proportional Gain'
    */
   rtb_SignPreIntegrator = 0.0964482561209752 * rtb_IntegralGain + Integrator;
 
-  /* Saturate: '<S93>/Saturate' */
+  /* Saturate: '<S94>/Saturate' */
   if (rtb_SignPreIntegrator > 15.0) {
     rtb_ZeroGain = 15.0;
   } else if (rtb_SignPreIntegrator < -15.0) {
@@ -2322,25 +2292,25 @@ static void MODESACCELERATION_PIDLAUN_k(RT_MODEL * const rtM, real_T
     rtb_ZeroGain = rtb_SignPreIntegrator;
   }
 
-  /* End of Saturate: '<S93>/Saturate' */
+  /* End of Saturate: '<S94>/Saturate' */
 
-  /* Sum: '<S75>/Sum' incorporates:
-   *  Constant: '<S75>/Constant1'
+  /* Sum: '<S76>/Sum' incorporates:
+   *  Constant: '<S76>/Constant1'
    */
   *rty_clutchVal = 15.0 - rtb_ZeroGain;
 
-  /* Sum: '<S75>/Minus' incorporates:
-   *  Constant: '<S75>/Constant'
+  /* Sum: '<S76>/Minus' incorporates:
+   *  Constant: '<S76>/Constant'
    */
   localDW->Minus = 100.0 - *rty_clutchVal;
 
-  /* S-Function (ClutchMotor_setPWMRegister): '<S75>/ClutchMotor SetPWMRegister' */
+  /* S-Function (ClutchMotor_setPWMRegister): '<S76>/ClutchMotor SetPWMRegister' */
   ClutchMotor_setPWMRegister_Outputs_wrapper(&localDW->Minus);
 
-  /* Gain: '<S94>/ZeroGain' */
+  /* Gain: '<S95>/ZeroGain' */
   rtb_ZeroGain = 0.0 * rtb_SignPreIntegrator;
 
-  /* DeadZone: '<S94>/DeadZone' */
+  /* DeadZone: '<S95>/DeadZone' */
   if (rtb_SignPreIntegrator > 15.0) {
     rtb_SignPreIntegrator -= 15.0;
   } else if (rtb_SignPreIntegrator >= -15.0) {
@@ -2349,12 +2319,12 @@ static void MODESACCELERATION_PIDLAUN_k(RT_MODEL * const rtM, real_T
     rtb_SignPreIntegrator -= -15.0;
   }
 
-  /* End of DeadZone: '<S94>/DeadZone' */
+  /* End of DeadZone: '<S95>/DeadZone' */
 
-  /* RelationalOperator: '<S94>/NotEqual' */
+  /* RelationalOperator: '<S95>/NotEqual' */
   rtb_NotEqual = (rtb_ZeroGain != rtb_SignPreIntegrator);
 
-  /* Signum: '<S94>/SignDeltaU' */
+  /* Signum: '<S95>/SignDeltaU' */
   if (rtb_SignPreIntegrator < 0.0) {
     rtb_SignPreIntegrator = -1.0;
   } else if (rtb_SignPreIntegrator > 0.0) {
@@ -2365,12 +2335,12 @@ static void MODESACCELERATION_PIDLAUN_k(RT_MODEL * const rtM, real_T
     rtb_SignPreIntegrator = (rtNaN);
   }
 
-  /* End of Signum: '<S94>/SignDeltaU' */
+  /* End of Signum: '<S95>/SignDeltaU' */
 
-  /* Gain: '<S93>/Integral Gain' */
+  /* Gain: '<S94>/Integral Gain' */
   rtb_IntegralGain *= 2.61514139367693;
 
-  /* Update for DiscreteIntegrator: '<S93>/Integrator' */
+  /* Update for DiscreteIntegrator: '<S94>/Integrator' */
   localDW->Integrator_SYSTEM_ENABLE = 0U;
   localDW->Integrator_DSTATE = Integrator;
   if (rtu_reset > 0.0) {
@@ -2383,16 +2353,16 @@ static void MODESACCELERATION_PIDLAUN_k(RT_MODEL * const rtM, real_T
     localDW->Integrator_PrevResetState = 2;
   }
 
-  /* DataTypeConversion: '<S94>/DataTypeConv1' */
+  /* DataTypeConversion: '<S95>/DataTypeConv1' */
   if (rtb_SignPreIntegrator < 128.0) {
     rtb_SignPreIntegrator_o = (int8_T)rtb_SignPreIntegrator;
   } else {
     rtb_SignPreIntegrator_o = MAX_int8_T;
   }
 
-  /* End of DataTypeConversion: '<S94>/DataTypeConv1' */
+  /* End of DataTypeConversion: '<S95>/DataTypeConv1' */
 
-  /* Signum: '<S94>/SignPreIntegrator' */
+  /* Signum: '<S95>/SignPreIntegrator' */
   if (rtb_IntegralGain < 0.0) {
     Integrator = -1.0;
   } else if (rtb_IntegralGain > 0.0) {
@@ -2403,43 +2373,43 @@ static void MODESACCELERATION_PIDLAUN_k(RT_MODEL * const rtM, real_T
     Integrator = (rtNaN);
   }
 
-  /* End of Signum: '<S94>/SignPreIntegrator' */
+  /* End of Signum: '<S95>/SignPreIntegrator' */
 
-  /* Switch: '<S93>/Switch' incorporates:
-   *  DataTypeConversion: '<S94>/DataTypeConv2'
-   *  Logic: '<S94>/AND'
-   *  RelationalOperator: '<S94>/Equal'
+  /* Switch: '<S94>/Switch' incorporates:
+   *  DataTypeConversion: '<S95>/DataTypeConv2'
+   *  Logic: '<S95>/AND'
+   *  RelationalOperator: '<S95>/Equal'
    */
   if (rtb_NotEqual && (rtb_SignPreIntegrator_o == (int8_T)Integrator)) {
-    /* Update for DiscreteIntegrator: '<S93>/Integrator' incorporates:
-     *  Constant: '<S93>/Constant'
+    /* Update for DiscreteIntegrator: '<S94>/Integrator' incorporates:
+     *  Constant: '<S94>/Constant'
      */
     localDW->Integrator_PREV_U = 0.0;
   } else {
-    /* Update for DiscreteIntegrator: '<S93>/Integrator' */
+    /* Update for DiscreteIntegrator: '<S94>/Integrator' */
     localDW->Integrator_PREV_U = rtb_IntegralGain;
   }
 
-  /* End of Switch: '<S93>/Switch' */
+  /* End of Switch: '<S94>/Switch' */
 }
 
-/* System initialize for function-call system: '<S47>/MODES.ACCELERATION_PID.LAUNCH5.ACTIVE.pidControl' */
+/* System initialize for function-call system: '<S48>/MODES.ACCELERATION_PID.LAUNCH5.ACTIVE.pidControl' */
 static void MODESACCELERATION_PI_c_Init(DW_MODESACCELERATION_PIDLAUNCH5 *localDW)
 {
-  /* InitializeConditions for DiscreteIntegrator: '<S95>/Integrator' */
+  /* InitializeConditions for DiscreteIntegrator: '<S96>/Integrator' */
   localDW->Integrator_PrevResetState = 2;
 }
 
-/* Enable for function-call system: '<S47>/MODES.ACCELERATION_PID.LAUNCH5.ACTIVE.pidControl' */
+/* Enable for function-call system: '<S48>/MODES.ACCELERATION_PID.LAUNCH5.ACTIVE.pidControl' */
 static void MODESACCELERATION__j_Enable(DW_MODESACCELERATION_PIDLAUNCH5 *localDW)
 {
   localDW->MODESACCELERATION_PIDLAUNCH5A_h = true;
 
-  /* Enable for DiscreteIntegrator: '<S95>/Integrator' */
+  /* Enable for DiscreteIntegrator: '<S96>/Integrator' */
   localDW->Integrator_SYSTEM_ENABLE = 1U;
 }
 
-/* Output and update for function-call system: '<S47>/MODES.ACCELERATION_PID.LAUNCH5.ACTIVE.pidControl' */
+/* Output and update for function-call system: '<S48>/MODES.ACCELERATION_PID.LAUNCH5.ACTIVE.pidControl' */
 static void MODESACCELERATION_PIDLAUN_c(RT_MODEL * const rtM, real_T
   rtu_slipTarget, real_T rtu_currentSlip, real_T rtu_reset, real_T
   *rty_clutchVal, DW_MODESACCELERATION_PIDLAUNCH5 *localDW)
@@ -2461,10 +2431,10 @@ static void MODESACCELERATION_PIDLAUN_c(RT_MODEL * const rtM, real_T
   localDW->MODESACCELERATION_PIDLAUNCH5A_a = rtM->Timing.clockTick1;
   localDW->MODESACCELERATION_PIDLAUNCH5A_h = false;
 
-  /* Sum: '<S76>/Sum1' */
+  /* Sum: '<S77>/Sum1' */
   rtb_IntegralGain = rtu_slipTarget - rtu_currentSlip;
 
-  /* DiscreteIntegrator: '<S95>/Integrator' */
+  /* DiscreteIntegrator: '<S96>/Integrator' */
   if (localDW->Integrator_SYSTEM_ENABLE != 0) {
     Integrator = localDW->Integrator_DSTATE;
   } else if ((rtu_reset > 0.0) && (localDW->Integrator_PrevResetState <= 0)) {
@@ -2475,14 +2445,14 @@ static void MODESACCELERATION_PIDLAUN_c(RT_MODEL * const rtM, real_T
       localDW->Integrator_PREV_U + localDW->Integrator_DSTATE;
   }
 
-  /* End of DiscreteIntegrator: '<S95>/Integrator' */
+  /* End of DiscreteIntegrator: '<S96>/Integrator' */
 
-  /* Sum: '<S95>/Sum' incorporates:
-   *  Gain: '<S95>/Proportional Gain'
+  /* Sum: '<S96>/Sum' incorporates:
+   *  Gain: '<S96>/Proportional Gain'
    */
   rtb_SignPreIntegrator = 0.1 * rtb_IntegralGain + Integrator;
 
-  /* Saturate: '<S95>/Saturate' */
+  /* Saturate: '<S96>/Saturate' */
   if (rtb_SignPreIntegrator > 15.0) {
     rtb_ZeroGain = 15.0;
   } else if (rtb_SignPreIntegrator < -15.0) {
@@ -2491,25 +2461,25 @@ static void MODESACCELERATION_PIDLAUN_c(RT_MODEL * const rtM, real_T
     rtb_ZeroGain = rtb_SignPreIntegrator;
   }
 
-  /* End of Saturate: '<S95>/Saturate' */
+  /* End of Saturate: '<S96>/Saturate' */
 
-  /* Sum: '<S76>/Sum' incorporates:
-   *  Constant: '<S76>/Constant1'
+  /* Sum: '<S77>/Sum' incorporates:
+   *  Constant: '<S77>/Constant1'
    */
   *rty_clutchVal = 15.0 - rtb_ZeroGain;
 
-  /* Sum: '<S76>/Minus' incorporates:
-   *  Constant: '<S76>/Constant'
+  /* Sum: '<S77>/Minus' incorporates:
+   *  Constant: '<S77>/Constant'
    */
   localDW->Minus = 100.0 - *rty_clutchVal;
 
-  /* S-Function (ClutchMotor_setPWMRegister): '<S76>/ClutchMotor SetPWMRegister' */
+  /* S-Function (ClutchMotor_setPWMRegister): '<S77>/ClutchMotor SetPWMRegister' */
   ClutchMotor_setPWMRegister_Outputs_wrapper(&localDW->Minus);
 
-  /* Gain: '<S96>/ZeroGain' */
+  /* Gain: '<S97>/ZeroGain' */
   rtb_ZeroGain = 0.0 * rtb_SignPreIntegrator;
 
-  /* DeadZone: '<S96>/DeadZone' */
+  /* DeadZone: '<S97>/DeadZone' */
   if (rtb_SignPreIntegrator > 15.0) {
     rtb_SignPreIntegrator -= 15.0;
   } else if (rtb_SignPreIntegrator >= -15.0) {
@@ -2518,12 +2488,12 @@ static void MODESACCELERATION_PIDLAUN_c(RT_MODEL * const rtM, real_T
     rtb_SignPreIntegrator -= -15.0;
   }
 
-  /* End of DeadZone: '<S96>/DeadZone' */
+  /* End of DeadZone: '<S97>/DeadZone' */
 
-  /* RelationalOperator: '<S96>/NotEqual' */
+  /* RelationalOperator: '<S97>/NotEqual' */
   rtb_NotEqual = (rtb_ZeroGain != rtb_SignPreIntegrator);
 
-  /* Signum: '<S96>/SignDeltaU' */
+  /* Signum: '<S97>/SignDeltaU' */
   if (rtb_SignPreIntegrator < 0.0) {
     rtb_SignPreIntegrator = -1.0;
   } else if (rtb_SignPreIntegrator > 0.0) {
@@ -2534,12 +2504,12 @@ static void MODESACCELERATION_PIDLAUN_c(RT_MODEL * const rtM, real_T
     rtb_SignPreIntegrator = (rtNaN);
   }
 
-  /* End of Signum: '<S96>/SignDeltaU' */
+  /* End of Signum: '<S97>/SignDeltaU' */
 
-  /* Gain: '<S95>/Integral Gain' */
+  /* Gain: '<S96>/Integral Gain' */
   rtb_IntegralGain *= 9.79580592329006;
 
-  /* Update for DiscreteIntegrator: '<S95>/Integrator' */
+  /* Update for DiscreteIntegrator: '<S96>/Integrator' */
   localDW->Integrator_SYSTEM_ENABLE = 0U;
   localDW->Integrator_DSTATE = Integrator;
   if (rtu_reset > 0.0) {
@@ -2552,16 +2522,16 @@ static void MODESACCELERATION_PIDLAUN_c(RT_MODEL * const rtM, real_T
     localDW->Integrator_PrevResetState = 2;
   }
 
-  /* DataTypeConversion: '<S96>/DataTypeConv1' */
+  /* DataTypeConversion: '<S97>/DataTypeConv1' */
   if (rtb_SignPreIntegrator < 128.0) {
     rtb_SignPreIntegrator_g = (int8_T)rtb_SignPreIntegrator;
   } else {
     rtb_SignPreIntegrator_g = MAX_int8_T;
   }
 
-  /* End of DataTypeConversion: '<S96>/DataTypeConv1' */
+  /* End of DataTypeConversion: '<S97>/DataTypeConv1' */
 
-  /* Signum: '<S96>/SignPreIntegrator' */
+  /* Signum: '<S97>/SignPreIntegrator' */
   if (rtb_IntegralGain < 0.0) {
     Integrator = -1.0;
   } else if (rtb_IntegralGain > 0.0) {
@@ -2572,43 +2542,43 @@ static void MODESACCELERATION_PIDLAUN_c(RT_MODEL * const rtM, real_T
     Integrator = (rtNaN);
   }
 
-  /* End of Signum: '<S96>/SignPreIntegrator' */
+  /* End of Signum: '<S97>/SignPreIntegrator' */
 
-  /* Switch: '<S95>/Switch' incorporates:
-   *  DataTypeConversion: '<S96>/DataTypeConv2'
-   *  Logic: '<S96>/AND'
-   *  RelationalOperator: '<S96>/Equal'
+  /* Switch: '<S96>/Switch' incorporates:
+   *  DataTypeConversion: '<S97>/DataTypeConv2'
+   *  Logic: '<S97>/AND'
+   *  RelationalOperator: '<S97>/Equal'
    */
   if (rtb_NotEqual && (rtb_SignPreIntegrator_g == (int8_T)Integrator)) {
-    /* Update for DiscreteIntegrator: '<S95>/Integrator' incorporates:
-     *  Constant: '<S95>/Constant'
+    /* Update for DiscreteIntegrator: '<S96>/Integrator' incorporates:
+     *  Constant: '<S96>/Constant'
      */
     localDW->Integrator_PREV_U = 0.0;
   } else {
-    /* Update for DiscreteIntegrator: '<S95>/Integrator' */
+    /* Update for DiscreteIntegrator: '<S96>/Integrator' */
     localDW->Integrator_PREV_U = rtb_IntegralGain;
   }
 
-  /* End of Switch: '<S95>/Switch' */
+  /* End of Switch: '<S96>/Switch' */
 }
 
-/* System initialize for function-call system: '<S47>/MODES.ACCELERATION_PID.LAUNCH6.ACTIVE.pidControl' */
+/* System initialize for function-call system: '<S48>/MODES.ACCELERATION_PID.LAUNCH6.ACTIVE.pidControl' */
 static void MODESACCELERATION_PI_a_Init(DW_MODESACCELERATION_PIDLAUNCH6 *localDW)
 {
-  /* InitializeConditions for DiscreteIntegrator: '<S97>/Integrator' */
+  /* InitializeConditions for DiscreteIntegrator: '<S98>/Integrator' */
   localDW->Integrator_PrevResetState = 2;
 }
 
-/* Enable for function-call system: '<S47>/MODES.ACCELERATION_PID.LAUNCH6.ACTIVE.pidControl' */
+/* Enable for function-call system: '<S48>/MODES.ACCELERATION_PID.LAUNCH6.ACTIVE.pidControl' */
 static void MODESACCELERATION__o_Enable(DW_MODESACCELERATION_PIDLAUNCH6 *localDW)
 {
   localDW->MODESACCELERATION_PIDLAUNCH6A_l = true;
 
-  /* Enable for DiscreteIntegrator: '<S97>/Integrator' */
+  /* Enable for DiscreteIntegrator: '<S98>/Integrator' */
   localDW->Integrator_SYSTEM_ENABLE = 1U;
 }
 
-/* Output and update for function-call system: '<S47>/MODES.ACCELERATION_PID.LAUNCH6.ACTIVE.pidControl' */
+/* Output and update for function-call system: '<S48>/MODES.ACCELERATION_PID.LAUNCH6.ACTIVE.pidControl' */
 static void MODESACCELERATION_PIDLAUN_n(RT_MODEL * const rtM, real_T
   rtu_slipTarget, real_T rtu_currentSlip, real_T rtu_reset, real_T
   *rty_clutchVal, DW_MODESACCELERATION_PIDLAUNCH6 *localDW)
@@ -2630,10 +2600,10 @@ static void MODESACCELERATION_PIDLAUN_n(RT_MODEL * const rtM, real_T
   localDW->MODESACCELERATION_PIDLAUNCH6A_j = rtM->Timing.clockTick1;
   localDW->MODESACCELERATION_PIDLAUNCH6A_l = false;
 
-  /* Sum: '<S77>/Sum1' */
+  /* Sum: '<S78>/Sum1' */
   rtb_IntegralGain = rtu_slipTarget - rtu_currentSlip;
 
-  /* DiscreteIntegrator: '<S97>/Integrator' */
+  /* DiscreteIntegrator: '<S98>/Integrator' */
   if (localDW->Integrator_SYSTEM_ENABLE != 0) {
     Integrator = localDW->Integrator_DSTATE;
   } else if ((rtu_reset > 0.0) && (localDW->Integrator_PrevResetState <= 0)) {
@@ -2644,14 +2614,14 @@ static void MODESACCELERATION_PIDLAUN_n(RT_MODEL * const rtM, real_T
       localDW->Integrator_PREV_U + localDW->Integrator_DSTATE;
   }
 
-  /* End of DiscreteIntegrator: '<S97>/Integrator' */
+  /* End of DiscreteIntegrator: '<S98>/Integrator' */
 
-  /* Sum: '<S97>/Sum' incorporates:
-   *  Gain: '<S97>/Proportional Gain'
+  /* Sum: '<S98>/Sum' incorporates:
+   *  Gain: '<S98>/Proportional Gain'
    */
   rtb_SignPreIntegrator = 0.1 * rtb_IntegralGain + Integrator;
 
-  /* Saturate: '<S97>/Saturate' */
+  /* Saturate: '<S98>/Saturate' */
   if (rtb_SignPreIntegrator > 15.0) {
     rtb_ZeroGain = 15.0;
   } else if (rtb_SignPreIntegrator < -15.0) {
@@ -2660,176 +2630,7 @@ static void MODESACCELERATION_PIDLAUN_n(RT_MODEL * const rtM, real_T
     rtb_ZeroGain = rtb_SignPreIntegrator;
   }
 
-  /* End of Saturate: '<S97>/Saturate' */
-
-  /* Sum: '<S77>/Sum' incorporates:
-   *  Constant: '<S77>/Constant1'
-   */
-  *rty_clutchVal = 15.0 - rtb_ZeroGain;
-
-  /* Sum: '<S77>/Minus' incorporates:
-   *  Constant: '<S77>/Constant'
-   */
-  localDW->Minus = 100.0 - *rty_clutchVal;
-
-  /* S-Function (ClutchMotor_setPWMRegister): '<S77>/ClutchMotor SetPWMRegister' */
-  ClutchMotor_setPWMRegister_Outputs_wrapper(&localDW->Minus);
-
-  /* Gain: '<S99>/ZeroGain' */
-  rtb_ZeroGain = 0.0 * rtb_SignPreIntegrator;
-
-  /* DeadZone: '<S99>/DeadZone' */
-  if (rtb_SignPreIntegrator > 15.0) {
-    rtb_SignPreIntegrator -= 15.0;
-  } else if (rtb_SignPreIntegrator >= -15.0) {
-    rtb_SignPreIntegrator = 0.0;
-  } else {
-    rtb_SignPreIntegrator -= -15.0;
-  }
-
-  /* End of DeadZone: '<S99>/DeadZone' */
-
-  /* RelationalOperator: '<S99>/NotEqual' */
-  rtb_NotEqual = (rtb_ZeroGain != rtb_SignPreIntegrator);
-
-  /* Signum: '<S99>/SignDeltaU' */
-  if (rtb_SignPreIntegrator < 0.0) {
-    rtb_SignPreIntegrator = -1.0;
-  } else if (rtb_SignPreIntegrator > 0.0) {
-    rtb_SignPreIntegrator = 1.0;
-  } else if (rtb_SignPreIntegrator == 0.0) {
-    rtb_SignPreIntegrator = 0.0;
-  } else {
-    rtb_SignPreIntegrator = (rtNaN);
-  }
-
-  /* End of Signum: '<S99>/SignDeltaU' */
-
-  /* Gain: '<S97>/Integral Gain' */
-  rtb_IntegralGain *= 15.0;
-
-  /* Update for DiscreteIntegrator: '<S97>/Integrator' */
-  localDW->Integrator_SYSTEM_ENABLE = 0U;
-  localDW->Integrator_DSTATE = Integrator;
-  if (rtu_reset > 0.0) {
-    localDW->Integrator_PrevResetState = 1;
-  } else if (rtu_reset < 0.0) {
-    localDW->Integrator_PrevResetState = -1;
-  } else if (rtu_reset == 0.0) {
-    localDW->Integrator_PrevResetState = 0;
-  } else {
-    localDW->Integrator_PrevResetState = 2;
-  }
-
-  /* DataTypeConversion: '<S99>/DataTypeConv1' */
-  if (rtb_SignPreIntegrator < 128.0) {
-    rtb_SignPreIntegrator_e = (int8_T)rtb_SignPreIntegrator;
-  } else {
-    rtb_SignPreIntegrator_e = MAX_int8_T;
-  }
-
-  /* End of DataTypeConversion: '<S99>/DataTypeConv1' */
-
-  /* Signum: '<S99>/SignPreIntegrator' */
-  if (rtb_IntegralGain < 0.0) {
-    Integrator = -1.0;
-  } else if (rtb_IntegralGain > 0.0) {
-    Integrator = 1.0;
-  } else if (rtb_IntegralGain == 0.0) {
-    Integrator = 0.0;
-  } else {
-    Integrator = (rtNaN);
-  }
-
-  /* End of Signum: '<S99>/SignPreIntegrator' */
-
-  /* Switch: '<S97>/Switch' incorporates:
-   *  DataTypeConversion: '<S99>/DataTypeConv2'
-   *  Logic: '<S99>/AND'
-   *  RelationalOperator: '<S99>/Equal'
-   */
-  if (rtb_NotEqual && (rtb_SignPreIntegrator_e == (int8_T)Integrator)) {
-    /* Update for DiscreteIntegrator: '<S97>/Integrator' incorporates:
-     *  Constant: '<S97>/Constant'
-     */
-    localDW->Integrator_PREV_U = 0.0;
-  } else {
-    /* Update for DiscreteIntegrator: '<S97>/Integrator' */
-    localDW->Integrator_PREV_U = rtb_IntegralGain;
-  }
-
-  /* End of Switch: '<S97>/Switch' */
-}
-
-/* System initialize for function-call system: '<S47>/MODES.ACCELERATION_PID.LAUNCH7.ACTIVE.pidControl' */
-static void MODESACCELERATION_P_fr_Init(DW_MODESACCELERATION_PIDLAUNCH7 *localDW)
-{
-  /* InitializeConditions for DiscreteIntegrator: '<S100>/Integrator' */
-  localDW->Integrator_PrevResetState = 2;
-}
-
-/* Enable for function-call system: '<S47>/MODES.ACCELERATION_PID.LAUNCH7.ACTIVE.pidControl' */
-static void MODESACCELERATION__d_Enable(DW_MODESACCELERATION_PIDLAUNCH7 *localDW)
-{
-  localDW->MODESACCELERATION_PIDLAUNCH7A_k = true;
-
-  /* Enable for DiscreteIntegrator: '<S100>/Integrator' */
-  localDW->Integrator_SYSTEM_ENABLE = 1U;
-}
-
-/* Output and update for function-call system: '<S47>/MODES.ACCELERATION_PID.LAUNCH7.ACTIVE.pidControl' */
-static void MODESACCELERATION_PIDLAUN_b(RT_MODEL * const rtM, real_T
-  rtu_slipTarget, real_T rtu_currentSlip, real_T rtu_reset, real_T
-  *rty_clutchVal, DW_MODESACCELERATION_PIDLAUNCH7 *localDW)
-{
-  real_T rtb_IntegralGain;
-  real_T rtb_SignPreIntegrator;
-  real_T rtb_ZeroGain;
-  boolean_T rtb_NotEqual;
-  uint32_T MODESACCELERATION_PIDLAUNCH7ACT;
-  real_T Integrator;
-  int8_T rtb_SignPreIntegrator_fd;
-  if (localDW->MODESACCELERATION_PIDLAUNCH7A_k) {
-    MODESACCELERATION_PIDLAUNCH7ACT = 0U;
-  } else {
-    MODESACCELERATION_PIDLAUNCH7ACT = rtM->Timing.clockTick1 -
-      localDW->MODESACCELERATION_PIDLAUNCH7A_f;
-  }
-
-  localDW->MODESACCELERATION_PIDLAUNCH7A_f = rtM->Timing.clockTick1;
-  localDW->MODESACCELERATION_PIDLAUNCH7A_k = false;
-
-  /* Sum: '<S78>/Sum1' */
-  rtb_IntegralGain = rtu_slipTarget - rtu_currentSlip;
-
-  /* DiscreteIntegrator: '<S100>/Integrator' */
-  if (localDW->Integrator_SYSTEM_ENABLE != 0) {
-    Integrator = localDW->Integrator_DSTATE;
-  } else if ((rtu_reset > 0.0) && (localDW->Integrator_PrevResetState <= 0)) {
-    localDW->Integrator_DSTATE = 0.0;
-    Integrator = localDW->Integrator_DSTATE;
-  } else {
-    Integrator = 0.001 * (real_T)MODESACCELERATION_PIDLAUNCH7ACT *
-      localDW->Integrator_PREV_U + localDW->Integrator_DSTATE;
-  }
-
-  /* End of DiscreteIntegrator: '<S100>/Integrator' */
-
-  /* Sum: '<S100>/Sum' incorporates:
-   *  Gain: '<S100>/Proportional Gain'
-   */
-  rtb_SignPreIntegrator = 0.2 * rtb_IntegralGain + Integrator;
-
-  /* Saturate: '<S100>/Saturate' */
-  if (rtb_SignPreIntegrator > 15.0) {
-    rtb_ZeroGain = 15.0;
-  } else if (rtb_SignPreIntegrator < -15.0) {
-    rtb_ZeroGain = -15.0;
-  } else {
-    rtb_ZeroGain = rtb_SignPreIntegrator;
-  }
-
-  /* End of Saturate: '<S100>/Saturate' */
+  /* End of Saturate: '<S98>/Saturate' */
 
   /* Sum: '<S78>/Sum' incorporates:
    *  Constant: '<S78>/Constant1'
@@ -2844,10 +2645,10 @@ static void MODESACCELERATION_PIDLAUN_b(RT_MODEL * const rtM, real_T
   /* S-Function (ClutchMotor_setPWMRegister): '<S78>/ClutchMotor SetPWMRegister' */
   ClutchMotor_setPWMRegister_Outputs_wrapper(&localDW->Minus);
 
-  /* Gain: '<S102>/ZeroGain' */
+  /* Gain: '<S100>/ZeroGain' */
   rtb_ZeroGain = 0.0 * rtb_SignPreIntegrator;
 
-  /* DeadZone: '<S102>/DeadZone' */
+  /* DeadZone: '<S100>/DeadZone' */
   if (rtb_SignPreIntegrator > 15.0) {
     rtb_SignPreIntegrator -= 15.0;
   } else if (rtb_SignPreIntegrator >= -15.0) {
@@ -2856,12 +2657,12 @@ static void MODESACCELERATION_PIDLAUN_b(RT_MODEL * const rtM, real_T
     rtb_SignPreIntegrator -= -15.0;
   }
 
-  /* End of DeadZone: '<S102>/DeadZone' */
+  /* End of DeadZone: '<S100>/DeadZone' */
 
-  /* RelationalOperator: '<S102>/NotEqual' */
+  /* RelationalOperator: '<S100>/NotEqual' */
   rtb_NotEqual = (rtb_ZeroGain != rtb_SignPreIntegrator);
 
-  /* Signum: '<S102>/SignDeltaU' */
+  /* Signum: '<S100>/SignDeltaU' */
   if (rtb_SignPreIntegrator < 0.0) {
     rtb_SignPreIntegrator = -1.0;
   } else if (rtb_SignPreIntegrator > 0.0) {
@@ -2872,12 +2673,12 @@ static void MODESACCELERATION_PIDLAUN_b(RT_MODEL * const rtM, real_T
     rtb_SignPreIntegrator = (rtNaN);
   }
 
-  /* End of Signum: '<S102>/SignDeltaU' */
+  /* End of Signum: '<S100>/SignDeltaU' */
 
-  /* Gain: '<S100>/Integral Gain' */
-  rtb_IntegralGain *= 9.79580592329006;
+  /* Gain: '<S98>/Integral Gain' */
+  rtb_IntegralGain *= 15.0;
 
-  /* Update for DiscreteIntegrator: '<S100>/Integrator' */
+  /* Update for DiscreteIntegrator: '<S98>/Integrator' */
   localDW->Integrator_SYSTEM_ENABLE = 0U;
   localDW->Integrator_DSTATE = Integrator;
   if (rtu_reset > 0.0) {
@@ -2890,16 +2691,16 @@ static void MODESACCELERATION_PIDLAUN_b(RT_MODEL * const rtM, real_T
     localDW->Integrator_PrevResetState = 2;
   }
 
-  /* DataTypeConversion: '<S102>/DataTypeConv1' */
+  /* DataTypeConversion: '<S100>/DataTypeConv1' */
   if (rtb_SignPreIntegrator < 128.0) {
-    rtb_SignPreIntegrator_fd = (int8_T)rtb_SignPreIntegrator;
+    rtb_SignPreIntegrator_e = (int8_T)rtb_SignPreIntegrator;
   } else {
-    rtb_SignPreIntegrator_fd = MAX_int8_T;
+    rtb_SignPreIntegrator_e = MAX_int8_T;
   }
 
-  /* End of DataTypeConversion: '<S102>/DataTypeConv1' */
+  /* End of DataTypeConversion: '<S100>/DataTypeConv1' */
 
-  /* Signum: '<S102>/SignPreIntegrator' */
+  /* Signum: '<S100>/SignPreIntegrator' */
   if (rtb_IntegralGain < 0.0) {
     Integrator = -1.0;
   } else if (rtb_IntegralGain > 0.0) {
@@ -2910,44 +2711,44 @@ static void MODESACCELERATION_PIDLAUN_b(RT_MODEL * const rtM, real_T
     Integrator = (rtNaN);
   }
 
-  /* End of Signum: '<S102>/SignPreIntegrator' */
+  /* End of Signum: '<S100>/SignPreIntegrator' */
 
-  /* Switch: '<S100>/Switch' incorporates:
-   *  DataTypeConversion: '<S102>/DataTypeConv2'
-   *  Logic: '<S102>/AND'
-   *  RelationalOperator: '<S102>/Equal'
+  /* Switch: '<S98>/Switch' incorporates:
+   *  DataTypeConversion: '<S100>/DataTypeConv2'
+   *  Logic: '<S100>/AND'
+   *  RelationalOperator: '<S100>/Equal'
    */
-  if (rtb_NotEqual && (rtb_SignPreIntegrator_fd == (int8_T)Integrator)) {
-    /* Update for DiscreteIntegrator: '<S100>/Integrator' incorporates:
-     *  Constant: '<S100>/Constant'
+  if (rtb_NotEqual && (rtb_SignPreIntegrator_e == (int8_T)Integrator)) {
+    /* Update for DiscreteIntegrator: '<S98>/Integrator' incorporates:
+     *  Constant: '<S98>/Constant'
      */
     localDW->Integrator_PREV_U = 0.0;
   } else {
-    /* Update for DiscreteIntegrator: '<S100>/Integrator' */
+    /* Update for DiscreteIntegrator: '<S98>/Integrator' */
     localDW->Integrator_PREV_U = rtb_IntegralGain;
   }
 
-  /* End of Switch: '<S100>/Switch' */
+  /* End of Switch: '<S98>/Switch' */
 }
 
-/* System initialize for function-call system: '<S47>/MODES.ACCELERATION_PID.LAUNCH8.ACTIVE.pidControl' */
-static void MODESACCELERATION_P_ep_Init(DW_MODESACCELERATION_PIDLAUNCH8 *localDW)
+/* System initialize for function-call system: '<S48>/MODES.ACCELERATION_PID.LAUNCH8.ACTIVE.pidControl' */
+static void MODESACCELERATION_P_cz_Init(DW_MODESACCELERATION_PIDLAUNCH8 *localDW)
 {
-  /* InitializeConditions for DiscreteIntegrator: '<S103>/Integrator' */
+  /* InitializeConditions for DiscreteIntegrator: '<S104>/Integrator' */
   localDW->Integrator_PrevResetState = 2;
 }
 
-/* Enable for function-call system: '<S47>/MODES.ACCELERATION_PID.LAUNCH8.ACTIVE.pidControl' */
-static void MODESACCELERATION__l_Enable(DW_MODESACCELERATION_PIDLAUNCH8 *localDW)
+/* Enable for function-call system: '<S48>/MODES.ACCELERATION_PID.LAUNCH8.ACTIVE.pidControl' */
+static void MODESACCELERATION__g_Enable(DW_MODESACCELERATION_PIDLAUNCH8 *localDW)
 {
   localDW->MODESACCELERATION_PIDLAUNCH8A_e = true;
 
-  /* Enable for DiscreteIntegrator: '<S103>/Integrator' */
+  /* Enable for DiscreteIntegrator: '<S104>/Integrator' */
   localDW->Integrator_SYSTEM_ENABLE = 1U;
 }
 
-/* Output and update for function-call system: '<S47>/MODES.ACCELERATION_PID.LAUNCH8.ACTIVE.pidControl' */
-static void MODESACCELERATION_PIDLAU_bj(RT_MODEL * const rtM, real_T
+/* Output and update for function-call system: '<S48>/MODES.ACCELERATION_PID.LAUNCH8.ACTIVE.pidControl' */
+static void MODESACCELERATION_PIDLAUN_b(RT_MODEL * const rtM, real_T
   rtu_slipTarget, real_T rtu_currentSlip, real_T rtu_reset, real_T
   *rty_clutchVal, DW_MODESACCELERATION_PIDLAUNCH8 *localDW)
 {
@@ -2968,10 +2769,10 @@ static void MODESACCELERATION_PIDLAU_bj(RT_MODEL * const rtM, real_T
   localDW->MODESACCELERATION_PIDLAUNCH8A_k = rtM->Timing.clockTick1;
   localDW->MODESACCELERATION_PIDLAUNCH8A_e = false;
 
-  /* Sum: '<S79>/Sum1' */
+  /* Sum: '<S80>/Sum1' */
   rtb_IntegralGain = rtu_slipTarget - rtu_currentSlip;
 
-  /* DiscreteIntegrator: '<S103>/Integrator' */
+  /* DiscreteIntegrator: '<S104>/Integrator' */
   if (localDW->Integrator_SYSTEM_ENABLE != 0) {
     Integrator = localDW->Integrator_DSTATE;
   } else if ((rtu_reset > 0.0) && (localDW->Integrator_PrevResetState <= 0)) {
@@ -2982,14 +2783,14 @@ static void MODESACCELERATION_PIDLAU_bj(RT_MODEL * const rtM, real_T
       localDW->Integrator_PREV_U + localDW->Integrator_DSTATE;
   }
 
-  /* End of DiscreteIntegrator: '<S103>/Integrator' */
+  /* End of DiscreteIntegrator: '<S104>/Integrator' */
 
-  /* Sum: '<S103>/Sum' incorporates:
-   *  Gain: '<S103>/Proportional Gain'
+  /* Sum: '<S104>/Sum' incorporates:
+   *  Gain: '<S104>/Proportional Gain'
    */
   rtb_SignPreIntegrator = 0.1 * rtb_IntegralGain + Integrator;
 
-  /* Saturate: '<S103>/Saturate' */
+  /* Saturate: '<S104>/Saturate' */
   if (rtb_SignPreIntegrator > 10.0) {
     rtb_ZeroGain = 10.0;
   } else if (rtb_SignPreIntegrator < -10.0) {
@@ -2998,25 +2799,25 @@ static void MODESACCELERATION_PIDLAU_bj(RT_MODEL * const rtM, real_T
     rtb_ZeroGain = rtb_SignPreIntegrator;
   }
 
-  /* End of Saturate: '<S103>/Saturate' */
+  /* End of Saturate: '<S104>/Saturate' */
 
-  /* Sum: '<S79>/Sum' incorporates:
-   *  Constant: '<S79>/Constant1'
+  /* Sum: '<S80>/Sum' incorporates:
+   *  Constant: '<S80>/Constant1'
    */
   *rty_clutchVal = 10.0 - rtb_ZeroGain;
 
-  /* Sum: '<S79>/Minus' incorporates:
-   *  Constant: '<S79>/Constant'
+  /* Sum: '<S80>/Minus' incorporates:
+   *  Constant: '<S80>/Constant'
    */
   localDW->Minus = 100.0 - *rty_clutchVal;
 
-  /* S-Function (ClutchMotor_setPWMRegister): '<S79>/ClutchMotor SetPWMRegister' */
+  /* S-Function (ClutchMotor_setPWMRegister): '<S80>/ClutchMotor SetPWMRegister' */
   ClutchMotor_setPWMRegister_Outputs_wrapper(&localDW->Minus);
 
-  /* Gain: '<S104>/ZeroGain' */
+  /* Gain: '<S105>/ZeroGain' */
   rtb_ZeroGain = 0.0 * rtb_SignPreIntegrator;
 
-  /* DeadZone: '<S104>/DeadZone' */
+  /* DeadZone: '<S105>/DeadZone' */
   if (rtb_SignPreIntegrator > 10.0) {
     rtb_SignPreIntegrator -= 10.0;
   } else if (rtb_SignPreIntegrator >= -10.0) {
@@ -3025,12 +2826,12 @@ static void MODESACCELERATION_PIDLAU_bj(RT_MODEL * const rtM, real_T
     rtb_SignPreIntegrator -= -10.0;
   }
 
-  /* End of DeadZone: '<S104>/DeadZone' */
+  /* End of DeadZone: '<S105>/DeadZone' */
 
-  /* RelationalOperator: '<S104>/NotEqual' */
+  /* RelationalOperator: '<S105>/NotEqual' */
   rtb_NotEqual = (rtb_ZeroGain != rtb_SignPreIntegrator);
 
-  /* Signum: '<S104>/SignDeltaU' */
+  /* Signum: '<S105>/SignDeltaU' */
   if (rtb_SignPreIntegrator < 0.0) {
     rtb_SignPreIntegrator = -1.0;
   } else if (rtb_SignPreIntegrator > 0.0) {
@@ -3041,12 +2842,12 @@ static void MODESACCELERATION_PIDLAU_bj(RT_MODEL * const rtM, real_T
     rtb_SignPreIntegrator = (rtNaN);
   }
 
-  /* End of Signum: '<S104>/SignDeltaU' */
+  /* End of Signum: '<S105>/SignDeltaU' */
 
-  /* Gain: '<S103>/Integral Gain' */
+  /* Gain: '<S104>/Integral Gain' */
   rtb_IntegralGain *= 10.0;
 
-  /* Update for DiscreteIntegrator: '<S103>/Integrator' */
+  /* Update for DiscreteIntegrator: '<S104>/Integrator' */
   localDW->Integrator_SYSTEM_ENABLE = 0U;
   localDW->Integrator_DSTATE = Integrator;
   if (rtu_reset > 0.0) {
@@ -3059,16 +2860,16 @@ static void MODESACCELERATION_PIDLAU_bj(RT_MODEL * const rtM, real_T
     localDW->Integrator_PrevResetState = 2;
   }
 
-  /* DataTypeConversion: '<S104>/DataTypeConv1' */
+  /* DataTypeConversion: '<S105>/DataTypeConv1' */
   if (rtb_SignPreIntegrator < 128.0) {
     rtb_SignPreIntegrator_l = (int8_T)rtb_SignPreIntegrator;
   } else {
     rtb_SignPreIntegrator_l = MAX_int8_T;
   }
 
-  /* End of DataTypeConversion: '<S104>/DataTypeConv1' */
+  /* End of DataTypeConversion: '<S105>/DataTypeConv1' */
 
-  /* Signum: '<S104>/SignPreIntegrator' */
+  /* Signum: '<S105>/SignPreIntegrator' */
   if (rtb_IntegralGain < 0.0) {
     Integrator = -1.0;
   } else if (rtb_IntegralGain > 0.0) {
@@ -3079,75 +2880,43 @@ static void MODESACCELERATION_PIDLAU_bj(RT_MODEL * const rtM, real_T
     Integrator = (rtNaN);
   }
 
-  /* End of Signum: '<S104>/SignPreIntegrator' */
+  /* End of Signum: '<S105>/SignPreIntegrator' */
 
-  /* Switch: '<S103>/Switch' incorporates:
-   *  DataTypeConversion: '<S104>/DataTypeConv2'
-   *  Logic: '<S104>/AND'
-   *  RelationalOperator: '<S104>/Equal'
+  /* Switch: '<S104>/Switch' incorporates:
+   *  DataTypeConversion: '<S105>/DataTypeConv2'
+   *  Logic: '<S105>/AND'
+   *  RelationalOperator: '<S105>/Equal'
    */
   if (rtb_NotEqual && (rtb_SignPreIntegrator_l == (int8_T)Integrator)) {
-    /* Update for DiscreteIntegrator: '<S103>/Integrator' incorporates:
-     *  Constant: '<S103>/Constant'
+    /* Update for DiscreteIntegrator: '<S104>/Integrator' incorporates:
+     *  Constant: '<S104>/Constant'
      */
     localDW->Integrator_PREV_U = 0.0;
   } else {
-    /* Update for DiscreteIntegrator: '<S103>/Integrator' */
+    /* Update for DiscreteIntegrator: '<S104>/Integrator' */
     localDW->Integrator_PREV_U = rtb_IntegralGain;
   }
 
-  /* End of Switch: '<S103>/Switch' */
+  /* End of Switch: '<S104>/Switch' */
 }
 
-/* Output and update for function-call system: '<S47>/GEARSHIFT.checkCurrent' */
-static void GEARSHIFTcheckCurrent(real_T rtu_time, real_T rtu_current, boolean_T
-  *rty_out, DW_GEARSHIFTcheckCurrent *localDW)
-{
-  /* Logic: '<S70>/Logical Operator' incorporates:
-   *  Constant: '<S82>/Constant'
-   *  Constant: '<S83>/Constant'
-   *  Constant: '<S84>/Constant'
-   *  Delay: '<S70>/Delay'
-   *  RelationalOperator: '<S82>/Compare'
-   *  RelationalOperator: '<S83>/Compare'
-   *  RelationalOperator: '<S84>/Compare'
-   *  Sum: '<S70>/Minus'
-   */
-  *rty_out = ((rtu_time <= 60.0) && (rtu_current >= 5.0) && (rtu_current -
-    localDW->Delay_DSTATE[0] <= 1.0));
-
-  /* Update for Delay: '<S70>/Delay' */
-  localDW->Delay_DSTATE[0] = localDW->Delay_DSTATE[1];
-  localDW->Delay_DSTATE[1] = localDW->Delay_DSTATE[2];
-  localDW->Delay_DSTATE[2] = localDW->Delay_DSTATE[3];
-  localDW->Delay_DSTATE[3] = localDW->Delay_DSTATE[4];
-  localDW->Delay_DSTATE[4] = rtu_current;
-}
-
-/* Output and update for function-call system: '<S47>/SCAN_ADC.ScanADC' */
-static void SCAN_ADCScanADC(void)
-{
-  /* S-Function (ScanADC): '<S81>/ScanADC' */
-  ScanADC_Outputs_wrapper();
-}
-
-/* System initialize for function-call system: '<S47>/MODES.ACCELERATION_PID.LAUNCH9.ACTIVE.pidControl' */
+/* System initialize for function-call system: '<S48>/MODES.ACCELERATION_PID.LAUNCH9.ACTIVE.pidControl' */
 static void MODESACCELERATION_PI_i_Init(DW_MODESACCELERATION_PIDLAUNCH9 *localDW)
 {
-  /* InitializeConditions for DiscreteIntegrator: '<S105>/Integrator' */
+  /* InitializeConditions for DiscreteIntegrator: '<S106>/Integrator' */
   localDW->Integrator_PrevResetState = 2;
 }
 
-/* Enable for function-call system: '<S47>/MODES.ACCELERATION_PID.LAUNCH9.ACTIVE.pidControl' */
+/* Enable for function-call system: '<S48>/MODES.ACCELERATION_PID.LAUNCH9.ACTIVE.pidControl' */
 static void MODESACCELERATION__b_Enable(DW_MODESACCELERATION_PIDLAUNCH9 *localDW)
 {
   localDW->MODESACCELERATION_PIDLAUNCH9A_j = true;
 
-  /* Enable for DiscreteIntegrator: '<S105>/Integrator' */
+  /* Enable for DiscreteIntegrator: '<S106>/Integrator' */
   localDW->Integrator_SYSTEM_ENABLE = 1U;
 }
 
-/* Output and update for function-call system: '<S47>/MODES.ACCELERATION_PID.LAUNCH9.ACTIVE.pidControl' */
+/* Output and update for function-call system: '<S48>/MODES.ACCELERATION_PID.LAUNCH9.ACTIVE.pidControl' */
 static void MODESACCELERATION_PIDLAUN_h(RT_MODEL * const rtM, real_T
   rtu_slipTarget, real_T rtu_currentSlip, real_T rtu_reset, real_T
   *rty_clutchVal, DW_MODESACCELERATION_PIDLAUNCH9 *localDW)
@@ -3169,10 +2938,10 @@ static void MODESACCELERATION_PIDLAUN_h(RT_MODEL * const rtM, real_T
   localDW->MODESACCELERATION_PIDLAUNCH9A_f = rtM->Timing.clockTick1;
   localDW->MODESACCELERATION_PIDLAUNCH9A_j = false;
 
-  /* Sum: '<S80>/Sum1' */
+  /* Sum: '<S81>/Sum1' */
   rtb_IntegralGain = rtu_slipTarget - rtu_currentSlip;
 
-  /* DiscreteIntegrator: '<S105>/Integrator' */
+  /* DiscreteIntegrator: '<S106>/Integrator' */
   if (localDW->Integrator_SYSTEM_ENABLE != 0) {
     Integrator = localDW->Integrator_DSTATE;
   } else if ((rtu_reset > 0.0) && (localDW->Integrator_PrevResetState <= 0)) {
@@ -3183,14 +2952,14 @@ static void MODESACCELERATION_PIDLAUN_h(RT_MODEL * const rtM, real_T
       localDW->Integrator_PREV_U + localDW->Integrator_DSTATE;
   }
 
-  /* End of DiscreteIntegrator: '<S105>/Integrator' */
+  /* End of DiscreteIntegrator: '<S106>/Integrator' */
 
-  /* Sum: '<S105>/Sum' incorporates:
-   *  Gain: '<S105>/Proportional Gain'
+  /* Sum: '<S106>/Sum' incorporates:
+   *  Gain: '<S106>/Proportional Gain'
    */
   rtb_SignPreIntegrator = 0.1 * rtb_IntegralGain + Integrator;
 
-  /* Saturate: '<S105>/Saturate' */
+  /* Saturate: '<S106>/Saturate' */
   if (rtb_SignPreIntegrator > 12.0) {
     rtb_ZeroGain = 12.0;
   } else if (rtb_SignPreIntegrator < -13.0) {
@@ -3199,25 +2968,25 @@ static void MODESACCELERATION_PIDLAUN_h(RT_MODEL * const rtM, real_T
     rtb_ZeroGain = rtb_SignPreIntegrator;
   }
 
-  /* End of Saturate: '<S105>/Saturate' */
+  /* End of Saturate: '<S106>/Saturate' */
 
-  /* Sum: '<S80>/Sum' incorporates:
-   *  Constant: '<S80>/Constant1'
+  /* Sum: '<S81>/Sum' incorporates:
+   *  Constant: '<S81>/Constant1'
    */
   *rty_clutchVal = 12.0 - rtb_ZeroGain;
 
-  /* Sum: '<S80>/Minus' incorporates:
-   *  Constant: '<S80>/Constant'
+  /* Sum: '<S81>/Minus' incorporates:
+   *  Constant: '<S81>/Constant'
    */
   localDW->Minus = 100.0 - *rty_clutchVal;
 
-  /* S-Function (ClutchMotor_setPWMRegister): '<S80>/ClutchMotor SetPWMRegister' */
+  /* S-Function (ClutchMotor_setPWMRegister): '<S81>/ClutchMotor SetPWMRegister' */
   ClutchMotor_setPWMRegister_Outputs_wrapper(&localDW->Minus);
 
-  /* Gain: '<S106>/ZeroGain' */
+  /* Gain: '<S107>/ZeroGain' */
   rtb_ZeroGain = 0.0 * rtb_SignPreIntegrator;
 
-  /* DeadZone: '<S106>/DeadZone' */
+  /* DeadZone: '<S107>/DeadZone' */
   if (rtb_SignPreIntegrator > 12.0) {
     rtb_SignPreIntegrator -= 12.0;
   } else if (rtb_SignPreIntegrator >= -13.0) {
@@ -3226,12 +2995,12 @@ static void MODESACCELERATION_PIDLAUN_h(RT_MODEL * const rtM, real_T
     rtb_SignPreIntegrator -= -13.0;
   }
 
-  /* End of DeadZone: '<S106>/DeadZone' */
+  /* End of DeadZone: '<S107>/DeadZone' */
 
-  /* RelationalOperator: '<S106>/NotEqual' */
+  /* RelationalOperator: '<S107>/NotEqual' */
   rtb_NotEqual = (rtb_ZeroGain != rtb_SignPreIntegrator);
 
-  /* Signum: '<S106>/SignDeltaU' */
+  /* Signum: '<S107>/SignDeltaU' */
   if (rtb_SignPreIntegrator < 0.0) {
     rtb_SignPreIntegrator = -1.0;
   } else if (rtb_SignPreIntegrator > 0.0) {
@@ -3242,12 +3011,12 @@ static void MODESACCELERATION_PIDLAUN_h(RT_MODEL * const rtM, real_T
     rtb_SignPreIntegrator = (rtNaN);
   }
 
-  /* End of Signum: '<S106>/SignDeltaU' */
+  /* End of Signum: '<S107>/SignDeltaU' */
 
-  /* Gain: '<S105>/Integral Gain' */
+  /* Gain: '<S106>/Integral Gain' */
   rtb_IntegralGain *= 10.0;
 
-  /* Update for DiscreteIntegrator: '<S105>/Integrator' */
+  /* Update for DiscreteIntegrator: '<S106>/Integrator' */
   localDW->Integrator_SYSTEM_ENABLE = 0U;
   localDW->Integrator_DSTATE = Integrator;
   if (rtu_reset > 0.0) {
@@ -3260,16 +3029,16 @@ static void MODESACCELERATION_PIDLAUN_h(RT_MODEL * const rtM, real_T
     localDW->Integrator_PrevResetState = 2;
   }
 
-  /* DataTypeConversion: '<S106>/DataTypeConv1' */
+  /* DataTypeConversion: '<S107>/DataTypeConv1' */
   if (rtb_SignPreIntegrator < 128.0) {
     rtb_SignPreIntegrator_d = (int8_T)rtb_SignPreIntegrator;
   } else {
     rtb_SignPreIntegrator_d = MAX_int8_T;
   }
 
-  /* End of DataTypeConversion: '<S106>/DataTypeConv1' */
+  /* End of DataTypeConversion: '<S107>/DataTypeConv1' */
 
-  /* Signum: '<S106>/SignPreIntegrator' */
+  /* Signum: '<S107>/SignPreIntegrator' */
   if (rtb_IntegralGain < 0.0) {
     Integrator = -1.0;
   } else if (rtb_IntegralGain > 0.0) {
@@ -3280,24 +3049,225 @@ static void MODESACCELERATION_PIDLAUN_h(RT_MODEL * const rtM, real_T
     Integrator = (rtNaN);
   }
 
-  /* End of Signum: '<S106>/SignPreIntegrator' */
+  /* End of Signum: '<S107>/SignPreIntegrator' */
 
-  /* Switch: '<S105>/Switch' incorporates:
-   *  DataTypeConversion: '<S106>/DataTypeConv2'
-   *  Logic: '<S106>/AND'
-   *  RelationalOperator: '<S106>/Equal'
+  /* Switch: '<S106>/Switch' incorporates:
+   *  DataTypeConversion: '<S107>/DataTypeConv2'
+   *  Logic: '<S107>/AND'
+   *  RelationalOperator: '<S107>/Equal'
    */
   if (rtb_NotEqual && (rtb_SignPreIntegrator_d == (int8_T)Integrator)) {
-    /* Update for DiscreteIntegrator: '<S105>/Integrator' incorporates:
-     *  Constant: '<S105>/Constant'
+    /* Update for DiscreteIntegrator: '<S106>/Integrator' incorporates:
+     *  Constant: '<S106>/Constant'
      */
     localDW->Integrator_PREV_U = 0.0;
   } else {
-    /* Update for DiscreteIntegrator: '<S105>/Integrator' */
+    /* Update for DiscreteIntegrator: '<S106>/Integrator' */
     localDW->Integrator_PREV_U = rtb_IntegralGain;
   }
 
-  /* End of Switch: '<S105>/Switch' */
+  /* End of Switch: '<S106>/Switch' */
+}
+
+/* System initialize for function-call system: '<S48>/MODES.ACCELERATION_PID.LAUNCH7.ACTIVE.pidControl' */
+static void MODESACCELERATION_PI_o_Init(DW_MODESACCELERATION_PIDLAUNCH7 *localDW)
+{
+  /* InitializeConditions for DiscreteIntegrator: '<S101>/Integrator' */
+  localDW->Integrator_PrevResetState = 2;
+}
+
+/* Enable for function-call system: '<S48>/MODES.ACCELERATION_PID.LAUNCH7.ACTIVE.pidControl' */
+static void MODESACCELERATION_jt_Enable(DW_MODESACCELERATION_PIDLAUNCH7 *localDW)
+{
+  localDW->MODESACCELERATION_PIDLAUNCH7A_k = true;
+
+  /* Enable for DiscreteIntegrator: '<S101>/Integrator' */
+  localDW->Integrator_SYSTEM_ENABLE = 1U;
+}
+
+/* Output and update for function-call system: '<S48>/MODES.ACCELERATION_PID.LAUNCH7.ACTIVE.pidControl' */
+static void MODESACCELERATION_PIDLAU_bu(RT_MODEL * const rtM, real_T
+  rtu_slipTarget, real_T rtu_currentSlip, real_T rtu_reset, real_T
+  *rty_clutchVal, DW_MODESACCELERATION_PIDLAUNCH7 *localDW)
+{
+  real_T rtb_IntegralGain;
+  real_T rtb_SignPreIntegrator;
+  real_T rtb_ZeroGain;
+  boolean_T rtb_NotEqual;
+  uint32_T MODESACCELERATION_PIDLAUNCH7ACT;
+  real_T Integrator;
+  int8_T rtb_SignPreIntegrator_fd;
+  if (localDW->MODESACCELERATION_PIDLAUNCH7A_k) {
+    MODESACCELERATION_PIDLAUNCH7ACT = 0U;
+  } else {
+    MODESACCELERATION_PIDLAUNCH7ACT = rtM->Timing.clockTick1 -
+      localDW->MODESACCELERATION_PIDLAUNCH7A_f;
+  }
+
+  localDW->MODESACCELERATION_PIDLAUNCH7A_f = rtM->Timing.clockTick1;
+  localDW->MODESACCELERATION_PIDLAUNCH7A_k = false;
+
+  /* Sum: '<S79>/Sum1' */
+  rtb_IntegralGain = rtu_slipTarget - rtu_currentSlip;
+
+  /* DiscreteIntegrator: '<S101>/Integrator' */
+  if (localDW->Integrator_SYSTEM_ENABLE != 0) {
+    Integrator = localDW->Integrator_DSTATE;
+  } else if ((rtu_reset > 0.0) && (localDW->Integrator_PrevResetState <= 0)) {
+    localDW->Integrator_DSTATE = 0.0;
+    Integrator = localDW->Integrator_DSTATE;
+  } else {
+    Integrator = 0.001 * (real_T)MODESACCELERATION_PIDLAUNCH7ACT *
+      localDW->Integrator_PREV_U + localDW->Integrator_DSTATE;
+  }
+
+  /* End of DiscreteIntegrator: '<S101>/Integrator' */
+
+  /* Sum: '<S101>/Sum' incorporates:
+   *  Gain: '<S101>/Proportional Gain'
+   */
+  rtb_SignPreIntegrator = 0.2 * rtb_IntegralGain + Integrator;
+
+  /* Saturate: '<S101>/Saturate' */
+  if (rtb_SignPreIntegrator > 15.0) {
+    rtb_ZeroGain = 15.0;
+  } else if (rtb_SignPreIntegrator < -15.0) {
+    rtb_ZeroGain = -15.0;
+  } else {
+    rtb_ZeroGain = rtb_SignPreIntegrator;
+  }
+
+  /* End of Saturate: '<S101>/Saturate' */
+
+  /* Sum: '<S79>/Sum' incorporates:
+   *  Constant: '<S79>/Constant1'
+   */
+  *rty_clutchVal = 15.0 - rtb_ZeroGain;
+
+  /* Sum: '<S79>/Minus' incorporates:
+   *  Constant: '<S79>/Constant'
+   */
+  localDW->Minus = 100.0 - *rty_clutchVal;
+
+  /* S-Function (ClutchMotor_setPWMRegister): '<S79>/ClutchMotor SetPWMRegister' */
+  ClutchMotor_setPWMRegister_Outputs_wrapper(&localDW->Minus);
+
+  /* Gain: '<S103>/ZeroGain' */
+  rtb_ZeroGain = 0.0 * rtb_SignPreIntegrator;
+
+  /* DeadZone: '<S103>/DeadZone' */
+  if (rtb_SignPreIntegrator > 15.0) {
+    rtb_SignPreIntegrator -= 15.0;
+  } else if (rtb_SignPreIntegrator >= -15.0) {
+    rtb_SignPreIntegrator = 0.0;
+  } else {
+    rtb_SignPreIntegrator -= -15.0;
+  }
+
+  /* End of DeadZone: '<S103>/DeadZone' */
+
+  /* RelationalOperator: '<S103>/NotEqual' */
+  rtb_NotEqual = (rtb_ZeroGain != rtb_SignPreIntegrator);
+
+  /* Signum: '<S103>/SignDeltaU' */
+  if (rtb_SignPreIntegrator < 0.0) {
+    rtb_SignPreIntegrator = -1.0;
+  } else if (rtb_SignPreIntegrator > 0.0) {
+    rtb_SignPreIntegrator = 1.0;
+  } else if (rtb_SignPreIntegrator == 0.0) {
+    rtb_SignPreIntegrator = 0.0;
+  } else {
+    rtb_SignPreIntegrator = (rtNaN);
+  }
+
+  /* End of Signum: '<S103>/SignDeltaU' */
+
+  /* Gain: '<S101>/Integral Gain' */
+  rtb_IntegralGain *= 9.79580592329006;
+
+  /* Update for DiscreteIntegrator: '<S101>/Integrator' */
+  localDW->Integrator_SYSTEM_ENABLE = 0U;
+  localDW->Integrator_DSTATE = Integrator;
+  if (rtu_reset > 0.0) {
+    localDW->Integrator_PrevResetState = 1;
+  } else if (rtu_reset < 0.0) {
+    localDW->Integrator_PrevResetState = -1;
+  } else if (rtu_reset == 0.0) {
+    localDW->Integrator_PrevResetState = 0;
+  } else {
+    localDW->Integrator_PrevResetState = 2;
+  }
+
+  /* DataTypeConversion: '<S103>/DataTypeConv1' */
+  if (rtb_SignPreIntegrator < 128.0) {
+    rtb_SignPreIntegrator_fd = (int8_T)rtb_SignPreIntegrator;
+  } else {
+    rtb_SignPreIntegrator_fd = MAX_int8_T;
+  }
+
+  /* End of DataTypeConversion: '<S103>/DataTypeConv1' */
+
+  /* Signum: '<S103>/SignPreIntegrator' */
+  if (rtb_IntegralGain < 0.0) {
+    Integrator = -1.0;
+  } else if (rtb_IntegralGain > 0.0) {
+    Integrator = 1.0;
+  } else if (rtb_IntegralGain == 0.0) {
+    Integrator = 0.0;
+  } else {
+    Integrator = (rtNaN);
+  }
+
+  /* End of Signum: '<S103>/SignPreIntegrator' */
+
+  /* Switch: '<S101>/Switch' incorporates:
+   *  DataTypeConversion: '<S103>/DataTypeConv2'
+   *  Logic: '<S103>/AND'
+   *  RelationalOperator: '<S103>/Equal'
+   */
+  if (rtb_NotEqual && (rtb_SignPreIntegrator_fd == (int8_T)Integrator)) {
+    /* Update for DiscreteIntegrator: '<S101>/Integrator' incorporates:
+     *  Constant: '<S101>/Constant'
+     */
+    localDW->Integrator_PREV_U = 0.0;
+  } else {
+    /* Update for DiscreteIntegrator: '<S101>/Integrator' */
+    localDW->Integrator_PREV_U = rtb_IntegralGain;
+  }
+
+  /* End of Switch: '<S101>/Switch' */
+}
+
+/* Output and update for function-call system: '<S48>/GEARSHIFT.checkCurrent' */
+static void GEARSHIFTcheckCurrent(real_T rtu_time, real_T rtu_current, boolean_T
+  *rty_out, DW_GEARSHIFTcheckCurrent *localDW)
+{
+  /* Logic: '<S71>/Logical Operator' incorporates:
+   *  Constant: '<S83>/Constant'
+   *  Constant: '<S84>/Constant'
+   *  Constant: '<S85>/Constant'
+   *  Delay: '<S71>/Delay'
+   *  RelationalOperator: '<S83>/Compare'
+   *  RelationalOperator: '<S84>/Compare'
+   *  RelationalOperator: '<S85>/Compare'
+   *  Sum: '<S71>/Minus'
+   */
+  *rty_out = ((rtu_time <= 60.0) && (rtu_current >= 5.0) && (rtu_current -
+    localDW->Delay_DSTATE[0] <= 1.0));
+
+  /* Update for Delay: '<S71>/Delay' */
+  localDW->Delay_DSTATE[0] = localDW->Delay_DSTATE[1];
+  localDW->Delay_DSTATE[1] = localDW->Delay_DSTATE[2];
+  localDW->Delay_DSTATE[2] = localDW->Delay_DSTATE[3];
+  localDW->Delay_DSTATE[3] = localDW->Delay_DSTATE[4];
+  localDW->Delay_DSTATE[4] = rtu_current;
+}
+
+/* Output and update for function-call system: '<S48>/SCAN_ADC.ScanADC' */
+static void SCAN_ADCScanADC(void)
+{
+  /* S-Function (ScanADC): '<S82>/ScanADC' */
+  ScanADC_Outputs_wrapper();
 }
 
 /* Function for Chart: '<S5>/GCULogic' */
@@ -3404,25 +3374,25 @@ static void Clutch_setValue(uint8_T setValue)
   uint8_T tmp;
   rtDW.clutchCurrVal = setValue;
 
-  /* Outputs for Function Call SubSystem: '<S43>/ClutchMotor SetPosition ' */
-  /* Saturate: '<S56>/Saturation' */
+  /* Outputs for Function Call SubSystem: '<S44>/ClutchMotor SetPosition ' */
+  /* Saturate: '<S57>/Saturation' */
   if (rtDW.clutchCurrVal < 100) {
     tmp = rtDW.clutchCurrVal;
   } else {
     tmp = 100U;
   }
 
-  /* End of Saturate: '<S56>/Saturation' */
+  /* End of Saturate: '<S57>/Saturation' */
 
-  /* Sum: '<S56>/Minus' incorporates:
-   *  Constant: '<S56>/Constant'
+  /* Sum: '<S57>/Minus' incorporates:
+   *  Constant: '<S57>/Constant'
    */
   rtDW.Minus = (uint8_T)(100 - tmp);
 
-  /* S-Function (ClutchMotor_setPosition): '<S56>/ClutchMotor SetPosition' */
+  /* S-Function (ClutchMotor_setPosition): '<S57>/ClutchMotor SetPosition' */
   ClutchMotor_setPosition_Outputs_wrapper(&rtDW.Minus);
 
-  /* End of Outputs for SubSystem: '<S43>/ClutchMotor SetPosition ' */
+  /* End of Outputs for SubSystem: '<S44>/ClutchMotor SetPosition ' */
 }
 
 /* Function for Chart: '<S5>/GCULogic' */
@@ -3444,10 +3414,10 @@ static void GEARSHIFT(void)
         if (rtDW.is_GEARSHIFT != IN_DOWN_END) {
           rtDW.is_GEARSHIFT = IN_DOWN_END;
 
-          /* Outputs for Function Call SubSystem: '<S48>/Gearmotor_release' */
+          /* Outputs for Function Call SubSystem: '<S49>/Gearmotor_release' */
           Gearmotor_release();
 
-          /* End of Outputs for SubSystem: '<S48>/Gearmotor_release' */
+          /* End of Outputs for SubSystem: '<S49>/Gearmotor_release' */
         }
       } else if (rtDW.ticksCounter < -2147483647) {
         rtDW.ticksCounter = MIN_int32_T;
@@ -3463,11 +3433,11 @@ static void GEARSHIFT(void)
         rtDW.time = rtDW.ticksCounter;
         rtDW.current = rtDW.RateTransition41;
 
-        /* Outputs for Function Call SubSystem: '<S47>/GEARSHIFT.checkCurrent' */
+        /* Outputs for Function Call SubSystem: '<S48>/GEARSHIFT.checkCurrent' */
         GEARSHIFTcheckCurrent(rtDW.time, rtDW.current, &rtDW.LogicalOperator,
                               &rtDW.GEARSHIFTcheckCurrent_p);
 
-        /* End of Outputs for SubSystem: '<S47>/GEARSHIFT.checkCurrent' */
+        /* End of Outputs for SubSystem: '<S48>/GEARSHIFT.checkCurrent' */
         if (rtDW.LogicalOperator) {
           guard1 = true;
         } else if (rtDW.ticksCounter < -2147483647) {
@@ -3491,21 +3461,21 @@ static void GEARSHIFT(void)
             rtDW.is_DOWN_BRAKE = IN_ChangeClutch;
             Clutch_setValue(0);
 
-            /* Outputs for Function Call SubSystem: '<S48>/Gearmotor_brake' */
+            /* Outputs for Function Call SubSystem: '<S49>/Gearmotor_brake' */
             Gearmotor_brake(&Pin_In1, &Pin_In2, &rtDW.Pin_H,
                             &rtDW.Gearmotor_brake_c);
 
-            /* End of Outputs for SubSystem: '<S48>/Gearmotor_brake' */
+            /* End of Outputs for SubSystem: '<S49>/Gearmotor_brake' */
           }
         } else {
-          if (rtDW.is_DOWN_BRAKE != IN_Default_h) {
-            rtDW.is_DOWN_BRAKE = IN_Default_h;
+          if (rtDW.is_DOWN_BRAKE != IN_Default_e) {
+            rtDW.is_DOWN_BRAKE = IN_Default_e;
 
-            /* Outputs for Function Call SubSystem: '<S48>/Gearmotor_brake' */
+            /* Outputs for Function Call SubSystem: '<S49>/Gearmotor_brake' */
             Gearmotor_brake(&Pin_In1, &Pin_In2, &rtDW.Pin_H,
                             &rtDW.Gearmotor_brake_c);
 
-            /* End of Outputs for SubSystem: '<S48>/Gearmotor_brake' */
+            /* End of Outputs for SubSystem: '<S49>/Gearmotor_brake' */
           }
         }
       } else if (rtDW.ticksCounter < -2147483647) {
@@ -3523,22 +3493,22 @@ static void GEARSHIFT(void)
           rtDW.is_DOWNSHIFTING = IN_DOWN_PUSH;
           rtDW.ticksCounter = Gearshift_getTime();
 
-          /* Outputs for Function Call SubSystem: '<S48>/Gearmotor_turnLeft' */
-          /* S-Function (GearMotor_turnLeft): '<S109>/GearMotor Turn Left' */
+          /* Outputs for Function Call SubSystem: '<S49>/Gearmotor_turnLeft' */
+          /* S-Function (GearMotor_turnLeft): '<S110>/GearMotor Turn Left' */
           GearMotor_turnLeft_Outputs_wrapper(&rtDW.GearMotorTurnLeft_o1,
             &rtDW.GearMotorTurnLeft_o2, &rtDW.GearMotorTurnLeft_o3);
 
-          /* SignalConversion: '<S109>/OutportBufferForPin_H' */
+          /* SignalConversion: '<S110>/OutportBufferForPin_H' */
           rtDW.Pin_H = rtDW.GearMotorTurnLeft_o3;
 
-          /* End of Outputs for SubSystem: '<S48>/Gearmotor_turnLeft' */
+          /* End of Outputs for SubSystem: '<S49>/Gearmotor_turnLeft' */
         }
 
         if (rtDW.RateTransition36[2] >= 20) {
-          /* Outputs for Function Call SubSystem: '<S44>/SetCut' */
+          /* Outputs for Function Call SubSystem: '<S45>/SetCut' */
           SetCut();
 
-          /* End of Outputs for SubSystem: '<S44>/SetCut' */
+          /* End of Outputs for SubSystem: '<S45>/SetCut' */
         }
       } else if (rtDW.ticksCounter < -2147483647) {
         rtDW.ticksCounter = MIN_int32_T;
@@ -3575,10 +3545,10 @@ static void GEARSHIFT(void)
         if (rtDW.is_UP_START != IN_Default) {
           rtDW.is_UP_START = IN_Default;
 
-          /* Outputs for Function Call SubSystem: '<S44>/SetCut' */
+          /* Outputs for Function Call SubSystem: '<S45>/SetCut' */
           SetCut();
 
-          /* End of Outputs for SubSystem: '<S44>/SetCut' */
+          /* End of Outputs for SubSystem: '<S45>/SetCut' */
         }
       }
     } else {
@@ -3591,8 +3561,8 @@ static void GEARSHIFT(void)
 
         if ((rtDW.is_NEUTRAL_STATE == IN_SET_NEUTRAL) && (rtDW.clutchCurrVal <=
              80)) {
-          if (rtDW.is_DOWN_START != IN_SettingNeutral_e) {
-            rtDW.is_DOWN_START = IN_SettingNeutral_e;
+          if (rtDW.is_DOWN_START != IN_SettingNeutral_d) {
+            rtDW.is_DOWN_START = IN_SettingNeutral_d;
             Clutch_setValue(80);
           }
         } else if ((!(rtDW.is_NEUTRAL_STATE == IN_UNSET_NEUTRAL)) &&
@@ -3602,13 +3572,13 @@ static void GEARSHIFT(void)
             Clutch_setValue(60);
           }
         } else {
-          rtDW.is_DOWN_START = IN_Default_h;
+          rtDW.is_DOWN_START = IN_Default_e;
         }
       }
     }
     break;
 
-   case IN_INIT_o:
+   case IN_INIT_k:
     rtDW.is_GEARSHIFT = IN_IDLE;
     break;
 
@@ -3621,10 +3591,10 @@ static void GEARSHIFT(void)
         if (rtDW.is_GEARSHIFT != IN_UP_END) {
           rtDW.is_GEARSHIFT = IN_UP_END;
 
-          /* Outputs for Function Call SubSystem: '<S48>/Gearmotor_release' */
+          /* Outputs for Function Call SubSystem: '<S49>/Gearmotor_release' */
           Gearmotor_release();
 
-          /* End of Outputs for SubSystem: '<S48>/Gearmotor_release' */
+          /* End of Outputs for SubSystem: '<S49>/Gearmotor_release' */
         }
       } else if (rtDW.ticksCounter < -2147483647) {
         rtDW.ticksCounter = MIN_int32_T;
@@ -3647,19 +3617,19 @@ static void GEARSHIFT(void)
             rtDW.is_UP_REBOUND = IN_SettingNeutral;
             Clutch_setValue(0);
 
-            /* Outputs for Function Call SubSystem: '<S48>/Gearmotor_release' */
+            /* Outputs for Function Call SubSystem: '<S49>/Gearmotor_release' */
             Gearmotor_release();
 
-            /* End of Outputs for SubSystem: '<S48>/Gearmotor_release' */
+            /* End of Outputs for SubSystem: '<S49>/Gearmotor_release' */
           }
         } else {
           if (rtDW.is_UP_REBOUND != IN_Default) {
             rtDW.is_UP_REBOUND = IN_Default;
 
-            /* Outputs for Function Call SubSystem: '<S48>/Gearmotor_release' */
+            /* Outputs for Function Call SubSystem: '<S49>/Gearmotor_release' */
             Gearmotor_release();
 
-            /* End of Outputs for SubSystem: '<S48>/Gearmotor_release' */
+            /* End of Outputs for SubSystem: '<S49>/Gearmotor_release' */
           }
         }
       } else {
@@ -3673,11 +3643,11 @@ static void GEARSHIFT(void)
           rtDW.time = rtDW.ticksCounter;
           rtDW.current = rtDW.RateTransition40;
 
-          /* Outputs for Function Call SubSystem: '<S47>/GEARSHIFT.checkCurrent' */
+          /* Outputs for Function Call SubSystem: '<S48>/GEARSHIFT.checkCurrent' */
           GEARSHIFTcheckCurrent(rtDW.time, rtDW.current, &rtDW.LogicalOperator,
                                 &rtDW.GEARSHIFTcheckCurrent_p);
 
-          /* End of Outputs for SubSystem: '<S47>/GEARSHIFT.checkCurrent' */
+          /* End of Outputs for SubSystem: '<S48>/GEARSHIFT.checkCurrent' */
           if (rtDW.LogicalOperator) {
             rtDW.is_UP_PUSH = 0;
             rtDW.is_UPSHIFTING = 0;
@@ -3691,19 +3661,19 @@ static void GEARSHIFT(void)
                 rtDW.is_UP_REBOUND = IN_SettingNeutral;
                 Clutch_setValue(0);
 
-                /* Outputs for Function Call SubSystem: '<S48>/Gearmotor_release' */
+                /* Outputs for Function Call SubSystem: '<S49>/Gearmotor_release' */
                 Gearmotor_release();
 
-                /* End of Outputs for SubSystem: '<S48>/Gearmotor_release' */
+                /* End of Outputs for SubSystem: '<S49>/Gearmotor_release' */
               }
             } else {
               if (rtDW.is_UP_REBOUND != IN_Default) {
                 rtDW.is_UP_REBOUND = IN_Default;
 
-                /* Outputs for Function Call SubSystem: '<S48>/Gearmotor_release' */
+                /* Outputs for Function Call SubSystem: '<S49>/Gearmotor_release' */
                 Gearmotor_release();
 
-                /* End of Outputs for SubSystem: '<S48>/Gearmotor_release' */
+                /* End of Outputs for SubSystem: '<S49>/Gearmotor_release' */
               }
             }
           }
@@ -3719,11 +3689,11 @@ static void GEARSHIFT(void)
           rtDW.is_UPSHIFTING = IN_UP_BRAKE;
           rtDW.ticksCounter = Gearshift_getTime();
 
-          /* Outputs for Function Call SubSystem: '<S48>/Gearmotor_brake' */
+          /* Outputs for Function Call SubSystem: '<S49>/Gearmotor_brake' */
           Gearmotor_brake(&Pin_In1, &Pin_In2, &rtDW.Pin_H,
                           &rtDW.Gearmotor_brake_c);
 
-          /* End of Outputs for SubSystem: '<S48>/Gearmotor_brake' */
+          /* End of Outputs for SubSystem: '<S49>/Gearmotor_brake' */
         }
       } else if (rtDW.ticksCounter < -2147483647) {
         rtDW.ticksCounter = MIN_int32_T;
@@ -3745,26 +3715,26 @@ static void GEARSHIFT(void)
           if (rtDW.is_UP_PUSH != IN_CutOff) {
             rtDW.is_UP_PUSH = IN_CutOff;
 
-            /* Outputs for Function Call SubSystem: '<S44>/UnsetCut' */
+            /* Outputs for Function Call SubSystem: '<S45>/UnsetCut' */
             UnsetCut();
 
-            /* End of Outputs for SubSystem: '<S44>/UnsetCut' */
+            /* End of Outputs for SubSystem: '<S45>/UnsetCut' */
 
-            /* Outputs for Function Call SubSystem: '<S48>/Gearmotor_turnRight' */
+            /* Outputs for Function Call SubSystem: '<S49>/Gearmotor_turnRight' */
             Gearmotor_turnRight(&Pin_In1, &Pin_In2, &rtDW.Pin_H,
                                 &rtDW.Gearmotor_turnRight_f);
 
-            /* End of Outputs for SubSystem: '<S48>/Gearmotor_turnRight' */
+            /* End of Outputs for SubSystem: '<S49>/Gearmotor_turnRight' */
           }
         } else {
-          if (rtDW.is_UP_PUSH != IN_Default_h) {
-            rtDW.is_UP_PUSH = IN_Default_h;
+          if (rtDW.is_UP_PUSH != IN_Default_e) {
+            rtDW.is_UP_PUSH = IN_Default_e;
 
-            /* Outputs for Function Call SubSystem: '<S48>/Gearmotor_turnRight' */
+            /* Outputs for Function Call SubSystem: '<S49>/Gearmotor_turnRight' */
             Gearmotor_turnRight(&Pin_In1, &Pin_In2, &rtDW.Pin_H,
                                 &rtDW.Gearmotor_turnRight_f);
 
-            /* End of Outputs for SubSystem: '<S48>/Gearmotor_turnRight' */
+            /* End of Outputs for SubSystem: '<S49>/Gearmotor_turnRight' */
           }
         }
       } else if (rtDW.ticksCounter < -2147483647) {
@@ -3787,15 +3757,15 @@ static void GEARSHIFT(void)
       rtDW.is_DOWNSHIFTING = IN_DOWN_REBOUND;
       rtDW.ticksCounter = Gearshift_getTime();
 
-      /* Outputs for Function Call SubSystem: '<S48>/Gearmotor_release' */
+      /* Outputs for Function Call SubSystem: '<S49>/Gearmotor_release' */
       Gearmotor_release();
 
-      /* End of Outputs for SubSystem: '<S48>/Gearmotor_release' */
+      /* End of Outputs for SubSystem: '<S49>/Gearmotor_release' */
 
-      /* Outputs for Function Call SubSystem: '<S44>/UnsetCut' */
+      /* Outputs for Function Call SubSystem: '<S45>/UnsetCut' */
       UnsetCut();
 
-      /* End of Outputs for SubSystem: '<S44>/UnsetCut' */
+      /* End of Outputs for SubSystem: '<S45>/UnsetCut' */
     }
   }
 }
@@ -3819,6 +3789,13 @@ static void checkShift(void)
       }
 
       rtDW.sfEvent = b_previousEvent;
+      rtDW.lastTryShift[0] = GEAR_COMMAND_UP;
+      b_previousEvent = rtDW.RateTransition36[6] + 1;
+      if (b_previousEvent > 65535) {
+        b_previousEvent = 65535;
+      }
+
+      rtDW.lastTryShift[1] = (uint16_T)b_previousEvent;
     } else if (rtDW.RateTransition2[1] == GEAR_COMMAND_DOWN) {
       b_previousEvent = rtDW.sfEvent;
       rtDW.sfEvent = event_GearshiftDown;
@@ -3832,6 +3809,13 @@ static void checkShift(void)
       }
 
       rtDW.sfEvent = b_previousEvent;
+      rtDW.lastTryShift[0] = GEAR_COMMAND_DOWN;
+      b_previousEvent = rtDW.RateTransition36[6] - 1;
+      if (b_previousEvent < 0) {
+        b_previousEvent = 0;
+      }
+
+      rtDW.lastTryShift[1] = (uint16_T)b_previousEvent;
     } else if (rtDW.RateTransition2[1] == GEAR_COMMAND_NEUTRAL_UP) {
       b_previousEvent = rtDW.sfEvent;
       rtDW.sfEvent = event_GearshiftSetNeutral;
@@ -3924,10 +3908,10 @@ static void ACCELERATION(void)
   uint8_T tmp_1;
   if ((rtDW.RateTransition8[0] != rtDW.lastModeCom[0]) && (rtDW.RateTransition8
        [1] != rtDW.lastModeCom[1])) {
-    /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+    /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
     UnsetRPMLimiter();
 
-    /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
+    /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
     rtDW.stateFb = (uint16_T)ACC_OFF;
     Clutch_setValue(0);
     if (rtDW.RateTransition8[1] == ENDURANCE_MODE) {
@@ -3954,10 +3938,10 @@ static void ACCELERATION(void)
       if (rtDW.is_MANUAL_MODES != IN_SKIDPAD) {
         rtDW.is_MANUAL_MODES = IN_SKIDPAD;
 
-        /* Outputs for Function Call SubSystem: '<S44>/SetRPMLimiter' */
+        /* Outputs for Function Call SubSystem: '<S45>/SetRPMLimiter' */
         SetRPMLimiter();
 
-        /* End of Outputs for SubSystem: '<S44>/SetRPMLimiter' */
+        /* End of Outputs for SubSystem: '<S45>/SetRPMLimiter' */
       }
     } else if (rtDW.RateTransition8[1] == ACCELERATION_MODE) {
       rtDW.is_ACTIVE = 0;
@@ -4023,10 +4007,10 @@ static void ACCELERATION(void)
           if (rtDW.is_ACC != IN_STOPPING) {
             rtDW.is_ACC = IN_STOPPING;
 
-            /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+            /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
             UnsetRPMLimiter();
 
-            /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
+            /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
             Clutch_setValue(0);
 
             /* sendUpdatesSW(ACC_CODE, uint16(0)); */
@@ -4106,10 +4090,10 @@ static void ACCELERATION(void)
                    getAacParam(RAMP_END))) {
                 Clutch_setValue(0);
 
-                /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+                /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
                 UnsetRPMLimiter();
 
-                /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
+                /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
                 rtDW.is_ACTIVE = 0;
                 if (rtDW.is_ACTIVE != IN_RUNNING) {
                   rtDW.is_ACTIVE = IN_RUNNING;
@@ -4165,10 +4149,10 @@ static void ACCELERATION(void)
               if (rtDW.is_ACC != IN_STOPPING) {
                 rtDW.is_ACC = IN_STOPPING;
 
-                /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+                /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
                 UnsetRPMLimiter();
 
-                /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
+                /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
                 Clutch_setValue(0);
 
                 /* sendUpdatesSW(ACC_CODE, uint16(0)); */
@@ -4264,10 +4248,10 @@ static void ACCELERATION(void)
           rtDW.stateFb = (uint16_T)ACC_READY;
           rtDW.aacCounter = AAC_WORK_RATE_ms;
 
-          /* Outputs for Function Call SubSystem: '<S44>/SetRPMLimiter' */
+          /* Outputs for Function Call SubSystem: '<S45>/SetRPMLimiter' */
           SetRPMLimiter();
 
-          /* End of Outputs for SubSystem: '<S44>/SetRPMLimiter' */
+          /* End of Outputs for SubSystem: '<S45>/SetRPMLimiter' */
           Clutch_setValue(100);
         }
       } else {
@@ -4289,250 +4273,250 @@ static void DEFAULT(void)
     switch (rtDW.RateTransition1_b) {
      case 0:
       rtDW.is_ACCELERATION_PID = IN_LAUNCH0;
-      rtDW.autoXCounter_k = 0U;
+      rtDW.autoXCounter_h = 0U;
       if (rtDW.is_LAUNCH0 != IN_ACTIVE) {
         rtDW.is_LAUNCH0 = IN_ACTIVE;
 
-        /* Enable for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.pidControl' */
+        /* Enable for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.pidControl' */
         MODESACCELERATION_PI_Enable(&rtDW.MODESACCELERATION_PIDLAUNCH0ACT);
 
-        /* End of Enable for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.pidControl' */
+        /* End of Enable for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.pidControl' */
       }
 
-      if (rtDW.is_ACTIVE_g != IN_START) {
-        rtDW.is_ACTIVE_g = IN_START;
+      if (rtDW.is_ACTIVE_f != IN_START) {
+        rtDW.is_ACTIVE_f = IN_START;
         rtDW.stateFb = (uint16_T)AUTOX_READY;
-        rtDW.autoXCounter_k = AUTOX_WORK_RATE_ms;
+        rtDW.autoXCounter_h = AUTOX_WORK_RATE_ms;
 
-        /* Outputs for Function Call SubSystem: '<S44>/SetRPMLimiter' */
+        /* Outputs for Function Call SubSystem: '<S45>/SetRPMLimiter' */
         SetRPMLimiter();
 
-        /* End of Outputs for SubSystem: '<S44>/SetRPMLimiter' */
+        /* End of Outputs for SubSystem: '<S45>/SetRPMLimiter' */
         Clutch_setValue(100);
       }
       break;
 
      case 1:
       rtDW.is_ACCELERATION_PID = IN_LAUNCH1;
-      rtDW.autoXCounter_p = 0U;
+      rtDW.autoXCounter_n = 0U;
       if (rtDW.is_LAUNCH1 != IN_ACTIVE) {
         rtDW.is_LAUNCH1 = IN_ACTIVE;
 
-        /* Enable for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH1.ACTIVE.pidControl' */
+        /* Enable for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH1.ACTIVE.pidControl' */
         MODESACCELERATION__i_Enable(&rtDW.MODESACCELERATION_PIDLAUNCH1ACT);
 
-        /* End of Enable for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH1.ACTIVE.pidControl' */
+        /* End of Enable for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH1.ACTIVE.pidControl' */
       }
 
-      if (rtDW.is_ACTIVE_k != IN_START) {
-        rtDW.is_ACTIVE_k = IN_START;
+      if (rtDW.is_ACTIVE_i != IN_START) {
+        rtDW.is_ACTIVE_i = IN_START;
         rtDW.stateFb = (uint16_T)AUTOX_READY;
-        rtDW.autoXCounter_p = AUTOX_WORK_RATE_ms;
+        rtDW.autoXCounter_n = AUTOX_WORK_RATE_ms;
 
-        /* Outputs for Function Call SubSystem: '<S44>/SetRPMLimiter' */
+        /* Outputs for Function Call SubSystem: '<S45>/SetRPMLimiter' */
         SetRPMLimiter();
 
-        /* End of Outputs for SubSystem: '<S44>/SetRPMLimiter' */
+        /* End of Outputs for SubSystem: '<S45>/SetRPMLimiter' */
         Clutch_setValue(100);
       }
       break;
 
      case 2:
       rtDW.is_ACCELERATION_PID = IN_LAUNCH2;
-      rtDW.autoXCounter_j = 0U;
+      rtDW.autoXCounter_d = 0U;
       if (rtDW.is_LAUNCH2 != IN_ACTIVE) {
         rtDW.is_LAUNCH2 = IN_ACTIVE;
 
-        /* Enable for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.pidControl' */
+        /* Enable for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.pidControl' */
         MODESACCELERATION_ik_Enable(&rtDW.MODESACCELERATION_PIDLAUNCH2ACT);
 
-        /* End of Enable for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.pidControl' */
+        /* End of Enable for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.pidControl' */
       }
 
-      if (rtDW.is_ACTIVE_c != IN_START) {
-        rtDW.is_ACTIVE_c = IN_START;
+      if (rtDW.is_ACTIVE_h != IN_START) {
+        rtDW.is_ACTIVE_h = IN_START;
         rtDW.stateFb = (uint16_T)AUTOX_READY;
-        rtDW.autoXCounter_j = AUTOX_WORK_RATE_ms;
+        rtDW.autoXCounter_d = AUTOX_WORK_RATE_ms;
 
-        /* Outputs for Function Call SubSystem: '<S44>/SetRPMLimiter' */
+        /* Outputs for Function Call SubSystem: '<S45>/SetRPMLimiter' */
         SetRPMLimiter();
 
-        /* End of Outputs for SubSystem: '<S44>/SetRPMLimiter' */
+        /* End of Outputs for SubSystem: '<S45>/SetRPMLimiter' */
         Clutch_setValue(100);
       }
       break;
 
      case 3:
       rtDW.is_ACCELERATION_PID = IN_LAUNCH3;
-      rtDW.autoXCounter_ke = 0U;
+      rtDW.autoXCounter_i = 0U;
       if (rtDW.is_LAUNCH3 != IN_ACTIVE) {
         rtDW.is_LAUNCH3 = IN_ACTIVE;
 
-        /* Enable for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.pidControl' */
+        /* Enable for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.pidControl' */
         MODESACCELERATION__p_Enable(&rtDW.MODESACCELERATION_PIDLAUNCH3ACT);
 
-        /* End of Enable for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.pidControl' */
+        /* End of Enable for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.pidControl' */
       }
 
-      if (rtDW.is_ACTIVE_e != IN_START) {
-        rtDW.is_ACTIVE_e = IN_START;
+      if (rtDW.is_ACTIVE_k != IN_START) {
+        rtDW.is_ACTIVE_k = IN_START;
         rtDW.stateFb = (uint16_T)AUTOX_READY;
-        rtDW.autoXCounter_ke = AUTOX_WORK_RATE_ms;
+        rtDW.autoXCounter_i = AUTOX_WORK_RATE_ms;
 
-        /* Outputs for Function Call SubSystem: '<S44>/SetRPMLimiter' */
+        /* Outputs for Function Call SubSystem: '<S45>/SetRPMLimiter' */
         SetRPMLimiter();
 
-        /* End of Outputs for SubSystem: '<S44>/SetRPMLimiter' */
+        /* End of Outputs for SubSystem: '<S45>/SetRPMLimiter' */
         Clutch_setValue(100);
       }
       break;
 
      case 4:
       rtDW.is_ACCELERATION_PID = IN_LAUNCH4;
-      rtDW.autoXCounter_n = 0U;
+      rtDW.autoXCounter_n3 = 0U;
       if (rtDW.is_LAUNCH4 != IN_ACTIVE) {
         rtDW.is_LAUNCH4 = IN_ACTIVE;
 
-        /* Enable for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH4.ACTIVE.pidControl' */
+        /* Enable for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH4.ACTIVE.pidControl' */
         MODESACCELERATION__k_Enable(&rtDW.MODESACCELERATION_PIDLAUNCH4ACT);
 
-        /* End of Enable for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH4.ACTIVE.pidControl' */
+        /* End of Enable for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH4.ACTIVE.pidControl' */
       }
 
-      if (rtDW.is_ACTIVE_ej != IN_START) {
-        rtDW.is_ACTIVE_ej = IN_START;
+      if (rtDW.is_ACTIVE_l != IN_START) {
+        rtDW.is_ACTIVE_l = IN_START;
         rtDW.stateFb = (uint16_T)AUTOX_READY;
-        rtDW.autoXCounter_n = AUTOX_WORK_RATE_ms;
+        rtDW.autoXCounter_n3 = AUTOX_WORK_RATE_ms;
 
-        /* Outputs for Function Call SubSystem: '<S44>/SetRPMLimiter' */
+        /* Outputs for Function Call SubSystem: '<S45>/SetRPMLimiter' */
         SetRPMLimiter();
 
-        /* End of Outputs for SubSystem: '<S44>/SetRPMLimiter' */
+        /* End of Outputs for SubSystem: '<S45>/SetRPMLimiter' */
         Clutch_setValue(100);
       }
       break;
 
      case 5:
       rtDW.is_ACCELERATION_PID = IN_LAUNCH5;
-      rtDW.autoXCounter_na = 0U;
+      rtDW.autoXCounter_m = 0U;
       if (rtDW.is_LAUNCH5 != IN_ACTIVE) {
         rtDW.is_LAUNCH5 = IN_ACTIVE;
 
-        /* Enable for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH5.ACTIVE.pidControl' */
+        /* Enable for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH5.ACTIVE.pidControl' */
         MODESACCELERATION__j_Enable(&rtDW.MODESACCELERATION_PIDLAUNCH5ACT);
 
-        /* End of Enable for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH5.ACTIVE.pidControl' */
+        /* End of Enable for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH5.ACTIVE.pidControl' */
       }
 
-      if (rtDW.is_ACTIVE_i != IN_START) {
-        rtDW.is_ACTIVE_i = IN_START;
+      if (rtDW.is_ACTIVE_lm != IN_START) {
+        rtDW.is_ACTIVE_lm = IN_START;
         rtDW.stateFb = (uint16_T)AUTOX_READY;
-        rtDW.autoXCounter_na = AUTOX_WORK_RATE_ms;
+        rtDW.autoXCounter_m = AUTOX_WORK_RATE_ms;
 
-        /* Outputs for Function Call SubSystem: '<S44>/SetRPMLimiter' */
+        /* Outputs for Function Call SubSystem: '<S45>/SetRPMLimiter' */
         SetRPMLimiter();
 
-        /* End of Outputs for SubSystem: '<S44>/SetRPMLimiter' */
+        /* End of Outputs for SubSystem: '<S45>/SetRPMLimiter' */
         Clutch_setValue(100);
       }
       break;
 
      case 6:
       rtDW.is_ACCELERATION_PID = IN_LAUNCH6;
-      rtDW.autoXCounter_h = 0U;
+      rtDW.autoXCounter_nm = 0U;
       if (rtDW.is_LAUNCH6 != IN_ACTIVE) {
         rtDW.is_LAUNCH6 = IN_ACTIVE;
 
-        /* Enable for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH6.ACTIVE.pidControl' */
+        /* Enable for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH6.ACTIVE.pidControl' */
         MODESACCELERATION__o_Enable(&rtDW.MODESACCELERATION_PIDLAUNCH6ACT);
 
-        /* End of Enable for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH6.ACTIVE.pidControl' */
+        /* End of Enable for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH6.ACTIVE.pidControl' */
       }
 
-      if (rtDW.is_ACTIVE_ga != IN_START) {
-        rtDW.is_ACTIVE_ga = IN_START;
+      if (rtDW.is_ACTIVE_dy != IN_START) {
+        rtDW.is_ACTIVE_dy = IN_START;
         rtDW.stateFb = (uint16_T)AUTOX_READY;
-        rtDW.autoXCounter_h = AUTOX_WORK_RATE_ms;
+        rtDW.autoXCounter_nm = AUTOX_WORK_RATE_ms;
 
-        /* Outputs for Function Call SubSystem: '<S44>/SetRPMLimiter' */
+        /* Outputs for Function Call SubSystem: '<S45>/SetRPMLimiter' */
         SetRPMLimiter();
 
-        /* End of Outputs for SubSystem: '<S44>/SetRPMLimiter' */
+        /* End of Outputs for SubSystem: '<S45>/SetRPMLimiter' */
         Clutch_setValue(100);
       }
       break;
 
      case 7:
       rtDW.is_ACCELERATION_PID = IN_LAUNCH7;
-      rtDW.autoXCounter_m = 0U;
+      rtDW.autoXCounter_c = 0U;
       if (rtDW.is_LAUNCH7 != IN_ACTIVE) {
         rtDW.is_LAUNCH7 = IN_ACTIVE;
 
-        /* Enable for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH7.ACTIVE.pidControl' */
-        MODESACCELERATION__d_Enable(&rtDW.MODESACCELERATION_PIDLAUNCH7ACT);
+        /* Enable for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH7.ACTIVE.pidControl' */
+        MODESACCELERATION_jt_Enable(&rtDW.MODESACCELERATION_PIDLAUNCH7ACT);
 
-        /* End of Enable for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH7.ACTIVE.pidControl' */
+        /* End of Enable for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH7.ACTIVE.pidControl' */
       }
 
-      if (rtDW.is_ACTIVE_k5 != IN_START) {
-        rtDW.is_ACTIVE_k5 = IN_START;
+      if (rtDW.is_ACTIVE_n != IN_START) {
+        rtDW.is_ACTIVE_n = IN_START;
         rtDW.stateFb = (uint16_T)AUTOX_READY;
-        rtDW.autoXCounter_m = AUTOX_WORK_RATE_ms;
+        rtDW.autoXCounter_c = AUTOX_WORK_RATE_ms;
 
-        /* Outputs for Function Call SubSystem: '<S44>/SetRPMLimiter' */
+        /* Outputs for Function Call SubSystem: '<S45>/SetRPMLimiter' */
         SetRPMLimiter();
 
-        /* End of Outputs for SubSystem: '<S44>/SetRPMLimiter' */
+        /* End of Outputs for SubSystem: '<S45>/SetRPMLimiter' */
         Clutch_setValue(100);
       }
       break;
 
      case 8:
       rtDW.is_ACCELERATION_PID = IN_LAUNCH8;
-      rtDW.autoXCounter_d = 0U;
+      rtDW.autoXCounter_g = 0U;
       if (rtDW.is_LAUNCH8 != IN_ACTIVE) {
         rtDW.is_LAUNCH8 = IN_ACTIVE;
 
-        /* Enable for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH8.ACTIVE.pidControl' */
-        MODESACCELERATION__l_Enable(&rtDW.MODESACCELERATION_PIDLAUNCH8ACT);
+        /* Enable for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH8.ACTIVE.pidControl' */
+        MODESACCELERATION__g_Enable(&rtDW.MODESACCELERATION_PIDLAUNCH8ACT);
 
-        /* End of Enable for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH8.ACTIVE.pidControl' */
+        /* End of Enable for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH8.ACTIVE.pidControl' */
       }
 
-      if (rtDW.is_ACTIVE_b != IN_START) {
-        rtDW.is_ACTIVE_b = IN_START;
+      if (rtDW.is_ACTIVE_kj != IN_START) {
+        rtDW.is_ACTIVE_kj = IN_START;
         rtDW.stateFb = (uint16_T)AUTOX_READY;
-        rtDW.autoXCounter_d = AUTOX_WORK_RATE_ms;
+        rtDW.autoXCounter_g = AUTOX_WORK_RATE_ms;
 
-        /* Outputs for Function Call SubSystem: '<S44>/SetRPMLimiter' */
+        /* Outputs for Function Call SubSystem: '<S45>/SetRPMLimiter' */
         SetRPMLimiter();
 
-        /* End of Outputs for SubSystem: '<S44>/SetRPMLimiter' */
+        /* End of Outputs for SubSystem: '<S45>/SetRPMLimiter' */
         Clutch_setValue(100);
       }
       break;
 
      default:
       rtDW.is_ACCELERATION_PID = IN_LAUNCH9;
-      rtDW.autoXCounter_k4 = 0U;
+      rtDW.autoXCounter_b = 0U;
       if (rtDW.is_LAUNCH9 != IN_ACTIVE) {
         rtDW.is_LAUNCH9 = IN_ACTIVE;
 
-        /* Enable for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH9.ACTIVE.pidControl' */
+        /* Enable for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH9.ACTIVE.pidControl' */
         MODESACCELERATION__b_Enable(&rtDW.MODESACCELERATION_PIDLAUNCH9ACT);
 
-        /* End of Enable for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH9.ACTIVE.pidControl' */
+        /* End of Enable for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH9.ACTIVE.pidControl' */
       }
 
-      if (rtDW.is_ACTIVE_iz != IN_START) {
-        rtDW.is_ACTIVE_iz = IN_START;
+      if (rtDW.is_ACTIVE_fy != IN_START) {
+        rtDW.is_ACTIVE_fy = IN_START;
         rtDW.stateFb = (uint16_T)AUTOX_READY;
-        rtDW.autoXCounter_k4 = AUTOX_WORK_RATE_ms;
+        rtDW.autoXCounter_b = AUTOX_WORK_RATE_ms;
 
-        /* Outputs for Function Call SubSystem: '<S44>/SetRPMLimiter' */
+        /* Outputs for Function Call SubSystem: '<S45>/SetRPMLimiter' */
         SetRPMLimiter();
 
-        /* End of Outputs for SubSystem: '<S44>/SetRPMLimiter' */
+        /* End of Outputs for SubSystem: '<S45>/SetRPMLimiter' */
         Clutch_setValue(100);
       }
       break;
@@ -4577,7 +4561,7 @@ static void autoXCheckShift(void)
 /* Function for Chart: '<S5>/GCULogic' */
 static void LAUNCH1(void)
 {
-  real_T Sum_by;
+  real_T Sum_b;
   int32_T tmp;
   uint16_T tmp_0;
   uint32_T qY;
@@ -4586,8 +4570,8 @@ static void LAUNCH1(void)
     if ((rtDW.RateTransition29[0] != rtDW.lastAutoXCom) &&
         (rtDW.RateTransition29[1] == AUTOX_DEFAULT)) {
       rtDW.lastAutoXCom = rtDW.RateTransition29[0];
-      rtDW.is_RELEASE_b = 0;
-      rtDW.is_ACTIVE_k = 0;
+      rtDW.is_RELEASE_f = 0;
+      rtDW.is_ACTIVE_i = 0;
       if (rtDW.is_LAUNCH1 == IN_ACTIVE) {
         rtDW.is_LAUNCH1 = 0;
       }
@@ -4595,52 +4579,52 @@ static void LAUNCH1(void)
       if (rtDW.is_LAUNCH1 != IN_STOPPING) {
         rtDW.is_LAUNCH1 = IN_STOPPING;
 
-        /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+        /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
         UnsetRPMLimiter();
 
-        /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
+        /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
         Clutch_setValue(0);
       }
     } else {
-      switch (rtDW.is_ACTIVE_k) {
+      switch (rtDW.is_ACTIVE_i) {
        case IN_READY:
-        if (rtDW.autoXCounter_p <= 1) {
+        if (rtDW.autoXCounter_n <= 1) {
           if ((rtDW.RateTransition29[0] != rtDW.lastAutoXCom) &&
               (rtDW.RateTransition29[1] == AUTOX_GO) && (rtDW.RateTransition36[2]
                >= getAutoXParam(AUTOX_TPS_START_LIMIT))) {
             rtDW.lastAutoXCom = rtDW.RateTransition29[0];
             rtDW.stateFb = (uint16_T)AUTOX_GO;
-            rtDW.is_ACTIVE_k = 0;
-            if (rtDW.is_ACTIVE_k != IN_RELEASE) {
-              rtDW.is_ACTIVE_k = IN_RELEASE;
-              rtDW.lastSlip_a = 0U;
+            rtDW.is_ACTIVE_i = 0;
+            if (rtDW.is_ACTIVE_i != IN_RELEASE) {
+              rtDW.is_ACTIVE_i = IN_RELEASE;
+              rtDW.lastSlip_j = 0U;
 
-              /* Outputs for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH1.ACTIVE.pidControl' */
+              /* Outputs for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH1.ACTIVE.pidControl' */
               MODESACCELERATION_PIDLAUN_g(rtM, (real_T)rtDW.RateTransition36[4],
-                (real_T)rtDW.RateTransition36[3], 1.0, &Sum_by,
+                (real_T)rtDW.RateTransition36[3], 1.0, &Sum_b,
                 &rtDW.MODESACCELERATION_PIDLAUNCH1ACT);
 
-              /* End of Outputs for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH1.ACTIVE.pidControl' */
+              /* End of Outputs for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH1.ACTIVE.pidControl' */
             }
 
-            rtDW.is_RELEASE_b = IN_WAIT;
+            rtDW.is_RELEASE_f = IN_WAIT;
           } else {
-            rtDW.is_ACTIVE_k = 0;
-            if (rtDW.is_ACTIVE_k != IN_READY) {
-              rtDW.is_ACTIVE_k = IN_READY;
+            rtDW.is_ACTIVE_i = 0;
+            if (rtDW.is_ACTIVE_i != IN_READY) {
+              rtDW.is_ACTIVE_i = IN_READY;
               rtDW.stateFb = (uint16_T)AUTOX_READY;
-              rtDW.autoXCounter_p = AUTOX_WORK_RATE_ms;
+              rtDW.autoXCounter_n = AUTOX_WORK_RATE_ms;
               Clutch_setValue(55);
               checkShift();
             }
           }
         } else {
-          tmp = rtDW.autoXCounter_p - 1;
+          tmp = rtDW.autoXCounter_n - 1;
           if (tmp < 0) {
             tmp = 0;
           }
 
-          rtDW.autoXCounter_p = (uint16_T)tmp;
+          rtDW.autoXCounter_n = (uint16_T)tmp;
           checkShift();
         }
         break;
@@ -4649,15 +4633,15 @@ static void LAUNCH1(void)
         if (rtDW.RateTransition36[1] >= RELEASE_END_SPEED) {
           Clutch_setValue(0);
 
-          /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+          /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
           UnsetRPMLimiter();
 
-          /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
-          rtDW.is_RELEASE_b = 0;
-          rtDW.is_ACTIVE_k = 0;
-          if (rtDW.is_ACTIVE_k != IN_RUNNING) {
-            rtDW.is_ACTIVE_k = IN_RUNNING;
-            rtDW.autoXCounter_p = AUTOX_WORK_RATE_ms;
+          /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
+          rtDW.is_RELEASE_f = 0;
+          rtDW.is_ACTIVE_i = 0;
+          if (rtDW.is_ACTIVE_i != IN_RUNNING) {
+            rtDW.is_ACTIVE_i = IN_RUNNING;
+            rtDW.autoXCounter_n = AUTOX_WORK_RATE_ms;
             tmp_0 = rtDW.RateTransition36[6];
             if (rtDW.RateTransition36[6] > 255) {
               tmp_0 = 255U;
@@ -4667,33 +4651,33 @@ static void LAUNCH1(void)
             autoXCheckShift();
           }
         } else {
-          switch (rtDW.is_RELEASE_b) {
+          switch (rtDW.is_RELEASE_f) {
            case IN_Control:
-            rtDW.is_RELEASE_b = IN_WAIT;
+            rtDW.is_RELEASE_f = IN_WAIT;
             break;
 
            case IN_WAIT:
-            if (rtDW.RateTransition34 != rtDW.lastSlip_a) {
-              rtDW.lastSlip_a = rtDW.RateTransition34;
+            if (rtDW.RateTransition34 != rtDW.lastSlip_j) {
+              rtDW.lastSlip_j = rtDW.RateTransition34;
               qY = rtDW.pidCounter + /*MW:OvSatOk*/ 1U;
               if (qY < rtDW.pidCounter) {
                 qY = MAX_uint32_T;
               }
 
               rtDW.pidCounter = qY;
-              rtDW.is_RELEASE_b = 0;
-              if (rtDW.is_RELEASE_b != IN_Control) {
-                rtDW.is_RELEASE_b = IN_Control;
+              rtDW.is_RELEASE_f = 0;
+              if (rtDW.is_RELEASE_f != IN_Control) {
+                rtDW.is_RELEASE_f = IN_Control;
 
-                /* Outputs for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH1.ACTIVE.pidControl' */
+                /* Outputs for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH1.ACTIVE.pidControl' */
                 MODESACCELERATION_PIDLAUN_g(rtM, (real_T)rtDW.RateTransition36[4],
-                  (real_T)rtDW.RateTransition36[3], 0.0, &Sum_by,
+                  (real_T)rtDW.RateTransition36[3], 0.0, &Sum_b,
                   &rtDW.MODESACCELERATION_PIDLAUNCH1ACT);
 
-                /* End of Outputs for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH1.ACTIVE.pidControl' */
-                if (Sum_by < 256.0) {
-                  if (Sum_by >= 0.0) {
-                    rtDW.clutchCurrVal = (uint8_T)Sum_by;
+                /* End of Outputs for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH1.ACTIVE.pidControl' */
+                if (Sum_b < 256.0) {
+                  if (Sum_b >= 0.0) {
+                    rtDW.clutchCurrVal = (uint8_T)Sum_b;
                   } else {
                     rtDW.clutchCurrVal = 0U;
                   }
@@ -4710,7 +4694,7 @@ static void LAUNCH1(void)
        case IN_RUNNING:
         if ((rtDW.RateTransition36[6] >= 3) && (rtDW.RateTransition36[6] != 8))
         {
-          rtDW.is_ACTIVE_k = 0;
+          rtDW.is_ACTIVE_i = 0;
           if (rtDW.is_LAUNCH1 == IN_ACTIVE) {
             rtDW.is_LAUNCH1 = 0;
           }
@@ -4718,10 +4702,10 @@ static void LAUNCH1(void)
           if (rtDW.is_LAUNCH1 != IN_STOPPING) {
             rtDW.is_LAUNCH1 = IN_STOPPING;
 
-            /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+            /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
             UnsetRPMLimiter();
 
-            /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
+            /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
             Clutch_setValue(0);
           }
         } else {
@@ -4730,22 +4714,22 @@ static void LAUNCH1(void)
         break;
 
        case IN_START:
-        if (rtDW.autoXCounter_p <= 1) {
-          rtDW.is_ACTIVE_k = 0;
-          if (rtDW.is_ACTIVE_k != IN_READY) {
-            rtDW.is_ACTIVE_k = IN_READY;
+        if (rtDW.autoXCounter_n <= 1) {
+          rtDW.is_ACTIVE_i = 0;
+          if (rtDW.is_ACTIVE_i != IN_READY) {
+            rtDW.is_ACTIVE_i = IN_READY;
             rtDW.stateFb = (uint16_T)AUTOX_READY;
-            rtDW.autoXCounter_p = AUTOX_WORK_RATE_ms;
+            rtDW.autoXCounter_n = AUTOX_WORK_RATE_ms;
             Clutch_setValue(55);
             checkShift();
           }
         } else {
-          tmp = rtDW.autoXCounter_p - 1;
+          tmp = rtDW.autoXCounter_n - 1;
           if (tmp < 0) {
             tmp = 0;
           }
 
-          rtDW.autoXCounter_p = (uint16_T)tmp;
+          rtDW.autoXCounter_n = (uint16_T)tmp;
         }
         break;
       }
@@ -4776,8 +4760,8 @@ static void LAUNCH2(void)
     if ((rtDW.RateTransition29[0] != rtDW.lastAutoXCom) &&
         (rtDW.RateTransition29[1] == AUTOX_DEFAULT)) {
       rtDW.lastAutoXCom = rtDW.RateTransition29[0];
-      rtDW.is_RELEASE_i = 0;
-      rtDW.is_ACTIVE_c = 0;
+      rtDW.is_RELEASE_l = 0;
+      rtDW.is_ACTIVE_h = 0;
       if (rtDW.is_LAUNCH2 == IN_ACTIVE) {
         rtDW.is_LAUNCH2 = 0;
       }
@@ -4785,52 +4769,52 @@ static void LAUNCH2(void)
       if (rtDW.is_LAUNCH2 != IN_STOPPING) {
         rtDW.is_LAUNCH2 = IN_STOPPING;
 
-        /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+        /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
         UnsetRPMLimiter();
 
-        /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
+        /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
         Clutch_setValue(0);
       }
     } else {
-      switch (rtDW.is_ACTIVE_c) {
+      switch (rtDW.is_ACTIVE_h) {
        case IN_READY:
-        if (rtDW.autoXCounter_j <= 1) {
+        if (rtDW.autoXCounter_d <= 1) {
           if ((rtDW.RateTransition29[0] != rtDW.lastAutoXCom) &&
               (rtDW.RateTransition29[1] == AUTOX_GO) && (rtDW.RateTransition36[2]
                >= getAutoXParam(AUTOX_TPS_START_LIMIT))) {
             rtDW.lastAutoXCom = rtDW.RateTransition29[0];
             rtDW.stateFb = (uint16_T)AUTOX_GO;
-            rtDW.is_ACTIVE_c = 0;
-            if (rtDW.is_ACTIVE_c != IN_RELEASE) {
-              rtDW.is_ACTIVE_c = IN_RELEASE;
-              rtDW.lastSlip_k = 0U;
+            rtDW.is_ACTIVE_h = 0;
+            if (rtDW.is_ACTIVE_h != IN_RELEASE) {
+              rtDW.is_ACTIVE_h = IN_RELEASE;
+              rtDW.lastSlip_a = 0U;
 
-              /* Outputs for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.pidControl' */
+              /* Outputs for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.pidControl' */
               MODESACCELERATION_PIDLAUN_o(rtM, (real_T)rtDW.RateTransition36[4],
                 (real_T)rtDW.RateTransition36[3], 1.0, &Sum_o,
                 &rtDW.MODESACCELERATION_PIDLAUNCH2ACT);
 
-              /* End of Outputs for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.pidControl' */
+              /* End of Outputs for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.pidControl' */
             }
 
-            rtDW.is_RELEASE_i = IN_WAIT;
+            rtDW.is_RELEASE_l = IN_WAIT;
           } else {
-            rtDW.is_ACTIVE_c = 0;
-            if (rtDW.is_ACTIVE_c != IN_READY) {
-              rtDW.is_ACTIVE_c = IN_READY;
+            rtDW.is_ACTIVE_h = 0;
+            if (rtDW.is_ACTIVE_h != IN_READY) {
+              rtDW.is_ACTIVE_h = IN_READY;
               rtDW.stateFb = (uint16_T)AUTOX_READY;
-              rtDW.autoXCounter_j = AUTOX_WORK_RATE_ms;
+              rtDW.autoXCounter_d = AUTOX_WORK_RATE_ms;
               Clutch_setValue(55);
               checkShift();
             }
           }
         } else {
-          tmp = rtDW.autoXCounter_j - 1;
+          tmp = rtDW.autoXCounter_d - 1;
           if (tmp < 0) {
             tmp = 0;
           }
 
-          rtDW.autoXCounter_j = (uint16_T)tmp;
+          rtDW.autoXCounter_d = (uint16_T)tmp;
           checkShift();
         }
         break;
@@ -4839,15 +4823,15 @@ static void LAUNCH2(void)
         if (rtDW.RateTransition36[1] >= RELEASE_END_SPEED) {
           Clutch_setValue(0);
 
-          /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+          /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
           UnsetRPMLimiter();
 
-          /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
-          rtDW.is_RELEASE_i = 0;
-          rtDW.is_ACTIVE_c = 0;
-          if (rtDW.is_ACTIVE_c != IN_RUNNING) {
-            rtDW.is_ACTIVE_c = IN_RUNNING;
-            rtDW.autoXCounter_j = AUTOX_WORK_RATE_ms;
+          /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
+          rtDW.is_RELEASE_l = 0;
+          rtDW.is_ACTIVE_h = 0;
+          if (rtDW.is_ACTIVE_h != IN_RUNNING) {
+            rtDW.is_ACTIVE_h = IN_RUNNING;
+            rtDW.autoXCounter_d = AUTOX_WORK_RATE_ms;
             tmp_0 = rtDW.RateTransition36[6];
             if (rtDW.RateTransition36[6] > 255) {
               tmp_0 = 255U;
@@ -4857,24 +4841,24 @@ static void LAUNCH2(void)
             autoXCheckShift();
           }
         } else {
-          switch (rtDW.is_RELEASE_i) {
+          switch (rtDW.is_RELEASE_l) {
            case IN_Control:
-            rtDW.is_RELEASE_i = IN_WAIT;
+            rtDW.is_RELEASE_l = IN_WAIT;
             break;
 
            case IN_WAIT:
-            if (rtDW.RateTransition34 != rtDW.lastSlip_k) {
-              rtDW.lastSlip_k = rtDW.RateTransition34;
-              rtDW.is_RELEASE_i = 0;
-              if (rtDW.is_RELEASE_i != IN_Control) {
-                rtDW.is_RELEASE_i = IN_Control;
+            if (rtDW.RateTransition34 != rtDW.lastSlip_a) {
+              rtDW.lastSlip_a = rtDW.RateTransition34;
+              rtDW.is_RELEASE_l = 0;
+              if (rtDW.is_RELEASE_l != IN_Control) {
+                rtDW.is_RELEASE_l = IN_Control;
 
-                /* Outputs for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.pidControl' */
+                /* Outputs for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.pidControl' */
                 MODESACCELERATION_PIDLAUN_o(rtM, (real_T)rtDW.RateTransition36[4],
                   (real_T)rtDW.RateTransition36[3], 0.0, &Sum_o,
                   &rtDW.MODESACCELERATION_PIDLAUNCH2ACT);
 
-                /* End of Outputs for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.pidControl' */
+                /* End of Outputs for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.pidControl' */
                 if (Sum_o < 256.0) {
                   if (Sum_o >= 0.0) {
                     rtDW.clutchCurrVal = (uint8_T)Sum_o;
@@ -4894,7 +4878,7 @@ static void LAUNCH2(void)
        case IN_RUNNING:
         if ((rtDW.RateTransition36[6] >= 3) && (rtDW.RateTransition36[6] != 8))
         {
-          rtDW.is_ACTIVE_c = 0;
+          rtDW.is_ACTIVE_h = 0;
           if (rtDW.is_LAUNCH2 == IN_ACTIVE) {
             rtDW.is_LAUNCH2 = 0;
           }
@@ -4902,10 +4886,10 @@ static void LAUNCH2(void)
           if (rtDW.is_LAUNCH2 != IN_STOPPING) {
             rtDW.is_LAUNCH2 = IN_STOPPING;
 
-            /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+            /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
             UnsetRPMLimiter();
 
-            /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
+            /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
             Clutch_setValue(0);
           }
         } else {
@@ -4914,22 +4898,22 @@ static void LAUNCH2(void)
         break;
 
        case IN_START:
-        if (rtDW.autoXCounter_j <= 1) {
-          rtDW.is_ACTIVE_c = 0;
-          if (rtDW.is_ACTIVE_c != IN_READY) {
-            rtDW.is_ACTIVE_c = IN_READY;
+        if (rtDW.autoXCounter_d <= 1) {
+          rtDW.is_ACTIVE_h = 0;
+          if (rtDW.is_ACTIVE_h != IN_READY) {
+            rtDW.is_ACTIVE_h = IN_READY;
             rtDW.stateFb = (uint16_T)AUTOX_READY;
-            rtDW.autoXCounter_j = AUTOX_WORK_RATE_ms;
+            rtDW.autoXCounter_d = AUTOX_WORK_RATE_ms;
             Clutch_setValue(55);
             checkShift();
           }
         } else {
-          tmp = rtDW.autoXCounter_j - 1;
+          tmp = rtDW.autoXCounter_d - 1;
           if (tmp < 0) {
             tmp = 0;
           }
 
-          rtDW.autoXCounter_j = (uint16_T)tmp;
+          rtDW.autoXCounter_d = (uint16_T)tmp;
         }
         break;
       }
@@ -4960,8 +4944,8 @@ static void LAUNCH3(void)
     if ((rtDW.RateTransition29[0] != rtDW.lastAutoXCom) &&
         (rtDW.RateTransition29[1] == AUTOX_DEFAULT)) {
       rtDW.lastAutoXCom = rtDW.RateTransition29[0];
-      rtDW.is_RELEASE_ij = 0;
-      rtDW.is_ACTIVE_e = 0;
+      rtDW.is_RELEASE_b = 0;
+      rtDW.is_ACTIVE_k = 0;
       if (rtDW.is_LAUNCH3 == IN_ACTIVE) {
         rtDW.is_LAUNCH3 = 0;
       }
@@ -4969,52 +4953,52 @@ static void LAUNCH3(void)
       if (rtDW.is_LAUNCH3 != IN_STOPPING) {
         rtDW.is_LAUNCH3 = IN_STOPPING;
 
-        /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+        /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
         UnsetRPMLimiter();
 
-        /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
+        /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
         Clutch_setValue(0);
       }
     } else {
-      switch (rtDW.is_ACTIVE_e) {
+      switch (rtDW.is_ACTIVE_k) {
        case IN_READY:
-        if (rtDW.autoXCounter_ke <= 1) {
+        if (rtDW.autoXCounter_i <= 1) {
           if ((rtDW.RateTransition29[0] != rtDW.lastAutoXCom) &&
               (rtDW.RateTransition29[1] == AUTOX_GO) && (rtDW.RateTransition36[2]
                >= getAutoXParam(AUTOX_TPS_START_LIMIT))) {
             rtDW.lastAutoXCom = rtDW.RateTransition29[0];
             rtDW.stateFb = (uint16_T)AUTOX_GO;
-            rtDW.is_ACTIVE_e = 0;
-            if (rtDW.is_ACTIVE_e != IN_RELEASE) {
-              rtDW.is_ACTIVE_e = IN_RELEASE;
-              rtDW.lastSlip_l = 0U;
+            rtDW.is_ACTIVE_k = 0;
+            if (rtDW.is_ACTIVE_k != IN_RELEASE) {
+              rtDW.is_ACTIVE_k = IN_RELEASE;
+              rtDW.lastSlip_g = 0U;
 
-              /* Outputs for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.pidControl' */
+              /* Outputs for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.pidControl' */
               MODESACCELERATION_PIDLAU_gq(rtM, (real_T)rtDW.RateTransition36[4],
                 (real_T)rtDW.RateTransition36[3], 1.0, &Sum_f,
                 &rtDW.MODESACCELERATION_PIDLAUNCH3ACT);
 
-              /* End of Outputs for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.pidControl' */
+              /* End of Outputs for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.pidControl' */
             }
 
-            rtDW.is_RELEASE_ij = IN_WAIT;
+            rtDW.is_RELEASE_b = IN_WAIT;
           } else {
-            rtDW.is_ACTIVE_e = 0;
-            if (rtDW.is_ACTIVE_e != IN_READY) {
-              rtDW.is_ACTIVE_e = IN_READY;
+            rtDW.is_ACTIVE_k = 0;
+            if (rtDW.is_ACTIVE_k != IN_READY) {
+              rtDW.is_ACTIVE_k = IN_READY;
               rtDW.stateFb = (uint16_T)AUTOX_READY;
-              rtDW.autoXCounter_ke = AUTOX_WORK_RATE_ms;
+              rtDW.autoXCounter_i = AUTOX_WORK_RATE_ms;
               Clutch_setValue(55);
               checkShift();
             }
           }
         } else {
-          tmp = rtDW.autoXCounter_ke - 1;
+          tmp = rtDW.autoXCounter_i - 1;
           if (tmp < 0) {
             tmp = 0;
           }
 
-          rtDW.autoXCounter_ke = (uint16_T)tmp;
+          rtDW.autoXCounter_i = (uint16_T)tmp;
           checkShift();
         }
         break;
@@ -5023,15 +5007,15 @@ static void LAUNCH3(void)
         if (rtDW.RateTransition36[1] >= RELEASE_END_SPEED) {
           Clutch_setValue(0);
 
-          /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+          /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
           UnsetRPMLimiter();
 
-          /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
-          rtDW.is_RELEASE_ij = 0;
-          rtDW.is_ACTIVE_e = 0;
-          if (rtDW.is_ACTIVE_e != IN_RUNNING) {
-            rtDW.is_ACTIVE_e = IN_RUNNING;
-            rtDW.autoXCounter_ke = AUTOX_WORK_RATE_ms;
+          /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
+          rtDW.is_RELEASE_b = 0;
+          rtDW.is_ACTIVE_k = 0;
+          if (rtDW.is_ACTIVE_k != IN_RUNNING) {
+            rtDW.is_ACTIVE_k = IN_RUNNING;
+            rtDW.autoXCounter_i = AUTOX_WORK_RATE_ms;
             tmp_0 = rtDW.RateTransition36[6];
             if (rtDW.RateTransition36[6] > 255) {
               tmp_0 = 255U;
@@ -5041,24 +5025,24 @@ static void LAUNCH3(void)
             autoXCheckShift();
           }
         } else {
-          switch (rtDW.is_RELEASE_ij) {
+          switch (rtDW.is_RELEASE_b) {
            case IN_Control:
-            rtDW.is_RELEASE_ij = IN_WAIT;
+            rtDW.is_RELEASE_b = IN_WAIT;
             break;
 
            case IN_WAIT:
-            if (rtDW.RateTransition34 != rtDW.lastSlip_l) {
-              rtDW.lastSlip_l = rtDW.RateTransition34;
-              rtDW.is_RELEASE_ij = 0;
-              if (rtDW.is_RELEASE_ij != IN_Control) {
-                rtDW.is_RELEASE_ij = IN_Control;
+            if (rtDW.RateTransition34 != rtDW.lastSlip_g) {
+              rtDW.lastSlip_g = rtDW.RateTransition34;
+              rtDW.is_RELEASE_b = 0;
+              if (rtDW.is_RELEASE_b != IN_Control) {
+                rtDW.is_RELEASE_b = IN_Control;
 
-                /* Outputs for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.pidControl' */
+                /* Outputs for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.pidControl' */
                 MODESACCELERATION_PIDLAU_gq(rtM, (real_T)rtDW.RateTransition36[4],
                   (real_T)rtDW.RateTransition36[3], 0.0, &Sum_f,
                   &rtDW.MODESACCELERATION_PIDLAUNCH3ACT);
 
-                /* End of Outputs for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.pidControl' */
+                /* End of Outputs for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.pidControl' */
                 if (Sum_f < 256.0) {
                   if (Sum_f >= 0.0) {
                     rtDW.clutchCurrVal = (uint8_T)Sum_f;
@@ -5078,7 +5062,7 @@ static void LAUNCH3(void)
        case IN_RUNNING:
         if ((rtDW.RateTransition36[6] >= 3) && (rtDW.RateTransition36[6] != 8))
         {
-          rtDW.is_ACTIVE_e = 0;
+          rtDW.is_ACTIVE_k = 0;
           if (rtDW.is_LAUNCH3 == IN_ACTIVE) {
             rtDW.is_LAUNCH3 = 0;
           }
@@ -5086,10 +5070,10 @@ static void LAUNCH3(void)
           if (rtDW.is_LAUNCH3 != IN_STOPPING) {
             rtDW.is_LAUNCH3 = IN_STOPPING;
 
-            /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+            /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
             UnsetRPMLimiter();
 
-            /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
+            /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
             Clutch_setValue(0);
           }
         } else {
@@ -5098,22 +5082,22 @@ static void LAUNCH3(void)
         break;
 
        case IN_START:
-        if (rtDW.autoXCounter_ke <= 1) {
-          rtDW.is_ACTIVE_e = 0;
-          if (rtDW.is_ACTIVE_e != IN_READY) {
-            rtDW.is_ACTIVE_e = IN_READY;
+        if (rtDW.autoXCounter_i <= 1) {
+          rtDW.is_ACTIVE_k = 0;
+          if (rtDW.is_ACTIVE_k != IN_READY) {
+            rtDW.is_ACTIVE_k = IN_READY;
             rtDW.stateFb = (uint16_T)AUTOX_READY;
-            rtDW.autoXCounter_ke = AUTOX_WORK_RATE_ms;
+            rtDW.autoXCounter_i = AUTOX_WORK_RATE_ms;
             Clutch_setValue(55);
             checkShift();
           }
         } else {
-          tmp = rtDW.autoXCounter_ke - 1;
+          tmp = rtDW.autoXCounter_i - 1;
           if (tmp < 0) {
             tmp = 0;
           }
 
-          rtDW.autoXCounter_ke = (uint16_T)tmp;
+          rtDW.autoXCounter_i = (uint16_T)tmp;
         }
         break;
       }
@@ -5144,8 +5128,8 @@ static void LAUNCH4(void)
     if ((rtDW.RateTransition29[0] != rtDW.lastAutoXCom) &&
         (rtDW.RateTransition29[1] == AUTOX_DEFAULT)) {
       rtDW.lastAutoXCom = rtDW.RateTransition29[0];
-      rtDW.is_RELEASE_c = 0;
-      rtDW.is_ACTIVE_ej = 0;
+      rtDW.is_RELEASE_j = 0;
+      rtDW.is_ACTIVE_l = 0;
       if (rtDW.is_LAUNCH4 == IN_ACTIVE) {
         rtDW.is_LAUNCH4 = 0;
       }
@@ -5153,52 +5137,52 @@ static void LAUNCH4(void)
       if (rtDW.is_LAUNCH4 != IN_STOPPING) {
         rtDW.is_LAUNCH4 = IN_STOPPING;
 
-        /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+        /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
         UnsetRPMLimiter();
 
-        /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
+        /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
         Clutch_setValue(0);
       }
     } else {
-      switch (rtDW.is_ACTIVE_ej) {
+      switch (rtDW.is_ACTIVE_l) {
        case IN_READY:
-        if (rtDW.autoXCounter_n <= 1) {
+        if (rtDW.autoXCounter_n3 <= 1) {
           if ((rtDW.RateTransition29[0] != rtDW.lastAutoXCom) &&
               (rtDW.RateTransition29[1] == AUTOX_GO) && (rtDW.RateTransition36[2]
                >= getAutoXParam(AUTOX_TPS_START_LIMIT))) {
             rtDW.lastAutoXCom = rtDW.RateTransition29[0];
             rtDW.stateFb = (uint16_T)AUTOX_GO;
-            rtDW.is_ACTIVE_ej = 0;
-            if (rtDW.is_ACTIVE_ej != IN_RELEASE) {
-              rtDW.is_ACTIVE_ej = IN_RELEASE;
-              rtDW.lastSlip_j = 0U;
+            rtDW.is_ACTIVE_l = 0;
+            if (rtDW.is_ACTIVE_l != IN_RELEASE) {
+              rtDW.is_ACTIVE_l = IN_RELEASE;
+              rtDW.lastSlip_gt = 0U;
 
-              /* Outputs for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH4.ACTIVE.pidControl' */
+              /* Outputs for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH4.ACTIVE.pidControl' */
               MODESACCELERATION_PIDLAUN_k(rtM, (real_T)rtDW.RateTransition36[4],
                 (real_T)rtDW.RateTransition36[3], 1.0, &Sum_m,
                 &rtDW.MODESACCELERATION_PIDLAUNCH4ACT);
 
-              /* End of Outputs for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH4.ACTIVE.pidControl' */
+              /* End of Outputs for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH4.ACTIVE.pidControl' */
             }
 
-            rtDW.is_RELEASE_c = IN_WAIT;
+            rtDW.is_RELEASE_j = IN_WAIT;
           } else {
-            rtDW.is_ACTIVE_ej = 0;
-            if (rtDW.is_ACTIVE_ej != IN_READY) {
-              rtDW.is_ACTIVE_ej = IN_READY;
+            rtDW.is_ACTIVE_l = 0;
+            if (rtDW.is_ACTIVE_l != IN_READY) {
+              rtDW.is_ACTIVE_l = IN_READY;
               rtDW.stateFb = (uint16_T)AUTOX_READY;
-              rtDW.autoXCounter_n = AUTOX_WORK_RATE_ms;
+              rtDW.autoXCounter_n3 = AUTOX_WORK_RATE_ms;
               Clutch_setValue(55);
               checkShift();
             }
           }
         } else {
-          tmp = rtDW.autoXCounter_n - 1;
+          tmp = rtDW.autoXCounter_n3 - 1;
           if (tmp < 0) {
             tmp = 0;
           }
 
-          rtDW.autoXCounter_n = (uint16_T)tmp;
+          rtDW.autoXCounter_n3 = (uint16_T)tmp;
           checkShift();
         }
         break;
@@ -5207,15 +5191,15 @@ static void LAUNCH4(void)
         if (rtDW.RateTransition36[1] >= RELEASE_END_SPEED) {
           Clutch_setValue(0);
 
-          /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+          /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
           UnsetRPMLimiter();
 
-          /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
-          rtDW.is_RELEASE_c = 0;
-          rtDW.is_ACTIVE_ej = 0;
-          if (rtDW.is_ACTIVE_ej != IN_RUNNING) {
-            rtDW.is_ACTIVE_ej = IN_RUNNING;
-            rtDW.autoXCounter_n = AUTOX_WORK_RATE_ms;
+          /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
+          rtDW.is_RELEASE_j = 0;
+          rtDW.is_ACTIVE_l = 0;
+          if (rtDW.is_ACTIVE_l != IN_RUNNING) {
+            rtDW.is_ACTIVE_l = IN_RUNNING;
+            rtDW.autoXCounter_n3 = AUTOX_WORK_RATE_ms;
             tmp_0 = rtDW.RateTransition36[6];
             if (rtDW.RateTransition36[6] > 255) {
               tmp_0 = 255U;
@@ -5225,24 +5209,24 @@ static void LAUNCH4(void)
             autoXCheckShift();
           }
         } else {
-          switch (rtDW.is_RELEASE_c) {
+          switch (rtDW.is_RELEASE_j) {
            case IN_Control:
-            rtDW.is_RELEASE_c = IN_WAIT;
+            rtDW.is_RELEASE_j = IN_WAIT;
             break;
 
            case IN_WAIT:
-            if (rtDW.RateTransition34 != rtDW.lastSlip_j) {
-              rtDW.lastSlip_j = rtDW.RateTransition34;
-              rtDW.is_RELEASE_c = 0;
-              if (rtDW.is_RELEASE_c != IN_Control) {
-                rtDW.is_RELEASE_c = IN_Control;
+            if (rtDW.RateTransition34 != rtDW.lastSlip_gt) {
+              rtDW.lastSlip_gt = rtDW.RateTransition34;
+              rtDW.is_RELEASE_j = 0;
+              if (rtDW.is_RELEASE_j != IN_Control) {
+                rtDW.is_RELEASE_j = IN_Control;
 
-                /* Outputs for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH4.ACTIVE.pidControl' */
+                /* Outputs for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH4.ACTIVE.pidControl' */
                 MODESACCELERATION_PIDLAUN_k(rtM, (real_T)rtDW.RateTransition36[4],
                   (real_T)rtDW.RateTransition36[3], 0.0, &Sum_m,
                   &rtDW.MODESACCELERATION_PIDLAUNCH4ACT);
 
-                /* End of Outputs for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH4.ACTIVE.pidControl' */
+                /* End of Outputs for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH4.ACTIVE.pidControl' */
                 if (Sum_m < 256.0) {
                   if (Sum_m >= 0.0) {
                     rtDW.clutchCurrVal = (uint8_T)Sum_m;
@@ -5262,7 +5246,7 @@ static void LAUNCH4(void)
        case IN_RUNNING:
         if ((rtDW.RateTransition36[6] >= 3) && (rtDW.RateTransition36[6] != 8))
         {
-          rtDW.is_ACTIVE_ej = 0;
+          rtDW.is_ACTIVE_l = 0;
           if (rtDW.is_LAUNCH4 == IN_ACTIVE) {
             rtDW.is_LAUNCH4 = 0;
           }
@@ -5270,10 +5254,10 @@ static void LAUNCH4(void)
           if (rtDW.is_LAUNCH4 != IN_STOPPING) {
             rtDW.is_LAUNCH4 = IN_STOPPING;
 
-            /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+            /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
             UnsetRPMLimiter();
 
-            /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
+            /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
             Clutch_setValue(0);
           }
         } else {
@@ -5282,22 +5266,22 @@ static void LAUNCH4(void)
         break;
 
        case IN_START:
-        if (rtDW.autoXCounter_n <= 1) {
-          rtDW.is_ACTIVE_ej = 0;
-          if (rtDW.is_ACTIVE_ej != IN_READY) {
-            rtDW.is_ACTIVE_ej = IN_READY;
+        if (rtDW.autoXCounter_n3 <= 1) {
+          rtDW.is_ACTIVE_l = 0;
+          if (rtDW.is_ACTIVE_l != IN_READY) {
+            rtDW.is_ACTIVE_l = IN_READY;
             rtDW.stateFb = (uint16_T)AUTOX_READY;
-            rtDW.autoXCounter_n = AUTOX_WORK_RATE_ms;
+            rtDW.autoXCounter_n3 = AUTOX_WORK_RATE_ms;
             Clutch_setValue(55);
             checkShift();
           }
         } else {
-          tmp = rtDW.autoXCounter_n - 1;
+          tmp = rtDW.autoXCounter_n3 - 1;
           if (tmp < 0) {
             tmp = 0;
           }
 
-          rtDW.autoXCounter_n = (uint16_T)tmp;
+          rtDW.autoXCounter_n3 = (uint16_T)tmp;
         }
         break;
       }
@@ -5320,7 +5304,7 @@ static void LAUNCH4(void)
 /* Function for Chart: '<S5>/GCULogic' */
 static void LAUNCH5(void)
 {
-  real_T Sum_g;
+  real_T Sum_gt;
   int32_T tmp;
   uint16_T tmp_0;
   switch (rtDW.is_LAUNCH5) {
@@ -5328,8 +5312,8 @@ static void LAUNCH5(void)
     if ((rtDW.RateTransition29[0] != rtDW.lastAutoXCom) &&
         (rtDW.RateTransition29[1] == AUTOX_DEFAULT)) {
       rtDW.lastAutoXCom = rtDW.RateTransition29[0];
-      rtDW.is_RELEASE_d = 0;
-      rtDW.is_ACTIVE_i = 0;
+      rtDW.is_RELEASE_o = 0;
+      rtDW.is_ACTIVE_lm = 0;
       if (rtDW.is_LAUNCH5 == IN_ACTIVE) {
         rtDW.is_LAUNCH5 = 0;
       }
@@ -5337,52 +5321,52 @@ static void LAUNCH5(void)
       if (rtDW.is_LAUNCH5 != IN_STOPPING) {
         rtDW.is_LAUNCH5 = IN_STOPPING;
 
-        /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+        /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
         UnsetRPMLimiter();
 
-        /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
+        /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
         Clutch_setValue(0);
       }
     } else {
-      switch (rtDW.is_ACTIVE_i) {
+      switch (rtDW.is_ACTIVE_lm) {
        case IN_READY:
-        if (rtDW.autoXCounter_na <= 1) {
+        if (rtDW.autoXCounter_m <= 1) {
           if ((rtDW.RateTransition29[0] != rtDW.lastAutoXCom) &&
               (rtDW.RateTransition29[1] == AUTOX_GO) && (rtDW.RateTransition36[2]
                >= getAutoXParam(AUTOX_TPS_START_LIMIT))) {
             rtDW.lastAutoXCom = rtDW.RateTransition29[0];
             rtDW.stateFb = (uint16_T)AUTOX_GO;
-            rtDW.is_ACTIVE_i = 0;
-            if (rtDW.is_ACTIVE_i != IN_RELEASE) {
-              rtDW.is_ACTIVE_i = IN_RELEASE;
-              rtDW.lastSlip_e = 0U;
+            rtDW.is_ACTIVE_lm = 0;
+            if (rtDW.is_ACTIVE_lm != IN_RELEASE) {
+              rtDW.is_ACTIVE_lm = IN_RELEASE;
+              rtDW.lastSlip_f = 0U;
 
-              /* Outputs for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH5.ACTIVE.pidControl' */
+              /* Outputs for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH5.ACTIVE.pidControl' */
               MODESACCELERATION_PIDLAUN_c(rtM, (real_T)rtDW.RateTransition36[4],
-                (real_T)rtDW.RateTransition36[3], 1.0, &Sum_g,
+                (real_T)rtDW.RateTransition36[3], 1.0, &Sum_gt,
                 &rtDW.MODESACCELERATION_PIDLAUNCH5ACT);
 
-              /* End of Outputs for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH5.ACTIVE.pidControl' */
+              /* End of Outputs for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH5.ACTIVE.pidControl' */
             }
 
-            rtDW.is_RELEASE_d = IN_WAIT;
+            rtDW.is_RELEASE_o = IN_WAIT;
           } else {
-            rtDW.is_ACTIVE_i = 0;
-            if (rtDW.is_ACTIVE_i != IN_READY) {
-              rtDW.is_ACTIVE_i = IN_READY;
+            rtDW.is_ACTIVE_lm = 0;
+            if (rtDW.is_ACTIVE_lm != IN_READY) {
+              rtDW.is_ACTIVE_lm = IN_READY;
               rtDW.stateFb = (uint16_T)AUTOX_READY;
-              rtDW.autoXCounter_na = AUTOX_WORK_RATE_ms;
+              rtDW.autoXCounter_m = AUTOX_WORK_RATE_ms;
               Clutch_setValue(55);
               checkShift();
             }
           }
         } else {
-          tmp = rtDW.autoXCounter_na - 1;
+          tmp = rtDW.autoXCounter_m - 1;
           if (tmp < 0) {
             tmp = 0;
           }
 
-          rtDW.autoXCounter_na = (uint16_T)tmp;
+          rtDW.autoXCounter_m = (uint16_T)tmp;
           checkShift();
         }
         break;
@@ -5391,15 +5375,15 @@ static void LAUNCH5(void)
         if (rtDW.RateTransition36[1] >= RELEASE_END_SPEED) {
           Clutch_setValue(0);
 
-          /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+          /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
           UnsetRPMLimiter();
 
-          /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
-          rtDW.is_RELEASE_d = 0;
-          rtDW.is_ACTIVE_i = 0;
-          if (rtDW.is_ACTIVE_i != IN_RUNNING) {
-            rtDW.is_ACTIVE_i = IN_RUNNING;
-            rtDW.autoXCounter_na = AUTOX_WORK_RATE_ms;
+          /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
+          rtDW.is_RELEASE_o = 0;
+          rtDW.is_ACTIVE_lm = 0;
+          if (rtDW.is_ACTIVE_lm != IN_RUNNING) {
+            rtDW.is_ACTIVE_lm = IN_RUNNING;
+            rtDW.autoXCounter_m = AUTOX_WORK_RATE_ms;
             tmp_0 = rtDW.RateTransition36[6];
             if (rtDW.RateTransition36[6] > 255) {
               tmp_0 = 255U;
@@ -5409,27 +5393,27 @@ static void LAUNCH5(void)
             autoXCheckShift();
           }
         } else {
-          switch (rtDW.is_RELEASE_d) {
+          switch (rtDW.is_RELEASE_o) {
            case IN_Control:
-            rtDW.is_RELEASE_d = IN_WAIT;
+            rtDW.is_RELEASE_o = IN_WAIT;
             break;
 
            case IN_WAIT:
-            if (rtDW.RateTransition34 != rtDW.lastSlip_e) {
-              rtDW.lastSlip_e = rtDW.RateTransition34;
-              rtDW.is_RELEASE_d = 0;
-              if (rtDW.is_RELEASE_d != IN_Control) {
-                rtDW.is_RELEASE_d = IN_Control;
+            if (rtDW.RateTransition34 != rtDW.lastSlip_f) {
+              rtDW.lastSlip_f = rtDW.RateTransition34;
+              rtDW.is_RELEASE_o = 0;
+              if (rtDW.is_RELEASE_o != IN_Control) {
+                rtDW.is_RELEASE_o = IN_Control;
 
-                /* Outputs for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH5.ACTIVE.pidControl' */
+                /* Outputs for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH5.ACTIVE.pidControl' */
                 MODESACCELERATION_PIDLAUN_c(rtM, (real_T)rtDW.RateTransition36[4],
-                  (real_T)rtDW.RateTransition36[3], 0.0, &Sum_g,
+                  (real_T)rtDW.RateTransition36[3], 0.0, &Sum_gt,
                   &rtDW.MODESACCELERATION_PIDLAUNCH5ACT);
 
-                /* End of Outputs for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH5.ACTIVE.pidControl' */
-                if (Sum_g < 256.0) {
-                  if (Sum_g >= 0.0) {
-                    rtDW.clutchCurrVal = (uint8_T)Sum_g;
+                /* End of Outputs for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH5.ACTIVE.pidControl' */
+                if (Sum_gt < 256.0) {
+                  if (Sum_gt >= 0.0) {
+                    rtDW.clutchCurrVal = (uint8_T)Sum_gt;
                   } else {
                     rtDW.clutchCurrVal = 0U;
                   }
@@ -5446,7 +5430,7 @@ static void LAUNCH5(void)
        case IN_RUNNING:
         if ((rtDW.RateTransition36[6] >= 3) && (rtDW.RateTransition36[6] != 8))
         {
-          rtDW.is_ACTIVE_i = 0;
+          rtDW.is_ACTIVE_lm = 0;
           if (rtDW.is_LAUNCH5 == IN_ACTIVE) {
             rtDW.is_LAUNCH5 = 0;
           }
@@ -5454,10 +5438,10 @@ static void LAUNCH5(void)
           if (rtDW.is_LAUNCH5 != IN_STOPPING) {
             rtDW.is_LAUNCH5 = IN_STOPPING;
 
-            /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+            /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
             UnsetRPMLimiter();
 
-            /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
+            /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
             Clutch_setValue(0);
           }
         } else {
@@ -5466,22 +5450,22 @@ static void LAUNCH5(void)
         break;
 
        case IN_START:
-        if (rtDW.autoXCounter_na <= 1) {
-          rtDW.is_ACTIVE_i = 0;
-          if (rtDW.is_ACTIVE_i != IN_READY) {
-            rtDW.is_ACTIVE_i = IN_READY;
+        if (rtDW.autoXCounter_m <= 1) {
+          rtDW.is_ACTIVE_lm = 0;
+          if (rtDW.is_ACTIVE_lm != IN_READY) {
+            rtDW.is_ACTIVE_lm = IN_READY;
             rtDW.stateFb = (uint16_T)AUTOX_READY;
-            rtDW.autoXCounter_na = AUTOX_WORK_RATE_ms;
+            rtDW.autoXCounter_m = AUTOX_WORK_RATE_ms;
             Clutch_setValue(55);
             checkShift();
           }
         } else {
-          tmp = rtDW.autoXCounter_na - 1;
+          tmp = rtDW.autoXCounter_m - 1;
           if (tmp < 0) {
             tmp = 0;
           }
 
-          rtDW.autoXCounter_na = (uint16_T)tmp;
+          rtDW.autoXCounter_m = (uint16_T)tmp;
         }
         break;
       }
@@ -5512,8 +5496,8 @@ static void LAUNCH6(void)
     if ((rtDW.RateTransition29[0] != rtDW.lastAutoXCom) &&
         (rtDW.RateTransition29[1] == AUTOX_DEFAULT)) {
       rtDW.lastAutoXCom = rtDW.RateTransition29[0];
-      rtDW.is_RELEASE_l = 0;
-      rtDW.is_ACTIVE_ga = 0;
+      rtDW.is_RELEASE_p = 0;
+      rtDW.is_ACTIVE_dy = 0;
       if (rtDW.is_LAUNCH6 == IN_ACTIVE) {
         rtDW.is_LAUNCH6 = 0;
       }
@@ -5521,52 +5505,52 @@ static void LAUNCH6(void)
       if (rtDW.is_LAUNCH6 != IN_STOPPING) {
         rtDW.is_LAUNCH6 = IN_STOPPING;
 
-        /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+        /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
         UnsetRPMLimiter();
 
-        /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
+        /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
         Clutch_setValue(0);
       }
     } else {
-      switch (rtDW.is_ACTIVE_ga) {
+      switch (rtDW.is_ACTIVE_dy) {
        case IN_READY:
-        if (rtDW.autoXCounter_h <= 1) {
+        if (rtDW.autoXCounter_nm <= 1) {
           if ((rtDW.RateTransition29[0] != rtDW.lastAutoXCom) &&
               (rtDW.RateTransition29[1] == AUTOX_GO) && (rtDW.RateTransition36[2]
                >= getAutoXParam(AUTOX_TPS_START_LIMIT))) {
             rtDW.lastAutoXCom = rtDW.RateTransition29[0];
             rtDW.stateFb = (uint16_T)AUTOX_GO;
-            rtDW.is_ACTIVE_ga = 0;
-            if (rtDW.is_ACTIVE_ga != IN_RELEASE) {
-              rtDW.is_ACTIVE_ga = IN_RELEASE;
-              rtDW.lastSlip_ly = 0U;
+            rtDW.is_ACTIVE_dy = 0;
+            if (rtDW.is_ACTIVE_dy != IN_RELEASE) {
+              rtDW.is_ACTIVE_dy = IN_RELEASE;
+              rtDW.lastSlip_g1 = 0U;
 
-              /* Outputs for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH6.ACTIVE.pidControl' */
+              /* Outputs for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH6.ACTIVE.pidControl' */
               MODESACCELERATION_PIDLAUN_n(rtM, (real_T)rtDW.RateTransition36[4],
                 (real_T)rtDW.RateTransition36[3], 1.0, &Sum_l,
                 &rtDW.MODESACCELERATION_PIDLAUNCH6ACT);
 
-              /* End of Outputs for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH6.ACTIVE.pidControl' */
+              /* End of Outputs for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH6.ACTIVE.pidControl' */
             }
 
-            rtDW.is_RELEASE_l = IN_WAIT;
+            rtDW.is_RELEASE_p = IN_WAIT;
           } else {
-            rtDW.is_ACTIVE_ga = 0;
-            if (rtDW.is_ACTIVE_ga != IN_READY) {
-              rtDW.is_ACTIVE_ga = IN_READY;
+            rtDW.is_ACTIVE_dy = 0;
+            if (rtDW.is_ACTIVE_dy != IN_READY) {
+              rtDW.is_ACTIVE_dy = IN_READY;
               rtDW.stateFb = (uint16_T)AUTOX_READY;
-              rtDW.autoXCounter_h = AUTOX_WORK_RATE_ms;
+              rtDW.autoXCounter_nm = AUTOX_WORK_RATE_ms;
               Clutch_setValue(55);
               checkShift();
             }
           }
         } else {
-          tmp = rtDW.autoXCounter_h - 1;
+          tmp = rtDW.autoXCounter_nm - 1;
           if (tmp < 0) {
             tmp = 0;
           }
 
-          rtDW.autoXCounter_h = (uint16_T)tmp;
+          rtDW.autoXCounter_nm = (uint16_T)tmp;
           checkShift();
         }
         break;
@@ -5575,15 +5559,15 @@ static void LAUNCH6(void)
         if (rtDW.RateTransition36[1] >= RELEASE_END_SPEED) {
           Clutch_setValue(0);
 
-          /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+          /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
           UnsetRPMLimiter();
 
-          /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
-          rtDW.is_RELEASE_l = 0;
-          rtDW.is_ACTIVE_ga = 0;
-          if (rtDW.is_ACTIVE_ga != IN_RUNNING) {
-            rtDW.is_ACTIVE_ga = IN_RUNNING;
-            rtDW.autoXCounter_h = AUTOX_WORK_RATE_ms;
+          /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
+          rtDW.is_RELEASE_p = 0;
+          rtDW.is_ACTIVE_dy = 0;
+          if (rtDW.is_ACTIVE_dy != IN_RUNNING) {
+            rtDW.is_ACTIVE_dy = IN_RUNNING;
+            rtDW.autoXCounter_nm = AUTOX_WORK_RATE_ms;
             tmp_0 = rtDW.RateTransition36[6];
             if (rtDW.RateTransition36[6] > 255) {
               tmp_0 = 255U;
@@ -5593,24 +5577,24 @@ static void LAUNCH6(void)
             autoXCheckShift();
           }
         } else {
-          switch (rtDW.is_RELEASE_l) {
+          switch (rtDW.is_RELEASE_p) {
            case IN_Control:
-            rtDW.is_RELEASE_l = IN_WAIT;
+            rtDW.is_RELEASE_p = IN_WAIT;
             break;
 
            case IN_WAIT:
-            if (rtDW.RateTransition34 != rtDW.lastSlip_ly) {
-              rtDW.lastSlip_ly = rtDW.RateTransition34;
-              rtDW.is_RELEASE_l = 0;
-              if (rtDW.is_RELEASE_l != IN_Control) {
-                rtDW.is_RELEASE_l = IN_Control;
+            if (rtDW.RateTransition34 != rtDW.lastSlip_g1) {
+              rtDW.lastSlip_g1 = rtDW.RateTransition34;
+              rtDW.is_RELEASE_p = 0;
+              if (rtDW.is_RELEASE_p != IN_Control) {
+                rtDW.is_RELEASE_p = IN_Control;
 
-                /* Outputs for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH6.ACTIVE.pidControl' */
+                /* Outputs for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH6.ACTIVE.pidControl' */
                 MODESACCELERATION_PIDLAUN_n(rtM, (real_T)rtDW.RateTransition36[4],
                   (real_T)rtDW.RateTransition36[3], 0.0, &Sum_l,
                   &rtDW.MODESACCELERATION_PIDLAUNCH6ACT);
 
-                /* End of Outputs for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH6.ACTIVE.pidControl' */
+                /* End of Outputs for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH6.ACTIVE.pidControl' */
                 if (Sum_l < 256.0) {
                   if (Sum_l >= 0.0) {
                     rtDW.clutchCurrVal = (uint8_T)Sum_l;
@@ -5630,7 +5614,7 @@ static void LAUNCH6(void)
        case IN_RUNNING:
         if ((rtDW.RateTransition36[6] >= 3) && (rtDW.RateTransition36[6] != 8))
         {
-          rtDW.is_ACTIVE_ga = 0;
+          rtDW.is_ACTIVE_dy = 0;
           if (rtDW.is_LAUNCH6 == IN_ACTIVE) {
             rtDW.is_LAUNCH6 = 0;
           }
@@ -5638,10 +5622,10 @@ static void LAUNCH6(void)
           if (rtDW.is_LAUNCH6 != IN_STOPPING) {
             rtDW.is_LAUNCH6 = IN_STOPPING;
 
-            /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+            /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
             UnsetRPMLimiter();
 
-            /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
+            /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
             Clutch_setValue(0);
           }
         } else {
@@ -5650,22 +5634,22 @@ static void LAUNCH6(void)
         break;
 
        case IN_START:
-        if (rtDW.autoXCounter_h <= 1) {
-          rtDW.is_ACTIVE_ga = 0;
-          if (rtDW.is_ACTIVE_ga != IN_READY) {
-            rtDW.is_ACTIVE_ga = IN_READY;
+        if (rtDW.autoXCounter_nm <= 1) {
+          rtDW.is_ACTIVE_dy = 0;
+          if (rtDW.is_ACTIVE_dy != IN_READY) {
+            rtDW.is_ACTIVE_dy = IN_READY;
             rtDW.stateFb = (uint16_T)AUTOX_READY;
-            rtDW.autoXCounter_h = AUTOX_WORK_RATE_ms;
+            rtDW.autoXCounter_nm = AUTOX_WORK_RATE_ms;
             Clutch_setValue(55);
             checkShift();
           }
         } else {
-          tmp = rtDW.autoXCounter_h - 1;
+          tmp = rtDW.autoXCounter_nm - 1;
           if (tmp < 0) {
             tmp = 0;
           }
 
-          rtDW.autoXCounter_h = (uint16_T)tmp;
+          rtDW.autoXCounter_nm = (uint16_T)tmp;
         }
         break;
       }
@@ -5688,7 +5672,7 @@ static void LAUNCH6(void)
 /* Function for Chart: '<S5>/GCULogic' */
 static void LAUNCH7(void)
 {
-  real_T Sum_b;
+  real_T Sum;
   int32_T tmp;
   uint16_T tmp_0;
   switch (rtDW.is_LAUNCH7) {
@@ -5696,8 +5680,8 @@ static void LAUNCH7(void)
     if ((rtDW.RateTransition29[0] != rtDW.lastAutoXCom) &&
         (rtDW.RateTransition29[1] == AUTOX_DEFAULT)) {
       rtDW.lastAutoXCom = rtDW.RateTransition29[0];
-      rtDW.is_RELEASE_g = 0;
-      rtDW.is_ACTIVE_k5 = 0;
+      rtDW.is_RELEASE_a4 = 0;
+      rtDW.is_ACTIVE_n = 0;
       if (rtDW.is_LAUNCH7 == IN_ACTIVE) {
         rtDW.is_LAUNCH7 = 0;
       }
@@ -5705,52 +5689,52 @@ static void LAUNCH7(void)
       if (rtDW.is_LAUNCH7 != IN_STOPPING) {
         rtDW.is_LAUNCH7 = IN_STOPPING;
 
-        /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+        /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
         UnsetRPMLimiter();
 
-        /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
+        /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
         Clutch_setValue(0);
       }
     } else {
-      switch (rtDW.is_ACTIVE_k5) {
+      switch (rtDW.is_ACTIVE_n) {
        case IN_READY:
-        if (rtDW.autoXCounter_m <= 1) {
+        if (rtDW.autoXCounter_c <= 1) {
           if ((rtDW.RateTransition29[0] != rtDW.lastAutoXCom) &&
               (rtDW.RateTransition29[1] == AUTOX_GO) && (rtDW.RateTransition36[2]
                >= getAutoXParam(AUTOX_TPS_START_LIMIT))) {
             rtDW.lastAutoXCom = rtDW.RateTransition29[0];
             rtDW.stateFb = (uint16_T)AUTOX_GO;
-            rtDW.is_ACTIVE_k5 = 0;
-            if (rtDW.is_ACTIVE_k5 != IN_RELEASE) {
-              rtDW.is_ACTIVE_k5 = IN_RELEASE;
-              rtDW.lastSlip_gg = 0U;
+            rtDW.is_ACTIVE_n = 0;
+            if (rtDW.is_ACTIVE_n != IN_RELEASE) {
+              rtDW.is_ACTIVE_n = IN_RELEASE;
+              rtDW.lastSlip_i = 0U;
 
-              /* Outputs for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH7.ACTIVE.pidControl' */
-              MODESACCELERATION_PIDLAUN_b(rtM, (real_T)rtDW.RateTransition36[4],
-                (real_T)rtDW.RateTransition36[3], 1.0, &Sum_b,
+              /* Outputs for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH7.ACTIVE.pidControl' */
+              MODESACCELERATION_PIDLAU_bu(rtM, (real_T)rtDW.RateTransition36[4],
+                (real_T)rtDW.RateTransition36[3], 1.0, &Sum,
                 &rtDW.MODESACCELERATION_PIDLAUNCH7ACT);
 
-              /* End of Outputs for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH7.ACTIVE.pidControl' */
+              /* End of Outputs for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH7.ACTIVE.pidControl' */
             }
 
-            rtDW.is_RELEASE_g = IN_WAIT;
+            rtDW.is_RELEASE_a4 = IN_WAIT;
           } else {
-            rtDW.is_ACTIVE_k5 = 0;
-            if (rtDW.is_ACTIVE_k5 != IN_READY) {
-              rtDW.is_ACTIVE_k5 = IN_READY;
+            rtDW.is_ACTIVE_n = 0;
+            if (rtDW.is_ACTIVE_n != IN_READY) {
+              rtDW.is_ACTIVE_n = IN_READY;
               rtDW.stateFb = (uint16_T)AUTOX_READY;
-              rtDW.autoXCounter_m = AUTOX_WORK_RATE_ms;
+              rtDW.autoXCounter_c = AUTOX_WORK_RATE_ms;
               Clutch_setValue(55);
               checkShift();
             }
           }
         } else {
-          tmp = rtDW.autoXCounter_m - 1;
+          tmp = rtDW.autoXCounter_c - 1;
           if (tmp < 0) {
             tmp = 0;
           }
 
-          rtDW.autoXCounter_m = (uint16_T)tmp;
+          rtDW.autoXCounter_c = (uint16_T)tmp;
           checkShift();
         }
         break;
@@ -5759,15 +5743,15 @@ static void LAUNCH7(void)
         if (rtDW.RateTransition36[1] >= RELEASE_END_SPEED) {
           Clutch_setValue(0);
 
-          /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+          /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
           UnsetRPMLimiter();
 
-          /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
-          rtDW.is_RELEASE_g = 0;
-          rtDW.is_ACTIVE_k5 = 0;
-          if (rtDW.is_ACTIVE_k5 != IN_RUNNING) {
-            rtDW.is_ACTIVE_k5 = IN_RUNNING;
-            rtDW.autoXCounter_m = AUTOX_WORK_RATE_ms;
+          /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
+          rtDW.is_RELEASE_a4 = 0;
+          rtDW.is_ACTIVE_n = 0;
+          if (rtDW.is_ACTIVE_n != IN_RUNNING) {
+            rtDW.is_ACTIVE_n = IN_RUNNING;
+            rtDW.autoXCounter_c = AUTOX_WORK_RATE_ms;
             tmp_0 = rtDW.RateTransition36[6];
             if (rtDW.RateTransition36[6] > 255) {
               tmp_0 = 255U;
@@ -5777,27 +5761,27 @@ static void LAUNCH7(void)
             autoXCheckShift();
           }
         } else {
-          switch (rtDW.is_RELEASE_g) {
+          switch (rtDW.is_RELEASE_a4) {
            case IN_Control:
-            rtDW.is_RELEASE_g = IN_WAIT;
+            rtDW.is_RELEASE_a4 = IN_WAIT;
             break;
 
            case IN_WAIT:
-            if (rtDW.RateTransition34 != rtDW.lastSlip_gg) {
-              rtDW.lastSlip_gg = rtDW.RateTransition34;
-              rtDW.is_RELEASE_g = 0;
-              if (rtDW.is_RELEASE_g != IN_Control) {
-                rtDW.is_RELEASE_g = IN_Control;
+            if (rtDW.RateTransition34 != rtDW.lastSlip_i) {
+              rtDW.lastSlip_i = rtDW.RateTransition34;
+              rtDW.is_RELEASE_a4 = 0;
+              if (rtDW.is_RELEASE_a4 != IN_Control) {
+                rtDW.is_RELEASE_a4 = IN_Control;
 
-                /* Outputs for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH7.ACTIVE.pidControl' */
-                MODESACCELERATION_PIDLAUN_b(rtM, (real_T)rtDW.RateTransition36[4],
-                  (real_T)rtDW.RateTransition36[3], 0.0, &Sum_b,
+                /* Outputs for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH7.ACTIVE.pidControl' */
+                MODESACCELERATION_PIDLAU_bu(rtM, (real_T)rtDW.RateTransition36[4],
+                  (real_T)rtDW.RateTransition36[3], 0.0, &Sum,
                   &rtDW.MODESACCELERATION_PIDLAUNCH7ACT);
 
-                /* End of Outputs for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH7.ACTIVE.pidControl' */
-                if (Sum_b < 256.0) {
-                  if (Sum_b >= 0.0) {
-                    rtDW.clutchCurrVal = (uint8_T)Sum_b;
+                /* End of Outputs for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH7.ACTIVE.pidControl' */
+                if (Sum < 256.0) {
+                  if (Sum >= 0.0) {
+                    rtDW.clutchCurrVal = (uint8_T)Sum;
                   } else {
                     rtDW.clutchCurrVal = 0U;
                   }
@@ -5814,7 +5798,7 @@ static void LAUNCH7(void)
        case IN_RUNNING:
         if ((rtDW.RateTransition36[6] >= 3) && (rtDW.RateTransition36[6] != 8))
         {
-          rtDW.is_ACTIVE_k5 = 0;
+          rtDW.is_ACTIVE_n = 0;
           if (rtDW.is_LAUNCH7 == IN_ACTIVE) {
             rtDW.is_LAUNCH7 = 0;
           }
@@ -5822,10 +5806,10 @@ static void LAUNCH7(void)
           if (rtDW.is_LAUNCH7 != IN_STOPPING) {
             rtDW.is_LAUNCH7 = IN_STOPPING;
 
-            /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+            /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
             UnsetRPMLimiter();
 
-            /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
+            /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
             Clutch_setValue(0);
           }
         } else {
@@ -5834,22 +5818,22 @@ static void LAUNCH7(void)
         break;
 
        case IN_START:
-        if (rtDW.autoXCounter_m <= 1) {
-          rtDW.is_ACTIVE_k5 = 0;
-          if (rtDW.is_ACTIVE_k5 != IN_READY) {
-            rtDW.is_ACTIVE_k5 = IN_READY;
+        if (rtDW.autoXCounter_c <= 1) {
+          rtDW.is_ACTIVE_n = 0;
+          if (rtDW.is_ACTIVE_n != IN_READY) {
+            rtDW.is_ACTIVE_n = IN_READY;
             rtDW.stateFb = (uint16_T)AUTOX_READY;
-            rtDW.autoXCounter_m = AUTOX_WORK_RATE_ms;
+            rtDW.autoXCounter_c = AUTOX_WORK_RATE_ms;
             Clutch_setValue(55);
             checkShift();
           }
         } else {
-          tmp = rtDW.autoXCounter_m - 1;
+          tmp = rtDW.autoXCounter_c - 1;
           if (tmp < 0) {
             tmp = 0;
           }
 
-          rtDW.autoXCounter_m = (uint16_T)tmp;
+          rtDW.autoXCounter_c = (uint16_T)tmp;
         }
         break;
       }
@@ -5881,7 +5865,7 @@ static void LAUNCH8(void)
         (rtDW.RateTransition29[1] == AUTOX_DEFAULT)) {
       rtDW.lastAutoXCom = rtDW.RateTransition29[0];
       rtDW.is_RELEASE_a = 0;
-      rtDW.is_ACTIVE_b = 0;
+      rtDW.is_ACTIVE_kj = 0;
       if (rtDW.is_LAUNCH8 == IN_ACTIVE) {
         rtDW.is_LAUNCH8 = 0;
       }
@@ -5889,52 +5873,52 @@ static void LAUNCH8(void)
       if (rtDW.is_LAUNCH8 != IN_STOPPING) {
         rtDW.is_LAUNCH8 = IN_STOPPING;
 
-        /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+        /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
         UnsetRPMLimiter();
 
-        /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
+        /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
         Clutch_setValue(0);
       }
     } else {
-      switch (rtDW.is_ACTIVE_b) {
+      switch (rtDW.is_ACTIVE_kj) {
        case IN_READY:
-        if (rtDW.autoXCounter_d <= 1) {
+        if (rtDW.autoXCounter_g <= 1) {
           if ((rtDW.RateTransition29[0] != rtDW.lastAutoXCom) &&
               (rtDW.RateTransition29[1] == AUTOX_GO) && (rtDW.RateTransition36[2]
                >= getAutoXParam(AUTOX_TPS_START_LIMIT))) {
             rtDW.lastAutoXCom = rtDW.RateTransition29[0];
             rtDW.stateFb = (uint16_T)AUTOX_GO;
-            rtDW.is_ACTIVE_b = 0;
-            if (rtDW.is_ACTIVE_b != IN_RELEASE) {
-              rtDW.is_ACTIVE_b = IN_RELEASE;
-              rtDW.lastSlip_g = 0U;
+            rtDW.is_ACTIVE_kj = 0;
+            if (rtDW.is_ACTIVE_kj != IN_RELEASE) {
+              rtDW.is_ACTIVE_kj = IN_RELEASE;
+              rtDW.lastSlip_n = 0U;
 
-              /* Outputs for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH8.ACTIVE.pidControl' */
-              MODESACCELERATION_PIDLAU_bj(rtM, (real_T)rtDW.RateTransition36[4],
+              /* Outputs for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH8.ACTIVE.pidControl' */
+              MODESACCELERATION_PIDLAUN_b(rtM, (real_T)rtDW.RateTransition36[4],
                 (real_T)rtDW.RateTransition36[3], 1.0, &Sum_k,
                 &rtDW.MODESACCELERATION_PIDLAUNCH8ACT);
 
-              /* End of Outputs for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH8.ACTIVE.pidControl' */
+              /* End of Outputs for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH8.ACTIVE.pidControl' */
             }
 
             rtDW.is_RELEASE_a = IN_WAIT;
           } else {
-            rtDW.is_ACTIVE_b = 0;
-            if (rtDW.is_ACTIVE_b != IN_READY) {
-              rtDW.is_ACTIVE_b = IN_READY;
+            rtDW.is_ACTIVE_kj = 0;
+            if (rtDW.is_ACTIVE_kj != IN_READY) {
+              rtDW.is_ACTIVE_kj = IN_READY;
               rtDW.stateFb = (uint16_T)AUTOX_READY;
-              rtDW.autoXCounter_d = AUTOX_WORK_RATE_ms;
+              rtDW.autoXCounter_g = AUTOX_WORK_RATE_ms;
               Clutch_setValue(55);
               checkShift();
             }
           }
         } else {
-          tmp = rtDW.autoXCounter_d - 1;
+          tmp = rtDW.autoXCounter_g - 1;
           if (tmp < 0) {
             tmp = 0;
           }
 
-          rtDW.autoXCounter_d = (uint16_T)tmp;
+          rtDW.autoXCounter_g = (uint16_T)tmp;
           checkShift();
         }
         break;
@@ -5943,15 +5927,15 @@ static void LAUNCH8(void)
         if (rtDW.RateTransition36[1] >= RELEASE_END_SPEED) {
           Clutch_setValue(0);
 
-          /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+          /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
           UnsetRPMLimiter();
 
-          /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
+          /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
           rtDW.is_RELEASE_a = 0;
-          rtDW.is_ACTIVE_b = 0;
-          if (rtDW.is_ACTIVE_b != IN_RUNNING) {
-            rtDW.is_ACTIVE_b = IN_RUNNING;
-            rtDW.autoXCounter_d = AUTOX_WORK_RATE_ms;
+          rtDW.is_ACTIVE_kj = 0;
+          if (rtDW.is_ACTIVE_kj != IN_RUNNING) {
+            rtDW.is_ACTIVE_kj = IN_RUNNING;
+            rtDW.autoXCounter_g = AUTOX_WORK_RATE_ms;
             tmp_0 = rtDW.RateTransition36[6];
             if (rtDW.RateTransition36[6] > 255) {
               tmp_0 = 255U;
@@ -5967,18 +5951,18 @@ static void LAUNCH8(void)
             break;
 
            case IN_WAIT:
-            if (rtDW.RateTransition34 != rtDW.lastSlip_g) {
-              rtDW.lastSlip_g = rtDW.RateTransition34;
+            if (rtDW.RateTransition34 != rtDW.lastSlip_n) {
+              rtDW.lastSlip_n = rtDW.RateTransition34;
               rtDW.is_RELEASE_a = 0;
               if (rtDW.is_RELEASE_a != IN_Control) {
                 rtDW.is_RELEASE_a = IN_Control;
 
-                /* Outputs for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH8.ACTIVE.pidControl' */
-                MODESACCELERATION_PIDLAU_bj(rtM, (real_T)rtDW.RateTransition36[4],
+                /* Outputs for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH8.ACTIVE.pidControl' */
+                MODESACCELERATION_PIDLAUN_b(rtM, (real_T)rtDW.RateTransition36[4],
                   (real_T)rtDW.RateTransition36[3], 0.0, &Sum_k,
                   &rtDW.MODESACCELERATION_PIDLAUNCH8ACT);
 
-                /* End of Outputs for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH8.ACTIVE.pidControl' */
+                /* End of Outputs for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH8.ACTIVE.pidControl' */
                 if (Sum_k < 256.0) {
                   if (Sum_k >= 0.0) {
                     rtDW.clutchCurrVal = (uint8_T)Sum_k;
@@ -5998,7 +5982,7 @@ static void LAUNCH8(void)
        case IN_RUNNING:
         if ((rtDW.RateTransition36[6] >= 3) && (rtDW.RateTransition36[6] != 8))
         {
-          rtDW.is_ACTIVE_b = 0;
+          rtDW.is_ACTIVE_kj = 0;
           if (rtDW.is_LAUNCH8 == IN_ACTIVE) {
             rtDW.is_LAUNCH8 = 0;
           }
@@ -6006,10 +5990,10 @@ static void LAUNCH8(void)
           if (rtDW.is_LAUNCH8 != IN_STOPPING) {
             rtDW.is_LAUNCH8 = IN_STOPPING;
 
-            /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+            /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
             UnsetRPMLimiter();
 
-            /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
+            /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
             Clutch_setValue(0);
           }
         } else {
@@ -6018,22 +6002,22 @@ static void LAUNCH8(void)
         break;
 
        case IN_START:
-        if (rtDW.autoXCounter_d <= 1) {
-          rtDW.is_ACTIVE_b = 0;
-          if (rtDW.is_ACTIVE_b != IN_READY) {
-            rtDW.is_ACTIVE_b = IN_READY;
+        if (rtDW.autoXCounter_g <= 1) {
+          rtDW.is_ACTIVE_kj = 0;
+          if (rtDW.is_ACTIVE_kj != IN_READY) {
+            rtDW.is_ACTIVE_kj = IN_READY;
             rtDW.stateFb = (uint16_T)AUTOX_READY;
-            rtDW.autoXCounter_d = AUTOX_WORK_RATE_ms;
+            rtDW.autoXCounter_g = AUTOX_WORK_RATE_ms;
             Clutch_setValue(55);
             checkShift();
           }
         } else {
-          tmp = rtDW.autoXCounter_d - 1;
+          tmp = rtDW.autoXCounter_g - 1;
           if (tmp < 0) {
             tmp = 0;
           }
 
-          rtDW.autoXCounter_d = (uint16_T)tmp;
+          rtDW.autoXCounter_g = (uint16_T)tmp;
         }
         break;
       }
@@ -6056,7 +6040,7 @@ static void LAUNCH8(void)
 /* Function for Chart: '<S5>/GCULogic' */
 static void LAUNCH9(void)
 {
-  real_T Sum;
+  real_T Sum_g;
   int32_T tmp;
   uint16_T tmp_0;
   switch (rtDW.is_LAUNCH9) {
@@ -6064,8 +6048,8 @@ static void LAUNCH9(void)
     if ((rtDW.RateTransition29[0] != rtDW.lastAutoXCom) &&
         (rtDW.RateTransition29[1] == AUTOX_DEFAULT)) {
       rtDW.lastAutoXCom = rtDW.RateTransition29[0];
-      rtDW.is_RELEASE_gz = 0;
-      rtDW.is_ACTIVE_iz = 0;
+      rtDW.is_RELEASE_d = 0;
+      rtDW.is_ACTIVE_fy = 0;
       if (rtDW.is_LAUNCH9 == IN_ACTIVE) {
         rtDW.is_LAUNCH9 = 0;
       }
@@ -6073,52 +6057,52 @@ static void LAUNCH9(void)
       if (rtDW.is_LAUNCH9 != IN_STOPPING) {
         rtDW.is_LAUNCH9 = IN_STOPPING;
 
-        /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+        /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
         UnsetRPMLimiter();
 
-        /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
+        /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
         Clutch_setValue(0);
       }
     } else {
-      switch (rtDW.is_ACTIVE_iz) {
+      switch (rtDW.is_ACTIVE_fy) {
        case IN_READY:
-        if (rtDW.autoXCounter_k4 <= 1) {
+        if (rtDW.autoXCounter_b <= 1) {
           if ((rtDW.RateTransition29[0] != rtDW.lastAutoXCom) &&
               (rtDW.RateTransition29[1] == AUTOX_GO) && (rtDW.RateTransition36[2]
                >= getAutoXParam(AUTOX_TPS_START_LIMIT))) {
             rtDW.lastAutoXCom = rtDW.RateTransition29[0];
             rtDW.stateFb = (uint16_T)AUTOX_GO;
-            rtDW.is_ACTIVE_iz = 0;
-            if (rtDW.is_ACTIVE_iz != IN_RELEASE) {
-              rtDW.is_ACTIVE_iz = IN_RELEASE;
-              rtDW.lastSlip_i = 0U;
+            rtDW.is_ACTIVE_fy = 0;
+            if (rtDW.is_ACTIVE_fy != IN_RELEASE) {
+              rtDW.is_ACTIVE_fy = IN_RELEASE;
+              rtDW.lastSlip_l = 0U;
 
-              /* Outputs for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH9.ACTIVE.pidControl' */
+              /* Outputs for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH9.ACTIVE.pidControl' */
               MODESACCELERATION_PIDLAUN_h(rtM, (real_T)rtDW.RateTransition36[4],
-                (real_T)rtDW.RateTransition36[3], 1.0, &Sum,
+                (real_T)rtDW.RateTransition36[3], 1.0, &Sum_g,
                 &rtDW.MODESACCELERATION_PIDLAUNCH9ACT);
 
-              /* End of Outputs for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH9.ACTIVE.pidControl' */
+              /* End of Outputs for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH9.ACTIVE.pidControl' */
             }
 
-            rtDW.is_RELEASE_gz = IN_WAIT;
+            rtDW.is_RELEASE_d = IN_WAIT;
           } else {
-            rtDW.is_ACTIVE_iz = 0;
-            if (rtDW.is_ACTIVE_iz != IN_READY) {
-              rtDW.is_ACTIVE_iz = IN_READY;
+            rtDW.is_ACTIVE_fy = 0;
+            if (rtDW.is_ACTIVE_fy != IN_READY) {
+              rtDW.is_ACTIVE_fy = IN_READY;
               rtDW.stateFb = (uint16_T)AUTOX_READY;
-              rtDW.autoXCounter_k4 = AUTOX_WORK_RATE_ms;
+              rtDW.autoXCounter_b = AUTOX_WORK_RATE_ms;
               Clutch_setValue(55);
               checkShift();
             }
           }
         } else {
-          tmp = rtDW.autoXCounter_k4 - 1;
+          tmp = rtDW.autoXCounter_b - 1;
           if (tmp < 0) {
             tmp = 0;
           }
 
-          rtDW.autoXCounter_k4 = (uint16_T)tmp;
+          rtDW.autoXCounter_b = (uint16_T)tmp;
           checkShift();
         }
         break;
@@ -6127,15 +6111,15 @@ static void LAUNCH9(void)
         if (rtDW.RateTransition36[1] >= RELEASE_END_SPEED) {
           Clutch_setValue(0);
 
-          /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+          /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
           UnsetRPMLimiter();
 
-          /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
-          rtDW.is_RELEASE_gz = 0;
-          rtDW.is_ACTIVE_iz = 0;
-          if (rtDW.is_ACTIVE_iz != IN_RUNNING) {
-            rtDW.is_ACTIVE_iz = IN_RUNNING;
-            rtDW.autoXCounter_k4 = AUTOX_WORK_RATE_ms;
+          /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
+          rtDW.is_RELEASE_d = 0;
+          rtDW.is_ACTIVE_fy = 0;
+          if (rtDW.is_ACTIVE_fy != IN_RUNNING) {
+            rtDW.is_ACTIVE_fy = IN_RUNNING;
+            rtDW.autoXCounter_b = AUTOX_WORK_RATE_ms;
             tmp_0 = rtDW.RateTransition36[6];
             if (rtDW.RateTransition36[6] > 255) {
               tmp_0 = 255U;
@@ -6145,27 +6129,27 @@ static void LAUNCH9(void)
             autoXCheckShift();
           }
         } else {
-          switch (rtDW.is_RELEASE_gz) {
+          switch (rtDW.is_RELEASE_d) {
            case IN_Control:
-            rtDW.is_RELEASE_gz = IN_WAIT;
+            rtDW.is_RELEASE_d = IN_WAIT;
             break;
 
            case IN_WAIT:
-            if (rtDW.RateTransition34 != rtDW.lastSlip_i) {
-              rtDW.lastSlip_i = rtDW.RateTransition34;
-              rtDW.is_RELEASE_gz = 0;
-              if (rtDW.is_RELEASE_gz != IN_Control) {
-                rtDW.is_RELEASE_gz = IN_Control;
+            if (rtDW.RateTransition34 != rtDW.lastSlip_l) {
+              rtDW.lastSlip_l = rtDW.RateTransition34;
+              rtDW.is_RELEASE_d = 0;
+              if (rtDW.is_RELEASE_d != IN_Control) {
+                rtDW.is_RELEASE_d = IN_Control;
 
-                /* Outputs for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH9.ACTIVE.pidControl' */
+                /* Outputs for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH9.ACTIVE.pidControl' */
                 MODESACCELERATION_PIDLAUN_h(rtM, (real_T)rtDW.RateTransition36[4],
-                  (real_T)rtDW.RateTransition36[3], 0.0, &Sum,
+                  (real_T)rtDW.RateTransition36[3], 0.0, &Sum_g,
                   &rtDW.MODESACCELERATION_PIDLAUNCH9ACT);
 
-                /* End of Outputs for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH9.ACTIVE.pidControl' */
-                if (Sum < 256.0) {
-                  if (Sum >= 0.0) {
-                    rtDW.clutchCurrVal = (uint8_T)Sum;
+                /* End of Outputs for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH9.ACTIVE.pidControl' */
+                if (Sum_g < 256.0) {
+                  if (Sum_g >= 0.0) {
+                    rtDW.clutchCurrVal = (uint8_T)Sum_g;
                   } else {
                     rtDW.clutchCurrVal = 0U;
                   }
@@ -6182,7 +6166,7 @@ static void LAUNCH9(void)
        case IN_RUNNING:
         if ((rtDW.RateTransition36[6] >= 3) && (rtDW.RateTransition36[6] != 8))
         {
-          rtDW.is_ACTIVE_iz = 0;
+          rtDW.is_ACTIVE_fy = 0;
           if (rtDW.is_LAUNCH9 == IN_ACTIVE) {
             rtDW.is_LAUNCH9 = 0;
           }
@@ -6190,10 +6174,10 @@ static void LAUNCH9(void)
           if (rtDW.is_LAUNCH9 != IN_STOPPING) {
             rtDW.is_LAUNCH9 = IN_STOPPING;
 
-            /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+            /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
             UnsetRPMLimiter();
 
-            /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
+            /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
             Clutch_setValue(0);
           }
         } else {
@@ -6202,22 +6186,22 @@ static void LAUNCH9(void)
         break;
 
        case IN_START:
-        if (rtDW.autoXCounter_k4 <= 1) {
-          rtDW.is_ACTIVE_iz = 0;
-          if (rtDW.is_ACTIVE_iz != IN_READY) {
-            rtDW.is_ACTIVE_iz = IN_READY;
+        if (rtDW.autoXCounter_b <= 1) {
+          rtDW.is_ACTIVE_fy = 0;
+          if (rtDW.is_ACTIVE_fy != IN_READY) {
+            rtDW.is_ACTIVE_fy = IN_READY;
             rtDW.stateFb = (uint16_T)AUTOX_READY;
-            rtDW.autoXCounter_k4 = AUTOX_WORK_RATE_ms;
+            rtDW.autoXCounter_b = AUTOX_WORK_RATE_ms;
             Clutch_setValue(55);
             checkShift();
           }
         } else {
-          tmp = rtDW.autoXCounter_k4 - 1;
+          tmp = rtDW.autoXCounter_b - 1;
           if (tmp < 0) {
             tmp = 0;
           }
 
-          rtDW.autoXCounter_k4 = (uint16_T)tmp;
+          rtDW.autoXCounter_b = (uint16_T)tmp;
         }
         break;
       }
@@ -6244,7 +6228,7 @@ static void exit_internal_ACCELERATION_PID(void)
    case IN_LAUNCH0:
     if (rtDW.is_LAUNCH0 == IN_ACTIVE) {
       rtDW.is_RELEASE = 0;
-      rtDW.is_ACTIVE_g = 0;
+      rtDW.is_ACTIVE_f = 0;
       if (rtDW.is_LAUNCH0 == IN_ACTIVE) {
         rtDW.is_LAUNCH0 = 0;
       }
@@ -6257,8 +6241,8 @@ static void exit_internal_ACCELERATION_PID(void)
 
    case IN_LAUNCH1:
     if (rtDW.is_LAUNCH1 == IN_ACTIVE) {
-      rtDW.is_RELEASE_b = 0;
-      rtDW.is_ACTIVE_k = 0;
+      rtDW.is_RELEASE_f = 0;
+      rtDW.is_ACTIVE_i = 0;
       if (rtDW.is_LAUNCH1 == IN_ACTIVE) {
         rtDW.is_LAUNCH1 = 0;
       }
@@ -6271,8 +6255,8 @@ static void exit_internal_ACCELERATION_PID(void)
 
    case IN_LAUNCH2:
     if (rtDW.is_LAUNCH2 == IN_ACTIVE) {
-      rtDW.is_RELEASE_i = 0;
-      rtDW.is_ACTIVE_c = 0;
+      rtDW.is_RELEASE_l = 0;
+      rtDW.is_ACTIVE_h = 0;
       if (rtDW.is_LAUNCH2 == IN_ACTIVE) {
         rtDW.is_LAUNCH2 = 0;
       }
@@ -6285,8 +6269,8 @@ static void exit_internal_ACCELERATION_PID(void)
 
    case IN_LAUNCH3:
     if (rtDW.is_LAUNCH3 == IN_ACTIVE) {
-      rtDW.is_RELEASE_ij = 0;
-      rtDW.is_ACTIVE_e = 0;
+      rtDW.is_RELEASE_b = 0;
+      rtDW.is_ACTIVE_k = 0;
       if (rtDW.is_LAUNCH3 == IN_ACTIVE) {
         rtDW.is_LAUNCH3 = 0;
       }
@@ -6299,8 +6283,8 @@ static void exit_internal_ACCELERATION_PID(void)
 
    case IN_LAUNCH4:
     if (rtDW.is_LAUNCH4 == IN_ACTIVE) {
-      rtDW.is_RELEASE_c = 0;
-      rtDW.is_ACTIVE_ej = 0;
+      rtDW.is_RELEASE_j = 0;
+      rtDW.is_ACTIVE_l = 0;
       if (rtDW.is_LAUNCH4 == IN_ACTIVE) {
         rtDW.is_LAUNCH4 = 0;
       }
@@ -6313,8 +6297,8 @@ static void exit_internal_ACCELERATION_PID(void)
 
    case IN_LAUNCH5:
     if (rtDW.is_LAUNCH5 == IN_ACTIVE) {
-      rtDW.is_RELEASE_d = 0;
-      rtDW.is_ACTIVE_i = 0;
+      rtDW.is_RELEASE_o = 0;
+      rtDW.is_ACTIVE_lm = 0;
       if (rtDW.is_LAUNCH5 == IN_ACTIVE) {
         rtDW.is_LAUNCH5 = 0;
       }
@@ -6327,8 +6311,8 @@ static void exit_internal_ACCELERATION_PID(void)
 
    case IN_LAUNCH6:
     if (rtDW.is_LAUNCH6 == IN_ACTIVE) {
-      rtDW.is_RELEASE_l = 0;
-      rtDW.is_ACTIVE_ga = 0;
+      rtDW.is_RELEASE_p = 0;
+      rtDW.is_ACTIVE_dy = 0;
       if (rtDW.is_LAUNCH6 == IN_ACTIVE) {
         rtDW.is_LAUNCH6 = 0;
       }
@@ -6341,8 +6325,8 @@ static void exit_internal_ACCELERATION_PID(void)
 
    case IN_LAUNCH7:
     if (rtDW.is_LAUNCH7 == IN_ACTIVE) {
-      rtDW.is_RELEASE_g = 0;
-      rtDW.is_ACTIVE_k5 = 0;
+      rtDW.is_RELEASE_a4 = 0;
+      rtDW.is_ACTIVE_n = 0;
       if (rtDW.is_LAUNCH7 == IN_ACTIVE) {
         rtDW.is_LAUNCH7 = 0;
       }
@@ -6356,7 +6340,7 @@ static void exit_internal_ACCELERATION_PID(void)
    case IN_LAUNCH8:
     if (rtDW.is_LAUNCH8 == IN_ACTIVE) {
       rtDW.is_RELEASE_a = 0;
-      rtDW.is_ACTIVE_b = 0;
+      rtDW.is_ACTIVE_kj = 0;
       if (rtDW.is_LAUNCH8 == IN_ACTIVE) {
         rtDW.is_LAUNCH8 = 0;
       }
@@ -6369,8 +6353,8 @@ static void exit_internal_ACCELERATION_PID(void)
 
    case IN_LAUNCH9:
     if (rtDW.is_LAUNCH9 == IN_ACTIVE) {
-      rtDW.is_RELEASE_gz = 0;
-      rtDW.is_ACTIVE_iz = 0;
+      rtDW.is_RELEASE_d = 0;
+      rtDW.is_ACTIVE_fy = 0;
       if (rtDW.is_LAUNCH9 == IN_ACTIVE) {
         rtDW.is_LAUNCH9 = 0;
       }
@@ -6395,10 +6379,10 @@ static void ACCELERATION_PID(void)
   uint16_T tmp_0;
   if ((rtDW.RateTransition8[0] != rtDW.lastModeCom[0]) && (rtDW.RateTransition8
        [1] != rtDW.lastModeCom[1])) {
-    /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+    /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
     UnsetRPMLimiter();
 
-    /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
+    /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
     rtDW.stateFb = (uint16_T)ACC_OFF;
     Clutch_setValue(0);
     if (rtDW.RateTransition8[1] == ENDURANCE_MODE) {
@@ -6427,10 +6411,10 @@ static void ACCELERATION_PID(void)
       if (rtDW.is_MANUAL_MODES != IN_SKIDPAD) {
         rtDW.is_MANUAL_MODES = IN_SKIDPAD;
 
-        /* Outputs for Function Call SubSystem: '<S44>/SetRPMLimiter' */
+        /* Outputs for Function Call SubSystem: '<S45>/SetRPMLimiter' */
         SetRPMLimiter();
 
-        /* End of Outputs for SubSystem: '<S44>/SetRPMLimiter' */
+        /* End of Outputs for SubSystem: '<S45>/SetRPMLimiter' */
       }
     } else if (rtDW.RateTransition8[1] == ACCELERATION_MODE) {
       exit_internal_ACCELERATION_PID();
@@ -6490,7 +6474,7 @@ static void ACCELERATION_PID(void)
             (rtDW.RateTransition29[1] == AUTOX_DEFAULT)) {
           rtDW.lastAutoXCom = rtDW.RateTransition29[0];
           rtDW.is_RELEASE = 0;
-          rtDW.is_ACTIVE_g = 0;
+          rtDW.is_ACTIVE_f = 0;
           if (rtDW.is_LAUNCH0 == IN_ACTIVE) {
             rtDW.is_LAUNCH0 = 0;
           }
@@ -6498,53 +6482,53 @@ static void ACCELERATION_PID(void)
           if (rtDW.is_LAUNCH0 != IN_STOPPING) {
             rtDW.is_LAUNCH0 = IN_STOPPING;
 
-            /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+            /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
             UnsetRPMLimiter();
 
-            /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
+            /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
             Clutch_setValue(0);
           }
         } else {
-          switch (rtDW.is_ACTIVE_g) {
+          switch (rtDW.is_ACTIVE_f) {
            case IN_READY:
-            if (rtDW.autoXCounter_k <= 1) {
+            if (rtDW.autoXCounter_h <= 1) {
               if ((rtDW.RateTransition29[0] != rtDW.lastAutoXCom) &&
                   (rtDW.RateTransition29[1] == AUTOX_GO) &&
                   (rtDW.RateTransition36[2] >= getAutoXParam
                    (AUTOX_TPS_START_LIMIT))) {
                 rtDW.lastAutoXCom = rtDW.RateTransition29[0];
                 rtDW.stateFb = (uint16_T)AUTOX_GO;
-                rtDW.is_ACTIVE_g = 0;
-                if (rtDW.is_ACTIVE_g != IN_RELEASE) {
-                  rtDW.is_ACTIVE_g = IN_RELEASE;
+                rtDW.is_ACTIVE_f = 0;
+                if (rtDW.is_ACTIVE_f != IN_RELEASE) {
+                  rtDW.is_ACTIVE_f = IN_RELEASE;
                   rtDW.lastSlip = 0U;
 
-                  /* Outputs for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.pidControl' */
+                  /* Outputs for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.pidControl' */
                   MODESACCELERATION_PIDLAUNCH(rtM, (real_T)
                     rtDW.RateTransition36[4], (real_T)rtDW.RateTransition36[3],
                     1.0, &Sum_od, &rtDW.MODESACCELERATION_PIDLAUNCH0ACT);
 
-                  /* End of Outputs for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.pidControl' */
+                  /* End of Outputs for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.pidControl' */
                 }
 
                 rtDW.is_RELEASE = IN_WAIT;
               } else {
-                rtDW.is_ACTIVE_g = 0;
-                if (rtDW.is_ACTIVE_g != IN_READY) {
-                  rtDW.is_ACTIVE_g = IN_READY;
+                rtDW.is_ACTIVE_f = 0;
+                if (rtDW.is_ACTIVE_f != IN_READY) {
+                  rtDW.is_ACTIVE_f = IN_READY;
                   rtDW.stateFb = (uint16_T)AUTOX_READY;
-                  rtDW.autoXCounter_k = AUTOX_WORK_RATE_ms;
+                  rtDW.autoXCounter_h = AUTOX_WORK_RATE_ms;
                   Clutch_setValue(55);
                   checkShift();
                 }
               }
             } else {
-              tmp = rtDW.autoXCounter_k - 1;
+              tmp = rtDW.autoXCounter_h - 1;
               if (tmp < 0) {
                 tmp = 0;
               }
 
-              rtDW.autoXCounter_k = (uint16_T)tmp;
+              rtDW.autoXCounter_h = (uint16_T)tmp;
               checkShift();
             }
             break;
@@ -6553,15 +6537,15 @@ static void ACCELERATION_PID(void)
             if (rtDW.RateTransition36[1] >= RELEASE_END_SPEED) {
               Clutch_setValue(0);
 
-              /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+              /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
               UnsetRPMLimiter();
 
-              /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
+              /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
               rtDW.is_RELEASE = 0;
-              rtDW.is_ACTIVE_g = 0;
-              if (rtDW.is_ACTIVE_g != IN_RUNNING) {
-                rtDW.is_ACTIVE_g = IN_RUNNING;
-                rtDW.autoXCounter_k = AUTOX_WORK_RATE_ms;
+              rtDW.is_ACTIVE_f = 0;
+              if (rtDW.is_ACTIVE_f != IN_RUNNING) {
+                rtDW.is_ACTIVE_f = IN_RUNNING;
+                rtDW.autoXCounter_h = AUTOX_WORK_RATE_ms;
                 tmp_0 = rtDW.RateTransition36[6];
                 if (rtDW.RateTransition36[6] > 255) {
                   tmp_0 = 255U;
@@ -6583,12 +6567,12 @@ static void ACCELERATION_PID(void)
                   if (rtDW.is_RELEASE != IN_Control) {
                     rtDW.is_RELEASE = IN_Control;
 
-                    /* Outputs for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.pidControl' */
+                    /* Outputs for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.pidControl' */
                     MODESACCELERATION_PIDLAUNCH(rtM, (real_T)
                       rtDW.RateTransition36[4], (real_T)rtDW.RateTransition36[3],
                       0.0, &Sum_od, &rtDW.MODESACCELERATION_PIDLAUNCH0ACT);
 
-                    /* End of Outputs for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.pidControl' */
+                    /* End of Outputs for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.pidControl' */
                     if (Sum_od < 256.0) {
                       if (Sum_od >= 0.0) {
                         rtDW.clutchCurrVal = (uint8_T)Sum_od;
@@ -6608,7 +6592,7 @@ static void ACCELERATION_PID(void)
            case IN_RUNNING:
             if ((rtDW.RateTransition36[6] >= 3) && (rtDW.RateTransition36[6] !=
                  8)) {
-              rtDW.is_ACTIVE_g = 0;
+              rtDW.is_ACTIVE_f = 0;
               if (rtDW.is_LAUNCH0 == IN_ACTIVE) {
                 rtDW.is_LAUNCH0 = 0;
               }
@@ -6616,10 +6600,10 @@ static void ACCELERATION_PID(void)
               if (rtDW.is_LAUNCH0 != IN_STOPPING) {
                 rtDW.is_LAUNCH0 = IN_STOPPING;
 
-                /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+                /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
                 UnsetRPMLimiter();
 
-                /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
+                /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
                 Clutch_setValue(0);
               }
             } else {
@@ -6628,22 +6612,22 @@ static void ACCELERATION_PID(void)
             break;
 
            case IN_START:
-            if (rtDW.autoXCounter_k <= 1) {
-              rtDW.is_ACTIVE_g = 0;
-              if (rtDW.is_ACTIVE_g != IN_READY) {
-                rtDW.is_ACTIVE_g = IN_READY;
+            if (rtDW.autoXCounter_h <= 1) {
+              rtDW.is_ACTIVE_f = 0;
+              if (rtDW.is_ACTIVE_f != IN_READY) {
+                rtDW.is_ACTIVE_f = IN_READY;
                 rtDW.stateFb = (uint16_T)AUTOX_READY;
-                rtDW.autoXCounter_k = AUTOX_WORK_RATE_ms;
+                rtDW.autoXCounter_h = AUTOX_WORK_RATE_ms;
                 Clutch_setValue(55);
                 checkShift();
               }
             } else {
-              tmp = rtDW.autoXCounter_k - 1;
+              tmp = rtDW.autoXCounter_h - 1;
               if (tmp < 0) {
                 tmp = 0;
               }
 
-              rtDW.autoXCounter_k = (uint16_T)tmp;
+              rtDW.autoXCounter_h = (uint16_T)tmp;
             }
             break;
           }
@@ -6712,14 +6696,14 @@ static void AUTOCROSS(void)
   uint8_T tmp_1;
   if ((rtDW.RateTransition8[0] != rtDW.lastModeCom[0]) && (rtDW.RateTransition8
        [1] != rtDW.lastModeCom[1])) {
-    /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+    /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
     UnsetRPMLimiter();
 
-    /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
+    /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
     rtDW.stateFb = (uint16_T)ACC_OFF;
     Clutch_setValue(0);
     if (rtDW.RateTransition8[1] == ENDURANCE_MODE) {
-      rtDW.is_ACTIVE_m = 0;
+      rtDW.is_ACTIVE_d = 0;
       rtDW.is_LAUNCH = 0;
       rtDW.is_AUTOCROSS = 0;
       rtDW.is_MODES = 0;
@@ -6730,7 +6714,7 @@ static void AUTOCROSS(void)
 
       rtDW.is_MANUAL_MODES = IN_ENDURANCE;
     } else if (rtDW.RateTransition8[1] == SKIDPAD_MODE) {
-      rtDW.is_ACTIVE_m = 0;
+      rtDW.is_ACTIVE_d = 0;
       rtDW.is_LAUNCH = 0;
       rtDW.is_AUTOCROSS = 0;
       rtDW.is_MODES = 0;
@@ -6742,13 +6726,13 @@ static void AUTOCROSS(void)
       if (rtDW.is_MANUAL_MODES != IN_SKIDPAD) {
         rtDW.is_MANUAL_MODES = IN_SKIDPAD;
 
-        /* Outputs for Function Call SubSystem: '<S44>/SetRPMLimiter' */
+        /* Outputs for Function Call SubSystem: '<S45>/SetRPMLimiter' */
         SetRPMLimiter();
 
-        /* End of Outputs for SubSystem: '<S44>/SetRPMLimiter' */
+        /* End of Outputs for SubSystem: '<S45>/SetRPMLimiter' */
       }
     } else if (rtDW.RateTransition8[1] == ACCELERATION_MODE) {
-      rtDW.is_ACTIVE_m = 0;
+      rtDW.is_ACTIVE_d = 0;
       rtDW.is_LAUNCH = 0;
       rtDW.is_AUTOCROSS = 0;
       rtDW.is_MODES = 0;
@@ -6766,7 +6750,7 @@ static void AUTOCROSS(void)
         checkClutch();
       }
     } else if (rtDW.RateTransition8[1] == AUTOX_MODE) {
-      rtDW.is_ACTIVE_m = 0;
+      rtDW.is_ACTIVE_d = 0;
       rtDW.is_LAUNCH = 0;
       rtDW.is_AUTOCROSS = 0;
       rtDW.is_MODES = 0;
@@ -6784,7 +6768,7 @@ static void AUTOCROSS(void)
         checkClutch();
       }
     } else {
-      rtDW.is_ACTIVE_m = 0;
+      rtDW.is_ACTIVE_d = 0;
       rtDW.is_LAUNCH = 0;
       rtDW.is_AUTOCROSS = 0;
       rtDW.is_MODES = 0;
@@ -6810,15 +6794,15 @@ static void AUTOCROSS(void)
         rtDW.autoX_clutchStep = 0.0;
         rtDW.autoX_dtRelease = 0;
         rtDW.is_LAUNCH = IN_ACTIVE;
-        if (rtDW.is_ACTIVE_m != IN_START) {
-          rtDW.is_ACTIVE_m = IN_START;
+        if (rtDW.is_ACTIVE_d != IN_START) {
+          rtDW.is_ACTIVE_d = IN_START;
           rtDW.stateFb = (uint16_T)AUTOX_READY;
           rtDW.autoXCounter = AUTOX_WORK_RATE_ms;
 
-          /* Outputs for Function Call SubSystem: '<S44>/SetRPMLimiter' */
+          /* Outputs for Function Call SubSystem: '<S45>/SetRPMLimiter' */
           SetRPMLimiter();
 
-          /* End of Outputs for SubSystem: '<S44>/SetRPMLimiter' */
+          /* End of Outputs for SubSystem: '<S45>/SetRPMLimiter' */
           Clutch_setValue(100);
         }
       } else {
@@ -6834,19 +6818,19 @@ static void AUTOCROSS(void)
         if ((rtDW.RateTransition29[0] != rtDW.lastAutoXCom) &&
             (rtDW.RateTransition29[1] == AUTOX_DEFAULT)) {
           rtDW.lastAutoXCom = rtDW.RateTransition29[0];
-          rtDW.is_ACTIVE_m = 0;
+          rtDW.is_ACTIVE_d = 0;
           rtDW.is_LAUNCH = 0;
           if (rtDW.is_LAUNCH != IN_STOPPING) {
             rtDW.is_LAUNCH = IN_STOPPING;
 
-            /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+            /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
             UnsetRPMLimiter();
 
-            /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
+            /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
             Clutch_setValue(0);
           }
         } else {
-          switch (rtDW.is_ACTIVE_m) {
+          switch (rtDW.is_ACTIVE_d) {
            case IN_READY:
             if (rtDW.autoXCounter <= 1) {
               if ((rtDW.RateTransition29[0] != rtDW.lastAutoXCom) &&
@@ -6854,9 +6838,9 @@ static void AUTOCROSS(void)
                   (rtDW.RateTransition36[2] >= getAutoXParam
                    (AUTOX_TPS_START_LIMIT))) {
                 rtDW.lastAutoXCom = rtDW.RateTransition29[0];
-                rtDW.is_ACTIVE_m = 0;
-                if (rtDW.is_ACTIVE_m != IN_START_RELEASE) {
-                  rtDW.is_ACTIVE_m = IN_START_RELEASE;
+                rtDW.is_ACTIVE_d = 0;
+                if (rtDW.is_ACTIVE_d != IN_START_RELEASE) {
+                  rtDW.is_ACTIVE_d = IN_START_RELEASE;
                   rtDW.stateFb = (uint16_T)AUTOX_GO;
                   rtDW.autoX_clutchValue = getAutoXParam(AUTOX_RAMP_START);
                   if (rtDW.autoX_clutchValue < 256.0) {
@@ -6896,9 +6880,9 @@ static void AUTOCROSS(void)
                   rtDW.autoXCounter = AUTOX_WORK_RATE_ms;
                 }
               } else {
-                rtDW.is_ACTIVE_m = 0;
-                if (rtDW.is_ACTIVE_m != IN_READY) {
-                  rtDW.is_ACTIVE_m = IN_READY;
+                rtDW.is_ACTIVE_d = 0;
+                if (rtDW.is_ACTIVE_d != IN_READY) {
+                  rtDW.is_ACTIVE_d = IN_READY;
                   rtDW.stateFb = (uint16_T)AUTOX_READY;
                   rtDW.autoXCounter = AUTOX_WORK_RATE_ms;
                   Clutch_setValue(100);
@@ -6922,13 +6906,13 @@ static void AUTOCROSS(void)
                    getAutoXParam(AUTOX_RAMP_END))) {
                 Clutch_setValue(0);
 
-                /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+                /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
                 UnsetRPMLimiter();
 
-                /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
-                rtDW.is_ACTIVE_m = 0;
-                if (rtDW.is_ACTIVE_m != IN_RUNNING) {
-                  rtDW.is_ACTIVE_m = IN_RUNNING;
+                /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
+                rtDW.is_ACTIVE_d = 0;
+                if (rtDW.is_ACTIVE_d != IN_RUNNING) {
+                  rtDW.is_ACTIVE_d = IN_RUNNING;
                   rtDW.autoXCounter = AUTOX_WORK_RATE_ms;
                   tmp_0 = rtDW.RateTransition36[6];
                   if (rtDW.RateTransition36[6] > 255) {
@@ -6939,9 +6923,9 @@ static void AUTOCROSS(void)
                   autoXCheckShift();
                 }
               } else {
-                rtDW.is_ACTIVE_m = 0;
-                if (rtDW.is_ACTIVE_m != IN_RELEASING) {
-                  rtDW.is_ACTIVE_m = IN_RELEASING;
+                rtDW.is_ACTIVE_d = 0;
+                if (rtDW.is_ACTIVE_d != IN_RELEASING) {
+                  rtDW.is_ACTIVE_d = IN_RELEASING;
                   rtDW.autoX_clutchValue -= rtDW.autoX_clutchStep;
                   if (rtDW.autoX_clutchValue < 256.0) {
                     if (rtDW.autoX_clutchValue >= 0.0) {
@@ -6976,15 +6960,15 @@ static void AUTOCROSS(void)
            case IN_RUNNING:
             if ((rtDW.RateTransition36[6] >= rtDW.UnitDelay2[(uint8_T)
                  AUTOX_END_GEAR]) && (rtDW.RateTransition36[6] != 8)) {
-              rtDW.is_ACTIVE_m = 0;
+              rtDW.is_ACTIVE_d = 0;
               rtDW.is_LAUNCH = 0;
               if (rtDW.is_LAUNCH != IN_STOPPING) {
                 rtDW.is_LAUNCH = IN_STOPPING;
 
-                /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+                /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
                 UnsetRPMLimiter();
 
-                /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
+                /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
                 Clutch_setValue(0);
               }
             } else {
@@ -6994,9 +6978,9 @@ static void AUTOCROSS(void)
 
            case IN_START:
             if (rtDW.autoXCounter <= 1) {
-              rtDW.is_ACTIVE_m = 0;
-              if (rtDW.is_ACTIVE_m != IN_READY) {
-                rtDW.is_ACTIVE_m = IN_READY;
+              rtDW.is_ACTIVE_d = 0;
+              if (rtDW.is_ACTIVE_d != IN_READY) {
+                rtDW.is_ACTIVE_d = IN_READY;
                 rtDW.stateFb = (uint16_T)AUTOX_READY;
                 rtDW.autoXCounter = AUTOX_WORK_RATE_ms;
                 Clutch_setValue(100);
@@ -7014,9 +6998,9 @@ static void AUTOCROSS(void)
 
            case IN_START_RELEASE:
             if (rtDW.autoXCounter <= 1) {
-              rtDW.is_ACTIVE_m = 0;
-              if (rtDW.is_ACTIVE_m != IN_RELEASING) {
-                rtDW.is_ACTIVE_m = IN_RELEASING;
+              rtDW.is_ACTIVE_d = 0;
+              if (rtDW.is_ACTIVE_d != IN_RELEASING) {
+                rtDW.is_ACTIVE_d = IN_RELEASING;
                 rtDW.autoX_clutchValue -= rtDW.autoX_clutchStep;
                 if (rtDW.autoX_clutchValue < 256.0) {
                   if (rtDW.autoX_clutchValue >= 0.0) {
@@ -7083,14 +7067,14 @@ static void MODES(void)
     AUTOCROSS();
     break;
 
-   case IN_INIT_o:
+   case IN_INIT_k:
     if (rtDW.buzzerCounter >= 1000) {
-      /* Outputs for Function Call SubSystem: '<S42>/BuzzerOff' */
+      /* Outputs for Function Call SubSystem: '<S43>/BuzzerOff' */
 
-      /* S-Function (stopBuzzer): '<S54>/BuzzerOff' */
+      /* S-Function (stopBuzzer): '<S55>/BuzzerOff' */
       stopBuzzer_Outputs_wrapper();
 
-      /* End of Outputs for SubSystem: '<S42>/BuzzerOff' */
+      /* End of Outputs for SubSystem: '<S43>/BuzzerOff' */
       if (rtDW.RateTransition8[1] == ENDURANCE_MODE) {
         rtDW.is_MODES = 0;
         if (rtDW.is_MODES != IN_MANUAL_MODES) {
@@ -7115,10 +7099,10 @@ static void MODES(void)
         if (rtDW.is_MANUAL_MODES != IN_SKIDPAD) {
           rtDW.is_MANUAL_MODES = IN_SKIDPAD;
 
-          /* Outputs for Function Call SubSystem: '<S44>/SetRPMLimiter' */
+          /* Outputs for Function Call SubSystem: '<S45>/SetRPMLimiter' */
           SetRPMLimiter();
 
-          /* End of Outputs for SubSystem: '<S44>/SetRPMLimiter' */
+          /* End of Outputs for SubSystem: '<S45>/SetRPMLimiter' */
         }
       } else if (rtDW.RateTransition8[1] == ACCELERATION_MODE) {
         rtDW.is_MODES = 0;
@@ -7178,10 +7162,10 @@ static void MODES(void)
       if (rtDW.RateTransition8[1] == ENDURANCE_MODE) {
         if (rtDW.is_MANUAL_MODES == IN_SKIDPAD) {
           if (rtDW.is_MANUAL_MODES == IN_SKIDPAD) {
-            /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+            /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
             UnsetRPMLimiter();
 
-            /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
+            /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
             rtDW.is_MANUAL_MODES = 0;
           }
         } else {
@@ -7201,10 +7185,10 @@ static void MODES(void)
       } else if (rtDW.RateTransition8[1] == SKIDPAD_MODE) {
         if (rtDW.is_MANUAL_MODES == IN_SKIDPAD) {
           if (rtDW.is_MANUAL_MODES == IN_SKIDPAD) {
-            /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+            /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
             UnsetRPMLimiter();
 
-            /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
+            /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
             rtDW.is_MANUAL_MODES = 0;
           }
         } else {
@@ -7223,18 +7207,18 @@ static void MODES(void)
         if (rtDW.is_MANUAL_MODES != IN_SKIDPAD) {
           rtDW.is_MANUAL_MODES = IN_SKIDPAD;
 
-          /* Outputs for Function Call SubSystem: '<S44>/SetRPMLimiter' */
+          /* Outputs for Function Call SubSystem: '<S45>/SetRPMLimiter' */
           SetRPMLimiter();
 
-          /* End of Outputs for SubSystem: '<S44>/SetRPMLimiter' */
+          /* End of Outputs for SubSystem: '<S45>/SetRPMLimiter' */
         }
       } else if (rtDW.RateTransition8[1] == ACCELERATION_MODE) {
         if (rtDW.is_MANUAL_MODES == IN_SKIDPAD) {
           if (rtDW.is_MANUAL_MODES == IN_SKIDPAD) {
-            /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+            /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
             UnsetRPMLimiter();
 
-            /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
+            /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
             rtDW.is_MANUAL_MODES = 0;
           }
         } else {
@@ -7258,10 +7242,10 @@ static void MODES(void)
       } else if (rtDW.RateTransition8[1] == AUTOX_MODE) {
         if (rtDW.is_MANUAL_MODES == IN_SKIDPAD) {
           if (rtDW.is_MANUAL_MODES == IN_SKIDPAD) {
-            /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+            /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
             UnsetRPMLimiter();
 
-            /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
+            /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
             rtDW.is_MANUAL_MODES = 0;
           }
         } else {
@@ -7285,10 +7269,10 @@ static void MODES(void)
       } else {
         if (rtDW.is_MANUAL_MODES == IN_SKIDPAD) {
           if (rtDW.is_MANUAL_MODES == IN_SKIDPAD) {
-            /* Outputs for Function Call SubSystem: '<S44>/UnsetRPMLimiter' */
+            /* Outputs for Function Call SubSystem: '<S45>/UnsetRPMLimiter' */
             UnsetRPMLimiter();
 
-            /* End of Outputs for SubSystem: '<S44>/UnsetRPMLimiter' */
+            /* End of Outputs for SubSystem: '<S45>/UnsetRPMLimiter' */
             rtDW.is_MANUAL_MODES = 0;
           }
         } else {
@@ -7498,7 +7482,7 @@ static void testIndex(uint8_T *page, uint8_T *cell, uint8_T *dataSize)
   }
 }
 
-/* Function for Chart: '<S41>/antiStallLogic' */
+/* Function for Chart: '<S42>/antiStallLogic' */
 static int32_T getAntiStallParam(anti_stall_params b_index, const int32_T
   UnitDelay3[8])
 {
@@ -7640,6 +7624,7 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
   int32_T i;
   uint8_T tmp[16];
   int32_T i_0;
+  boolean_T guard1 = false;
 
   /* UnitDelay: '<Root>/Unit Delay' */
   memcpy(&rtDW.UnitDelay[0], &rtDW.UnitDelay_DSTATE_b[0], sizeof(int32_T) << 4U);
@@ -7732,7 +7717,7 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
   rtDW.RateTransition1 = rtDW.RateTransition1_Buffer0;
 
   /* Outputs for Atomic SubSystem: '<Root>/GCU_timer' */
-  /* DiscreteStateSpace: '<S46>/Internal' */
+  /* DiscreteStateSpace: '<S47>/Internal' */
   {
     rtb_Internal = 0.24359453030282938*rtDW.Internal_DSTATE;
   }
@@ -7755,15 +7740,15 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
     rtDW.lastShiftCom = 0U;
     rtDW.lastAutoXCom = 0U;
     rtDW.buzzerCounter = 0U;
-    if (rtDW.is_MODES != IN_INIT_o) {
-      rtDW.is_MODES = IN_INIT_o;
+    if (rtDW.is_MODES != IN_INIT_k) {
+      rtDW.is_MODES = IN_INIT_k;
 
-      /* Outputs for Function Call SubSystem: '<S42>/BuzzerOn' */
+      /* Outputs for Function Call SubSystem: '<S43>/BuzzerOn' */
 
-      /* S-Function (activateBuzzer): '<S55>/BuzzerOn' */
+      /* S-Function (activateBuzzer): '<S56>/BuzzerOn' */
       activateBuzzer_Outputs_wrapper();
 
-      /* End of Outputs for SubSystem: '<S42>/BuzzerOn' */
+      /* End of Outputs for SubSystem: '<S43>/BuzzerOn' */
     }
 
     rtDW.is_active_NEUTRAL_STATE = 1U;
@@ -7773,15 +7758,15 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
       rtDW.ticksCounter = 0;
     }
 
-    if (rtDW.is_GEARSHIFT != IN_INIT_o) {
-      rtDW.is_GEARSHIFT = IN_INIT_o;
+    if (rtDW.is_GEARSHIFT != IN_INIT_k) {
+      rtDW.is_GEARSHIFT = IN_INIT_k;
       rtDW.ticksCounter = 0;
     }
 
     rtDW.is_active_START_ENGINE = 1U;
-    rtDW.lastCom_m = 0U;
+    rtDW.lastCom = 0U;
     rtDW.startCounter = 0U;
-    rtDW.is_START_ENGINE = IN_WAIT_n;
+    rtDW.is_START_ENGINE = IN_WAIT_i;
     if (rtDW.is_active_SCAN_ADC != 1U) {
       rtDW.is_active_SCAN_ADC = 1U;
     }
@@ -7789,10 +7774,10 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
     if (rtDW.is_SCAN_ADC != IN_SCAN) {
       rtDW.is_SCAN_ADC = IN_SCAN;
 
-      /* Outputs for Function Call SubSystem: '<S47>/SCAN_ADC.ScanADC' */
+      /* Outputs for Function Call SubSystem: '<S48>/SCAN_ADC.ScanADC' */
       SCAN_ADCScanADC();
 
-      /* End of Outputs for SubSystem: '<S47>/SCAN_ADC.ScanADC' */
+      /* End of Outputs for SubSystem: '<S48>/SCAN_ADC.ScanADC' */
     }
 
     rtDW.is_active_EEPROM_TRIGGER = 1U;
@@ -7808,14 +7793,13 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
       rtDW.antiStallEnable = 0U;
     }
 
-    if (rtDW.is_active_CAN_ERROR_RESTART != 1U) {
-      rtDW.is_active_CAN_ERROR_RESTART = 1U;
-      rtDW.lastCom = 0U;
-      rtDW.delayCounter = 0U;
-      rtDW.retryCount = 0U;
+    rtDW.is_active_RETRY_LOGIC = 1U;
+    rtDW.delayCount = 0.0;
+    rtDW.retryCount = 0.0;
+    if (rtDW.is_RETRY_LOGIC != IN_NO_RETRY) {
+      rtDW.is_RETRY_LOGIC = IN_NO_RETRY;
+      rtDW.retryCount = 0.0;
     }
-
-    rtDW.is_CAN_ERROR_RESTART = IN_NO_ERROR;
   } else {
     if (rtDW.is_active_MODES != 0U) {
       MODES();
@@ -7831,29 +7815,29 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
 
     if (rtDW.is_active_START_ENGINE != 0U) {
       switch (rtDW.is_START_ENGINE) {
-       case IN_START_j:
+       case IN_START_a:
         if (rtDW.startCounter <= 0) {
           rtDW.is_START_ENGINE = 0;
           if (rtDW.is_START_ENGINE != IN_STOP) {
             rtDW.is_START_ENGINE = IN_STOP;
 
-            /* Outputs for Function Call SubSystem: '<S45>/EngineControl_Stop' */
+            /* Outputs for Function Call SubSystem: '<S46>/EngineControl_Stop' */
 
-            /* S-Function (EngineControl_stop): '<S63>/EngineControl Stop' */
+            /* S-Function (EngineControl_stop): '<S64>/EngineControl Stop' */
             EngineControl_stop_Outputs_wrapper(&rtDW.EngineControlStop);
 
-            /* End of Outputs for SubSystem: '<S45>/EngineControl_Stop' */
+            /* End of Outputs for SubSystem: '<S46>/EngineControl_Stop' */
           }
-        } else if (rtDW.RateTransition3 != rtDW.lastCom_m) {
+        } else if (rtDW.RateTransition3 != rtDW.lastCom) {
           rtDW.is_START_ENGINE = 0;
-          if (rtDW.is_START_ENGINE != IN_START_j) {
-            rtDW.is_START_ENGINE = IN_START_j;
+          if (rtDW.is_START_ENGINE != IN_START_a) {
+            rtDW.is_START_ENGINE = IN_START_a;
 
-            /* Outputs for Function Call SubSystem: '<S45>/EngineControl_Start' */
+            /* Outputs for Function Call SubSystem: '<S46>/EngineControl_Start' */
             EngineControl_Start(&Merge_b, &rtDW.EngineControl_Start_h);
 
-            /* End of Outputs for SubSystem: '<S45>/EngineControl_Start' */
-            rtDW.lastCom_m = rtDW.RateTransition3;
+            /* End of Outputs for SubSystem: '<S46>/EngineControl_Start' */
+            rtDW.lastCom = rtDW.RateTransition3;
             rtDW.startCounter = 100U;
           }
         } else {
@@ -7867,32 +7851,32 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
         break;
 
        case IN_STOP:
-        if (rtDW.RateTransition3 != rtDW.lastCom_m) {
+        if (rtDW.RateTransition3 != rtDW.lastCom) {
           rtDW.is_START_ENGINE = 0;
-          if (rtDW.is_START_ENGINE != IN_START_j) {
-            rtDW.is_START_ENGINE = IN_START_j;
+          if (rtDW.is_START_ENGINE != IN_START_a) {
+            rtDW.is_START_ENGINE = IN_START_a;
 
-            /* Outputs for Function Call SubSystem: '<S45>/EngineControl_Start' */
+            /* Outputs for Function Call SubSystem: '<S46>/EngineControl_Start' */
             EngineControl_Start(&Merge_b, &rtDW.EngineControl_Start_h);
 
-            /* End of Outputs for SubSystem: '<S45>/EngineControl_Start' */
-            rtDW.lastCom_m = rtDW.RateTransition3;
+            /* End of Outputs for SubSystem: '<S46>/EngineControl_Start' */
+            rtDW.lastCom = rtDW.RateTransition3;
             rtDW.startCounter = 100U;
           }
         }
         break;
 
-       case IN_WAIT_n:
-        if (rtDW.RateTransition3 != rtDW.lastCom_m) {
+       case IN_WAIT_i:
+        if (rtDW.RateTransition3 != rtDW.lastCom) {
           rtDW.is_START_ENGINE = 0;
-          if (rtDW.is_START_ENGINE != IN_START_j) {
-            rtDW.is_START_ENGINE = IN_START_j;
+          if (rtDW.is_START_ENGINE != IN_START_a) {
+            rtDW.is_START_ENGINE = IN_START_a;
 
-            /* Outputs for Function Call SubSystem: '<S45>/EngineControl_Start' */
+            /* Outputs for Function Call SubSystem: '<S46>/EngineControl_Start' */
             EngineControl_Start(&Merge_b, &rtDW.EngineControl_Start_h);
 
-            /* End of Outputs for SubSystem: '<S45>/EngineControl_Start' */
-            rtDW.lastCom_m = rtDW.RateTransition3;
+            /* End of Outputs for SubSystem: '<S46>/EngineControl_Start' */
+            rtDW.lastCom = rtDW.RateTransition3;
             rtDW.startCounter = 100U;
           }
         }
@@ -7901,10 +7885,10 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
     }
 
     if (!((rtDW.is_active_SCAN_ADC == 0U) || (rtDW.is_SCAN_ADC != IN_SCAN))) {
-      /* Outputs for Function Call SubSystem: '<S47>/SCAN_ADC.ScanADC' */
+      /* Outputs for Function Call SubSystem: '<S48>/SCAN_ADC.ScanADC' */
       SCAN_ADCScanADC();
 
-      /* End of Outputs for SubSystem: '<S47>/SCAN_ADC.ScanADC' */
+      /* End of Outputs for SubSystem: '<S48>/SCAN_ADC.ScanADC' */
     }
 
     if (rtDW.is_active_EEPROM_TRIGGER != 0U) {
@@ -8441,81 +8425,82 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
       }
     }
 
-    if (rtDW.is_active_CAN_ERROR_RESTART != 0U) {
-      switch (rtDW.is_CAN_ERROR_RESTART) {
-       case IN_DELAY:
-        if (rtDW.delayCounter >= 10) {
-          rtDW.is_CAN_ERROR_RESTART = 0;
-          if (rtDW.is_CAN_ERROR_RESTART != IN_RESTART) {
-            rtDW.is_CAN_ERROR_RESTART = IN_RESTART;
-            rtDW.delayCounter = 1U;
-
-            /* Outputs for Function Call SubSystem: '<S47>/CAN_ERROR_RESTART.CAN_restart' */
-
-            /* S-Function (CAN_Restart): '<S69>/CAN_Restart ' */
-            CAN_Restart_Outputs_wrapper();
-
-            /* End of Outputs for SubSystem: '<S47>/CAN_ERROR_RESTART.CAN_restart' */
+    if (rtDW.is_active_RETRY_LOGIC != 0U) {
+      guard1 = false;
+      switch (rtDW.is_RETRY_LOGIC) {
+       case IN_NO_RETRY:
+        if ((rtDW.lastTryShift[1] <= 5) && (rtDW.lastTryShift[1] !=
+             rtDW.RateTransition36[6])) {
+          rtDW.is_RETRY_LOGIC = 0;
+          if (rtDW.is_RETRY_LOGIC != IN_WAITING_RETRY) {
+            rtDW.is_RETRY_LOGIC = IN_WAITING_RETRY;
+            rtDW.delayCount = 0.0;
           }
-        } else {
-          i = rtDW.delayCounter + 1;
-          if (i > 65535) {
-            i = 65535;
-          }
-
-          rtDW.delayCounter = (uint16_T)i;
         }
         break;
 
-       case IN_NO_ERROR:
-        if (rtDW.RateTransition42 != rtDW.lastCom) {
-          rtDW.is_CAN_ERROR_RESTART = 0;
-          if (rtDW.is_CAN_ERROR_RESTART != IN_RESET) {
-            rtDW.is_CAN_ERROR_RESTART = IN_RESET;
-            i = rtDW.retryCount + 1;
-            if (i > 65535) {
-              i = 65535;
+       case IN_RETRY_DOWN:
+        rtDW.is_RETRY_LOGIC = 0;
+        if (rtDW.is_RETRY_LOGIC != IN_WAITING_RETRY) {
+          rtDW.is_RETRY_LOGIC = IN_WAITING_RETRY;
+          rtDW.delayCount = 0.0;
+        }
+        break;
+
+       case IN_RETRY_UP:
+        rtDW.is_RETRY_LOGIC = 0;
+        if (rtDW.is_RETRY_LOGIC != IN_WAITING_RETRY) {
+          rtDW.is_RETRY_LOGIC = IN_WAITING_RETRY;
+          rtDW.delayCount = 0.0;
+        }
+        break;
+
+       case IN_WAITING_RETRY:
+        if ((rtDW.RateTransition36[6] == rtDW.lastTryShift[1]) ||
+            (rtDW.retryCount == 3.0)) {
+          guard1 = true;
+        } else if (rtDW.delayCount == 200.0) {
+          if (rtDW.lastTryShift[0] == GEAR_COMMAND_UP) {
+            rtDW.is_RETRY_LOGIC = 0;
+            if (rtDW.is_RETRY_LOGIC != IN_RETRY_UP) {
+              rtDW.is_RETRY_LOGIC = IN_RETRY_UP;
+              i = rtDW.sfEvent;
+              rtDW.sfEvent = event_GearshiftUp;
+              if (rtDW.is_active_GEARSHIFT != 0U) {
+                GEARSHIFT();
+              }
+
+              rtDW.sfEvent = i;
+              rtDW.retryCount++;
             }
+          } else if (rtDW.lastTryShift[0] == GEAR_COMMAND_DOWN) {
+            rtDW.is_RETRY_LOGIC = 0;
+            if (rtDW.is_RETRY_LOGIC != IN_RETRY_DOWN) {
+              rtDW.is_RETRY_LOGIC = IN_RETRY_DOWN;
+              i = rtDW.sfEvent;
+              rtDW.sfEvent = event_GearshiftDown;
+              if (rtDW.is_active_GEARSHIFT != 0U) {
+                GEARSHIFT();
+              }
 
-            rtDW.retryCount = (uint16_T)i;
-
-            /* Outputs for Function Call SubSystem: '<S47>/CAN_ERROR_RESTART.CAN_reset' */
-
-            /* S-Function (CAN_Reset): '<S68>/CAN_Reset' */
-            CAN_Reset_Outputs_wrapper();
-
-            /* End of Outputs for SubSystem: '<S47>/CAN_ERROR_RESTART.CAN_reset' */
+              rtDW.sfEvent = i;
+              rtDW.retryCount++;
+            }
+          } else {
+            guard1 = true;
           }
-        }
-        break;
-
-       case IN_RESET:
-        rtDW.is_CAN_ERROR_RESTART = 0;
-        if (rtDW.is_CAN_ERROR_RESTART != IN_DELAY) {
-          rtDW.is_CAN_ERROR_RESTART = IN_DELAY;
-          rtDW.delayCounter = 1U;
-        }
-        break;
-
-       case IN_RESTART:
-        /* Outputs for Function Call SubSystem: '<S47>/CAN_ERROR_RESTART.CAN_checkStatus' */
-
-        /* S-Function (CAN_checkStatus): '<S67>/CAN_checkStatus' */
-        CAN_checkStatus_Outputs_wrapper(&rtDW.CAN_checkStatus);
-
-        /* End of Outputs for SubSystem: '<S47>/CAN_ERROR_RESTART.CAN_checkStatus' */
-        if (rtDW.CAN_checkStatus && (rtDW.delayCounter >= 1000)) {
-          rtDW.lastCom = rtDW.RateTransition42;
-          rtDW.is_CAN_ERROR_RESTART = IN_NO_ERROR;
         } else {
-          i = rtDW.delayCounter + 1;
-          if (i > 65535) {
-            i = 65535;
-          }
-
-          rtDW.delayCounter = (uint16_T)i;
+          rtDW.delayCount++;
         }
         break;
+      }
+
+      if (guard1) {
+        rtDW.is_RETRY_LOGIC = 0;
+        if (rtDW.is_RETRY_LOGIC != IN_NO_RETRY) {
+          rtDW.is_RETRY_LOGIC = IN_NO_RETRY;
+          rtDW.retryCount = 0.0;
+        }
       }
     }
   }
@@ -8523,11 +8508,11 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
   /* End of Chart: '<S5>/GCULogic' */
 
   /* Outputs for Atomic SubSystem: '<S5>/Anti_Stall_System' */
-  /* DataTypeConversion: '<S41>/Cast To Double' */
+  /* DataTypeConversion: '<S42>/Cast To Double' */
   i = rtDW.RateTransition36[0];
 
-  /* Chart: '<S41>/timeCounter' incorporates:
-   *  UnitDelay: '<S41>/Unit Delay'
+  /* Chart: '<S42>/timeCounter' incorporates:
+   *  UnitDelay: '<S42>/Unit Delay'
    */
   rtDW.timeMs++;
   if (rtb_RateTransition33 != rtDW.last_rpmUpdate) {
@@ -8537,20 +8522,20 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
     rtDW.last_rpmValue = rtDW.UnitDelay_DSTATE_e;
   }
 
-  /* End of Chart: '<S41>/timeCounter' */
+  /* End of Chart: '<S42>/timeCounter' */
 
   /* Outport: '<Root>/antiStallState' incorporates:
-   *  Chart: '<S41>/antiStallLogic'
+   *  Chart: '<S42>/antiStallLogic'
    */
   rtY.antiStallState = 0.0;
 
-  /* Chart: '<S41>/antiStallLogic' incorporates:
-   *  Constant: '<S41>/Constant'
-   *  DataTypeConversion: '<S41>/Cast To Double'
-   *  DataTypeConversion: '<S41>/Cast To Double1'
-   *  Product: '<S41>/Divide'
-   *  Product: '<S41>/Multiply'
-   *  Sum: '<S41>/Minus'
+  /* Chart: '<S42>/antiStallLogic' incorporates:
+   *  Constant: '<S42>/Constant'
+   *  DataTypeConversion: '<S42>/Cast To Double'
+   *  DataTypeConversion: '<S42>/Cast To Double1'
+   *  Product: '<S42>/Divide'
+   *  Product: '<S42>/Multiply'
+   *  Sum: '<S42>/Minus'
    */
   if (rtDW.antiStallEnable == 1) {
     /* Outport: '<Root>/antiStallState' */
@@ -8577,12 +8562,12 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
             /* send(antiStallActivate); */
             rtDW.Inport = 0U;
 
-            /* Outputs for Function Call SubSystem: '<S51>/AntiStallActivate' */
+            /* Outputs for Function Call SubSystem: '<S52>/AntiStallActivate' */
 
-            /* S-Function (ClutchMotor_setPosition): '<S53>/ClutchMotor SetPosition' */
+            /* S-Function (ClutchMotor_setPosition): '<S54>/ClutchMotor SetPosition' */
             ClutchMotor_setPosition_Outputs_wrapper(&rtDW.Inport);
 
-            /* End of Outputs for SubSystem: '<S51>/AntiStallActivate' */
+            /* End of Outputs for SubSystem: '<S52>/AntiStallActivate' */
             rtDW.antiStallFb = (uint16_T)ANTISTALL_ON;
 
             /* Outport: '<Root>/antiStallState' */
@@ -8597,7 +8582,7 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
     }
   }
 
-  /* Update for UnitDelay: '<S41>/Unit Delay' */
+  /* Update for UnitDelay: '<S42>/Unit Delay' */
   rtDW.UnitDelay_DSTATE_e = rtDW.RateTransition36[0];
 
   /* End of Outputs for SubSystem: '<S5>/Anti_Stall_System' */
@@ -8606,19 +8591,19 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
   rtb_CastToDouble = rtb_RateTransition5;
 
   /* If: '<S5>/If' incorporates:
-   *  Inport: '<S49>/In1'
    *  Inport: '<S50>/In1'
+   *  Inport: '<S51>/In1'
    */
   if (rtDW.antiStallClutchVal > 0) {
     /* Outputs for IfAction SubSystem: '<S5>/If Action Subsystem' incorporates:
-     *  ActionPort: '<S49>/Action Port'
+     *  ActionPort: '<S50>/Action Port'
      */
     rtDW.Merge_n = rtDW.antiStallClutchVal;
 
     /* End of Outputs for SubSystem: '<S5>/If Action Subsystem' */
   } else {
     /* Outputs for IfAction SubSystem: '<S5>/If Action Subsystem1' incorporates:
-     *  ActionPort: '<S50>/Action Port'
+     *  ActionPort: '<S51>/Action Port'
      */
     rtDW.Merge_n = rtDW.clutchCurrVal;
 
@@ -8627,7 +8612,7 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
 
   /* End of If: '<S5>/If' */
 
-  /* Update for DiscreteStateSpace: '<S46>/Internal' */
+  /* Update for DiscreteStateSpace: '<S47>/Internal' */
   {
     real_T xnew[1];
     xnew[0] = 0.93910136742429262*rtDW.Internal_DSTATE;
@@ -8802,22 +8787,22 @@ void GCU_Model_genCode_step2(void)     /* Sample time: [0.001s, 0.0002s] */
       }
 
       /* Outputs for Function Call SubSystem: '<S37>/setMap' */
-      /* Outputs for IfAction SubSystem: '<S38>/If Action Subsystem1' incorporates:
+      /* Outputs for IfAction SubSystem: '<S39>/If Action Subsystem1' incorporates:
+       *  ActionPort: '<S41>/Action Port'
+       */
+      /* Outputs for IfAction SubSystem: '<S39>/If Action Subsystem' incorporates:
        *  ActionPort: '<S40>/Action Port'
        */
-      /* Outputs for IfAction SubSystem: '<S38>/If Action Subsystem' incorporates:
-       *  ActionPort: '<S39>/Action Port'
-       */
-      /* If: '<S38>/If' incorporates:
-       *  Inport: '<S39>/In1'
+      /* If: '<S39>/If' incorporates:
        *  Inport: '<S40>/In1'
+       *  Inport: '<S41>/In1'
        */
       rtDW.Merge_a = (uint8_T)(tmp == 1);
 
-      /* End of Outputs for SubSystem: '<S38>/If Action Subsystem' */
-      /* End of Outputs for SubSystem: '<S38>/If Action Subsystem1' */
+      /* End of Outputs for SubSystem: '<S39>/If Action Subsystem' */
+      /* End of Outputs for SubSystem: '<S39>/If Action Subsystem1' */
 
-      /* S-Function (Efi_setMap): '<S38>/SetMap' */
+      /* S-Function (Efi_setMap): '<S39>/SetMap' */
       Efi_setMap_Outputs_wrapper(&rtDW.Merge_a);
 
       /* End of Outputs for SubSystem: '<S37>/setMap' */
@@ -8844,16 +8829,12 @@ void GCU_Model_genCode_step2(void)     /* Sample time: [0.001s, 0.0002s] */
   } else {
     if (!((rtDW.UnpackCanUart_o1 == DCU_AUTOGEARSHIFT_GCU_ID) ||
           (!(rtDW.UnpackCanUart_o1 == SW_CAN_ERROR_GCU_ID)))) {
-      if (rtDW.canErrorCommand >= 255) {
-        rtDW.canErrorCommand = 0U;
-      } else {
-        i = rtDW.canErrorCommand + 1;
-        if (i > 65535) {
-          i = 65535;
-        }
+      /* Outputs for Function Call SubSystem: '<S37>/CAN_TRANSMIT_ERROR.CAN_restart' */
 
-        rtDW.canErrorCommand = (uint16_T)i;
-      }
+      /* S-Function (CAN_Restart): '<S38>/CAN_Restart' */
+      CAN_Restart_Outputs_wrapper();
+
+      /* End of Outputs for SubSystem: '<S37>/CAN_TRANSMIT_ERROR.CAN_restart' */
     }
   }
 
@@ -9137,13 +9118,13 @@ void GCU_Model_genCode_step4(void)     /* Sample time: [0.001s, 0.0006s] */
 
   /* End of DataTypeConversion: '<S12>/Cast To Double' */
 
-  /* MATLAB Function: '<S124>/f_T_lt' incorporates:
-   *  Constant: '<S124>/Constant10'
-   *  Constant: '<S124>/Constant5'
-   *  Constant: '<S124>/Constant6'
-   *  Constant: '<S124>/Constant7'
-   *  Constant: '<S124>/Constant8'
-   *  Constant: '<S124>/Constant9'
+  /* MATLAB Function: '<S117>/f_T_lt' incorporates:
+   *  Constant: '<S117>/Constant10'
+   *  Constant: '<S117>/Constant5'
+   *  Constant: '<S117>/Constant6'
+   *  Constant: '<S117>/Constant7'
+   *  Constant: '<S117>/Constant8'
+   *  Constant: '<S117>/Constant9'
    *  UnitDelay: '<S12>/Unit Delay'
    */
   rtb_y = (((rtDW.UnitDelay_DSTATE - 25.0) * 0.00329 + 1.0) /
@@ -9151,13 +9132,13 @@ void GCU_Model_genCode_step4(void)     /* Sample time: [0.001s, 0.0006s] */
            ((rtDW.UnitDelay_DSTATE - 25.0) * 0.00343 + 1.0) /
            ((rtDW.UnitDelay_DSTATE - 25.0) * 0.00401 + 1.0)) / 2.0;
 
-  /* Product: '<S124>/Multiply1' incorporates:
-   *  Constant: '<S124>/Constant'
-   *  Constant: '<S124>/Constant1'
-   *  Constant: '<S124>/Constant3'
-   *  Product: '<S124>/Divide1'
-   *  Product: '<S124>/Multiply'
-   *  Sum: '<S124>/Sum'
+  /* Product: '<S117>/Multiply1' incorporates:
+   *  Constant: '<S117>/Constant'
+   *  Constant: '<S117>/Constant1'
+   *  Constant: '<S117>/Constant3'
+   *  Product: '<S117>/Divide1'
+   *  Product: '<S117>/Multiply'
+   *  Sum: '<S117>/Sum'
    */
   Multiply1 = (rtb_Multiply4[6] / 470.0 - 0.00019088148936170213) *
     (16527.306609952782 * rtb_y);
@@ -9167,13 +9148,13 @@ void GCU_Model_genCode_step4(void)     /* Sample time: [0.001s, 0.0006s] */
    */
   Gain1 = 10U * (uint32_T)Multiply1;
 
-  /* Product: '<S124>/Multiply2' incorporates:
-   *  Constant: '<S124>/Constant'
-   *  Constant: '<S124>/Constant2'
-   *  Constant: '<S124>/Constant4'
-   *  Product: '<S124>/Divide'
-   *  Product: '<S124>/Multiply3'
-   *  Sum: '<S124>/Sum1'
+  /* Product: '<S117>/Multiply2' incorporates:
+   *  Constant: '<S117>/Constant'
+   *  Constant: '<S117>/Constant2'
+   *  Constant: '<S117>/Constant4'
+   *  Product: '<S117>/Divide'
+   *  Product: '<S117>/Multiply3'
+   *  Sum: '<S117>/Sum1'
    */
   rtb_y = (0.0021276595744680851 * rtb_Multiply4[7] - 0.00013662617021276596) *
     (rtb_y * 16475.911160575281);
@@ -9537,54 +9518,54 @@ void GCU_Model_genCode_initialize(void)
                         &rtDW.Evaluate_Request_l);
 
   /* SystemInitialize for Chart: '<S5>/GCULogic' incorporates:
-   *  SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.pidControl'
+   *  SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.pidControl'
    */
   MODESACCELERATION_PIDL_Init(&rtDW.MODESACCELERATION_PIDLAUNCH0ACT);
 
   /* SystemInitialize for Chart: '<S5>/GCULogic' incorporates:
-   *  SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH1.ACTIVE.pidControl'
+   *  SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH1.ACTIVE.pidControl'
    */
   MODESACCELERATION_PI_d_Init(&rtDW.MODESACCELERATION_PIDLAUNCH1ACT);
 
   /* SystemInitialize for Chart: '<S5>/GCULogic' incorporates:
-   *  SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.pidControl'
+   *  SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.pidControl'
    */
   MODESACCELERATION_PI_e_Init(&rtDW.MODESACCELERATION_PIDLAUNCH2ACT);
 
   /* SystemInitialize for Chart: '<S5>/GCULogic' incorporates:
-   *  SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.pidControl'
+   *  SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.pidControl'
    */
   MODESACCELERATION_PI_g_Init(&rtDW.MODESACCELERATION_PIDLAUNCH3ACT);
 
   /* SystemInitialize for Chart: '<S5>/GCULogic' incorporates:
-   *  SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH4.ACTIVE.pidControl'
+   *  SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH4.ACTIVE.pidControl'
    */
   MODESACCELERATION_PI_f_Init(&rtDW.MODESACCELERATION_PIDLAUNCH4ACT);
 
   /* SystemInitialize for Chart: '<S5>/GCULogic' incorporates:
-   *  SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH5.ACTIVE.pidControl'
+   *  SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH5.ACTIVE.pidControl'
    */
   MODESACCELERATION_PI_c_Init(&rtDW.MODESACCELERATION_PIDLAUNCH5ACT);
 
   /* SystemInitialize for Chart: '<S5>/GCULogic' incorporates:
-   *  SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH6.ACTIVE.pidControl'
+   *  SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH6.ACTIVE.pidControl'
    */
   MODESACCELERATION_PI_a_Init(&rtDW.MODESACCELERATION_PIDLAUNCH6ACT);
 
   /* SystemInitialize for Chart: '<S5>/GCULogic' incorporates:
-   *  SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH7.ACTIVE.pidControl'
+   *  SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH8.ACTIVE.pidControl'
    */
-  MODESACCELERATION_P_fr_Init(&rtDW.MODESACCELERATION_PIDLAUNCH7ACT);
+  MODESACCELERATION_P_cz_Init(&rtDW.MODESACCELERATION_PIDLAUNCH8ACT);
 
   /* SystemInitialize for Chart: '<S5>/GCULogic' incorporates:
-   *  SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH8.ACTIVE.pidControl'
-   */
-  MODESACCELERATION_P_ep_Init(&rtDW.MODESACCELERATION_PIDLAUNCH8ACT);
-
-  /* SystemInitialize for Chart: '<S5>/GCULogic' incorporates:
-   *  SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH9.ACTIVE.pidControl'
+   *  SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH9.ACTIVE.pidControl'
    */
   MODESACCELERATION_PI_i_Init(&rtDW.MODESACCELERATION_PIDLAUNCH9ACT);
+
+  /* SystemInitialize for Chart: '<S5>/GCULogic' incorporates:
+   *  SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH7.ACTIVE.pidControl'
+   */
+  MODESACCELERATION_PI_o_Init(&rtDW.MODESACCELERATION_PIDLAUNCH7ACT);
 
   /* End of SystemInitialize for SubSystem: '<Root>/GCU_timer' */
 
@@ -9652,73 +9633,73 @@ void GCU_Model_genCode_initialize(void)
   /* Enable for Atomic SubSystem: '<Root>/GCU_timer' */
   /* Enable for Chart: '<S5>/GCULogic' */
   if (rtDW.is_LAUNCH0 == IN_ACTIVE) {
-    /* Enable for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.pidControl' */
+    /* Enable for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.pidControl' */
     MODESACCELERATION_PI_Enable(&rtDW.MODESACCELERATION_PIDLAUNCH0ACT);
 
-    /* End of Enable for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.pidControl' */
+    /* End of Enable for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.pidControl' */
   }
 
   if (rtDW.is_LAUNCH1 == IN_ACTIVE) {
-    /* Enable for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH1.ACTIVE.pidControl' */
+    /* Enable for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH1.ACTIVE.pidControl' */
     MODESACCELERATION__i_Enable(&rtDW.MODESACCELERATION_PIDLAUNCH1ACT);
 
-    /* End of Enable for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH1.ACTIVE.pidControl' */
+    /* End of Enable for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH1.ACTIVE.pidControl' */
   }
 
   if (rtDW.is_LAUNCH2 == IN_ACTIVE) {
-    /* Enable for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.pidControl' */
+    /* Enable for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.pidControl' */
     MODESACCELERATION_ik_Enable(&rtDW.MODESACCELERATION_PIDLAUNCH2ACT);
 
-    /* End of Enable for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.pidControl' */
+    /* End of Enable for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.pidControl' */
   }
 
   if (rtDW.is_LAUNCH3 == IN_ACTIVE) {
-    /* Enable for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.pidControl' */
+    /* Enable for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.pidControl' */
     MODESACCELERATION__p_Enable(&rtDW.MODESACCELERATION_PIDLAUNCH3ACT);
 
-    /* End of Enable for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.pidControl' */
+    /* End of Enable for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.pidControl' */
   }
 
   if (rtDW.is_LAUNCH4 == IN_ACTIVE) {
-    /* Enable for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH4.ACTIVE.pidControl' */
+    /* Enable for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH4.ACTIVE.pidControl' */
     MODESACCELERATION__k_Enable(&rtDW.MODESACCELERATION_PIDLAUNCH4ACT);
 
-    /* End of Enable for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH4.ACTIVE.pidControl' */
+    /* End of Enable for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH4.ACTIVE.pidControl' */
   }
 
   if (rtDW.is_LAUNCH5 == IN_ACTIVE) {
-    /* Enable for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH5.ACTIVE.pidControl' */
+    /* Enable for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH5.ACTIVE.pidControl' */
     MODESACCELERATION__j_Enable(&rtDW.MODESACCELERATION_PIDLAUNCH5ACT);
 
-    /* End of Enable for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH5.ACTIVE.pidControl' */
+    /* End of Enable for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH5.ACTIVE.pidControl' */
   }
 
   if (rtDW.is_LAUNCH6 == IN_ACTIVE) {
-    /* Enable for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH6.ACTIVE.pidControl' */
+    /* Enable for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH6.ACTIVE.pidControl' */
     MODESACCELERATION__o_Enable(&rtDW.MODESACCELERATION_PIDLAUNCH6ACT);
 
-    /* End of Enable for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH6.ACTIVE.pidControl' */
-  }
-
-  if (rtDW.is_LAUNCH7 == IN_ACTIVE) {
-    /* Enable for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH7.ACTIVE.pidControl' */
-    MODESACCELERATION__d_Enable(&rtDW.MODESACCELERATION_PIDLAUNCH7ACT);
-
-    /* End of Enable for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH7.ACTIVE.pidControl' */
+    /* End of Enable for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH6.ACTIVE.pidControl' */
   }
 
   if (rtDW.is_LAUNCH8 == IN_ACTIVE) {
-    /* Enable for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH8.ACTIVE.pidControl' */
-    MODESACCELERATION__l_Enable(&rtDW.MODESACCELERATION_PIDLAUNCH8ACT);
+    /* Enable for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH8.ACTIVE.pidControl' */
+    MODESACCELERATION__g_Enable(&rtDW.MODESACCELERATION_PIDLAUNCH8ACT);
 
-    /* End of Enable for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH8.ACTIVE.pidControl' */
+    /* End of Enable for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH8.ACTIVE.pidControl' */
   }
 
   if (rtDW.is_LAUNCH9 == IN_ACTIVE) {
-    /* Enable for Function Call SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH9.ACTIVE.pidControl' */
+    /* Enable for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH9.ACTIVE.pidControl' */
     MODESACCELERATION__b_Enable(&rtDW.MODESACCELERATION_PIDLAUNCH9ACT);
 
-    /* End of Enable for SubSystem: '<S47>/MODES.ACCELERATION_PID.LAUNCH9.ACTIVE.pidControl' */
+    /* End of Enable for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH9.ACTIVE.pidControl' */
+  }
+
+  if (rtDW.is_LAUNCH7 == IN_ACTIVE) {
+    /* Enable for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH7.ACTIVE.pidControl' */
+    MODESACCELERATION_jt_Enable(&rtDW.MODESACCELERATION_PIDLAUNCH7ACT);
+
+    /* End of Enable for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH7.ACTIVE.pidControl' */
   }
 
   /* End of Enable for Chart: '<S5>/GCULogic' */
