@@ -7,7 +7,7 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   103 \
+    NumChartData   104 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
@@ -308,6 +308,20 @@
       SrcLocation  ""\
     }\
     ChartData {\
+      Name         "is_RETRY_LOGIC"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "RETRY_LOGIC"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_active_RETRY_LOGIC"\
+      Description  "StateIsActive"\
+      SFName       ""\
+      Path         "RETRY_LOGIC"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
       Name         "is_NEUTRAL_STATE"\
       Description  "StateActiveChild"\
       SFName       ""\
@@ -438,20 +452,6 @@
       Description  "StateIsActive"\
       SFName       ""\
       Path         "ANTISTALL_ENABLE"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "is_RETRY_LOGIC"\
-      Description  "StateActiveChild"\
-      SFName       ""\
-      Path         "RETRY_LOGIC"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "is_active_RETRY_LOGIC"\
-      Description  "StateIsActive"\
-      SFName       ""\
-      Path         "RETRY_LOGIC"\
       SrcLocation  ""\
     }\
     ChartData {\
@@ -717,6 +717,13 @@
       Description  "ChartLocal"\
       SFName       ""\
       Path         "RETRY_LOGIC.retryCount"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "lastShiftCom"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "RETRY_LOGIC.lastShiftCom"\
       SrcLocation  ""\
     }\
     ChartData {\

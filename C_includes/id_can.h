@@ -53,7 +53,7 @@
 #define DAU_FR_DEBUG_ID											0x312
 #define DAU_FL_DEBUG_ID											0x313
 #define DAU_REAR_DEBUG_ID										0x314
-#define SW_DEBUG_ID													0x315
+#define SW_DEBUG_ID												0x315
 #define GCU_DEBUG_1_ID											0x316
 #define GCU_DEBUG_2_ID											0x317
 #define DCU_DEBUG_1_ID											0x318
