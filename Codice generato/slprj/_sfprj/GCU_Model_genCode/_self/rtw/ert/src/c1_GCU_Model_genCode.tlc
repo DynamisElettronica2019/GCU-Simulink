@@ -7,7 +7,7 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   104 \
+    NumChartData   105 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
@@ -720,10 +720,17 @@
       SrcLocation  ""\
     }\
     ChartData {\
-      Name         "lastShiftCom"\
+      Name         "RETRY_DELAY"\
       Description  "ChartLocal"\
       SFName       ""\
-      Path         "RETRY_LOGIC.lastShiftCom"\
+      Path         "RETRY_LOGIC.RETRY_DELAY"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "lastShiftChecked"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "RETRY_LOGIC.lastShiftChecked"\
       SrcLocation  ""\
     }\
     ChartData {\

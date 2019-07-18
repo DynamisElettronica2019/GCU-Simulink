@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.389
+ * Model version                  : 1.390
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Mon Jul 15 17:30:28 2019
+ * C/C++ source code generated on : Thu Jul 18 15:17:22 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -333,6 +333,7 @@ typedef struct {
   real_T autoX_clutchStep;             /* '<S5>/GCULogic' */
   real_T delayCount;                   /* '<S5>/GCULogic' */
   real_T retryCount;                   /* '<S5>/GCULogic' */
+  real_T RETRY_DELAY;                  /* '<S5>/GCULogic' */
   real_T counterWait;                  /* '<S5>/GCULogic' */
   real_T lastEvaluatedIndex;           /* '<S3>/EEPROM_OutputRequest' */
   real_T reloadFlag;                   /* '<S3>/EEPROM_OutputRequest' */
@@ -454,6 +455,7 @@ typedef struct {
   uint16_T lastSlip_l;                 /* '<S5>/GCULogic' */
   uint16_T autoXCounter_c;             /* '<S5>/GCULogic' */
   uint16_T lastSlip_i;                 /* '<S5>/GCULogic' */
+  uint16_T lastShiftChecked;           /* '<S5>/GCULogic' */
   volatile int8_T RateTransition9_ActiveBufIdx;/* '<Root>/Rate Transition9' */
   volatile int8_T RateTransition2_ActiveBufIdx;/* '<Root>/Rate Transition2' */
   volatile int8_T RateTransition4_ActiveBufIdx;/* '<Root>/Rate Transition4' */
@@ -551,6 +553,8 @@ typedef struct {
   uint8_T is_LAUNCH7;                  /* '<S5>/GCULogic' */
   uint8_T is_ACTIVE_n;                 /* '<S5>/GCULogic' */
   uint8_T is_RELEASE_a4;               /* '<S5>/GCULogic' */
+  uint8_T is_RETRY_LOGIC;              /* '<S5>/GCULogic' */
+  uint8_T is_active_RETRY_LOGIC;       /* '<S5>/GCULogic' */
   uint8_T is_NEUTRAL_STATE;            /* '<S5>/GCULogic' */
   uint8_T is_active_NEUTRAL_STATE;     /* '<S5>/GCULogic' */
   uint8_T is_GEARSHIFT;                /* '<S5>/GCULogic' */
@@ -570,8 +574,6 @@ typedef struct {
   uint8_T is_active_SCAN_ADC;          /* '<S5>/GCULogic' */
   uint8_T is_ANTISTALL_ENABLE;         /* '<S5>/GCULogic' */
   uint8_T is_active_ANTISTALL_ENABLE;  /* '<S5>/GCULogic' */
-  uint8_T is_RETRY_LOGIC;              /* '<S5>/GCULogic' */
-  uint8_T is_active_RETRY_LOGIC;       /* '<S5>/GCULogic' */
   uint8_T lastShift;                   /* '<S5>/GCULogic' */
   uint8_T lastCom;                     /* '<S5>/GCULogic' */
   uint8_T startCounter;                /* '<S5>/GCULogic' */

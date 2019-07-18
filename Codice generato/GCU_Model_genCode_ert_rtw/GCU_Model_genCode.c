@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.389
+ * Model version                  : 1.390
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Mon Jul 15 17:30:28 2019
+ * C/C++ source code generated on : Thu Jul 18 15:17:22 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -3829,6 +3829,8 @@ static void checkShift(void)
       }
 
       rtDW.sfEvent = b_previousEvent;
+      rtDW.lastTryShift[0] = GEAR_COMMAND_NEUTRAL_UP;
+      rtDW.lastTryShift[1] = 0U;
     } else {
       if (rtDW.RateTransition2[1] == GEAR_COMMAND_NEUTRAL_DOWN) {
         b_previousEvent = rtDW.sfEvent;
@@ -3843,6 +3845,8 @@ static void checkShift(void)
         }
 
         rtDW.sfEvent = b_previousEvent;
+        rtDW.lastTryShift[0] = GEAR_COMMAND_NEUTRAL_DOWN;
+        rtDW.lastTryShift[1] = 0U;
       }
     }
   }
@@ -7796,6 +7800,8 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
     rtDW.is_active_RETRY_LOGIC = 1U;
     rtDW.delayCount = 0.0;
     rtDW.retryCount = 0.0;
+    rtDW.RETRY_DELAY = 350.0;
+    rtDW.lastShiftChecked = 0U;
     if (rtDW.is_RETRY_LOGIC != IN_NO_RETRY) {
       rtDW.is_RETRY_LOGIC = IN_NO_RETRY;
       rtDW.retryCount = 0.0;
@@ -8429,8 +8435,10 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
       guard1 = false;
       switch (rtDW.is_RETRY_LOGIC) {
        case IN_NO_RETRY:
-        if ((rtDW.lastTryShift[1] <= 5) && (rtDW.lastTryShift[1] !=
-             rtDW.RateTransition36[6])) {
+        if ((rtDW.lastTryShift[1] >= 1) && (rtDW.lastTryShift[1] <= 5) &&
+            (rtDW.lastTryShift[1] != rtDW.RateTransition36[6]) &&
+            (rtDW.lastShiftChecked != rtDW.RateTransition2[0])) {
+          rtDW.lastShiftChecked = rtDW.RateTransition2[0];
           rtDW.is_RETRY_LOGIC = 0;
           if (rtDW.is_RETRY_LOGIC != IN_WAITING_RETRY) {
             rtDW.is_RETRY_LOGIC = IN_WAITING_RETRY;
@@ -8459,7 +8467,7 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
         if ((rtDW.RateTransition36[6] == rtDW.lastTryShift[1]) ||
             (rtDW.retryCount == 3.0)) {
           guard1 = true;
-        } else if (rtDW.delayCount == 200.0) {
+        } else if (rtDW.delayCount == rtDW.RETRY_DELAY) {
           if (rtDW.lastTryShift[0] == GEAR_COMMAND_UP) {
             rtDW.is_RETRY_LOGIC = 0;
             if (rtDW.is_RETRY_LOGIC != IN_RETRY_UP) {
@@ -9500,6 +9508,7 @@ void GCU_Model_genCode_initialize(void)
   /* InitializeConditions for RateTransition: '<S3>/Rate Transition1' */
   rtDW.RateTransition1_Buffer0 = 1.0;
   rtDW.sfEvent = -1;
+  rtDW.RETRY_DELAY = 350.0;
 
   /* SystemInitialize for Chart: '<S5>/GCULogic' incorporates:
    *  Chart: '<S3>/EEPROM_OutputRequest'
