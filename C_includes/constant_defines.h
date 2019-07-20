@@ -15,7 +15,7 @@
 #define SEND_SERIAL_DATA_PERIOD 50     //periodo di invio dei dati su seriale 
 #define SEND_CAN_DATA_PERIOD    10
 #define TOGGLE_LED_PERIOD       500   //periodo di accensione del led
-#define ADC_PERIOD              1          //periodo di campionamento dei sensori
+#define ADC_PERIOD              1           //periodo di campionamento dei sensori
 
 //Modalità di lettura dei dati di input
 #define UART_READ_MODE  1
@@ -43,7 +43,7 @@
 #define ENDURANCE_MODE	   0
 
 //Define di accelerationFB
-#define ACC_OFF 				0
+#define ACC_OFF 			0
 #define ACC_READY 			1
 #define ACC_GO			    2
 
@@ -51,15 +51,16 @@
 #define AUTOX_DEFAULT       0
 #define AUTOX_READY         1
 #define AUTOX_GO            2
-#define AUTOX_PID           
 
 //Define dei comandi antistall
 #define ANTISTALL_ON        1
 #define ANTISTALL_OFF       0
 
 //Velocità di uscita da release
-#define RELEASE_END_SPEED 10
-#define SLIP_TARGET 7
+#define RELEASE_END_SPEED   10
+#define SLIP_TARGET         7
 
+//Retry logic
+#define RETRY_DELAY         350
 
 #endif

@@ -7,7 +7,7 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   105 \
+    NumChartData   98 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
@@ -308,20 +308,6 @@
       SrcLocation  ""\
     }\
     ChartData {\
-      Name         "is_RETRY_LOGIC"\
-      Description  "StateActiveChild"\
-      SFName       ""\
-      Path         "RETRY_LOGIC"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "is_active_RETRY_LOGIC"\
-      Description  "StateIsActive"\
-      SFName       ""\
-      Path         "RETRY_LOGIC"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
       Name         "is_NEUTRAL_STATE"\
       Description  "StateActiveChild"\
       SFName       ""\
@@ -460,14 +446,6 @@
       SFName       ""\
       Path         "lastShift"\
       SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "lastTryShift"\
-      Description  "ChartLocal"\
-      SFName       ""\
-      Path         "lastTryShift"\
-      SrcLocation  ""\
-      Dimensions   [1,2]\
     }\
     ChartData {\
       Name         "lastAacCom"\
@@ -703,34 +681,6 @@
       Description  "ChartLocal"\
       SFName       ""\
       Path         "MODES.ACCELERATION_PID.LAUNCH7.ACTIVE.RELEASE.lastSlip"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "delayCount"\
-      Description  "ChartLocal"\
-      SFName       ""\
-      Path         "RETRY_LOGIC.delayCount"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "retryCount"\
-      Description  "ChartLocal"\
-      SFName       ""\
-      Path         "RETRY_LOGIC.retryCount"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "RETRY_DELAY"\
-      Description  "ChartLocal"\
-      SFName       ""\
-      Path         "RETRY_LOGIC.RETRY_DELAY"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "lastShiftChecked"\
-      Description  "ChartLocal"\
-      SFName       ""\
-      Path         "RETRY_LOGIC.lastShiftChecked"\
       SrcLocation  ""\
     }\
     ChartData {\
