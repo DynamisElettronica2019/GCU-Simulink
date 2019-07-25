@@ -7,7 +7,7 @@
 %endfunction
 %function ChartDataMap(block, system) void
   %createrecord ChartDataElements {\
-    NumChartData   98 \
+    NumChartData   86 \
     ChartDataDefaults {\
       RecordType   "ChartData"\
       Dimensions   []\
@@ -112,13 +112,6 @@
       SrcLocation  ""\
     }\
     ChartData {\
-      Name         "is_RELEASE"\
-      Description  "StateActiveChild"\
-      SFName       ""\
-      Path         "MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.RELEASE"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
       Name         "is_LAUNCH1"\
       Description  "StateActiveChild"\
       SFName       ""\
@@ -130,13 +123,6 @@
       Description  "StateActiveChild"\
       SFName       ""\
       Path         "MODES.ACCELERATION_PID.LAUNCH1.ACTIVE"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "is_RELEASE"\
-      Description  "StateActiveChild"\
-      SFName       ""\
-      Path         "MODES.ACCELERATION_PID.LAUNCH1.ACTIVE.RELEASE"\
       SrcLocation  ""\
     }\
     ChartData {\
@@ -154,38 +140,38 @@
       SrcLocation  ""\
     }\
     ChartData {\
-      Name         "is_RELEASE"\
+      Name         "is_LAUNCH6"\
       Description  "StateActiveChild"\
       SFName       ""\
-      Path         "MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.RELEASE"\
+      Path         "MODES.ACCELERATION_PID.LAUNCH6"\
       SrcLocation  ""\
     }\
     ChartData {\
-      Name         "is_LAUNCH3"\
+      Name         "is_RELEASE"\
       Description  "StateActiveChild"\
       SFName       ""\
-      Path         "MODES.ACCELERATION_PID.LAUNCH3"\
+      Path         "MODES.ACCELERATION_PID.LAUNCH6.ACTIVE.RELEASE"\
       SrcLocation  ""\
     }\
     ChartData {\
       Name         "is_ACTIVE"\
       Description  "StateActiveChild"\
       SFName       ""\
-      Path         "MODES.ACCELERATION_PID.LAUNCH3.ACTIVE"\
+      Path         "MODES.ACCELERATION_PID.LAUNCH6.ACTIVE"\
       SrcLocation  ""\
     }\
     ChartData {\
-      Name         "is_RELEASE"\
+      Name         "is_ANTISTALL_ENABLE"\
       Description  "StateActiveChild"\
       SFName       ""\
-      Path         "MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.RELEASE"\
+      Path         "ANTISTALL_ENABLE"\
       SrcLocation  ""\
     }\
     ChartData {\
-      Name         "is_LAUNCH4"\
-      Description  "StateActiveChild"\
+      Name         "is_active_ANTISTALL_ENABLE"\
+      Description  "StateIsActive"\
       SFName       ""\
-      Path         "MODES.ACCELERATION_PID.LAUNCH4"\
+      Path         "ANTISTALL_ENABLE"\
       SrcLocation  ""\
     }\
     ChartData {\
@@ -196,10 +182,10 @@
       SrcLocation  ""\
     }\
     ChartData {\
-      Name         "is_RELEASE"\
+      Name         "is_LAUNCH4"\
       Description  "StateActiveChild"\
       SFName       ""\
-      Path         "MODES.ACCELERATION_PID.LAUNCH4.ACTIVE.RELEASE"\
+      Path         "MODES.ACCELERATION_PID.LAUNCH4"\
       SrcLocation  ""\
     }\
     ChartData {\
@@ -217,38 +203,17 @@
       SrcLocation  ""\
     }\
     ChartData {\
-      Name         "is_RELEASE"\
-      Description  "StateActiveChild"\
-      SFName       ""\
-      Path         "MODES.ACCELERATION_PID.LAUNCH5.ACTIVE.RELEASE"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "is_LAUNCH6"\
-      Description  "StateActiveChild"\
-      SFName       ""\
-      Path         "MODES.ACCELERATION_PID.LAUNCH6"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
       Name         "is_ACTIVE"\
       Description  "StateActiveChild"\
       SFName       ""\
-      Path         "MODES.ACCELERATION_PID.LAUNCH6.ACTIVE"\
+      Path         "MODES.ACCELERATION_PID.LAUNCH7.ACTIVE"\
       SrcLocation  ""\
     }\
     ChartData {\
       Name         "is_RELEASE"\
       Description  "StateActiveChild"\
       SFName       ""\
-      Path         "MODES.ACCELERATION_PID.LAUNCH6.ACTIVE.RELEASE"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "is_LAUNCH8"\
-      Description  "StateActiveChild"\
-      SFName       ""\
-      Path         "MODES.ACCELERATION_PID.LAUNCH8"\
+      Path         "MODES.ACCELERATION_PID.LAUNCH7.ACTIVE.RELEASE"\
       SrcLocation  ""\
     }\
     ChartData {\
@@ -266,24 +231,45 @@
       SrcLocation  ""\
     }\
     ChartData {\
-      Name         "is_LAUNCH9"\
+      Name         "is_START_ENGINE"\
       Description  "StateActiveChild"\
       SFName       ""\
-      Path         "MODES.ACCELERATION_PID.LAUNCH9"\
+      Path         "START_ENGINE"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_active_START_ENGINE"\
+      Description  "StateIsActive"\
+      SFName       ""\
+      Path         "START_ENGINE"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_SCAN_ADC"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "SCAN_ADC"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_active_SCAN_ADC"\
+      Description  "StateIsActive"\
+      SFName       ""\
+      Path         "SCAN_ADC"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "is_LAUNCH3"\
+      Description  "StateActiveChild"\
+      SFName       ""\
+      Path         "MODES.ACCELERATION_PID.LAUNCH3"\
       SrcLocation  ""\
     }\
     ChartData {\
       Name         "is_ACTIVE"\
       Description  "StateActiveChild"\
       SFName       ""\
-      Path         "MODES.ACCELERATION_PID.LAUNCH9.ACTIVE"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "is_RELEASE"\
-      Description  "StateActiveChild"\
-      SFName       ""\
-      Path         "MODES.ACCELERATION_PID.LAUNCH9.ACTIVE.RELEASE"\
+      Path         "MODES.ACCELERATION_PID.LAUNCH3.ACTIVE"\
       SrcLocation  ""\
     }\
     ChartData {\
@@ -294,17 +280,10 @@
       SrcLocation  ""\
     }\
     ChartData {\
-      Name         "is_ACTIVE"\
+      Name         "is_LAUNCH8"\
       Description  "StateActiveChild"\
       SFName       ""\
-      Path         "MODES.ACCELERATION_PID.LAUNCH7.ACTIVE"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "is_RELEASE"\
-      Description  "StateActiveChild"\
-      SFName       ""\
-      Path         "MODES.ACCELERATION_PID.LAUNCH7.ACTIVE.RELEASE"\
+      Path         "MODES.ACCELERATION_PID.LAUNCH8"\
       SrcLocation  ""\
     }\
     ChartData {\
@@ -399,45 +378,24 @@
       SrcLocation  ""\
     }\
     ChartData {\
-      Name         "is_START_ENGINE"\
+      Name         "is_LAUNCH9"\
       Description  "StateActiveChild"\
       SFName       ""\
-      Path         "START_ENGINE"\
+      Path         "MODES.ACCELERATION_PID.LAUNCH9"\
       SrcLocation  ""\
     }\
     ChartData {\
-      Name         "is_active_START_ENGINE"\
-      Description  "StateIsActive"\
-      SFName       ""\
-      Path         "START_ENGINE"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "is_SCAN_ADC"\
+      Name         "is_ACTIVE"\
       Description  "StateActiveChild"\
       SFName       ""\
-      Path         "SCAN_ADC"\
+      Path         "MODES.ACCELERATION_PID.LAUNCH9.ACTIVE"\
       SrcLocation  ""\
     }\
     ChartData {\
-      Name         "is_active_SCAN_ADC"\
-      Description  "StateIsActive"\
-      SFName       ""\
-      Path         "SCAN_ADC"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "is_ANTISTALL_ENABLE"\
+      Name         "is_RELEASE"\
       Description  "StateActiveChild"\
       SFName       ""\
-      Path         "ANTISTALL_ENABLE"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "is_active_ANTISTALL_ENABLE"\
-      Description  "StateIsActive"\
-      SFName       ""\
-      Path         "ANTISTALL_ENABLE"\
+      Path         "MODES.ACCELERATION_PID.LAUNCH9.ACTIVE.RELEASE"\
       SrcLocation  ""\
     }\
     ChartData {\
@@ -542,26 +500,12 @@
       IsTestPoint  1\
     }\
     ChartData {\
-      Name         "lastSlip"\
-      Description  "ChartLocal"\
-      SFName       ""\
-      Path         "MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.RELEASE.lastSlip"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
       Name         "autoXCounter"\
       Description  "ChartLocal"\
       SFName       "autoXCounter"\
       Path         "MODES.ACCELERATION_PID.LAUNCH1.autoXCounter"\
       SrcLocation  ""\
       IsTestPoint  1\
-    }\
-    ChartData {\
-      Name         "lastSlip"\
-      Description  "ChartLocal"\
-      SFName       ""\
-      Path         "MODES.ACCELERATION_PID.LAUNCH1.ACTIVE.RELEASE.lastSlip"\
-      SrcLocation  ""\
     }\
     ChartData {\
       Name         "autoXCounter"\
@@ -572,26 +516,12 @@
       IsTestPoint  1\
     }\
     ChartData {\
-      Name         "lastSlip"\
-      Description  "ChartLocal"\
-      SFName       ""\
-      Path         "MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.RELEASE.lastSlip"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
       Name         "autoXCounter"\
       Description  "ChartLocal"\
       SFName       "autoXCounter"\
       Path         "MODES.ACCELERATION_PID.LAUNCH3.autoXCounter"\
       SrcLocation  ""\
       IsTestPoint  1\
-    }\
-    ChartData {\
-      Name         "lastSlip"\
-      Description  "ChartLocal"\
-      SFName       ""\
-      Path         "MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.RELEASE.lastSlip"\
-      SrcLocation  ""\
     }\
     ChartData {\
       Name         "autoXCounter"\
@@ -602,26 +532,12 @@
       IsTestPoint  1\
     }\
     ChartData {\
-      Name         "lastSlip"\
-      Description  "ChartLocal"\
-      SFName       ""\
-      Path         "MODES.ACCELERATION_PID.LAUNCH4.ACTIVE.RELEASE.lastSlip"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
       Name         "autoXCounter"\
       Description  "ChartLocal"\
       SFName       "autoXCounter"\
       Path         "MODES.ACCELERATION_PID.LAUNCH5.autoXCounter"\
       SrcLocation  ""\
       IsTestPoint  1\
-    }\
-    ChartData {\
-      Name         "lastSlip"\
-      Description  "ChartLocal"\
-      SFName       ""\
-      Path         "MODES.ACCELERATION_PID.LAUNCH5.ACTIVE.RELEASE.lastSlip"\
-      SrcLocation  ""\
     }\
     ChartData {\
       Name         "autoXCounter"\
@@ -636,6 +552,21 @@
       Description  "ChartLocal"\
       SFName       ""\
       Path         "MODES.ACCELERATION_PID.LAUNCH6.ACTIVE.RELEASE.lastSlip"\
+      SrcLocation  ""\
+    }\
+    ChartData {\
+      Name         "autoXCounter"\
+      Description  "ChartLocal"\
+      SFName       "autoXCounter"\
+      Path         "MODES.ACCELERATION_PID.LAUNCH7.autoXCounter"\
+      SrcLocation  ""\
+      IsTestPoint  1\
+    }\
+    ChartData {\
+      Name         "lastSlip"\
+      Description  "ChartLocal"\
+      SFName       ""\
+      Path         "MODES.ACCELERATION_PID.LAUNCH7.ACTIVE.RELEASE.lastSlip"\
       SrcLocation  ""\
     }\
     ChartData {\
@@ -666,21 +597,6 @@
       Description  "ChartLocal"\
       SFName       ""\
       Path         "MODES.ACCELERATION_PID.LAUNCH9.ACTIVE.RELEASE.lastSlip"\
-      SrcLocation  ""\
-    }\
-    ChartData {\
-      Name         "autoXCounter"\
-      Description  "ChartLocal"\
-      SFName       "autoXCounter"\
-      Path         "MODES.ACCELERATION_PID.LAUNCH7.autoXCounter"\
-      SrcLocation  ""\
-      IsTestPoint  1\
-    }\
-    ChartData {\
-      Name         "lastSlip"\
-      Description  "ChartLocal"\
-      SFName       ""\
-      Path         "MODES.ACCELERATION_PID.LAUNCH7.ACTIVE.RELEASE.lastSlip"\
       SrcLocation  ""\
     }\
     ChartData {\
