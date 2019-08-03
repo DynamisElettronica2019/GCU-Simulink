@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.403
+ * Model version                  : 1.405
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Sat Aug  3 14:34:14 2019
+ * C/C++ source code generated on : Sat Aug  3 16:22:17 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -53,15 +53,17 @@ const ConstP rtConstP = {
    */
   { 0U, 1U, 2U, 3U, 4U, 5U, 6U, 7U },
 
-  /* Expression: [uint16(0),uint16(100),uint16(200),uint16(300),uint16(400),uint16(500),uint16(600),uint16(700),uint16(800),uint16(900),uint16(1000)];
+  /* Expression: uint16(0:25:350)
    * Referenced by: '<S2>/1-D Lookup Table3'
    */
-  { 0U, 100U, 200U, 300U, 400U, 500U, 600U, 700U, 800U, 900U, 1000U },
+  { 0U, 25U, 50U, 75U, 100U, 125U, 150U, 175U, 200U, 225U, 250U, 275U, 300U,
+    325U, 350U },
 
   /* Computed Parameter: uDLookupTable3_bp01Data
    * Referenced by: '<S2>/1-D Lookup Table3'
    */
-  { 65U, 70U, 75U, 80U, 85U, 90U, 95U, 100U, 105U, 110U, 115U }
+  { 45U, 50U, 55U, 60U, 65U, 70U, 75U, 80U, 85U, 90U, 95U, 100U, 105U, 110U,
+    115U }
 };
 
 /*
