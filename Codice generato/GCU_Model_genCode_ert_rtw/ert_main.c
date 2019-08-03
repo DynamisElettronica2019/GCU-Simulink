@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.397
+ * Model version                  : 1.401
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Thu Jul 25 23:41:02 2019
+ * C/C++ source code generated on : Sat Aug  3 11:39:06 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -23,7 +23,6 @@
 #include <stdio.h>                     /* This ert_main.c example uses printf/fflush */
 #include "GCU_Model_genCode.h"         /* Model's header file */
 #include "rtwtypes.h"
-#include "zero_crossing_types.h"
 
 /*
  * Associating rt_OneStep with a real-time clock or interrupt service routine
