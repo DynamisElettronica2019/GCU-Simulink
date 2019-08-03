@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.398
+ * Model version                  : 1.399
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Sat Jul 27 14:17:34 2019
+ * C/C++ source code generated on : Sat Jul 27 23:05:21 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -440,7 +440,6 @@ typedef struct {
   uint8_T Eeprom_init_o3;              /* '<S6>/Eeprom_init' */
   uint8_T setKeyOn;                    /* '<S6>/setKeyOn' */
   uint8_T Cast1_k;                     /* '<S5>/Cast1' */
-  uint8_T UnitDelay1_i;                /* '<S5>/Unit Delay1' */
   uint8_T Pin_H;                       /* '<S49>/Pin_H' */
   uint8_T Merge_n;                     /* '<S5>/Merge' */
   uint8_T clutchCurrVal;               /* '<S5>/GCULogic' */
@@ -462,7 +461,6 @@ typedef struct {
   uint8_T rpmUpdateCounter;            /* '<S4>/MessageEvaluation1' */
   uint8_T slipUpdateCounter;           /* '<S4>/MessageEvaluation1' */
   uint8_T Merge_a;                     /* '<S39>/Merge' */
-  uint8_T UnitDelay1_DSTATE_j;         /* '<S5>/Unit Delay1' */
   volatile uint8_T RateTransition3_Buffer0;/* '<Root>/Rate Transition3' */
   volatile uint8_T RateTransition5_Buffer0;/* '<Root>/Rate Transition5' */
   volatile uint8_T RateTransition30_Buffer0;/* '<Root>/Rate Transition30' */

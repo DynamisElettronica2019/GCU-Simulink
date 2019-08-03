@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.398
+ * Model version                  : 1.399
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Sat Jul 27 14:17:34 2019
+ * C/C++ source code generated on : Sat Jul 27 23:05:21 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -2596,8 +2596,8 @@ static void Clutch_setValue(uint8_T setValue)
 
   /* Outputs for Function Call SubSystem: '<S44>/ClutchMotor SetPosition ' */
   /* Saturate: '<S57>/Saturation' */
-  if (rtDW.UnitDelay1_i < 100) {
-    tmp = rtDW.UnitDelay1_i;
+  if (rtDW.clutchCurrVal < 100) {
+    tmp = rtDW.clutchCurrVal;
   } else {
     tmp = 100U;
   }
@@ -6794,9 +6794,6 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
   /* UnitDelay: '<S5>/Unit Delay' */
   rtDW.UnitDelay_b = rtDW.UnitDelay_DSTATE_o;
 
-  /* UnitDelay: '<S5>/Unit Delay1' */
-  rtDW.UnitDelay1_i = rtDW.UnitDelay1_DSTATE_j;
-
   /* Chart: '<S5>/GCULogic' */
   rtDW.sfEvent = -1;
   if (rtDW.is_active_c1_GCU_Model_genCode == 0U) {
@@ -7582,7 +7579,7 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
     /* Outputs for IfAction SubSystem: '<S5>/If Action Subsystem1' incorporates:
      *  ActionPort: '<S51>/Action Port'
      */
-    rtDW.Merge_n = rtDW.UnitDelay1_i;
+    rtDW.Merge_n = rtDW.clutchCurrVal;
 
     /* End of Outputs for SubSystem: '<S5>/If Action Subsystem1' */
   }
@@ -7600,9 +7597,6 @@ void GCU_Model_genCode_step1(void)     /* Sample time: [0.001s, 0.0s] */
 
   /* Update for UnitDelay: '<S5>/Unit Delay' */
   rtDW.UnitDelay_DSTATE_o = rtDW.antiStallFb;
-
-  /* Update for UnitDelay: '<S5>/Unit Delay1' */
-  rtDW.UnitDelay1_DSTATE_j = rtDW.clutchCurrVal;
 
   /* End of Outputs for SubSystem: '<Root>/GCU_timer' */
 
