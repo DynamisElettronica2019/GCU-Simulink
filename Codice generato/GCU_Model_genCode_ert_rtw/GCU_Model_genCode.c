@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.401
+ * Model version                  : 1.403
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Sat Aug  3 11:39:06 2019
+ * C/C++ source code generated on : Sat Aug  3 14:34:14 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -2514,7 +2514,7 @@ static void ACCELERATION_PID(void)
                   rtDW.is_ACTIVE_d = IN_READY;
                   rtDW.stateFb = (uint16_T)AUTOX_READY;
                   rtDW.autoXCounter_k = AUTOX_WORK_RATE_ms;
-                  Clutch_setValue(55);
+                  Clutch_setValue(100);
                   checkShift();
                 }
               }
@@ -2609,7 +2609,7 @@ static void ACCELERATION_PID(void)
                 rtDW.is_ACTIVE_d = IN_READY;
                 rtDW.stateFb = (uint16_T)AUTOX_READY;
                 rtDW.autoXCounter_k = AUTOX_WORK_RATE_ms;
-                Clutch_setValue(55);
+                Clutch_setValue(100);
                 checkShift();
               }
             } else {
