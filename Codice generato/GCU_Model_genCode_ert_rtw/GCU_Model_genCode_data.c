@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.405
+ * Model version                  : 1.409
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Sat Aug  3 16:22:17 2019
+ * C/C++ source code generated on : Sun Aug  4 18:21:49 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -20,6 +20,39 @@
  */
 
 #include "GCU_Model_genCode.h"
+
+/* Invariant block signals (default storage) */
+const ConstB rtConstB = {
+  /* Start of '<S48>/MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.ramp' */
+  {
+    50.0                               /* '<S75>/Constant1' */
+  }
+  ,
+
+  /* End of '<S48>/MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.ramp' */
+
+  /* Start of '<S48>/MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.ramp' */
+  {
+    50.0                               /* '<S74>/Constant1' */
+  }
+  ,
+
+  /* End of '<S48>/MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.ramp' */
+
+  /* Start of '<S48>/MODES.ACCELERATION_PID.LAUNCH1.ACTIVE.ramp' */
+  {
+    50.0                               /* '<S73>/Constant1' */
+  }
+  ,
+
+  /* End of '<S48>/MODES.ACCELERATION_PID.LAUNCH1.ACTIVE.ramp' */
+
+  /* Start of '<S48>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.ramp' */
+  {
+    50.0                               /* '<S72>/Constant1' */
+  }
+  /* End of '<S48>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.ramp' */
+};
 
 /* Constant parameters (default storage) */
 const ConstP rtConstP = {

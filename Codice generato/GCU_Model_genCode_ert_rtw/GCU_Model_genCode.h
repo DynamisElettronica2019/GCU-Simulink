@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.405
+ * Model version                  : 1.409
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Sat Aug  3 16:22:17 2019
+ * C/C++ source code generated on : Sun Aug  4 18:21:49 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -76,27 +76,6 @@ typedef enum {
 
 #endif
 
-#ifndef DEFINED_TYPEDEF_FOR_autoX_params_
-#define DEFINED_TYPEDEF_FOR_autoX_params_
-
-typedef enum {
-  AUTOX_RAMP_START = 0,                /* Default value */
-  AUTOX_RAMP_END,
-  AUTOX_RAMP_TIME,
-  AUTOX_RPM_LIMIT_1_2,
-  AUTOX_RPM_LIMIT_2_3,
-  AUTOX_RPM_LIMIT_3_4,
-  AUTOX_RPM_LIMIT_4_5,
-  AUTOX_SPEED_LIMIT_1_2,
-  AUTOX_SPEED_LIMIT_2_3,
-  AUTOX_SPEED_LIMIT_3_4,
-  AUTOX_SPEED_LIMIT_4_5,
-  AUTOX_TPS_START_LIMIT,
-  AUTOX_END_GEAR
-} autoX_params;
-
-#endif
-
 #ifndef DEFINED_TYPEDEF_FOR_acc_params_
 #define DEFINED_TYPEDEF_FOR_acc_params_
 
@@ -115,6 +94,27 @@ typedef enum {
   TPS_START_LIMIT,
   END_GEAR
 } acc_params;
+
+#endif
+
+#ifndef DEFINED_TYPEDEF_FOR_autoX_params_
+#define DEFINED_TYPEDEF_FOR_autoX_params_
+
+typedef enum {
+  AUTOX_RAMP_START = 0,                /* Default value */
+  AUTOX_RAMP_END,
+  AUTOX_RAMP_TIME,
+  AUTOX_RPM_LIMIT_1_2,
+  AUTOX_RPM_LIMIT_2_3,
+  AUTOX_RPM_LIMIT_3_4,
+  AUTOX_RPM_LIMIT_4_5,
+  AUTOX_SPEED_LIMIT_1_2,
+  AUTOX_SPEED_LIMIT_2_3,
+  AUTOX_SPEED_LIMIT_3_4,
+  AUTOX_SPEED_LIMIT_4_5,
+  AUTOX_TPS_START_LIMIT,
+  AUTOX_END_GEAR
+} autoX_params;
 
 #endif
 
@@ -185,6 +185,7 @@ typedef struct {
   real_T DiscreteTimeIntegrator1_PREV_U;/* '<S72>/Discrete-Time Integrator1' */
   uint32_T MODESACCELERATION_PIDLAUNCH0ACT;/* '<S48>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.ramp' */
   uint32_T MODESACCELERATION_PIDLAUNCH0A_b;/* '<S48>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.ramp' */
+  int8_T DiscreteTimeIntegrator1_PrevRes;/* '<S72>/Discrete-Time Integrator1' */
   uint8_T DiscreteTimeIntegrator1_SYSTEM_;/* '<S72>/Discrete-Time Integrator1' */
   boolean_T MODESACCELERATION_PIDLAUNCH0A_k;/* '<S48>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.ramp' */
 } DW_MODESACCELERATION_PIDLAUNCH0;
@@ -197,8 +198,8 @@ typedef struct {
 /* Block signals and states (default storage) for system '<Root>' */
 typedef struct {
   DW_MODESACCELERATION_PIDLAUNCH0 MODESACCELERATION_PIDLAUNCH3ACT;/* '<S48>/MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.ramp' */
-  DW_GEARSHIFTcheckCurrent GEARSHIFTcheckCurrent_p;/* '<S48>/GEARSHIFT.checkCurrent' */
   DW_MODESACCELERATION_PIDLAUNCH0 MODESACCELERATION_PIDLAUNCH2ACT;/* '<S48>/MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.ramp' */
+  DW_GEARSHIFTcheckCurrent GEARSHIFTcheckCurrent_p;/* '<S48>/GEARSHIFT.checkCurrent' */
   DW_MODESACCELERATION_PIDLAUNCH0 MODESACCELERATION_PIDLAUNCH1ACT;/* '<S48>/MODES.ACCELERATION_PID.LAUNCH1.ACTIVE.ramp' */
   DW_MODESACCELERATION_PIDLAUNCH0 MODESACCELERATION_PIDLAUNCH0ACT;/* '<S48>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.ramp' */
   DW_Evaluate_Request Evaluate_Request_l;/* '<S3>/Evaluate_Request' */
@@ -212,8 +213,6 @@ typedef struct {
   real_T RateTransition40;             /* '<Root>/Rate Transition40' */
   real_T RateTransition41;             /* '<Root>/Rate Transition41' */
   real_T RateTransition1;              /* '<S3>/Rate Transition1' */
-  real_T SFunction_o8;                 /* '<S5>/GCULogic' */
-  real_T SFunction_o9;                 /* '<S5>/GCULogic' */
   real_T SFunction_o10;                /* '<S5>/GCULogic' */
   real_T SFunction_o11;                /* '<S5>/GCULogic' */
   real_T SFunction_o12;                /* '<S5>/GCULogic' */
@@ -228,6 +227,8 @@ typedef struct {
   real_T SFunction_o21;                /* '<S5>/GCULogic' */
   real_T SFunction_o22;                /* '<S5>/GCULogic' */
   real_T SFunction_o23;                /* '<S5>/GCULogic' */
+  real_T SFunction_o24;                /* '<S5>/GCULogic' */
+  real_T SFunction_o25;                /* '<S5>/GCULogic' */
   real_T time;                         /* '<S5>/GCULogic' */
   real_T current;                      /* '<S5>/GCULogic' */
   real_T deltaTime;                    /* '<S42>/timeCounter' */
@@ -454,6 +455,19 @@ typedef struct {
   boolean_T LogicalOperator;           /* '<S71>/Logical Operator' */
 } DW;
 
+/* Invariant block signals for system '<S48>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.ramp' */
+typedef struct {
+  const real_T Constant1;              /* '<S72>/Constant1' */
+} ConstB_MODESACCELERATION_PIDLAU;
+
+/* Invariant block signals (default storage) */
+typedef struct {
+  ConstB_MODESACCELERATION_PIDLAU MODESACCELERATION_PIDLAUNCH3ACT;/* '<S48>/MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.ramp' */
+  ConstB_MODESACCELERATION_PIDLAU MODESACCELERATION_PIDLAUNCH2ACT;/* '<S48>/MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.ramp' */
+  ConstB_MODESACCELERATION_PIDLAU MODESACCELERATION_PIDLAUNCH1ACT;/* '<S48>/MODES.ACCELERATION_PID.LAUNCH1.ACTIVE.ramp' */
+  ConstB_MODESACCELERATION_PIDLAU MODESACCELERATION_PIDLAUNCH0ACT;/* '<S48>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.ramp' */
+} ConstB;
+
 /* Constant parameters (default storage) */
 typedef struct {
   /* Expression: VoltageOffsetVector
@@ -547,6 +561,7 @@ extern ExtY rtY;
 
 /* External data declarations for dependent source files */
 extern const uint16_T GCU_Model_genCode_U16GND;/* uint16_T ground */
+extern const ConstB rtConstB;          /* constant block i/o */
 
 /* Constant parameters (default storage) */
 extern const ConstP rtConstP;

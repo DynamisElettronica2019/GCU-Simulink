@@ -7,9 +7,9 @@
  *
  * Code generated for Simulink model 'GCU_Model_genCode'.
  *
- * Model version                  : 1.405
+ * Model version                  : 1.409
  * Simulink Coder version         : 8.14 (R2018a) 06-Feb-2018
- * C/C++ source code generated on : Sat Aug  3 16:22:17 2019
+ * C/C++ source code generated on : Sun Aug  4 18:21:49 2019
  *
  * Target selection: ert.tlc
  * Embedded hardware selection: ARM Compatible->ARM Cortex
@@ -857,8 +857,8 @@ static void Evaluate_Request(const eepromRequest *rtu_outputRequest, const
   *localDW);
 static void MODESACCELERATION_PIDL_Init(DW_MODESACCELERATION_PIDLAUNCH0 *localDW);
 static void MODESACCELERATION_PI_Enable(DW_MODESACCELERATION_PIDLAUNCH0 *localDW);
-static void MODESACCELERATION_PIDLAUNCH(RT_MODEL * const rtM, real_T
-  *rty_clutchCurrVal, DW_MODESACCELERATION_PIDLAUNCH0 *localDW);
+static void MODESACCELERATION_PIDLAUNCH(RT_MODEL * const rtM, real_T rtu_reset,
+  real_T *rty_clutchCurrVal, DW_MODESACCELERATION_PIDLAUNCH0 *localDW);
 static void GEARSHIFTcheckCurrent(real_T rtu_time, real_T rtu_current, boolean_T
   *rty_out, DW_GEARSHIFTcheckCurrent *localDW);
 static void Gearmotor_release(void);
@@ -1308,6 +1308,17 @@ static void MODESACCELERATION_PIDL_Init(DW_MODESACCELERATION_PIDLAUNCH0 *localDW
 {
   /* InitializeConditions for DiscreteIntegrator: '<S72>/Discrete-Time Integrator1' */
   localDW->DiscreteTimeIntegrator1_DSTATE = 50.0;
+  if (localDW->DiscreteTimeIntegrator1_DSTATE >= 50.0) {
+    localDW->DiscreteTimeIntegrator1_DSTATE = 50.0;
+  } else {
+    if (localDW->DiscreteTimeIntegrator1_DSTATE <= 0.0) {
+      localDW->DiscreteTimeIntegrator1_DSTATE = 0.0;
+    }
+  }
+
+  localDW->DiscreteTimeIntegrator1_PrevRes = 2;
+
+  /* End of InitializeConditions for DiscreteIntegrator: '<S72>/Discrete-Time Integrator1' */
 }
 
 /*
@@ -1332,8 +1343,8 @@ static void MODESACCELERATION_PI_Enable(DW_MODESACCELERATION_PIDLAUNCH0 *localDW
  *    '<S48>/MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.ramp'
  *    '<S48>/MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.ramp'
  */
-static void MODESACCELERATION_PIDLAUNCH(RT_MODEL * const rtM, real_T
-  *rty_clutchCurrVal, DW_MODESACCELERATION_PIDLAUNCH0 *localDW)
+static void MODESACCELERATION_PIDLAUNCH(RT_MODEL * const rtM, real_T rtu_reset,
+  real_T *rty_clutchCurrVal, DW_MODESACCELERATION_PIDLAUNCH0 *localDW)
 {
   real_T DiscreteTimeIntegrator1;
   if (localDW->MODESACCELERATION_PIDLAUNCH0A_k) {
@@ -1348,6 +1359,18 @@ static void MODESACCELERATION_PIDLAUNCH(RT_MODEL * const rtM, real_T
 
   /* DiscreteIntegrator: '<S72>/Discrete-Time Integrator1' */
   if (localDW->DiscreteTimeIntegrator1_SYSTEM_ != 0) {
+    DiscreteTimeIntegrator1 = localDW->DiscreteTimeIntegrator1_DSTATE;
+  } else if ((rtu_reset > 0.0) && (localDW->DiscreteTimeIntegrator1_PrevRes <= 0))
+  {
+    localDW->DiscreteTimeIntegrator1_DSTATE = 50.0;
+    if (localDW->DiscreteTimeIntegrator1_DSTATE >= 50.0) {
+      localDW->DiscreteTimeIntegrator1_DSTATE = 50.0;
+    } else {
+      if (localDW->DiscreteTimeIntegrator1_DSTATE <= 0.0) {
+        localDW->DiscreteTimeIntegrator1_DSTATE = 0.0;
+      }
+    }
+
     DiscreteTimeIntegrator1 = localDW->DiscreteTimeIntegrator1_DSTATE;
   } else {
     DiscreteTimeIntegrator1 = 0.001 * (real_T)
@@ -1382,7 +1405,19 @@ static void MODESACCELERATION_PIDLAUNCH(RT_MODEL * const rtM, real_T
    */
   localDW->DiscreteTimeIntegrator1_SYSTEM_ = 0U;
   localDW->DiscreteTimeIntegrator1_DSTATE = DiscreteTimeIntegrator1;
+  if (rtu_reset > 0.0) {
+    localDW->DiscreteTimeIntegrator1_PrevRes = 1;
+  } else if (rtu_reset < 0.0) {
+    localDW->DiscreteTimeIntegrator1_PrevRes = -1;
+  } else if (rtu_reset == 0.0) {
+    localDW->DiscreteTimeIntegrator1_PrevRes = 0;
+  } else {
+    localDW->DiscreteTimeIntegrator1_PrevRes = 2;
+  }
+
   localDW->DiscreteTimeIntegrator1_PREV_U = -200.0;
+
+  /* End of Update for DiscreteIntegrator: '<S72>/Discrete-Time Integrator1' */
 }
 
 /* Output and update for function-call system: '<S48>/GEARSHIFT.checkCurrent' */
@@ -2397,12 +2432,20 @@ static void LAUNCH1(void)
                >= getAutoXParam(AUTOX_TPS_START_LIMIT))) {
             rtDW.lastAutoXCom = rtDW.RateTransition29[0];
             rtDW.stateFb = (uint16_T)AUTOX_GO;
+
+            /* Outputs for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH1.ACTIVE.ramp' */
+            MODESACCELERATION_PIDLAUNCH(rtM, 0.0,
+              &OutportBufferForclutchCurrVa_fz,
+              &rtDW.MODESACCELERATION_PIDLAUNCH1ACT);
+
+            /* End of Outputs for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH1.ACTIVE.ramp' */
             rtDW.is_ACTIVE_g = 0;
             if (rtDW.is_ACTIVE_g != IN_RELEASE) {
               rtDW.is_ACTIVE_g = IN_RELEASE;
 
               /* Outputs for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH1.ACTIVE.ramp' */
-              MODESACCELERATION_PIDLAUNCH(rtM, &OutportBufferForclutchCurrVa_fz,
+              MODESACCELERATION_PIDLAUNCH(rtM, 1.0,
+                &OutportBufferForclutchCurrVa_fz,
                 &rtDW.MODESACCELERATION_PIDLAUNCH1ACT);
 
               /* End of Outputs for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH1.ACTIVE.ramp' */
@@ -2448,7 +2491,7 @@ static void LAUNCH1(void)
           }
         } else {
           /* Outputs for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH1.ACTIVE.ramp' */
-          MODESACCELERATION_PIDLAUNCH(rtM, &OutportBufferForclutchCurrVa_fz,
+          MODESACCELERATION_PIDLAUNCH(rtM, 1.0, &OutportBufferForclutchCurrVa_fz,
             &rtDW.MODESACCELERATION_PIDLAUNCH1ACT);
 
           /* End of Outputs for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH1.ACTIVE.ramp' */
@@ -2578,12 +2621,20 @@ static void LAUNCH2(void)
                >= getAutoXParam(AUTOX_TPS_START_LIMIT))) {
             rtDW.lastAutoXCom = rtDW.RateTransition29[0];
             rtDW.stateFb = (uint16_T)AUTOX_GO;
+
+            /* Outputs for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.ramp' */
+            MODESACCELERATION_PIDLAUNCH(rtM, 0.0,
+              &OutportBufferForclutchCurrVal_f,
+              &rtDW.MODESACCELERATION_PIDLAUNCH2ACT);
+
+            /* End of Outputs for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.ramp' */
             rtDW.is_ACTIVE_e = 0;
             if (rtDW.is_ACTIVE_e != IN_RELEASE) {
               rtDW.is_ACTIVE_e = IN_RELEASE;
 
               /* Outputs for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.ramp' */
-              MODESACCELERATION_PIDLAUNCH(rtM, &OutportBufferForclutchCurrVal_f,
+              MODESACCELERATION_PIDLAUNCH(rtM, 1.0,
+                &OutportBufferForclutchCurrVal_f,
                 &rtDW.MODESACCELERATION_PIDLAUNCH2ACT);
 
               /* End of Outputs for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.ramp' */
@@ -2629,7 +2680,7 @@ static void LAUNCH2(void)
           }
         } else {
           /* Outputs for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.ramp' */
-          MODESACCELERATION_PIDLAUNCH(rtM, &OutportBufferForclutchCurrVal_f,
+          MODESACCELERATION_PIDLAUNCH(rtM, 1.0, &OutportBufferForclutchCurrVal_f,
             &rtDW.MODESACCELERATION_PIDLAUNCH2ACT);
 
           /* End of Outputs for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH2.ACTIVE.ramp' */
@@ -2759,12 +2810,19 @@ static void LAUNCH3(void)
                >= getAutoXParam(AUTOX_TPS_START_LIMIT))) {
             rtDW.lastAutoXCom = rtDW.RateTransition29[0];
             rtDW.stateFb = (uint16_T)AUTOX_GO;
+
+            /* Outputs for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.ramp' */
+            MODESACCELERATION_PIDLAUNCH(rtM, 0.0, &OutportBufferForclutchCurrVal,
+              &rtDW.MODESACCELERATION_PIDLAUNCH3ACT);
+
+            /* End of Outputs for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.ramp' */
             rtDW.is_ACTIVE_d4 = 0;
             if (rtDW.is_ACTIVE_d4 != IN_RELEASE) {
               rtDW.is_ACTIVE_d4 = IN_RELEASE;
 
               /* Outputs for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.ramp' */
-              MODESACCELERATION_PIDLAUNCH(rtM, &OutportBufferForclutchCurrVal,
+              MODESACCELERATION_PIDLAUNCH(rtM, 1.0,
+                &OutportBufferForclutchCurrVal,
                 &rtDW.MODESACCELERATION_PIDLAUNCH3ACT);
 
               /* End of Outputs for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.ramp' */
@@ -2810,7 +2868,7 @@ static void LAUNCH3(void)
           }
         } else {
           /* Outputs for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.ramp' */
-          MODESACCELERATION_PIDLAUNCH(rtM, &OutportBufferForclutchCurrVal,
+          MODESACCELERATION_PIDLAUNCH(rtM, 1.0, &OutportBufferForclutchCurrVal,
             &rtDW.MODESACCELERATION_PIDLAUNCH3ACT);
 
           /* End of Outputs for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH3.ACTIVE.ramp' */
@@ -3208,12 +3266,19 @@ static void ACCELERATION_PID(void)
                    (AUTOX_TPS_START_LIMIT))) {
                 rtDW.lastAutoXCom = rtDW.RateTransition29[0];
                 rtDW.stateFb = (uint16_T)AUTOX_GO;
+
+                /* Outputs for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.ramp' */
+                MODESACCELERATION_PIDLAUNCH(rtM, 0.0,
+                  &OutportBufferForclutchCurrV_fzg,
+                  &rtDW.MODESACCELERATION_PIDLAUNCH0ACT);
+
+                /* End of Outputs for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.ramp' */
                 rtDW.is_ACTIVE_d = 0;
                 if (rtDW.is_ACTIVE_d != IN_RELEASE) {
                   rtDW.is_ACTIVE_d = IN_RELEASE;
 
                   /* Outputs for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.ramp' */
-                  MODESACCELERATION_PIDLAUNCH(rtM,
+                  MODESACCELERATION_PIDLAUNCH(rtM, 1.0,
                     &OutportBufferForclutchCurrV_fzg,
                     &rtDW.MODESACCELERATION_PIDLAUNCH0ACT);
 
@@ -3261,7 +3326,8 @@ static void ACCELERATION_PID(void)
               }
             } else {
               /* Outputs for Function Call SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.ramp' */
-              MODESACCELERATION_PIDLAUNCH(rtM, &OutportBufferForclutchCurrV_fzg,
+              MODESACCELERATION_PIDLAUNCH(rtM, 1.0,
+                &OutportBufferForclutchCurrV_fzg,
                 &rtDW.MODESACCELERATION_PIDLAUNCH0ACT);
 
               /* End of Outputs for SubSystem: '<S48>/MODES.ACCELERATION_PID.LAUNCH0.ACTIVE.ramp' */
